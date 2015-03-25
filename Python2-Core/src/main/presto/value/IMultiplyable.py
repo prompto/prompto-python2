@@ -1,3 +1,4 @@
 class IMultiplyable(object):
     
-    pass
+    def Multiply(self, context, other):
+        raise Exception("Missing override!")

@@ -1,8 +1,7 @@
-from presto.declaration.CategoryDeclaration import *
-from presto.declaration.GetterMethodDeclaration import *
-from presto.declaration.SetterMethodDeclaration import *
-from presto.value.ConcreteInstance import *
-
+from io import StringIO
+from presto.error.SyntaxError import SyntaxError
+from presto.declaration.IDeclaration import IDeclaration
+from presto.declaration.CategoryDeclaration import CategoryDeclaration
 
 class ConcreteCategoryDeclaration ( CategoryDeclaration ):
 
@@ -66,9 +65,12 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
             self.methodsMap = dict()
             if self.methods is not None:
                 for method in self.methods:
-                    self.registerMethod(method,context)
+                    self.registerMethodDeclaration(method,context)
 
-    def registerMethod(self, method, context):
+    def registerMethodDeclaration(self, method, context):
+        from presto.declaration.SetterMethodDeclaration import SetterMethodDeclaration
+        from presto.declaration.GetterMethodDeclaration import GetterMethodDeclaration
+        from presto.runtime.Context import MethodDeclarationMap
         actual = None
         if isinstance(method, SetterMethodDeclaration):
             actual = self.methodsMap.get("setter:"+method.getName())
@@ -112,9 +114,11 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         return actual.isDerivedFrom(context, categoryType)
 
     def newInstance(self):
+        from presto.value.ConcreteInstance import ConcreteInstance
         return ConcreteInstance(self)
 
     def findGetter(self, context, attrName):
+        from presto.declaration.GetterMethodDeclaration import GetterMethodDeclaration
         if self.methodsMap is None:
             return None
         method = self.methodsMap.get("getter:"+attrName, None)
@@ -140,6 +144,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         return actual.findGetter(context, attrName)
 
     def findSetter(self, context, attrName):
+        from presto.declaration.SetterMethodDeclaration import SetterMethodDeclaration
         if self.methodsMap is None:
             return None
         method = self.methodsMap.get("setter:"+attrName, None)
@@ -165,6 +170,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         return actual.findSetter(context, attrName)
 
     def findMemberMethods(self, context, name):
+        from presto.runtime.Context import MethodDeclarationMap
         result = MethodDeclarationMap(name)
         self.registerMemberMethods(context,result)
         return result.values()
@@ -179,6 +185,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         actual = self.methodsMap.get(result.getName(), None)
         if actual is None:
             return
+        from presto.runtime.Context import MethodDeclarationMap
         if not isinstance(actual, MethodDeclarationMap):
             raise SyntaxError("Not a member method!")
         for method in actual.values():

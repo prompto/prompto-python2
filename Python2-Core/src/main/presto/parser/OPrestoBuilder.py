@@ -20,6 +20,7 @@ from presto.declaration.MemberMethodDeclaration import MemberMethodDeclaration
 from presto.declaration.OperatorMethodDeclaration import OperatorMethodDeclaration
 from presto.declaration.NativeCategoryDeclaration import NativeCategoryDeclaration
 from presto.declaration.NativeMethodDeclaration import NativeMethodDeclaration
+from presto.declaration.TestMethodDeclaration import TestMethodDeclaration
 from presto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
 from presto.declaration.NativeResourceDeclaration import NativeResourceDeclaration
 from presto.declaration.SetterMethodDeclaration import SetterMethodDeclaration
@@ -125,6 +126,7 @@ from presto.literal.TupleLiteral import TupleLiteral
 from presto.parser.OParser import OParser
 from presto.parser.OParserListener import OParserListener
 from presto.parser.Section import Section
+from presto.parser.Dialect import Dialect
 from presto.python.PythonNativeCategoryMapping import PythonNativeCategoryMapping, Python2NativeCategoryMapping, \
     Python3NativeCategoryMapping
 from presto.python.PythonArgument import PythonNamedArgument, PythonNamedArgumentList, PythonOrdinalArgumentList
@@ -193,7 +195,7 @@ class OPrestoBuilder(OParserListener):
     def buildSection(self, node, section):
         first = self.findFirstValidToken(node.start.tokenIndex)
         last = self.findLastValidToken(node.stop.tokenIndex)
-        section.setFrom(self.path, first, last)
+        section.setFrom(self.path, first, last, Dialect.O)
 
     def findFirstValidToken(self, idx):
         if idx == -1:  # happens because input.index() is called before any other read operation (bug?)
@@ -291,6 +293,20 @@ class OPrestoBuilder(OParserListener):
         ifFalse = self.getNodeValue(ctx.ifFalse)
         exp = TernaryExpression(condition, ifTrue, ifFalse)
         self.setNodeValue(ctx, exp)
+
+
+    def exitTest_method_declaration(self, ctx):
+        name = ctx.name.text
+        stmts = self.getNodeValue(ctx.stmts)
+        exps = self.getNodeValue(ctx.exps)
+        errorName = self.getNodeValue(ctx.error)
+        error = None if errorName is None else SymbolExpression(errorName)
+        self.setNodeValue(ctx, TestMethodDeclaration(name, stmts, exps, error))
+
+
+    def exitTestMethod(self, ctx):
+        decl = self.getNodeValue(ctx.decl)
+        self.setNodeValue(ctx, decl)
 
     def exitTextLiteral(self, ctx):
         self.setNodeValue(ctx, TextLiteral(ctx.t.text))
@@ -840,6 +856,24 @@ class OPrestoBuilder(OParserListener):
         if args is None:
             args = ArgumentAssignmentList()
         self.setNodeValue(ctx, ConstructorExpression(type, args))
+
+
+    def exitAssertion(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, exp)
+
+
+    def exitAssertionList(self, ctx):
+        item = self.getNodeValue(ctx.item)
+        items = [ item ]
+        self.setNodeValue(ctx, items)
+
+
+    def exitAssertionListItem(self, ctx):
+        item = self.getNodeValue(ctx.item)
+        items = self.getNodeValue(ctx.items)
+        items.push(item)
+        self.setNodeValue(ctx, items)
 
 
     def exitAssign_instance_statement(self, ctx):
@@ -2059,7 +2093,7 @@ class OPrestoBuilder(OParserListener):
 
     def exitJavascript_module(self, ctx):
         ids = []
-        for ic in ctx.identifier():
+        for ic in ctx.javascript_identifier():
             ids.append(ic.getText())
         module = JavaScriptModule(ids)
         self.setNodeValue(ctx, module)

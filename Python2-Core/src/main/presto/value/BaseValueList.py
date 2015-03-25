@@ -1,10 +1,6 @@
 from presto.value.BaseValue import BaseValue
 from presto.value.ISliceable import ISliceable
 from presto.value.Integer import Integer
-from presto.value.IValue import IValue
-from presto.expression.IExpression import IExpression
-from presto.error.IndexOutOfRangeError import IndexOutOfRangeError
-from presto.error.InternalError import InternalError
 
 
 class BaseValueList(BaseValue, ISliceable):
@@ -40,11 +36,13 @@ class BaseValueList(BaseValue, ISliceable):
     def slice(self, fi, li):
         _fi = 1 if fi is None else fi.IntegerValue()
         if _fi < 0:
+            from presto.error.IndexOutOfRangeError import IndexOutOfRangeError
             raise IndexOutOfRangeError()
         _li = len(self.items) if li is None else li.IntegerValue()
         if _li < 0:
             _li = len(self.items) + 1 + _li
         if _li > len(self.items):
+            from presto.error.IndexOutOfRangeError import IndexOutOfRangeError
             raise IndexOutOfRangeError()
         return self.newInstance(self.items[_fi-1:_li]) # 0 based, right limit excluded
 
@@ -66,6 +64,7 @@ class BaseValueList(BaseValue, ISliceable):
                 idx = index.IntegerValue() - 1
                 return self.items[idx]
             except IndexError:
+                from presto.error.IndexOutOfRangeError import IndexOutOfRangeError
                 raise IndexOutOfRangeError()
         else:
             raise SyntaxError("No such item:" + index.toString())

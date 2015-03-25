@@ -1,5 +1,8 @@
 from presto.declaration.NativeMethodDeclaration import *
 from presto.expression.AddExpression import *
+from presto.expression.MemberSelector import MemberSelector
+from presto.expression.InstanceExpression import InstanceExpression
+from presto.expression.ConstructorExpression import ConstructorExpression
 from presto.grammar.CategoryArgument import *
 from presto.grammar.IdentifierList import *
 from presto.grammar.NativeSymbol import *
@@ -15,6 +18,7 @@ from presto.literal.PeriodLiteral import *
 from presto.literal.TextLiteral import *
 from presto.literal.TimeLiteral import *
 from presto.parser.OCleverParser import *
+from presto.runtime.Context import Context
 from presto.statement.NativeCall import NativeCall
 from presto.type.CategoryType import *
 from presto.type.ListType import *

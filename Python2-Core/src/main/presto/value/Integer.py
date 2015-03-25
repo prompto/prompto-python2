@@ -2,7 +2,6 @@ from presto.value.BaseValue import BaseValue
 from presto.value.INumber import INumber
 from presto.value.IMultiplyable import IMultiplyable
 from presto.value.Decimal import Decimal
-from presto.error.DivideByZeroError import DivideByZeroError
 from presto.error.SyntaxError import SyntaxError
 
 class Integer(BaseValue, INumber, IMultiplyable):
@@ -52,6 +51,7 @@ class Integer(BaseValue, INumber, IMultiplyable):
             raise SyntaxError("Illegal: Integer * " + type(value).__name__)
 
     def Divide(self, context, value):
+        from presto.error.DivideByZeroError import DivideByZeroError
         if isinstance(value, INumber):
             if value.DecimalValue() == 0.0:
                 raise DivideByZeroError()
@@ -61,6 +61,7 @@ class Integer(BaseValue, INumber, IMultiplyable):
             raise SyntaxError("Illegal: Integer / " + type(value).__name__)
 
     def IntDivide(self, context, value):
+        from presto.error.DivideByZeroError import DivideByZeroError
         if isinstance(value, Integer):
             if value.IntegerValue() == 0:
                 raise DivideByZeroError()
@@ -70,6 +71,7 @@ class Integer(BaseValue, INumber, IMultiplyable):
             raise SyntaxError("Illegal: Integer \\ " + type(value).__name__)
 
     def Modulo(self, context, value):
+        from presto.error.DivideByZeroError import DivideByZeroError
         if isinstance(value, Integer):
             mod = value.IntegerValue()
             if mod == 0:

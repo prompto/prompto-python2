@@ -1,5 +1,4 @@
 from presto.declaration.BaseDeclaration import BaseDeclaration
-from presto.type.CategoryType import *
 from presto.error.SyntaxError import SyntaxError
 
 
@@ -25,10 +24,12 @@ class CategoryDeclaration(BaseDeclaration):
                 ad = context.getRegisteredDeclaration(AttributeDeclaration, attribute)
                 if ad == None:
                     raise SyntaxError("Unknown attribute: \"" + attribute + "\"")
+        from presto.type.CategoryType import CategoryType
         return CategoryType(self.getName())
 
 
     def getType(self, context):
+        from presto.type.CategoryType import CategoryType
         return CategoryType(self.getName())
 
 

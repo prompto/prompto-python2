@@ -1,6 +1,5 @@
 from io import StringIO
 from presto.expression.IExpression import IExpression
-from presto.grammar.ArgumentAssignment import ArgumentAssignment
 from presto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
 from presto.value.IInstance import IInstance
 from presto.error.SyntaxError import SyntaxError
@@ -58,6 +57,7 @@ class ConstructorExpression(IExpression):
         writer.append(self.type.getName())
         assignments = ArgumentAssignmentList()
         if self.copyFrom is not None:
+            from presto.grammar.ArgumentAssignment import ArgumentAssignment
             assignments.append(ArgumentAssignment(None, self.copyFrom))
         if self.assignments is not None:
             assignments.extend(self.assignments)

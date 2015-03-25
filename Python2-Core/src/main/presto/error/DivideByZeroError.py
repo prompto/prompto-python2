@@ -1,8 +1,8 @@
 from presto.error.ExecutionError import ExecutionError
-from presto.grammar.CategorySymbol import CategorySymbol
 
 
 class DivideByZeroError ( ExecutionError ) :
 
-	def getExpression(self, context):
-		return context.getRegisteredValue(CategorySymbol, "DIVIDE_BY_ZERO")
+    def getExpression(self, context):
+        from presto.grammar.CategorySymbol import CategorySymbol
+        return context.getRegisteredValue(CategorySymbol, "DIVIDE_BY_ZERO")

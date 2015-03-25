@@ -1,12 +1,10 @@
-from presto.expression.MethodSelector import *
-from presto.grammar.ArgumentAssignment import *
-from presto.grammar.ArgumentAssignmentList import *
-from presto.grammar.UnresolvedIdentifier import *
-from presto.grammar.Operator import Operator
-from presto.type.AnyType import *
-from presto.value.ExpressionValue import *
 from presto.runtime.Score import Score
+from presto.type.BaseType import BaseType
+from presto.error.SyntaxError import SyntaxError
 from presto.error.PrestoError import PrestoError
+from presto.declaration.IDeclaration import IDeclaration
+from presto.declaration.AttributeDeclaration import AttributeDeclaration
+from presto.grammar.Operator import Operator
 
 class CategoryType(BaseType):
 
@@ -119,6 +117,7 @@ class CategoryType(BaseType):
     def isAssignableTo(self, context, other):
         if self.name == other.getName():
             return True
+        from presto.type.AnyType import AnyType
         if isinstance(other, AnyType):
             return True
         if not isinstance(other, CategoryType):
@@ -199,6 +198,7 @@ class CategoryType(BaseType):
 
     def sort(self, context, source, key):
         if key == None:
+            from presto.grammar.UnresolvedIdentifier import UnresolvedIdentifier
             key = UnresolvedIdentifier("key")
         decl = self.getDeclaration(context)
         if decl.hasAttribute(context, str(key)):
@@ -237,18 +237,26 @@ class CategoryType(BaseType):
         from presto.statement.MethodCall import MethodCall
         from presto.runtime.MethodFinder import MethodFinder
         try:
+            from presto.value.ExpressionValue import ExpressionValue
+            from presto.grammar.ArgumentAssignment import ArgumentAssignment
+            from presto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
+            from presto.expression.MethodSelector import MethodSelector
             exp = ExpressionValue(self, self.newInstance(context))
             arg = ArgumentAssignment(None, exp)
             args = ArgumentAssignmentList(item=arg)
             proto = MethodCall(MethodSelector(name), args)
             finder = MethodFinder(context, proto)
-            return finder.findMethod(True) != None
+            return finder.findMethod(True) is not None
         except PrestoError:
             return False
 
     def sortByGlobalMethod(self, context, source, name):
         from presto.statement.MethodCall import MethodCall
         from presto.runtime.MethodFinder import MethodFinder
+        from presto.value.ExpressionValue import ExpressionValue
+        from presto.grammar.ArgumentAssignment import ArgumentAssignment
+        from presto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
+        from presto.expression.MethodSelector import MethodSelector
         exp = ExpressionValue(self, self.newInstance(context))
         arg = ArgumentAssignment(None, exp)
         args = ArgumentAssignmentList(item=arg)
@@ -258,6 +266,7 @@ class CategoryType(BaseType):
         return self.doSortByGlobalMethod(context, source, proto, method)
 
     def doSortByGlobalMethod(self, context, source, method, declaration):
+        from presto.value.ExpressionValue import ExpressionValue
 
         def compare(o1, o2):
             assignment = method.getAssignments()[0]
