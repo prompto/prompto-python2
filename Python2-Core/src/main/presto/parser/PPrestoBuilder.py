@@ -148,13 +148,13 @@ from presto.statement.DeclarationInstruction import DeclarationInstruction
 from presto.statement.DoWhileStatement import DoWhileStatement
 from presto.statement.ForEachStatement import ForEachStatement
 from presto.statement.IfStatement import IfElement, IfElementList, IfStatement
-from presto.statement.MethodCall import MethodCall
 from presto.statement.RaiseStatement import RaiseStatement
 from presto.statement.ReturnStatement import ReturnStatement
 from presto.statement.StatementList import StatementList
 from presto.statement.SwitchCase import SwitchCaseList
 from presto.statement.SwitchErrorStatement import SwitchErrorStatement
 from presto.statement.SwitchStatement import SwitchStatement
+from presto.statement.UnresolvedCall import UnresolvedCall
 from presto.statement.WhileStatement import WhileStatement
 from presto.statement.WithResourceStatement import WithResourceStatement
 from presto.statement.WithSingletonStatement import WithSingletonStatement
@@ -1375,7 +1375,7 @@ class PPrestoBuilder(PParserListener):
     def exitMethod_call(self, ctx):
         method = self.getNodeValue(ctx.method)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, MethodCall(method, args))
+        self.setNodeValue(ctx, UnresolvedCall(method, args))
 
 
     def exitMethodCallExpression(self, ctx):
@@ -1400,7 +1400,7 @@ class PPrestoBuilder(PParserListener):
 
     def exitMethodName(self, ctx):
         name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, MethodSelector(name))
+        self.setNodeValue(ctx, UnresolvedIdentifier(name))
 
 
     def exitMethodParent(self, ctx):
