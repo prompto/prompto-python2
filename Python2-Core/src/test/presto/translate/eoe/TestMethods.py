@@ -6,42 +6,42 @@ class TestMethods(BaseEParserTest):
         super(type(self), self).setUp()
     
     def testAnonymous(self):
-        self.compareResourceEOE("methods/anonymous.e")
+        self.compareResourceEOE("methods/anonymous.pec")
 
     def testAttribute(self):
-        self.compareResourceEOE("methods/attribute.e")
+        self.compareResourceEOE("methods/attribute.pec")
 
     def testDefault(self):
-        self.compareResourceEOE("methods/default.e")
+        self.compareResourceEOE("methods/default.pec")
 
     def testE_as_e_bug(self):
-        self.compareResourceEOE("methods/e_as_e_bug.e")
+        self.compareResourceEOE("methods/e_as_e_bug.pec")
 
     def testExpressionWith(self):
-        self.compareResourceEOE("methods/expressionWith.e")
+        self.compareResourceEOE("methods/expressionWith.pec")
 
     def testImplicit(self):
-        self.compareResourceEOE("methods/implicit.e")
+        self.compareResourceEOE("methods/implicit.pec")
 
     def testMember(self):
-        self.compareResourceEOE("methods/member.e")
+        self.compareResourceEOE("methods/member.pec")
 
     def testPolymorphic_abstract(self):
-        self.compareResourceEOE("methods/polymorphic_abstract.e")
+        self.compareResourceEOE("methods/polymorphic_abstract.pec")
 
     def testPolymorphic_implicit(self):
-        self.compareResourceEOE("methods/polymorphic_implicit.e")
+        self.compareResourceEOE("methods/polymorphic_implicit.pec")
 
     def testPolymorphic_named(self):
-        self.compareResourceEOE("methods/polymorphic_named.e")
+        self.compareResourceEOE("methods/polymorphic_named.pec")
 
     def testPolymorphic_runtime(self):
-        self.compareResourceEOE("methods/polymorphic_runtime.e")
+        self.compareResourceEOE("methods/polymorphic_runtime.pec")
 
     def testReturn(self):
-        self.compareResourceEOE("methods/return.e")
+        self.compareResourceEOE("methods/return.pec")
 
     def testSpecified(self):
-        self.compareResourceEOE("methods/specified.e")
+        self.compareResourceEOE("methods/specified.pec")
 
 

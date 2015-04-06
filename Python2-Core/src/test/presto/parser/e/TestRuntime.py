@@ -42,10 +42,10 @@ class TestRuntime(BaseEParserTest):
         self.assertEquals("test", Out.read())
 
     def testReturn(self):
-        self.runResource("native/return.e")
+        self.runResource("native/return.pec")
         self.assertEquals(sys.platform, Out.read())
 
     def testDateTimeTZName(self):
-        self.runResource("builtins/dateTimeTZName.e")
+        self.runResource("builtins/dateTimeTZName.pec")
         #String tzName = TimeZone.getTimeZone("UTC").getDisplayName(Locale.ENGLISH)
         #assertEquals("tzName=" + tzName, Out.read())
