@@ -125,7 +125,7 @@ from presto.parser.SParser import SParser
 from presto.parser.SParserListener import SParserListener
 from presto.parser.Section import Section
 from presto.parser.Dialect import Dialect
-from presto.python.PythonArgument import PythonNamedArgument, PythonArgumentList
+from presto.python.PythonArgument import PythonNamedArgument, PythonArgumentList, PythonOrdinalArgumentList
 from presto.python.PythonBooleanLiteral import PythonBooleanLiteral
 from presto.python.PythonCharacterLiteral import PythonCharacterLiteral
 from presto.python.PythonDecimalLiteral import PythonDecimalLiteral
@@ -563,9 +563,10 @@ class SPrestoBuilder(SParserListener):
 
 
     def exitConstructor_expression(self, ctx):
-        type = self.getNodeValue(ctx.typ)
+        mutable = ctx.MUTABLE() is not None
+        typ = self.getNodeValue(ctx.typ)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, ConstructorExpression(type, args))
+        self.setNodeValue(ctx, ConstructorExpression(typ, mutable, args))
 
 
     def exitConstructorExpression(self, ctx):
@@ -1699,6 +1700,19 @@ class SPrestoBuilder(SParserListener):
         ordinal.addAll(named)
         self.setNodeValue(ctx, ordinal)
 
+    def exitPythonOrdinalArgumentList(self, ctx):
+        item = self.getNodeValue(ctx.item)
+        self.setNodeValue(ctx, PythonOrdinalArgumentList(item))
+
+    def exitPythonOrdinalArgumentListItem(self, ctx):
+        items = self.getNodeValue(ctx.items)
+        item = self.getNodeValue(ctx.item)
+        items.append(item)
+        self.setNodeValue(ctx, items)
+
+    def exitPythonOrdinalOnlyArgumentList(self, ctx):
+        ordinal = self.getNodeValue(ctx.ordinal)
+        self.setNodeValue(ctx, ordinal)
 
     def exitPythonBooleanLiteral(self, ctx):
         self.setNodeValue(ctx, PythonBooleanLiteral(ctx.getText()))
