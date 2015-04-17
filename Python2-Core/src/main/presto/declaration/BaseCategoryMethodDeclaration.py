@@ -1,8 +1,7 @@
 from presto.declaration.BaseDeclaration import BaseDeclaration
-from presto.declaration.ICategoryMethodDeclaration import ICategoryMethodDeclaration
 
 
-class BaseCategoryMethodDeclaration ( BaseDeclaration, ICategoryMethodDeclaration ):
+class BaseCategoryMethodDeclaration ( BaseDeclaration ):
 
     def __init__(self, name, arguments, instructions):
         super(BaseCategoryMethodDeclaration, self).__init__(name)

@@ -7,7 +7,7 @@ from presto.error.SyntaxError import SyntaxError
 class MethodType(BaseType):
     def __init__(self, context, name):
         super(MethodType, self).__init__(name)
-        self.context = context;
+        self.context = context
 
     def __eq__(self, obj):
         if id(obj) == id(self):

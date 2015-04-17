@@ -1,6 +1,5 @@
 from presto.declaration.IDeclaration import IDeclaration
 from presto.declaration.IEnumeratedDeclaration import IEnumeratedDeclaration
-from presto.runtime.Context import Context
 from presto.type.BaseType import BaseType
 from presto.type.ListType import ListType
 from presto.type.TextType import TextType
@@ -28,7 +27,7 @@ class EnumeratedNativeType ( BaseType ):
     def getMember(self, context, name):
         decl = context.getRegisteredDeclaration(IDeclaration, self.name)
         if not isinstance (decl, IEnumeratedDeclaration):
-            raise SyntaxError(self.name + " is not an enumerated type!");
+            raise SyntaxError(self.name + " is not an enumerated type!")
         if "symbols"==name:
             return decl.getSymbols()
         else:

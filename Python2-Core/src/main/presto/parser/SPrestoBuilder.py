@@ -16,7 +16,6 @@ from presto.declaration.ConcreteMethodDeclaration import ConcreteMethodDeclarati
 from presto.declaration.EnumeratedCategoryDeclaration import EnumeratedCategoryDeclaration
 from presto.declaration.EnumeratedNativeDeclaration import EnumeratedNativeDeclaration
 from presto.declaration.GetterMethodDeclaration import GetterMethodDeclaration
-from presto.declaration.MemberMethodDeclaration import MemberMethodDeclaration
 from presto.declaration.OperatorMethodDeclaration import OperatorMethodDeclaration
 from presto.declaration.NativeCategoryDeclaration import NativeCategoryDeclaration
 from presto.declaration.NativeMethodDeclaration import NativeMethodDeclaration
@@ -907,7 +906,7 @@ class SPrestoBuilder(SParserListener):
         self.setNodeValue(ctx, GetterMethodDeclaration(name, stmts))
 
 
-    def exitGetterMethod(self, ctx):
+    def exitGetterMemberMethod(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
@@ -1349,20 +1348,17 @@ class SPrestoBuilder(SParserListener):
         self.setNodeValue(ctx, MaxIntegerLiteral())
 
 
-    def exitMember_method_declaration(self, ctx):
-        type = self.getNodeValue(ctx.typ)
-        name = self.getNodeValue(ctx.name)
-        args = self.getNodeValue(ctx.args)
-        stmts = self.getNodeValue(ctx.stmts)
-        self.setNodeValue(ctx, MemberMethodDeclaration(name, args, type, stmts))
-
-
     def exitMemberInstance(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MemberInstance(None, name))
 
 
-    def exitMemberMethod(self, ctx):
+    def exitAbstractMemberMethod(self, ctx):
+        decl = self.getNodeValue(ctx.decl)
+        self.setNodeValue(ctx, decl)
+
+
+    def exitConcreteMemberMethod(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
@@ -1615,7 +1611,7 @@ class SPrestoBuilder(SParserListener):
         self.setNodeValue(ctx, decl)
 
 
-    def exitOperatorMethod(self, ctx):
+    def exitOperatorMemberMethod(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
@@ -1880,7 +1876,7 @@ class SPrestoBuilder(SParserListener):
         self.setNodeValue(ctx, SetterMethodDeclaration(name, stmts))
 
 
-    def exitSetterMethod(self, ctx):
+    def exitSetterMemberMethod(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 

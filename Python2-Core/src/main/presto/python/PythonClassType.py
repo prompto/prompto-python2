@@ -1,4 +1,5 @@
 from datetime import date, time, datetime, timedelta
+from presto.declaration.AnyNativeCategoryDeclaration import AnyNativeCategoryDeclaration
 from presto.type.CategoryType import CategoryType
 from presto.type.IntegerType import IntegerType
 from presto.type.DecimalType import DecimalType
@@ -15,18 +16,18 @@ from presto.error.InternalError import InternalError
 
 class PythonClassType(CategoryType):
     from presto.type.BooleanType import BooleanType
-    pythonToPrestoMap = { bool.__name__: BooleanType.instance, \
-                         int.__name__: IntegerType.instance, \
-                         long.__name__: IntegerType.instance, \
-                         float.__name__: DecimalType.instance, \
-                         str.__name__: TextType.instance, \
-                         unicode.__name__: TextType.instance, \
-                         date.__name__: DateType.instance, \
-                         time.__name__: TimeType.instance, \
-                         datetime.__name__: DateTimeType.instance, \
-                         timedelta.__name__: PeriodType.instance, \
-                         Period.__name__: PeriodType.instance, \
-                         object.__name__: AnyType.instance \
+    pythonToPrestoMap = { bool.__name__: BooleanType.instance,
+                         int.__name__: IntegerType.instance,
+                         long.__name__: IntegerType.instance,
+                         float.__name__: DecimalType.instance,
+                         str.__name__: TextType.instance,
+                         unicode.__name__: TextType.instance,
+                         date.__name__: DateType.instance,
+                         time.__name__: TimeType.instance,
+                         datetime.__name__: DateTimeType.instance,
+                         timedelta.__name__: PeriodType.instance,
+                         Period.__name__: PeriodType.instance,
+                         object.__name__: AnyType.instance
                         }
 
 
@@ -41,11 +42,14 @@ class PythonClassType(CategoryType):
         else:
             return result
 
-    def convertPythonValueToPrestoValue(self, value):
+    def convertPythonValueToPrestoValue(self, value, returnType):
         if isinstance(value, IValue):
             return value
         type_ = PythonClassType.pythonToPrestoMap.get(self.klass.__name__, None)
         if type_ is not None:
             return type_.convertPythonValueToPrestoValue(value)
+        elif returnType is AnyType.instance:
+            from presto.value.NativeInstance import NativeInstance
+            return NativeInstance(AnyNativeCategoryDeclaration.instance, value)
         else:
-            raise InternalError("Unable to convert:" + type(value).__name__);
+            raise InternalError("Unable to convert:" + type(value).__name__)

@@ -1,9 +1,4 @@
 from presto.error.PrestoError import PrestoError
-from presto.expression.ConstructorExpression import ConstructorExpression
-from presto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
-from presto.grammar.UnresolvedArgument import UnresolvedArgument
-from presto.literal.TextLiteral import TextLiteral
-from presto.type.CategoryType import CategoryType
 
 
 class ExecutionError(PrestoError):
@@ -15,6 +10,11 @@ class ExecutionError(PrestoError):
         exp = self.getExpression(context)
         if exp is None:
             from presto.grammar.ArgumentAssignment import ArgumentAssignment
+            from presto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
+            from presto.expression.ConstructorExpression import ConstructorExpression
+            from presto.grammar.UnresolvedArgument import UnresolvedArgument
+            from presto.literal.TextLiteral import TextLiteral
+            from presto.type.CategoryType import CategoryType
             args = ArgumentAssignmentList()
             args.add(ArgumentAssignment(UnresolvedArgument("name"), TextLiteral(type(self).__name__)))
             args.add(ArgumentAssignment(UnresolvedArgument("text"), TextLiteral(self.message)))
