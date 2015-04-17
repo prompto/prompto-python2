@@ -1,7 +1,7 @@
 from datetime import date, datetime, timedelta
 from presto.type.DateTimeType import DateTimeType
 
-from presto.value.BaseValue import *
+from presto.error.SyntaxError import SyntaxError
 from presto.value.Period import *
 from presto.value.Text import *
 
@@ -41,7 +41,7 @@ class DateTime(BaseValue):
             raise SyntaxError("Illegal comparison: DateTime + " + type(value).__name__)
 
 
-    def getMember(self, context, name):
+    def GetMember(self, context, name):
         from presto.value.Integer import Integer
         if "year" == name:
             return Integer(self.value.year)

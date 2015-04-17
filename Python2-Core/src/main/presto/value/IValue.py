@@ -7,7 +7,10 @@ class IValue(object):
         raise Exception("You must override IntDivide in " + type(self).__name__)
 
     def GetMember(self, context, attrName):
-        raise Exception("You must override getMember in " + type(self).__name__)
+        raise Exception("You must override GetMember in " + type(self).__name__)
+
+    def SetMember(self, context, attrName, value):
+        raise Exception("You must override SetMember in " + type(self).__name__)
 
     def Roughly(self, context, value):
         return self==value

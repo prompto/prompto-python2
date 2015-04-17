@@ -22,13 +22,13 @@ class CategoryType(BaseType):
 
     def checkUnique(self, context):
         actual = context.getRegisteredDeclaration(IDeclaration, self.name)
-        if actual != None:
+        if actual is not None:
             raise SyntaxError("Duplicate name: \"" + self.name + "\"")
 
     def getDeclaration(self, context):
         from presto.declaration.CategoryDeclaration import CategoryDeclaration
         actual = context.getRegisteredDeclaration(CategoryDeclaration, self.name)
-        if actual == None:
+        if actual is None:
             raise SyntaxError("Unknown category: \"" + self.name + "\"")
         return actual
 
@@ -105,12 +105,12 @@ class CategoryType(BaseType):
     def checkMember(self, context, name):
         from presto.declaration.CategoryDeclaration import CategoryDeclaration
         cd = context.getRegisteredDeclaration(CategoryDeclaration, self.getName())
-        if cd == None:
+        if cd is None:
             raise SyntaxError("Unknown category:" + self.getName())
         if not cd.hasAttribute(context, name):
             raise SyntaxError("No attribute:" + name + " in category:" + self.getName())
         ad = context.getRegisteredDeclaration(AttributeDeclaration, name)
-        if ad == None:
+        if ad is None:
             raise SyntaxError("Unknown atttribute:" + name)
         return ad.getType(context)
 
@@ -135,7 +135,7 @@ class CategoryType(BaseType):
             return False
 
     def isDerivedFromCompatibleCategory(self, context, decl, other):
-        if decl.getDerivedFrom() == None:
+        if decl.getDerivedFrom() is None:
             return False
         for derived in decl.getDerivedFrom():
             ct = CategoryType(derived)
@@ -196,8 +196,8 @@ class CategoryType(BaseType):
         decl = context.getRegisteredDeclaration(CategoryDeclaration, self.getName())
         return decl.newInstance()
 
-    def sort(self, context, source, key):
-        if key == None:
+    def sort(self, context, source, key=None):
+        if key is None:
             from presto.grammar.UnresolvedIdentifier import UnresolvedIdentifier
             key = UnresolvedIdentifier("key")
         decl = self.getDeclaration(context)
@@ -224,8 +224,8 @@ class CategoryType(BaseType):
     def sortByAttribute(self, context, source, name):
 
         def compare(o1, o2):
-            key1 = o1.getMember(context, name)
-            key2 = o2.getMember(context, name)
+            key1 = o1.GetMember(context, name)
+            key2 = o2.GetMember(context, name)
             return self.compareKeys(key1, key2)
 
         return sorted(source, cmp=compare)
@@ -279,11 +279,11 @@ class CategoryType(BaseType):
         return sorted(source, cmp=compare)
 
     def compareKeys(self, key1, key2):
-        if key1 == None and key2 == None:
+        if key1 is None and key2 is None:
             return 0
-        elif key1 == None:
+        elif key1 is None:
             return -1
-        elif key2 == None:
+        elif key2 is None:
             return 1
         else:
             return cmp(key1,key2)

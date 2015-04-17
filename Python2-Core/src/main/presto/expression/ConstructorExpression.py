@@ -3,6 +3,7 @@ from presto.expression.IExpression import IExpression
 from presto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
 from presto.value.IInstance import IInstance
 from presto.error.SyntaxError import SyntaxError
+from presto.error.NotMutableError import NotMutableError
 
 class ConstructorExpression(IExpression):
 
@@ -103,10 +104,15 @@ class ConstructorExpression(IExpression):
                 cd = context.getRegisteredDeclaration(CategoryDeclaration, self.type.getName())
                 for name in copyObj.getAttributeNames():
                     if cd.hasAttribute(context, name):
-                        instance.set(context, name, copyObj.getMember(context,name))
+                        value = copyObj.GetMember(context,name)
+                        if value is not None and value.mutable and not self.mutable:
+                            raise NotMutableError()
+                        instance.SetMember(context, name, value)
         if self.assignments is not None:
             for assignment in self.assignments:
                 value = assignment.getExpression().interpret(context)
-                instance.set(context, assignment.getName(), value)
+                if value is not None and value.mutable and not self.mutable:
+                    raise NotMutableError()
+                instance.SetMember(context, assignment.getName(), value)
         instance.mutable = self.mutable
         return instance
