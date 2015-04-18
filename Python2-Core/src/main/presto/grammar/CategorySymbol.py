@@ -44,6 +44,7 @@ class CategorySymbol(Symbol, IExpression):
         if cd == None:
             raise SyntaxError("Unknown category " + self.type.getName())
         if self.assignments != None:
+            context = context.newLocalContext()
             for assignment in self.assignments:
                 if not cd.hasAttribute(context, assignment.getName()):
                     raise SyntaxError("\"" + assignment.getName() + \
@@ -56,6 +57,7 @@ class CategorySymbol(Symbol, IExpression):
         instance = self.type.newInstance(context)
         instance.mutable = True
         if self.assignments != None:
+            context = context.newLocalContext()
             for assignment in self.assignments:
                 value = assignment.getExpression().interpret(context)
                 instance.SetMember(context, assignment.getName(), value)
