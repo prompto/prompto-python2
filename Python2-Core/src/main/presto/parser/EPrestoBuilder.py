@@ -1759,6 +1759,7 @@ class EPrestoBuilder(EParserListener):
 
     def exitOperatorArgument(self, ctx):
         arg = self.getNodeValue(ctx.arg)
+        arg.mutable = ctx.MUTABLE() is not None
         self.setNodeValue(ctx, arg)
 
 
