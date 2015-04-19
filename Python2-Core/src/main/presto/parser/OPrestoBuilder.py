@@ -1035,6 +1035,10 @@ class OPrestoBuilder(OParserListener):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, PythonIdentifierExpression(name))
 
+    def exitPythonPrestoIdentifier(self, ctx):
+        name = ctx.DOLLAR_IDENTIFIER().getText()
+        self.setNodeValue(ctx, PythonIdentifierExpression(name))
+
     def exitPythonPrimaryExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
@@ -1089,6 +1093,11 @@ class OPrestoBuilder(OParserListener):
     def exitJavaPrimaryExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
+
+    def exitCSharpPrestoIdentifier(self, ctx):
+        name = ctx.DOLLAR_IDENTIFIER().getText()
+        self.setNodeValue(ctx, CSharpIdentifierExpression(None, name))
 
 
     def exitCSharpPrimaryExpression(self, ctx):

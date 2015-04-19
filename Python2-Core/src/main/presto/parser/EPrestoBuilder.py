@@ -994,10 +994,6 @@ class EPrestoBuilder(EParserListener):
         items.append(item)
         self.setNodeValue(ctx, items)
 
-    def exitPythonCharacterLiteral(self, ctx):
-        text = ctx.t.text
-        self.setNodeValue(ctx, PythonCharacterLiteral(text))
-
     def exitPython_identifier(self, ctx):
         name = ctx.getText()
         self.setNodeValue(ctx, name)
@@ -1058,6 +1054,10 @@ class EPrestoBuilder(EParserListener):
 
     def exitPythonIdentifier(self, ctx):
         name = self.getNodeValue(ctx.name)
+        self.setNodeValue(ctx, PythonIdentifierExpression(name))
+
+    def exitPythonPrestoIdentifier(self, ctx):
+        name = ctx.DOLLAR_IDENTIFIER().getText()
         self.setNodeValue(ctx, PythonIdentifierExpression(name))
 
     def exitPythonPrimaryExpression(self, ctx):
@@ -1134,6 +1134,10 @@ class EPrestoBuilder(EParserListener):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, JavaStatement(exp, True))
 
+
+    def exitCSharpPrestoIdentifier(self, ctx):
+        name = ctx.DOLLAR_IDENTIFIER().getText()
+        self.setNodeValue(ctx, CSharpIdentifierExpression(None, name))
 
     def exitCSharpPrimaryExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)

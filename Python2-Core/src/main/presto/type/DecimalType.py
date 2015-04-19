@@ -77,7 +77,7 @@ class DecimalType(NativeType):
             return cmp(o1.value,o2.value)
         return sorted(source, cmp=compare)
 
-    def convertPythonValueToPrestoValue(self, value):
+    def convertPythonValueToPrestoValue(self, context, value, returnType):
         if isinstance(value, Number):
             return Decimal(float(value))
         else:

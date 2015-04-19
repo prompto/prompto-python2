@@ -667,6 +667,11 @@ class SPrestoBuilder(SParserListener):
         self.setNodeValue(ctx, CSharpNativeCall(stmt))
 
 
+    def exitCSharpPrestoIdentifier(self, ctx):
+        name = ctx.DOLLAR_IDENTIFIER().getText()
+        self.setNodeValue(ctx, CSharpIdentifierExpression(None, name))
+
+
     def exitCSharpPrimaryExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
@@ -1701,20 +1706,6 @@ class SPrestoBuilder(SParserListener):
         ordinal.addAll(named)
         self.setNodeValue(ctx, ordinal)
 
-    def exitPythonOrdinalArgumentList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, PythonOrdinalArgumentList(item))
-
-    def exitPythonOrdinalArgumentListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
-        self.setNodeValue(ctx, items)
-
-    def exitPythonOrdinalOnlyArgumentList(self, ctx):
-        ordinal = self.getNodeValue(ctx.ordinal)
-        self.setNodeValue(ctx, ordinal)
-
     def exitPythonBooleanLiteral(self, ctx):
         self.setNodeValue(ctx, PythonBooleanLiteral(ctx.getText()))
 
@@ -1784,6 +1775,25 @@ class SPrestoBuilder(SParserListener):
     def exitPythonNamedOnlyArgumentList(self, ctx):
         named = self.getNodeValue(ctx.named)
         self.setNodeValue(ctx, named)
+
+
+    def exitPythonOrdinalArgumentList(self, ctx):
+        item = self.getNodeValue(ctx.item)
+        self.setNodeValue(ctx, PythonOrdinalArgumentList(item))
+
+    def exitPythonOrdinalArgumentListItem(self, ctx):
+        items = self.getNodeValue(ctx.items)
+        item = self.getNodeValue(ctx.item)
+        items.append(item)
+        self.setNodeValue(ctx, items)
+
+    def exitPythonOrdinalOnlyArgumentList(self, ctx):
+        ordinal = self.getNodeValue(ctx.ordinal)
+        self.setNodeValue(ctx, ordinal)
+
+    def exitPythonPrestoIdentifier(self, ctx):
+        name = ctx.DOLLAR_IDENTIFIER().getText()
+        self.setNodeValue(ctx, PythonIdentifierExpression(name))
 
 
     def exitPythonPrimaryExpression(self, ctx):

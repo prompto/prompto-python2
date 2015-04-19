@@ -16,7 +16,7 @@ class BooleanType(NativeType):
             return cmp(o1.value,o2.value)
         return sorted(source, cmp=compare)
 
-    def convertPythonValueToPrestoValue(self, value):
+    def convertPythonValueToPrestoValue(self, context, value, returnType):
         if isinstance(value, bool):
             from presto.value.Boolean import Boolean
             return Boolean.ValueOf(value)

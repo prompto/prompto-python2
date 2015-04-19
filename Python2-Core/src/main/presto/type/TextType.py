@@ -69,7 +69,7 @@ class TextType(NativeType):
         return sorted(list_, cmp=compare)
 
 
-    def convertPythonValueToPrestoValue(self, value):
+    def convertPythonValueToPrestoValue(self, context, value, returnType):
         from presto.value.Text import Text
         if isinstance(value, basestring):
             return Text(value)
