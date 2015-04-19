@@ -3,55 +3,55 @@ from presto.error.SyntaxError import SyntaxError
 
 class NativeCategoryDeclaration(CategoryDeclaration):
 
-    def __init__(self, name, attributes, categoryMappings, attributeMappings):
+    def __init__(self, name, attributes, categoryBindings, attributebindings):
         super(NativeCategoryDeclaration, self).__init__(name, attributes)
-        self.categoryMappings = categoryMappings
-        self.attributeMappings = attributeMappings
-        self.mappedClass = None
+        self.categoryBindings = categoryBindings
+        self.attributebindings = attributebindings
+        self.boundedClass = None
 
     def __str__(self):
         return self.getName() + (":" + str(self.attributes)) if self.attributes is not None else ""
 
     def register(self, context):
         context.registerDeclaration(self)
-        mapped = self.getMappedClass(False)
-        if mapped is not None:
-            context.registerNativeMapping(mapped, self)
+        bounded = self.getBoundedClass(False)
+        if bounded is not None:
+            context.registerNativeBinding(bounded, self)
 
     def newInstance(self):
         from presto.value.NativeInstance import NativeInstance
         return NativeInstance(self)
 
-    def getMappedClass(self, fail):
-        if self.mappedClass is None:
-            mapping = self.getMapping(fail)
-            if mapping is not None:
-                self.mappedClass = mapping.interpret()
-                if fail and self.mappedClass is None:
-                    raise SyntaxError("No Python class:" + str(mapping))
-        return self.mappedClass
+    def getBoundedClass(self, fail):
+        if self.boundedClass is None:
+            binding = self.getBinding(fail)
+            if binding is not None:
+                self.boundedClass = binding.interpret()
+                if fail and self.boundedClass is None:
+                    raise SyntaxError("No Python class:" + str(binding))
+        return self.boundedClass
 
-    def getMapping(self, fail):
-        for mapping in self.categoryMappings:
-            from presto.python.PythonNativeCategoryMapping import Python2NativeCategoryMapping
-            if isinstance(mapping, Python2NativeCategoryMapping):
-                return mapping
+    def getBinding(self, fail):
+        for binding in self.categoryBindings:
+            from presto.python.PythonNativeCategoryBinding import Python2NativeCategoryBinding
+            if isinstance(binding, Python2NativeCategoryBinding):
+                return binding
         if fail:
-            raise SyntaxError("Missing PYTHON2 mapping !")
+            raise SyntaxError("Missing PYTHON2 binding !")
         else:
             return None
 
     def toEDialect(self, writer):
         self.protoToEDialect(writer, False, True)
-        self.mappingsToEDialect(writer)
+        self.bindingsToEDialect(writer)
 
 
     def categoryTypeToEDialect(self, writer):
         writer.append("native category")
 
-    def mappingsToEDialect(self, writer):
+    def bindingsToEDialect(self, writer):
         writer.indent()
-        self.categoryMappings.toDialect(writer)
+        self.categoryBindings.toDialect(writer)
         writer.dedent()
         writer.newLine()
 
@@ -62,13 +62,13 @@ class NativeCategoryDeclaration(CategoryDeclaration):
         writer.append("native category")
 
     def bodyToODialect(self, writer):
-        self.categoryMappings.toDialect(writer)
+        self.categoryBindings.toDialect(writer)
 
     def toPDialect(self, writer):
         self.protoToPDialect(writer, None)
         writer.indent()
         writer.newLine()
-        self.categoryMappings.toDialect(writer)
+        self.categoryBindings.toDialect(writer)
         writer.dedent()
         writer.newLine()
 

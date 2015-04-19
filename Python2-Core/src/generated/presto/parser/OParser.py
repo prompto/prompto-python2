@@ -298,15 +298,15 @@ def serializedATN():
         buf.write(u"\u0780\3\2\2\2\u0160\u078d\3\2\2\2\u0162\u0792\3\2\2")
         buf.write(u"\2\u0164\u0794\3\2\2\2\u0166\u079b\3\2\2\2\u0168\u07a6")
         buf.write(u"\3\2\2\2\u016a\u07aa\3\2\2\2\u016c\u07b1\3\2\2\2\u016e")
-        buf.write(u"\u07c0\3\2\2\2\u0170\u07c2\3\2\2\2\u0172\u0173\7R\2\2")
-        buf.write(u"\u0173\u0174\7F\2\2\u0174\u0179\5\u00a8U\2\u0175\u0176")
+        buf.write(u"\u07c0\3\2\2\2\u0170\u07c2\3\2\2\2\u0172\u0173\7S\2\2")
+        buf.write(u"\u0173\u0174\7G\2\2\u0174\u0179\5\u00a8U\2\u0175\u0176")
         buf.write(u"\7\21\2\2\u0176\u0177\5\"\22\2\u0177\u0178\7\22\2\2\u0178")
         buf.write(u"\u017a\3\2\2\2\u0179\u0175\3\2\2\2\u0179\u017a\3\2\2")
-        buf.write(u"\2\u017a\u017d\3\2\2\2\u017b\u017c\7V\2\2\u017c\u017e")
+        buf.write(u"\2\u017a\u017d\3\2\2\2\u017b\u017c\7W\2\2\u017c\u017e")
         buf.write(u"\5\u00a8U\2\u017d\u017b\3\2\2\2\u017d\u017e\3\2\2\2\u017e")
         buf.write(u"\u017f\3\2\2\2\u017f\u0180\7\25\2\2\u0180\u0181\5\u0084")
         buf.write(u"C\2\u0181\u0182\7\26\2\2\u0182\3\3\2\2\2\u0183\u0184")
-        buf.write(u"\7R\2\2\u0184\u0185\5\u00a8U\2\u0185\u0186\7\21\2\2\u0186")
+        buf.write(u"\7S\2\2\u0184\u0185\5\u00a8U\2\u0185\u0186\7\21\2\2\u0186")
         buf.write(u"\u0187\5\u0096L\2\u0187\u0188\7\22\2\2\u0188\u0189\7")
         buf.write(u"\25\2\2\u0189\u018a\5\u0082B\2\u018a\u018b\7\26\2\2\u018b")
         buf.write(u"\5\3\2\2\2\u018c\u018d\5\u00aaV\2\u018d\u018e\7\21\2")
@@ -317,10 +317,10 @@ def serializedATN():
         buf.write(u"\u0199\u019a\7\f\2\2\u019a\u019c\5\u0092J\2\u019b\u019d")
         buf.write(u"\5\u0088E\2\u019c\u019b\3\2\2\2\u019c\u019d\3\2\2\2\u019d")
         buf.write(u"\u019e\3\2\2\2\u019e\u019f\7\r\2\2\u019f\13\3\2\2\2\u01a0")
-        buf.write(u"\u01a1\7F\2\2\u01a1\u01a6\5\u00a8U\2\u01a2\u01a3\7\21")
+        buf.write(u"\u01a1\7G\2\2\u01a1\u01a6\5\u00a8U\2\u01a2\u01a3\7\21")
         buf.write(u"\2\2\u01a3\u01a4\5\"\22\2\u01a4\u01a5\7\22\2\2\u01a5")
         buf.write(u"\u01a7\3\2\2\2\u01a6\u01a2\3\2\2\2\u01a6\u01a7\3\2\2")
-        buf.write(u"\2\u01a7\u01aa\3\2\2\2\u01a8\u01a9\7V\2\2\u01a9\u01ab")
+        buf.write(u"\2\u01a7\u01aa\3\2\2\2\u01a8\u01a9\7W\2\2\u01a9\u01ab")
         buf.write(u"\5\20\t\2\u01aa\u01a8\3\2\2\2\u01aa\u01ab\3\2\2\2\u01ab")
         buf.write(u"\u01ac\3\2\2\2\u01ac\u01ad\5\22\n\2\u01ad\r\3\2\2\2\u01ae")
         buf.write(u"\u01af\7y\2\2\u01af\u01b4\5\u00a8U\2\u01b0\u01b1\7\21")
@@ -345,7 +345,7 @@ def serializedATN():
         buf.write(u"\u01db\5\u00a6T\2\u01db\u01dd\7\25\2\2\u01dc\u01de\5")
         buf.write(u"\u00d6l\2\u01dd\u01dc\3\2\2\2\u01dd\u01de\3\2\2\2\u01de")
         buf.write(u"\u01df\3\2\2\2\u01df\u01e0\7\26\2\2\u01e0\27\3\2\2\2")
-        buf.write(u"\u01e1\u01e2\7[\2\2\u01e2\u01e3\5\u00a6T\2\u01e3\u01e5")
+        buf.write(u"\u01e1\u01e2\7\\\2\2\u01e2\u01e3\5\u00a6T\2\u01e3\u01e5")
         buf.write(u"\7\25\2\2\u01e4\u01e6\5\u00d6l\2\u01e5\u01e4\3\2\2\2")
         buf.write(u"\u01e5\u01e6\3\2\2\2\u01e6\u01e7\3\2\2\2\u01e7\u01e8")
         buf.write(u"\7\26\2\2\u01e8\31\3\2\2\2\u01e9\u01ea\7f\2\2\u01ea\u01eb")
@@ -354,12 +354,12 @@ def serializedATN():
         buf.write(u"\2\2\u01f0\u01ec\3\2\2\2\u01f0\u01f1\3\2\2\2\u01f1\u01f2")
         buf.write(u"\3\2\2\2\u01f2\u01f3\7\25\2\2\u01f3\u01f4\5\36\20\2\u01f4")
         buf.write(u"\u01f5\7\26\2\2\u01f5\33\3\2\2\2\u01f6\u01f7\7f\2\2\u01f7")
-        buf.write(u"\u01f8\7F\2\2\u01f8\u01fd\5\u00a8U\2\u01f9\u01fa\7\21")
+        buf.write(u"\u01f8\7G\2\2\u01f8\u01fd\5\u00a8U\2\u01f9\u01fa\7\21")
         buf.write(u"\2\2\u01fa\u01fb\5\"\22\2\u01fb\u01fc\7\22\2\2\u01fc")
         buf.write(u"\u01fe\3\2\2\2\u01fd\u01f9\3\2\2\2\u01fd\u01fe\3\2\2")
         buf.write(u"\2\u01fe\u01ff\3\2\2\2\u01ff\u0200\7\25\2\2\u0200\u0201")
         buf.write(u"\5\36\20\2\u0201\u0202\7\26\2\2\u0202\35\3\2\2\2\u0203")
-        buf.write(u"\u0204\7F\2\2\u0204\u0205\7`\2\2\u0205\u0206\7\25\2\2")
+        buf.write(u"\u0204\7G\2\2\u0204\u0205\7D\2\2\u0205\u0206\7\25\2\2")
         buf.write(u"\u0206\u0207\5 \21\2\u0207\u0208\7\26\2\2\u0208\37\3")
         buf.write(u"\2\2\2\u0209\u020a\b\21\1\2\u020a\u020b\5\u00be`\2\u020b")
         buf.write(u"\u020c\7\r\2\2\u020c\u0213\3\2\2\2\u020d\u020e\f\3\2")
@@ -393,7 +393,7 @@ def serializedATN():
         buf.write(u")\3\2\2\2\u024d\u024e\7|\2\2\u024e\u024f\7b\2\2\u024f")
         buf.write(u"\u0250\7\u008f\2\2\u0250\u0251\7\21\2\2\u0251\u0252\7")
         buf.write(u"\22\2\2\u0252\u0253\7\25\2\2\u0253\u0254\5\u00d6l\2\u0254")
-        buf.write(u"\u0255\7\26\2\2\u0255\u025d\7U\2\2\u0256\u0257\7\25\2")
+        buf.write(u"\u0255\7\26\2\2\u0255\u025d\7V\2\2\u0256\u0257\7\25\2")
         buf.write(u"\2\u0257\u0258\5\u00d8m\2\u0258\u0259\7\26\2\2\u0259")
         buf.write(u"\u025e\3\2\2\2\u025a\u025b\5\u00aaV\2\u025b\u025c\7\r")
         buf.write(u"\2\2\u025c\u025e\3\2\2\2\u025d\u0256\3\2\2\2\u025d\u025a")
@@ -427,39 +427,39 @@ def serializedATN():
         buf.write(u"\u0294\u0295\5\60\31\2\u0295\67\3\2\2\2\u0296\u0297\7")
         buf.write(u"{\2\2\u0297\u0298\7\21\2\2\u0298\u0299\5V,\2\u0299\u029a")
         buf.write(u"\7\22\2\2\u029a\u029b\7\25\2\2\u029b\u02a1\5\u00dan\2")
-        buf.write(u"\u029c\u029d\7K\2\2\u029d\u029f\7\f\2\2\u029e\u02a0\5")
+        buf.write(u"\u029c\u029d\7L\2\2\u029d\u029f\7\f\2\2\u029e\u02a0\5")
         buf.write(u"\u00d6l\2\u029f\u029e\3\2\2\2\u029f\u02a0\3\2\2\2\u02a0")
         buf.write(u"\u02a2\3\2\2\2\u02a1\u029c\3\2\2\2\u02a1\u02a2\3\2\2")
         buf.write(u"\2\u02a2\u02a3\3\2\2\2\u02a3\u02a4\7\26\2\2\u02a49\3")
-        buf.write(u"\2\2\2\u02a5\u02a6\7D\2\2\u02a6\u02a7\5\u00e0q\2\u02a7")
+        buf.write(u"\2\2\2\u02a5\u02a6\7E\2\2\u02a6\u02a7\5\u00e0q\2\u02a7")
         buf.write(u"\u02a9\7\f\2\2\u02a8\u02aa\5\u00d6l\2\u02a9\u02a8\3\2")
         buf.write(u"\2\2\u02a9\u02aa\3\2\2\2\u02aa\u02b3\3\2\2\2\u02ab\u02ac")
-        buf.write(u"\7D\2\2\u02ac\u02ad\7]\2\2\u02ad\u02ae\5\u00dep\2\u02ae")
+        buf.write(u"\7E\2\2\u02ac\u02ad\7^\2\2\u02ad\u02ae\5\u00dep\2\u02ae")
         buf.write(u"\u02b0\7\f\2\2\u02af\u02b1\5\u00d6l\2\u02b0\u02af\3\2")
         buf.write(u"\2\2\u02b0\u02b1\3\2\2\2\u02b1\u02b3\3\2\2\2\u02b2\u02a5")
         buf.write(u"\3\2\2\2\u02b2\u02ab\3\2\2\2\u02b3;\3\2\2\2\u02b4\u02b5")
-        buf.write(u"\7Y\2\2\u02b5\u02b6\7O\2\2\u02b6\u02b7\7\21\2\2\u02b7")
+        buf.write(u"\7Z\2\2\u02b5\u02b6\7P\2\2\u02b6\u02b7\7\21\2\2\u02b7")
         buf.write(u"\u02ba\5\u00a6T\2\u02b8\u02b9\7\16\2\2\u02b9\u02bb\5")
         buf.write(u"\u00a6T\2\u02ba\u02b8\3\2\2\2\u02ba\u02bb\3\2\2\2\u02bb")
-        buf.write(u"\u02bc\3\2\2\2\u02bc\u02bd\7]\2\2\u02bd\u02be\5V,\2\u02be")
+        buf.write(u"\u02bc\3\2\2\2\u02bc\u02bd\7^\2\2\u02bd\u02be\5V,\2\u02be")
         buf.write(u"\u02bf\7\22\2\2\u02bf\u02c0\5\60\31\2\u02c0=\3\2\2\2")
-        buf.write(u"\u02c1\u02c2\7M\2\2\u02c2\u02c4\7\25\2\2\u02c3\u02c5")
+        buf.write(u"\u02c1\u02c2\7N\2\2\u02c2\u02c4\7\25\2\2\u02c3\u02c5")
         buf.write(u"\5\u00d6l\2\u02c4\u02c3\3\2\2\2\u02c4\u02c5\3\2\2\2\u02c5")
         buf.write(u"\u02c6\3\2\2\2\u02c6\u02c7\7\26\2\2\u02c7\u02c8\7\u0084")
         buf.write(u"\2\2\u02c8\u02c9\7\21\2\2\u02c9\u02ca\5V,\2\u02ca\u02cb")
         buf.write(u"\7\22\2\2\u02cb\u02cc\7\r\2\2\u02cc?\3\2\2\2\u02cd\u02ce")
         buf.write(u"\7\u0084\2\2\u02ce\u02cf\7\21\2\2\u02cf\u02d0\5V,\2\u02d0")
         buf.write(u"\u02d1\7\22\2\2\u02d1\u02d2\5\60\31\2\u02d2A\3\2\2\2")
-        buf.write(u"\u02d3\u02d4\7\\\2\2\u02d4\u02d5\7\21\2\2\u02d5\u02d6")
+        buf.write(u"\u02d3\u02d4\7]\2\2\u02d4\u02d5\7\21\2\2\u02d5\u02d6")
         buf.write(u"\5V,\2\u02d6\u02d7\7\22\2\2\u02d7\u02d9\5\60\31\2\u02d8")
         buf.write(u"\u02da\5D#\2\u02d9\u02d8\3\2\2\2\u02d9\u02da\3\2\2\2")
-        buf.write(u"\u02da\u02dd\3\2\2\2\u02db\u02dc\7P\2\2\u02dc\u02de\5")
+        buf.write(u"\u02da\u02dd\3\2\2\2\u02db\u02dc\7Q\2\2\u02dc\u02de\5")
         buf.write(u"\60\31\2\u02dd\u02db\3\2\2\2\u02dd\u02de\3\2\2\2\u02de")
-        buf.write(u"C\3\2\2\2\u02df\u02e0\b#\1\2\u02e0\u02e1\7P\2\2\u02e1")
-        buf.write(u"\u02e2\7\\\2\2\u02e2\u02e3\7\21\2\2\u02e3\u02e4\5V,\2")
+        buf.write(u"C\3\2\2\2\u02df\u02e0\b#\1\2\u02e0\u02e1\7Q\2\2\u02e1")
+        buf.write(u"\u02e2\7]\2\2\u02e2\u02e3\7\21\2\2\u02e3\u02e4\5V,\2")
         buf.write(u"\u02e4\u02e5\7\22\2\2\u02e5\u02e6\5\60\31\2\u02e6\u02f1")
-        buf.write(u"\3\2\2\2\u02e7\u02e8\f\3\2\2\u02e8\u02e9\7P\2\2\u02e9")
-        buf.write(u"\u02ea\7\\\2\2\u02ea\u02eb\7\21\2\2\u02eb\u02ec\5V,\2")
+        buf.write(u"\3\2\2\2\u02e7\u02e8\f\3\2\2\u02e8\u02e9\7Q\2\2\u02e9")
+        buf.write(u"\u02ea\7]\2\2\u02ea\u02eb\7\21\2\2\u02eb\u02ec\5V,\2")
         buf.write(u"\u02ec\u02ed\7\22\2\2\u02ed\u02ee\5\60\31\2\u02ee\u02f0")
         buf.write(u"\3\2\2\2\u02ef\u02e7\3\2\2\2\u02f0\u02f3\3\2\2\2\u02f1")
         buf.write(u"\u02ef\3\2\2\2\u02f1\u02f2\3\2\2\2\u02f2E\3\2\2\2\u02f3")
@@ -470,20 +470,20 @@ def serializedATN():
         buf.write(u"\u02fe\u02fd\3\2\2\2\u02fe\u02ff\3\2\2\2\u02ff\u0300")
         buf.write(u"\3\2\2\2\u0300\u0302\7\26\2\2\u0301\u0303\5\u00dco\2")
         buf.write(u"\u0302\u0301\3\2\2\2\u0302\u0303\3\2\2\2\u0303\u030d")
-        buf.write(u"\3\2\2\2\u0304\u0305\7E\2\2\u0305\u0306\7\21\2\2\u0306")
+        buf.write(u"\3\2\2\2\u0304\u0305\7F\2\2\u0305\u0306\7\21\2\2\u0306")
         buf.write(u"\u0307\7?\2\2\u0307\u0308\7\22\2\2\u0308\u030a\7\25\2")
         buf.write(u"\2\u0309\u030b\5\u00d6l\2\u030a\u0309\3\2\2\2\u030a\u030b")
         buf.write(u"\3\2\2\2\u030b\u030c\3\2\2\2\u030c\u030e\7\26\2\2\u030d")
         buf.write(u"\u0304\3\2\2\2\u030d\u030e\3\2\2\2\u030e\u0315\3\2\2")
-        buf.write(u"\2\u030f\u0310\7X\2\2\u0310\u0312\7\25\2\2\u0311\u0313")
+        buf.write(u"\2\u030f\u0310\7Y\2\2\u0310\u0312\7\25\2\2\u0311\u0313")
         buf.write(u"\5\u00d6l\2\u0312\u0311\3\2\2\2\u0312\u0313\3\2\2\2\u0313")
         buf.write(u"\u0314\3\2\2\2\u0314\u0316\7\26\2\2\u0315\u030f\3\2\2")
-        buf.write(u"\2\u0315\u0316\3\2\2\2\u0316I\3\2\2\2\u0317\u0318\7E")
+        buf.write(u"\2\u0315\u0316\3\2\2\2\u0316I\3\2\2\2\u0317\u0318\7F")
         buf.write(u"\2\2\u0318\u0319\7\21\2\2\u0319\u031a\5\u00aaV\2\u031a")
         buf.write(u"\u031b\7\22\2\2\u031b\u031d\7\25\2\2\u031c\u031e\5\u00d6")
         buf.write(u"l\2\u031d\u031c\3\2\2\2\u031d\u031e\3\2\2\2\u031e\u031f")
         buf.write(u"\3\2\2\2\u031f\u0320\7\26\2\2\u0320\u032d\3\2\2\2\u0321")
-        buf.write(u"\u0322\7E\2\2\u0322\u0323\7]\2\2\u0323\u0324\7\21\2\2")
+        buf.write(u"\u0322\7F\2\2\u0322\u0323\7^\2\2\u0323\u0324\7\21\2\2")
         buf.write(u"\u0324\u0325\5\u0086D\2\u0325\u0326\7\22\2\2\u0326\u0328")
         buf.write(u"\7\25\2\2\u0327\u0329\5\u00d6l\2\u0328\u0327\3\2\2\2")
         buf.write(u"\u0328\u0329\3\2\2\2\u0329\u032a\3\2\2\2\u032a\u032b")
@@ -510,7 +510,7 @@ def serializedATN():
         buf.write(u"\u035c\7\22\2\2\u035c\u035d\5V,\16\u035d\u036c\3\2\2")
         buf.write(u"\2\u035e\u036c\5Z.\2\u035f\u036c\5\\/\2\u0360\u0361\7")
         buf.write(u"9\2\2\u0361\u0362\7\21\2\2\u0362\u0363\5V,\2\u0363\u0364")
-        buf.write(u"\7\22\2\2\u0364\u036c\3\2\2\2\u0365\u0366\7T\2\2\u0366")
+        buf.write(u"\7\22\2\2\u0364\u036c\3\2\2\2\u0365\u0366\7U\2\2\u0366")
         buf.write(u"\u0367\7\21\2\2\u0367\u0368\5\u00a6T\2\u0368\u0369\7")
         buf.write(u"\22\2\2\u0369\u036c\3\2\2\2\u036a\u036c\5X-\2\u036b\u0354")
         buf.write(u"\3\2\2\2\u036b\u0357\3\2\2\2\u036b\u0359\3\2\2\2\u036b")
@@ -536,20 +536,20 @@ def serializedATN():
         buf.write(u"\f\20\2\2\u0399\u039a\7\32\2\2\u039a\u03c9\5V,\21\u039b")
         buf.write(u"\u039c\f\17\2\2\u039c\u039d\7\27\2\2\u039d\u039e\5V,")
         buf.write(u"\2\u039e\u039f\7\f\2\2\u039f\u03a0\5V,\20\u03a0\u03c9")
-        buf.write(u"\3\2\2\2\u03a1\u03a2\f\r\2\2\u03a2\u03a3\7]\2\2\u03a3")
-        buf.write(u"\u03c9\5V,\16\u03a4\u03a5\f\f\2\2\u03a5\u03a6\7I\2\2")
+        buf.write(u"\3\2\2\2\u03a1\u03a2\f\r\2\2\u03a2\u03a3\7^\2\2\u03a3")
+        buf.write(u"\u03c9\5V,\16\u03a4\u03a5\f\f\2\2\u03a5\u03a6\7J\2\2")
         buf.write(u"\u03a6\u03c9\5V,\r\u03a7\u03a8\f\13\2\2\u03a8\u03a9\7")
-        buf.write(u"I\2\2\u03a9\u03aa\7<\2\2\u03aa\u03c9\5V,\f\u03ab\u03ac")
-        buf.write(u"\f\n\2\2\u03ac\u03ad\7I\2\2\u03ad\u03ae\7?\2\2\u03ae")
+        buf.write(u"J\2\2\u03a9\u03aa\7<\2\2\u03aa\u03c9\5V,\f\u03ab\u03ac")
+        buf.write(u"\f\n\2\2\u03ac\u03ad\7J\2\2\u03ad\u03ae\7?\2\2\u03ae")
         buf.write(u"\u03c9\5V,\13\u03af\u03b0\f\t\2\2\u03b0\u03b1\7h\2\2")
-        buf.write(u"\u03b1\u03b2\7]\2\2\u03b2\u03c9\5V,\n\u03b3\u03b4\f\b")
-        buf.write(u"\2\2\u03b4\u03b5\7h\2\2\u03b5\u03b6\7I\2\2\u03b6\u03c9")
+        buf.write(u"\u03b1\u03b2\7^\2\2\u03b2\u03c9\5V,\n\u03b3\u03b4\f\b")
+        buf.write(u"\2\2\u03b4\u03b5\7h\2\2\u03b5\u03b6\7J\2\2\u03b6\u03c9")
         buf.write(u"\5V,\t\u03b7\u03b8\f\7\2\2\u03b8\u03b9\7h\2\2\u03b9\u03ba")
-        buf.write(u"\7I\2\2\u03ba\u03bb\7<\2\2\u03bb\u03c9\5V,\b\u03bc\u03bd")
-        buf.write(u"\f\6\2\2\u03bd\u03be\7h\2\2\u03be\u03bf\7I\2\2\u03bf")
+        buf.write(u"\7J\2\2\u03ba\u03bb\7<\2\2\u03bb\u03c9\5V,\b\u03bc\u03bd")
+        buf.write(u"\f\6\2\2\u03bd\u03be\7h\2\2\u03be\u03bf\7J\2\2\u03bf")
         buf.write(u"\u03c0\7?\2\2\u03c0\u03c9\5V,\7\u03c1\u03c2\f\26\2\2")
-        buf.write(u"\u03c2\u03c3\7_\2\2\u03c3\u03c4\7h\2\2\u03c4\u03c9\5")
-        buf.write(u"\u00fe\u0080\2\u03c5\u03c6\f\25\2\2\u03c6\u03c7\7_\2")
+        buf.write(u"\u03c2\u03c3\7`\2\2\u03c3\u03c4\7h\2\2\u03c4\u03c9\5")
+        buf.write(u"\u00fe\u0080\2\u03c5\u03c6\f\25\2\2\u03c6\u03c7\7`\2")
         buf.write(u"\2\u03c7\u03c9\5\u00fe\u0080\2\u03c8\u036d\3\2\2\2\u03c8")
         buf.write(u"\u0371\3\2\2\2\u03c8\u0375\3\2\2\2\u03c8\u0379\3\2\2")
         buf.write(u"\2\u03c8\u037d\3\2\2\2\u03c8\u0380\3\2\2\2\u03c8\u0383")
@@ -573,12 +573,12 @@ def serializedATN():
         buf.write(u"\2\u03df\u03dd\3\2\2\2\u03df\u03de\3\2\2\2\u03e0]\3\2")
         buf.write(u"\2\2\u03e1\u03e2\5\u009cO\2\u03e2\u03e3\7\21\2\2\u03e3")
         buf.write(u"\u03e4\7\22\2\2\u03e4_\3\2\2\2\u03e5\u03e6\7r\2\2\u03e6")
-        buf.write(u"\u03e7\7Z\2\2\u03e7\u03e8\5V,\2\u03e8a\3\2\2\2\u03e9")
+        buf.write(u"\u03e7\7[\2\2\u03e7\u03e8\5V,\2\u03e8a\3\2\2\2\u03e9")
         buf.write(u"\u03ea\7\u0085\2\2\u03ea\u03eb\7\21\2\2\u03eb\u03ec\5")
         buf.write(u"V,\2\u03ec\u03ed\7\22\2\2\u03ed\u03ee\7\177\2\2\u03ee")
         buf.write(u"\u03ef\5V,\2\u03ef\u03f0\7\r\2\2\u03f0c\3\2\2\2\u03f1")
-        buf.write(u"\u03f2\7W\2\2\u03f2\u03f3\7\21\2\2\u03f3\u03f4\5\u00a6")
-        buf.write(u"T\2\u03f4\u03f5\7\22\2\2\u03f5\u03f6\7Z\2\2\u03f6\u03f7")
+        buf.write(u"\u03f2\7X\2\2\u03f2\u03f3\7\21\2\2\u03f3\u03f4\5\u00a6")
+        buf.write(u"T\2\u03f4\u03f5\7\22\2\2\u03f5\u03f6\7[\2\2\u03f6\u03f7")
         buf.write(u"\5V,\2\u03f7\u03f8\7\u0083\2\2\u03f8\u03f9\5V,\2\u03f9")
         buf.write(u"e\3\2\2\2\u03fa\u03fb\7z\2\2\u03fb\u03fc\7\21\2\2\u03fc")
         buf.write(u"\u0402\5Z.\2\u03fd\u03fe\7\16\2\2\u03fe\u03ff\5\u0102")
@@ -639,8 +639,8 @@ def serializedATN():
         buf.write(u"\7\16\2\2\u047f\u0481\5\u00aaV\2\u0480\u047d\3\2\2\2")
         buf.write(u"\u0481\u0484\3\2\2\2\u0482\u0480\3\2\2\2\u0482\u0483")
         buf.write(u"\3\2\2\2\u0483\u0087\3\2\2\2\u0484\u0482\3\2\2\2\u0485")
-        buf.write(u"\u0486\7]\2\2\u0486\u0490\5\u008aF\2\u0487\u0488\7]\2")
-        buf.write(u"\2\u0488\u0490\5\u008cG\2\u0489\u048a\7]\2\2\u048a\u0490")
+        buf.write(u"\u0486\7^\2\2\u0486\u0490\5\u008aF\2\u0487\u0488\7^\2")
+        buf.write(u"\2\u0488\u0490\5\u008cG\2\u0489\u048a\7^\2\2\u048a\u0490")
         buf.write(u"\5\u0090I\2\u048b\u048c\7a\2\2\u048c\u0490\7\u008f\2")
         buf.write(u"\2\u048d\u048e\7a\2\2\u048e\u0490\5V,\2\u048f\u0485\3")
         buf.write(u"\2\2\2\u048f\u0487\3\2\2\2\u048f\u0489\3\2\2\2\u048f")
@@ -729,7 +729,7 @@ def serializedATN():
         buf.write(u"\2\2\u0540\u053a\3\2\2\2\u0540\u053c\3\2\2\2\u0540\u053e")
         buf.write(u"\3\2\2\2\u0541\u00bf\3\2\2\2\u0542\u0544\5\u00a4S\2\u0543")
         buf.write(u"\u0545\5\u00c2b\2\u0544\u0543\3\2\2\2\u0544\u0545\3\2")
-        buf.write(u"\2\2\u0545\u00c1\3\2\2\2\u0546\u0547\7Z\2\2\u0547\u0548")
+        buf.write(u"\2\2\u0545\u00c1\3\2\2\2\u0546\u0547\7[\2\2\u0547\u0548")
         buf.write(u"\5\u00c4c\2\u0548\u0549\7\f\2\2\u0549\u054e\5\u00a4S")
         buf.write(u"\2\u054a\u054b\7\20\2\2\u054b\u054d\5\u00a4S\2\u054c")
         buf.write(u"\u054a\3\2\2\2\u054d\u0550\3\2\2\2\u054e\u054c\3\2\2")
@@ -737,7 +737,7 @@ def serializedATN():
         buf.write(u"\3\2\2\2\u0551\u0552\7\u008c\2\2\u0552\u0553\6c\60\3")
         buf.write(u"\u0553\u00c5\3\2\2\2\u0554\u0556\5\u00a4S\2\u0555\u0557")
         buf.write(u"\5\u00c8e\2\u0556\u0555\3\2\2\2\u0556\u0557\3\2\2\2\u0557")
-        buf.write(u"\u00c7\3\2\2\2\u0558\u0559\7Z\2\2\u0559\u055a\5\u00c4")
+        buf.write(u"\u00c7\3\2\2\2\u0558\u0559\7[\2\2\u0559\u055a\5\u00c4")
         buf.write(u"c\2\u055a\u055c\7\f\2\2\u055b\u055d\7 \2\2\u055c\u055b")
         buf.write(u"\3\2\2\2\u055c\u055d\3\2\2\2\u055d\u055e\3\2\2\2\u055e")
         buf.write(u"\u0563\5\u012a\u0096\2\u055f\u0560\7 \2\2\u0560\u0562")
@@ -1073,16 +1073,16 @@ class OParser ( AbstractParser ):
                      u"'DateTime'", u"'Period'", u"'Method'", u"'Code'", 
                      u"'Document'", u"'abstract'", u"'all'", u"'always'", 
                      u"'and'", u"'any'", u"'as'", u"'attr'", u"'attribute'", 
-                     u"'attributes'", u"'case'", u"'catch'", u"'category'", 
-                     u"'class'", u"'close'", u"'contains'", u"'def'", u"'default'", 
-                     u"'define'", u"'do'", u"'doing'", u"'each'", u"'else'", 
-                     u"'enum'", u"'enumerated'", u"'except'", u"'execute'", 
-                     u"'expecting'", u"'extends'", u"'fetch'", u"'finally'", 
-                     u"'for'", u"'from'", u"'getter'", u"'if'", u"'in'", 
-                     u"'invoke'", u"'is'", u"'mappings'", u"'matching'", 
-                     u"'method'", u"'methods'", u"'modulo'", u"'mutable'", 
-                     u"'native'", u"'None'", u"'not'", u"<INVALID>", u"'null'", 
-                     u"'on'", u"'open'", u"'operator'", u"'or'", u"'otherwise'", 
+                     u"'attributes'", u"'bindings'", u"'case'", u"'catch'", 
+                     u"'category'", u"'class'", u"'close'", u"'contains'", 
+                     u"'def'", u"'default'", u"'define'", u"'do'", u"'doing'", 
+                     u"'each'", u"'else'", u"'enum'", u"'enumerated'", u"'except'", 
+                     u"'execute'", u"'expecting'", u"'extends'", u"'fetch'", 
+                     u"'finally'", u"'for'", u"'from'", u"'getter'", u"'if'", 
+                     u"'in'", u"'invoke'", u"'is'", u"'matching'", u"'method'", 
+                     u"'methods'", u"'modulo'", u"'mutable'", u"'native'", 
+                     u"'None'", u"'not'", u"<INVALID>", u"'null'", u"'on'", 
+                     u"'open'", u"'operator'", u"'or'", u"'otherwise'", 
                      u"'pass'", u"'raise'", u"'read'", u"'receiving'", u"'resource'", 
                      u"'return'", u"'returning'", u"'self'", u"'setter'", 
                      u"'singleton'", u"'sorted'", u"'switch'", u"'test'", 
@@ -1102,14 +1102,14 @@ class OParser ( AbstractParser ):
                       u"TIME", u"DATETIME", u"PERIOD", u"METHOD_T", u"CODE", 
                       u"DOCUMENT", u"ABSTRACT", u"ALL", u"ALWAYS", u"AND", 
                       u"ANY", u"AS", u"ATTR", u"ATTRIBUTE", u"ATTRIBUTES", 
-                      u"CASE", u"CATCH", u"CATEGORY", u"CLASS", u"CLOSE", 
-                      u"CONTAINS", u"DEF", u"DEFAULT", u"DEFINE", u"DO", 
-                      u"DOING", u"EACH", u"ELSE", u"ENUM", u"ENUMERATED", 
+                      u"BINDINGS", u"CASE", u"CATCH", u"CATEGORY", u"CLASS", 
+                      u"CLOSE", u"CONTAINS", u"DEF", u"DEFAULT", u"DEFINE", 
+                      u"DO", u"DOING", u"EACH", u"ELSE", u"ENUM", u"ENUMERATED", 
                       u"EXCEPT", u"EXECUTE", u"EXPECTING", u"EXTENDS", u"FETCH", 
                       u"FINALLY", u"FOR", u"FROM", u"GETTER", u"IF", u"IN", 
-                      u"INVOKE", u"IS", u"MAPPINGS", u"MATCHING", u"METHOD", 
-                      u"METHODS", u"MODULO", u"MUTABLE", u"NATIVE", u"NONE", 
-                      u"NOT", u"NOTHING", u"NULL", u"ON", u"OPEN", u"OPERATOR", 
+                      u"INVOKE", u"IS", u"MATCHING", u"METHOD", u"METHODS", 
+                      u"MODULO", u"MUTABLE", u"NATIVE", u"NONE", u"NOT", 
+                      u"NOTHING", u"NULL", u"ON", u"OPEN", u"OPERATOR", 
                       u"OR", u"OTHERWISE", u"PASS", u"RAISE", u"READ", u"RECEIVING", 
                       u"RESOURCE", u"RETURN", u"RETURNING", u"SELF", u"SETTER", 
                       u"SINGLETON", u"SORTED", u"SWITCH", u"TEST", u"THIS", 
@@ -1136,8 +1136,8 @@ class OParser ( AbstractParser ):
     RULE_getter_method_declaration = 11
     RULE_native_resource_declaration = 12
     RULE_native_category_declaration = 13
-    RULE_native_category_mappings = 14
-    RULE_native_category_mapping_list = 15
+    RULE_native_category_bindings = 14
+    RULE_native_category_binding_list = 15
     RULE_attribute_list = 16
     RULE_abstract_method_declaration = 17
     RULE_concrete_method_declaration = 18
@@ -1216,11 +1216,11 @@ class OParser ( AbstractParser ):
     RULE_any_type = 91
     RULE_member_method_declaration_list = 92
     RULE_member_method_declaration = 93
-    RULE_native_category_mapping = 94
-    RULE_python_category_mapping = 95
+    RULE_native_category_binding = 94
+    RULE_python_category_binding = 95
     RULE_python_module = 96
     RULE_module_token = 97
-    RULE_javascript_category_mapping = 98
+    RULE_javascript_category_binding = 98
     RULE_javascript_module = 99
     RULE_variable_identifier_list = 100
     RULE_method_declaration = 101
@@ -1313,7 +1313,7 @@ class OParser ( AbstractParser ):
                    u"derived_list", u"category_method_list", u"operator_method_declaration", 
                    u"setter_method_declaration", u"getter_method_declaration", 
                    u"native_resource_declaration", u"native_category_declaration", 
-                   u"native_category_mappings", u"native_category_mapping_list", 
+                   u"native_category_bindings", u"native_category_binding_list", 
                    u"attribute_list", u"abstract_method_declaration", u"concrete_method_declaration", 
                    u"native_method_declaration", u"test_method_declaration", 
                    u"assertion", u"typed_argument", u"statement_or_list", 
@@ -1340,8 +1340,8 @@ class OParser ( AbstractParser ):
                    u"argument_list", u"argument", u"operator_argument", 
                    u"named_argument", u"code_argument", u"category_or_any_type", 
                    u"any_type", u"member_method_declaration_list", u"member_method_declaration", 
-                   u"native_category_mapping", u"python_category_mapping", 
-                   u"python_module", u"module_token", u"javascript_category_mapping", 
+                   u"native_category_binding", u"python_category_binding", 
+                   u"python_module", u"module_token", u"javascript_category_binding", 
                    u"javascript_module", u"variable_identifier_list", u"method_declaration", 
                    u"native_statement_list", u"native_statement", u"python_native_statement", 
                    u"javascript_native_statement", u"statement_list", u"assertion_list", 
@@ -1441,35 +1441,35 @@ class OParser ( AbstractParser ):
     ATTR=63
     ATTRIBUTE=64
     ATTRIBUTES=65
-    CASE=66
-    CATCH=67
-    CATEGORY=68
-    CLASS=69
-    CLOSE=70
-    CONTAINS=71
-    DEF=72
-    DEFAULT=73
-    DEFINE=74
-    DO=75
-    DOING=76
-    EACH=77
-    ELSE=78
-    ENUM=79
-    ENUMERATED=80
-    EXCEPT=81
-    EXECUTE=82
-    EXPECTING=83
-    EXTENDS=84
-    FETCH=85
-    FINALLY=86
-    FOR=87
-    FROM=88
-    GETTER=89
-    IF=90
-    IN=91
-    INVOKE=92
-    IS=93
-    MAPPINGS=94
+    BINDINGS=66
+    CASE=67
+    CATCH=68
+    CATEGORY=69
+    CLASS=70
+    CLOSE=71
+    CONTAINS=72
+    DEF=73
+    DEFAULT=74
+    DEFINE=75
+    DO=76
+    DOING=77
+    EACH=78
+    ELSE=79
+    ENUM=80
+    ENUMERATED=81
+    EXCEPT=82
+    EXECUTE=83
+    EXPECTING=84
+    EXTENDS=85
+    FETCH=86
+    FINALLY=87
+    FOR=88
+    FROM=89
+    GETTER=90
+    IF=91
+    IN=92
+    INVOKE=93
+    IS=94
     MATCHING=95
     METHOD=96
     METHODS=97
@@ -2276,7 +2276,7 @@ class OParser ( AbstractParser ):
                 self.match(OParser.LCURL)
                 self.state = 452
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE) | (1 << OParser.ABSTRACT))) != 0) or ((((_la - 89)) & ~0x3f) == 0 and ((1 << (_la - 89)) & ((1 << (OParser.GETTER - 89)) | (1 << (OParser.METHOD - 89)) | (1 << (OParser.OPERATOR - 89)) | (1 << (OParser.SETTER - 89)) | (1 << (OParser.TYPE_IDENTIFIER - 89)))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE) | (1 << OParser.ABSTRACT))) != 0) or ((((_la - 90)) & ~0x3f) == 0 and ((1 << (_la - 90)) & ((1 << (OParser.GETTER - 90)) | (1 << (OParser.METHOD - 90)) | (1 << (OParser.OPERATOR - 90)) | (1 << (OParser.SETTER - 90)) | (1 << (OParser.TYPE_IDENTIFIER - 90)))) != 0):
                     self.state = 451 
                     localctx.items = self.member_method_declaration_list(0)
 
@@ -2378,7 +2378,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LCURL)
             self.state = 467
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 75)) & ~0x3f) == 0 and ((1 << (_la - 75)) & ((1 << (OParser.DO - 75)) | (1 << (OParser.FOR - 75)) | (1 << (OParser.IF - 75)) | (1 << (OParser.METHOD - 75)) | (1 << (OParser.RETURN - 75)) | (1 << (OParser.SWITCH - 75)) | (1 << (OParser.THROW - 75)) | (1 << (OParser.TRY - 75)) | (1 << (OParser.WITH - 75)) | (1 << (OParser.WHILE - 75)) | (1 << (OParser.WRITE - 75)) | (1 << (OParser.SYMBOL_IDENTIFIER - 75)) | (1 << (OParser.TYPE_IDENTIFIER - 75)) | (1 << (OParser.VARIABLE_IDENTIFIER - 75)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 76)) & ~0x3f) == 0 and ((1 << (_la - 76)) & ((1 << (OParser.DO - 76)) | (1 << (OParser.FOR - 76)) | (1 << (OParser.IF - 76)) | (1 << (OParser.METHOD - 76)) | (1 << (OParser.RETURN - 76)) | (1 << (OParser.SWITCH - 76)) | (1 << (OParser.THROW - 76)) | (1 << (OParser.TRY - 76)) | (1 << (OParser.WITH - 76)) | (1 << (OParser.WHILE - 76)) | (1 << (OParser.WRITE - 76)) | (1 << (OParser.SYMBOL_IDENTIFIER - 76)) | (1 << (OParser.TYPE_IDENTIFIER - 76)) | (1 << (OParser.VARIABLE_IDENTIFIER - 76)))) != 0):
                 self.state = 466 
                 localctx.stmts = self.statement_list(0)
 
@@ -2447,7 +2447,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LCURL)
             self.state = 475
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 75)) & ~0x3f) == 0 and ((1 << (_la - 75)) & ((1 << (OParser.DO - 75)) | (1 << (OParser.FOR - 75)) | (1 << (OParser.IF - 75)) | (1 << (OParser.METHOD - 75)) | (1 << (OParser.RETURN - 75)) | (1 << (OParser.SWITCH - 75)) | (1 << (OParser.THROW - 75)) | (1 << (OParser.TRY - 75)) | (1 << (OParser.WITH - 75)) | (1 << (OParser.WHILE - 75)) | (1 << (OParser.WRITE - 75)) | (1 << (OParser.SYMBOL_IDENTIFIER - 75)) | (1 << (OParser.TYPE_IDENTIFIER - 75)) | (1 << (OParser.VARIABLE_IDENTIFIER - 75)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 76)) & ~0x3f) == 0 and ((1 << (_la - 76)) & ((1 << (OParser.DO - 76)) | (1 << (OParser.FOR - 76)) | (1 << (OParser.IF - 76)) | (1 << (OParser.METHOD - 76)) | (1 << (OParser.RETURN - 76)) | (1 << (OParser.SWITCH - 76)) | (1 << (OParser.THROW - 76)) | (1 << (OParser.TRY - 76)) | (1 << (OParser.WITH - 76)) | (1 << (OParser.WHILE - 76)) | (1 << (OParser.WRITE - 76)) | (1 << (OParser.SYMBOL_IDENTIFIER - 76)) | (1 << (OParser.TYPE_IDENTIFIER - 76)) | (1 << (OParser.VARIABLE_IDENTIFIER - 76)))) != 0):
                 self.state = 474 
                 localctx.stmts = self.statement_list(0)
 
@@ -2516,7 +2516,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LCURL)
             self.state = 483
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 75)) & ~0x3f) == 0 and ((1 << (_la - 75)) & ((1 << (OParser.DO - 75)) | (1 << (OParser.FOR - 75)) | (1 << (OParser.IF - 75)) | (1 << (OParser.METHOD - 75)) | (1 << (OParser.RETURN - 75)) | (1 << (OParser.SWITCH - 75)) | (1 << (OParser.THROW - 75)) | (1 << (OParser.TRY - 75)) | (1 << (OParser.WITH - 75)) | (1 << (OParser.WHILE - 75)) | (1 << (OParser.WRITE - 75)) | (1 << (OParser.SYMBOL_IDENTIFIER - 75)) | (1 << (OParser.TYPE_IDENTIFIER - 75)) | (1 << (OParser.VARIABLE_IDENTIFIER - 75)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 76)) & ~0x3f) == 0 and ((1 << (_la - 76)) & ((1 << (OParser.DO - 76)) | (1 << (OParser.FOR - 76)) | (1 << (OParser.IF - 76)) | (1 << (OParser.METHOD - 76)) | (1 << (OParser.RETURN - 76)) | (1 << (OParser.SWITCH - 76)) | (1 << (OParser.THROW - 76)) | (1 << (OParser.TRY - 76)) | (1 << (OParser.WITH - 76)) | (1 << (OParser.WHILE - 76)) | (1 << (OParser.WRITE - 76)) | (1 << (OParser.SYMBOL_IDENTIFIER - 76)) | (1 << (OParser.TYPE_IDENTIFIER - 76)) | (1 << (OParser.VARIABLE_IDENTIFIER - 76)))) != 0):
                 self.state = 482 
                 localctx.stmts = self.statement_list(0)
 
@@ -2538,7 +2538,7 @@ class OParser ( AbstractParser ):
             self.parser = parser
             self.name = None # Type_identifierContext
             self.attrs = None # Attribute_listContext
-            self.mappings = None # Native_category_mappingsContext
+            self.bindings = None # Native_category_bindingsContext
 
         def NATIVE(self):
             return self.getToken(OParser.NATIVE, 0)
@@ -2556,8 +2556,8 @@ class OParser ( AbstractParser ):
             return self.getTypedRuleContext(OParser.Type_identifierContext,0)
 
 
-        def native_category_mappings(self):
-            return self.getTypedRuleContext(OParser.Native_category_mappingsContext,0)
+        def native_category_bindings(self):
+            return self.getTypedRuleContext(OParser.Native_category_bindingsContext,0)
 
 
         def LPAR(self):
@@ -2611,7 +2611,7 @@ class OParser ( AbstractParser ):
             self.state = 496
             self.match(OParser.LCURL)
             self.state = 497 
-            localctx.mappings = self.native_category_mappings()
+            localctx.bindings = self.native_category_bindings()
             self.state = 498
             self.match(OParser.RCURL)
         except RecognitionException as re:
@@ -2629,7 +2629,7 @@ class OParser ( AbstractParser ):
             self.parser = parser
             self.name = None # Type_identifierContext
             self.attrs = None # Attribute_listContext
-            self.mappings = None # Native_category_mappingsContext
+            self.bindings = None # Native_category_bindingsContext
 
         def NATIVE(self):
             return self.getToken(OParser.NATIVE, 0)
@@ -2647,8 +2647,8 @@ class OParser ( AbstractParser ):
             return self.getTypedRuleContext(OParser.Type_identifierContext,0)
 
 
-        def native_category_mappings(self):
-            return self.getTypedRuleContext(OParser.Native_category_mappingsContext,0)
+        def native_category_bindings(self):
+            return self.getTypedRuleContext(OParser.Native_category_bindingsContext,0)
 
 
         def LPAR(self):
@@ -2702,7 +2702,7 @@ class OParser ( AbstractParser ):
             self.state = 509
             self.match(OParser.LCURL)
             self.state = 510 
-            localctx.mappings = self.native_category_mappings()
+            localctx.bindings = self.native_category_bindings()
             self.state = 511
             self.match(OParser.RCURL)
         except RecognitionException as re:
@@ -2713,18 +2713,18 @@ class OParser ( AbstractParser ):
             self.exitRule()
         return localctx
 
-    class Native_category_mappingsContext(ParserRuleContext):
+    class Native_category_bindingsContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
-            super(OParser.Native_category_mappingsContext, self).__init__(parent, invokingState)
+            super(OParser.Native_category_bindingsContext, self).__init__(parent, invokingState)
             self.parser = parser
-            self.items = None # Native_category_mapping_listContext
+            self.items = None # Native_category_binding_listContext
 
         def CATEGORY(self):
             return self.getToken(OParser.CATEGORY, 0)
 
-        def MAPPINGS(self):
-            return self.getToken(OParser.MAPPINGS, 0)
+        def BINDINGS(self):
+            return self.getToken(OParser.BINDINGS, 0)
 
         def LCURL(self):
             return self.getToken(OParser.LCURL, 0)
@@ -2732,38 +2732,38 @@ class OParser ( AbstractParser ):
         def RCURL(self):
             return self.getToken(OParser.RCURL, 0)
 
-        def native_category_mapping_list(self):
-            return self.getTypedRuleContext(OParser.Native_category_mapping_listContext,0)
+        def native_category_binding_list(self):
+            return self.getTypedRuleContext(OParser.Native_category_binding_listContext,0)
 
 
         def getRuleIndex(self):
-            return OParser.RULE_native_category_mappings
+            return OParser.RULE_native_category_bindings
 
         def enterRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.enterNative_category_mappings(self)
+                listener.enterNative_category_bindings(self)
 
         def exitRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.exitNative_category_mappings(self)
+                listener.exitNative_category_bindings(self)
 
 
 
 
-    def native_category_mappings(self):
+    def native_category_bindings(self):
 
-        localctx = OParser.Native_category_mappingsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 28, self.RULE_native_category_mappings)
+        localctx = OParser.Native_category_bindingsContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 28, self.RULE_native_category_bindings)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 513
             self.match(OParser.CATEGORY)
             self.state = 514
-            self.match(OParser.MAPPINGS)
+            self.match(OParser.BINDINGS)
             self.state = 515
             self.match(OParser.LCURL)
             self.state = 516 
-            localctx.items = self.native_category_mapping_list(0)
+            localctx.items = self.native_category_binding_list(0)
             self.state = 517
             self.match(OParser.RCURL)
         except RecognitionException as re:
@@ -2774,85 +2774,85 @@ class OParser ( AbstractParser ):
             self.exitRule()
         return localctx
 
-    class Native_category_mapping_listContext(ParserRuleContext):
+    class Native_category_binding_listContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
-            super(OParser.Native_category_mapping_listContext, self).__init__(parent, invokingState)
+            super(OParser.Native_category_binding_listContext, self).__init__(parent, invokingState)
             self.parser = parser
 
 
         def getRuleIndex(self):
-            return OParser.RULE_native_category_mapping_list
+            return OParser.RULE_native_category_binding_list
 
      
         def copyFrom(self, ctx):
-            super(OParser.Native_category_mapping_listContext, self).copyFrom(ctx)
+            super(OParser.Native_category_binding_listContext, self).copyFrom(ctx)
 
 
-    class NativeCategoryMappingListContext(Native_category_mapping_listContext):
+    class NativeCategoryBindingListContext(Native_category_binding_listContext):
 
-        def __init__(self, parser, ctx): # actually a OParser.Native_category_mapping_listContext)
-            super(OParser.NativeCategoryMappingListContext, self).__init__(parser)
-            self.item = None # Native_category_mappingContext
+        def __init__(self, parser, ctx): # actually a OParser.Native_category_binding_listContext)
+            super(OParser.NativeCategoryBindingListContext, self).__init__(parser)
+            self.item = None # Native_category_bindingContext
             self.copyFrom(ctx)
 
         def SEMI(self):
             return self.getToken(OParser.SEMI, 0)
-        def native_category_mapping(self):
-            return self.getTypedRuleContext(OParser.Native_category_mappingContext,0)
+        def native_category_binding(self):
+            return self.getTypedRuleContext(OParser.Native_category_bindingContext,0)
 
 
         def enterRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.enterNativeCategoryMappingList(self)
+                listener.enterNativeCategoryBindingList(self)
 
         def exitRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.exitNativeCategoryMappingList(self)
+                listener.exitNativeCategoryBindingList(self)
 
 
-    class NativeCategoryMappingListItemContext(Native_category_mapping_listContext):
+    class NativeCategoryBindingListItemContext(Native_category_binding_listContext):
 
-        def __init__(self, parser, ctx): # actually a OParser.Native_category_mapping_listContext)
-            super(OParser.NativeCategoryMappingListItemContext, self).__init__(parser)
-            self.items = None # Native_category_mapping_listContext
-            self.item = None # Native_category_mappingContext
+        def __init__(self, parser, ctx): # actually a OParser.Native_category_binding_listContext)
+            super(OParser.NativeCategoryBindingListItemContext, self).__init__(parser)
+            self.items = None # Native_category_binding_listContext
+            self.item = None # Native_category_bindingContext
             self.copyFrom(ctx)
 
         def SEMI(self):
             return self.getToken(OParser.SEMI, 0)
-        def native_category_mapping_list(self):
-            return self.getTypedRuleContext(OParser.Native_category_mapping_listContext,0)
+        def native_category_binding_list(self):
+            return self.getTypedRuleContext(OParser.Native_category_binding_listContext,0)
 
-        def native_category_mapping(self):
-            return self.getTypedRuleContext(OParser.Native_category_mappingContext,0)
+        def native_category_binding(self):
+            return self.getTypedRuleContext(OParser.Native_category_bindingContext,0)
 
 
         def enterRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.enterNativeCategoryMappingListItem(self)
+                listener.enterNativeCategoryBindingListItem(self)
 
         def exitRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.exitNativeCategoryMappingListItem(self)
+                listener.exitNativeCategoryBindingListItem(self)
 
 
 
-    def native_category_mapping_list(self, _p=0):
+    def native_category_binding_list(self, _p=0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = OParser.Native_category_mapping_listContext(self, self._ctx, _parentState)
+        localctx = OParser.Native_category_binding_listContext(self, self._ctx, _parentState)
         _prevctx = localctx
         _startState = 30
-        self.enterRecursionRule(localctx, 30, self.RULE_native_category_mapping_list, _p)
+        self.enterRecursionRule(localctx, 30, self.RULE_native_category_binding_list, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            localctx = OParser.NativeCategoryMappingListContext(self, localctx)
+            localctx = OParser.NativeCategoryBindingListContext(self, localctx)
             self._ctx = localctx
             _prevctx = localctx
 
             self.state = 520 
-            localctx.item = self.native_category_mapping()
+            localctx.item = self.native_category_binding()
             self.state = 521
             self.match(OParser.SEMI)
             self._ctx.stop = self._input.LT(-1)
@@ -2864,15 +2864,15 @@ class OParser ( AbstractParser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = OParser.NativeCategoryMappingListItemContext(self, OParser.Native_category_mapping_listContext(self, _parentctx, _parentState))
+                    localctx = OParser.NativeCategoryBindingListItemContext(self, OParser.Native_category_binding_listContext(self, _parentctx, _parentState))
                     localctx.items = _prevctx
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_native_category_mapping_list)
+                    self.pushNewRecursionContext(localctx, _startState, self.RULE_native_category_binding_list)
                     self.state = 523
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
                     self.state = 524 
-                    localctx.item = self.native_category_mapping()
+                    localctx.item = self.native_category_binding()
                     self.state = 525
                     self.match(OParser.SEMI) 
                 self.state = 531
@@ -3175,7 +3175,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LCURL)
             self.state = 568
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 75)) & ~0x3f) == 0 and ((1 << (_la - 75)) & ((1 << (OParser.DO - 75)) | (1 << (OParser.FOR - 75)) | (1 << (OParser.IF - 75)) | (1 << (OParser.METHOD - 75)) | (1 << (OParser.RETURN - 75)) | (1 << (OParser.SWITCH - 75)) | (1 << (OParser.THROW - 75)) | (1 << (OParser.TRY - 75)) | (1 << (OParser.WITH - 75)) | (1 << (OParser.WHILE - 75)) | (1 << (OParser.WRITE - 75)) | (1 << (OParser.SYMBOL_IDENTIFIER - 75)) | (1 << (OParser.TYPE_IDENTIFIER - 75)) | (1 << (OParser.VARIABLE_IDENTIFIER - 75)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 76)) & ~0x3f) == 0 and ((1 << (_la - 76)) & ((1 << (OParser.DO - 76)) | (1 << (OParser.FOR - 76)) | (1 << (OParser.IF - 76)) | (1 << (OParser.METHOD - 76)) | (1 << (OParser.RETURN - 76)) | (1 << (OParser.SWITCH - 76)) | (1 << (OParser.THROW - 76)) | (1 << (OParser.TRY - 76)) | (1 << (OParser.WITH - 76)) | (1 << (OParser.WHILE - 76)) | (1 << (OParser.WRITE - 76)) | (1 << (OParser.SYMBOL_IDENTIFIER - 76)) | (1 << (OParser.TYPE_IDENTIFIER - 76)) | (1 << (OParser.VARIABLE_IDENTIFIER - 76)))) != 0):
                 self.state = 567 
                 localctx.stmts = self.statement_list(0)
 
@@ -4299,7 +4299,7 @@ class OParser ( AbstractParser ):
                 self.match(OParser.COLON)
                 self.state = 669
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 75)) & ~0x3f) == 0 and ((1 << (_la - 75)) & ((1 << (OParser.DO - 75)) | (1 << (OParser.FOR - 75)) | (1 << (OParser.IF - 75)) | (1 << (OParser.METHOD - 75)) | (1 << (OParser.RETURN - 75)) | (1 << (OParser.SWITCH - 75)) | (1 << (OParser.THROW - 75)) | (1 << (OParser.TRY - 75)) | (1 << (OParser.WITH - 75)) | (1 << (OParser.WHILE - 75)) | (1 << (OParser.WRITE - 75)) | (1 << (OParser.SYMBOL_IDENTIFIER - 75)) | (1 << (OParser.TYPE_IDENTIFIER - 75)) | (1 << (OParser.VARIABLE_IDENTIFIER - 75)))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 76)) & ~0x3f) == 0 and ((1 << (_la - 76)) & ((1 << (OParser.DO - 76)) | (1 << (OParser.FOR - 76)) | (1 << (OParser.IF - 76)) | (1 << (OParser.METHOD - 76)) | (1 << (OParser.RETURN - 76)) | (1 << (OParser.SWITCH - 76)) | (1 << (OParser.THROW - 76)) | (1 << (OParser.TRY - 76)) | (1 << (OParser.WITH - 76)) | (1 << (OParser.WHILE - 76)) | (1 << (OParser.WRITE - 76)) | (1 << (OParser.SYMBOL_IDENTIFIER - 76)) | (1 << (OParser.TYPE_IDENTIFIER - 76)) | (1 << (OParser.VARIABLE_IDENTIFIER - 76)))) != 0):
                     self.state = 668 
                     localctx.stmts = self.statement_list(0)
 
@@ -4606,7 +4606,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LCURL)
             self.state = 706
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 75)) & ~0x3f) == 0 and ((1 << (_la - 75)) & ((1 << (OParser.DO - 75)) | (1 << (OParser.FOR - 75)) | (1 << (OParser.IF - 75)) | (1 << (OParser.METHOD - 75)) | (1 << (OParser.RETURN - 75)) | (1 << (OParser.SWITCH - 75)) | (1 << (OParser.THROW - 75)) | (1 << (OParser.TRY - 75)) | (1 << (OParser.WITH - 75)) | (1 << (OParser.WHILE - 75)) | (1 << (OParser.WRITE - 75)) | (1 << (OParser.SYMBOL_IDENTIFIER - 75)) | (1 << (OParser.TYPE_IDENTIFIER - 75)) | (1 << (OParser.VARIABLE_IDENTIFIER - 75)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 76)) & ~0x3f) == 0 and ((1 << (_la - 76)) & ((1 << (OParser.DO - 76)) | (1 << (OParser.FOR - 76)) | (1 << (OParser.IF - 76)) | (1 << (OParser.METHOD - 76)) | (1 << (OParser.RETURN - 76)) | (1 << (OParser.SWITCH - 76)) | (1 << (OParser.THROW - 76)) | (1 << (OParser.TRY - 76)) | (1 << (OParser.WITH - 76)) | (1 << (OParser.WHILE - 76)) | (1 << (OParser.WRITE - 76)) | (1 << (OParser.SYMBOL_IDENTIFIER - 76)) | (1 << (OParser.TYPE_IDENTIFIER - 76)) | (1 << (OParser.VARIABLE_IDENTIFIER - 76)))) != 0):
                 self.state = 705 
                 localctx.stmts = self.statement_list(0)
 
@@ -5080,7 +5080,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LCURL)
             self.state = 764
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 75)) & ~0x3f) == 0 and ((1 << (_la - 75)) & ((1 << (OParser.DO - 75)) | (1 << (OParser.FOR - 75)) | (1 << (OParser.IF - 75)) | (1 << (OParser.METHOD - 75)) | (1 << (OParser.RETURN - 75)) | (1 << (OParser.SWITCH - 75)) | (1 << (OParser.THROW - 75)) | (1 << (OParser.TRY - 75)) | (1 << (OParser.WITH - 75)) | (1 << (OParser.WHILE - 75)) | (1 << (OParser.WRITE - 75)) | (1 << (OParser.SYMBOL_IDENTIFIER - 75)) | (1 << (OParser.TYPE_IDENTIFIER - 75)) | (1 << (OParser.VARIABLE_IDENTIFIER - 75)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 76)) & ~0x3f) == 0 and ((1 << (_la - 76)) & ((1 << (OParser.DO - 76)) | (1 << (OParser.FOR - 76)) | (1 << (OParser.IF - 76)) | (1 << (OParser.METHOD - 76)) | (1 << (OParser.RETURN - 76)) | (1 << (OParser.SWITCH - 76)) | (1 << (OParser.THROW - 76)) | (1 << (OParser.TRY - 76)) | (1 << (OParser.WITH - 76)) | (1 << (OParser.WHILE - 76)) | (1 << (OParser.WRITE - 76)) | (1 << (OParser.SYMBOL_IDENTIFIER - 76)) | (1 << (OParser.TYPE_IDENTIFIER - 76)) | (1 << (OParser.VARIABLE_IDENTIFIER - 76)))) != 0):
                 self.state = 763 
                 localctx.stmts = self.statement_list(0)
 
@@ -5109,7 +5109,7 @@ class OParser ( AbstractParser ):
                 self.match(OParser.LCURL)
                 self.state = 776
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 75)) & ~0x3f) == 0 and ((1 << (_la - 75)) & ((1 << (OParser.DO - 75)) | (1 << (OParser.FOR - 75)) | (1 << (OParser.IF - 75)) | (1 << (OParser.METHOD - 75)) | (1 << (OParser.RETURN - 75)) | (1 << (OParser.SWITCH - 75)) | (1 << (OParser.THROW - 75)) | (1 << (OParser.TRY - 75)) | (1 << (OParser.WITH - 75)) | (1 << (OParser.WHILE - 75)) | (1 << (OParser.WRITE - 75)) | (1 << (OParser.SYMBOL_IDENTIFIER - 75)) | (1 << (OParser.TYPE_IDENTIFIER - 75)) | (1 << (OParser.VARIABLE_IDENTIFIER - 75)))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 76)) & ~0x3f) == 0 and ((1 << (_la - 76)) & ((1 << (OParser.DO - 76)) | (1 << (OParser.FOR - 76)) | (1 << (OParser.IF - 76)) | (1 << (OParser.METHOD - 76)) | (1 << (OParser.RETURN - 76)) | (1 << (OParser.SWITCH - 76)) | (1 << (OParser.THROW - 76)) | (1 << (OParser.TRY - 76)) | (1 << (OParser.WITH - 76)) | (1 << (OParser.WHILE - 76)) | (1 << (OParser.WRITE - 76)) | (1 << (OParser.SYMBOL_IDENTIFIER - 76)) | (1 << (OParser.TYPE_IDENTIFIER - 76)) | (1 << (OParser.VARIABLE_IDENTIFIER - 76)))) != 0):
                     self.state = 775 
                     localctx.anyStmts = self.statement_list(0)
 
@@ -5127,7 +5127,7 @@ class OParser ( AbstractParser ):
                 self.match(OParser.LCURL)
                 self.state = 784
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 75)) & ~0x3f) == 0 and ((1 << (_la - 75)) & ((1 << (OParser.DO - 75)) | (1 << (OParser.FOR - 75)) | (1 << (OParser.IF - 75)) | (1 << (OParser.METHOD - 75)) | (1 << (OParser.RETURN - 75)) | (1 << (OParser.SWITCH - 75)) | (1 << (OParser.THROW - 75)) | (1 << (OParser.TRY - 75)) | (1 << (OParser.WITH - 75)) | (1 << (OParser.WHILE - 75)) | (1 << (OParser.WRITE - 75)) | (1 << (OParser.SYMBOL_IDENTIFIER - 75)) | (1 << (OParser.TYPE_IDENTIFIER - 75)) | (1 << (OParser.VARIABLE_IDENTIFIER - 75)))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 76)) & ~0x3f) == 0 and ((1 << (_la - 76)) & ((1 << (OParser.DO - 76)) | (1 << (OParser.FOR - 76)) | (1 << (OParser.IF - 76)) | (1 << (OParser.METHOD - 76)) | (1 << (OParser.RETURN - 76)) | (1 << (OParser.SWITCH - 76)) | (1 << (OParser.THROW - 76)) | (1 << (OParser.TRY - 76)) | (1 << (OParser.WITH - 76)) | (1 << (OParser.WHILE - 76)) | (1 << (OParser.WRITE - 76)) | (1 << (OParser.SYMBOL_IDENTIFIER - 76)) | (1 << (OParser.TYPE_IDENTIFIER - 76)) | (1 << (OParser.VARIABLE_IDENTIFIER - 76)))) != 0):
                     self.state = 783 
                     localctx.finalStmts = self.statement_list(0)
 
@@ -5254,7 +5254,7 @@ class OParser ( AbstractParser ):
                 self.match(OParser.LCURL)
                 self.state = 795
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 75)) & ~0x3f) == 0 and ((1 << (_la - 75)) & ((1 << (OParser.DO - 75)) | (1 << (OParser.FOR - 75)) | (1 << (OParser.IF - 75)) | (1 << (OParser.METHOD - 75)) | (1 << (OParser.RETURN - 75)) | (1 << (OParser.SWITCH - 75)) | (1 << (OParser.THROW - 75)) | (1 << (OParser.TRY - 75)) | (1 << (OParser.WITH - 75)) | (1 << (OParser.WHILE - 75)) | (1 << (OParser.WRITE - 75)) | (1 << (OParser.SYMBOL_IDENTIFIER - 75)) | (1 << (OParser.TYPE_IDENTIFIER - 75)) | (1 << (OParser.VARIABLE_IDENTIFIER - 75)))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 76)) & ~0x3f) == 0 and ((1 << (_la - 76)) & ((1 << (OParser.DO - 76)) | (1 << (OParser.FOR - 76)) | (1 << (OParser.IF - 76)) | (1 << (OParser.METHOD - 76)) | (1 << (OParser.RETURN - 76)) | (1 << (OParser.SWITCH - 76)) | (1 << (OParser.THROW - 76)) | (1 << (OParser.TRY - 76)) | (1 << (OParser.WITH - 76)) | (1 << (OParser.WHILE - 76)) | (1 << (OParser.WRITE - 76)) | (1 << (OParser.SYMBOL_IDENTIFIER - 76)) | (1 << (OParser.TYPE_IDENTIFIER - 76)) | (1 << (OParser.VARIABLE_IDENTIFIER - 76)))) != 0):
                     self.state = 794 
                     localctx.stmts = self.statement_list(0)
 
@@ -5280,7 +5280,7 @@ class OParser ( AbstractParser ):
                 self.match(OParser.LCURL)
                 self.state = 806
                 _la = self._input.LA(1)
-                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 75)) & ~0x3f) == 0 and ((1 << (_la - 75)) & ((1 << (OParser.DO - 75)) | (1 << (OParser.FOR - 75)) | (1 << (OParser.IF - 75)) | (1 << (OParser.METHOD - 75)) | (1 << (OParser.RETURN - 75)) | (1 << (OParser.SWITCH - 75)) | (1 << (OParser.THROW - 75)) | (1 << (OParser.TRY - 75)) | (1 << (OParser.WITH - 75)) | (1 << (OParser.WHILE - 75)) | (1 << (OParser.WRITE - 75)) | (1 << (OParser.SYMBOL_IDENTIFIER - 75)) | (1 << (OParser.TYPE_IDENTIFIER - 75)) | (1 << (OParser.VARIABLE_IDENTIFIER - 75)))) != 0):
+                if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.BOOLEAN) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.CODE))) != 0) or ((((_la - 76)) & ~0x3f) == 0 and ((1 << (_la - 76)) & ((1 << (OParser.DO - 76)) | (1 << (OParser.FOR - 76)) | (1 << (OParser.IF - 76)) | (1 << (OParser.METHOD - 76)) | (1 << (OParser.RETURN - 76)) | (1 << (OParser.SWITCH - 76)) | (1 << (OParser.THROW - 76)) | (1 << (OParser.TRY - 76)) | (1 << (OParser.WITH - 76)) | (1 << (OParser.WHILE - 76)) | (1 << (OParser.WRITE - 76)) | (1 << (OParser.SYMBOL_IDENTIFIER - 76)) | (1 << (OParser.TYPE_IDENTIFIER - 76)) | (1 << (OParser.VARIABLE_IDENTIFIER - 76)))) != 0):
                     self.state = 805 
                     localctx.stmts = self.statement_list(0)
 
@@ -5340,7 +5340,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.RETURN)
             self.state = 814
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 82)) & ~0x3f) == 0 and ((1 << (_la - 82)) & ((1 << (OParser.EXECUTE - 82)) | (1 << (OParser.FETCH - 82)) | (1 << (OParser.MUTABLE - 82)) | (1 << (OParser.NULL - 82)) | (1 << (OParser.READ - 82)) | (1 << (OParser.SELF - 82)) | (1 << (OParser.SORTED - 82)) | (1 << (OParser.THIS - 82)) | (1 << (OParser.BOOLEAN_LITERAL - 82)) | (1 << (OParser.CHAR_LITERAL - 82)) | (1 << (OParser.MIN_INTEGER - 82)) | (1 << (OParser.MAX_INTEGER - 82)) | (1 << (OParser.SYMBOL_IDENTIFIER - 82)) | (1 << (OParser.TYPE_IDENTIFIER - 82)) | (1 << (OParser.VARIABLE_IDENTIFIER - 82)) | (1 << (OParser.TEXT_LITERAL - 82)) | (1 << (OParser.INTEGER_LITERAL - 82)) | (1 << (OParser.HEXA_LITERAL - 82)) | (1 << (OParser.DECIMAL_LITERAL - 82)) | (1 << (OParser.DATETIME_LITERAL - 82)))) != 0) or ((((_la - 146)) & ~0x3f) == 0 and ((1 << (_la - 146)) & ((1 << (OParser.TIME_LITERAL - 146)) | (1 << (OParser.DATE_LITERAL - 146)) | (1 << (OParser.PERIOD_LITERAL - 146)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 83)) & ~0x3f) == 0 and ((1 << (_la - 83)) & ((1 << (OParser.EXECUTE - 83)) | (1 << (OParser.FETCH - 83)) | (1 << (OParser.MUTABLE - 83)) | (1 << (OParser.NULL - 83)) | (1 << (OParser.READ - 83)) | (1 << (OParser.SELF - 83)) | (1 << (OParser.SORTED - 83)) | (1 << (OParser.THIS - 83)) | (1 << (OParser.BOOLEAN_LITERAL - 83)) | (1 << (OParser.CHAR_LITERAL - 83)) | (1 << (OParser.MIN_INTEGER - 83)) | (1 << (OParser.MAX_INTEGER - 83)) | (1 << (OParser.SYMBOL_IDENTIFIER - 83)) | (1 << (OParser.TYPE_IDENTIFIER - 83)) | (1 << (OParser.VARIABLE_IDENTIFIER - 83)) | (1 << (OParser.TEXT_LITERAL - 83)) | (1 << (OParser.INTEGER_LITERAL - 83)) | (1 << (OParser.HEXA_LITERAL - 83)) | (1 << (OParser.DECIMAL_LITERAL - 83)) | (1 << (OParser.DATETIME_LITERAL - 83)) | (1 << (OParser.TIME_LITERAL - 83)))) != 0) or _la==OParser.DATE_LITERAL or _la==OParser.PERIOD_LITERAL:
                 self.state = 813 
                 localctx.exp = self.expression(0)
 
@@ -5404,7 +5404,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LPAR)
             self.state = 821
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 82)) & ~0x3f) == 0 and ((1 << (_la - 82)) & ((1 << (OParser.EXECUTE - 82)) | (1 << (OParser.FETCH - 82)) | (1 << (OParser.MUTABLE - 82)) | (1 << (OParser.NULL - 82)) | (1 << (OParser.READ - 82)) | (1 << (OParser.SELF - 82)) | (1 << (OParser.SORTED - 82)) | (1 << (OParser.THIS - 82)) | (1 << (OParser.BOOLEAN_LITERAL - 82)) | (1 << (OParser.CHAR_LITERAL - 82)) | (1 << (OParser.MIN_INTEGER - 82)) | (1 << (OParser.MAX_INTEGER - 82)) | (1 << (OParser.SYMBOL_IDENTIFIER - 82)) | (1 << (OParser.TYPE_IDENTIFIER - 82)) | (1 << (OParser.VARIABLE_IDENTIFIER - 82)) | (1 << (OParser.TEXT_LITERAL - 82)) | (1 << (OParser.INTEGER_LITERAL - 82)) | (1 << (OParser.HEXA_LITERAL - 82)) | (1 << (OParser.DECIMAL_LITERAL - 82)) | (1 << (OParser.DATETIME_LITERAL - 82)))) != 0) or ((((_la - 146)) & ~0x3f) == 0 and ((1 << (_la - 146)) & ((1 << (OParser.TIME_LITERAL - 146)) | (1 << (OParser.DATE_LITERAL - 146)) | (1 << (OParser.PERIOD_LITERAL - 146)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 83)) & ~0x3f) == 0 and ((1 << (_la - 83)) & ((1 << (OParser.EXECUTE - 83)) | (1 << (OParser.FETCH - 83)) | (1 << (OParser.MUTABLE - 83)) | (1 << (OParser.NULL - 83)) | (1 << (OParser.READ - 83)) | (1 << (OParser.SELF - 83)) | (1 << (OParser.SORTED - 83)) | (1 << (OParser.THIS - 83)) | (1 << (OParser.BOOLEAN_LITERAL - 83)) | (1 << (OParser.CHAR_LITERAL - 83)) | (1 << (OParser.MIN_INTEGER - 83)) | (1 << (OParser.MAX_INTEGER - 83)) | (1 << (OParser.SYMBOL_IDENTIFIER - 83)) | (1 << (OParser.TYPE_IDENTIFIER - 83)) | (1 << (OParser.VARIABLE_IDENTIFIER - 83)) | (1 << (OParser.TEXT_LITERAL - 83)) | (1 << (OParser.INTEGER_LITERAL - 83)) | (1 << (OParser.HEXA_LITERAL - 83)) | (1 << (OParser.DECIMAL_LITERAL - 83)) | (1 << (OParser.DATETIME_LITERAL - 83)) | (1 << (OParser.TIME_LITERAL - 83)))) != 0) or _la==OParser.DATE_LITERAL or _la==OParser.PERIOD_LITERAL:
                 self.state = 820 
                 localctx.args = self.argument_assignment_list(0)
 
@@ -7968,7 +7968,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LPAR)
             self.state = 1046
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 82)) & ~0x3f) == 0 and ((1 << (_la - 82)) & ((1 << (OParser.EXECUTE - 82)) | (1 << (OParser.FETCH - 82)) | (1 << (OParser.MUTABLE - 82)) | (1 << (OParser.NULL - 82)) | (1 << (OParser.READ - 82)) | (1 << (OParser.SELF - 82)) | (1 << (OParser.SORTED - 82)) | (1 << (OParser.THIS - 82)) | (1 << (OParser.BOOLEAN_LITERAL - 82)) | (1 << (OParser.CHAR_LITERAL - 82)) | (1 << (OParser.MIN_INTEGER - 82)) | (1 << (OParser.MAX_INTEGER - 82)) | (1 << (OParser.SYMBOL_IDENTIFIER - 82)) | (1 << (OParser.TYPE_IDENTIFIER - 82)) | (1 << (OParser.VARIABLE_IDENTIFIER - 82)) | (1 << (OParser.TEXT_LITERAL - 82)) | (1 << (OParser.INTEGER_LITERAL - 82)) | (1 << (OParser.HEXA_LITERAL - 82)) | (1 << (OParser.DECIMAL_LITERAL - 82)) | (1 << (OParser.DATETIME_LITERAL - 82)))) != 0) or ((((_la - 146)) & ~0x3f) == 0 and ((1 << (_la - 146)) & ((1 << (OParser.TIME_LITERAL - 146)) | (1 << (OParser.DATE_LITERAL - 146)) | (1 << (OParser.PERIOD_LITERAL - 146)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 83)) & ~0x3f) == 0 and ((1 << (_la - 83)) & ((1 << (OParser.EXECUTE - 83)) | (1 << (OParser.FETCH - 83)) | (1 << (OParser.MUTABLE - 83)) | (1 << (OParser.NULL - 83)) | (1 << (OParser.READ - 83)) | (1 << (OParser.SELF - 83)) | (1 << (OParser.SORTED - 83)) | (1 << (OParser.THIS - 83)) | (1 << (OParser.BOOLEAN_LITERAL - 83)) | (1 << (OParser.CHAR_LITERAL - 83)) | (1 << (OParser.MIN_INTEGER - 83)) | (1 << (OParser.MAX_INTEGER - 83)) | (1 << (OParser.SYMBOL_IDENTIFIER - 83)) | (1 << (OParser.TYPE_IDENTIFIER - 83)) | (1 << (OParser.VARIABLE_IDENTIFIER - 83)) | (1 << (OParser.TEXT_LITERAL - 83)) | (1 << (OParser.INTEGER_LITERAL - 83)) | (1 << (OParser.HEXA_LITERAL - 83)) | (1 << (OParser.DECIMAL_LITERAL - 83)) | (1 << (OParser.DATETIME_LITERAL - 83)) | (1 << (OParser.TIME_LITERAL - 83)))) != 0) or _la==OParser.DATE_LITERAL or _la==OParser.PERIOD_LITERAL:
                 self.state = 1045 
                 localctx.args = self.argument_assignment_list(0)
 
@@ -9473,7 +9473,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LBRAK)
             self.state = 1169
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 82)) & ~0x3f) == 0 and ((1 << (_la - 82)) & ((1 << (OParser.EXECUTE - 82)) | (1 << (OParser.FETCH - 82)) | (1 << (OParser.MUTABLE - 82)) | (1 << (OParser.NULL - 82)) | (1 << (OParser.READ - 82)) | (1 << (OParser.SELF - 82)) | (1 << (OParser.SORTED - 82)) | (1 << (OParser.THIS - 82)) | (1 << (OParser.BOOLEAN_LITERAL - 82)) | (1 << (OParser.CHAR_LITERAL - 82)) | (1 << (OParser.MIN_INTEGER - 82)) | (1 << (OParser.MAX_INTEGER - 82)) | (1 << (OParser.SYMBOL_IDENTIFIER - 82)) | (1 << (OParser.TYPE_IDENTIFIER - 82)) | (1 << (OParser.VARIABLE_IDENTIFIER - 82)) | (1 << (OParser.TEXT_LITERAL - 82)) | (1 << (OParser.INTEGER_LITERAL - 82)) | (1 << (OParser.HEXA_LITERAL - 82)) | (1 << (OParser.DECIMAL_LITERAL - 82)) | (1 << (OParser.DATETIME_LITERAL - 82)))) != 0) or ((((_la - 146)) & ~0x3f) == 0 and ((1 << (_la - 146)) & ((1 << (OParser.TIME_LITERAL - 146)) | (1 << (OParser.DATE_LITERAL - 146)) | (1 << (OParser.PERIOD_LITERAL - 146)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 83)) & ~0x3f) == 0 and ((1 << (_la - 83)) & ((1 << (OParser.EXECUTE - 83)) | (1 << (OParser.FETCH - 83)) | (1 << (OParser.MUTABLE - 83)) | (1 << (OParser.NULL - 83)) | (1 << (OParser.READ - 83)) | (1 << (OParser.SELF - 83)) | (1 << (OParser.SORTED - 83)) | (1 << (OParser.THIS - 83)) | (1 << (OParser.BOOLEAN_LITERAL - 83)) | (1 << (OParser.CHAR_LITERAL - 83)) | (1 << (OParser.MIN_INTEGER - 83)) | (1 << (OParser.MAX_INTEGER - 83)) | (1 << (OParser.SYMBOL_IDENTIFIER - 83)) | (1 << (OParser.TYPE_IDENTIFIER - 83)) | (1 << (OParser.VARIABLE_IDENTIFIER - 83)) | (1 << (OParser.TEXT_LITERAL - 83)) | (1 << (OParser.INTEGER_LITERAL - 83)) | (1 << (OParser.HEXA_LITERAL - 83)) | (1 << (OParser.DECIMAL_LITERAL - 83)) | (1 << (OParser.DATETIME_LITERAL - 83)) | (1 << (OParser.TIME_LITERAL - 83)))) != 0) or _la==OParser.DATE_LITERAL or _la==OParser.PERIOD_LITERAL:
                 self.state = 1168 
                 localctx.items = self.expression_list(0)
 
@@ -9530,7 +9530,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LT)
             self.state = 1175
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 82)) & ~0x3f) == 0 and ((1 << (_la - 82)) & ((1 << (OParser.EXECUTE - 82)) | (1 << (OParser.FETCH - 82)) | (1 << (OParser.MUTABLE - 82)) | (1 << (OParser.NULL - 82)) | (1 << (OParser.READ - 82)) | (1 << (OParser.SELF - 82)) | (1 << (OParser.SORTED - 82)) | (1 << (OParser.THIS - 82)) | (1 << (OParser.BOOLEAN_LITERAL - 82)) | (1 << (OParser.CHAR_LITERAL - 82)) | (1 << (OParser.MIN_INTEGER - 82)) | (1 << (OParser.MAX_INTEGER - 82)) | (1 << (OParser.SYMBOL_IDENTIFIER - 82)) | (1 << (OParser.TYPE_IDENTIFIER - 82)) | (1 << (OParser.VARIABLE_IDENTIFIER - 82)) | (1 << (OParser.TEXT_LITERAL - 82)) | (1 << (OParser.INTEGER_LITERAL - 82)) | (1 << (OParser.HEXA_LITERAL - 82)) | (1 << (OParser.DECIMAL_LITERAL - 82)) | (1 << (OParser.DATETIME_LITERAL - 82)))) != 0) or ((((_la - 146)) & ~0x3f) == 0 and ((1 << (_la - 146)) & ((1 << (OParser.TIME_LITERAL - 146)) | (1 << (OParser.DATE_LITERAL - 146)) | (1 << (OParser.PERIOD_LITERAL - 146)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 83)) & ~0x3f) == 0 and ((1 << (_la - 83)) & ((1 << (OParser.EXECUTE - 83)) | (1 << (OParser.FETCH - 83)) | (1 << (OParser.MUTABLE - 83)) | (1 << (OParser.NULL - 83)) | (1 << (OParser.READ - 83)) | (1 << (OParser.SELF - 83)) | (1 << (OParser.SORTED - 83)) | (1 << (OParser.THIS - 83)) | (1 << (OParser.BOOLEAN_LITERAL - 83)) | (1 << (OParser.CHAR_LITERAL - 83)) | (1 << (OParser.MIN_INTEGER - 83)) | (1 << (OParser.MAX_INTEGER - 83)) | (1 << (OParser.SYMBOL_IDENTIFIER - 83)) | (1 << (OParser.TYPE_IDENTIFIER - 83)) | (1 << (OParser.VARIABLE_IDENTIFIER - 83)) | (1 << (OParser.TEXT_LITERAL - 83)) | (1 << (OParser.INTEGER_LITERAL - 83)) | (1 << (OParser.HEXA_LITERAL - 83)) | (1 << (OParser.DECIMAL_LITERAL - 83)) | (1 << (OParser.DATETIME_LITERAL - 83)) | (1 << (OParser.TIME_LITERAL - 83)))) != 0) or _la==OParser.DATE_LITERAL or _la==OParser.PERIOD_LITERAL:
                 self.state = 1174 
                 localctx.items = self.expression_list(0)
 
@@ -11844,27 +11844,49 @@ class OParser ( AbstractParser ):
             self.exitRule()
         return localctx
 
-    class Native_category_mappingContext(ParserRuleContext):
+    class Native_category_bindingContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
-            super(OParser.Native_category_mappingContext, self).__init__(parent, invokingState)
+            super(OParser.Native_category_bindingContext, self).__init__(parent, invokingState)
             self.parser = parser
 
 
         def getRuleIndex(self):
-            return OParser.RULE_native_category_mapping
+            return OParser.RULE_native_category_binding
 
      
         def copyFrom(self, ctx):
-            super(OParser.Native_category_mappingContext, self).copyFrom(ctx)
+            super(OParser.Native_category_bindingContext, self).copyFrom(ctx)
 
 
 
-    class CSharpCategoryMappingContext(Native_category_mappingContext):
+    class Python2CategoryBindingContext(Native_category_bindingContext):
 
-        def __init__(self, parser, ctx): # actually a OParser.Native_category_mappingContext)
-            super(OParser.CSharpCategoryMappingContext, self).__init__(parser)
-            self.mapping = None # Csharp_identifier_expressionContext
+        def __init__(self, parser, ctx): # actually a OParser.Native_category_bindingContext)
+            super(OParser.Python2CategoryBindingContext, self).__init__(parser)
+            self.binding = None # Python_category_bindingContext
+            self.copyFrom(ctx)
+
+        def PYTHON2(self):
+            return self.getToken(OParser.PYTHON2, 0)
+        def python_category_binding(self):
+            return self.getTypedRuleContext(OParser.Python_category_bindingContext,0)
+
+
+        def enterRule(self, listener):
+            if isinstance( listener, OParserListener ):
+                listener.enterPython2CategoryBinding(self)
+
+        def exitRule(self, listener):
+            if isinstance( listener, OParserListener ):
+                listener.exitPython2CategoryBinding(self)
+
+
+    class CSharpCategoryBindingContext(Native_category_bindingContext):
+
+        def __init__(self, parser, ctx): # actually a OParser.Native_category_bindingContext)
+            super(OParser.CSharpCategoryBindingContext, self).__init__(parser)
+            self.binding = None # Csharp_identifier_expressionContext
             self.copyFrom(ctx)
 
         def CSHARP(self):
@@ -11875,18 +11897,40 @@ class OParser ( AbstractParser ):
 
         def enterRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.enterCSharpCategoryMapping(self)
+                listener.enterCSharpCategoryBinding(self)
 
         def exitRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.exitCSharpCategoryMapping(self)
+                listener.exitCSharpCategoryBinding(self)
 
 
-    class JavaCategoryMappingContext(Native_category_mappingContext):
+    class JavaScriptCategoryBindingContext(Native_category_bindingContext):
 
-        def __init__(self, parser, ctx): # actually a OParser.Native_category_mappingContext)
-            super(OParser.JavaCategoryMappingContext, self).__init__(parser)
-            self.mapping = None # Java_class_identifier_expressionContext
+        def __init__(self, parser, ctx): # actually a OParser.Native_category_bindingContext)
+            super(OParser.JavaScriptCategoryBindingContext, self).__init__(parser)
+            self.binding = None # Javascript_category_bindingContext
+            self.copyFrom(ctx)
+
+        def JAVASCRIPT(self):
+            return self.getToken(OParser.JAVASCRIPT, 0)
+        def javascript_category_binding(self):
+            return self.getTypedRuleContext(OParser.Javascript_category_bindingContext,0)
+
+
+        def enterRule(self, listener):
+            if isinstance( listener, OParserListener ):
+                listener.enterJavaScriptCategoryBinding(self)
+
+        def exitRule(self, listener):
+            if isinstance( listener, OParserListener ):
+                listener.exitJavaScriptCategoryBinding(self)
+
+
+    class JavaCategoryBindingContext(Native_category_bindingContext):
+
+        def __init__(self, parser, ctx): # actually a OParser.Native_category_bindingContext)
+            super(OParser.JavaCategoryBindingContext, self).__init__(parser)
+            self.binding = None # Java_class_identifier_expressionContext
             self.copyFrom(ctx)
 
         def JAVA(self):
@@ -11897,126 +11941,82 @@ class OParser ( AbstractParser ):
 
         def enterRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.enterJavaCategoryMapping(self)
+                listener.enterJavaCategoryBinding(self)
 
         def exitRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.exitJavaCategoryMapping(self)
+                listener.exitJavaCategoryBinding(self)
 
 
-    class JavaScriptCategoryMappingContext(Native_category_mappingContext):
+    class Python3CategoryBindingContext(Native_category_bindingContext):
 
-        def __init__(self, parser, ctx): # actually a OParser.Native_category_mappingContext)
-            super(OParser.JavaScriptCategoryMappingContext, self).__init__(parser)
-            self.mapping = None # Javascript_category_mappingContext
-            self.copyFrom(ctx)
-
-        def JAVASCRIPT(self):
-            return self.getToken(OParser.JAVASCRIPT, 0)
-        def javascript_category_mapping(self):
-            return self.getTypedRuleContext(OParser.Javascript_category_mappingContext,0)
-
-
-        def enterRule(self, listener):
-            if isinstance( listener, OParserListener ):
-                listener.enterJavaScriptCategoryMapping(self)
-
-        def exitRule(self, listener):
-            if isinstance( listener, OParserListener ):
-                listener.exitJavaScriptCategoryMapping(self)
-
-
-    class Python3CategoryMappingContext(Native_category_mappingContext):
-
-        def __init__(self, parser, ctx): # actually a OParser.Native_category_mappingContext)
-            super(OParser.Python3CategoryMappingContext, self).__init__(parser)
-            self.mapping = None # Python_category_mappingContext
+        def __init__(self, parser, ctx): # actually a OParser.Native_category_bindingContext)
+            super(OParser.Python3CategoryBindingContext, self).__init__(parser)
+            self.binding = None # Python_category_bindingContext
             self.copyFrom(ctx)
 
         def PYTHON3(self):
             return self.getToken(OParser.PYTHON3, 0)
-        def python_category_mapping(self):
-            return self.getTypedRuleContext(OParser.Python_category_mappingContext,0)
+        def python_category_binding(self):
+            return self.getTypedRuleContext(OParser.Python_category_bindingContext,0)
 
 
         def enterRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.enterPython3CategoryMapping(self)
+                listener.enterPython3CategoryBinding(self)
 
         def exitRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.exitPython3CategoryMapping(self)
-
-
-    class Python2CategoryMappingContext(Native_category_mappingContext):
-
-        def __init__(self, parser, ctx): # actually a OParser.Native_category_mappingContext)
-            super(OParser.Python2CategoryMappingContext, self).__init__(parser)
-            self.mapping = None # Python_category_mappingContext
-            self.copyFrom(ctx)
-
-        def PYTHON2(self):
-            return self.getToken(OParser.PYTHON2, 0)
-        def python_category_mapping(self):
-            return self.getTypedRuleContext(OParser.Python_category_mappingContext,0)
-
-
-        def enterRule(self, listener):
-            if isinstance( listener, OParserListener ):
-                listener.enterPython2CategoryMapping(self)
-
-        def exitRule(self, listener):
-            if isinstance( listener, OParserListener ):
-                listener.exitPython2CategoryMapping(self)
+                listener.exitPython3CategoryBinding(self)
 
 
 
-    def native_category_mapping(self):
+    def native_category_binding(self):
 
-        localctx = OParser.Native_category_mappingContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 188, self.RULE_native_category_mapping)
+        localctx = OParser.Native_category_bindingContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 188, self.RULE_native_category_binding)
         try:
             self.state = 1342
             token = self._input.LA(1)
             if token in [OParser.JAVA]:
-                localctx = OParser.JavaCategoryMappingContext(self, localctx)
+                localctx = OParser.JavaCategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1332
                 self.match(OParser.JAVA)
                 self.state = 1333 
-                localctx.mapping = self.java_class_identifier_expression(0)
+                localctx.binding = self.java_class_identifier_expression(0)
 
             elif token in [OParser.CSHARP]:
-                localctx = OParser.CSharpCategoryMappingContext(self, localctx)
+                localctx = OParser.CSharpCategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1334
                 self.match(OParser.CSHARP)
                 self.state = 1335 
-                localctx.mapping = self.csharp_identifier_expression(0)
+                localctx.binding = self.csharp_identifier_expression(0)
 
             elif token in [OParser.PYTHON2]:
-                localctx = OParser.Python2CategoryMappingContext(self, localctx)
+                localctx = OParser.Python2CategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1336
                 self.match(OParser.PYTHON2)
                 self.state = 1337 
-                localctx.mapping = self.python_category_mapping()
+                localctx.binding = self.python_category_binding()
 
             elif token in [OParser.PYTHON3]:
-                localctx = OParser.Python3CategoryMappingContext(self, localctx)
+                localctx = OParser.Python3CategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 1338
                 self.match(OParser.PYTHON3)
                 self.state = 1339 
-                localctx.mapping = self.python_category_mapping()
+                localctx.binding = self.python_category_binding()
 
             elif token in [OParser.JAVASCRIPT]:
-                localctx = OParser.JavaScriptCategoryMappingContext(self, localctx)
+                localctx = OParser.JavaScriptCategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 1340
                 self.match(OParser.JAVASCRIPT)
                 self.state = 1341 
-                localctx.mapping = self.javascript_category_mapping()
+                localctx.binding = self.javascript_category_binding()
 
             else:
                 raise NoViableAltException(self)
@@ -12029,10 +12029,10 @@ class OParser ( AbstractParser ):
             self.exitRule()
         return localctx
 
-    class Python_category_mappingContext(ParserRuleContext):
+    class Python_category_bindingContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
-            super(OParser.Python_category_mappingContext, self).__init__(parent, invokingState)
+            super(OParser.Python_category_bindingContext, self).__init__(parent, invokingState)
             self.parser = parser
             self.id_ = None # IdentifierContext
             self.module = None # Python_moduleContext
@@ -12046,23 +12046,23 @@ class OParser ( AbstractParser ):
 
 
         def getRuleIndex(self):
-            return OParser.RULE_python_category_mapping
+            return OParser.RULE_python_category_binding
 
         def enterRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.enterPython_category_mapping(self)
+                listener.enterPython_category_binding(self)
 
         def exitRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.exitPython_category_mapping(self)
+                listener.exitPython_category_binding(self)
 
 
 
 
-    def python_category_mapping(self):
+    def python_category_binding(self):
 
-        localctx = OParser.Python_category_mappingContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 190, self.RULE_python_category_mapping)
+        localctx = OParser.Python_category_bindingContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 190, self.RULE_python_category_binding)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
@@ -12205,10 +12205,10 @@ class OParser ( AbstractParser ):
             self.exitRule()
         return localctx
 
-    class Javascript_category_mappingContext(ParserRuleContext):
+    class Javascript_category_bindingContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
-            super(OParser.Javascript_category_mappingContext, self).__init__(parent, invokingState)
+            super(OParser.Javascript_category_bindingContext, self).__init__(parent, invokingState)
             self.parser = parser
             self.id_ = None # IdentifierContext
             self.module = None # Javascript_moduleContext
@@ -12222,23 +12222,23 @@ class OParser ( AbstractParser ):
 
 
         def getRuleIndex(self):
-            return OParser.RULE_javascript_category_mapping
+            return OParser.RULE_javascript_category_binding
 
         def enterRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.enterJavascript_category_mapping(self)
+                listener.enterJavascript_category_binding(self)
 
         def exitRule(self, listener):
             if isinstance( listener, OParserListener ):
-                listener.exitJavascript_category_mapping(self)
+                listener.exitJavascript_category_binding(self)
 
 
 
 
-    def javascript_category_mapping(self):
+    def javascript_category_binding(self):
 
-        localctx = OParser.Javascript_category_mappingContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 196, self.RULE_javascript_category_mapping)
+        localctx = OParser.Javascript_category_bindingContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 196, self.RULE_javascript_category_binding)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
@@ -14621,7 +14621,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LPAR)
             self.state = 1554
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 82)) & ~0x3f) == 0 and ((1 << (_la - 82)) & ((1 << (OParser.EXECUTE - 82)) | (1 << (OParser.FETCH - 82)) | (1 << (OParser.MUTABLE - 82)) | (1 << (OParser.NULL - 82)) | (1 << (OParser.READ - 82)) | (1 << (OParser.SELF - 82)) | (1 << (OParser.SORTED - 82)) | (1 << (OParser.THIS - 82)) | (1 << (OParser.BOOLEAN_LITERAL - 82)) | (1 << (OParser.CHAR_LITERAL - 82)) | (1 << (OParser.MIN_INTEGER - 82)) | (1 << (OParser.MAX_INTEGER - 82)) | (1 << (OParser.SYMBOL_IDENTIFIER - 82)) | (1 << (OParser.TYPE_IDENTIFIER - 82)) | (1 << (OParser.VARIABLE_IDENTIFIER - 82)) | (1 << (OParser.TEXT_LITERAL - 82)) | (1 << (OParser.INTEGER_LITERAL - 82)) | (1 << (OParser.HEXA_LITERAL - 82)) | (1 << (OParser.DECIMAL_LITERAL - 82)) | (1 << (OParser.DATETIME_LITERAL - 82)))) != 0) or ((((_la - 146)) & ~0x3f) == 0 and ((1 << (_la - 146)) & ((1 << (OParser.TIME_LITERAL - 146)) | (1 << (OParser.DATE_LITERAL - 146)) | (1 << (OParser.PERIOD_LITERAL - 146)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 83)) & ~0x3f) == 0 and ((1 << (_la - 83)) & ((1 << (OParser.EXECUTE - 83)) | (1 << (OParser.FETCH - 83)) | (1 << (OParser.MUTABLE - 83)) | (1 << (OParser.NULL - 83)) | (1 << (OParser.READ - 83)) | (1 << (OParser.SELF - 83)) | (1 << (OParser.SORTED - 83)) | (1 << (OParser.THIS - 83)) | (1 << (OParser.BOOLEAN_LITERAL - 83)) | (1 << (OParser.CHAR_LITERAL - 83)) | (1 << (OParser.MIN_INTEGER - 83)) | (1 << (OParser.MAX_INTEGER - 83)) | (1 << (OParser.SYMBOL_IDENTIFIER - 83)) | (1 << (OParser.TYPE_IDENTIFIER - 83)) | (1 << (OParser.VARIABLE_IDENTIFIER - 83)) | (1 << (OParser.TEXT_LITERAL - 83)) | (1 << (OParser.INTEGER_LITERAL - 83)) | (1 << (OParser.HEXA_LITERAL - 83)) | (1 << (OParser.DECIMAL_LITERAL - 83)) | (1 << (OParser.DATETIME_LITERAL - 83)) | (1 << (OParser.TIME_LITERAL - 83)))) != 0) or _la==OParser.DATE_LITERAL or _la==OParser.PERIOD_LITERAL:
                 self.state = 1553 
                 localctx.items = self.expression_tuple(0)
 
@@ -14678,7 +14678,7 @@ class OParser ( AbstractParser ):
             self.match(OParser.LCURL)
             self.state = 1560
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 82)) & ~0x3f) == 0 and ((1 << (_la - 82)) & ((1 << (OParser.EXECUTE - 82)) | (1 << (OParser.FETCH - 82)) | (1 << (OParser.MUTABLE - 82)) | (1 << (OParser.NULL - 82)) | (1 << (OParser.READ - 82)) | (1 << (OParser.SELF - 82)) | (1 << (OParser.SORTED - 82)) | (1 << (OParser.THIS - 82)) | (1 << (OParser.BOOLEAN_LITERAL - 82)) | (1 << (OParser.CHAR_LITERAL - 82)) | (1 << (OParser.MIN_INTEGER - 82)) | (1 << (OParser.MAX_INTEGER - 82)) | (1 << (OParser.SYMBOL_IDENTIFIER - 82)) | (1 << (OParser.TYPE_IDENTIFIER - 82)) | (1 << (OParser.VARIABLE_IDENTIFIER - 82)) | (1 << (OParser.TEXT_LITERAL - 82)) | (1 << (OParser.INTEGER_LITERAL - 82)) | (1 << (OParser.HEXA_LITERAL - 82)) | (1 << (OParser.DECIMAL_LITERAL - 82)) | (1 << (OParser.DATETIME_LITERAL - 82)))) != 0) or ((((_la - 146)) & ~0x3f) == 0 and ((1 << (_la - 146)) & ((1 << (OParser.TIME_LITERAL - 146)) | (1 << (OParser.DATE_LITERAL - 146)) | (1 << (OParser.PERIOD_LITERAL - 146)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.LPAR) | (1 << OParser.LBRAK) | (1 << OParser.LCURL) | (1 << OParser.XMARK) | (1 << OParser.MINUS) | (1 << OParser.LT) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT))) != 0) or ((((_la - 83)) & ~0x3f) == 0 and ((1 << (_la - 83)) & ((1 << (OParser.EXECUTE - 83)) | (1 << (OParser.FETCH - 83)) | (1 << (OParser.MUTABLE - 83)) | (1 << (OParser.NULL - 83)) | (1 << (OParser.READ - 83)) | (1 << (OParser.SELF - 83)) | (1 << (OParser.SORTED - 83)) | (1 << (OParser.THIS - 83)) | (1 << (OParser.BOOLEAN_LITERAL - 83)) | (1 << (OParser.CHAR_LITERAL - 83)) | (1 << (OParser.MIN_INTEGER - 83)) | (1 << (OParser.MAX_INTEGER - 83)) | (1 << (OParser.SYMBOL_IDENTIFIER - 83)) | (1 << (OParser.TYPE_IDENTIFIER - 83)) | (1 << (OParser.VARIABLE_IDENTIFIER - 83)) | (1 << (OParser.TEXT_LITERAL - 83)) | (1 << (OParser.INTEGER_LITERAL - 83)) | (1 << (OParser.HEXA_LITERAL - 83)) | (1 << (OParser.DECIMAL_LITERAL - 83)) | (1 << (OParser.DATETIME_LITERAL - 83)) | (1 << (OParser.TIME_LITERAL - 83)))) != 0) or _la==OParser.DATE_LITERAL or _la==OParser.PERIOD_LITERAL:
                 self.state = 1559 
                 localctx.items = self.dict_entry_list(0)
 
@@ -20494,7 +20494,7 @@ class OParser ( AbstractParser ):
         if self._predicates == None:
             self._predicates = dict()
         self._predicates[7] = self.derived_list_sempred
-        self._predicates[15] = self.native_category_mapping_list_sempred
+        self._predicates[15] = self.native_category_binding_list_sempred
         self._predicates[16] = self.attribute_list_sempred
         self._predicates[33] = self.else_if_statement_list_sempred
         self._predicates[40] = self.callable_parent_sempred
@@ -20551,7 +20551,7 @@ class OParser ( AbstractParser ):
                 return self.precpred(self._ctx, 1)
          
 
-    def native_category_mapping_list_sempred(self, localctx, predIndex):
+    def native_category_binding_list_sempred(self, localctx, predIndex):
             if predIndex == 1:
                 return self.precpred(self._ctx, 1)
          

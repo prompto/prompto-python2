@@ -231,7 +231,7 @@ def serializedATN():
         buf.write(u"\u0132\u0134\u0136\u0138\u013a\u013c\u013e\u0140\u0142")
         buf.write(u"\u0144\u0146\u0148\u014a\u014c\u014e\u0150\u0152\u0154")
         buf.write(u"\u0156\u0158\u015a\u015c\u015e\u0160\u0162\u0164\u0166")
-        buf.write(u"\u0168\u016a\u016c\u016e\u0170\2\t\3\2JK\3\2!\"\4\2{")
+        buf.write(u"\u0168\u016a\u016c\u016e\u0170\2\t\3\2KL\3\2!\"\4\2{")
         buf.write(u"{\u0081\u0081\4\2&&hh\b\2\63;vv\u0080\u0080\u0089\u0089")
         buf.write(u"\u008e\u0090\u0092\u0092\7\2\63;vv\u0080\u0080\u0089")
         buf.write(u"\u0089\u008e\u0090\7\2\63;vv\u0080\u0080\u0089\u0089")
@@ -299,14 +299,14 @@ def serializedATN():
         buf.write(u"\3\2\2\2\u0162\u079a\3\2\2\2\u0164\u079c\3\2\2\2\u0166")
         buf.write(u"\u07a3\3\2\2\2\u0168\u07ae\3\2\2\2\u016a\u07b2\3\2\2")
         buf.write(u"\2\u016c\u07b9\3\2\2\2\u016e\u07c8\3\2\2\2\u0170\u07ca")
-        buf.write(u"\3\2\2\2\u0172\u0173\7U\2\2\u0173\u0174\5\u00acW\2\u0174")
+        buf.write(u"\3\2\2\2\u0172\u0173\7V\2\2\u0173\u0174\5\u00acW\2\u0174")
         buf.write(u"\u017b\7\25\2\2\u0175\u0178\5\u00acW\2\u0176\u0177\7")
         buf.write(u"\22\2\2\u0177\u0179\5 \21\2\u0178\u0176\3\2\2\2\u0178")
         buf.write(u"\u0179\3\2\2\2\u0179\u017c\3\2\2\2\u017a\u017c\5 \21")
         buf.write(u"\2\u017b\u0175\3\2\2\2\u017b\u017a\3\2\2\2\u017c\u017d")
         buf.write(u"\3\2\2\2\u017d\u017e\7\26\2\2\u017e\u017f\7\20\2\2\u017f")
         buf.write(u"\u0180\5v<\2\u0180\u0181\5\u0088E\2\u0181\u0182\5x=\2")
-        buf.write(u"\u0182\3\3\2\2\2\u0183\u0184\7U\2\2\u0184\u0185\5\u00ac")
+        buf.write(u"\u0182\3\3\2\2\2\u0183\u0184\7V\2\2\u0184\u0185\5\u00ac")
         buf.write(u"W\2\u0185\u0186\7\25\2\2\u0186\u0187\5\u009aN\2\u0187")
         buf.write(u"\u0188\7\26\2\2\u0188\u0189\7\20\2\2\u0189\u018a\5v<")
         buf.write(u"\2\u018a\u018b\5\u0086D\2\u018b\u018c\5x=\2\u018c\5\3")
@@ -334,18 +334,18 @@ def serializedATN():
         buf.write(u"\u01c3\5\u00be`\2\u01c1\u01c3\7t\2\2\u01c2\u01c0\3\2")
         buf.write(u"\2\2\u01c2\u01c1\3\2\2\2\u01c3\u01c4\3\2\2\2\u01c4\u01c5")
         buf.write(u"\5x=\2\u01c5\17\3\2\2\2\u01c6\u01c7\5\u00a4S\2\u01c7")
-        buf.write(u"\21\3\2\2\2\u01c8\u01c9\7N\2\2\u01c9\u01ca\7q\2\2\u01ca")
+        buf.write(u"\21\3\2\2\2\u01c8\u01c9\7O\2\2\u01c9\u01ca\7q\2\2\u01ca")
         buf.write(u"\u01cb\5\u0104\u0083\2\u01cb\u01cc\7\25\2\2\u01cc\u01cd")
         buf.write(u"\5\u00b4[\2\u01cd\u01d0\7\26\2\2\u01ce\u01cf\7\62\2\2")
         buf.write(u"\u01cf\u01d1\5\u0096L\2\u01d0\u01ce\3\2\2\2\u01d0\u01d1")
         buf.write(u"\3\2\2\2\u01d1\u01d2\3\2\2\2\u01d2\u01d3\7\20\2\2\u01d3")
         buf.write(u"\u01d4\5v<\2\u01d4\u01d5\5\u00dan\2\u01d5\u01d6\5x=\2")
-        buf.write(u"\u01d6\23\3\2\2\2\u01d7\u01d8\7N\2\2\u01d8\u01d9\5\u00aa")
+        buf.write(u"\u01d6\23\3\2\2\2\u01d7\u01d8\7O\2\2\u01d8\u01d9\5\u00aa")
         buf.write(u"V\2\u01d9\u01da\7|\2\2\u01da\u01db\7\25\2\2\u01db\u01dc")
         buf.write(u"\7\26\2\2\u01dc\u01dd\7\20\2\2\u01dd\u01de\5v<\2\u01de")
         buf.write(u"\u01df\5\u00dan\2\u01df\u01e0\5x=\2\u01e0\25\3\2\2\2")
-        buf.write(u"\u01e1\u01e2\7N\2\2\u01e2\u01e3\5\u00aaV\2\u01e3\u01e4")
-        buf.write(u"\7_\2\2\u01e4\u01e5\7\25\2\2\u01e5\u01e6\7\26\2\2\u01e6")
+        buf.write(u"\u01e1\u01e2\7O\2\2\u01e2\u01e3\5\u00aaV\2\u01e3\u01e4")
+        buf.write(u"\7`\2\2\u01e4\u01e5\7\25\2\2\u01e5\u01e6\7\26\2\2\u01e6")
         buf.write(u"\u01e7\7\20\2\2\u01e7\u01e8\5v<\2\u01e8\u01e9\5\u00da")
         buf.write(u"n\2\u01e9\u01ea\5x=\2\u01ea\27\3\2\2\2\u01eb\u01ec\7")
         buf.write(u"j\2\2\u01ec\u01ed\t\2\2\2\u01ed\u01ee\5\u00acW\2\u01ee")
@@ -358,7 +358,7 @@ def serializedATN():
         buf.write(u"\3\2\2\2\u01fd\u01fe\3\2\2\2\u01fe\u01ff\3\2\2\2\u01ff")
         buf.write(u"\u0200\7\26\2\2\u0200\u0201\7\20\2\2\u0201\u0202\5v<")
         buf.write(u"\2\u0202\u0203\5\34\17\2\u0203\u0204\5x=\2\u0204\33\3")
-        buf.write(u"\2\2\2\u0205\u0206\7d\2\2\u0206\u0207\7\20\2\2\u0207")
+        buf.write(u"\2\2\2\u0205\u0206\7H\2\2\u0206\u0207\7\20\2\2\u0207")
         buf.write(u"\u0208\5v<\2\u0208\u0209\5\36\20\2\u0209\u020a\5x=\2")
         buf.write(u"\u020a\35\3\2\2\2\u020b\u020c\b\20\1\2\u020c\u020d\5")
         buf.write(u"\u00c2b\2\u020d\u0214\3\2\2\2\u020e\u020f\f\3\2\2\u020f")
@@ -366,30 +366,30 @@ def serializedATN():
         buf.write(u"\2\u0212\u020e\3\2\2\2\u0213\u0216\3\2\2\2\u0214\u0212")
         buf.write(u"\3\2\2\2\u0214\u0215\3\2\2\2\u0215\37\3\2\2\2\u0216\u0214")
         buf.write(u"\3\2\2\2\u0217\u0218\5\u00ceh\2\u0218!\3\2\2\2\u0219")
-        buf.write(u"\u021a\7?\2\2\u021a\u021b\7N\2\2\u021b\u021c\5\u00a6")
+        buf.write(u"\u021a\7?\2\2\u021a\u021b\7O\2\2\u021b\u021c\5\u00a6")
         buf.write(u"T\2\u021c\u021e\7\25\2\2\u021d\u021f\5\u00b0Y\2\u021e")
         buf.write(u"\u021d\3\2\2\2\u021e\u021f\3\2\2\2\u021f\u0220\3\2\2")
         buf.write(u"\2\u0220\u0223\7\26\2\2\u0221\u0222\7\62\2\2\u0222\u0224")
         buf.write(u"\5\u0096L\2\u0223\u0221\3\2\2\2\u0223\u0224\3\2\2\2\u0224")
-        buf.write(u"#\3\2\2\2\u0225\u0226\7N\2\2\u0226\u0227\5\u00a6T\2\u0227")
+        buf.write(u"#\3\2\2\2\u0225\u0226\7O\2\2\u0226\u0227\5\u00a6T\2\u0227")
         buf.write(u"\u0229\7\25\2\2\u0228\u022a\5\u00b0Y\2\u0229\u0228\3")
         buf.write(u"\2\2\2\u0229\u022a\3\2\2\2\u022a\u022b\3\2\2\2\u022b")
         buf.write(u"\u022e\7\26\2\2\u022c\u022d\7\62\2\2\u022d\u022f\5\u0096")
         buf.write(u"L\2\u022e\u022c\3\2\2\2\u022e\u022f\3\2\2\2\u022f\u0230")
         buf.write(u"\3\2\2\2\u0230\u0231\7\20\2\2\u0231\u0232\5v<\2\u0232")
         buf.write(u"\u0233\5\u00dan\2\u0233\u0234\5x=\2\u0234%\3\2\2\2\u0235")
-        buf.write(u"\u0236\7N\2\2\u0236\u0237\7j\2\2\u0237\u0238\5\u00a6")
+        buf.write(u"\u0236\7O\2\2\u0236\u0237\7j\2\2\u0237\u0238\5\u00a6")
         buf.write(u"T\2\u0238\u023a\7\25\2\2\u0239\u023b\5\u00b0Y\2\u023a")
         buf.write(u"\u0239\3\2\2\2\u023a\u023b\3\2\2\2\u023b\u023c\3\2\2")
         buf.write(u"\2\u023c\u023f\7\26\2\2\u023d\u023e\7\62\2\2\u023e\u0240")
         buf.write(u"\5\u00ba^\2\u023f\u023d\3\2\2\2\u023f\u0240\3\2\2\2\u0240")
         buf.write(u"\u0241\3\2\2\2\u0241\u0242\7\20\2\2\u0242\u0243\5v<\2")
         buf.write(u"\u0243\u0244\5\u00d2j\2\u0244\u0245\5x=\2\u0245\'\3\2")
-        buf.write(u"\2\2\u0246\u0247\7N\2\2\u0247\u0248\7\u0080\2\2\u0248")
+        buf.write(u"\2\2\u0246\u0247\7O\2\2\u0247\u0248\7\u0080\2\2\u0248")
         buf.write(u"\u0249\7\u0093\2\2\u0249\u024a\7\25\2\2\u024a\u024b\7")
         buf.write(u"\26\2\2\u024b\u024c\7\20\2\2\u024c\u024d\5v<\2\u024d")
         buf.write(u"\u024e\5\u00dan\2\u024e\u024f\5x=\2\u024f\u0250\5t;\2")
-        buf.write(u"\u0250\u0251\7Y\2\2\u0251\u0257\7\20\2\2\u0252\u0253")
+        buf.write(u"\u0250\u0251\7Z\2\2\u0251\u0257\7\20\2\2\u0252\u0253")
         buf.write(u"\5v<\2\u0253\u0254\5\u00dco\2\u0254\u0255\5x=\2\u0255")
         buf.write(u"\u0258\3\2\2\2\u0256\u0258\5\u00aeX\2\u0257\u0252\3\2")
         buf.write(u"\2\2\u0257\u0256\3\2\2\2\u0258)\3\2\2\2\u0259\u025a\5")
@@ -439,34 +439,34 @@ def serializedATN():
         buf.write(u"\2\u02b8\u02b9\7\u0086\2\2\u02b9\u02ba\5\u00e4s\2\u02ba")
         buf.write(u"\u02bb\7\20\2\2\u02bb\u02bc\5v<\2\u02bc\u02bd\5\u00da")
         buf.write(u"n\2\u02bd\u02be\5x=\2\u02be\u02c8\3\2\2\2\u02bf\u02c0")
-        buf.write(u"\7\u0086\2\2\u02c0\u02c1\7a\2\2\u02c1\u02c2\5\u00e2r")
+        buf.write(u"\7\u0086\2\2\u02c0\u02c1\7b\2\2\u02c1\u02c2\5\u00e2r")
         buf.write(u"\2\u02c2\u02c3\7\20\2\2\u02c3\u02c4\5v<\2\u02c4\u02c5")
         buf.write(u"\5\u00dan\2\u02c5\u02c6\5x=\2\u02c6\u02c8\3\2\2\2\u02c7")
         buf.write(u"\u02b8\3\2\2\2\u02c7\u02bf\3\2\2\2\u02c8?\3\2\2\2\u02c9")
-        buf.write(u"\u02ca\7]\2\2\u02ca\u02cd\5\u00aaV\2\u02cb\u02cc\7\22")
+        buf.write(u"\u02ca\7^\2\2\u02ca\u02cd\5\u00aaV\2\u02cb\u02cc\7\22")
         buf.write(u"\2\2\u02cc\u02ce\5\u00aaV\2\u02cd\u02cb\3\2\2\2\u02cd")
-        buf.write(u"\u02ce\3\2\2\2\u02ce\u02cf\3\2\2\2\u02cf\u02d0\7a\2\2")
+        buf.write(u"\u02ce\3\2\2\2\u02ce\u02cf\3\2\2\2\u02cf\u02d0\7b\2\2")
         buf.write(u"\u02d0\u02d1\5R*\2\u02d1\u02d2\7\20\2\2\u02d2\u02d3\5")
         buf.write(u"v<\2\u02d3\u02d4\5\u00dan\2\u02d4\u02d5\5x=\2\u02d5A")
-        buf.write(u"\3\2\2\2\u02d6\u02d7\7Q\2\2\u02d7\u02d8\7\20\2\2\u02d8")
+        buf.write(u"\3\2\2\2\u02d6\u02d7\7R\2\2\u02d7\u02d8\7\20\2\2\u02d8")
         buf.write(u"\u02d9\5v<\2\u02d9\u02da\5\u00dan\2\u02da\u02db\5x=\2")
         buf.write(u"\u02db\u02dc\5t;\2\u02dc\u02dd\7\u0088\2\2\u02dd\u02de")
         buf.write(u"\5R*\2\u02deC\3\2\2\2\u02df\u02e0\7\u0088\2\2\u02e0\u02e1")
         buf.write(u"\5R*\2\u02e1\u02e2\7\20\2\2\u02e2\u02e3\5v<\2\u02e3\u02e4")
         buf.write(u"\5\u00dan\2\u02e4\u02e5\5x=\2\u02e5E\3\2\2\2\u02e6\u02e7")
-        buf.write(u"\7`\2\2\u02e7\u02e8\5R*\2\u02e8\u02e9\7\20\2\2\u02e9")
+        buf.write(u"\7a\2\2\u02e7\u02e8\5R*\2\u02e8\u02e9\7\20\2\2\u02e9")
         buf.write(u"\u02ea\5v<\2\u02ea\u02eb\5\u00dan\2\u02eb\u02ef\5x=\2")
         buf.write(u"\u02ec\u02ed\5t;\2\u02ed\u02ee\5H%\2\u02ee\u02f0\3\2")
         buf.write(u"\2\2\u02ef\u02ec\3\2\2\2\u02ef\u02f0\3\2\2\2\u02f0\u02f8")
-        buf.write(u"\3\2\2\2\u02f1\u02f2\5t;\2\u02f2\u02f3\7T\2\2\u02f3\u02f4")
+        buf.write(u"\3\2\2\2\u02f1\u02f2\5t;\2\u02f2\u02f3\7U\2\2\u02f3\u02f4")
         buf.write(u"\7\20\2\2\u02f4\u02f5\5v<\2\u02f5\u02f6\5\u00dan\2\u02f6")
         buf.write(u"\u02f7\5x=\2\u02f7\u02f9\3\2\2\2\u02f8\u02f1\3\2\2\2")
         buf.write(u"\u02f8\u02f9\3\2\2\2\u02f9G\3\2\2\2\u02fa\u02fb\b%\1")
-        buf.write(u"\2\u02fb\u02fc\7T\2\2\u02fc\u02fd\7`\2\2\u02fd\u02fe")
+        buf.write(u"\2\u02fb\u02fc\7U\2\2\u02fc\u02fd\7a\2\2\u02fd\u02fe")
         buf.write(u"\5R*\2\u02fe\u02ff\7\20\2\2\u02ff\u0300\5v<\2\u0300\u0301")
         buf.write(u"\5\u00dan\2\u0301\u0302\5x=\2\u0302\u030f\3\2\2\2\u0303")
-        buf.write(u"\u0304\f\3\2\2\u0304\u0305\5t;\2\u0305\u0306\7T\2\2\u0306")
-        buf.write(u"\u0307\7`\2\2\u0307\u0308\5R*\2\u0308\u0309\7\20\2\2")
+        buf.write(u"\u0304\f\3\2\2\u0304\u0305\5t;\2\u0305\u0306\7U\2\2\u0306")
+        buf.write(u"\u0307\7a\2\2\u0307\u0308\5R*\2\u0308\u0309\7\20\2\2")
         buf.write(u"\u0309\u030a\5v<\2\u030a\u030b\5\u00dan\2\u030b\u030c")
         buf.write(u"\5x=\2\u030c\u030e\3\2\2\2\u030d\u0303\3\2\2\2\u030e")
         buf.write(u"\u0311\3\2\2\2\u030f\u030d\3\2\2\2\u030f\u0310\3\2\2")
@@ -476,20 +476,20 @@ def serializedATN():
         buf.write(u"\u0319\5v<\2\u0319\u031a\5\u00dan\2\u031a\u031b\5x=\2")
         buf.write(u"\u031b\u031d\5r:\2\u031c\u031e\5\u00e0q\2\u031d\u031c")
         buf.write(u"\3\2\2\2\u031d\u031e\3\2\2\2\u031e\u0326\3\2\2\2\u031f")
-        buf.write(u"\u0320\7W\2\2\u0320\u0321\7\20\2\2\u0321\u0322\5v<\2")
+        buf.write(u"\u0320\7X\2\2\u0320\u0321\7\20\2\2\u0321\u0322\5v<\2")
         buf.write(u"\u0322\u0323\5\u00dan\2\u0323\u0324\5x=\2\u0324\u0325")
         buf.write(u"\5r:\2\u0325\u0327\3\2\2\2\u0326\u031f\3\2\2\2\u0326")
-        buf.write(u"\u0327\3\2\2\2\u0327\u032f\3\2\2\2\u0328\u0329\7\\\2")
-        buf.write(u"\2\u0329\u032a\7\20\2\2\u032a\u032b\5v<\2\u032b\u032c")
-        buf.write(u"\5\u00dan\2\u032c\u032d\5x=\2\u032d\u032e\5r:\2\u032e")
-        buf.write(u"\u0330\3\2\2\2\u032f\u0328\3\2\2\2\u032f\u0330\3\2\2")
-        buf.write(u"\2\u0330\u0331\3\2\2\2\u0331\u0332\5r:\2\u0332M\3\2\2")
-        buf.write(u"\2\u0333\u0334\7W\2\2\u0334\u0335\5\u00aeX\2\u0335\u0336")
-        buf.write(u"\7\20\2\2\u0336\u0337\5v<\2\u0337\u0338\5\u00dan\2\u0338")
-        buf.write(u"\u0339\5x=\2\u0339\u033a\5r:\2\u033a\u0347\3\2\2\2\u033b")
-        buf.write(u"\u033c\7W\2\2\u033c\u033d\7a\2\2\u033d\u033e\7\27\2\2")
-        buf.write(u"\u033e\u033f\5\u008aF\2\u033f\u0340\7\30\2\2\u0340\u0341")
-        buf.write(u"\7\20\2\2\u0341\u0342\5v<\2\u0342\u0343\5\u00dan\2\u0343")
+        buf.write(u"\u0327\3\2\2\2\u0327\u032f\3\2\2\2\u0328\u0329\7]\2\2")
+        buf.write(u"\u0329\u032a\7\20\2\2\u032a\u032b\5v<\2\u032b\u032c\5")
+        buf.write(u"\u00dan\2\u032c\u032d\5x=\2\u032d\u032e\5r:\2\u032e\u0330")
+        buf.write(u"\3\2\2\2\u032f\u0328\3\2\2\2\u032f\u0330\3\2\2\2\u0330")
+        buf.write(u"\u0331\3\2\2\2\u0331\u0332\5r:\2\u0332M\3\2\2\2\u0333")
+        buf.write(u"\u0334\7X\2\2\u0334\u0335\5\u00aeX\2\u0335\u0336\7\20")
+        buf.write(u"\2\2\u0336\u0337\5v<\2\u0337\u0338\5\u00dan\2\u0338\u0339")
+        buf.write(u"\5x=\2\u0339\u033a\5r:\2\u033a\u0347\3\2\2\2\u033b\u033c")
+        buf.write(u"\7X\2\2\u033c\u033d\7b\2\2\u033d\u033e\7\27\2\2\u033e")
+        buf.write(u"\u033f\5\u008aF\2\u033f\u0340\7\30\2\2\u0340\u0341\7")
+        buf.write(u"\20\2\2\u0341\u0342\5v<\2\u0342\u0343\5\u00dan\2\u0343")
         buf.write(u"\u0344\5x=\2\u0344\u0345\5r:\2\u0345\u0347\3\2\2\2\u0346")
         buf.write(u"\u0333\3\2\2\2\u0346\u033b\3\2\2\2\u0347O\3\2\2\2\u0348")
         buf.write(u"\u034a\7y\2\2\u0349\u034b\5R*\2\u034a\u0349\3\2\2\2\u034a")
@@ -498,7 +498,7 @@ def serializedATN():
         buf.write(u"\u035f\5R* \u0351\u035f\5V,\2\u0352\u035f\5X-\2\u0353")
         buf.write(u"\u0354\7=\2\2\u0354\u0355\7\25\2\2\u0355\u0356\5R*\2")
         buf.write(u"\u0356\u0357\7\26\2\2\u0357\u035f\3\2\2\2\u0358\u0359")
-        buf.write(u"\7X\2\2\u0359\u035a\7\25\2\2\u035a\u035b\5\u00aaV\2\u035b")
+        buf.write(u"\7Y\2\2\u0359\u035a\7\25\2\2\u035a\u035b\5\u00aaV\2\u035b")
         buf.write(u"\u035c\7\26\2\2\u035c\u035f\3\2\2\2\u035d\u035f\5T+\2")
         buf.write(u"\u035e\u034c\3\2\2\2\u035e\u034f\3\2\2\2\u035e\u0351")
         buf.write(u"\3\2\2\2\u035e\u0352\3\2\2\2\u035e\u0353\3\2\2\2\u035e")
@@ -521,22 +521,22 @@ def serializedATN():
         buf.write(u"\7/\2\2\u0387\u03bf\5R*\23\u0388\u0389\f\21\2\2\u0389")
         buf.write(u"\u038a\7r\2\2\u038a\u03bf\5R*\22\u038b\u038c\f\20\2\2")
         buf.write(u"\u038c\u038d\7B\2\2\u038d\u03bf\5R*\21\u038e\u038f\f")
-        buf.write(u"\17\2\2\u038f\u0390\7`\2\2\u0390\u0391\5R*\2\u0391\u0392")
-        buf.write(u"\7T\2\2\u0392\u0393\5R*\20\u0393\u03bf\3\2\2\2\u0394")
-        buf.write(u"\u0395\f\r\2\2\u0395\u0396\7a\2\2\u0396\u03bf\5R*\16")
-        buf.write(u"\u0397\u0398\f\f\2\2\u0398\u0399\7M\2\2\u0399\u03bf\5")
-        buf.write(u"R*\r\u039a\u039b\f\13\2\2\u039b\u039c\7M\2\2\u039c\u039d")
+        buf.write(u"\17\2\2\u038f\u0390\7a\2\2\u0390\u0391\5R*\2\u0391\u0392")
+        buf.write(u"\7U\2\2\u0392\u0393\5R*\20\u0393\u03bf\3\2\2\2\u0394")
+        buf.write(u"\u0395\f\r\2\2\u0395\u0396\7b\2\2\u0396\u03bf\5R*\16")
+        buf.write(u"\u0397\u0398\f\f\2\2\u0398\u0399\7N\2\2\u0399\u03bf\5")
+        buf.write(u"R*\r\u039a\u039b\f\13\2\2\u039b\u039c\7N\2\2\u039c\u039d")
         buf.write(u"\7@\2\2\u039d\u03bf\5R*\f\u039e\u039f\f\n\2\2\u039f\u03a0")
-        buf.write(u"\7M\2\2\u03a0\u03a1\7C\2\2\u03a1\u03bf\5R*\13\u03a2\u03a3")
-        buf.write(u"\f\t\2\2\u03a3\u03a4\7l\2\2\u03a4\u03a5\7a\2\2\u03a5")
+        buf.write(u"\7N\2\2\u03a0\u03a1\7C\2\2\u03a1\u03bf\5R*\13\u03a2\u03a3")
+        buf.write(u"\f\t\2\2\u03a3\u03a4\7l\2\2\u03a4\u03a5\7b\2\2\u03a5")
         buf.write(u"\u03bf\5R*\n\u03a6\u03a7\f\b\2\2\u03a7\u03a8\7l\2\2\u03a8")
-        buf.write(u"\u03a9\7M\2\2\u03a9\u03bf\5R*\t\u03aa\u03ab\f\7\2\2\u03ab")
-        buf.write(u"\u03ac\7l\2\2\u03ac\u03ad\7M\2\2\u03ad\u03ae\7@\2\2\u03ae")
+        buf.write(u"\u03a9\7N\2\2\u03a9\u03bf\5R*\t\u03aa\u03ab\f\7\2\2\u03ab")
+        buf.write(u"\u03ac\7l\2\2\u03ac\u03ad\7N\2\2\u03ad\u03ae\7@\2\2\u03ae")
         buf.write(u"\u03bf\5R*\b\u03af\u03b0\f\6\2\2\u03b0\u03b1\7l\2\2\u03b1")
-        buf.write(u"\u03b2\7M\2\2\u03b2\u03b3\7C\2\2\u03b3\u03bf\5R*\7\u03b4")
-        buf.write(u"\u03b5\f\26\2\2\u03b5\u03b6\7c\2\2\u03b6\u03b7\7l\2\2")
+        buf.write(u"\u03b2\7N\2\2\u03b2\u03b3\7C\2\2\u03b3\u03bf\5R*\7\u03b4")
+        buf.write(u"\u03b5\f\26\2\2\u03b5\u03b6\7d\2\2\u03b6\u03b7\7l\2\2")
         buf.write(u"\u03b7\u03bf\5\u0102\u0082\2\u03b8\u03b9\f\25\2\2\u03b9")
-        buf.write(u"\u03ba\7c\2\2\u03ba\u03bf\5\u0102\u0082\2\u03bb\u03bc")
+        buf.write(u"\u03ba\7d\2\2\u03ba\u03bf\5\u0102\u0082\2\u03bb\u03bc")
         buf.write(u"\f\16\2\2\u03bc\u03bd\7D\2\2\u03bd\u03bf\5\u00ba^\2\u03be")
         buf.write(u"\u0360\3\2\2\2\u03be\u0364\3\2\2\2\u03be\u0368\3\2\2")
         buf.write(u"\2\u03be\u036c\3\2\2\2\u03be\u0370\3\2\2\2\u03be\u0373")
@@ -578,11 +578,11 @@ def serializedATN():
         buf.write(u"\u0400\3\2\2\2\u03fe\u03fc\3\2\2\2\u03fe\u03ff\3\2\2")
         buf.write(u"\2\u03ffa\3\2\2\2\u0400\u03fe\3\2\2\2\u0401\u0402\5\u00aa")
         buf.write(u"V\2\u0402\u0403\5\u010c\u0087\2\u0403\u0404\5R*\2\u0404")
-        buf.write(u"c\3\2\2\2\u0405\u0406\7v\2\2\u0406\u0407\7^\2\2\u0407")
+        buf.write(u"c\3\2\2\2\u0405\u0406\7v\2\2\u0406\u0407\7_\2\2\u0407")
         buf.write(u"\u0408\5R*\2\u0408e\3\2\2\2\u0409\u040a\7\u0089\2\2\u040a")
         buf.write(u"\u040b\5R*\2\u040b\u040c\7\u0083\2\2\u040c\u040d\5R*")
-        buf.write(u"\2\u040dg\3\2\2\2\u040e\u040f\7[\2\2\u040f\u0410\5\u00aa")
-        buf.write(u"V\2\u0410\u0411\7^\2\2\u0411\u0412\5R*\2\u0412\u0413")
+        buf.write(u"\2\u040dg\3\2\2\2\u040e\u040f\7\\\2\2\u040f\u0410\5\u00aa")
+        buf.write(u"V\2\u0410\u0411\7_\2\2\u0411\u0412\5R*\2\u0412\u0413")
         buf.write(u"\7\u0087\2\2\u0413\u0414\5R*\2\u0414i\3\2\2\2\u0415\u0416")
         buf.write(u"\7~\2\2\u0416\u0417\7\25\2\2\u0417\u041d\5V,\2\u0418")
         buf.write(u"\u0419\7\22\2\2\u0419\u041a\5\u0106\u0084\2\u041a\u041b")
@@ -636,8 +636,8 @@ def serializedATN():
         buf.write(u"\7\22\2\2\u048b\u048d\5\u00aeX\2\u048c\u0489\3\2\2\2")
         buf.write(u"\u048d\u0490\3\2\2\2\u048e\u048c\3\2\2\2\u048e\u048f")
         buf.write(u"\3\2\2\2\u048f\u008b\3\2\2\2\u0490\u048e\3\2\2\2\u0491")
-        buf.write(u"\u0492\7a\2\2\u0492\u049c\5\u008eH\2\u0493\u0494\7a\2")
-        buf.write(u"\2\u0494\u049c\5\u0090I\2\u0495\u0496\7a\2\2\u0496\u049c")
+        buf.write(u"\u0492\7b\2\2\u0492\u049c\5\u008eH\2\u0493\u0494\7b\2")
+        buf.write(u"\2\u0494\u049c\5\u0090I\2\u0495\u0496\7b\2\2\u0496\u049c")
         buf.write(u"\5\u0094K\2\u0497\u0498\7e\2\2\u0498\u049c\7\u0093\2")
         buf.write(u"\2\u0499\u049a\7e\2\2\u049a\u049c\5R*\2\u049b\u0491\3")
         buf.write(u"\2\2\2\u049b\u0493\3\2\2\2\u049b\u0495\3\2\2\2\u049b")
@@ -726,7 +726,7 @@ def serializedATN():
         buf.write(u"\u0546\3\2\2\2\u054c\u0548\3\2\2\2\u054c\u054a\3\2\2")
         buf.write(u"\2\u054d\u00c3\3\2\2\2\u054e\u0550\5\u00a8U\2\u054f\u0551")
         buf.write(u"\5\u00c6d\2\u0550\u054f\3\2\2\2\u0550\u0551\3\2\2\2\u0551")
-        buf.write(u"\u00c5\3\2\2\2\u0552\u0553\7^\2\2\u0553\u0554\5\u00c8")
+        buf.write(u"\u00c5\3\2\2\2\u0552\u0553\7_\2\2\u0553\u0554\5\u00c8")
         buf.write(u"e\2\u0554\u0555\7\20\2\2\u0555\u055a\5\u00a8U\2\u0556")
         buf.write(u"\u0557\7\24\2\2\u0557\u0559\5\u00a8U\2\u0558\u0556\3")
         buf.write(u"\2\2\2\u0559\u055c\3\2\2\2\u055a\u0558\3\2\2\2\u055a")
@@ -734,7 +734,7 @@ def serializedATN():
         buf.write(u"\2\u055d\u055e\7\u0090\2\2\u055e\u055f\6e\64\3\u055f")
         buf.write(u"\u00c9\3\2\2\2\u0560\u0562\5\u00a8U\2\u0561\u0563\5\u00cc")
         buf.write(u"g\2\u0562\u0561\3\2\2\2\u0562\u0563\3\2\2\2\u0563\u00cb")
-        buf.write(u"\3\2\2\2\u0564\u0565\7^\2\2\u0565\u0566\5\u00c8e\2\u0566")
+        buf.write(u"\3\2\2\2\u0564\u0565\7_\2\2\u0565\u0566\5\u00c8e\2\u0566")
         buf.write(u"\u0568\7\20\2\2\u0567\u0569\7$\2\2\u0568\u0567\3\2\2")
         buf.write(u"\2\u0568\u0569\3\2\2\2\u0569\u056a\3\2\2\2\u056a\u056f")
         buf.write(u"\5\u012a\u0096\2\u056b\u056c\7$\2\2\u056c\u056e\5\u012a")
@@ -1067,16 +1067,16 @@ class SParser ( AbstractParser ):
                      u"'DateTime'", u"'Period'", u"'Method'", u"'Code'", 
                      u"'Document'", u"'abstract'", u"'all'", u"'always'", 
                      u"'and'", u"'any'", u"'as'", u"'attr'", u"'attribute'", 
-                     u"'attributes'", u"'case'", u"'catch'", u"'category'", 
-                     u"'class'", u"'close'", u"'contains'", u"'def'", u"'default'", 
-                     u"'define'", u"'do'", u"'doing'", u"'each'", u"'else'", 
-                     u"'enum'", u"'enumerated'", u"'except'", u"'execute'", 
-                     u"'expecting'", u"'extends'", u"'fetch'", u"'finally'", 
-                     u"'for'", u"'from'", u"'getter'", u"'if'", u"'in'", 
-                     u"'invoke'", u"'is'", u"'mappings'", u"'matching'", 
-                     u"'method'", u"'methods'", u"'modulo'", u"'mutable'", 
-                     u"'native'", u"'None'", u"'not'", u"<INVALID>", u"'null'", 
-                     u"'on'", u"'open'", u"'operator'", u"'or'", u"'otherwise'", 
+                     u"'attributes'", u"'bindings'", u"'case'", u"'catch'", 
+                     u"'category'", u"'class'", u"'close'", u"'contains'", 
+                     u"'def'", u"'default'", u"'define'", u"'do'", u"'doing'", 
+                     u"'each'", u"'else'", u"'enum'", u"'enumerated'", u"'except'", 
+                     u"'execute'", u"'expecting'", u"'extends'", u"'fetch'", 
+                     u"'finally'", u"'for'", u"'from'", u"'getter'", u"'if'", 
+                     u"'in'", u"'invoke'", u"'is'", u"'matching'", u"'method'", 
+                     u"'methods'", u"'modulo'", u"'mutable'", u"'native'", 
+                     u"'None'", u"'not'", u"<INVALID>", u"'null'", u"'on'", 
+                     u"'open'", u"'operator'", u"'or'", u"'otherwise'", 
                      u"'pass'", u"'raise'", u"'read'", u"'receiving'", u"'resource'", 
                      u"'return'", u"'returning'", u"'self'", u"'setter'", 
                      u"'singleton'", u"'sorted'", u"'switch'", u"'test'", 
@@ -1096,20 +1096,21 @@ class SParser ( AbstractParser ):
                       u"TEXT", u"INTEGER", u"DECIMAL", u"DATE", u"TIME", 
                       u"DATETIME", u"PERIOD", u"METHOD_T", u"CODE", u"DOCUMENT", 
                       u"ABSTRACT", u"ALL", u"ALWAYS", u"AND", u"ANY", u"AS", 
-                      u"ATTR", u"ATTRIBUTE", u"ATTRIBUTES", u"CASE", u"CATCH", 
-                      u"CATEGORY", u"CLASS", u"CLOSE", u"CONTAINS", u"DEF", 
-                      u"DEFAULT", u"DEFINE", u"DO", u"DOING", u"EACH", u"ELSE", 
-                      u"ENUM", u"ENUMERATED", u"EXCEPT", u"EXECUTE", u"EXPECTING", 
-                      u"EXTENDS", u"FETCH", u"FINALLY", u"FOR", u"FROM", 
-                      u"GETTER", u"IF", u"IN", u"INVOKE", u"IS", u"MAPPINGS", 
-                      u"MATCHING", u"METHOD", u"METHODS", u"MODULO", u"MUTABLE", 
-                      u"NATIVE", u"NONE", u"NOT", u"NOTHING", u"NULL", u"ON", 
-                      u"OPEN", u"OPERATOR", u"OR", u"OTHERWISE", u"PASS", 
-                      u"RAISE", u"READ", u"RECEIVING", u"RESOURCE", u"RETURN", 
-                      u"RETURNING", u"SELF", u"SETTER", u"SINGLETON", u"SORTED", 
-                      u"SWITCH", u"TEST", u"THIS", u"THROW", u"TO", u"TRY", 
-                      u"WITH", u"WHEN", u"WHERE", u"WHILE", u"WRITE", u"BOOLEAN_LITERAL", 
-                      u"CHAR_LITERAL", u"MIN_INTEGER", u"MAX_INTEGER", u"SYMBOL_IDENTIFIER", 
+                      u"ATTR", u"ATTRIBUTE", u"ATTRIBUTES", u"BINDINGS", 
+                      u"CASE", u"CATCH", u"CATEGORY", u"CLASS", u"CLOSE", 
+                      u"CONTAINS", u"DEF", u"DEFAULT", u"DEFINE", u"DO", 
+                      u"DOING", u"EACH", u"ELSE", u"ENUM", u"ENUMERATED", 
+                      u"EXCEPT", u"EXECUTE", u"EXPECTING", u"EXTENDS", u"FETCH", 
+                      u"FINALLY", u"FOR", u"FROM", u"GETTER", u"IF", u"IN", 
+                      u"INVOKE", u"IS", u"MATCHING", u"METHOD", u"METHODS", 
+                      u"MODULO", u"MUTABLE", u"NATIVE", u"NONE", u"NOT", 
+                      u"NOTHING", u"NULL", u"ON", u"OPEN", u"OPERATOR", 
+                      u"OR", u"OTHERWISE", u"PASS", u"RAISE", u"READ", u"RECEIVING", 
+                      u"RESOURCE", u"RETURN", u"RETURNING", u"SELF", u"SETTER", 
+                      u"SINGLETON", u"SORTED", u"SWITCH", u"TEST", u"THIS", 
+                      u"THROW", u"TO", u"TRY", u"WITH", u"WHEN", u"WHERE", 
+                      u"WHILE", u"WRITE", u"BOOLEAN_LITERAL", u"CHAR_LITERAL", 
+                      u"MIN_INTEGER", u"MAX_INTEGER", u"SYMBOL_IDENTIFIER", 
                       u"TYPE_IDENTIFIER", u"VARIABLE_IDENTIFIER", u"NATIVE_IDENTIFIER", 
                       u"DOLLAR_IDENTIFIER", u"TEXT_LITERAL", u"INTEGER_LITERAL", 
                       u"HEXA_LITERAL", u"DECIMAL_LITERAL", u"DATETIME_LITERAL", 
@@ -1129,8 +1130,8 @@ class SParser ( AbstractParser ):
     RULE_getter_method_declaration = 10
     RULE_native_category_declaration = 11
     RULE_native_resource_declaration = 12
-    RULE_native_category_mappings = 13
-    RULE_native_category_mapping_list = 14
+    RULE_native_category_bindings = 13
+    RULE_native_category_binding_list = 14
     RULE_attribute_list = 15
     RULE_abstract_method_declaration = 16
     RULE_concrete_method_declaration = 17
@@ -1212,11 +1213,11 @@ class SParser ( AbstractParser ):
     RULE_any_type = 93
     RULE_member_method_declaration_list = 94
     RULE_member_method_declaration = 95
-    RULE_native_category_mapping = 96
-    RULE_python_category_mapping = 97
+    RULE_native_category_binding = 96
+    RULE_python_category_binding = 97
     RULE_python_module = 98
     RULE_module_token = 99
-    RULE_javascript_category_mapping = 100
+    RULE_javascript_category_binding = 100
     RULE_javascript_module = 101
     RULE_variable_identifier_list = 102
     RULE_method_declaration = 103
@@ -1306,8 +1307,8 @@ class SParser ( AbstractParser ):
                    u"concrete_category_declaration", u"singleton_category_declaration", 
                    u"derived_list", u"operator_method_declaration", u"setter_method_declaration", 
                    u"getter_method_declaration", u"native_category_declaration", 
-                   u"native_resource_declaration", u"native_category_mappings", 
-                   u"native_category_mapping_list", u"attribute_list", u"abstract_method_declaration", 
+                   u"native_resource_declaration", u"native_category_bindings", 
+                   u"native_category_binding_list", u"attribute_list", u"abstract_method_declaration", 
                    u"concrete_method_declaration", u"native_method_declaration", 
                    u"test_method_declaration", u"assertion", u"typed_argument", 
                    u"statement", u"method_call", u"method_selector", u"callable_parent", 
@@ -1333,9 +1334,9 @@ class SParser ( AbstractParser ):
                    u"symbol_identifier", u"argument_list", u"argument", 
                    u"operator_argument", u"named_argument", u"code_argument", 
                    u"category_or_any_type", u"any_type", u"member_method_declaration_list", 
-                   u"member_method_declaration", u"native_category_mapping", 
-                   u"python_category_mapping", u"python_module", u"module_token", 
-                   u"javascript_category_mapping", u"javascript_module", 
+                   u"member_method_declaration", u"native_category_binding", 
+                   u"python_category_binding", u"python_module", u"module_token", 
+                   u"javascript_category_binding", u"javascript_module", 
                    u"variable_identifier_list", u"method_declaration", u"native_statement_list", 
                    u"native_statement", u"python_native_statement", u"javascript_native_statement", 
                    u"statement_list", u"assertion_list", u"switch_case_statement_list", 
@@ -1438,35 +1439,35 @@ class SParser ( AbstractParser ):
     ATTR=67
     ATTRIBUTE=68
     ATTRIBUTES=69
-    CASE=70
-    CATCH=71
-    CATEGORY=72
-    CLASS=73
-    CLOSE=74
-    CONTAINS=75
-    DEF=76
-    DEFAULT=77
-    DEFINE=78
-    DO=79
-    DOING=80
-    EACH=81
-    ELSE=82
-    ENUM=83
-    ENUMERATED=84
-    EXCEPT=85
-    EXECUTE=86
-    EXPECTING=87
-    EXTENDS=88
-    FETCH=89
-    FINALLY=90
-    FOR=91
-    FROM=92
-    GETTER=93
-    IF=94
-    IN=95
-    INVOKE=96
-    IS=97
-    MAPPINGS=98
+    BINDINGS=70
+    CASE=71
+    CATCH=72
+    CATEGORY=73
+    CLASS=74
+    CLOSE=75
+    CONTAINS=76
+    DEF=77
+    DEFAULT=78
+    DEFINE=79
+    DO=80
+    DOING=81
+    EACH=82
+    ELSE=83
+    ENUM=84
+    ENUMERATED=85
+    EXCEPT=86
+    EXECUTE=87
+    EXPECTING=88
+    EXTENDS=89
+    FETCH=90
+    FINALLY=91
+    FOR=92
+    FROM=93
+    GETTER=94
+    IF=95
+    IN=96
+    INVOKE=97
+    IS=98
     MATCHING=99
     METHOD=100
     METHODS=101
@@ -1835,7 +1836,7 @@ class SParser ( AbstractParser ):
             self.match(SParser.LPAR)
             self.state = 402
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 86)) & ~0x3f) == 0 and ((1 << (_la - 86)) & ((1 << (SParser.EXECUTE - 86)) | (1 << (SParser.FETCH - 86)) | (1 << (SParser.MUTABLE - 86)) | (1 << (SParser.NONE - 86)) | (1 << (SParser.NOT - 86)) | (1 << (SParser.READ - 86)) | (1 << (SParser.SELF - 86)) | (1 << (SParser.SORTED - 86)) | (1 << (SParser.THIS - 86)) | (1 << (SParser.BOOLEAN_LITERAL - 86)) | (1 << (SParser.CHAR_LITERAL - 86)) | (1 << (SParser.MIN_INTEGER - 86)) | (1 << (SParser.MAX_INTEGER - 86)) | (1 << (SParser.SYMBOL_IDENTIFIER - 86)) | (1 << (SParser.TYPE_IDENTIFIER - 86)) | (1 << (SParser.VARIABLE_IDENTIFIER - 86)) | (1 << (SParser.TEXT_LITERAL - 86)) | (1 << (SParser.INTEGER_LITERAL - 86)) | (1 << (SParser.HEXA_LITERAL - 86)) | (1 << (SParser.DECIMAL_LITERAL - 86)) | (1 << (SParser.DATETIME_LITERAL - 86)))) != 0) or ((((_la - 150)) & ~0x3f) == 0 and ((1 << (_la - 150)) & ((1 << (SParser.TIME_LITERAL - 150)) | (1 << (SParser.DATE_LITERAL - 150)) | (1 << (SParser.PERIOD_LITERAL - 150)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 87)) & ~0x3f) == 0 and ((1 << (_la - 87)) & ((1 << (SParser.EXECUTE - 87)) | (1 << (SParser.FETCH - 87)) | (1 << (SParser.MUTABLE - 87)) | (1 << (SParser.NONE - 87)) | (1 << (SParser.NOT - 87)) | (1 << (SParser.READ - 87)) | (1 << (SParser.SELF - 87)) | (1 << (SParser.SORTED - 87)) | (1 << (SParser.THIS - 87)) | (1 << (SParser.BOOLEAN_LITERAL - 87)) | (1 << (SParser.CHAR_LITERAL - 87)) | (1 << (SParser.MIN_INTEGER - 87)) | (1 << (SParser.MAX_INTEGER - 87)) | (1 << (SParser.SYMBOL_IDENTIFIER - 87)) | (1 << (SParser.TYPE_IDENTIFIER - 87)) | (1 << (SParser.VARIABLE_IDENTIFIER - 87)) | (1 << (SParser.TEXT_LITERAL - 87)) | (1 << (SParser.INTEGER_LITERAL - 87)) | (1 << (SParser.HEXA_LITERAL - 87)) | (1 << (SParser.DECIMAL_LITERAL - 87)) | (1 << (SParser.DATETIME_LITERAL - 87)) | (1 << (SParser.TIME_LITERAL - 87)))) != 0) or _la==SParser.DATE_LITERAL or _la==SParser.PERIOD_LITERAL:
                 self.state = 401 
                 localctx.args = self.argument_assignment_list(0)
 
@@ -2516,7 +2517,7 @@ class SParser ( AbstractParser ):
             self.parser = parser
             self.name = None # Type_identifierContext
             self.attrs = None # Attribute_listContext
-            self.mappings = None # Native_category_mappingsContext
+            self.bindings = None # Native_category_bindingsContext
 
         def NATIVE(self):
             return self.getToken(SParser.NATIVE, 0)
@@ -2548,8 +2549,8 @@ class SParser ( AbstractParser ):
             return self.getTypedRuleContext(SParser.Type_identifierContext,0)
 
 
-        def native_category_mappings(self):
-            return self.getTypedRuleContext(SParser.Native_category_mappingsContext,0)
+        def native_category_bindings(self):
+            return self.getTypedRuleContext(SParser.Native_category_bindingsContext,0)
 
 
         def attribute_list(self):
@@ -2602,7 +2603,7 @@ class SParser ( AbstractParser ):
             self.state = 498 
             self.indent()
             self.state = 499 
-            localctx.mappings = self.native_category_mappings()
+            localctx.bindings = self.native_category_bindings()
             self.state = 500 
             self.dedent()
         except RecognitionException as re:
@@ -2620,7 +2621,7 @@ class SParser ( AbstractParser ):
             self.parser = parser
             self.name = None # Type_identifierContext
             self.attrs = None # Attribute_listContext
-            self.mappings = None # Native_category_mappingsContext
+            self.bindings = None # Native_category_bindingsContext
 
         def NATIVE(self):
             return self.getToken(SParser.NATIVE, 0)
@@ -2649,8 +2650,8 @@ class SParser ( AbstractParser ):
             return self.getTypedRuleContext(SParser.Type_identifierContext,0)
 
 
-        def native_category_mappings(self):
-            return self.getTypedRuleContext(SParser.Native_category_mappingsContext,0)
+        def native_category_bindings(self):
+            return self.getTypedRuleContext(SParser.Native_category_bindingsContext,0)
 
 
         def attribute_list(self):
@@ -2700,7 +2701,7 @@ class SParser ( AbstractParser ):
             self.state = 511 
             self.indent()
             self.state = 512 
-            localctx.mappings = self.native_category_mappings()
+            localctx.bindings = self.native_category_bindings()
             self.state = 513 
             self.dedent()
         except RecognitionException as re:
@@ -2711,15 +2712,15 @@ class SParser ( AbstractParser ):
             self.exitRule()
         return localctx
 
-    class Native_category_mappingsContext(ParserRuleContext):
+    class Native_category_bindingsContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
-            super(SParser.Native_category_mappingsContext, self).__init__(parent, invokingState)
+            super(SParser.Native_category_bindingsContext, self).__init__(parent, invokingState)
             self.parser = parser
-            self.items = None # Native_category_mapping_listContext
+            self.items = None # Native_category_binding_listContext
 
-        def MAPPINGS(self):
-            return self.getToken(SParser.MAPPINGS, 0)
+        def BINDINGS(self):
+            return self.getToken(SParser.BINDINGS, 0)
 
         def COLON(self):
             return self.getToken(SParser.COLON, 0)
@@ -2732,38 +2733,38 @@ class SParser ( AbstractParser ):
             return self.getTypedRuleContext(SParser.DedentContext,0)
 
 
-        def native_category_mapping_list(self):
-            return self.getTypedRuleContext(SParser.Native_category_mapping_listContext,0)
+        def native_category_binding_list(self):
+            return self.getTypedRuleContext(SParser.Native_category_binding_listContext,0)
 
 
         def getRuleIndex(self):
-            return SParser.RULE_native_category_mappings
+            return SParser.RULE_native_category_bindings
 
         def enterRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.enterNative_category_mappings(self)
+                listener.enterNative_category_bindings(self)
 
         def exitRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.exitNative_category_mappings(self)
+                listener.exitNative_category_bindings(self)
 
 
 
 
-    def native_category_mappings(self):
+    def native_category_bindings(self):
 
-        localctx = SParser.Native_category_mappingsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 26, self.RULE_native_category_mappings)
+        localctx = SParser.Native_category_bindingsContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 26, self.RULE_native_category_bindings)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 515
-            self.match(SParser.MAPPINGS)
+            self.match(SParser.BINDINGS)
             self.state = 516
             self.match(SParser.COLON)
             self.state = 517 
             self.indent()
             self.state = 518 
-            localctx.items = self.native_category_mapping_list(0)
+            localctx.items = self.native_category_binding_list(0)
             self.state = 519 
             self.dedent()
         except RecognitionException as re:
@@ -2774,84 +2775,84 @@ class SParser ( AbstractParser ):
             self.exitRule()
         return localctx
 
-    class Native_category_mapping_listContext(ParserRuleContext):
+    class Native_category_binding_listContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
-            super(SParser.Native_category_mapping_listContext, self).__init__(parent, invokingState)
+            super(SParser.Native_category_binding_listContext, self).__init__(parent, invokingState)
             self.parser = parser
 
 
         def getRuleIndex(self):
-            return SParser.RULE_native_category_mapping_list
+            return SParser.RULE_native_category_binding_list
 
      
         def copyFrom(self, ctx):
-            super(SParser.Native_category_mapping_listContext, self).copyFrom(ctx)
+            super(SParser.Native_category_binding_listContext, self).copyFrom(ctx)
 
 
-    class NativeCategoryMappingListContext(Native_category_mapping_listContext):
+    class NativeCategoryBindingListContext(Native_category_binding_listContext):
 
-        def __init__(self, parser, ctx): # actually a SParser.Native_category_mapping_listContext)
-            super(SParser.NativeCategoryMappingListContext, self).__init__(parser)
-            self.item = None # Native_category_mappingContext
+        def __init__(self, parser, ctx): # actually a SParser.Native_category_binding_listContext)
+            super(SParser.NativeCategoryBindingListContext, self).__init__(parser)
+            self.item = None # Native_category_bindingContext
             self.copyFrom(ctx)
 
-        def native_category_mapping(self):
-            return self.getTypedRuleContext(SParser.Native_category_mappingContext,0)
+        def native_category_binding(self):
+            return self.getTypedRuleContext(SParser.Native_category_bindingContext,0)
 
 
         def enterRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.enterNativeCategoryMappingList(self)
+                listener.enterNativeCategoryBindingList(self)
 
         def exitRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.exitNativeCategoryMappingList(self)
+                listener.exitNativeCategoryBindingList(self)
 
 
-    class NativeCategoryMappingListItemContext(Native_category_mapping_listContext):
+    class NativeCategoryBindingListItemContext(Native_category_binding_listContext):
 
-        def __init__(self, parser, ctx): # actually a SParser.Native_category_mapping_listContext)
-            super(SParser.NativeCategoryMappingListItemContext, self).__init__(parser)
-            self.items = None # Native_category_mapping_listContext
-            self.item = None # Native_category_mappingContext
+        def __init__(self, parser, ctx): # actually a SParser.Native_category_binding_listContext)
+            super(SParser.NativeCategoryBindingListItemContext, self).__init__(parser)
+            self.items = None # Native_category_binding_listContext
+            self.item = None # Native_category_bindingContext
             self.copyFrom(ctx)
 
         def lfp(self):
             return self.getTypedRuleContext(SParser.LfpContext,0)
 
-        def native_category_mapping_list(self):
-            return self.getTypedRuleContext(SParser.Native_category_mapping_listContext,0)
+        def native_category_binding_list(self):
+            return self.getTypedRuleContext(SParser.Native_category_binding_listContext,0)
 
-        def native_category_mapping(self):
-            return self.getTypedRuleContext(SParser.Native_category_mappingContext,0)
+        def native_category_binding(self):
+            return self.getTypedRuleContext(SParser.Native_category_bindingContext,0)
 
 
         def enterRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.enterNativeCategoryMappingListItem(self)
+                listener.enterNativeCategoryBindingListItem(self)
 
         def exitRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.exitNativeCategoryMappingListItem(self)
+                listener.exitNativeCategoryBindingListItem(self)
 
 
 
-    def native_category_mapping_list(self, _p=0):
+    def native_category_binding_list(self, _p=0):
         _parentctx = self._ctx
         _parentState = self.state
-        localctx = SParser.Native_category_mapping_listContext(self, self._ctx, _parentState)
+        localctx = SParser.Native_category_binding_listContext(self, self._ctx, _parentState)
         _prevctx = localctx
         _startState = 28
-        self.enterRecursionRule(localctx, 28, self.RULE_native_category_mapping_list, _p)
+        self.enterRecursionRule(localctx, 28, self.RULE_native_category_binding_list, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            localctx = SParser.NativeCategoryMappingListContext(self, localctx)
+            localctx = SParser.NativeCategoryBindingListContext(self, localctx)
             self._ctx = localctx
             _prevctx = localctx
 
             self.state = 522 
-            localctx.item = self.native_category_mapping()
+            localctx.item = self.native_category_binding()
             self._ctx.stop = self._input.LT(-1)
             self.state = 530
             self._errHandler.sync(self)
@@ -2861,9 +2862,9 @@ class SParser ( AbstractParser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    localctx = SParser.NativeCategoryMappingListItemContext(self, SParser.Native_category_mapping_listContext(self, _parentctx, _parentState))
+                    localctx = SParser.NativeCategoryBindingListItemContext(self, SParser.Native_category_binding_listContext(self, _parentctx, _parentState))
                     localctx.items = _prevctx
-                    self.pushNewRecursionContext(localctx, _startState, self.RULE_native_category_mapping_list)
+                    self.pushNewRecursionContext(localctx, _startState, self.RULE_native_category_binding_list)
                     self.state = 524
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
@@ -2871,7 +2872,7 @@ class SParser ( AbstractParser ):
                     self.state = 525 
                     self.lfp()
                     self.state = 526 
-                    localctx.item = self.native_category_mapping() 
+                    localctx.item = self.native_category_binding() 
                 self.state = 532
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
@@ -3994,7 +3995,7 @@ class SParser ( AbstractParser ):
             self.match(SParser.LPAR)
             self.state = 634
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 86)) & ~0x3f) == 0 and ((1 << (_la - 86)) & ((1 << (SParser.EXECUTE - 86)) | (1 << (SParser.FETCH - 86)) | (1 << (SParser.MUTABLE - 86)) | (1 << (SParser.NONE - 86)) | (1 << (SParser.NOT - 86)) | (1 << (SParser.READ - 86)) | (1 << (SParser.SELF - 86)) | (1 << (SParser.SORTED - 86)) | (1 << (SParser.THIS - 86)) | (1 << (SParser.BOOLEAN_LITERAL - 86)) | (1 << (SParser.CHAR_LITERAL - 86)) | (1 << (SParser.MIN_INTEGER - 86)) | (1 << (SParser.MAX_INTEGER - 86)) | (1 << (SParser.SYMBOL_IDENTIFIER - 86)) | (1 << (SParser.TYPE_IDENTIFIER - 86)) | (1 << (SParser.VARIABLE_IDENTIFIER - 86)) | (1 << (SParser.TEXT_LITERAL - 86)) | (1 << (SParser.INTEGER_LITERAL - 86)) | (1 << (SParser.HEXA_LITERAL - 86)) | (1 << (SParser.DECIMAL_LITERAL - 86)) | (1 << (SParser.DATETIME_LITERAL - 86)))) != 0) or ((((_la - 150)) & ~0x3f) == 0 and ((1 << (_la - 150)) & ((1 << (SParser.TIME_LITERAL - 150)) | (1 << (SParser.DATE_LITERAL - 150)) | (1 << (SParser.PERIOD_LITERAL - 150)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 87)) & ~0x3f) == 0 and ((1 << (_la - 87)) & ((1 << (SParser.EXECUTE - 87)) | (1 << (SParser.FETCH - 87)) | (1 << (SParser.MUTABLE - 87)) | (1 << (SParser.NONE - 87)) | (1 << (SParser.NOT - 87)) | (1 << (SParser.READ - 87)) | (1 << (SParser.SELF - 87)) | (1 << (SParser.SORTED - 87)) | (1 << (SParser.THIS - 87)) | (1 << (SParser.BOOLEAN_LITERAL - 87)) | (1 << (SParser.CHAR_LITERAL - 87)) | (1 << (SParser.MIN_INTEGER - 87)) | (1 << (SParser.MAX_INTEGER - 87)) | (1 << (SParser.SYMBOL_IDENTIFIER - 87)) | (1 << (SParser.TYPE_IDENTIFIER - 87)) | (1 << (SParser.VARIABLE_IDENTIFIER - 87)) | (1 << (SParser.TEXT_LITERAL - 87)) | (1 << (SParser.INTEGER_LITERAL - 87)) | (1 << (SParser.HEXA_LITERAL - 87)) | (1 << (SParser.DECIMAL_LITERAL - 87)) | (1 << (SParser.DATETIME_LITERAL - 87)) | (1 << (SParser.TIME_LITERAL - 87)))) != 0) or _la==SParser.DATE_LITERAL or _la==SParser.PERIOD_LITERAL:
                 self.state = 633 
                 localctx.args = self.argument_assignment_list(0)
 
@@ -7605,7 +7606,7 @@ class SParser ( AbstractParser ):
             self.match(SParser.LPAR)
             self.state = 1004
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 86)) & ~0x3f) == 0 and ((1 << (_la - 86)) & ((1 << (SParser.EXECUTE - 86)) | (1 << (SParser.FETCH - 86)) | (1 << (SParser.MUTABLE - 86)) | (1 << (SParser.NONE - 86)) | (1 << (SParser.NOT - 86)) | (1 << (SParser.READ - 86)) | (1 << (SParser.SELF - 86)) | (1 << (SParser.SORTED - 86)) | (1 << (SParser.THIS - 86)) | (1 << (SParser.BOOLEAN_LITERAL - 86)) | (1 << (SParser.CHAR_LITERAL - 86)) | (1 << (SParser.MIN_INTEGER - 86)) | (1 << (SParser.MAX_INTEGER - 86)) | (1 << (SParser.SYMBOL_IDENTIFIER - 86)) | (1 << (SParser.TYPE_IDENTIFIER - 86)) | (1 << (SParser.VARIABLE_IDENTIFIER - 86)) | (1 << (SParser.TEXT_LITERAL - 86)) | (1 << (SParser.INTEGER_LITERAL - 86)) | (1 << (SParser.HEXA_LITERAL - 86)) | (1 << (SParser.DECIMAL_LITERAL - 86)) | (1 << (SParser.DATETIME_LITERAL - 86)))) != 0) or ((((_la - 150)) & ~0x3f) == 0 and ((1 << (_la - 150)) & ((1 << (SParser.TIME_LITERAL - 150)) | (1 << (SParser.DATE_LITERAL - 150)) | (1 << (SParser.PERIOD_LITERAL - 150)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 87)) & ~0x3f) == 0 and ((1 << (_la - 87)) & ((1 << (SParser.EXECUTE - 87)) | (1 << (SParser.FETCH - 87)) | (1 << (SParser.MUTABLE - 87)) | (1 << (SParser.NONE - 87)) | (1 << (SParser.NOT - 87)) | (1 << (SParser.READ - 87)) | (1 << (SParser.SELF - 87)) | (1 << (SParser.SORTED - 87)) | (1 << (SParser.THIS - 87)) | (1 << (SParser.BOOLEAN_LITERAL - 87)) | (1 << (SParser.CHAR_LITERAL - 87)) | (1 << (SParser.MIN_INTEGER - 87)) | (1 << (SParser.MAX_INTEGER - 87)) | (1 << (SParser.SYMBOL_IDENTIFIER - 87)) | (1 << (SParser.TYPE_IDENTIFIER - 87)) | (1 << (SParser.VARIABLE_IDENTIFIER - 87)) | (1 << (SParser.TEXT_LITERAL - 87)) | (1 << (SParser.INTEGER_LITERAL - 87)) | (1 << (SParser.HEXA_LITERAL - 87)) | (1 << (SParser.DECIMAL_LITERAL - 87)) | (1 << (SParser.DATETIME_LITERAL - 87)) | (1 << (SParser.TIME_LITERAL - 87)))) != 0) or _la==SParser.DATE_LITERAL or _la==SParser.PERIOD_LITERAL:
                 self.state = 1003 
                 localctx.args = self.argument_assignment_list(0)
 
@@ -9587,7 +9588,7 @@ class SParser ( AbstractParser ):
             self.match(SParser.LBRAK)
             self.state = 1181
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 86)) & ~0x3f) == 0 and ((1 << (_la - 86)) & ((1 << (SParser.EXECUTE - 86)) | (1 << (SParser.FETCH - 86)) | (1 << (SParser.MUTABLE - 86)) | (1 << (SParser.NONE - 86)) | (1 << (SParser.NOT - 86)) | (1 << (SParser.READ - 86)) | (1 << (SParser.SELF - 86)) | (1 << (SParser.SORTED - 86)) | (1 << (SParser.THIS - 86)) | (1 << (SParser.BOOLEAN_LITERAL - 86)) | (1 << (SParser.CHAR_LITERAL - 86)) | (1 << (SParser.MIN_INTEGER - 86)) | (1 << (SParser.MAX_INTEGER - 86)) | (1 << (SParser.SYMBOL_IDENTIFIER - 86)) | (1 << (SParser.TYPE_IDENTIFIER - 86)) | (1 << (SParser.VARIABLE_IDENTIFIER - 86)) | (1 << (SParser.TEXT_LITERAL - 86)) | (1 << (SParser.INTEGER_LITERAL - 86)) | (1 << (SParser.HEXA_LITERAL - 86)) | (1 << (SParser.DECIMAL_LITERAL - 86)) | (1 << (SParser.DATETIME_LITERAL - 86)))) != 0) or ((((_la - 150)) & ~0x3f) == 0 and ((1 << (_la - 150)) & ((1 << (SParser.TIME_LITERAL - 150)) | (1 << (SParser.DATE_LITERAL - 150)) | (1 << (SParser.PERIOD_LITERAL - 150)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 87)) & ~0x3f) == 0 and ((1 << (_la - 87)) & ((1 << (SParser.EXECUTE - 87)) | (1 << (SParser.FETCH - 87)) | (1 << (SParser.MUTABLE - 87)) | (1 << (SParser.NONE - 87)) | (1 << (SParser.NOT - 87)) | (1 << (SParser.READ - 87)) | (1 << (SParser.SELF - 87)) | (1 << (SParser.SORTED - 87)) | (1 << (SParser.THIS - 87)) | (1 << (SParser.BOOLEAN_LITERAL - 87)) | (1 << (SParser.CHAR_LITERAL - 87)) | (1 << (SParser.MIN_INTEGER - 87)) | (1 << (SParser.MAX_INTEGER - 87)) | (1 << (SParser.SYMBOL_IDENTIFIER - 87)) | (1 << (SParser.TYPE_IDENTIFIER - 87)) | (1 << (SParser.VARIABLE_IDENTIFIER - 87)) | (1 << (SParser.TEXT_LITERAL - 87)) | (1 << (SParser.INTEGER_LITERAL - 87)) | (1 << (SParser.HEXA_LITERAL - 87)) | (1 << (SParser.DECIMAL_LITERAL - 87)) | (1 << (SParser.DATETIME_LITERAL - 87)) | (1 << (SParser.TIME_LITERAL - 87)))) != 0) or _la==SParser.DATE_LITERAL or _la==SParser.PERIOD_LITERAL:
                 self.state = 1180 
                 localctx.items = self.expression_list(0)
 
@@ -9644,7 +9645,7 @@ class SParser ( AbstractParser ):
             self.match(SParser.LT)
             self.state = 1187
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 86)) & ~0x3f) == 0 and ((1 << (_la - 86)) & ((1 << (SParser.EXECUTE - 86)) | (1 << (SParser.FETCH - 86)) | (1 << (SParser.MUTABLE - 86)) | (1 << (SParser.NONE - 86)) | (1 << (SParser.NOT - 86)) | (1 << (SParser.READ - 86)) | (1 << (SParser.SELF - 86)) | (1 << (SParser.SORTED - 86)) | (1 << (SParser.THIS - 86)) | (1 << (SParser.BOOLEAN_LITERAL - 86)) | (1 << (SParser.CHAR_LITERAL - 86)) | (1 << (SParser.MIN_INTEGER - 86)) | (1 << (SParser.MAX_INTEGER - 86)) | (1 << (SParser.SYMBOL_IDENTIFIER - 86)) | (1 << (SParser.TYPE_IDENTIFIER - 86)) | (1 << (SParser.VARIABLE_IDENTIFIER - 86)) | (1 << (SParser.TEXT_LITERAL - 86)) | (1 << (SParser.INTEGER_LITERAL - 86)) | (1 << (SParser.HEXA_LITERAL - 86)) | (1 << (SParser.DECIMAL_LITERAL - 86)) | (1 << (SParser.DATETIME_LITERAL - 86)))) != 0) or ((((_la - 150)) & ~0x3f) == 0 and ((1 << (_la - 150)) & ((1 << (SParser.TIME_LITERAL - 150)) | (1 << (SParser.DATE_LITERAL - 150)) | (1 << (SParser.PERIOD_LITERAL - 150)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 87)) & ~0x3f) == 0 and ((1 << (_la - 87)) & ((1 << (SParser.EXECUTE - 87)) | (1 << (SParser.FETCH - 87)) | (1 << (SParser.MUTABLE - 87)) | (1 << (SParser.NONE - 87)) | (1 << (SParser.NOT - 87)) | (1 << (SParser.READ - 87)) | (1 << (SParser.SELF - 87)) | (1 << (SParser.SORTED - 87)) | (1 << (SParser.THIS - 87)) | (1 << (SParser.BOOLEAN_LITERAL - 87)) | (1 << (SParser.CHAR_LITERAL - 87)) | (1 << (SParser.MIN_INTEGER - 87)) | (1 << (SParser.MAX_INTEGER - 87)) | (1 << (SParser.SYMBOL_IDENTIFIER - 87)) | (1 << (SParser.TYPE_IDENTIFIER - 87)) | (1 << (SParser.VARIABLE_IDENTIFIER - 87)) | (1 << (SParser.TEXT_LITERAL - 87)) | (1 << (SParser.INTEGER_LITERAL - 87)) | (1 << (SParser.HEXA_LITERAL - 87)) | (1 << (SParser.DECIMAL_LITERAL - 87)) | (1 << (SParser.DATETIME_LITERAL - 87)) | (1 << (SParser.TIME_LITERAL - 87)))) != 0) or _la==SParser.DATE_LITERAL or _la==SParser.PERIOD_LITERAL:
                 self.state = 1186 
                 localctx.items = self.expression_list(0)
 
@@ -11958,27 +11959,49 @@ class SParser ( AbstractParser ):
             self.exitRule()
         return localctx
 
-    class Native_category_mappingContext(ParserRuleContext):
+    class Native_category_bindingContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
-            super(SParser.Native_category_mappingContext, self).__init__(parent, invokingState)
+            super(SParser.Native_category_bindingContext, self).__init__(parent, invokingState)
             self.parser = parser
 
 
         def getRuleIndex(self):
-            return SParser.RULE_native_category_mapping
+            return SParser.RULE_native_category_binding
 
      
         def copyFrom(self, ctx):
-            super(SParser.Native_category_mappingContext, self).copyFrom(ctx)
+            super(SParser.Native_category_bindingContext, self).copyFrom(ctx)
 
 
 
-    class CSharpCategoryMappingContext(Native_category_mappingContext):
+    class Python2CategoryBindingContext(Native_category_bindingContext):
 
-        def __init__(self, parser, ctx): # actually a SParser.Native_category_mappingContext)
-            super(SParser.CSharpCategoryMappingContext, self).__init__(parser)
-            self.mapping = None # Csharp_identifier_expressionContext
+        def __init__(self, parser, ctx): # actually a SParser.Native_category_bindingContext)
+            super(SParser.Python2CategoryBindingContext, self).__init__(parser)
+            self.binding = None # Python_category_bindingContext
+            self.copyFrom(ctx)
+
+        def PYTHON2(self):
+            return self.getToken(SParser.PYTHON2, 0)
+        def python_category_binding(self):
+            return self.getTypedRuleContext(SParser.Python_category_bindingContext,0)
+
+
+        def enterRule(self, listener):
+            if isinstance( listener, SParserListener ):
+                listener.enterPython2CategoryBinding(self)
+
+        def exitRule(self, listener):
+            if isinstance( listener, SParserListener ):
+                listener.exitPython2CategoryBinding(self)
+
+
+    class CSharpCategoryBindingContext(Native_category_bindingContext):
+
+        def __init__(self, parser, ctx): # actually a SParser.Native_category_bindingContext)
+            super(SParser.CSharpCategoryBindingContext, self).__init__(parser)
+            self.binding = None # Csharp_identifier_expressionContext
             self.copyFrom(ctx)
 
         def CSHARP(self):
@@ -11989,18 +12012,40 @@ class SParser ( AbstractParser ):
 
         def enterRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.enterCSharpCategoryMapping(self)
+                listener.enterCSharpCategoryBinding(self)
 
         def exitRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.exitCSharpCategoryMapping(self)
+                listener.exitCSharpCategoryBinding(self)
 
 
-    class JavaCategoryMappingContext(Native_category_mappingContext):
+    class JavaScriptCategoryBindingContext(Native_category_bindingContext):
 
-        def __init__(self, parser, ctx): # actually a SParser.Native_category_mappingContext)
-            super(SParser.JavaCategoryMappingContext, self).__init__(parser)
-            self.mapping = None # Java_class_identifier_expressionContext
+        def __init__(self, parser, ctx): # actually a SParser.Native_category_bindingContext)
+            super(SParser.JavaScriptCategoryBindingContext, self).__init__(parser)
+            self.binding = None # Javascript_category_bindingContext
+            self.copyFrom(ctx)
+
+        def JAVASCRIPT(self):
+            return self.getToken(SParser.JAVASCRIPT, 0)
+        def javascript_category_binding(self):
+            return self.getTypedRuleContext(SParser.Javascript_category_bindingContext,0)
+
+
+        def enterRule(self, listener):
+            if isinstance( listener, SParserListener ):
+                listener.enterJavaScriptCategoryBinding(self)
+
+        def exitRule(self, listener):
+            if isinstance( listener, SParserListener ):
+                listener.exitJavaScriptCategoryBinding(self)
+
+
+    class JavaCategoryBindingContext(Native_category_bindingContext):
+
+        def __init__(self, parser, ctx): # actually a SParser.Native_category_bindingContext)
+            super(SParser.JavaCategoryBindingContext, self).__init__(parser)
+            self.binding = None # Java_class_identifier_expressionContext
             self.copyFrom(ctx)
 
         def JAVA(self):
@@ -12011,126 +12056,82 @@ class SParser ( AbstractParser ):
 
         def enterRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.enterJavaCategoryMapping(self)
+                listener.enterJavaCategoryBinding(self)
 
         def exitRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.exitJavaCategoryMapping(self)
+                listener.exitJavaCategoryBinding(self)
 
 
-    class JavaScriptCategoryMappingContext(Native_category_mappingContext):
+    class Python3CategoryBindingContext(Native_category_bindingContext):
 
-        def __init__(self, parser, ctx): # actually a SParser.Native_category_mappingContext)
-            super(SParser.JavaScriptCategoryMappingContext, self).__init__(parser)
-            self.mapping = None # Javascript_category_mappingContext
-            self.copyFrom(ctx)
-
-        def JAVASCRIPT(self):
-            return self.getToken(SParser.JAVASCRIPT, 0)
-        def javascript_category_mapping(self):
-            return self.getTypedRuleContext(SParser.Javascript_category_mappingContext,0)
-
-
-        def enterRule(self, listener):
-            if isinstance( listener, SParserListener ):
-                listener.enterJavaScriptCategoryMapping(self)
-
-        def exitRule(self, listener):
-            if isinstance( listener, SParserListener ):
-                listener.exitJavaScriptCategoryMapping(self)
-
-
-    class Python3CategoryMappingContext(Native_category_mappingContext):
-
-        def __init__(self, parser, ctx): # actually a SParser.Native_category_mappingContext)
-            super(SParser.Python3CategoryMappingContext, self).__init__(parser)
-            self.mapping = None # Python_category_mappingContext
+        def __init__(self, parser, ctx): # actually a SParser.Native_category_bindingContext)
+            super(SParser.Python3CategoryBindingContext, self).__init__(parser)
+            self.binding = None # Python_category_bindingContext
             self.copyFrom(ctx)
 
         def PYTHON3(self):
             return self.getToken(SParser.PYTHON3, 0)
-        def python_category_mapping(self):
-            return self.getTypedRuleContext(SParser.Python_category_mappingContext,0)
+        def python_category_binding(self):
+            return self.getTypedRuleContext(SParser.Python_category_bindingContext,0)
 
 
         def enterRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.enterPython3CategoryMapping(self)
+                listener.enterPython3CategoryBinding(self)
 
         def exitRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.exitPython3CategoryMapping(self)
-
-
-    class Python2CategoryMappingContext(Native_category_mappingContext):
-
-        def __init__(self, parser, ctx): # actually a SParser.Native_category_mappingContext)
-            super(SParser.Python2CategoryMappingContext, self).__init__(parser)
-            self.mapping = None # Python_category_mappingContext
-            self.copyFrom(ctx)
-
-        def PYTHON2(self):
-            return self.getToken(SParser.PYTHON2, 0)
-        def python_category_mapping(self):
-            return self.getTypedRuleContext(SParser.Python_category_mappingContext,0)
-
-
-        def enterRule(self, listener):
-            if isinstance( listener, SParserListener ):
-                listener.enterPython2CategoryMapping(self)
-
-        def exitRule(self, listener):
-            if isinstance( listener, SParserListener ):
-                listener.exitPython2CategoryMapping(self)
+                listener.exitPython3CategoryBinding(self)
 
 
 
-    def native_category_mapping(self):
+    def native_category_binding(self):
 
-        localctx = SParser.Native_category_mappingContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 192, self.RULE_native_category_mapping)
+        localctx = SParser.Native_category_bindingContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 192, self.RULE_native_category_binding)
         try:
             self.state = 1354
             token = self._input.LA(1)
             if token in [SParser.JAVA]:
-                localctx = SParser.JavaCategoryMappingContext(self, localctx)
+                localctx = SParser.JavaCategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1344
                 self.match(SParser.JAVA)
                 self.state = 1345 
-                localctx.mapping = self.java_class_identifier_expression(0)
+                localctx.binding = self.java_class_identifier_expression(0)
 
             elif token in [SParser.CSHARP]:
-                localctx = SParser.CSharpCategoryMappingContext(self, localctx)
+                localctx = SParser.CSharpCategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1346
                 self.match(SParser.CSHARP)
                 self.state = 1347 
-                localctx.mapping = self.csharp_identifier_expression(0)
+                localctx.binding = self.csharp_identifier_expression(0)
 
             elif token in [SParser.PYTHON2]:
-                localctx = SParser.Python2CategoryMappingContext(self, localctx)
+                localctx = SParser.Python2CategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1348
                 self.match(SParser.PYTHON2)
                 self.state = 1349 
-                localctx.mapping = self.python_category_mapping()
+                localctx.binding = self.python_category_binding()
 
             elif token in [SParser.PYTHON3]:
-                localctx = SParser.Python3CategoryMappingContext(self, localctx)
+                localctx = SParser.Python3CategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 1350
                 self.match(SParser.PYTHON3)
                 self.state = 1351 
-                localctx.mapping = self.python_category_mapping()
+                localctx.binding = self.python_category_binding()
 
             elif token in [SParser.JAVASCRIPT]:
-                localctx = SParser.JavaScriptCategoryMappingContext(self, localctx)
+                localctx = SParser.JavaScriptCategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 1352
                 self.match(SParser.JAVASCRIPT)
                 self.state = 1353 
-                localctx.mapping = self.javascript_category_mapping()
+                localctx.binding = self.javascript_category_binding()
 
             else:
                 raise NoViableAltException(self)
@@ -12143,10 +12144,10 @@ class SParser ( AbstractParser ):
             self.exitRule()
         return localctx
 
-    class Python_category_mappingContext(ParserRuleContext):
+    class Python_category_bindingContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
-            super(SParser.Python_category_mappingContext, self).__init__(parent, invokingState)
+            super(SParser.Python_category_bindingContext, self).__init__(parent, invokingState)
             self.parser = parser
             self.id_ = None # IdentifierContext
             self.module = None # Python_moduleContext
@@ -12160,23 +12161,23 @@ class SParser ( AbstractParser ):
 
 
         def getRuleIndex(self):
-            return SParser.RULE_python_category_mapping
+            return SParser.RULE_python_category_binding
 
         def enterRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.enterPython_category_mapping(self)
+                listener.enterPython_category_binding(self)
 
         def exitRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.exitPython_category_mapping(self)
+                listener.exitPython_category_binding(self)
 
 
 
 
-    def python_category_mapping(self):
+    def python_category_binding(self):
 
-        localctx = SParser.Python_category_mappingContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 194, self.RULE_python_category_mapping)
+        localctx = SParser.Python_category_bindingContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 194, self.RULE_python_category_binding)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1356 
@@ -12318,10 +12319,10 @@ class SParser ( AbstractParser ):
             self.exitRule()
         return localctx
 
-    class Javascript_category_mappingContext(ParserRuleContext):
+    class Javascript_category_bindingContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
-            super(SParser.Javascript_category_mappingContext, self).__init__(parent, invokingState)
+            super(SParser.Javascript_category_bindingContext, self).__init__(parent, invokingState)
             self.parser = parser
             self.id_ = None # IdentifierContext
             self.module = None # Javascript_moduleContext
@@ -12335,23 +12336,23 @@ class SParser ( AbstractParser ):
 
 
         def getRuleIndex(self):
-            return SParser.RULE_javascript_category_mapping
+            return SParser.RULE_javascript_category_binding
 
         def enterRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.enterJavascript_category_mapping(self)
+                listener.enterJavascript_category_binding(self)
 
         def exitRule(self, listener):
             if isinstance( listener, SParserListener ):
-                listener.exitJavascript_category_mapping(self)
+                listener.exitJavascript_category_binding(self)
 
 
 
 
-    def javascript_category_mapping(self):
+    def javascript_category_binding(self):
 
-        localctx = SParser.Javascript_category_mappingContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 200, self.RULE_javascript_category_mapping)
+        localctx = SParser.Javascript_category_bindingContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 200, self.RULE_javascript_category_binding)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1374 
@@ -14733,7 +14734,7 @@ class SParser ( AbstractParser ):
             self.match(SParser.LPAR)
             self.state = 1566
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 86)) & ~0x3f) == 0 and ((1 << (_la - 86)) & ((1 << (SParser.EXECUTE - 86)) | (1 << (SParser.FETCH - 86)) | (1 << (SParser.MUTABLE - 86)) | (1 << (SParser.NONE - 86)) | (1 << (SParser.NOT - 86)) | (1 << (SParser.READ - 86)) | (1 << (SParser.SELF - 86)) | (1 << (SParser.SORTED - 86)) | (1 << (SParser.THIS - 86)) | (1 << (SParser.BOOLEAN_LITERAL - 86)) | (1 << (SParser.CHAR_LITERAL - 86)) | (1 << (SParser.MIN_INTEGER - 86)) | (1 << (SParser.MAX_INTEGER - 86)) | (1 << (SParser.SYMBOL_IDENTIFIER - 86)) | (1 << (SParser.TYPE_IDENTIFIER - 86)) | (1 << (SParser.VARIABLE_IDENTIFIER - 86)) | (1 << (SParser.TEXT_LITERAL - 86)) | (1 << (SParser.INTEGER_LITERAL - 86)) | (1 << (SParser.HEXA_LITERAL - 86)) | (1 << (SParser.DECIMAL_LITERAL - 86)) | (1 << (SParser.DATETIME_LITERAL - 86)))) != 0) or ((((_la - 150)) & ~0x3f) == 0 and ((1 << (_la - 150)) & ((1 << (SParser.TIME_LITERAL - 150)) | (1 << (SParser.DATE_LITERAL - 150)) | (1 << (SParser.PERIOD_LITERAL - 150)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 87)) & ~0x3f) == 0 and ((1 << (_la - 87)) & ((1 << (SParser.EXECUTE - 87)) | (1 << (SParser.FETCH - 87)) | (1 << (SParser.MUTABLE - 87)) | (1 << (SParser.NONE - 87)) | (1 << (SParser.NOT - 87)) | (1 << (SParser.READ - 87)) | (1 << (SParser.SELF - 87)) | (1 << (SParser.SORTED - 87)) | (1 << (SParser.THIS - 87)) | (1 << (SParser.BOOLEAN_LITERAL - 87)) | (1 << (SParser.CHAR_LITERAL - 87)) | (1 << (SParser.MIN_INTEGER - 87)) | (1 << (SParser.MAX_INTEGER - 87)) | (1 << (SParser.SYMBOL_IDENTIFIER - 87)) | (1 << (SParser.TYPE_IDENTIFIER - 87)) | (1 << (SParser.VARIABLE_IDENTIFIER - 87)) | (1 << (SParser.TEXT_LITERAL - 87)) | (1 << (SParser.INTEGER_LITERAL - 87)) | (1 << (SParser.HEXA_LITERAL - 87)) | (1 << (SParser.DECIMAL_LITERAL - 87)) | (1 << (SParser.DATETIME_LITERAL - 87)) | (1 << (SParser.TIME_LITERAL - 87)))) != 0) or _la==SParser.DATE_LITERAL or _la==SParser.PERIOD_LITERAL:
                 self.state = 1565 
                 localctx.items = self.expression_tuple(0)
 
@@ -14790,7 +14791,7 @@ class SParser ( AbstractParser ):
             self.match(SParser.LCURL)
             self.state = 1572
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 86)) & ~0x3f) == 0 and ((1 << (_la - 86)) & ((1 << (SParser.EXECUTE - 86)) | (1 << (SParser.FETCH - 86)) | (1 << (SParser.MUTABLE - 86)) | (1 << (SParser.NONE - 86)) | (1 << (SParser.NOT - 86)) | (1 << (SParser.READ - 86)) | (1 << (SParser.SELF - 86)) | (1 << (SParser.SORTED - 86)) | (1 << (SParser.THIS - 86)) | (1 << (SParser.BOOLEAN_LITERAL - 86)) | (1 << (SParser.CHAR_LITERAL - 86)) | (1 << (SParser.MIN_INTEGER - 86)) | (1 << (SParser.MAX_INTEGER - 86)) | (1 << (SParser.SYMBOL_IDENTIFIER - 86)) | (1 << (SParser.TYPE_IDENTIFIER - 86)) | (1 << (SParser.VARIABLE_IDENTIFIER - 86)) | (1 << (SParser.TEXT_LITERAL - 86)) | (1 << (SParser.INTEGER_LITERAL - 86)) | (1 << (SParser.HEXA_LITERAL - 86)) | (1 << (SParser.DECIMAL_LITERAL - 86)) | (1 << (SParser.DATETIME_LITERAL - 86)))) != 0) or ((((_la - 150)) & ~0x3f) == 0 and ((1 << (_la - 150)) & ((1 << (SParser.TIME_LITERAL - 150)) | (1 << (SParser.DATE_LITERAL - 150)) | (1 << (SParser.PERIOD_LITERAL - 150)))) != 0):
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << SParser.LPAR) | (1 << SParser.LBRAK) | (1 << SParser.LCURL) | (1 << SParser.MINUS) | (1 << SParser.LT) | (1 << SParser.CODE) | (1 << SParser.DOCUMENT))) != 0) or ((((_la - 87)) & ~0x3f) == 0 and ((1 << (_la - 87)) & ((1 << (SParser.EXECUTE - 87)) | (1 << (SParser.FETCH - 87)) | (1 << (SParser.MUTABLE - 87)) | (1 << (SParser.NONE - 87)) | (1 << (SParser.NOT - 87)) | (1 << (SParser.READ - 87)) | (1 << (SParser.SELF - 87)) | (1 << (SParser.SORTED - 87)) | (1 << (SParser.THIS - 87)) | (1 << (SParser.BOOLEAN_LITERAL - 87)) | (1 << (SParser.CHAR_LITERAL - 87)) | (1 << (SParser.MIN_INTEGER - 87)) | (1 << (SParser.MAX_INTEGER - 87)) | (1 << (SParser.SYMBOL_IDENTIFIER - 87)) | (1 << (SParser.TYPE_IDENTIFIER - 87)) | (1 << (SParser.VARIABLE_IDENTIFIER - 87)) | (1 << (SParser.TEXT_LITERAL - 87)) | (1 << (SParser.INTEGER_LITERAL - 87)) | (1 << (SParser.HEXA_LITERAL - 87)) | (1 << (SParser.DECIMAL_LITERAL - 87)) | (1 << (SParser.DATETIME_LITERAL - 87)) | (1 << (SParser.TIME_LITERAL - 87)))) != 0) or _la==SParser.DATE_LITERAL or _la==SParser.PERIOD_LITERAL:
                 self.state = 1571 
                 localctx.items = self.dict_entry_list(0)
 
@@ -20533,7 +20534,7 @@ class SParser ( AbstractParser ):
     def sempred(self, localctx, ruleIndex, predIndex):
         if self._predicates == None:
             self._predicates = dict()
-        self._predicates[14] = self.native_category_mapping_list_sempred
+        self._predicates[14] = self.native_category_binding_list_sempred
         self._predicates[25] = self.callable_parent_sempred
         self._predicates[35] = self.else_if_statement_list_sempred
         self._predicates[40] = self.expression_sempred
@@ -20586,7 +20587,7 @@ class SParser ( AbstractParser ):
         else:
             return pred(localctx, predIndex)
 
-    def native_category_mapping_list_sempred(self, localctx, predIndex):
+    def native_category_binding_list_sempred(self, localctx, predIndex):
             if predIndex == 0:
                 return self.precpred(self._ctx, 1)
          
