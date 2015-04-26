@@ -30,7 +30,7 @@ class MethodCall(SimpleStatement):
     def check(self, context):
         finder = MethodFinder(context, self)
         declaration = finder.findMethod(False)
-        local = self.method.newLocalCheckContext(context)
+        local = self.method.newLocalCheckContext(context, declaration)
         return self.doCheck(declaration, context, local)
 
 
@@ -64,7 +64,7 @@ class MethodCall(SimpleStatement):
 
     def interpret(self, context):
         declaration = self.findDeclaration(context)
-        local = self.method.newLocalContext(context)
+        local = self.method.newLocalContext(context, declaration)
         declaration.registerArguments(local)
         assignments = self.makeAssignments(context, declaration)
         for assignment in assignments:

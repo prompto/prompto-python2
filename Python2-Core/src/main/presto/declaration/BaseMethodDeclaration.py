@@ -15,6 +15,7 @@ class BaseMethodDeclaration(BaseDeclaration, IMethodDeclaration):
         self.arguments = arguments if arguments != None else ArgumentList()
         from presto.type.VoidType import VoidType
         self.returnType = returnType if returnType != None else VoidType.instance
+        self.memberOf = None
 
     def getSignature(self, dialect):
         sb = StringIO()

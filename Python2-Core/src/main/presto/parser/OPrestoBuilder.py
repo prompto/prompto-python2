@@ -2,11 +2,12 @@ from presto.csharp.CSharpBooleanLiteral import CSharpBooleanLiteral
 from presto.csharp.CSharpCharacterLiteral import CSharpCharacterLiteral
 from presto.csharp.CSharpDecimalLiteral import CSharpDecimalLiteral
 from presto.csharp.CSharpExpressionList import CSharpExpressionList
+from presto.csharp.CSharpThisExpression import CSharpThisExpression
 from presto.csharp.CSharpIdentifierExpression import CSharpIdentifierExpression
 from presto.csharp.CSharpIntegerLiteral import CSharpIntegerLiteral
 from presto.csharp.CSharpMethodExpression import CSharpMethodExpression
-from presto.csharp.CSharpNativeCategoryBinding import CSharpNativeCategoryBinding
 from presto.csharp.CSharpNativeCall import CSharpNativeCall
+from presto.csharp.CSharpNativeCategoryBinding import CSharpNativeCategoryBinding
 from presto.csharp.CSharpStatement import CSharpStatement
 from presto.csharp.CSharpTextLiteral import CSharpTextLiteral
 from presto.declaration.AbstractMethodDeclaration import AbstractMethodDeclaration
@@ -16,13 +17,13 @@ from presto.declaration.ConcreteMethodDeclaration import ConcreteMethodDeclarati
 from presto.declaration.EnumeratedCategoryDeclaration import EnumeratedCategoryDeclaration
 from presto.declaration.EnumeratedNativeDeclaration import EnumeratedNativeDeclaration
 from presto.declaration.GetterMethodDeclaration import GetterMethodDeclaration
-from presto.declaration.OperatorMethodDeclaration import OperatorMethodDeclaration
 from presto.declaration.NativeCategoryDeclaration import NativeCategoryDeclaration
 from presto.declaration.NativeMethodDeclaration import NativeMethodDeclaration
-from presto.declaration.TestMethodDeclaration import TestMethodDeclaration
-from presto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
 from presto.declaration.NativeResourceDeclaration import NativeResourceDeclaration
+from presto.declaration.TestMethodDeclaration import TestMethodDeclaration
+from presto.declaration.OperatorMethodDeclaration import OperatorMethodDeclaration
 from presto.declaration.SetterMethodDeclaration import SetterMethodDeclaration
+from presto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
 from presto.expression.AddExpression import AddExpression
 from presto.expression.AndExpression import AndExpression
 from presto.expression.CastExpression import CastExpression
@@ -59,7 +60,7 @@ from presto.grammar.ArgumentAssignment import ArgumentAssignment
 from presto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
 from presto.grammar.ArgumentList import ArgumentList
 from presto.grammar.CategoryArgument import CategoryArgument
-from presto.grammar.CategoryMethodDeclarationList import CategoryMethodDeclarationList
+from presto.grammar.MethodDeclarationList import MethodDeclarationList
 from presto.grammar.CategorySymbol import CategorySymbol
 from presto.grammar.CategorySymbolList import CategorySymbolList
 from presto.grammar.CmpOp import CmpOp
@@ -88,17 +89,20 @@ from presto.java.JavaIdentifierExpression import JavaIdentifierExpression
 from presto.java.JavaIntegerLiteral import JavaIntegerLiteral
 from presto.java.JavaItemExpression import JavaItemExpression
 from presto.java.JavaMethodExpression import JavaMethodExpression
-from presto.java.JavaNativeCategoryBinding import JavaNativeCategoryBinding
 from presto.java.JavaNativeCall import JavaNativeCall
+from presto.java.JavaNativeCategoryBinding import JavaNativeCategoryBinding
 from presto.java.JavaStatement import JavaStatement
 from presto.java.JavaTextLiteral import JavaTextLiteral
+from presto.java.JavaThisExpression import JavaThisExpression
 from presto.javascript.JavaScriptBooleanLiteral import JavaScriptBooleanLiteral
 from presto.javascript.JavaScriptCharacterLiteral import JavaScriptCharacterLiteral
 from presto.javascript.JavaScriptDecimalLiteral import JavaScriptDecimalLiteral
 from presto.javascript.JavaScriptExpressionList import JavaScriptExpressionList
 from presto.javascript.JavaScriptIdentifierExpression import JavaScriptIdentifierExpression
 from presto.javascript.JavaScriptIntegerLiteral import JavaScriptIntegerLiteral
+from presto.javascript.JavaScriptThisExpression import JavaScriptThisExpression
 from presto.javascript.JavaScriptMethodExpression import JavaScriptMethodExpression
+from presto.javascript.JavaScriptMemberExpression import JavaScriptMemberExpression
 from presto.javascript.JavaScriptModule import JavaScriptModule
 from presto.javascript.JavaScriptNativeCall import JavaScriptNativeCall
 from presto.javascript.JavaScriptNativeCategoryBinding import JavaScriptNativeCategoryBinding
@@ -148,13 +152,13 @@ from presto.statement.DeclarationInstruction import DeclarationInstruction
 from presto.statement.DoWhileStatement import DoWhileStatement
 from presto.statement.ForEachStatement import ForEachStatement
 from presto.statement.IfStatement import IfElement, IfStatement, IfElementList
-from presto.statement.UnresolvedCall import UnresolvedCall
 from presto.statement.RaiseStatement import RaiseStatement
 from presto.statement.ReturnStatement import ReturnStatement
 from presto.statement.StatementList import StatementList
 from presto.statement.SwitchCase import SwitchCaseList
 from presto.statement.SwitchErrorStatement import SwitchErrorStatement
 from presto.statement.SwitchStatement import SwitchStatement
+from presto.statement.UnresolvedCall import UnresolvedCall
 from presto.statement.WhileStatement import WhileStatement
 from presto.statement.WithResourceStatement import WithResourceStatement
 from presto.statement.WithSingletonStatement import WithSingletonStatement
@@ -233,6 +237,11 @@ class OPrestoBuilder(OParserListener):
     def exitMethodCallExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
+
+    def exitAn_expression(self, ctx):
+        typ = self.getNodeValue(ctx.typ)
+        self.setNodeValue(ctx, typ)
 
 
     def exitAtomicLiteral(self, ctx):
@@ -495,19 +504,19 @@ class OPrestoBuilder(OParserListener):
 
     def exitAttribute_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         match = self.getNodeValue(getattr(ctx, "match", None))
-        self.setNodeValue(ctx, AttributeDeclaration(name, type, match))
+        self.setNodeValue(ctx, AttributeDeclaration(name, typ, match))
 
 
     def exitNativeType(self, ctx):
-        type = self.getNodeValue(ctx.n)
-        self.setNodeValue(ctx, type)
+        typ = self.getNodeValue(ctx.n)
+        self.setNodeValue(ctx, typ)
 
 
     def exitCategoryType(self, ctx):
-        type = self.getNodeValue(ctx.c)
-        self.setNodeValue(ctx, type)
+        typ = self.getNodeValue(ctx.c)
+        self.setNodeValue(ctx, typ)
 
 
     def exitCategory_type(self, ctx):
@@ -516,13 +525,13 @@ class OPrestoBuilder(OParserListener):
 
 
     def exitListType(self, ctx):
-        type = self.getNodeValue(ctx.l)
-        self.setNodeValue(ctx, ListType(type))
+        typ = self.getNodeValue(ctx.l)
+        self.setNodeValue(ctx, ListType(typ))
 
 
     def exitDictType(self, ctx):
-        type = self.getNodeValue(ctx.d)
-        self.setNodeValue(ctx, DictType(type))
+        typ = self.getNodeValue(ctx.d)
+        self.setNodeValue(ctx, DictType(typ))
 
 
     def exitAttributeList(self, ctx):
@@ -611,27 +620,28 @@ class OPrestoBuilder(OParserListener):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MemberSelector(name))
 
-    def exitIsATypeExpression(self, ctx):
-        typ = self.getNodeValue(ctx.typ)
-        exp = TypeExpression(typ)
-        self.setNodeValue(ctx, exp)
+    def exitIsAnExpression(self, ctx):
+        left = self.getNodeValue(ctx.left)
+        typ = self.getNodeValue(ctx.right)
+        right = TypeExpression(typ)
+        self.setNodeValue(ctx, EqualsExpression(left, EqOp.IS_A, right))
 
-    def exitIsOtherExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
+    def exitIsNotAnExpression(self, ctx):
+        left = self.getNodeValue(ctx.left)
+        typ = self.getNodeValue(ctx.right)
+        right = TypeExpression(typ)
+        self.setNodeValue(ctx, EqualsExpression(left, EqOp.IS_NOT_A, right))
 
     def exitIsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
-        op = EqOp.IS_A if isinstance(right, TypeExpression) else EqOp.IS
-        self.setNodeValue(ctx, EqualsExpression(left, op, right))
+        self.setNodeValue(ctx, EqualsExpression(left, EqOp.IS, right))
 
 
     def exitIsNotExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
-        op = EqOp.IS_NOT_A if isinstance(right, TypeExpression) else EqOp.IS_NOT
-        self.setNodeValue(ctx, EqualsExpression(left, op, right))
+        self.setNodeValue(ctx, EqualsExpression(left, EqOp.IS_NOT, right))
 
     def exitItemSelector(self, ctx):
         exp = self.getNodeValue(ctx.exp)
@@ -644,11 +654,11 @@ class OPrestoBuilder(OParserListener):
 
 
     def exitTyped_argument(self, ctx):
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         name = self.getNodeValue(ctx.name)
         attrs = self.getNodeValue(ctx.attrs)
         exp = self.getNodeValue(ctx.value)
-        arg = CategoryArgument(type, name, attrs)
+        arg = CategoryArgument(typ, name, attrs)
         arg.defaultExpression = exp
         self.setNodeValue(ctx, arg)
 
@@ -669,8 +679,8 @@ class OPrestoBuilder(OParserListener):
 
 
     def exitCategoryArgumentType(self, ctx):
-        type = self.getNodeValue(ctx.typ)
-        self.setNodeValue(ctx, type)
+        typ = self.getNodeValue(ctx.typ)
+        self.setNodeValue(ctx, typ)
 
 
     def exitArgumentList(self, ctx):
@@ -758,10 +768,25 @@ class OPrestoBuilder(OParserListener):
         exp = AddExpression(left, right) if ctx.op.type == OParser.PLUS else SubtractExpression(left, right)
         self.setNodeValue(ctx, exp)
 
+    def exitNative_member_method_declaration(self, ctx):
+        decl = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, decl)
+
+    def exitNativeCategoryMethodList(self, ctx):
+        item = self.getNodeValue(ctx.item)
+        items = MethodDeclarationList(item)
+        self.setNodeValue(ctx, items)
+
+
+    def exitNativeCategoryMethodListItem(self, ctx):
+        item = self.getNodeValue(ctx.item)
+        items = self.getNodeValue(ctx.items)
+        items.append(item)
+        self.setNodeValue(ctx, items)
 
     def exitCategoryMethodList(self, ctx):
         item = self.getNodeValue(ctx.item)
-        items = CategoryMethodDeclarationList(item)
+        items = MethodDeclarationList(item)
         self.setNodeValue(ctx, items)
 
     def exitCurlyCategoryMethodList(self, ctx):
@@ -791,25 +816,9 @@ class OPrestoBuilder(OParserListener):
         self.setNodeValue(ctx, GetterMethodDeclaration(name, stmts))
 
 
-    def exitAbstractMemberMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
+    def exitMember_method_declaration(self, ctx):
+        decl = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, decl)
-
-
-    def exitConcreteMemberMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
-    def exitSetterMemberMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
-    def exitGetterMemberMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
 
     def exitStatementList(self, ctx):
         item = self.getNodeValue(ctx.item)
@@ -941,8 +950,39 @@ class OPrestoBuilder(OParserListener):
     def exitJava_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
 
+    def exitCSharpChildIdentifier(self, ctx):
+        parent = self.getNodeValue(ctx.parent)
+        name = self.getNodeValue(ctx.name)
+        child = CSharpIdentifierExpression(parent, name)
+        self.setNodeValue(ctx, child)
+
     def exitCsharp_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
+    def exitCsharp_method_expression(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        args = self.getNodeValue(ctx.args)
+        self.setNodeValue(ctx, CSharpMethodExpression(name, args))
+
+    def exitCSharpMethodExpression(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, exp)
+
+    def exitCSharpSelectorExpression(self, ctx):
+        parent = self.getNodeValue(ctx.parent)
+        child = self.getNodeValue(ctx.child)
+        child.parent = parent
+        self.setNodeValue(ctx, child)
+
+    def exitCSharpArgumentList(self,  ctx):
+        item = self.getNodeValue(ctx.item)
+        self.setNodeValue(ctx, CSharpExpressionList(item))
+
+    def exitCSharpArgumentListItem(self, ctx):
+        item = self.getNodeValue(ctx.item)
+        items = self.getNodeValue(ctx.items)
+        items.append(item)
+        self.setNodeValue(ctx, items)
 
     def exitPython_identifier(self, ctx):
         name = ctx.getText()
@@ -998,38 +1038,10 @@ class OPrestoBuilder(OParserListener):
         self.setNodeValue(ctx, child)
 
 
-    def exitJavaIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, JavaIdentifierExpression(name))
-
     def exitCSharpIdentifier(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, CSharpIdentifierExpression(None, name))
 
-    def exitCsharp_method_expression(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, CSharpMethodExpression(name, args))
-
-    def exitCSharpMethodExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
-    def exitCSharpSelectorExpression(self, ctx):
-        parent = self.getNodeValue(ctx.parent)
-        child = self.getNodeValue(ctx.child)
-        child.parent = parent
-        self.setNodeValue(ctx, child)
-
-    def exitCSharpArgumentList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, CSharpExpressionList(item))
-
-    def exitCSharpArgumentListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
-        self.setNodeValue(ctx, items)
 
     def exitPythonIdentifier(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -1048,29 +1060,12 @@ class OPrestoBuilder(OParserListener):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
-
-    def exitJavaIdentifierExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
+    def exitCsharp_primary_expression(self, ctx):
+        exp = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, exp)
 
-
-    def exitCSharpIdentifierExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
-    def exitJavaChildIdentifier(self, ctx):
-        parent = self.getNodeValue(ctx.parent)
-        name = self.getNodeValue(ctx.name)
-        child = JavaIdentifierExpression(name, parent=parent)
-        self.setNodeValue(ctx, child)
-
-
-    def exitCSharpChildIdentifier(self, ctx):
-        parent = self.getNodeValue(ctx.parent)
-        name = self.getNodeValue(ctx.name)
-        child = CSharpIdentifierExpression(parent, name)
-        self.setNodeValue(ctx, child)
-
+    def exitCsharp_this_expression(self, ctx):
+        self.setNodeValue(ctx, CSharpThisExpression())
 
     def exitPythonChildIdentifier(self, ctx):
         parent = self.getNodeValue(ctx.parent)
@@ -1078,6 +1073,21 @@ class OPrestoBuilder(OParserListener):
         child = PythonIdentifierExpression(name, parent)
         self.setNodeValue(ctx, child)
 
+
+    def exitJavaIdentifier(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        self.setNodeValue(ctx, JavaIdentifierExpression(name))
+
+
+    def exitJava_primary_expression(self, ctx):
+        exp = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, exp)
+
+    def exitJavaChildIdentifier(self, ctx):
+        parent = self.getNodeValue(ctx.parent)
+        name = self.getNodeValue(ctx.name)
+        child = JavaIdentifierExpression(name, parent=parent)
+        self.setNodeValue(ctx, child)
 
     def exitJavaClassIdentifier(self, ctx):
         klass = self.getNodeValue(ctx.klass)
@@ -1093,17 +1103,6 @@ class OPrestoBuilder(OParserListener):
     def exitJavaPrimaryExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
-
-
-    def exitCSharpPrestoIdentifier(self, ctx):
-        name = ctx.DOLLAR_IDENTIFIER().getText()
-        self.setNodeValue(ctx, CSharpIdentifierExpression(None, name))
-
-
-    def exitCSharpPrimaryExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
 
     def exitJavaSelectorExpression(self, ctx):
         parent = self.getNodeValue(ctx.parent)
@@ -1126,6 +1125,18 @@ class OPrestoBuilder(OParserListener):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, JavaStatement(exp, False))
 
+    def exitJavaReturnStatement(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, JavaStatement(exp, True))
+
+    def exitCSharpPrestoIdentifier(self, ctx):
+        name = ctx.DOLLAR_IDENTIFIER().getText()
+        self.setNodeValue(ctx, CSharpIdentifierExpression(None, name))
+
+    def exitCSharpPrimaryExpression(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, exp)
+
 
     def exitCSharpStatement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
@@ -1145,12 +1156,6 @@ class OPrestoBuilder(OParserListener):
         ids = [c.getText() for c in ctx.identifier()]
         module = PythonModule(ids)
         self.setNodeValue(ctx, module)
-
-
-    def exitJavaReturnStatement(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, JavaStatement(exp, True))
-
 
     def exitCSharpReturnStatement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
@@ -1183,11 +1188,11 @@ class OPrestoBuilder(OParserListener):
 
 
     def exitNative_method_declaration(self, ctx):
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
         stmts = self.getNodeValue(ctx.stmts)
-        self.setNodeValue(ctx, NativeMethodDeclaration(name, args, type, stmts))
+        self.setNodeValue(ctx, NativeMethodDeclaration(name, args, typ, stmts))
 
 
     def exitJavaArgumentList(self, ctx):
@@ -1313,15 +1318,8 @@ class OPrestoBuilder(OParserListener):
         self.setNodeValue(ctx, PythonTextLiteral(ctx.getText()))
 
 
-    def exitJavaLiteralExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
-
-    def exitCSharpLiteralExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
+    def exitJava_this_expression(self, ctx):
+        self.setNodeValue(ctx, JavaThisExpression())
 
     def exitPythonLiteralExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
@@ -1375,7 +1373,8 @@ class OPrestoBuilder(OParserListener):
         name = self.getNodeValue(ctx.name)
         attrs = self.getNodeValue(ctx.attrs)
         bindings = self.getNodeValue(ctx.bindings)
-        self.setNodeValue(ctx, NativeCategoryDeclaration(name, attrs, bindings, None))
+        methods = self.getNodeValue(ctx.methods)
+        self.setNodeValue(ctx, NativeCategoryDeclaration(name, attrs, bindings, None, methods))
 
 
     def exitNativeCategoryDeclaration(self, ctx):
@@ -1387,7 +1386,8 @@ class OPrestoBuilder(OParserListener):
         name = self.getNodeValue(ctx.name)
         attrs = self.getNodeValue(ctx.attrs)
         bindings = self.getNodeValue(ctx.bindings)
-        self.setNodeValue(ctx, NativeResourceDeclaration(name, attrs, bindings, None))
+        methods = self.getNodeValue(ctx.methods)
+        self.setNodeValue(ctx, NativeResourceDeclaration(name, attrs, bindings, None, methods))
 
 
     def exitResource_declaration(self, ctx):
@@ -1449,9 +1449,9 @@ class OPrestoBuilder(OParserListener):
 
     def exitEnum_native_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         symbols = self.getNodeValue(ctx.symbols)
-        self.setNodeValue(ctx, EnumeratedNativeDeclaration(name, type, symbols))
+        self.setNodeValue(ctx, EnumeratedNativeDeclaration(name, typ, symbols))
 
 
     def exitFor_each_statement(self, ctx):
@@ -1653,17 +1653,18 @@ class OPrestoBuilder(OParserListener):
         self.setNodeValue(ctx, RangeLiteral(low, high))
 
 
+    def exitLiteralSetLiteral(self, ctx):
+        items = self.getNodeValue(ctx.exp)
+        items = items if items is not None else []
+        value = SetLiteral(items)
+        self.setNodeValue(ctx, value)
+
     def exitLiteralListLiteral(self, ctx):
         items = self.getNodeValue(ctx.exp)
         items = items if items is not None else []
         value = ListLiteral(items)
         self.setNodeValue(ctx, value)
 
-    def exitLiteralSetLiteral(self, ctx):
-        items = self.getNodeValue(ctx.exp)
-        items = items if items is not None else []
-        value = SetLiteral(items)
-        self.setNodeValue(ctx, value)
 
     def exitLiteralList(self, ctx):
         item = self.getNodeValue(ctx.item)
@@ -1789,11 +1790,6 @@ class OPrestoBuilder(OParserListener):
         typ = self.getNodeValue(ctx.typ)
         stmts = self.getNodeValue(ctx.stmts)
         decl = OperatorMethodDeclaration(op, arg, typ, stmts)
-        self.setNodeValue(ctx, decl)
-
-
-    def exitOperatorMemberMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
 
@@ -1985,18 +1981,18 @@ class OPrestoBuilder(OParserListener):
 
 
     def exitAnyListType(self, ctx):
-        type = self.getNodeValue(ctx.typ)
-        self.setNodeValue(ctx, ListType(type))
+        typ = self.getNodeValue(ctx.typ)
+        self.setNodeValue(ctx, ListType(typ))
 
 
     def exitAnyDictType(self, ctx):
-        type = self.getNodeValue(ctx.typ)
-        self.setNodeValue(ctx, DictType(type))
+        typ = self.getNodeValue(ctx.typ)
+        self.setNodeValue(ctx, DictType(typ))
 
 
     def exitAnyArgumentType(self, ctx):
-        type = self.getNodeValue(ctx.typ)
-        self.setNodeValue(ctx, type)
+        typ = self.getNodeValue(ctx.typ)
+        self.setNodeValue(ctx, typ)
 
 
     def exitCastExpression(self, ctx):
@@ -2056,6 +2052,11 @@ class OPrestoBuilder(OParserListener):
         self.setNodeValue(ctx, MatchingCollectionConstraint(exp))
 
 
+    def exitMatchingRange(self, ctx):
+        exp = self.getNodeValue(ctx.source)
+        self.setNodeValue(ctx, MatchingCollectionConstraint(exp))
+
+
     def exitMatchingExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, MatchingExpressionConstraint(exp))
@@ -2083,9 +2084,10 @@ class OPrestoBuilder(OParserListener):
         name = ctx.getText()
         self.setNodeValue(ctx, name)
 
-    def exitJavascriptLiteralExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
+
+    def exitJavascript_this_expression(self, ctx):
+        self.setNodeValue(ctx, JavaScriptThisExpression())
+
 
     def exitJavascript_method_expression(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -2121,35 +2123,32 @@ class OPrestoBuilder(OParserListener):
     def exitJavaScriptCategoryBinding(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.binding))
 
-    def exitJavascriptChildIdentifier(self, ctx):
-        parent = self.getNodeValue(ctx.parent)
+
+    def exitJavascript_identifier_expression(self, ctx):
         name = self.getNodeValue(ctx.name)
-        exp = JavaScriptIdentifierExpression(parent, name)
+        exp = JavaScriptIdentifierExpression(None, name)
         self.setNodeValue(ctx, exp)
 
     def exitJavascriptDecimalLiteral(self, ctx):
         text = ctx.t.text
         self.setNodeValue(ctx, JavaScriptDecimalLiteral(text))
 
-    def exitJavascriptIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, JavaScriptIdentifierExpression(None, name))
-
-    def exitJavascriptIdentifierExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
     def exitJavascriptIntegerLiteral(self, ctx):
         text = ctx.t.text
         self.setNodeValue(ctx, JavaScriptIntegerLiteral(text))
 
+
     def exitJavascriptMethodExpression(self, ctx):
-        method = self.getNodeValue(ctx.exp)
+        method = self.getNodeValue(ctx.method)
         self.setNodeValue(ctx, method)
 
     def exitJavaScriptNativeStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, JavaScriptNativeCall(stmt))
+
+    def exitJavaScriptMethodExpression(self, ctx):
+        method = self.getNodeValue(ctx.method)
+        self.setNodeValue(ctx, method)
 
     def exitJavascriptPrimaryExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
@@ -2164,6 +2163,15 @@ class OPrestoBuilder(OParserListener):
         child = self.getNodeValue(ctx.child)
         child.parent = parent
         self.setNodeValue(ctx, child)
+
+
+    def exitJavaScriptMemberExpression(self, ctx):
+        name = ctx.name.getText()
+        self.setNodeValue(ctx, JavaScriptMemberExpression(name))
+
+    def exitJavascript_primary_expression(self, ctx):
+        exp = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, exp)
 
     def exitJavascriptStatement(self, ctx):
         exp = self.getNodeValue(ctx.exp)

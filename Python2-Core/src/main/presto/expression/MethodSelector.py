@@ -1,5 +1,6 @@
 from presto.expression.MemberSelector import MemberSelector
 from presto.error.SyntaxError import SyntaxError
+from presto.runtime.Context import InstanceContext
 from presto.value.NullValue import NullValue
 from presto.value.TypeValue import TypeValue
 
@@ -29,10 +30,20 @@ class MethodSelector(MemberSelector):
 
     def getGlobalCandidates(self, context):
         from presto.runtime.Context import MethodDeclarationMap
-        actual = context.getRegisteredDeclaration(MethodDeclarationMap, self.name)
-        if actual == None:
-            raise SyntaxError("Unknown method: \"" + self.name + "\"")
-        return actual.values()
+        methods = []
+        # if called from a member method, could be a member method called without this/self
+        if isinstance(context.getParentContext(), InstanceContext):
+            from presto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
+            typ = context.getParentContext().instanceType
+            cd = context.getRegisteredDeclaration(ConcreteCategoryDeclaration, typ.getName())
+            if cd is not None:
+                members = cd.findMemberMethods(context, self.name)
+                if members is not None:
+                    methods.extend(members)
+        globs = context.getRegisteredDeclaration(MethodDeclarationMap, self.name)
+        if globs is not None:
+            methods.extend(globs.values())
+        return methods
 
     def getCategoryCandidates(self, context):
         from presto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
@@ -45,17 +56,29 @@ class MethodSelector(MemberSelector):
             raise SyntaxError("Unknown category:" + type_.getName())
         return cd.findMemberMethods(context, self.name)
 
-    def newLocalContext(self, context):
-        if self.parent is None:
-            return context.newLocalContext()
-        else:
+    def newLocalContext(self, context, declaration):
+        if self.parent is not None:
             return self.newInstanceContext(context)
-
-    def newLocalCheckContext(self, context):
-        if self.parent is None:
-            return context.newLocalContext()
+        elif declaration.memberOf is not None:
+            return self.newLocalInstanceContext(context)
         else:
+            return context.newLocalContext()
+
+    def newLocalCheckContext(self, context, declaration):
+        if self.parent is not None:
             return self.newInstanceCheckContext(context)
+        elif declaration.memberOf is not None:
+            return self.newLocalInstanceContext(context)
+        else:
+            return context.newLocalContext()
+
+    def newLocalInstanceContext(self, context):
+        parent = context.getParentContext()
+        if not isinstance(parent, InstanceContext):
+            raise SyntaxError("Not in instance context !")
+        context = context.newLocalContext()
+        context.setParentContext(parent) # make local context child of the existing instance context
+        return context
 
     def newInstanceCheckContext(self, context):
         from presto.type.CategoryType import CategoryType

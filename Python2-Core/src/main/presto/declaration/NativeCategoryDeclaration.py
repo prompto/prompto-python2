@@ -1,13 +1,14 @@
-from presto.declaration.CategoryDeclaration import CategoryDeclaration
+from presto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
 from presto.error.SyntaxError import SyntaxError
 
-class NativeCategoryDeclaration(CategoryDeclaration):
+class NativeCategoryDeclaration ( ConcreteCategoryDeclaration ):
 
-    def __init__(self, name, attributes, categoryBindings, attributebindings):
+    def __init__(self, name, attributes, categoryBindings, attributeBindings, methods):
         super(NativeCategoryDeclaration, self).__init__(name, attributes)
         self.categoryBindings = categoryBindings
-        self.attributebindings = attributebindings
+        self.attributeBindings = attributeBindings
         self.boundedClass = None
+        self.methods = methods
 
     def __str__(self):
         return self.getName() + (":" + str(self.attributes)) if self.attributes is not None else ""
@@ -44,7 +45,10 @@ class NativeCategoryDeclaration(CategoryDeclaration):
     def toEDialect(self, writer):
         self.protoToEDialect(writer, False, True)
         self.bindingsToEDialect(writer)
-
+        if self.methods is not None and len(self.methods)>0:
+            writer.append("and methods:")
+            writer.newLine()
+            self.methodsToEDialect(writer, self.methods)
 
     def categoryTypeToEDialect(self, writer):
         writer.append("native category")
@@ -63,14 +67,23 @@ class NativeCategoryDeclaration(CategoryDeclaration):
 
     def bodyToODialect(self, writer):
         self.categoryBindings.toDialect(writer)
+        if self.methods is not None and len(self.methods)>0:
+            writer.newLine()
+            writer.newLine()
+            self.methodsToODialect(writer, self.methods)
 
-    def toPDialect(self, writer):
-        self.protoToPDialect(writer, None)
+    def toSDialect(self, writer):
+        self.protoToSDialect(writer, None)
         writer.indent()
         writer.newLine()
         self.categoryBindings.toDialect(writer)
+        if self.methods is not None and len(self.methods)>0:
+            for method in self.methods:
+                w = writer.newMemberWriter()
+                method.toDialect(w)
+                writer.newLine()
         writer.dedent()
         writer.newLine()
 
-    def categoryTypeToPDialect(self, writer):
+    def categoryTypeToSDialect(self, writer):
         writer.append("native category")

@@ -1,8 +1,10 @@
 from presto.declaration.CategoryDeclaration import CategoryDeclaration
+from presto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
 from presto.declaration.IDeclaration import IDeclaration
 from presto.expression.ConstructorExpression import ConstructorExpression
 from presto.expression.MethodSelector import MethodSelector
 from presto.grammar.UnresolvedIdentifier import UnresolvedIdentifier
+from presto.runtime.Context import InstanceContext
 from presto.statement.SimpleStatement import SimpleStatement
 from presto.statement.MethodCall import MethodCall
 from presto.type.CategoryType import CategoryType
@@ -55,6 +57,11 @@ class UnresolvedCall(SimpleStatement):
 
     def resolveUnresolvedIdentifier(self, context):
         name = self.caller.getName()
+        # if this happens in the context of a member method, then we need to check for category members first
+        if isinstance(context.getParentContext(), InstanceContext):
+            decl = self.resolveUnresolvedMember(context.getParentContext(), name)
+            if decl is not None:
+                return MethodCall(MethodSelector(name), self.assignments)
         decl = context.getRegisteredDeclaration(IDeclaration, name)
         if decl is None:
             raise SyntaxError("Unknown name:" + name)
@@ -62,6 +69,15 @@ class UnresolvedCall(SimpleStatement):
             return ConstructorExpression(CategoryType(name), False, self.assignments)
         else:
             return MethodCall(MethodSelector(name), self.assignments)
+
+    def resolveUnresolvedMember(self, context, name):
+        decl = context.getRegisteredDeclaration(ConcreteCategoryDeclaration, context.instanceType.name)
+        methods = decl.findMemberMethods(context, name)
+        if methods is not None and len(methods)>0:
+            return methods
+        else:
+            return None
+
 
     def resolveMember(self, context):
         parent = self.caller.getParent()

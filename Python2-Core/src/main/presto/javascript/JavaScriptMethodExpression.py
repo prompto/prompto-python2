@@ -4,6 +4,7 @@ from presto.javascript.JavaScriptSelectorExpression import JavaScriptSelectorExp
 class JavaScriptMethodExpression (JavaScriptSelectorExpression ):
 
     def __init__(self, name):
+        super(JavaScriptMethodExpression, self).__init__()
         self.name = name
         self.arguments = None
 

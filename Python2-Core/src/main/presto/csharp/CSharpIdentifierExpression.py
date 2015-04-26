@@ -10,11 +10,10 @@ class CSharpIdentifierExpression (CSharpExpression):
             result = CSharpIdentifierExpression(parent=result, identifier=part)
         return result
 
-    def __init__(self, parent, identifier, isChildClass = False):
-        super(CSharpIdentifierExpression, self).__init__()
+    def __init__(self, parent, identifier):
+        super(CSharpIdentifierExpression, self).__init__(identifier)
         self.parent = parent
         self.identifier = identifier
-        self.isChildClass = isChildClass
 
     def getParent(self):
         return self.parent
