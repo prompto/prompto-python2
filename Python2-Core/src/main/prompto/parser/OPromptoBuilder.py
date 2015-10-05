@@ -878,7 +878,7 @@ class OPromptoBuilder(OParserListener):
     def exitAssertionListItem(self, ctx):
         item = self.getNodeValue(ctx.item)
         items = self.getNodeValue(ctx.items)
-        items.push(item)
+        items.append(item)
         self.setNodeValue(ctx, items)
 
 
