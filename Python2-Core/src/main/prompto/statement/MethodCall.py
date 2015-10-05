@@ -71,7 +71,7 @@ class MethodCall(SimpleStatement):
             expression = assignment.resolve(local, declaration, True)
             argument = assignment.getArgument()
             value = argument.checkValue(context, expression)
-            if value is not None and value.mutable and not argument.mutable:
+            if value is not None and argument.mutable and not value.mutable:
                 raise NotMutableError()
             local.setValue(assignment.getName(), value)
         return declaration.interpret(local)
