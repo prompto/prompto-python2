@@ -80,7 +80,7 @@ class IntegerType(NativeType):
         if isinstance(other, IntegerType):
             from prompto.type.RangeType import RangeType
             return RangeType(self)
-        return super(IntegerType, self).checkCompare(context, other)
+        return super(IntegerType, self).checkRange(context, other)
 
     def newRange(self, left, right):
         from prompto.value.Integer import Integer
@@ -94,7 +94,7 @@ class IntegerType(NativeType):
             return cmp(o1.value,o2.value)
         return sorted(source, cmp=compare)
 
-    def convertPythonValueToPrestoValue(self, context, value, returnType):
+    def convertPythonValueToPromptoValue(self, context, value, returnType):
         if isinstance(value, Number):
             from prompto.value.Integer import Integer
             return Integer(long(value))

@@ -2,11 +2,11 @@ from io import StringIO
 
 from prompto.value.BaseValueList import BaseValueList
 from prompto.value.Integer import Integer
-
+from prompto.error.SyntaxError import SyntaxError
 
 class ListValue(BaseValueList):
 
-    def __init__(self, itemType, item=None, items=None):
+    def __init__(self, itemType, items=None, item=None):
         from prompto.type.ListType import ListType
         super(ListValue, self).__init__(ListType(itemType), items)
         if item is not None:
@@ -24,7 +24,7 @@ class ListValue(BaseValueList):
         if isinstance(value, (ListValue, TupleValue, SetValue)):
             return self.merge(value)
         else:
-            return super.Add(context, value)
+            return super(ListValue, self).Add(context, value)
 
     def Multiply(self, context, value):
         if isinstance(value, Integer):

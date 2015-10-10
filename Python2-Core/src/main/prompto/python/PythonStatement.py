@@ -18,8 +18,8 @@ class PythonStatement(object):
         o = self.expression.interpret(context, module)
         if self.isReturn:
             if o is not None:
-                ct = PythonClassType(type(o))
-                o = ct.convertPythonValueToPrestoValue(context, o, returnType)
+                ct = PythonClassType(o.__class__)
+                o = ct.convertPythonValueToPromptoValue(context, o, returnType)
             return o
         else:
             return None

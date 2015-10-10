@@ -20,7 +20,7 @@ class CollectionSwitchCase ( SwitchCase ):
         selfValue = self.expression.interpret(context)
         if isinstance(selfValue, IContainer):
             return selfValue.hasItem(context, value)
-        elif isinstance(selfValue, ValueList):
+        elif isinstance(selfValue, ListValue):
             return selfValue.hasItem(context, value)
         return False
 

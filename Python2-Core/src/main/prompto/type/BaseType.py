@@ -1,7 +1,6 @@
 from prompto.type.IType import IType
 from prompto.expression.IExpression import IExpression
 from prompto.value.ExpressionValue import ExpressionValue
-from prompto.value.ListValue import ListValue
 from prompto.error.SyntaxError import SyntaxError
 
 class BaseType(IType):
@@ -88,7 +87,7 @@ class BaseType(IType):
     def toString(self, value):
         return str(value)
 
-    def convertPythonValueToPrestoValue(self, context, value, returnType):
+    def convertPythonValueToPromptoValue(self, context, value, returnType):
         raise Exception("Unsupported!")
 
     def sort(self, context, source, key=None):
@@ -101,4 +100,4 @@ class BaseType(IType):
                 item = item.interpret(context)
             items.append(item)
         temp = sorted(items, cmp=cmp)
-        return [ValueExpression(self, e) for e in temp]
+        return [ExpressionValue(self, e) for e in temp]

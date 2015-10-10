@@ -55,7 +55,7 @@ class CharacterType(NativeType):
     def toString(self, value):
         return "'" + str(value) + "'"
 
-    def convertPythonValueToPrestoValue(self, context, value, returnType):
+    def convertPythonValueToPromptoValue(self, context, value, returnType):
         if isinstance(value, basestring):
             from prompto.value.Character import Character
             return Character(value)
