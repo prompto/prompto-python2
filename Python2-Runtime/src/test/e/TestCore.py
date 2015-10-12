@@ -1,4 +1,3 @@
-# generated: 2015-10-05T22:40:45.179
 from prompto.parser.e.BaseEParserTest import BaseEParserTest
 from prompto.runtime.utils.Out import Out
 
@@ -18,6 +17,9 @@ class TestCore(BaseEParserTest):
 
     def testAttribute(self):
         self.runTests("core/attribute.pec")
+
+    def testAttributes(self):
+        self.runTests("core/attributes.pec")
 
     def testError(self):
         self.runTests("core/error.pec")
