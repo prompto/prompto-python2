@@ -37,6 +37,8 @@ from prompto.expression.DocumentExpression import DocumentExpression
 from prompto.expression.EqualsExpression import EqualsExpression
 from prompto.expression.ExecuteExpression import ExecuteExpression
 from prompto.expression.FetchExpression import FetchExpression
+from prompto.expression.FetchOneExpression import FetchOneExpression
+from prompto.expression.FetchAllExpression import FetchAllExpression
 from prompto.expression.InstanceExpression import InstanceExpression
 from prompto.expression.IntDivideExpression import IntDivideExpression
 from prompto.expression.ItemSelector import ItemSelector
@@ -130,8 +132,6 @@ from prompto.parser.OParser import OParser
 from prompto.parser.OParserListener import OParserListener
 from prompto.parser.Section import Section
 from prompto.parser.Dialect import Dialect
-from prompto.python.PythonNativeCategoryBinding import PythonNativeCategoryBinding, Python2NativeCategoryBinding, \
-    Python3NativeCategoryBinding
 from prompto.python.PythonArgument import PythonNamedArgument, PythonNamedArgumentList, PythonOrdinalArgumentList
 from prompto.python.PythonBooleanLiteral import PythonBooleanLiteral
 from prompto.python.PythonCharacterLiteral import PythonCharacterLiteral
@@ -139,6 +139,7 @@ from prompto.python.PythonDecimalLiteral import PythonDecimalLiteral
 from prompto.python.PythonIdentifierExpression import PythonIdentifierExpression
 from prompto.python.PythonIntegerLiteral import PythonIntegerLiteral
 from prompto.python.PythonMethodExpression import PythonMethodExpression
+from prompto.python.PythonNativeCategoryBinding import PythonNativeCategoryBinding, Python2NativeCategoryBinding, Python3NativeCategoryBinding
 from prompto.python.PythonNativeCall import PythonNativeCall, Python2NativeCall, Python3NativeCall
 from prompto.python.PythonStatement import PythonStatement
 from prompto.python.PythonTextLiteral import PythonTextLiteral
@@ -155,6 +156,7 @@ from prompto.statement.IfStatement import IfElement, IfStatement, IfElementList
 from prompto.statement.RaiseStatement import RaiseStatement
 from prompto.statement.ReturnStatement import ReturnStatement
 from prompto.statement.StatementList import StatementList
+from prompto.statement.StoreStatement import StoreStatement
 from prompto.statement.SwitchCase import SwitchCaseList
 from prompto.statement.SwitchErrorStatement import SwitchErrorStatement
 from prompto.statement.SwitchStatement import SwitchStatement
@@ -176,6 +178,7 @@ from prompto.type.IntegerType import IntegerType
 from prompto.type.ListType import ListType
 from prompto.type.TextType import TextType
 from prompto.type.TimeType import TimeType
+
 
 # need forward declaration
 OCleverParser = None
@@ -498,15 +501,17 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitPrimaryType(self, ctx):
-        type = self.getNodeValue(ctx.p)
-        self.setNodeValue(ctx, type)
+        typ = self.getNodeValue(ctx.p)
+        self.setNodeValue(ctx, typ)
 
 
     def exitAttribute_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         typ = self.getNodeValue(ctx.typ)
         match = self.getNodeValue(getattr(ctx, "match", None))
-        self.setNodeValue(ctx, AttributeDeclaration(name, typ, match))
+        decl = AttributeDeclaration(name, typ, match)
+        decl.storable = ctx.STORABLE() is not None
+        self.setNodeValue(ctx, decl)
 
 
     def exitNativeType(self, ctx):
@@ -573,6 +578,7 @@ class OPromptoBuilder(OParserListener):
         derived = self.getNodeValue(ctx.derived)
         methods = self.getNodeValue(ctx.methods)
         ccd = ConcreteCategoryDeclaration(name)
+        ccd.storable = ctx.STORABLE() is not None
         ccd.setAttributes(attrs)
         ccd.setDerivedFrom(derived)
         ccd.setMethods(methods)
@@ -833,18 +839,18 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitAbstract_method_declaration(self, ctx):
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, AbstractMethodDeclaration(name, args, type))
+        self.setNodeValue(ctx, AbstractMethodDeclaration(name, args, typ))
 
 
     def exitConcrete_method_declaration(self, ctx):
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
         stmts = self.getNodeValue(ctx.stmts)
-        self.setNodeValue(ctx, ConcreteMethodDeclaration(name, args, type, stmts))
+        self.setNodeValue(ctx, ConcreteMethodDeclaration(name, args, typ, stmts))
 
     def exitSingleStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
@@ -857,11 +863,11 @@ class OPromptoBuilder(OParserListener):
 
     def exitConstructor_expression(self, ctx):
         mutable = ctx.MUTABLE() is not None
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         args = self.getNodeValue(ctx.args)
         if args is None:
             args = ArgumentAssignmentList()
-        self.setNodeValue(ctx, ConstructorExpression(type, mutable, args))
+        self.setNodeValue(ctx, ConstructorExpression(typ, mutable, args))
 
 
     def exitAssertion(self, ctx):
@@ -1374,7 +1380,9 @@ class OPromptoBuilder(OParserListener):
         attrs = self.getNodeValue(ctx.attrs)
         bindings = self.getNodeValue(ctx.bindings)
         methods = self.getNodeValue(ctx.methods)
-        self.setNodeValue(ctx, NativeCategoryDeclaration(name, attrs, bindings, None, methods))
+        decl = NativeCategoryDeclaration(name, attrs, bindings, None, methods)
+        decl.storable = ctx.STORABLE() is not None
+        self.setNodeValue(ctx, decl)
 
 
     def exitNativeCategoryDeclaration(self, ctx):
@@ -1854,6 +1862,16 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, SliceSelector(None, last))
 
 
+    def exitStoreStatement (self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.stmt))
+
+
+    def exitStore_statement (self, ctx):
+        exps = self.getNodeValue(ctx.exps)
+        stmt = StoreStatement(exps)
+        self.setNodeValue(ctx, stmt)
+
+
     def exitSorted_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
         key = self.getNodeValue(ctx.key)
@@ -1883,11 +1901,25 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, exp)
 
 
-    def exitFetch_expression(self, ctx):
+    def exitFetchList(self, ctx):
         itemName = self.getNodeValue(ctx.name)
         source = self.getNodeValue(ctx.source)
         filter = self.getNodeValue(ctx.xfilter)
         self.setNodeValue(ctx, FetchExpression(itemName, source, filter))
+
+
+    def exitFetchOne (self, ctx):
+        category = self.getNodeValue(ctx.typ)
+        xfilter = self.getNodeValue(ctx.xfilter)
+        self.setNodeValue(ctx, FetchOneExpression(category, xfilter))
+
+
+    def exitFetchAll (self, ctx):
+        category = self.getNodeValue(ctx.typ)
+        xfilter = self.getNodeValue(ctx.xfilter)
+        start = self.getNodeValue(ctx.start)
+        end = self.getNodeValue(ctx.end)
+        self.setNodeValue(ctx, FetchAllExpression(category, xfilter, start, end))
 
     def exitClosure_expression(self, ctx):
         name = self.getNodeValue(ctx.name)

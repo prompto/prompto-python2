@@ -20,6 +20,10 @@ class CategoryType(BaseType):
             return False
         return self.getName() == obj.getName()
 
+    def newInstanceFromDocument(self, context, document):
+        decl = self.getDeclaration(context)
+        return decl.newInstanceFromDocument(context, document)
+
     def checkUnique(self, context):
         actual = context.getRegisteredDeclaration(IDeclaration, self.name)
         if actual is not None:
@@ -27,10 +31,10 @@ class CategoryType(BaseType):
 
     def getDeclaration(self, context):
         from prompto.declaration.CategoryDeclaration import CategoryDeclaration
-        actual = context.getRegisteredDeclaration(CategoryDeclaration, self.name)
-        if actual is None:
+        decl = context.getRegisteredDeclaration(CategoryDeclaration, self.name)
+        if decl is None:
             raise SyntaxError("Unknown category: \"" + self.name + "\"")
-        return actual
+        return decl
 
     def checkMultiply(self, context, other, tryReverse):
         typ = self.checkOperator(context, other, tryReverse, Operator.MULTIPLY)

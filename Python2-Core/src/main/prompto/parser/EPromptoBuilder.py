@@ -37,6 +37,8 @@ from prompto.expression.DocumentExpression import DocumentExpression
 from prompto.expression.EqualsExpression import EqualsExpression
 from prompto.expression.ExecuteExpression import ExecuteExpression
 from prompto.expression.FetchExpression import FetchExpression
+from prompto.expression.FetchOneExpression import FetchOneExpression
+from prompto.expression.FetchAllExpression import FetchAllExpression
 from prompto.expression.IntDivideExpression import IntDivideExpression
 from prompto.expression.ItemSelector import ItemSelector
 from prompto.expression.MemberSelector import MemberSelector
@@ -154,6 +156,7 @@ from prompto.statement.MethodCall import MethodCall
 from prompto.statement.RaiseStatement import RaiseStatement
 from prompto.statement.ReturnStatement import ReturnStatement
 from prompto.statement.StatementList import StatementList
+from prompto.statement.StoreStatement import StoreStatement
 from prompto.statement.SwitchCase import SwitchCaseList
 from prompto.statement.SwitchErrorStatement import SwitchErrorStatement
 from prompto.statement.SwitchStatement import SwitchStatement
@@ -514,25 +517,27 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitPrimaryType(self, ctx):
-        type = self.getNodeValue(ctx.p)
-        self.setNodeValue(ctx, type)
+        typ = self.getNodeValue(ctx.p)
+        self.setNodeValue(ctx, typ)
 
 
     def exitAttribute_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         match = self.getNodeValue(getattr(ctx, "match", None))
-        self.setNodeValue(ctx, AttributeDeclaration(name, type, match))
+        decl = AttributeDeclaration(name, typ, match)
+        decl.storable = ctx.STORABLE() is not None
+        self.setNodeValue(ctx, decl)
 
 
     def exitNativeType(self, ctx):
-        type = self.getNodeValue(ctx.n)
-        self.setNodeValue(ctx, type)
+        typ = self.getNodeValue(ctx.n)
+        self.setNodeValue(ctx, typ)
 
 
     def exitCategoryType(self, ctx):
-        type = self.getNodeValue(ctx.c)
-        self.setNodeValue(ctx, type)
+        typ = self.getNodeValue(ctx.c)
+        self.setNodeValue(ctx, typ)
 
 
     def exitCategory_type(self, ctx):
@@ -541,13 +546,13 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitListType(self, ctx):
-        type = self.getNodeValue(ctx.l)
-        self.setNodeValue(ctx, ListType(type))
+        typ = self.getNodeValue(ctx.l)
+        self.setNodeValue(ctx, ListType(typ))
 
 
     def exitDictType(self, ctx):
-        type = self.getNodeValue(ctx.d)
-        self.setNodeValue(ctx, DictType(type))
+        typ = self.getNodeValue(ctx.d)
+        self.setNodeValue(ctx, DictType(typ))
 
 
     def exitAttributeList(self, ctx):
@@ -580,6 +585,7 @@ class EPromptoBuilder(EParserListener):
         derived = self.getNodeValue(ctx.derived)
         methods = self.getNodeValue(ctx.methods)
         ccd = ConcreteCategoryDeclaration(name)
+        ccd.storable = ctx.STORABLE() is not None
         ccd.setAttributes(attrs)
         ccd.setDerivedFrom(derived)
         ccd.setMethods(methods)
@@ -673,11 +679,11 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitTyped_argument(self, ctx):
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         name = self.getNodeValue(ctx.name)
         attrs = self.getNodeValue(ctx.attrs)
         exp = self.getNodeValue(ctx.value)
-        arg = CategoryArgument(type, name, attrs)
+        arg = CategoryArgument(typ, name, attrs)
         arg.defaultExpression = exp
         self.setNodeValue(ctx, arg)
 
@@ -698,8 +704,8 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitCategoryArgumentType(self, ctx):
-        type = self.getNodeValue(ctx.typ)
-        self.setNodeValue(ctx, type)
+        typ = self.getNodeValue(ctx.typ)
+        self.setNodeValue(ctx, typ)
 
 
     def exitArgumentList(self, ctx):
@@ -843,18 +849,18 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitAbstract_method_declaration(self, ctx):
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, AbstractMethodDeclaration(name, args, type))
+        self.setNodeValue(ctx, AbstractMethodDeclaration(name, args, typ))
 
 
     def exitConcrete_method_declaration(self, ctx):
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
         stmts = self.getNodeValue(ctx.stmts)
-        self.setNodeValue(ctx, ConcreteMethodDeclaration(name, args, type, stmts))
+        self.setNodeValue(ctx, ConcreteMethodDeclaration(name, args, typ, stmts))
 
 
     def exitMethodCallStatement(self, ctx):
@@ -878,14 +884,14 @@ class EPromptoBuilder(EParserListener):
 
     def exitConstructorNoFrom(self, ctx):
         mutable = ctx.MUTABLE() is not None
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         args = self.getNodeValue(ctx.args)
         if args is None:
             args = ArgumentAssignmentList()
         arg = self.getNodeValue(ctx.arg)
         if arg is not None:
             args.append(arg)
-        self.setNodeValue(ctx, ConstructorExpression(type, mutable, args))
+        self.setNodeValue(ctx, ConstructorExpression(typ, mutable, args))
 
 
     def exitAssertion(self, ctx):
@@ -1075,10 +1081,6 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, exp)
 
     def exitPythonIdentifierExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
-    def exitCSharpIdentifierExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
@@ -1390,7 +1392,9 @@ class EPromptoBuilder(EParserListener):
         attrs = self.getNodeValue(ctx.attrs)
         bindings = self.getNodeValue(ctx.bindings)
         methods = self.getNodeValue(ctx.methods)
-        self.setNodeValue(ctx, NativeCategoryDeclaration(name, attrs, bindings, None, methods))
+        decl = NativeCategoryDeclaration(name, attrs, bindings, None, methods)
+        decl.storable = ctx.STORABLE() is not None
+        self.setNodeValue(ctx, decl)
 
 
     def exitNativeCategoryDeclaration(self, ctx):
@@ -1465,9 +1469,9 @@ class EPromptoBuilder(EParserListener):
 
     def exitEnum_native_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
-        type = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.typ)
         symbols = self.getNodeValue(ctx.symbols)
-        self.setNodeValue(ctx, EnumeratedNativeDeclaration(name, type, symbols))
+        self.setNodeValue(ctx, EnumeratedNativeDeclaration(name, typ, symbols))
 
 
     def exitFor_each_statement(self, ctx):
@@ -1868,6 +1872,16 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, SliceSelector(None, last))
 
 
+    def exitStoreStatement (self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.stmt))
+
+
+    def exitStore_statement (self, ctx):
+        exps = self.getNodeValue(ctx.exps)
+        stmt = StoreStatement(exps)
+        self.setNodeValue(ctx, stmt)
+
+
     def exitSorted_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
         key = self.getNodeValue(ctx.key)
@@ -1897,11 +1911,25 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, exp)
 
 
-    def exitFetch_expression(self, ctx):
+
+    def exitFetchList(self, ctx):
         itemName = self.getNodeValue(ctx.name)
         source = self.getNodeValue(ctx.source)
         filter = self.getNodeValue(ctx.xfilter)
         self.setNodeValue(ctx, FetchExpression(itemName, source, filter))
+
+    def exitFetchOne (self, ctx):
+        category = self.getNodeValue(ctx.typ)
+        xfilter = self.getNodeValue(ctx.xfilter)
+        self.setNodeValue(ctx, FetchOneExpression(category, xfilter))
+
+
+    def exitFetchAll (self, ctx):
+        category = self.getNodeValue(ctx.typ)
+        xfilter = self.getNodeValue(ctx.xfilter)
+        start = self.getNodeValue(ctx.start)
+        end = self.getNodeValue(ctx.end)
+        self.setNodeValue(ctx, FetchAllExpression(category, xfilter, start, end))
 
 
     def exitCode_type(self, ctx):

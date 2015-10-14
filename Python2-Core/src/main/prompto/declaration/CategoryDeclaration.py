@@ -1,12 +1,15 @@
 from prompto.declaration.BaseDeclaration import BaseDeclaration
 from prompto.error.SyntaxError import SyntaxError
-
+from prompto.value.Document import Document
+from prompto.type.CategoryType import CategoryType
+from prompto.error.InternalError import InternalError
 
 class CategoryDeclaration(BaseDeclaration):
 
     def __init__(self, name, attributes=None):
         super(CategoryDeclaration, self).__init__(name)
         self.attributes = attributes
+        self.storable = False
 
     def setAttributes(self, attributes):
         self.attributes = attributes
@@ -53,6 +56,30 @@ class CategoryDeclaration(BaseDeclaration):
         # nothing to do
         pass
 
+    def newInstanceFromDocument(self, context, document):
+        from prompto.declaration.AttributeDeclaration import AttributeDeclaration
+        instance = self.newInstance()
+        instance.mutable = True
+        try:
+            for name in self.attributes:
+                decl = context.getRegisteredDeclaration(AttributeDeclaration, name)
+                if decl is None:
+                    # decl = context.getRegisteredDeclaration(AttributeDeclaration, name)
+                    raise "abc"
+                if not decl.storable:
+                    continue
+                value = document.GetMember(context, name, False)
+                if isinstance(value, Document):
+                    typ = decl.GetType(context)
+                    if not isinstance(typ, CategoryType):
+                        raise InternalError("How did we get there?")
+                    value = typ.newInstanceFromDocument(context, document)
+                instance.SetMember(context, name, value)
+        finally:
+            instance.mutable = False
+        return instance
+
+
     def toDialect(self, writer):
         writer = writer.newInstanceWriter(self.getType(writer.context))
         super(CategoryDeclaration, self).toDialect(writer)
@@ -62,6 +89,8 @@ class CategoryDeclaration(BaseDeclaration):
         writer.append("define ")
         writer.append(self.name)
         writer.append(" as ")
+        if self.storable:
+            writer.append("storable ")
         self.categoryTypeToEDialect(writer)
         if hasAttributes:
             if len(self.attributes)==1:
@@ -96,6 +125,8 @@ class CategoryDeclaration(BaseDeclaration):
             writer.newLine()
 
     def allToODialect(self, writer, hasBody):
+        if self.storable:
+            writer.append("storable ")
         self.categoryTypeToODialect(writer)
         writer.append(" ")
         writer.append(self.name)
@@ -120,6 +151,8 @@ class CategoryDeclaration(BaseDeclaration):
         pass
 
     def protoToSDialect(self, writer,  derivedFrom):
+        if self.storable:
+            writer.append("storable ")
         self.categoryTypeToSDialect(writer)
         writer.append(" ")
         writer.append(self.name)
