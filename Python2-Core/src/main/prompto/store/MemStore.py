@@ -1,3 +1,4 @@
+from prompto.error.InternalError import InternalError
 from prompto.value.Boolean import Boolean
 
 # a utility class for running unit tests only
@@ -19,6 +20,6 @@ class MemStore(object):
                 raise InternalError ("Illegal test result: " + test)
             if test.value:
                 return doc
-        return None\
+        return None
 
 MemStore.instance = MemStore ()

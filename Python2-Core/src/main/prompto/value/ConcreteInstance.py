@@ -86,10 +86,9 @@ class ConcreteInstance(BaseValue, IInstance, IMultiplyable):
             value = setter.interpret(context)
         value = self.autocast(decl, value)
         self.values[attrName] = value
-        if self.storable is not None:
-            if decl.storable:
-                # TODO convert object graph if(value instanceof IInstance)
-                self.storable.SetMember(context, attrName, value)
+        if self.storable is not None and decl.storable:
+            # TODO convert object graph if(value instanceof IInstance)
+            self.storable.SetMember(context, attrName, value)
 
 
     def autocast(self, decl, value):
