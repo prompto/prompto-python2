@@ -84,7 +84,7 @@ class TestMethodDeclaration(BaseDeclaration):
         writer.indent ()
         self.statements.toDialect (writer)
         writer.dedent ()
-        writer.append ("expecting:")
+        writer.append ("verifying:")
         if self.error is not None:
             writer.append (" ")
             self.error.toDialect (writer)
@@ -104,7 +104,7 @@ class TestMethodDeclaration(BaseDeclaration):
         writer.indent ()
         self.statements.toDialect (writer)
         writer.dedent ()
-        writer.append ("and expecting")
+        writer.append ("and verifying")
         if self.error is not None:
             writer.append (" ")
             self.error.toDialect (writer)
@@ -124,7 +124,7 @@ class TestMethodDeclaration(BaseDeclaration):
         writer.indent ()
         self.statements.toDialect (writer)
         writer.dedent ()
-        writer.append ("} expecting ")
+        writer.append ("} verifying ")
         if self.error is not None:
             self.error.toDialect (writer)
             writer.append (";\n")
