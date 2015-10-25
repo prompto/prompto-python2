@@ -79,6 +79,8 @@ from prompto.grammar.NativeCategoryBindingList import NativeCategoryBindingList
 from prompto.grammar.NativeSymbol import NativeSymbol
 from prompto.grammar.NativeSymbolList import NativeSymbolList
 from prompto.grammar.Operator import Operator
+from prompto.grammar.OrderByClause import OrderByClause
+from prompto.grammar.OrderByClauseList import OrderByClauseList
 from prompto.grammar.UnresolvedArgument import UnresolvedArgument
 from prompto.grammar.UnresolvedIdentifier import UnresolvedIdentifier
 from prompto.grammar.VariableInstance import VariableInstance
@@ -554,18 +556,18 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, exp)
 
 
+    def exitCollectionSwitchCase(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        stmts = self.getNodeValue(ctx.stmts)
+        self.setNodeValue(ctx, CollectionSwitchCase(exp, stmts))
+
+
     def exitCommentStatement(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.comment_statement()))
 
 
     def exitComment_statement(self, ctx):
         self.setNodeValue(ctx, CommentStatement(ctx.getText()))
-
-
-    def exitCollectionSwitchCase(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        stmts = self.getNodeValue(ctx.stmts)
-        self.setNodeValue(ctx, CollectionSwitchCase(exp, stmts))
 
 
     def exitConcrete_category_declaration(self, ctx):
@@ -927,10 +929,10 @@ class SPromptoBuilder(SParserListener):
     def exitFetchAll (self, ctx):
         category = self.getNodeValue(ctx.typ)
         xfilter = self.getNodeValue(ctx.xfilter)
-        start = self.getNodeValue(ctx.start)
-        end = self.getNodeValue(ctx.end)
-        self.setNodeValue(ctx, FetchAllExpression(category, xfilter, start, end))
-
+        start = self.getNodeValue(ctx.xstart)
+        stop = self.getNodeValue(ctx.xstop)
+        orderBy = self.getNodeValue(ctx.xorder)
+        self.setNodeValue(ctx, FetchAllExpression(category, xfilter, start, stop, orderBy))
 
     def exitFor_each_statement(self, ctx):
         name1 = self.getNodeValue(ctx.name1)
@@ -1640,6 +1642,19 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, decl)
 
 
+    def exitOrder_by(self, ctx):
+        names = IdentifierList()
+        for ctx_ in ctx.variable_identifier():
+            names.append(self.getNodeValue(ctx_))
+        clause = OrderByClause(names, ctx.DESC() is not None)
+        self.setNodeValue(ctx, clause)
+
+    def exitOrder_by_list(self, ctx):
+        list_ = OrderByClauseList()
+        for ctx_ in ctx.order_by():
+            list_.append(self.getNodeValue(ctx_))
+        self.setNodeValue(ctx, list_)
+
     def exitOrExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
@@ -1774,9 +1789,10 @@ class SPromptoBuilder(SParserListener):
     def exitPythonNamedArgumentList(self, ctx):
         name = self.getNodeValue(ctx.name)
         exp = self.getNodeValue(ctx.exp)
-        item = PythonNamedArgument(name, exp)
-        items = PythonNamedArgumentList(item)
-        self.setNodeValue(ctx, items)
+        arg = PythonNamedArgument(name, exp)
+        arglist = PythonNamedArgumentList()
+        arglist.append(arg)
+        self.setNodeValue(ctx, arglist)
 
 
     def exitPythonNamedArgumentListItem(self, ctx):

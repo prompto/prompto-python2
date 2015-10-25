@@ -1,10 +1,10 @@
 from prompto.type.NativeType import NativeType
 
 
-class CollectionType ( NativeType ) :
+class ContainerType ( NativeType ) :
 
     def __init__(self, name, itemType):
-        super(CollectionType, self).__init__(name)
+        super(ContainerType, self).__init__(name)
         self.itemType = itemType
 
     def getItemType(self):
@@ -18,4 +18,4 @@ class CollectionType ( NativeType ) :
             from prompto.type.BooleanType import BooleanType
             return BooleanType.instance
         else:
-            return super(CollectionType, self).checkContains(context, other)
+            return super(ContainerType, self).checkContains(context, other)

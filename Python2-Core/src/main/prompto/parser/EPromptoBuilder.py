@@ -79,6 +79,8 @@ from prompto.grammar.NativeCategoryBindingList import NativeCategoryBindingList
 from prompto.grammar.NativeSymbol import NativeSymbol
 from prompto.grammar.NativeSymbolList import NativeSymbolList
 from prompto.grammar.Operator import Operator
+from prompto.grammar.OrderByClause import OrderByClause
+from prompto.grammar.OrderByClauseList import OrderByClauseList
 from prompto.grammar.UnresolvedArgument import UnresolvedArgument
 from prompto.grammar.UnresolvedIdentifier import UnresolvedIdentifier
 from prompto.grammar.VariableInstance import VariableInstance
@@ -280,15 +282,6 @@ class EPromptoBuilder(EParserListener):
     def exitCollectionLiteral(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
-
-
-    def exitCommentStatement(self, ctx):
-        self.setNodeValue(ctx, self.getNodeValue(ctx.comment_statement()))
-
-
-    def exitComment_statement(self, ctx):
-        self.setNodeValue(ctx, CommentStatement(ctx.getText()))
-
 
 
     def exitListLiteral(self, ctx):
@@ -1659,6 +1652,14 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, CollectionSwitchCase(exp, stmts))
 
 
+    def exitCommentStatement(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.comment_statement()))
+
+
+    def exitComment_statement(self, ctx):
+        self.setNodeValue(ctx, CommentStatement(ctx.getText()))
+
+
     def exitSwitchCaseStatementList(self, ctx):
         item = self.getNodeValue(ctx.item)
         self.setNodeValue(ctx, SwitchCaseList(item))
@@ -1821,6 +1822,19 @@ class EPromptoBuilder(EParserListener):
         decl = OperatorMethodDeclaration(op, arg, typ, stmts)
         self.setNodeValue(ctx, decl)
 
+    def exitOrder_by(self, ctx):
+        names = IdentifierList()
+        for ctx_ in ctx.variable_identifier():
+            names.append(self.getNodeValue(ctx_))
+        clause = OrderByClause(names, ctx.DESC() is not None)
+        self.setNodeValue(ctx, clause)
+
+    def exitOrder_by_list(self, ctx):
+        list_ = OrderByClauseList()
+        for ctx_ in ctx.order_by():
+            list_.append(self.getNodeValue(ctx_))
+        self.setNodeValue(ctx, list_)
+
 
     def exitOrExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
@@ -1937,9 +1951,10 @@ class EPromptoBuilder(EParserListener):
     def exitFetchAll (self, ctx):
         category = self.getNodeValue(ctx.typ)
         xfilter = self.getNodeValue(ctx.xfilter)
-        start = self.getNodeValue(ctx.start)
-        end = self.getNodeValue(ctx.end)
-        self.setNodeValue(ctx, FetchAllExpression(category, xfilter, start, end))
+        start = self.getNodeValue(ctx.xstart)
+        stop = self.getNodeValue(ctx.xstop)
+        orderBy = self.getNodeValue(ctx.xorder)
+        self.setNodeValue(ctx, FetchAllExpression(category, xfilter, start, stop, orderBy))
 
 
     def exitCode_type(self, ctx):

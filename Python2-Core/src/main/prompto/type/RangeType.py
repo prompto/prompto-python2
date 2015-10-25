@@ -1,8 +1,8 @@
-from prompto.type.CollectionType import *
+from prompto.type.ContainerType import *
 from prompto.type.IntegerType import *
 
 
-class RangeType(CollectionType):
+class RangeType(ContainerType):
 
     def __init__(self, itemType):
         super(RangeType, self).__init__(itemType.getName() + "[..]", itemType)

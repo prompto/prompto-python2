@@ -1,8 +1,8 @@
 from prompto.type.BooleanType import BooleanType
-from prompto.type.CollectionType import CollectionType
+from prompto.type.ContainerType import ContainerType
 from prompto.value.IContainer import IContainer
 
-class SetType(CollectionType):
+class SetType(ContainerType):
 
     def __init__(self, itemType):
         super(SetType, self).__init__(itemType.getName() + "<>", itemType)
@@ -20,7 +20,7 @@ class SetType(CollectionType):
         return self.getItemType() == obj.getItemType()
 
     def checkAdd(self, context, other, tryReverse):
-        if isinstance(other, CollectionType) and self.getItemType() == other.getItemType():
+        if isinstance(other, ContainerType) and self.getItemType() == other.getItemType():
             return self
         else:
             return super(SetType, self).checkAdd(context, other, tryReverse)
