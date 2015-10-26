@@ -1234,6 +1234,25 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, items)
 
 
+    def exitDeclaration(self, ctx):
+        stmts = None
+        if ctx.comment_statement() is not None:
+            stmts = [ self.getNodeValue(ctx_) for ctx_ in ctx.comment_statement() ]
+        ctx_ = ctx.attribute_declaration()
+        if ctx_ is None:
+            ctx_ = ctx.category_declaration()
+        if ctx_ is None:
+            ctx_ = ctx.enum_declaration()
+        if ctx_ is None:
+            ctx_ = ctx.method_declaration()
+        if ctx_ is None:
+            ctx_ = ctx.resource_declaration()
+        decl = self.getNodeValue(ctx_)
+        if decl is not None:
+            decl.comments = stmts
+            self.setNodeValue(ctx, decl)
+
+
     def exitDeclarationList(self, ctx):
         item = self.getNodeValue(ctx.item)
         items = DeclarationList(item)
@@ -1245,11 +1264,6 @@ class OPromptoBuilder(OParserListener):
         items = self.getNodeValue(ctx.items)
         items.append(item)
         self.setNodeValue(ctx, items)
-
-
-    def exitMethodDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
 
 
     def exitNativeMethod(self, ctx):
@@ -1406,32 +1420,12 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, decl)
 
 
-    def exitResourceDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
-    def exitCategoryDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
-    def exitAttributeDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
     def exitEnumCategoryDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
 
     def exitEnumNativeDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
-    def exitEnumDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 

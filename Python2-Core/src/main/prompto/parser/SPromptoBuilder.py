@@ -350,6 +350,7 @@ class SPromptoBuilder(SParserListener):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitAssignTupleStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
@@ -378,11 +379,6 @@ class SPromptoBuilder(SParserListener):
     def exitAttribute_list(self, ctx):
         items = self.getNodeValue(ctx.items)
         self.setNodeValue(ctx, items)
-
-
-    def exitAttributeDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
 
 
     def exitBooleanLiteral(self, ctx):
@@ -444,13 +440,10 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, typ)
 
 
-    def exitCategoryDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
     def exitNative_member_method_declaration(self, ctx):
         decl = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, decl)
+
 
     def exitNativeCategoryMethodList(self, ctx):
         item = self.getNodeValue(ctx.item)
@@ -480,6 +473,7 @@ class SPromptoBuilder(SParserListener):
         items = self.getNodeValue(ctx.items)
         items.append(item)
         self.setNodeValue(ctx, items)
+
 
     def exitCategorySymbolList(self, ctx):
         item = self.getNodeValue(ctx.item)
@@ -634,6 +628,7 @@ class SPromptoBuilder(SParserListener):
         exp = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, exp)
 
+
     def exitCsharp_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
 
@@ -754,6 +749,25 @@ class SPromptoBuilder(SParserListener):
 
     def exitDecimalType(self, ctx):
         self.setNodeValue(ctx, DecimalType.instance)
+
+
+    def exitDeclaration(self, ctx):
+        stmts = None
+        if ctx.comment_statement() is not None:
+            stmts = [ self.getNodeValue(ctx_) for ctx_ in ctx.comment_statement() ]
+        ctx_ = ctx.attribute_declaration()
+        if ctx_ is None:
+            ctx_ = ctx.category_declaration()
+        if ctx_ is None:
+            ctx_ = ctx.enum_declaration()
+        if ctx_ is None:
+            ctx_ = ctx.method_declaration()
+        if ctx_ is None:
+            ctx_ = ctx.resource_declaration()
+        decl = self.getNodeValue(ctx_)
+        if decl is not None:
+            decl.comments = stmts
+            self.setNodeValue(ctx, decl)
 
 
     def exitDeclarationList(self, ctx):
@@ -881,11 +895,6 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitEnumDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
-    def exitEnumNativeDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
@@ -1046,6 +1055,7 @@ class SPromptoBuilder(SParserListener):
         op = EqOp.IS_NOT_A if isinstance(right, TypeExpression) else EqOp.IS_NOT
         self.setNodeValue(ctx, EqualsExpression(left, op, right))
 
+
     def exitItemInstance(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, ItemInstance(None, exp))
@@ -1139,6 +1149,7 @@ class SPromptoBuilder(SParserListener):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
+
     def exitJavaMethodExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
@@ -1160,6 +1171,7 @@ class SPromptoBuilder(SParserListener):
     def exitJavaReturnStatement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, JavaStatement(exp, True))
+
 
     def exitJavascriptBooleanLiteral(self, ctx):
         text = ctx.t.text
@@ -1185,6 +1197,7 @@ class SPromptoBuilder(SParserListener):
 
     def exitJavascript_this_expression(self, ctx):
         self.setNodeValue(ctx, JavaScriptThisExpression())
+
 
     def exitJavascript_method_expression(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -1231,6 +1244,7 @@ class SPromptoBuilder(SParserListener):
         exp = JavaScriptIdentifierExpression(None, name)
         self.setNodeValue(ctx, exp)
 
+
     def exitJavascriptDecimalLiteral(self, ctx):
         text = ctx.t.text
         self.setNodeValue(ctx, JavaScriptDecimalLiteral(text))
@@ -1275,6 +1289,7 @@ class SPromptoBuilder(SParserListener):
         child.parent = parent
         self.setNodeValue(ctx, child)
 
+
     def exitJavascriptStatement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, JavaScriptStatement(exp, False))
@@ -1283,26 +1298,32 @@ class SPromptoBuilder(SParserListener):
         text = ctx.t.text
         self.setNodeValue(ctx, JavaScriptTextLiteral(text))
 
+
     def exitJavaSelectorExpression(self, ctx):
         parent = self.getNodeValue(ctx.parent)
         child = self.getNodeValue(ctx.child)
         child.setParent(parent)
         self.setNodeValue(ctx, child)
 
+
     def exitJavaStatement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, JavaStatement(exp, False))
 
+
     def exitJavaTextLiteral(self, ctx):
         self.setNodeValue(ctx, JavaTextLiteral(ctx.getText()))
 
+
     def exitKey_token(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
 
     def exitLessThanExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, CompareExpression(left, CmpOp.LT, right))
+
 
     def exitLessThanOrEqualExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
@@ -1380,6 +1401,7 @@ class SPromptoBuilder(SParserListener):
         exp = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, MatchingCollectionConstraint(exp))
 
+
     def exitMaxIntegerLiteral(self, ctx):
         self.setNodeValue(ctx, MaxIntegerLiteral())
 
@@ -1408,11 +1430,6 @@ class SPromptoBuilder(SParserListener):
     def exitMethodCallStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
-
-
-    def exitMethodDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
 
 
     def exitMethodExpression(self, ctx):
@@ -1599,6 +1616,7 @@ class SPromptoBuilder(SParserListener):
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.NOT_IN, right))
 
+
     def exitNullLiteral(self, ctx):
         self.setNodeValue(ctx, NullLiteral.instance)
 
@@ -1737,6 +1755,7 @@ class SPromptoBuilder(SParserListener):
         named = self.getNodeValue(ctx.named)
         ordinal.addAll(named)
         self.setNodeValue(ctx, ordinal)
+
 
     def exitPythonBooleanLiteral(self, ctx):
         self.setNodeValue(ctx, PythonBooleanLiteral(ctx.getText()))
@@ -1890,11 +1909,6 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, decl)
 
 
-    def exitResourceDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
     def exitReturn_statement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, ReturnStatement(exp))
@@ -1908,6 +1922,7 @@ class SPromptoBuilder(SParserListener):
     def exitRootInstance(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, VariableInstance(name))
+
 
     def exitRoughlyEqualsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
@@ -1974,6 +1989,7 @@ class SPromptoBuilder(SParserListener):
         exps = self.getNodeValue(ctx.exps)
         stmt = StoreStatement(exps)
         self.setNodeValue(ctx, stmt)
+
 
     def exitSorted_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
