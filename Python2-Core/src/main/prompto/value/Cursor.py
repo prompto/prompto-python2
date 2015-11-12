@@ -2,6 +2,7 @@ from prompto.value.BaseValue import BaseValue
 from prompto.type.CursorType import CursorType
 from prompto.value.ICursor import ICursor
 from prompto.value.Integer import Integer
+from prompto.error.InvalidDataError import InvalidDataError
 
 class Cursor(BaseValue, ICursor):
 
@@ -21,7 +22,7 @@ class Cursor(BaseValue, ICursor):
             val = self.type.itemType.newInstanceFromDocument(context, doc)
             yield val
 
-    def GetMember(self, context, name):
+    def GetMember(self, context, name, autoCreate=False):
         if "length" == name:
             return Integer(len(self))
         else:
