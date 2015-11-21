@@ -1,10 +1,10 @@
 from prompto.value.BaseValue import BaseValue
 from prompto.type.CursorType import CursorType
-from prompto.value.ICursor import ICursor
+from prompto.value.IIterable import IIterable
 from prompto.value.Integer import Integer
 from prompto.error.InvalidDataError import InvalidDataError
 
-class Cursor(BaseValue, ICursor):
+class Cursor(BaseValue, IIterable):
 
     def __init__(self, context, itemType, documents):
         super(Cursor, self).__init__(CursorType(itemType))
@@ -17,7 +17,7 @@ class Cursor(BaseValue, ICursor):
     def __len__(self):
         return len(self.documents)
 
-    def getItems(self, context):
+    def getIterator(self, context):
         for doc in self.documents:
             val = self.type.itemType.newInstanceFromDocument(context, doc)
             yield val

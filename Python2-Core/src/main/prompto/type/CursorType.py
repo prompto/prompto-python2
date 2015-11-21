@@ -1,10 +1,10 @@
-from prompto.type.ContainerType import ContainerType
+from prompto.type.IterableType import IterableType
 from prompto.type.IntegerType import IntegerType
 
-class CursorType(ContainerType):
+class CursorType(IterableType):
 
     def __init__(self, itemType):
-        super(CursorType, self).__init__(itemType.getName()+"[]", itemType)
+        super(CursorType, self).__init__("Cursor<" + itemType.getName()+">", itemType)
 
     def isAssignableTo(self, context, other):
         return isinstance(other, CursorType) and self.itemType.isAssignableTo(context, other.itemType)
@@ -14,7 +14,7 @@ class CursorType(ContainerType):
             return True
         if not isinstance(obj, CursorType):
             return False
-        return this.itemType==other.itemType
+        return self.itemType==obj.itemType
 
     def checkIterator(self, context):
         return self.itemType

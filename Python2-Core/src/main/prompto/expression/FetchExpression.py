@@ -74,7 +74,7 @@ class FetchExpression(Section, IExpression):
         local = context.newLocalContext()
         item = TransientVariable(self.itemName, itemType)
         local.registerValue(item)
-        for o in items.getItems(context):
+        for o in items.getIterator(context):
             local.setValue(self.itemName, o)
             test = self.filter.interpret(local)
             if not isinstance(test, Boolean):
