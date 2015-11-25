@@ -174,6 +174,7 @@ from prompto.type.BooleanType import BooleanType
 from prompto.type.CategoryType import CategoryType
 from prompto.type.CharacterType import CharacterType
 from prompto.type.CodeType import CodeType
+from prompto.type.DateTimeType import DateTimeType
 from prompto.type.DateType import DateType
 from prompto.type.DecimalType import DecimalType
 from prompto.type.DictType import DictType
@@ -493,7 +494,7 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitDateTimeType(self, ctx):
-        self.setNodeValue(ctx, TextType.instance)
+        self.setNodeValue(ctx, DateTimeType.instance)
 
 
     def exitTimeType(self, ctx):
