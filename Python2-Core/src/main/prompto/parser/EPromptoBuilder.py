@@ -1902,8 +1902,9 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitStore_statement (self, ctx):
-        exps = self.getNodeValue(ctx.exps)
-        stmt = StoreStatement(exps)
+        to_del = self.getNodeValue(ctx.to_del)
+        to_add = self.getNodeValue(ctx.to_add)
+        stmt = StoreStatement(to_del, to_add)
         self.setNodeValue(ctx, stmt)
 
 
