@@ -2,14 +2,14 @@ import sys
 
 from antlr4 import ParseTreeWalker
 
+from prompto.argument.CategoryArgument import CategoryArgument
+from prompto.literal.TextLiteral import TextLiteral
+from prompto.parser.ECleverParser import ECleverParser
 from prompto.parser.EPromptoBuilder import EPromptoBuilder
 from prompto.parser.e.BaseEParserTest import BaseEParserTest
-from prompto.parser.ECleverParser import ECleverParser
-from prompto.runtime.utils.Out import Out
 from prompto.runtime.Context import Context
-from prompto.grammar.CategoryArgument import CategoryArgument
+from prompto.runtime.utils.Out import Out
 from prompto.type.TextType import TextType
-from prompto.literal.TextLiteral import TextLiteral
 
 
 class TestRuntime(BaseEParserTest):

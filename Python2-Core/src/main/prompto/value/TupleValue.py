@@ -46,3 +46,15 @@ class TupleValue ( BaseValueList ):
 
     def __hash__(self):
         return hash(frozenset(self.items))
+
+    def filter(self, context, itemName, filter):
+        result = TupleValue()
+        for o in self.getIterator(context):
+            context.setValue(itemName, o)
+            test = filter.interpret(context)
+            from prompto.value.Boolean import Boolean
+            if not isinstance(test, Boolean):
+                raise InternalError("Illegal test result: " + test)
+            if test.getValue():
+                result.append(o)
+        return result

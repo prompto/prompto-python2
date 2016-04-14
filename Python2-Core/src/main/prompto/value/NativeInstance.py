@@ -1,8 +1,17 @@
+import threading
+
+from prompto.error.NotMutableError import NotMutableError
+from prompto.runtime.Variable import Variable
 from prompto.type.CategoryType import *
 from prompto.value.BaseValue import *
 from prompto.value.IInstance import *
 from prompto.store.StorableDocument import StorableDocument
 from prompto.python.PythonClassType import PythonClassType
+
+# don't call getters from getters, so register them
+activeGetters = threading.local()
+# don't call setters from setters, so register them
+activeSetters = threading.local()
 
 class NativeInstance(BaseValue, IInstance):
 
@@ -26,11 +35,50 @@ class NativeInstance(BaseValue, IInstance):
         return self.type
 
     def GetMember(self, context, attrName, autoCreate=False):
-        value = getattr(self.instance, attrName)
-        ct = PythonClassType(value.__class__)
-        return ct.convertPythonValueToPromptoValue(context, value, None) # TODO use attribute declaration
+        stacked = activeGetters.__dict__.get(attrName, None)
+        first = stacked is None
+        if first:
+            activeGetters.__dict__[attrName] = context
+        try:
+            return self.doGetMember(context, attrName, first)
+        finally:
+            if first:
+                del activeGetters.__dict__[attrName]
+
+    def doGetMember(self, context, attrName, allowGetter):
+        getter = self.declaration.findGetter(context, attrName) if allowGetter else None
+        if getter != None:
+            context = context.newInstanceContext(self, None).newChildContext()
+            return getter.interpret(context)
+        else:
+            value = getattr(self.instance, attrName)
+            ct = PythonClassType(value.__class__)
+            return ct.convertPythonValueToPromptoValue(context, value, None) # TODO use attribute declaration
 
     def SetMember(self, context, attrName, value):
+        if not self.mutable:
+            raise NotMutableError()
+        stacked = activeSetters.__dict__.get(attrName, None)
+        first = stacked is None
+        if first:
+            activeSetters.__dict__[attrName] = context
+        try:
+            self.doSetMember(context, attrName, value, first)
+        finally:
+            if first:
+                del activeSetters.__dict__[attrName]
+
+
+    def doSetMember(self, context, attrName, value, allowSetter):
+        decl = context.getRegisteredDeclaration(AttributeDeclaration, attrName)
+        setter = self.declaration.findSetter(context, attrName) if allowSetter else None
+        if setter != None:
+            activeSetters.__dict__[attrName] = context
+            # use attribute name as parameter name for incoming value
+            context = context.newInstanceContext(self, None).newChildContext()
+            context.registerValue(Variable(attrName, decl.getType()))
+            context.setValue(attrName, value)
+            value = setter.interpret(context)
         setattr(self.instance, attrName, value.convertToPython())
         if self.storable is not None:
             decl = context.getRegisteredDeclaration(AttributeDeclaration, attrName)
@@ -39,4 +87,4 @@ class NativeInstance(BaseValue, IInstance):
                 self.storable.SetMember(context, attrName, value)
 
     def __getattr__(self, item):
-        return getattr(self.instance,item)
+        return getattr(self.instance, item)

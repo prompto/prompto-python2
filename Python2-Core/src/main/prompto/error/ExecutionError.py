@@ -12,7 +12,7 @@ class ExecutionError(PrestoError):
             from prompto.grammar.ArgumentAssignment import ArgumentAssignment
             from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
             from prompto.expression.ConstructorExpression import ConstructorExpression
-            from prompto.grammar.UnresolvedArgument import UnresolvedArgument
+            from prompto.argument.UnresolvedArgument import UnresolvedArgument
             from prompto.literal.TextLiteral import TextLiteral
             from prompto.type.CategoryType import CategoryType
             args = ArgumentAssignmentList()

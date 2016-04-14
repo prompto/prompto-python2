@@ -1,10 +1,11 @@
+from prompto.declaration.AttributeDeclaration import AttributeDeclaration
+from prompto.declaration.IDeclaration import IDeclaration
+from prompto.error.PrestoError import PrestoError
+from prompto.error.SyntaxError import SyntaxError
+from prompto.grammar.Operator import Operator
 from prompto.runtime.Score import Score
 from prompto.type.BaseType import BaseType
-from prompto.error.SyntaxError import SyntaxError
-from prompto.error.PrestoError import PrestoError
-from prompto.declaration.IDeclaration import IDeclaration
-from prompto.declaration.AttributeDeclaration import AttributeDeclaration
-from prompto.grammar.Operator import Operator
+
 
 class CategoryType(BaseType):
 
@@ -215,7 +216,7 @@ class CategoryType(BaseType):
 
     def sort(self, context, source, key=None):
         if key is None:
-            from prompto.grammar.UnresolvedIdentifier import UnresolvedIdentifier
+            from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
             key = UnresolvedIdentifier("key")
         decl = self.getDeclaration(context)
         if decl.hasAttribute(context, str(key)):
