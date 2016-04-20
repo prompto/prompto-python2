@@ -36,6 +36,7 @@ from prompto.declaration.SingletonCategoryDeclaration import SingletonCategoryDe
 from prompto.declaration.TestMethodDeclaration import TestMethodDeclaration
 from prompto.expression.AddExpression import AddExpression
 from prompto.expression.AndExpression import AndExpression
+from prompto.expression.BlobExpression import BlobExpression
 from prompto.expression.CastExpression import CastExpression
 from prompto.expression.CategorySymbol import CategorySymbol
 from prompto.expression.CodeExpression import CodeExpression
@@ -174,6 +175,7 @@ from prompto.statement.WithResourceStatement import WithResourceStatement
 from prompto.statement.WithSingletonStatement import WithSingletonStatement
 from prompto.statement.WriteStatement import WriteStatement
 from prompto.type.AnyType import AnyType
+from prompto.type.BlobType import BlobType
 from prompto.type.BooleanType import BooleanType
 from prompto.type.CategoryType import CategoryType
 from prompto.type.CharacterType import CharacterType
@@ -268,6 +270,21 @@ class OPromptoBuilder(OParserListener):
     def exitListLiteral(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
+
+
+    def exitBlobExpression(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, exp)
+
+
+    def exitBlob_expression(self, ctx):
+        exp = self.getNodeValue(ctx.expression())
+        self.setNodeValue(ctx, BlobExpression(exp))
+
+
+    def exitBlobType(self, ctx):
+        self.setNodeValue(ctx, BlobType.instance)
 
 
     def exitBooleanLiteral(self, ctx):
@@ -1931,8 +1948,8 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitDocument_expression(self, ctx):
-        self.setNodeValue(ctx, DocumentExpression())
-
+        exp = self.getNodeValue(ctx.expression())
+        self.setNodeValue(ctx, DocumentExpression(exp))
 
     def exitDocumentType(self, ctx):
         self.setNodeValue(ctx, DocumentType.instance)

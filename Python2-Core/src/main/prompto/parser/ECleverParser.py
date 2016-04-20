@@ -32,3 +32,13 @@ class ECleverParser(EParser):
         walker.walk(builder, tree)
         return builder.getNodeValue(tree)
 
+    def equalToken(self):
+        return EParser.EQ
+
+    def parse_standalone_type(self):
+        self.getTokenStream().tokenSource.addLF = False
+        tree = self.category_or_any_type()
+        builder = EPromptoBuilder(self)
+        walker = ParseTreeWalker()
+        walker.walk(builder, tree)
+        return builder.getNodeValue(tree)

@@ -3,6 +3,7 @@ from prompto.type.NativeType import NativeType
 
 
 class IntegerType(NativeType):
+
     instance = None
 
     def __init__(self):

@@ -102,3 +102,6 @@ class Integer(BaseValue, INumber, IMultiplyable):
 
     def __hash__(self):
         return hash(self.value)
+
+    def toJson(self, context, generator, instanceId, fieldName, binaries):
+        generator.writeLong(self.value)
