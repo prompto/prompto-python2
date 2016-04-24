@@ -33,7 +33,7 @@ class TestDeclaredTypes(BaseEParserTest):
         self.assertFalse(st.isAssignableTo(self.context, TextType.instance))
         self.assertFalse(st.isAssignableTo(self.context, DateType.instance))
         self.assertFalse(st.isAssignableTo(self.context, DateTimeType.instance))
-        self.assertTrue(st.isAssignableTo(self.context, MissingType.instance))
+        self.assertFalse(st.isAssignableTo(self.context, MissingType.instance))
         self.assertTrue(st.isAssignableTo(self.context, AnyType.instance))
         self.assertFalse(st.isAssignableTo(self.context, CategoryType("Root")))
         self.assertFalse(st.isAssignableTo(self.context, CategoryType("Derived")))
