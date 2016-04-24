@@ -4,8 +4,10 @@ from prompto.error.PrestoError import PrestoError
 from prompto.error.SyntaxError import SyntaxError
 from prompto.grammar.Operator import Operator
 from prompto.runtime.Score import Score
+from prompto.type.AnyType import AnyType
 from prompto.type.BaseType import BaseType
 from prompto.type.MissingType import MissingType
+from prompto.type.NullType import NullType
 
 
 class CategoryType(BaseType):
@@ -134,10 +136,9 @@ class CategoryType(BaseType):
         return ad.getType(context)
 
     def isAssignableTo(self, context, other):
-        if self.name == other.getName():
+        if isinstance(other, (NullType, AnyType, MissingType)):
             return True
-        from prompto.type.AnyType import AnyType
-        if isinstance(other, (AnyType, MissingType)):
+        if self.name == other.getName():
             return True
         if not isinstance(other, CategoryType):
             return False
@@ -186,6 +187,8 @@ class CategoryType(BaseType):
         return True
 
     def isMoreSpecificThan(self, context, other):
+        if isinstance(other, (NullType, AnyType, MissingType)):
+            return True
         if not isinstance(other, CategoryType):
             return False
         if other.isAnonymous():
