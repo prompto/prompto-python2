@@ -1,5 +1,7 @@
 from prompto.expression.IExpression import IExpression
 from prompto.error.SyntaxError import SyntaxError
+from prompto.type.ContainerType import ContainerType
+
 
 class CastExpression (IExpression):
 
@@ -14,7 +16,10 @@ class CastExpression (IExpression):
         return self.type
 
     def interpret(self, context):
-        return self.expression.interpret(context)
+        value = self.expression.interpret(context)
+        if value is not None and isinstance(self.type, ContainerType) and isinstance(value.type, ContainerType):
+            value.type.itemType = self.type.itemType
+        return value
 
     def toSDialect(self, writer):
         self.toEDialect(writer)

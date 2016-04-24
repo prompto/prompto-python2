@@ -5,6 +5,7 @@ from prompto.error.SyntaxError import SyntaxError
 from prompto.grammar.Operator import Operator
 from prompto.runtime.Score import Score
 from prompto.type.BaseType import BaseType
+from prompto.type.MissingType import MissingType
 
 
 class CategoryType(BaseType):
@@ -136,7 +137,7 @@ class CategoryType(BaseType):
         if self.name == other.getName():
             return True
         from prompto.type.AnyType import AnyType
-        if isinstance(other, AnyType):
+        if isinstance(other, (AnyType, MissingType)):
             return True
         if not isinstance(other, CategoryType):
             return False
