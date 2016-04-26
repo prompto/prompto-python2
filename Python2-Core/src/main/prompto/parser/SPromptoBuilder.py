@@ -383,11 +383,6 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, decl)
 
 
-    def exitAttribute_list(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        self.setNodeValue(ctx, items)
-
-
     def exitBlobExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
@@ -1100,6 +1095,13 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, ItemSelector(exp))
 
 
+    def exitIteratorExpression(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        name = self.getNodeValue(ctx.name)
+        source = self.getNodeValue(ctx.source)
+        self.setNodeValue(ctx, IteratorExpression(name, source, exp))
+
+
     def exitJava_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
 
@@ -1205,13 +1207,6 @@ class SPromptoBuilder(SParserListener):
     def exitJavaReturnStatement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, JavaStatement(exp, True))
-
-
-    def exitIteratorExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        name = self.getNodeValue(ctx.name)
-        source = self.getNodeValue(ctx.source)
-        self.setNodeValue(ctx, IteratorExpression(name, source, exp))
 
 
     def exitJavascriptBooleanLiteral(self, ctx):
@@ -2254,6 +2249,10 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, items)
 
 
+    def exitAttribute_identifier(self, ctx):
+        self.setNodeValue(ctx, ctx.getText())
+
+
     def exitVariable_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
 
@@ -2263,16 +2262,22 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, name)
 
 
-    def exitVariableList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, IdentifierList(item))
 
-
-    def exitVariableListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
+    def exitAttribute_identifier_list(self, ctx):
+        items = IdentifierList()
+        for c in ctx.attribute_identifier():
+            item = self.getNodeValue(c)
+            items.append(item)
         self.setNodeValue(ctx, items)
+
+
+    def exitVariable_identifier_list(self, ctx):
+        items = IdentifierList()
+        for c in ctx.variable_identifier():
+            item = self.getNodeValue(c)
+            items.append(item)
+        self.setNodeValue(ctx, items)
+
 
 
     def exitWhile_statement(self, ctx):

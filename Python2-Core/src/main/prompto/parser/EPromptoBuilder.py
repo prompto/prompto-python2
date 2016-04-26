@@ -378,6 +378,10 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, PeriodLiteral(ctx.t.text))
 
 
+    def exitAttribute_identifier(self, ctx):
+        self.setNodeValue(ctx, ctx.getText())
+
+
     def exitVariable_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
 
@@ -597,11 +601,23 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, IdentifierList(item))
 
 
-    def exitVariableListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
+
+    def exitAttribute_identifier_list(self, ctx):
+        items = IdentifierList()
+        for c in ctx.attribute_identifier():
+            item = self.getNodeValue(c)
+            items.append(item)
         self.setNodeValue(ctx, items)
+
+
+
+    def exitVariable_identifier_list(self, ctx):
+        items = IdentifierList()
+        for c in ctx.variable_identifier():
+            item = self.getNodeValue(c)
+            items.append(item)
+        self.setNodeValue(ctx, items)
+
 
 
     def exitConcrete_category_declaration(self, ctx):
@@ -807,6 +823,7 @@ class EPromptoBuilder(EParserListener):
         exp = self.getNodeValue(ctx.exp)
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, UnresolvedCall(exp, args))
+
 
 
     def exitAddExpression(self, ctx):
