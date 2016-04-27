@@ -2,6 +2,7 @@ from prompto.error.NullReferenceError import NullReferenceError
 from prompto.parser.Dialect import Dialect
 from prompto.python.PythonNativeCall import Python2NativeCall
 from prompto.statement.SimpleStatement import SimpleStatement
+from prompto.type.AnyType import AnyType
 from prompto.type.TypeMap import TypeMap
 from prompto.type.VoidType import VoidType
 
@@ -30,7 +31,9 @@ class StatementList(list):
                     continue
                 type_ = statement.check(context)
                 if type_ != VoidType.instance:
-                    types[type_.getName()] = type_
+                    # unless necessary, don't collect AnyType returned by native statement check
+                    if len(types) == 0 or type_ != AnyType.instance or not nativeOnly:
+                        types[type_.getName()] = type_
             type_ = types.inferType(context)
             if returnType is not None:
                 return returnType

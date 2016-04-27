@@ -3,11 +3,11 @@ from prompto.value.IIterable import IIterable
 from prompto.error.InvalidDataError import InvalidDataError
 from prompto.runtime.Variable import Variable
 
-class Iterator(BaseValue, IIterable):
+class IterableValue(BaseValue, IIterable):
 
     def __init__(self, itemType, context, length, name, source, expression):
         from prompto.type.IteratorType import IteratorType
-        super(Iterator, self).__init__(IteratorType(itemType))
+        super(IterableValue, self).__init__(IteratorType(itemType))
         self.itemType = itemType
         self.context = context
         self.length = length

@@ -1135,7 +1135,7 @@ class SPromptoBuilder(SParserListener):
     def exitJavaArgumentListItem(self, ctx):
         item = self.getNodeValue(ctx.item)
         items = self.getNodeValue(ctx.items)
-        items.add(item)
+        items.append(item)
         self.setNodeValue(ctx, items)
 
 

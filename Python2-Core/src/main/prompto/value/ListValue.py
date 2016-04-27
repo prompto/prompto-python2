@@ -1,5 +1,6 @@
 from io import StringIO
 
+from prompto.error.InternalError import InternalError
 from prompto.value.BaseValueList import BaseValueList
 from prompto.value.Integer import Integer
 from prompto.error.SyntaxError import SyntaxError

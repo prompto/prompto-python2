@@ -47,10 +47,13 @@ class BaseValueList(BaseValue, ISliceable):
         return self.newInstance(self.items[_fi-1:_li]) # 0 based, right limit excluded
 
     def merge(self, other):
-        result = []
-        result.extend(self.items)
-        result.extend(other.items)
-        return self.newInstance(result)
+        if(len(other.items)==0):
+            return self
+        else:
+            result = []
+            result.extend(self.items)
+            result.extend(other.items)
+            return self.newInstance(result)
 
     def hasItem(self, context, lval):
         for item in self.items:
