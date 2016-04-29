@@ -7,17 +7,15 @@ from prompto.error.SyntaxError import SyntaxError
 
 class ListValue(BaseValueList):
 
-    def __init__(self, itemType, items=None, item=None):
+    def __init__(self, itemType, items = None, item = None, mutable = False):
         from prompto.type.ListType import ListType
-        super(ListValue, self).__init__(ListType(itemType), items)
+        super(ListValue, self).__init__(ListType(itemType), items, mutable)
         if item is not None:
             self.items.append(item)
 
     def newInstance(self, items):
         return ListValue(self.type.itemType, items=items)
 
-    def setItem(self, index, element):
-        self.items[index] = element
 
     def Add(self, context, value):
         from prompto.value.SetValue import SetValue

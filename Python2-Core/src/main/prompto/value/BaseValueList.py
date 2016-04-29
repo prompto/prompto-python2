@@ -1,15 +1,17 @@
 from prompto.value.BaseValue import BaseValue
 from prompto.value.ISliceable import ISliceable
 from prompto.value.Integer import Integer
-
+from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
+from prompto.error.SyntaxError import SyntaxError
 
 class BaseValueList(BaseValue, ISliceable):
 
-    def __init__(self, type, items=None):
+    def __init__(self, type, items=None, mutable = False):
         super(BaseValueList, self).__init__(type)
         if items is None:
             items = []
         self.items = items
+        self.mutable = mutable
 
     def __str__(self):
         return str(self.items)
@@ -36,13 +38,11 @@ class BaseValueList(BaseValue, ISliceable):
     def slice(self, fi, li):
         _fi = 1 if fi is None else fi.IntegerValue()
         if _fi < 0:
-            from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
             raise IndexOutOfRangeError()
         _li = len(self.items) if li is None else li.IntegerValue()
         if _li < 0:
             _li = len(self.items) + 1 + _li
         if _li > len(self.items):
-            from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
             raise IndexOutOfRangeError()
         return self.newInstance(self.items[_fi-1:_li]) # 0 based, right limit excluded
 
@@ -67,10 +67,21 @@ class BaseValueList(BaseValue, ISliceable):
                 idx = index.IntegerValue() - 1
                 return self.items[idx]
             except IndexError:
+                raise IndexOutOfRangeError()
+        else:
+            raise SyntaxError("No such item:" + index.toString())
+
+    def setItem(self, context, index, value):
+        if isinstance(index, Integer):
+            try:
+                idx = index.IntegerValue() - 1
+                self.items[idx] = value
+            except IndexError:
                 from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
                 raise IndexOutOfRangeError()
         else:
             raise SyntaxError("No such item:" + index.toString())
+
 
     def __eq__(self, obj):
         if not isinstance(obj, BaseValueList):

@@ -244,8 +244,9 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitTypeIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
+        name = self.getNodeValue(ctx.type_identifier())
         self.setNodeValue(ctx, UnresolvedIdentifier(name))
+
 
 
     def exitMethodCallExpression(self, ctx):
@@ -256,21 +257,6 @@ class OPromptoBuilder(OParserListener):
     def exitAn_expression(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         self.setNodeValue(ctx, typ)
-
-
-    def exitAtomicLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
-
-    def exitCollectionLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
-
-    def exitListLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
 
 
 
@@ -350,11 +336,6 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, TestMethodDeclaration(name, stmts, exps, error))
 
 
-    def exitTestMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
 
     def exitTextLiteral(self, ctx):
         self.setNodeValue(ctx, TextLiteral(ctx.t.text))
@@ -382,42 +363,34 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitList_literal(self, ctx):
-        items = self.getNodeValue(ctx.items)
+        mutable = ctx.MUTABLE() is not None
+        items = self.getNodeValue(ctx.expression_list())
         items = items if items is not None else []
-        value = ListLiteral(items)
+        value = ListLiteral(items, mutable=mutable)
         self.setNodeValue(ctx, value)
 
 
 
     def exitDict_literal(self, ctx):
-        items = self.getNodeValue(ctx.items)
+        items = self.getNodeValue(ctx.dict_entry_list())
         value = DictLiteral(items)
         self.setNodeValue(ctx, value)
 
 
 
     def exitTuple_literal(self, ctx):
-        items = self.getNodeValue(ctx.items)
+        items = self.getNodeValue(ctx.expression_tuple())
         items = items if items is not None else []
         value = TupleLiteral(items)
         self.setNodeValue(ctx, value)
 
 
-    def exitTupleLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
 
     def exitSet_literal(self, ctx):
-        items = self.getNodeValue(ctx.items)
+        items = self.getNodeValue(ctx.expression_list())
         items = items if items is not None else []
         value = SetLiteral(items)
         self.setNodeValue(ctx, value)
-
-
-    def exitSetLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
 
 
 
@@ -428,36 +401,25 @@ class OPromptoBuilder(OParserListener):
 
 
 
-    def exitRangeLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
-
-
-    def exitDictLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
-
-    def exitDictEntryList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, DictEntryList(item))
-
-
-
-    def exitDictEntryListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
-        self.setNodeValue(ctx, items)
-
-
-
     def exitDict_entry(self, ctx):
         key = self.getNodeValue(ctx.key)
         value = self.getNodeValue(ctx.value)
         entry = DictEntry(key, value)
         self.setNodeValue(ctx, entry)
+
+
+    def exitDict_entry_list(self, ctx):
+        items = DictEntryList()
+        for rule in ctx.dict_entry():
+            item = self.getNodeValue(rule)
+            items.append(item)
+        self.setNodeValue(ctx, items)
+
+
+
+    def exitLiteral_expression(self, ctx):
+        value = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, value)
 
 
 
@@ -473,36 +435,8 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitVariableIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
+        name = self.getNodeValue(ctx.variable_identifier())
         self.setNodeValue(ctx, InstanceExpression(name))
-
-
-
-    def exitValueList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, [ item ])
-
-
-
-    def exitValueListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
-        self.setNodeValue(ctx, items)
-
-
-
-    def exitValueTuple(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, [ item ])
-
-
-
-    def exitValueTupleItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
-        self.setNodeValue(ctx, items)
 
 
 
@@ -519,7 +453,7 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitSymbolIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
+        name = self.getNodeValue(ctx.symbol_identifier())
         self.setNodeValue(ctx, SymbolExpression(name))
 
 
@@ -670,16 +604,11 @@ class OPromptoBuilder(OParserListener):
 
 
 
-    def exitTypeIdentifierList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, IdentifierList(item))
-
-
-
-    def exitTypeIdentifierListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
+    def exitType_identifier_list(self, ctx):
+        items = IdentifierList()
+        for rule in ctx.type_identifier():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
 
@@ -761,45 +690,19 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, arg)
 
 
-    def exitTypedArgument(self, ctx):
-        arg = self.getNodeValue(ctx.arg)
-        self.setNodeValue(ctx, arg)
-
-
-    def exitNamedArgument(self, ctx):
-        arg = self.getNodeValue(ctx.arg)
-        self.setNodeValue(ctx, arg)
-
-
 
     def exitCodeArgument(self, ctx):
         arg = self.getNodeValue(ctx.arg)
         self.setNodeValue(ctx, arg)
 
 
-    def exitCategoryArgumentType(self, ctx):
-        typ = self.getNodeValue(ctx.typ)
-        self.setNodeValue(ctx, typ)
 
-
-
-    def exitArgumentList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, ArgumentList(item))
-
-
-
-    def exitArgumentListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
+    def exitArgument_list(self, ctx):
+        items = ArgumentList()
+        for rule in ctx.argument():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
-
-
-
-    def exitMethodTypeIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, name)
 
 
 
@@ -833,14 +736,26 @@ class OPromptoBuilder(OParserListener):
         select.setParent(parent)
         self.setNodeValue(ctx, select)
 
-    def exitMethodVariableIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, name)
+
 
     def exitMethod_call(self, ctx):
         selector = self.getNodeValue(ctx.method)
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, UnresolvedCall(selector, args))
+
+
+
+    def exitMethod_declaration(self, ctx):
+        value = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, value)
+
+
+
+    def exitMethod_identifier(self, ctx):
+        stmt = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, stmt)
+
+
 
     def exitArgument_assignment(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -874,40 +789,42 @@ class OPromptoBuilder(OParserListener):
         exp = AddExpression(left, right) if ctx.op.type == OParser.PLUS else SubtractExpression(left, right)
         self.setNodeValue(ctx, exp)
 
+
+
     def exitNative_member_method_declaration(self, ctx):
         decl = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, decl)
 
-    def exitNativeCategoryMethodList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = MethodDeclarationList(item)
+
+
+    def exitNative_member_method_declaration_list(self, ctx):
+        items = MethodDeclarationList()
+        for rule in ctx.native_member_method_declaration():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
 
-    def exitNativeCategoryMethodListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
-        self.setNodeValue(ctx, items)
-
-    def exitCategoryMethodList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = MethodDeclarationList(item)
-        self.setNodeValue(ctx, items)
 
     def exitCurlyCategoryMethodList(self, ctx):
         items = self.getNodeValue(ctx.items)
         self.setNodeValue(ctx, items)
 
+
+
     def exitCurlyStatementList(self, ctx):
         items = self.getNodeValue(ctx.items)
         self.setNodeValue(ctx, items)
 
-    def exitCategoryMethodListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
+
+
+    def exitMember_method_declaration_list(self, ctx):
+        items = MethodDeclarationList()
+        for rule in ctx.member_method_declaration():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
+
 
 
     def exitSetter_method_declaration(self, ctx):
@@ -940,18 +857,12 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, decl)
 
 
-    def exitStatementList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, StatementList(item))
-
-
-
-    def exitStatementListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
+    def exitStatement_list(self, ctx):
+        items = StatementList()
+        for rule in ctx.statement():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
-
 
 
     def exitAbstract_method_declaration(self, ctx):
@@ -995,17 +906,13 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, exp)
 
 
-    def exitAssertionList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = [ item ]
+    def exitAssertion_list(self, ctx):
+        items = []
+        for rule in ctx.assertion():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
-
-    def exitAssertionListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
-        self.setNodeValue(ctx, items)
 
 
     def exitAssign_instance_statement(self, ctx):
@@ -1022,9 +929,11 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitAssign_variable_statement(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        exp = self.getNodeValue(ctx.exp)
+        name = self.getNodeValue(ctx.variable_identifier())
+        exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, AssignVariableStatement(name, exp))
+
+
 
     def exitAssign_tuple_statement(self, ctx):
         items = self.getNodeValue(ctx.items)
@@ -1033,56 +942,74 @@ class OPromptoBuilder(OParserListener):
         stmt.setExpression(exp)
         self.setNodeValue(ctx, stmt)
 
+
+
     def exitRootInstance(self, ctx):
-        name = self.getNodeValue(ctx.name)
+        name = self.getNodeValue(ctx.variable_identifier())
         self.setNodeValue(ctx, VariableInstance(name))
+
+
 
     def exitRoughlyEqualsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.ROUGHLY, right))
 
+
+
     def exitChildInstance(self, ctx):
-        parent = self.getNodeValue(ctx.parent)
-        child = self.getNodeValue(ctx.child)
+        parent = self.getNodeValue(ctx.assignable_instance())
+        child = self.getNodeValue(ctx.child_instance())
         child.setParent(parent)
         self.setNodeValue(ctx, child)
+
+
 
     def exitMemberInstance(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MemberInstance(None, name))
 
+
+
     def exitItemInstance(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, ItemInstance(None, exp))
+
+
 
     def exitConstructorExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
+
+
     def exitMethodExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
-    def exitNativeStatementList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = StatementList(item)
+
+
+    def exitNative_statement_list(self, ctx):
+        items = StatementList()
+        for rule in ctx.native_statement():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
-    def exitNativeStatementListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
-        self.setNodeValue(ctx, items)
+
 
     def exitJava_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
+
 
     def exitCSharpChildIdentifier(self, ctx):
         parent = self.getNodeValue(ctx.parent)
         name = self.getNodeValue(ctx.name)
         child = CSharpIdentifierExpression(parent, name)
         self.setNodeValue(ctx, child)
+
+
 
     def exitCsharp_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
@@ -1276,8 +1203,8 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, PythonStatement(exp, False))
 
     def exitPython_native_statement(self, ctx):
-        stmt = self.getNodeValue(ctx.stmt)
-        module = self.getNodeValue(ctx.module)
+        stmt = self.getNodeValue(ctx.python_statement())
+        module = self.getNodeValue(ctx.python_module())
         self.setNodeValue(ctx, PythonNativeCall(stmt, module))
 
     def exitPython_module(self, ctx):
@@ -1296,22 +1223,22 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitJavaNativeStatement(self, ctx):
-        stmt = self.getNodeValue(ctx.stmt)
+        stmt = self.getNodeValue(ctx.java_statement())
         self.setNodeValue(ctx, JavaNativeCall(stmt))
 
 
     def exitCSharpNativeStatement(self, ctx):
-        stmt = self.getNodeValue(ctx.stmt)
+        stmt = self.getNodeValue(ctx.csharp_statement())
         self.setNodeValue(ctx, CSharpNativeCall(stmt))
 
 
     def exitPython2NativeStatement(self, ctx):
-        call = self.getNodeValue(ctx.stmt)
+        call = self.getNodeValue(ctx.python_native_statement())
         self.setNodeValue(ctx, Python2NativeCall(call.statement, call.module))
 
 
     def exitPython3NativeStatement(self, ctx):
-        call = self.getNodeValue(ctx.stmt)
+        call = self.getNodeValue(ctx.python_native_statement())
         self.setNodeValue(ctx, Python3NativeCall(call.statement, call.module))
 
 
@@ -1345,13 +1272,13 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitJavaMethodExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
+        exp = self.getNodeValue(ctx.java_method_expression())
         self.setNodeValue(ctx, exp)
 
 
 
     def exitFullDeclarationList(self, ctx):
-        items = self.getNodeValue(ctx.items)
+        items = self.getNodeValue(ctx.declarations())
         if items is None:
             items = DeclarationList()
         self.setNodeValue(ctx, items)
@@ -1376,35 +1303,13 @@ class OPromptoBuilder(OParserListener):
             self.setNodeValue(ctx, decl)
 
 
-    def exitDeclarationList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = DeclarationList(item)
+
+    def exitDeclarations(self, ctx):
+        items = DeclarationList()
+        for rule in ctx.declaration():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
-
-
-
-    def exitDeclarationListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
-        self.setNodeValue(ctx, items)
-
-
-    def exitNativeMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
-
-    def exitConcreteMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
-
-    def exitAbstractMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
 
 
 
@@ -1491,32 +1396,35 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, exp)
 
 
+
     def exitJavaCategoryBinding(self, ctx):
-        map = self.getNodeValue(ctx.binding)
-        self.setNodeValue(ctx, JavaNativeCategoryBinding(map))
+        binding = self.getNodeValue(ctx.binding)
+        self.setNodeValue(ctx, JavaNativeCategoryBinding(binding))
 
 
 
     def exitCSharpCategoryBinding(self, ctx):
-        map = self.getNodeValue(ctx.binding)
-        self.setNodeValue(ctx, CSharpNativeCategoryBinding(map))
+        binding = self.getNodeValue(ctx.binding)
+        self.setNodeValue(ctx, CSharpNativeCategoryBinding(binding))
+
 
 
     def exitPython_category_binding(self, ctx):
-        id_ = ctx.id_.getText()
-        module = self.getNodeValue(ctx.module)
+        id_ = ctx.identifier().getText()
+        module = self.getNodeValue(ctx.python_module())
         self.setNodeValue(ctx, PythonNativeCategoryBinding(id_, module))
 
 
+
     def exitPython2CategoryBinding(self, ctx):
-        map = self.getNodeValue(ctx.binding)
-        self.setNodeValue(ctx, Python2NativeCategoryBinding(map.identifier, map.module))
+        binding = self.getNodeValue(ctx.binding)
+        self.setNodeValue(ctx, Python2NativeCategoryBinding(binding.identifier, binding.module))
 
 
 
     def exitPython3CategoryBinding(self, ctx):
-        map = self.getNodeValue(ctx.binding)
-        self.setNodeValue(ctx, Python3NativeCategoryBinding(map.identifier, map.module))
+        binding = self.getNodeValue(ctx.binding)
+        self.setNodeValue(ctx, Python3NativeCategoryBinding(binding.identifier, binding.module))
 
 
 
@@ -1540,6 +1448,7 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, items)
 
 
+
     def exitNative_category_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         attrs = self.getNodeValue(ctx.attrs)
@@ -1550,9 +1459,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, decl)
 
 
+
     def exitNativeCategoryDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
+
 
 
     def exitNative_resource_declaration(self, ctx):
@@ -1563,24 +1474,17 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, NativeResourceDeclaration(name, attrs, bindings, None, methods))
 
 
+
     def exitResource_declaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
+        decl = self.getNodeValue(ctx.native_resource_declaration())
         self.setNodeValue(ctx, decl)
 
-
-    def exitEnumCategoryDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
-    def exitEnumNativeDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
 
 
     def exitParenthesis_expression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
+        exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, ParenthesisExpression(exp))
+
 
 
     def exitParenthesisExpression(self, ctx):
@@ -1588,16 +1492,14 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, exp)
 
 
-    def exitNativeSymbolList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, NativeSymbolList(item))
 
-
-    def exitNativeSymbolListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
+    def exitNative_symbol_list(self, ctx):
+        items = NativeSymbolList()
+        for rule in ctx.native_symbol():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
+
 
 
     def exitEnum_native_declaration(self, ctx):
@@ -1605,6 +1507,7 @@ class OPromptoBuilder(OParserListener):
         typ = self.getNodeValue(ctx.typ)
         symbols = self.getNodeValue(ctx.symbols)
         self.setNodeValue(ctx, EnumeratedNativeDeclaration(name, typ, symbols))
+
 
 
     def exitFor_each_statement(self, ctx):
@@ -1615,9 +1518,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, ForEachStatement(name1, name2, source, stmts))
 
 
+
     def exitForEachStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
 
     def exitSymbols_token(self, ctx):
@@ -1628,33 +1533,44 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, ctx.getText())
 
 
+
     def exitValue_token(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
 
 
+
     def exitNamed_argument(self, ctx):
-        name = self.getNodeValue(ctx.name)
+        name = self.getNodeValue(ctx.variable_identifier())
         arg = UnresolvedArgument(name)
-        exp = self.getNodeValue(ctx.value)
+        exp = self.getNodeValue(ctx.literal_expression())
         arg.defaultValue = exp
         self.setNodeValue(ctx, arg)
+
 
 
     def exitClosureStatement(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, DeclarationStatement(decl))
 
+
+
     def exitReturn_statement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, ReturnStatement(exp))
+
+
 
     def exitReturnStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
+
     def exitClosureExpression(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MethodExpression(name))
+
+
 
     def exitIf_statement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
@@ -1669,11 +1585,13 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, stmt)
 
 
+
     def exitElseIfStatementList(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         stmts = self.getNodeValue(ctx.stmts)
         elem = IfElement(exp, stmts)
         self.setNodeValue(ctx, IfElementList(elem))
+
 
 
     def exitElseIfStatementListItem(self, ctx):
@@ -1685,9 +1603,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, items)
 
 
+
     def exitIfStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
 
     def exitSwitchStatement(self, ctx):
@@ -1695,9 +1615,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, stmt)
 
 
+
     def exitAssignTupleStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
 
     def exitRaiseStatement(self, ctx):
@@ -1705,9 +1627,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, stmt)
 
 
+
     def exitWriteStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
 
     def exitWithResourceStatement(self, ctx):
@@ -1715,9 +1639,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, stmt)
 
 
+
     def exitWhileStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
 
     def exitDoWhileStatement(self, ctx):
@@ -1725,9 +1651,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, stmt)
 
 
+
     def exitTryStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
 
     def exitEqualsExpression(self, ctx):
@@ -1736,10 +1664,12 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.EQUALS, right))
 
 
+
     def exitNotEqualsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.NOT_EQUALS, right))
+
 
 
     def exitGreaterThanExpression(self, ctx):
@@ -1748,10 +1678,12 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, CompareExpression(left, CmpOp.GT, right))
 
 
+
     def exitGreaterThanOrEqualExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, CompareExpression(left, CmpOp.GTE, right))
+
 
 
     def exitLessThanExpression(self, ctx):
@@ -1760,16 +1692,25 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, CompareExpression(left, CmpOp.LT, right))
 
 
+
     def exitLessThanOrEqualExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, CompareExpression(left, CmpOp.LTE, right))
 
 
+
     def exitAtomicSwitchCase(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, AtomicSwitchCase(exp, stmts))
+
+
+
+    def exitCollection_literal(self, ctx):
+        stmt = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, stmt)
+
 
 
     def exitCollectionSwitchCase(self, ctx):
@@ -1786,16 +1727,19 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, CommentStatement(ctx.getText()))
 
 
-    def exitSwitchCaseStatementList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, SwitchCaseList(item))
+
+    def exitCursorType(self, ctx):
+        raise "not implemented"
 
 
-    def exitSwitchCaseStatementListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
+
+    def exitSwitch_case_statement_list(self, ctx):
+        items = SwitchCaseList()
+        for rule in ctx.switch_case_statement():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
+
 
 
     def exitSwitch_statement(self, ctx):
@@ -1808,35 +1752,37 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, stmt)
 
 
+
     def exitLiteralRangeLiteral(self, ctx):
         low = self.getNodeValue(ctx.low)
         high = self.getNodeValue(ctx.high)
         self.setNodeValue(ctx, RangeLiteral(low, high))
 
 
+
     def exitLiteralSetLiteral(self, ctx):
-        items = self.getNodeValue(ctx.exp)
+        items = self.getNodeValue(ctx.literal_list_literal())
         items = items if items is not None else []
         value = SetLiteral(items)
         self.setNodeValue(ctx, value)
 
+
+
     def exitLiteralListLiteral(self, ctx):
-        items = self.getNodeValue(ctx.exp)
+        items = self.getNodeValue(ctx.literal_list_literal())
         items = items if items is not None else []
         value = ListLiteral(items)
         self.setNodeValue(ctx, value)
 
 
-    def exitLiteralList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, [ item ])
 
-
-    def exitLiteralListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
+    def exitLiteral_list_literal(self, ctx):
+        items = []
+        for rule in ctx.atomic_literal():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
+
 
 
     def exitInExpression(self, ctx):
@@ -1845,10 +1791,12 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.IN, right))
 
 
+
     def exitNotInExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.NOT_IN, right))
+
 
 
     def exitContainsAllExpression(self, ctx):
@@ -1857,10 +1805,12 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.CONTAINS_ALL, right))
 
 
+
     def exitNotContainsAllExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.NOT_CONTAINS_ALL, right))
+
 
 
     def exitContainsAnyExpression(self, ctx):
@@ -1869,10 +1819,12 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.CONTAINS_ANY, right))
 
 
+
     def exitNotContainsAnyExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.NOT_CONTAINS_ANY, right))
+
 
 
     def exitContainsExpression(self, ctx):
@@ -1881,10 +1833,12 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.CONTAINS, right))
 
 
+
     def exitNotContainsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.NOT_CONTAINS, right))
+
 
 
     def exitDivideExpression(self, ctx):
@@ -1893,16 +1847,19 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, DivideExpression(left, right))
 
 
+
     def exitIntDivideExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, IntDivideExpression(left, right))
 
 
+
     def exitModuloExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ModuloExpression(left, right))
+
 
 
     def exitAndExpression(self, ctx):
@@ -1913,6 +1870,13 @@ class OPromptoBuilder(OParserListener):
 
     def exitNullLiteral(self, ctx):
         self.setNodeValue(ctx, NullLiteral.instance)
+
+
+
+    def exitOperator_argument(self, ctx):
+        stmt = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, stmt)
+
 
 
     def exitOperatorArgument(self, ctx):
@@ -1975,6 +1939,7 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, OrExpression(left, right))
 
 
+
     def exitMultiplyExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
@@ -1987,9 +1952,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, typ)
 
 
+
     def exitMinusExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, MinusExpression(exp))
+
 
 
     def exitNotExpression(self, ctx):
@@ -1997,10 +1964,12 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, NotExpression(exp))
 
 
+
     def exitWhile_statement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, WhileStatement(exp, stmts))
+
 
 
     def exitDo_while_statement(self, ctx):
@@ -2026,9 +1995,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, SliceSelector(first, last))
 
 
+
     def exitSliceFirstOnly(self, ctx):
         first = self.getNodeValue(ctx.first)
         self.setNodeValue(ctx, SliceSelector(first, None))
+
 
 
     def exitSliceLastOnly(self, ctx):
@@ -2053,9 +2024,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, SortedExpression(source, key))
 
 
+
     def exitSortedExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
 
 
     def exitDocumentExpression(self, ctx):
@@ -2063,12 +2036,16 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, exp)
 
 
+
     def exitDocument_expression(self, ctx):
         exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, DocumentExpression(exp))
 
+
+
     def exitDocumentType(self, ctx):
         self.setNodeValue(ctx, DocumentType.instance)
+
 
 
     def exitFetchExpression(self, ctx):
@@ -2106,9 +2083,28 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, CodeType.instance)
 
 
+
     def exitExecuteExpression(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, ExecuteExpression(name))
+
+
+
+    def exitExpression_list(self, ctx):
+        items = []
+        for rule in ctx.expression():
+            item = self.getNodeValue(rule)
+            items.append(item)
+        self.setNodeValue(ctx, items)
+
+
+
+    def exitExpression_tuple(self, ctx):
+        items = []
+        for rule in ctx.expression():
+            item = self.getNodeValue(rule)
+            items.append(item)
+        self.setNodeValue(ctx, items)
 
 
     def exitCodeExpression(self, ctx):
@@ -2116,25 +2112,33 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, CodeExpression(exp))
 
 
+
     def exitCode_argument(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, CodeArgument(name))
+
+
+
+    def exitCategory_or_any_type(self, ctx):
+        stmt = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, stmt)
+
+
 
     def exitCategory_symbol(self, ctx):
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, CategorySymbol(name, args))
 
-    def exitCategorySymbolList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, CategorySymbolList(item))
 
 
-    def exitCategorySymbolListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
+    def exitCategory_symbol_list(self, ctx):
+        items = CategorySymbolList()
+        for rule in ctx.category_symbol():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
+
 
 
     def exitEnum_category_declaration(self, ctx):
@@ -2150,14 +2154,23 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, ecd)
 
 
+
+    def exitEnum_declaration(self, ctx):
+        value = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, value)
+
+
+
     def exitRead_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, ReadExpression(source))
 
 
+
     def exitReadExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
 
 
     def exitWrite_statement(self, ctx):
@@ -2184,8 +2197,10 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, WithResourceStatement(stmt, stmts))
 
 
+
     def exitAnyType(self, ctx):
         self.setNodeValue(ctx, AnyType.instance)
+
 
 
     def exitAnyListType(self, ctx):
@@ -2193,14 +2208,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, ListType(typ))
 
 
+
     def exitAnyDictType(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         self.setNodeValue(ctx, DictType(typ))
 
-
-    def exitAnyArgumentType(self, ctx):
-        typ = self.getNodeValue(ctx.typ)
-        self.setNodeValue(ctx, typ)
 
 
     def exitCastExpression(self, ctx):
@@ -2208,10 +2220,13 @@ class OPromptoBuilder(OParserListener):
         exp = self.getNodeValue(ctx.left)
         self.setNodeValue(ctx, CastExpression(exp, typ))
 
+
+
     def exitCatchAtomicStatement(self, ctx):
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, AtomicSwitchCase(SymbolExpression(name), stmts))
+
 
 
     def exitCatchCollectionStatement(self, ctx):
@@ -2220,16 +2235,14 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, CollectionSwitchCase(exp, stmts))
 
 
-    def exitCatchStatementList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, SwitchCaseList(item))
 
-
-    def exitCatchStatementListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.add(item)
+    def exitCatch_statement_list(self, ctx):
+        items = SwitchCaseList()
+        for rule in ctx.catch_statement():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
+
 
 
     def exitTry_statement(self, ctx):
@@ -2245,9 +2258,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, stmt)
 
 
+
     def exitRaise_statement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, RaiseStatement(exp))
+
 
 
     def exitMatchingList(self, ctx):
@@ -2255,9 +2270,15 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, MatchingCollectionConstraint(exp))
 
 
+    def exitMatchingSet(self, ctx):
+        exp = self.getNodeValue(ctx.source)
+        self.setNodeValue(ctx, MatchingCollectionConstraint(exp))
+
+
     def exitMatchingRange(self, ctx):
         exp = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, MatchingCollectionConstraint(exp))
+
 
 
     def exitMatchingExpression(self, ctx):
@@ -2296,6 +2317,7 @@ class OPromptoBuilder(OParserListener):
         text = ctx.t.text
         self.setNodeValue(ctx, JavaScriptCharacterLiteral(text))
 
+
     def exitJavascript_identifier(self, ctx):
         name = ctx.getText()
         self.setNodeValue(ctx, name)
@@ -2312,6 +2334,7 @@ class OPromptoBuilder(OParserListener):
         method.arguments = args
         self.setNodeValue(ctx, method)
 
+
     def exitJavascript_module(self, ctx):
         ids = []
         for ic in ctx.javascript_identifier():
@@ -2319,16 +2342,19 @@ class OPromptoBuilder(OParserListener):
         module = JavaScriptModule(ids)
         self.setNodeValue(ctx, module)
 
+
     def exitJavascript_native_statement(self, ctx):
-        stmt = self.getNodeValue(ctx.stmt)
-        module = self.getNodeValue(ctx.module)
+        stmt = self.getNodeValue(ctx.javascript_statement())
+        module = self.getNodeValue(ctx.javascript_module())
         stmt.module = module
         self.setNodeValue(ctx, stmt)
+
 
     def exitJavascript_new_expression(self, ctx):
         method = self.getNodeValue(ctx.javascript_method_expression())
         new = JavaScriptNewExpression(method)
         self.setNodeValue(ctx, new)
+
 
     def exitJavascriptArgumentList(self, ctx):
         exp = self.getNodeValue(ctx.item)
@@ -2350,6 +2376,7 @@ class OPromptoBuilder(OParserListener):
         exp = JavaScriptIdentifierExpression(None, name)
         self.setNodeValue(ctx, exp)
 
+
     def exitJavascriptDecimalLiteral(self, ctx):
         text = ctx.t.text
         self.setNodeValue(ctx, JavaScriptDecimalLiteral(text))
@@ -2359,17 +2386,14 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, JavaScriptIntegerLiteral(text))
 
 
-    def exitJavascriptMethodExpression(self, ctx):
-        method = self.getNodeValue(ctx.method)
-        self.setNodeValue(ctx, method)
-
-    def exitJavaScriptNativeStatement(self, ctx):
-        stmt = self.getNodeValue(ctx.stmt)
-        self.setNodeValue(ctx, JavaScriptNativeCall(stmt))
-
     def exitJavaScriptMethodExpression(self, ctx):
         method = self.getNodeValue(ctx.method)
         self.setNodeValue(ctx, method)
+
+
+    def exitJavaScriptNativeStatement(self, ctx):
+        stmt = self.getNodeValue(ctx.javascript_native_statement())
+        self.setNodeValue(ctx, JavaScriptNativeCall(stmt))
 
     def exitJavascriptPrimaryExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)

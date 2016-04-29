@@ -247,10 +247,6 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, AbstractMethodDeclaration(name, args, typ))
 
 
-    def exitAbstractMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
 
     def exitAddExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
@@ -264,10 +260,6 @@ class SPromptoBuilder(SParserListener):
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, AndExpression(left, right))
 
-
-    def exitAnyArgumentType(self, ctx):
-        typ = self.getNodeValue(ctx.typ)
-        self.setNodeValue(ctx, typ)
 
 
     def exitAnyDictType(self, ctx):
@@ -305,15 +297,11 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, items)
 
 
-    def exitArgumentList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, ArgumentList(item))
-
-
-    def exitArgumentListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
+    def exitArgument_list(self, ctx):
+        items = ArgumentList()
+        for rule in ctx.argument():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
     def exitAssertion(self, ctx):
@@ -321,16 +309,11 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, exp)
 
 
-    def exitAssertionList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = [ item ]
-        self.setNodeValue(ctx, items)
-
-
-    def exitAssertionListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
+    def exitAssertion_list(self, ctx):
+        items = []
+        for rule in ctx.assertion():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
 
@@ -349,8 +332,8 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitAssign_variable_statement(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        exp = self.getNodeValue(ctx.exp)
+        name = self.getNodeValue(ctx.variable_identifier())
+        exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, AssignVariableStatement(name, exp))
 
 
@@ -363,10 +346,6 @@ class SPromptoBuilder(SParserListener):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
-
-    def exitAtomicLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
 
 
     def exitAtomicSwitchCase(self, ctx):
@@ -382,6 +361,7 @@ class SPromptoBuilder(SParserListener):
         decl = AttributeDeclaration(name, typ, match)
         decl.storable = ctx.STORABLE() is not None
         self.setNodeValue(ctx, decl)
+
 
 
     def exitBlobExpression(self, ctx):
@@ -429,16 +409,19 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, CollectionSwitchCase(exp, stmts))
 
 
-    def exitCatchStatementList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, SwitchCaseList(item))
-
-
-    def exitCatchStatementListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.add(item)
+    def exitCatch_statement_list(self, ctx):
+        items = SwitchCaseList()
+        for rule in ctx.catch_statement():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
+
+
+
+    def exitCategory_or_any_type(self, ctx):
+        stmt = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, stmt)
+
 
 
     def exitCategory_symbol(self, ctx):
@@ -447,14 +430,11 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, CategorySymbol(name, args))
 
 
+
     def exitCategory_type(self, ctx):
         name = ctx.getText()
         self.setNodeValue(ctx, CategoryType(name))
 
-
-    def exitCategoryArgumentType(self, ctx):
-        typ = self.getNodeValue(ctx.typ)
-        self.setNodeValue(ctx, typ)
 
 
     def exitNative_member_method_declaration(self, ctx):
@@ -462,46 +442,29 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, decl)
 
 
-    def exitNativeCategoryMethodList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = MethodDeclarationList(item)
+
+    def exitNative_member_method_declaration_list(self, ctx):
+        items = MethodDeclarationList()
+        for rule in ctx.native_member_method_declaration():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
 
-    def exitNativeCategoryMethodListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
-        self.setNodeValue(ctx, items)
 
     def exitMember_method_declaration(self, ctx):
         decl = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, decl)
 
 
-    def exitCategoryMethodList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = MethodDeclarationList(item)
+
+    def exitCategory_symbol_list(self, ctx):
+        items = CategorySymbolList()
+        for rule in ctx.category_symbol():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
-
-    def exitCategoryMethodListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
-        self.setNodeValue(ctx, items)
-
-
-    def exitCategorySymbolList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, CategorySymbolList(item))
-
-
-    def exitCategorySymbolListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
-        self.setNodeValue(ctx, items)
 
 
     def exitCategoryType(self, ctx):
@@ -518,8 +481,8 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitChildInstance(self, ctx):
-        parent = self.getNodeValue(ctx.parent)
-        child = self.getNodeValue(ctx.child)
+        parent = self.getNodeValue(ctx.assignable_instance())
+        child = self.getNodeValue(ctx.child_instance())
         child.setParent(parent)
         self.setNodeValue(ctx, child)
 
@@ -558,13 +521,16 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, CodeExpression(exp))
 
 
+
     def exitCodeType(self, ctx):
         self.setNodeValue(ctx, CodeType.instance)
 
 
-    def exitCollectionLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
+
+    def exitCollection_literal(self, ctx):
+        stmt = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, stmt)
+
 
 
     def exitCollectionSwitchCase(self, ctx):
@@ -579,6 +545,12 @@ class SPromptoBuilder(SParserListener):
 
     def exitComment_statement(self, ctx):
         self.setNodeValue(ctx, CommentStatement(ctx.getText()))
+
+
+
+    def exitCursorType(self, ctx):
+        raise "not implemented"
+
 
 
     def exitConcrete_category_declaration(self, ctx):
@@ -606,10 +578,6 @@ class SPromptoBuilder(SParserListener):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
-
-    def exitConcreteMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
 
 
     def exitConstructor_expression(self, ctx):
@@ -708,7 +676,7 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitCSharpNativeStatement(self, ctx):
-        stmt = self.getNodeValue(ctx.stmt)
+        stmt = self.getNodeValue(ctx.csharp_statement())
         self.setNodeValue(ctx, CSharpNativeCall(stmt))
 
 
@@ -786,17 +754,14 @@ class SPromptoBuilder(SParserListener):
             self.setNodeValue(ctx, decl)
 
 
-    def exitDeclarationList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = DeclarationList(item)
+
+    def exitDeclarations(self, ctx):
+        items = DeclarationList()
+        for rule in ctx.declaration():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
-
-    def exitDeclarationListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
-        self.setNodeValue(ctx, items)
 
 
     def exitDerived_list(self, ctx):
@@ -811,27 +776,21 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, entry)
 
 
-    def exitDict_literal(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        value = DictLiteral(items)
-        self.setNodeValue(ctx, value)
 
-
-    def exitDictEntryList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, DictEntryList(item))
-
-
-    def exitDictEntryListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
+    def exitDict_entry_list(self, ctx):
+        items = DictEntryList()
+        for rule in ctx.dict_entry():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
 
-    def exitDictLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
+
+    def exitDict_literal(self, ctx):
+        items = self.getNodeValue(ctx.dict_entry_list())
+        value = DictLiteral(items)
+        self.setNodeValue(ctx, value)
+
 
 
     def exitDictType(self, ctx):
@@ -899,21 +858,19 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, ecd)
 
 
+
+    def exitEnum_declaration(self, ctx):
+        value = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, value)
+
+
+
     def exitEnum_native_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         typ = self.getNodeValue(ctx.typ)
         symbols = self.getNodeValue(ctx.symbols)
         self.setNodeValue(ctx, EnumeratedNativeDeclaration(name, typ, symbols))
 
-
-    def exitEnumCategoryDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
-
-
-    def exitEnumNativeDeclaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
 
 
     def exitEqualsExpression(self, ctx):
@@ -922,9 +879,29 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.EQUALS, right))
 
 
+
     def exitExecuteExpression(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, ExecuteExpression(name))
+
+
+
+    def exitExpression_list(self, ctx):
+        items = []
+        for rule in ctx.expression():
+            item = self.getNodeValue(rule)
+            items.append(item)
+        self.setNodeValue(ctx, items)
+
+
+
+    def exitExpression_tuple(self, ctx):
+        items = []
+        for rule in ctx.expression():
+            item = self.getNodeValue(rule)
+            items.append(item)
+        self.setNodeValue(ctx, items)
+
 
 
     def exitExpressionAssignmentList(self, ctx):
@@ -974,7 +951,7 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitFullDeclarationList(self, ctx):
-        items = self.getNodeValue(ctx.items)
+        items = self.getNodeValue(ctx.declarations())
         if items is None:
             items = DeclarationList()
         self.setNodeValue(ctx, items)
@@ -1059,18 +1036,24 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, IntegerLiteral(ctx.t.text))
 
 
+
     def exitIntegerType(self, ctx):
         self.setNodeValue(ctx, IntegerType.instance)
 
 
+
     def exitIsATypeExpression(self, ctx):
-        typ = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.category_or_any_type())
         exp = TypeExpression(typ)
         self.setNodeValue(ctx, exp)
 
+
+
     def exitIsOtherExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
+        exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, exp)
+
+
 
     def exitIsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
@@ -1101,6 +1084,7 @@ class SPromptoBuilder(SParserListener):
         name = self.getNodeValue(ctx.name)
         source = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, IteratorExpression(name, source, exp))
+
 
     def exitIteratorType(self, ctx):
         typ = self.getNodeValue(ctx.i)
@@ -1200,7 +1184,7 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitJavaNativeStatement(self, ctx):
-        stmt = self.getNodeValue(ctx.stmt)
+        stmt = self.getNodeValue(ctx.java_statement())
         self.setNodeValue(ctx, JavaNativeCall(stmt))
 
 
@@ -1257,8 +1241,8 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitJavascript_native_statement(self, ctx):
-        stmt = self.getNodeValue(ctx.stmt)
-        module = self.getNodeValue(ctx.module)
+        stmt = self.getNodeValue(ctx.javascript_statement())
+        module = self.getNodeValue(ctx.javascript_module())
         stmt.module = module
         self.setNodeValue(ctx, stmt)
 
@@ -1308,7 +1292,7 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitJavaScriptNativeStatement(self, ctx):
-        stmt = self.getNodeValue(ctx.stmt)
+        stmt = self.getNodeValue(ctx.javascript_native_statement())
         self.setNodeValue(ctx, JavaScriptNativeCall(stmt))
 
 
@@ -1379,15 +1363,12 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitList_literal(self, ctx):
-        items = self.getNodeValue(ctx.items)
+        mutable = ctx.MUTABLE() is not None
+        items = self.getNodeValue(ctx.expression_list())
         items = items if items is not None else []
-        value = ListLiteral(items)
+        value = ListLiteral(items, mutable=mutable)
         self.setNodeValue(ctx, value)
 
-
-    def exitListLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
 
 
     def exitListType(self, ctx):
@@ -1395,26 +1376,32 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, ListType(typ))
 
 
+
+    def exitLiteral_expression(self, ctx):
+        value = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, value)
+
+
+
     def exitLiteralExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
 
-    def exitLiteralList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, [ item ])
 
-
-    def exitLiteralListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
+    def exitLiteral_list_literal(self, ctx):
+        items = []
+        for rule in ctx.atomic_literal():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
 
+
     def exitLiteralListLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
+        exp = self.getNodeValue(ctx.literal_list_literal())
         self.setNodeValue(ctx, ListLiteral(exp))
+
 
 
     def exitLiteralRangeLiteral(self, ctx):
@@ -1422,13 +1409,18 @@ class SPromptoBuilder(SParserListener):
         high = self.getNodeValue(ctx.high)
         self.setNodeValue(ctx, RangeLiteral(low, high))
 
+
+
     def exitLiteralSetLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
+        exp = self.getNodeValue(ctx.literal_list_literal())
         self.setNodeValue(ctx, SetLiteral(exp))
+
+
 
     def exitMatchingExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, MatchingExpressionConstraint(exp))
+
 
 
     def exitMatchingList(self, ctx):
@@ -1436,21 +1428,27 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, MatchingCollectionConstraint(exp))
 
 
+
     def exitMatchingPattern(self, ctx):
         self.setNodeValue(ctx, MatchingPatternConstraint(TextLiteral(ctx.text.text)))
+
 
 
     def exitMatchingRange(self, ctx):
         exp = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, MatchingCollectionConstraint(exp))
 
+
+
     def exitMatchingSet(self, ctx):
         exp = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, MatchingCollectionConstraint(exp))
 
 
+
     def exitMaxIntegerLiteral(self, ctx):
         self.setNodeValue(ctx, MaxIntegerLiteral())
+
 
 
     def exitMemberInstance(self, ctx):
@@ -1458,15 +1456,30 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, MemberInstance(None, name))
 
 
+
     def exitMemberSelector(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MemberSelector(name))
+
 
 
     def exitMethod_call(self, ctx):
         method = self.getNodeValue(ctx.method)
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, UnresolvedCall(method, args))
+
+
+
+    def exitMethod_declaration(self, ctx):
+        value = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, value)
+
+
+
+    def exitMethod_identifier(self, ctx):
+        stmt = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, stmt)
+
 
 
     def exitMethodCallExpression(self, ctx):
@@ -1494,15 +1507,6 @@ class SPromptoBuilder(SParserListener):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MethodSelector(name, parent))
 
-
-    def exitMethodTypeIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, name)
-
-
-    def exitMethodVariableIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, name)
 
 
     def exitMinIntegerLiteral(self, ctx):
@@ -1533,16 +1537,12 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitNamed_argument(self, ctx):
-        name = self.getNodeValue(ctx.name)
+        name = self.getNodeValue(ctx.variable_identifier())
         arg = UnresolvedArgument(name)
-        exp = self.getNodeValue(ctx.value)
+        exp = self.getNodeValue(ctx.literal_expression())
         arg.defaultExpression = exp
         self.setNodeValue(ctx, arg)
 
-
-    def exitNamedArgument(self, ctx):
-        arg = self.getNodeValue(ctx.arg)
-        self.setNodeValue(ctx, arg)
 
 
     def exitNative_category_declaration(self, ctx):
@@ -1600,34 +1600,23 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, items)
 
 
-    def exitNativeMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
 
-
-    def exitNativeStatementList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = StatementList(item)
+    def exitNative_statement_list(self, ctx):
+        items = StatementList()
+        for rule in ctx.native_statement():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
 
-    def exitNativeStatementListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
+
+    def exitNative_symbol_list(self, ctx):
+        items = NativeSymbolList()
+        for rule in ctx.native_symbol():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
-
-    def exitNativeSymbolList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, NativeSymbolList(item))
-
-
-    def exitNativeSymbolListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
-        self.setNodeValue(ctx, items)
 
 
     def exitNativeType(self, ctx):
@@ -1672,6 +1661,13 @@ class SPromptoBuilder(SParserListener):
 
     def exitNullLiteral(self, ctx):
         self.setNodeValue(ctx, NullLiteral.instance)
+
+
+
+    def exitOperator_argument(self, ctx):
+        stmt = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, stmt)
+
 
 
     def exitOperatorArgument(self, ctx):
@@ -1733,7 +1729,7 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitParenthesis_expression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
+        exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, ParenthesisExpression(exp))
 
 
@@ -1778,28 +1774,28 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitPython_native_statement(self, ctx):
-        stmt = self.getNodeValue(ctx.stmt)
-        module = self.getNodeValue(ctx.module)
+        stmt = self.getNodeValue(ctx.python_statement())
+        module = self.getNodeValue(ctx.python_module())
         self.setNodeValue(ctx, PythonNativeCall(stmt, module))
 
 
     def exitPython2CategoryBinding(self, ctx):
-        map = self.getNodeValue(ctx.binding)
-        self.setNodeValue(ctx, Python2NativeCategoryBinding(map.identifier, map.module))
+        binding = self.getNodeValue(ctx.binding)
+        self.setNodeValue(ctx, Python2NativeCategoryBinding(binding.identifier, binding.module))
 
 
     def exitPython2NativeStatement(self, ctx):
-        call = self.getNodeValue(ctx.stmt)
+        call = self.getNodeValue(ctx.python_native_statement())
         self.setNodeValue(ctx, Python2NativeCall(call.statement, call.module))
 
 
     def exitPython3CategoryBinding(self, ctx):
-        map = self.getNodeValue(ctx.binding)
-        self.setNodeValue(ctx, Python3NativeCategoryBinding(map.identifier, map.module))
+        binding = self.getNodeValue(ctx.binding)
+        self.setNodeValue(ctx, Python3NativeCategoryBinding(binding.identifier, binding.module))
 
 
     def exitPython3NativeStatement(self, ctx):
-        call = self.getNodeValue(ctx.stmt)
+        call = self.getNodeValue(ctx.python_native_statement())
         self.setNodeValue(ctx, Python3NativeCall(call.statement, call.module))
 
 
@@ -1942,10 +1938,6 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, RangeLiteral(low, high))
 
 
-    def exitRangeLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
 
     def exitRead_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
@@ -1958,7 +1950,7 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitResource_declaration(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
+        decl = self.getNodeValue(ctx.native_resource_declaration())
         self.setNodeValue(ctx, decl)
 
 
@@ -1973,7 +1965,7 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitRootInstance(self, ctx):
-        name = self.getNodeValue(ctx.name)
+        name = self.getNodeValue(ctx.variable_identifier())
         self.setNodeValue(ctx, VariableInstance(name))
 
 
@@ -1993,6 +1985,15 @@ class SPromptoBuilder(SParserListener):
         selector = self.getNodeValue(ctx.selector)
         selector.setParent(parent)
         self.setNodeValue(ctx, selector)
+
+
+    def exitMember_method_declaration_list(self, ctx):
+        items = MethodDeclarationList()
+        for rule in ctx.member_method_declaration():
+            item = self.getNodeValue(rule)
+            items.append(item)
+        self.setNodeValue(ctx, items)
+
 
 
     def exitSetter_method_declaration(self, ctx):
@@ -2056,15 +2057,11 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, exp)
 
 
-    def exitStatementList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, StatementList(item))
-
-
-    def exitStatementListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
+    def exitStatement_list(self, ctx):
+        items = StatementList()
+        for rule in ctx.statement():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
 
@@ -2078,15 +2075,11 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, stmt)
 
 
-    def exitSwitchCaseStatementList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, SwitchCaseList(item))
-
-
-    def exitSwitchCaseStatementListItem(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        items = self.getNodeValue(ctx.items)
-        items.append(item)
+    def exitSwitch_case_statement_list(self, ctx):
+        items = SwitchCaseList()
+        for rule in ctx.switch_case_statement():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
 
 
@@ -2100,7 +2093,7 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitSymbolIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
+        name = self.getNodeValue(ctx.symbol_identifier())
         self.setNodeValue(ctx, name)
 
 
@@ -2118,6 +2111,8 @@ class SPromptoBuilder(SParserListener):
     def exitTextLiteral(self, ctx):
         self.setNodeValue(ctx, TextLiteral(ctx.t.text))
 
+
+
     def exitTest_method_declaration(self, ctx):
         name = ctx.name.text
         stmts = self.getNodeValue(ctx.stmts)
@@ -2127,23 +2122,25 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, TestMethodDeclaration(name, stmts, exps, error))
 
 
-    def exitTestMethod(self, ctx):
-        decl = self.getNodeValue(ctx.decl)
-        self.setNodeValue(ctx, decl)
 
     def exitTextType(self, ctx):
         self.setNodeValue(ctx, TextType.instance)
 
+
+
     def exitThisExpression(self, ctx):
         self.setNodeValue(ctx, ThisExpression())
+
 
 
     def exitTimeLiteral(self, ctx):
         self.setNodeValue(ctx, TimeLiteral(ctx.t.text))
 
 
+
     def exitTimeType(self, ctx):
         self.setNodeValue(ctx, TimeType.instance)
+
 
 
     def exitTry_statement(self, ctx):
@@ -2165,32 +2162,24 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitTuple_literal(self, ctx):
-        items = self.getNodeValue(ctx.items)
+        items = self.getNodeValue(ctx.expression_tuple())
         items = items if items is not None else []
         value = TupleLiteral(items)
         self.setNodeValue(ctx, value)
 
 
-    def exitTupleLiteral(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
 
     def exitSet_literal(self, ctx):
-        items = self.getNodeValue(ctx.items)
+        items = self.getNodeValue(ctx.expression_list())
         items = items if items is not None else []
         value = SetLiteral(items)
         self.setNodeValue(ctx, value)
 
 
-    def exitSetLiteral(self, ctx):
-        items = self.getNodeValue(ctx.exp)
-        items = items if items is not None else []
-        self.setNodeValue(ctx, items)
-
 
     def exitType_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
 
 
     def exitTyped_argument(self, ctx):
@@ -2204,54 +2193,24 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, arg)
 
 
-    def exitTypedArgument(self, ctx):
-        arg = self.getNodeValue(ctx.arg)
-        self.setNodeValue(ctx, arg)
-
 
     def exitTypeIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
+        name = self.getNodeValue(ctx.type_identifier())
         self.setNodeValue(ctx, name)
 
 
-    def exitTypeIdentifierList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, IdentifierList(item))
-
-
-    def exitTypeIdentifierListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
+    def exitType_identifier_list(self, ctx):
+        items = IdentifierList()
+        for rule in ctx.type_identifier():
+            item = self.getNodeValue(rule)
+            items.append(item)
         self.setNodeValue(ctx, items)
+
 
 
     def exitValue_token(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
 
-
-    def exitValueList(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, [ item ])
-
-
-    def exitValueListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
-        self.setNodeValue(ctx, items)
-
-
-    def exitValueTuple(self, ctx):
-        item = self.getNodeValue(ctx.item)
-        self.setNodeValue(ctx, [ item ])
-
-
-    def exitValueTupleItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
-        self.setNodeValue(ctx, items)
 
 
     def exitAttribute_identifier(self, ctx):
@@ -2263,7 +2222,7 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitVariableIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.name)
+        name = self.getNodeValue(ctx.variable_identifier())
         self.setNodeValue(ctx, name)
 
 

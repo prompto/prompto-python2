@@ -22,15 +22,23 @@ class MemberInstance ( IAssignableInstance ):
         writer.append(".")
         writer.append(self.name)
 
-    def checkAssignValue(self, context, expression):
-        self.parent.checkAssignMember(context, self.name)
-        expression.check(context)
 
-    def checkAssignMember(self, context, memberName):
-        self.parent.checkAssignMember(context, self.name)
 
-    def checkAssignElement(self, context):
-        pass
+    def checkAssignValue(self, context, valueType):
+        return self.parent.checkAssignMember(context, self.name, valueType)
+
+
+
+    def checkAssignMember(self, context, name, valueType):
+        self.parent.checkAssignMember(context, self.name, None)
+        return valueType # TODO
+
+
+
+    def checkAssignItem(self, context, itemType, valueType):
+        return valueType # TODO
+
+
 
     def assign(self, context, expression):
         root = self.parent.interpret(context)
