@@ -57,7 +57,10 @@ class PythonClassType(CategoryType):
         return self.doConvertPythonValueToPromptoValue(context, value, self.klass, returnType)
 
     def doConvertPythonValueToPromptoValue(self, context, value, klass, returnType):
-        res = self.convertIValue(value)
+        if value is None:
+            return None
+        else:
+            res = self.convertIValue(value)
         if res is not None:
             return res
         else:
