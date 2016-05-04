@@ -246,8 +246,8 @@ class CategoryType(BaseType):
     def sortByAttribute(self, context, source, name):
 
         def compare(o1, o2):
-            key1 = o1.GetMember(context, name)
-            key2 = o2.GetMember(context, name)
+            key1 = o1.getMember(context, name)
+            key2 = o2.getMember(context, name)
             return self.compareKeys(key1, key2)
 
         return sorted(source, cmp=compare)

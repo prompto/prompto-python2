@@ -34,7 +34,7 @@ class NativeInstance(BaseValue, IInstance):
     def getType(self):
         return self.type
 
-    def GetMember(self, context, attrName, autoCreate=False):
+    def getMember(self, context, attrName, autoCreate=False):
         stacked = activeGetters.__dict__.get(attrName, None)
         first = stacked is None
         if first:
@@ -55,7 +55,7 @@ class NativeInstance(BaseValue, IInstance):
             ct = PythonClassType(value.__class__)
             return ct.convertPythonValueToPromptoValue(context, value, None) # TODO use attribute declaration
 
-    def SetMember(self, context, attrName, value):
+    def setMember(self, context, attrName, value):
         if not self.mutable:
             raise NotMutableError()
         stacked = activeSetters.__dict__.get(attrName, None)
