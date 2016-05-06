@@ -6,18 +6,18 @@ from prompto.error.SyntaxError import SyntaxError
 
 class IfStatement ( BaseStatement ):
 
-    def __init__(self, condition, instructions):
+    def __init__(self, condition, statements):
         super(IfStatement, self).__init__()
-        self.elements = [IfElement(condition,instructions)]
+        self.elements = [IfElement(condition,statements)]
 
     def addAdditionals(self, elements):
         self.elements.extend(elements)
 
-    def addAdditional(self, condition, instructions):
-        self.elements.append(IfElement(condition,instructions))
+    def addAdditional(self, condition, statements):
+        self.elements.append(IfElement(condition,statements))
 
-    def setFinal(self, instructions):
-        self.elements.append(IfElement(None,instructions))
+    def setFinal(self, statements):
+        self.elements.append(IfElement(None,statements))
 
     def check(self, context):
         return self.elements[0].check(context)
@@ -48,7 +48,7 @@ class IfStatement ( BaseStatement ):
                 if curly:
                     writer.append(" ")
                 writer.append("else ")
-            curly = len(elem.instructions)>1
+            curly = len(elem.statements) > 1
             elem.toDialect(writer)
             first = False
         writer.newLine()
@@ -65,27 +65,27 @@ class IfStatement ( BaseStatement ):
 
 class IfElement ( BaseStatement ):
 
-    def __init__(self, condition, instructions):
+    def __init__(self, condition, statements):
         super(IfElement, self).__init__()
         self.condition = condition
-        self.instructions = instructions
+        self.statements = statements
 
     def getCondition(self):
         return self.condition
 
     def getInstructions(self):
-        return self.instructions
+        return self.statements
 
     def check(self, context):
         cond = self.condition.check(context)
         if cond!=BooleanType.instance:
             raise SyntaxError("Expected a boolean condition!")
         context = self.downCast(context, False)
-        return self.instructions.check(context, None)
+        return self.statements.check(context, None)
 
     def interpret(self, context):
         context = self.downCast(context, True)
-        return self.instructions.interpret(context)
+        return self.statements.interpret(context)
 
     def downCast(self, context, setValue):
         parent = context
@@ -102,13 +102,13 @@ class IfElement ( BaseStatement ):
             writer.append("if (")
             self.condition.toDialect(writer)
             writer.append(") ")
-        curly = self.instructions is not None and len(self.instructions)>1
+        curly = self.statements is not None and len(self.statements) > 1
         if curly:
             writer.append("{\n")
         else:
             writer.newLine()
         writer.indent()
-        self.instructions.toDialect(writer)
+        self.statements.toDialect(writer)
         writer.dedent()
         if curly:
             writer.append("}")
@@ -119,7 +119,7 @@ class IfElement ( BaseStatement ):
             self.condition.toDialect(writer)
         writer.append(":\n")
         writer.indent()
-        self.instructions.toDialect(writer)
+        self.statements.toDialect(writer)
         writer.dedent()
 
 
