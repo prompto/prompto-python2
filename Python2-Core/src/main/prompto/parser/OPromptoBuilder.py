@@ -260,9 +260,10 @@ class OPromptoBuilder(OParserListener):
 
 
 
-    def exitBlobExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
+    def exitBlob_expression(self, ctx):
+        exp = self.getNodeValue(ctx.expression())
+        self.setNodeValue(ctx, BlobExpression(exp))
+
 
 
     def exitBlobType(self, ctx):

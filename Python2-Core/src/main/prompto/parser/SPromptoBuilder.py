@@ -817,9 +817,9 @@ class SPromptoBuilder(SParserListener):
 
 
 
-    def exitDocumentExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
+    def exitDocument_expression(self, ctx):
+        exp = self.getNodeValue(ctx.expression())
+        self.setNodeValue(ctx, DocumentExpression(exp))
 
 
 
