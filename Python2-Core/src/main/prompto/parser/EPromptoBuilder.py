@@ -2073,33 +2073,40 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, DocumentType.instance)
 
 
-
-    def exitFetchExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
-
-
-    def exitFetchList(self, ctx):
+    def exitFetch_list_expression(self, ctx):
         itemName = self.getNodeValue(ctx.name)
         source = self.getNodeValue(ctx.source)
-        filter = self.getNodeValue(ctx.xfilter)
+        filter = self.getNodeValue(ctx.predicate)
         self.setNodeValue(ctx, FetchExpression(itemName, source, filter))
 
 
     def exitFetchOne (self, ctx):
         category = self.getNodeValue(ctx.typ)
-        xfilter = self.getNodeValue(ctx.xfilter)
+        xfilter = self.getNodeValue(ctx.predicate)
         self.setNodeValue(ctx, FetchOneExpression(category, xfilter))
 
 
-    def exitFetchAll (self, ctx):
+
+    def exitFetchListExpression(self, ctx):
+        exp = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, exp)
+
+
+
+    def exitFetchMany (self, ctx):
         category = self.getNodeValue(ctx.typ)
-        xfilter = self.getNodeValue(ctx.xfilter)
+        xfilter = self.getNodeValue(ctx.predicate)
         start = self.getNodeValue(ctx.xstart)
         stop = self.getNodeValue(ctx.xstop)
-        orderBy = self.getNodeValue(ctx.xorder)
+        orderBy = self.getNodeValue(ctx.orderby)
         self.setNodeValue(ctx, FetchManyExpression(category, xfilter, start, stop, orderBy))
+
+
+
+    def exitFetchStoreExpression(self, ctx):
+        exp = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, exp)
+
 
 
     def exitCode_type(self, ctx):

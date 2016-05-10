@@ -371,22 +371,20 @@ class SPromptoBuilder(SParserListener):
 
 
 
-    def exitBlobExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
-
     def exitBlob_expression(self, ctx):
         exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, BlobExpression(exp))
+
 
 
     def exitBlobType(self, ctx):
         self.setNodeValue(ctx, BlobType.instance)
 
 
+
     def exitBooleanLiteral(self, ctx):
         self.setNodeValue(ctx, BooleanLiteral(ctx.t.text))
+
 
 
     def exitBooleanType(self, ctx):
@@ -592,10 +590,6 @@ class SPromptoBuilder(SParserListener):
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, ConstructorExpression(typ, args))
 
-
-    def exitConstructorExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
 
 
     def exitContainsAllExpression(self, ctx):
@@ -817,18 +811,16 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, DoWhileStatement(exp, stmts))
 
 
-    def exitDocument_expression(self, ctx):
-        exp = self.getNodeValue(ctx.expression())
-        self.setNodeValue(ctx, DocumentExpression(exp))
-
 
     def exitDocumentType(self, ctx):
         self.setNodeValue(ctx, DocumentType.instance)
 
 
+
     def exitDocumentExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
 
 
     def exitDoWhileStatement(self, ctx):
@@ -918,31 +910,29 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, items)
 
 
-    def exitFetchExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
-
-    def exitFetchList(self, ctx):
+    def exitFetch_list_expression(self, ctx):
         itemName = self.getNodeValue(ctx.name)
         source = self.getNodeValue(ctx.source)
-        filter = self.getNodeValue(ctx.xfilter)
-        self.setNodeValue(ctx, FetchExpression(itemName, source, filter))
+        predicate = self.getNodeValue(ctx.predicate)
+        self.setNodeValue(ctx, FetchExpression(itemName, source, predicate))
+
 
 
     def exitFetchOne (self, ctx):
         category = self.getNodeValue(ctx.typ)
-        xfilter = self.getNodeValue(ctx.xfilter)
-        self.setNodeValue(ctx, FetchOneExpression(category, xfilter))
+        predicate = self.getNodeValue(ctx.predicate)
+        self.setNodeValue(ctx, FetchOneExpression(category, predicate))
 
 
-    def exitFetchAll (self, ctx):
+
+    def exitFetchMany (self, ctx):
         category = self.getNodeValue(ctx.typ)
-        xfilter = self.getNodeValue(ctx.xfilter)
+        predicate = self.getNodeValue(ctx.predicate)
         start = self.getNodeValue(ctx.xstart)
         stop = self.getNodeValue(ctx.xstop)
-        orderBy = self.getNodeValue(ctx.xorder)
-        self.setNodeValue(ctx, FetchManyExpression(category, xfilter, start, stop, orderBy))
+        orderBy = self.getNodeValue(ctx.orderby)
+        self.setNodeValue(ctx, FetchManyExpression(category, predicate, start, stop, orderBy))
+
 
     def exitFor_each_statement(self, ctx):
         name1 = self.getNodeValue(ctx.name1)
@@ -1489,8 +1479,8 @@ class SPromptoBuilder(SParserListener):
 
 
 
-    def exitMethodCallExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
+    def exitMethod_expression(self, ctx):
+        exp = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, exp)
 
 
@@ -1951,10 +1941,6 @@ class SPromptoBuilder(SParserListener):
         self.setNodeValue(ctx, ReadExpression(source))
 
 
-    def exitReadExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
-
 
     def exitResource_declaration(self, ctx):
         decl = self.getNodeValue(ctx.native_resource_declaration())
@@ -2057,11 +2043,6 @@ class SPromptoBuilder(SParserListener):
         source = self.getNodeValue(ctx.source)
         key = self.getNodeValue(ctx.key)
         self.setNodeValue(ctx, SortedExpression(source, key))
-
-
-    def exitSortedExpression(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, exp)
 
 
     def exitStatement_list(self, ctx):
