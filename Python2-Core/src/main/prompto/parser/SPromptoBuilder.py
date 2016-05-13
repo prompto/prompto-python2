@@ -788,8 +788,9 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitDict_literal(self, ctx):
+        mutable = ctx.MUTABLE() is not None
         items = self.getNodeValue(ctx.dict_entry_list())
-        value = DictLiteral(items)
+        value = DictLiteral(mutable, items)
         self.setNodeValue(ctx, value)
 
 
@@ -2150,9 +2151,10 @@ class SPromptoBuilder(SParserListener):
 
 
     def exitTuple_literal(self, ctx):
+        mutable = ctx.MUTABLE() is not None
         items = self.getNodeValue(ctx.expression_tuple())
         items = items if items is not None else []
-        value = TupleLiteral(items)
+        value = TupleLiteral(mutable, items)
         self.setNodeValue(ctx, value)
 
 

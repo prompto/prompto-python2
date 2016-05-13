@@ -8,9 +8,10 @@ from prompto.type.TupleType import *
 
 class TupleLiteral ( Literal ):
 
-    def __init__(self, expressions = []):
+    def __init__(self, mutable, expressions = []):
         strs = [ str(e) for e in expressions]
-        super(TupleLiteral, self).__init__("(" + ", ".join(strs) + ")", TupleValue())
+        super(TupleLiteral, self).__init__("(" + ", ".join(strs) + ")", TupleValue(mutable))
+        self.mutable = mutable
         self.expressions = expressions
 
     def check(self, context):
@@ -18,7 +19,7 @@ class TupleLiteral ( Literal ):
 
     def interpret(self, context):
         if len(self.expressions) >0:
-            value = TupleValue()
+            value = TupleValue(self.mutable)
             for o in self.expressions:
                 o = o.interpret(context)
                 value.items.append(o)
@@ -27,12 +28,17 @@ class TupleLiteral ( Literal ):
             return self.value
 
     def toDialect(self, writer):
+        if self.mutable:
+            writer.append("mutable ")
         writer.append('(')
         if len(self.expressions)>0:
             for item in self.expressions:
                 item.toDialect(writer)
                 writer.append(", ")
-            writer.trimLast(2)
+            if len(self.expressions)==1:
+                writer.trimLast(1)
+            else:
+                writer.trimLast(2)
         writer.append(')')
 
 

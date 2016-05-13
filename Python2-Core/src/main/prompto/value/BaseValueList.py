@@ -80,7 +80,7 @@ class BaseValueList(BaseValue, ISliceable):
                 from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
                 raise IndexOutOfRangeError()
         else:
-            raise SyntaxError("No such item:" + index.toString())
+            raise SyntaxError("No such item:" + str(index))
 
 
     def __eq__(self, obj):
