@@ -159,6 +159,7 @@ from prompto.statement.CollectionSwitchCase import CollectionSwitchCase
 from prompto.statement.CommentStatement import CommentStatement
 from prompto.statement.DeclarationStatement import DeclarationStatement
 from prompto.statement.DoWhileStatement import DoWhileStatement
+from prompto.statement.FlushStatement import FlushStatement
 from prompto.statement.ForEachStatement import ForEachStatement
 from prompto.statement.IfStatement import IfElement, IfElementList, IfStatement
 from prompto.statement.RaiseStatement import RaiseStatement
@@ -909,6 +910,17 @@ class SPromptoBuilder(SParserListener):
         items = ArgumentAssignmentList()
         items.append(ArgumentAssignment(None, exp))
         self.setNodeValue(ctx, items)
+
+
+
+    def exitFlush_statement(self, ctx):
+        self.setNodeValue(ctx, FlushStatement())
+
+
+
+    def exitFlushStatement(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.stmt))
+
 
 
     def exitFetch_list_expression(self, ctx):

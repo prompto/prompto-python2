@@ -11,14 +11,21 @@ class MemStore(object):
     def __init__(self):
         self.documents = set()
 
+
+    def flush (self):
+        pass # nothing to do
+
+
     def store (self,  document):
         self.documents.add (document)
+
 
     def fetchOne (self, context, predicate):
         for doc in self.documents:
             if self.matches(context, doc, predicate):
                 return doc
         return None
+
 
     def matches (self, context, doc, predicate):
         if predicate is None:
