@@ -134,6 +134,7 @@ from prompto.literal.SetLiteral import SetLiteral
 from prompto.literal.TextLiteral import TextLiteral
 from prompto.literal.TimeLiteral import TimeLiteral
 from prompto.literal.TupleLiteral import TupleLiteral
+from prompto.literal.UUIDLiteral import UUIDLiteral
 from prompto.parser.Dialect import Dialect
 from prompto.parser.SParser import SParser
 from prompto.parser.SParserListener import SParserListener
@@ -190,6 +191,8 @@ from prompto.type.IteratorType import IteratorType
 from prompto.type.ListType import ListType
 from prompto.type.TextType import TextType
 from prompto.type.TimeType import TimeType
+from prompto.type.UUIDType import UUIDType
+
 
 
 class SPromptoBuilder(SParserListener):
@@ -2207,6 +2210,16 @@ class SPromptoBuilder(SParserListener):
             item = self.getNodeValue(rule)
             items.append(item)
         self.setNodeValue(ctx, items)
+
+
+
+    def exitUUIDType(self, ctx):
+        self.setNodeValue(ctx, UUIDType.instance)
+
+
+
+    def exitUUIDLiteral(self, ctx):
+        self.setNodeValue(ctx, UUIDLiteral(ctx.t.text))
 
 
 

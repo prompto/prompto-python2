@@ -135,6 +135,7 @@ from prompto.literal.SetLiteral import SetLiteral
 from prompto.literal.TextLiteral import TextLiteral
 from prompto.literal.TimeLiteral import TimeLiteral
 from prompto.literal.TupleLiteral import TupleLiteral
+from prompto.literal.UUIDLiteral import UUIDLiteral
 from prompto.parser.Dialect import Dialect
 from prompto.parser.EParser import EParser
 from prompto.parser.EParserListener import EParserListener
@@ -193,6 +194,10 @@ from prompto.type.TextType import TextType
 from prompto.type.TimeType import TimeType
 
 # need forward declaration
+from prompto.type.UUIDType import UUIDType
+
+
+
 ECleverParser = None
 
 
@@ -821,6 +826,16 @@ class EPromptoBuilder(EParserListener):
         exp = self.getNodeValue(ctx.exp)
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, UnresolvedCall(exp, args))
+
+
+    def exitUUIDType(self, ctx):
+        self.setNodeValue(ctx, UUIDType.instance)
+
+
+
+    def exitUUIDLiteral(self, ctx):
+        self.setNodeValue(ctx, UUIDLiteral(ctx.t.text))
+
 
 
 

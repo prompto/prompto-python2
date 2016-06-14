@@ -136,6 +136,7 @@ from prompto.literal.SetLiteral import SetLiteral
 from prompto.literal.TextLiteral import TextLiteral
 from prompto.literal.TimeLiteral import TimeLiteral
 from prompto.literal.TupleLiteral import TupleLiteral
+from prompto.literal.UUIDLiteral import UUIDLiteral
 from prompto.parser.Dialect import Dialect
 from prompto.parser.OParser import OParser
 from prompto.parser.OParserListener import OParserListener
@@ -193,6 +194,10 @@ from prompto.type.TextType import TextType
 from prompto.type.TimeType import TimeType
 
 # need forward declaration
+from prompto.type.UUIDType import UUIDType
+
+
+
 OCleverParser = None
 
 class OPromptoBuilder(OParserListener):
@@ -1535,8 +1540,19 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, ctx.getText())
 
 
+
     def exitKey_token(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
+
+
+    def exitUUIDType(self, ctx):
+        self.setNodeValue(ctx, UUIDType.instance)
+
+
+
+    def exitUUIDLiteral(self, ctx):
+        self.setNodeValue(ctx, UUIDLiteral(ctx.t.text))
 
 
 
