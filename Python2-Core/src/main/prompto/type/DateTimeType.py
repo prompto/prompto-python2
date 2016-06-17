@@ -31,14 +31,8 @@ class DateTimeType(NativeType):
 
 
     def checkSubstract(self, context, other):
-        from prompto.type.DateType import DateType
         from prompto.type.PeriodType import PeriodType
-        from prompto.type.TimeType import TimeType
         if isinstance(other, DateTimeType):
-            return PeriodType.instance
-        elif isinstance(other, DateType):
-            return PeriodType.instance
-        elif isinstance(other, TimeType):
             return PeriodType.instance
         elif isinstance(other, PeriodType):
             return self

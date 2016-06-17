@@ -29,7 +29,7 @@ class TimeType(NativeType):
         if isinstance(other, TimeType):
             return PeriodType.instance
         elif isinstance(other, PeriodType):
-            return DateTimeType.instance
+            return self
         else:
             return super(TimeType, self).checkSubstract(context, other)
 

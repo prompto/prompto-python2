@@ -29,11 +29,8 @@ class DateType(NativeType):
             return self  # ignore time section
         elif isinstance(other, DateType):
             return PeriodType.instance
-        elif isinstance(other, TimeType):
-            return PeriodType.instance
-        elif isinstance(other, DateTimeType):
-            return PeriodType.instance
-        return super(DateType, self).checkSubstract(context, other)
+        else:
+            return super(DateType, self).checkSubstract(context, other)
 
     def checkCompare(self, context, other):
         if isinstance(other, DateType):
