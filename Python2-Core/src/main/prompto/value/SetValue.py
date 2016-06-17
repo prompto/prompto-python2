@@ -1,4 +1,5 @@
 from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
+from prompto.error.InternalError import InternalError
 from prompto.error.SyntaxError import SyntaxError
 from prompto.value.BaseValue import BaseValue
 from prompto.value.IContainer import IContainer
@@ -66,7 +67,10 @@ class SetValue(BaseValue, IContainer):
     def merge(self, items):
         data = set()
         data |= self.items
-        data |= items
+        if isinstance(items, set):
+            data |= items
+        else:
+            data |= set(items)
         return SetValue(self.type.itemType, data)
 
     def filter(self, context, itemName, filter):
