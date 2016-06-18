@@ -70,7 +70,7 @@ class Decimal(BaseValue, INumber, IMultiplyable):
             if value.IntegerValue() == 0.:
                 raise DivideByZeroError()
             else:
-                return Integer(self.IntegerValue() / value.IntegerValue())
+                return Integer(int(self.DecimalValue() // value.IntegerValue()))
         else:
             raise SyntaxError("Illegal: Decimal / " + type(value).__name__)
 

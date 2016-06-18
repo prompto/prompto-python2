@@ -66,7 +66,7 @@ class Integer(BaseValue, INumber, IMultiplyable):
             if value.IntegerValue() == 0:
                 raise DivideByZeroError()
             else:
-                return Integer(self.IntegerValue() / value.IntegerValue())
+                return Integer(int(self.IntegerValue() // value.IntegerValue()))
         else:
             raise SyntaxError("Illegal: Integer \\ " + type(value).__name__)
 
