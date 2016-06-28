@@ -3,7 +3,7 @@ from datetime import time, datetime, timedelta
 from prompto.value.BaseValue import BaseValue
 from prompto.value.Integer import Integer
 from prompto.value.Period import Period
-
+from prompto.error.SyntaxError import SyntaxError
 
 class Time(BaseValue):
 
