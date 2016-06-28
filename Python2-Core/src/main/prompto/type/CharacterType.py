@@ -1,5 +1,7 @@
 from prompto.error.InvalidDataError import InvalidDataError
 from prompto.type.NativeType import NativeType
+from prompto.type.IntegerType import IntegerType
+
 
 
 class CharacterType(NativeType):
@@ -13,9 +15,19 @@ class CharacterType(NativeType):
         from prompto.type.AnyType import AnyType
         return isinstance(other, CharacterType) or isinstance(other, TextType) or isinstance(other, AnyType)
 
+
+
+    def checkMember(self, context, name):
+        if "codePoint" == name:
+            return IntegerType.instance
+        else:
+            return super(CharacterType, self).checkMember(context, name)
+
+
     def checkAdd(self, context, other, tryReverse):
         from prompto.type.TextType import TextType
         return TextType.instance
+
 
     def checkMultiply(self, context, other, tryReverse):
         from prompto.type.IntegerType import IntegerType
@@ -25,12 +37,14 @@ class CharacterType(NativeType):
         else:
             return super(CharacterType, self).checkMultiply(context, other, tryReverse)
 
+
     def checkCompare(self, context, other):
         from prompto.type.TextType import TextType
         from prompto.type.BooleanType import BooleanType
         if isinstance(other, CharacterType) or isinstance(other, TextType):
             return BooleanType.instance
         return super(CharacterType, self).checkCompare(context, other)
+
 
     def checkRange(self, context, other):
         if isinstance(other, CharacterType):
