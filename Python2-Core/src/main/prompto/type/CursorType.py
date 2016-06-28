@@ -20,7 +20,7 @@ class CursorType(IterableType):
         return self.itemType
 
     def checkMember(self, context, name):
-        if "length"==name:
+        if "count"==name:
             return IntegerType.instance
         else:
             return super(CursorType, self).checkMember(context, name)

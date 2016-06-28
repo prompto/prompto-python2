@@ -23,7 +23,7 @@ class Cursor(BaseValue, IIterable):
             yield val
 
     def getMember(self, context, name, autoCreate=False):
-        if "length" == name:
+        if "count" == name:
             return Integer(len(self))
         else:
             raise InvalidDataError("No such member:" + name)
