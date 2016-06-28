@@ -58,7 +58,7 @@ class DateTime(BaseValue):
             return Integer(self.value.minute)
         elif "second" == name:
             return Integer(self.value.second)
-        elif "millis" == name:
+        elif "millisecond" == name:
             return Integer(self.value.microsecond / 1000)
         elif "tzOffset" == name:
             return Integer(7200)  # self.value.getZone().toTimeZone().getRawOffset() / 1000)
