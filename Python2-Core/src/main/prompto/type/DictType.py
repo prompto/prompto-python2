@@ -1,3 +1,4 @@
+from prompto.type.BooleanType import BooleanType
 from prompto.type.ContainerType import ContainerType
 from prompto.type.EntryType import EntryType
 from prompto.type.IntegerType import IntegerType
@@ -23,11 +24,15 @@ class DictType ( ContainerType ):
             return False
         return self.getItemType()==obj.getItemType()
 
+
+
     def checkAdd(self, context, other, tryReverse):
         if isinstance(other, DictType) and self.getItemType()==other.getItemType():
             return self
         else:
             return super(DictType, self).checkAdd(context, other, tryReverse)
+
+
 
     def checkContains(self, context, other):
         if other==TextType.instance:
@@ -35,6 +40,13 @@ class DictType ( ContainerType ):
             return BooleanType.instance
         else:
             return super(DictType, self).checkContains(context, other)
+
+
+
+    def checkContainsAllOrAny(self, context, other):
+        return BooleanType.instance
+
+
 
     def checkItem(self, context, other):
         if other==TextType.instance:
