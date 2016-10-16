@@ -156,6 +156,7 @@ from prompto.statement.AssignInstanceStatement import AssignInstanceStatement
 from prompto.statement.AssignTupleStatement import AssignTupleStatement
 from prompto.statement.AssignVariableStatement import AssignVariableStatement
 from prompto.statement.AtomicSwitchCase import AtomicSwitchCase
+from prompto.statement.BreakStatement import BreakStatement
 from prompto.statement.CollectionSwitchCase import CollectionSwitchCase
 from prompto.statement.CommentStatement import CommentStatement
 from prompto.statement.DeclarationStatement import DeclarationStatement
@@ -393,6 +394,11 @@ class SPromptoBuilder(SParserListener):
 
     def exitBooleanType(self, ctx):
         self.setNodeValue(ctx, BooleanType.instance)
+
+
+    def exitBreakStatement(self, ctx):
+        self.setNodeValue(ctx, BreakStatement())
+
 
 
     def exitCallableRoot(self, ctx):
