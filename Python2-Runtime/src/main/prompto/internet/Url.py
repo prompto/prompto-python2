@@ -5,6 +5,7 @@ class Url(IResource):
 
     def __init__(self):
         self.path = None
+        self.reader = None
 
     def isReadable(self):
         return True
@@ -13,11 +14,23 @@ class Url(IResource):
         return True
 
     def close(self):
-        pass
+        if self.reader is not None:
+            self.reader.close()
 
     def readFully(self):
         response = urllib2.urlopen(self.path)
-        return str(response.read())
+        try:
+            return str(response.read())
+        finally:
+            response.close()
+
+    def readLine(self):
+        if self.reader is None:
+            self.reader = urllib2.urlopen(self.path)
+        return str(self.reader.readLine())
 
     def writeFully(self, data):
+        pass
+
+    def writeLine(self, data):
         pass
