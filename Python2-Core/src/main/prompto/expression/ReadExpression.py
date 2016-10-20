@@ -35,7 +35,7 @@ class ReadExpression ( IExpression ) :
             raise InvalidResourceError("Not readable")
         try:
             if context is resContext:
-                o.readLine()
+                return o.readLine()
             else:
                 return o.readFully()
         finally:
