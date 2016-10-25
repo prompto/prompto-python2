@@ -59,15 +59,14 @@ class CharacterType(NativeType):
             return CharacterRange(left, right)
         return super(CharacterType, self).newRange(left, right)
 
-    def sort(self, context, list_):
 
-        def compare(o1, o2):
-            return o1.compareTo(o2)
+    def sort(self, context, list_, desc):
+        return sorted(list_, reverse=desc)
 
-        return sorted(list_, cmp=compare)
 
     def toString(self, value):
         return "'" + str(value) + "'"
+
 
     def convertPythonValueToPromptoValue(self, context, value, returnType):
         if isinstance(value, basestring):

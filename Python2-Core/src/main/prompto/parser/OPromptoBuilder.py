@@ -2048,8 +2048,9 @@ class OPromptoBuilder(OParserListener):
 
     def exitSorted_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
+        desc = ctx.DESC() is not None
         key = self.getNodeValue(ctx.key)
-        self.setNodeValue(ctx, SortedExpression(source, key))
+        self.setNodeValue(ctx, SortedExpression(source, desc, key))
 
 
 

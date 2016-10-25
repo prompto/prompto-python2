@@ -90,7 +90,7 @@ class BaseType(IType):
     def convertPythonValueToPromptoValue(self, context, value, returnType):
         raise Exception("Unsupported!")
 
-    def sort(self, context, source, key=None):
+    def sort(self, context, source, desc, key=None):
         raise Exception("Unsupported!")
 
     def readJSONValue(self, context, node, parts):

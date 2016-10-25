@@ -77,10 +77,8 @@ class DateTimeType(NativeType):
         else:
             return super(DateTimeType, self).checkMember(context, name)
 
-    def sort(self, context, source):
-        def compare(o1, o2):
-            return cmp(o1.value,o2.value)
-        return sorted(source,cmp=compare)
+    def sort(self, context, source, desc):
+        return sorted(source, reverse=desc)
 
 
     def toString(self, value):

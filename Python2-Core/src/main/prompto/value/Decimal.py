@@ -105,5 +105,13 @@ class Decimal(BaseValue, INumber, IMultiplyable):
         else:
             return False
 
+
+    def __cmp__(self, other):
+        if isinstance(other, INumber):
+            return cmp(self.value, other.value)
+        else:
+            return cmp(self.value, other)
+
+
     def __hash__(self):
         return hash(self.value)

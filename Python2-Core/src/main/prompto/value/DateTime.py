@@ -97,6 +97,13 @@ class DateTime(BaseValue):
             return self.value == obj
 
 
+    def __cmp__(self, other):
+        if isinstance(other, DateTime):
+            return cmp(self.value, other.value)
+        else:
+            return cmp(self.value, other)
+
+
     def __str__(self):
         s = self.value.isoformat()
         if self.value.microsecond == 0:

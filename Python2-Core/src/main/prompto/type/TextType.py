@@ -63,10 +63,8 @@ class TextType(NativeType):
         return self
 
 
-    def sort(self, context, list_):
-        def compare(o1, o2):
-            return cmp(str(o1),str(o2))
-        return sorted(list_, cmp=compare)
+    def sort(self, context, list_, desc):
+        return sorted(list_, reverse=desc)
 
 
     def convertPythonValueToPromptoValue(self, context, value, returnType):
