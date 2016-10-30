@@ -10,11 +10,18 @@ class ListValue(BaseValueList):
     def __init__(self, itemType, items = None, item = None, mutable = False):
         from prompto.type.ListType import ListType
         super(ListValue, self).__init__(ListType(itemType), items, mutable)
+        self.storables = None
         if item is not None:
             self.items.append(item)
 
     def newInstance(self, items):
         return ListValue(self.type.itemType, items=items)
+
+
+    def getStorableData(self):
+        if self.storables is None:
+            self.storables = [item.getStorableData() for item in self.items]
+        return self.storables
 
 
     def Add(self, context, value):
@@ -23,6 +30,7 @@ class ListValue(BaseValueList):
             return self.merge(value)
         else:
             return super(ListValue, self).Add(context, value)
+
 
     def Multiply(self, context, value):
         if isinstance(value, Integer):
@@ -65,3 +73,8 @@ class ListValue(BaseValueList):
             if test.getValue():
                 result.append(o)
         return result
+
+
+    def collectStorables(self, list):
+        for item in self.items:
+            item.collectStorables(list)

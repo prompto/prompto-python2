@@ -2,31 +2,35 @@ from prompto.declaration.IDeclaration import IDeclaration
 from prompto.runtime.Context import MethodDeclarationMap
 from prompto.type.BaseType import BaseType
 from prompto.error.SyntaxError import SyntaxError
+from prompto.type.TypeFamily import TypeFamily
+
 
 
 class MethodType(BaseType):
-    def __init__(self, context, name):
-        super(MethodType, self).__init__(name)
+
+    def __init__(self, context, typeName):
+        super(MethodType, self).__init__(TypeFamily.METHOD)
+        self.typeName = typeName
         self.context = context
 
     def __eq__(self, obj):
         if id(obj) == id(self):
             return True
-        if obj == None:
+        if obj is None:
             return False
         if not isinstance(obj, MethodType):
             return False
-        return self.getName() == obj.getName()
+        return self.typeName == obj.typeName
 
     def checkUnique(self, context):
-        actual = context.getRegisteredDeclaration(IDeclaration, self.name)
-        if actual != None:
-            raise SyntaxError("Duplicate name: \"" + self.name + "\"")
+        actual = context.getRegisteredDeclaration(IDeclaration, self.typeName)
+        if actual is not None:
+            raise SyntaxError("Duplicate name: \"" + self.typeName + "\"")
 
     def getDeclaration(self, context):
-        map = self.context.getRegisteredDeclaration(MethodDeclarationMap, self.name)
-        if map == None:
-            raise SyntaxError("Unknown method: \"" + self.name + "\"")
+        map = self.context.getRegisteredDeclaration(MethodDeclarationMap, self.typeName)
+        if map is None:
+            raise SyntaxError("Unknown method: \"" + self.typeName + "\"")
         return map.values()[0]
 
     def checkExists(self, context):
@@ -45,3 +49,4 @@ class MethodType(BaseType):
     def isMoreSpecificThan(self, context, other):
         # TODO Auto-generated method stub
         return False
+

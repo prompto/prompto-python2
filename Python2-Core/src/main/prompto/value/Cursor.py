@@ -6,20 +6,20 @@ from prompto.error.InvalidDataError import InvalidDataError
 
 class Cursor(BaseValue, IIterable):
 
-    def __init__(self, context, itemType, documents):
+    def __init__(self, context, itemType, stored):
         super(Cursor, self).__init__(CursorType(itemType))
         self.context = context
-        self.documents = documents
+        self.stored = stored
 
     def isEmpty(self):
-        return len(self.documents)==0
+        return len(self.stored)==0
 
     def __len__(self):
-        return len(self.documents)
+        return len(self.stored)
 
     def getIterator(self, context):
-        for doc in self.documents:
-            val = self.type.itemType.newInstanceFromDocument(context, doc)
+        for stored in self.stored:
+            val = self.type.itemType.newInstanceFromStored(context, stored)
             yield val
 
     def getMember(self, context, name, autoCreate=False):

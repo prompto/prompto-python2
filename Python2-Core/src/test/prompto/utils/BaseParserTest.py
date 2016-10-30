@@ -11,7 +11,7 @@ from prompto.runtime.Context import Context
 from prompto.runtime.Interpreter import Interpreter
 from prompto.runtime.utils.Out import Out
 from prompto.utils.CodeWriter import CodeWriter
-from prompto.store.Store import Store
+from prompto.store.DataStore import DataStore
 from prompto.store.MemStore import MemStore
 
 import os
@@ -99,7 +99,7 @@ class BaseParserTest(unittest.TestCase):
         Interpreter.interpret(self.context, methodName, cmdLineArgs)
 
     def checkOutput(self, resource):
-        Store.instance = MemStore()
+        DataStore.instance = MemStore()
         self.runResource(resource)
         self.checkExpected(resource)
 

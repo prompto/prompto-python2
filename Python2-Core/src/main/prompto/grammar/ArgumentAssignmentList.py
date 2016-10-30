@@ -5,11 +5,11 @@ from prompto.grammar.IDialectElement import IDialectElement
 class ArgumentAssignmentList(list, IDialectElement):
 
     def __init__(self, list_=None, item=None):
-        if list_ == None:
+        if list_ is None:
             super(ArgumentAssignmentList, self).__init__()
         else:
             super(ArgumentAssignmentList, self).__init__(list_)
-        if item != None:
+        if item is not None:
             self.append(item)
 
     def find(self, name):

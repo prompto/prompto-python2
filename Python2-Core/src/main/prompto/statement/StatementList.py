@@ -12,7 +12,7 @@ class StatementList(list):
 
     def __init__(self, statement=None):
         super(StatementList, self).__init__()
-        if statement != None:
+        if statement is not None:
             self.append(statement)
 
     def check(self, context, returnType, nativeOnly=False):
@@ -26,7 +26,7 @@ class StatementList(list):
         else:
             types = TypeMap()
             if returnType is not None:
-                types[returnType.getName()] = returnType
+                types[returnType.typeName] = returnType
             for statement in self:
                 if nativeOnly and not isinstance(statement, Python2NativeCall):
                     continue
@@ -34,7 +34,7 @@ class StatementList(list):
                 if type_ != VoidType.instance:
                     # unless necessary, don't collect AnyType returned by native statement check
                     if len(types) == 0 or type_ != AnyType.instance or not nativeOnly:
-                        types[type_.getName()] = type_
+                        types[type_.typeName] = type_
             type_ = types.inferType(context)
             if returnType is not None:
                 return returnType

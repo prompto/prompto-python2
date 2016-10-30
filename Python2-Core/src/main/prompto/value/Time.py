@@ -24,7 +24,7 @@ class Time(BaseValue):
     def __init__(self, value=None, hours=None, minutes=None, seconds=None, millis=0):
         from prompto.type.TimeType import TimeType
         super(Time, self).__init__(TimeType.instance)
-        if value == None:
+        if value is None:
             value = time(hours, minutes, seconds, millis*1000)
         self.value = value
 

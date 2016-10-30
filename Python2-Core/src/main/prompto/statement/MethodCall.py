@@ -24,7 +24,7 @@ class MethodCall(SimpleStatement):
         return self.assignments
 
     def __str__(self):
-        suffix = str(self.assignments) if self.assignments != None else ""
+        suffix = str(self.assignments) if self.assignments is not None else ""
         return str(self.method) + suffix
 
     def check(self, context):
@@ -57,7 +57,7 @@ class MethodCall(SimpleStatement):
             raise SyntaxError(e.message)
 
     def makeAssignments(self, context, declaration):
-        if self.assignments == None:
+        if self.assignments is None:
             return ArgumentAssignmentList()
         else:
             return self.assignments.makeAssignments(context, declaration)

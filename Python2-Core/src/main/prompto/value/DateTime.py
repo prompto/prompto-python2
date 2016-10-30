@@ -10,7 +10,7 @@ class DateTime(BaseValue):
 
     def __init__(self, value=None, year=None, month=None, day=None, hour=None, minute=None, second=None, millis=None):
         super(DateTime, self).__init__(DateTimeType.instance)
-        if value == None:
+        if value is None:
             value = datetime(year, month, day, hour, minute, second, millis)
         self.value = value
 

@@ -16,7 +16,7 @@ class ExtendedArgument(CategoryArgument):
 
 
     def getProto(self, context):
-        return self.type_.getName() + '(' + str(self.attributes) + ')'
+        return self.typ.typeName + '(' + str(self.attributes) + ')'
 
 
 
@@ -51,7 +51,7 @@ class ExtendedArgument(CategoryArgument):
         from prompto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
         from prompto.grammar.IdentifierList import IdentifierList
         declaration = ConcreteCategoryDeclaration(self.name)
-        declaration.setDerivedFrom(IdentifierList(self.type_.getName()))
+        declaration.setDerivedFrom(IdentifierList(self.typ.typeName))
         declaration.setAttributes(self.attributes)
         context.registerDeclaration(declaration)
         context.registerValue(self)
@@ -61,7 +61,7 @@ class ExtendedArgument(CategoryArgument):
 
 
     def check(self, context):
-        self.type_.checkExists(context)
+        self.typ.checkExists(context)
         for attribute in self.attributes:
             from prompto.declaration.AttributeDeclaration import AttributeDeclaration
             actual = context.getRegisteredDeclaration(AttributeDeclaration, attribute)
@@ -72,13 +72,13 @@ class ExtendedArgument(CategoryArgument):
 
     def getType(self, context=None):
         from prompto.declaration.IDeclaration import IDeclaration
-        return self.type_ if context is None else context.getRegisteredDeclaration(IDeclaration, self.name).getType(
+        return self.typ if context is None else context.getRegisteredDeclaration(IDeclaration, self.name).getType(
             context)
 
 
 
     def toEDialect(self, writer):
-        self.type_.toDialect(writer)
+        self.typ.toDialect(writer)
         writer.append(' ')
         writer.append(self.name)
         if len(self.attributes) == 1:
@@ -91,7 +91,7 @@ class ExtendedArgument(CategoryArgument):
 
 
     def toODialect(self, writer):
-        self.type_.toDialect(writer)
+        self.typ.toDialect(writer)
         writer.append('(')
         self.attributes.toDialect(writer, False)
         writer.append(')')
@@ -103,7 +103,7 @@ class ExtendedArgument(CategoryArgument):
     def toSDialect(self, writer):
         writer.append(self.name)
         writer.append(':')
-        self.type_.toDialect(writer)
+        self.typ.toDialect(writer)
         writer.append('(')
         self.attributes.toDialect(writer, False)
         writer.append(')')

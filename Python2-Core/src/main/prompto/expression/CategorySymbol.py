@@ -35,20 +35,20 @@ class CategorySymbol(Symbol, IExpression):
             if len(self.assignments)>0:
                 sb.write(str(self.assignments))
             else:
-                sb.write(self.type_.getName())
+                sb.write(self.type_.typeName)
             return sb.getvalue()
 
     def check(self, context):
         from prompto.declaration.EnumeratedCategoryDeclaration import EnumeratedCategoryDeclaration
-        cd = context.getRegisteredDeclaration(EnumeratedCategoryDeclaration, self.type.getName())
-        if cd == None:
-            raise SyntaxError("Unknown category " + self.type.getName())
-        if self.assignments != None:
+        cd = context.getRegisteredDeclaration(EnumeratedCategoryDeclaration, self.type.typeName)
+        if cd is None:
+            raise SyntaxError("Unknown category " + self.type.typeName)
+        if self.assignments is not None:
             context = context.newLocalContext()
             for assignment in self.assignments:
                 if not cd.hasAttribute(context, assignment.getName()):
                     raise SyntaxError("\"" + assignment.getName() + \
-                                      "\" is not an attribute of " + self.type.getName())
+                                      "\" is not an attribute of " + self.type.typeName)
                 assignment.check(context)
         return self.type
 
@@ -56,7 +56,7 @@ class CategorySymbol(Symbol, IExpression):
     def interpret(self, context):
         instance = self.type.newInstance(context)
         instance.mutable = True
-        if self.assignments != None:
+        if self.assignments is not None:
             context = context.newLocalContext()
             for assignment in self.assignments:
                 value = assignment.getExpression().interpret(context)

@@ -6,7 +6,7 @@ class PeriodType(NativeType):
     instance = None
 
     def __init__(self):
-        super(PeriodType, self).__init__("Duration")
+        super(PeriodType, self).__init__(TypeFamily.PERIOD)
 
     def isAssignableTo(self, context, other):
         return isinstance(other, PeriodType) or isinstance(other, AnyType)

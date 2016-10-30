@@ -2,10 +2,10 @@ import threading
 
 from prompto.error.NotMutableError import NotMutableError
 from prompto.runtime.Variable import Variable
+from prompto.store.DataStore import DataStore
 from prompto.type.CategoryType import *
 from prompto.value.BaseValue import *
 from prompto.value.IInstance import *
-from prompto.store.StorableDocument import StorableDocument
 from prompto.python.PythonClassType import PythonClassType
 
 # don't call getters from getters, so register them
@@ -18,7 +18,7 @@ class NativeInstance(BaseValue, IInstance):
     def __init__(self, declaration, instance=None):
         super(NativeInstance, self).__init__(CategoryType(declaration.name))
         self.declaration = declaration
-        self.storable = StorableDocument() if declaration.storable else None
+        self.storable = DataStore.instance.newStorable() if declaration.storable else None
         self.instance = self.makeInstance() if instance is None else instance
 
     def convertToPython(self):
@@ -47,7 +47,7 @@ class NativeInstance(BaseValue, IInstance):
 
     def doGetMember(self, context, attrName, allowGetter):
         getter = self.declaration.findGetter(context, attrName) if allowGetter else None
-        if getter != None:
+        if getter is not None:
             context = context.newInstanceContext(self, None).newChildContext()
             return getter.interpret(context)
         else:
@@ -72,7 +72,7 @@ class NativeInstance(BaseValue, IInstance):
     def doSetMember(self, context, attrName, value, allowSetter):
         decl = context.getRegisteredDeclaration(AttributeDeclaration, attrName)
         setter = self.declaration.findSetter(context, attrName) if allowSetter else None
-        if setter != None:
+        if setter is not None:
             activeSetters.__dict__[attrName] = context
             # use attribute name as parameter name for incoming value
             context = context.newInstanceContext(self, None).newChildContext()

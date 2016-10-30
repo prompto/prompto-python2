@@ -1,5 +1,7 @@
 from numbers import Number
 from prompto.type.NativeType import NativeType
+from prompto.type.TypeFamily import TypeFamily
+
 
 
 class IntegerType(NativeType):
@@ -7,7 +9,7 @@ class IntegerType(NativeType):
     instance = None
 
     def __init__(self):
-        super(IntegerType, self).__init__("Integer")
+        super(IntegerType, self).__init__(TypeFamily.INTEGER)
 
     def isAssignableTo(self, context, other):
         from prompto.type.AnyType import AnyType

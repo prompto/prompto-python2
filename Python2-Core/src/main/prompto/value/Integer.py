@@ -15,14 +15,22 @@ class Integer(BaseValue, INumber, IMultiplyable):
         super(Integer, self).__init__(IntegerType.instance)
         self.value = value
 
+
+    def getStorableData(self):
+        return self.value
+
+
     def convertToPython(self):
         return self.value
+
 
     def IntegerValue(self):
         return self.value
 
+
     def DecimalValue(self):
         return float(self.value)
+
 
     def Add(self, context, value):
         if isinstance(value, Integer):

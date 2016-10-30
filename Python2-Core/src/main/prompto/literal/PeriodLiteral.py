@@ -1,5 +1,3 @@
-from datetime import timedelta
-
 from prompto.literal.Literal import Literal
 from prompto.type.PeriodType import PeriodType
 from prompto.value.Period import Period

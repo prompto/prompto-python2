@@ -1,6 +1,7 @@
 from prompto.error.InvalidDataError import InvalidDataError
 from prompto.type.NativeType import NativeType
 from prompto.type.IntegerType import IntegerType
+from prompto.type.TypeFamily import TypeFamily
 
 
 
@@ -8,7 +9,7 @@ class CharacterType(NativeType):
     instance = None
 
     def __init__(self):
-        super(CharacterType, self).__init__("Character")
+        super(CharacterType, self).__init__(TypeFamily.CHARACTER)
 
     def isAssignableTo(self, context, other):
         from prompto.type.TextType import TextType

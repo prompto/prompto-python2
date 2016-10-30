@@ -1,6 +1,6 @@
-from prompto.store.MemStore import MemStore
+class IStorable(object):
+    pass
 
-class Store(object):
-    # start with an empty MemStore
-    instance = MemStore()
 
+class IStored(object):
+    pass

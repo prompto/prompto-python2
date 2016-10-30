@@ -27,9 +27,9 @@ class ForEachStatement(BaseStatement):
 
     def checkItemIterator(self, elemType, context):
         child = context.newChildContext()
-        itemName = self.v1 if self.v2 == None else self.v2
+        itemName = self.v1 if self.v2 is None else self.v2
         context.registerValue(TransientVariable(itemName, elemType))
-        if self.v2 != None:
+        if self.v2 is not None:
             context.registerValue(TransientVariable(self.v1, IntegerType.instance))
         return self.statements.check(child, None)
 
@@ -39,7 +39,7 @@ class ForEachStatement(BaseStatement):
         return self.interpretItemIterator(elemType, context)
 
     def interpretItemIterator(self, elemType, context):
-        if self.v2 == None:
+        if self.v2 is None:
             return self.interpretItemIteratorNoIndex(elemType, context)
         else:
             return self.interpretItemIteratorWithIndex(elemType, context)
@@ -54,7 +54,7 @@ class ForEachStatement(BaseStatement):
             value = self.statements.interpret(child)
             if value is BreakResult.instance:
                 break
-            if value != None:
+            if value is not None:
                 return value
         return None
 

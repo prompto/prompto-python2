@@ -14,7 +14,7 @@ class DateType(NativeType):
     instance = None
 
     def __init__(self):
-        super(DateType, self).__init__("Date")
+        super(DateType, self).__init__(TypeFamily.DATE)
 
     def isAssignableTo(self, context, other):
         return isinstance(other, DateType) or isinstance(other, AnyType)

@@ -1,5 +1,3 @@
-from datetime import date
-
 from prompto.literal.Literal import Literal
 from prompto.type.DateType import DateType
 from prompto.value.Date import Date

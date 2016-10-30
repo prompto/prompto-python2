@@ -3,12 +3,15 @@ from prompto.declaration.IEnumeratedDeclaration import IEnumeratedDeclaration
 from prompto.type.BaseType import BaseType
 from prompto.type.ListType import ListType
 from prompto.type.TextType import TextType
+from prompto.type.TypeFamily import TypeFamily
+
 
 
 class EnumeratedNativeType ( BaseType ):
 
-    def __init__(self, name, derivedFrom):
-        super(EnumeratedNativeType, self).__init__(name)
+    def __init__(self, typeName, derivedFrom):
+        super(EnumeratedNativeType, self).__init__(TypeFamily.ENUMERATED)
+        self.typeName = typeName
         self.derivedFrom = derivedFrom
 
     def getDerivedFrom(self):
@@ -25,9 +28,9 @@ class EnumeratedNativeType ( BaseType ):
             return super(EnumeratedNativeType, self).checkMember(context, name)
 
     def getMember(self, context, name):
-        decl = context.getRegisteredDeclaration(IDeclaration, self.name)
+        decl = context.getRegisteredDeclaration(IDeclaration, self.typeName)
         if not isinstance (decl, IEnumeratedDeclaration):
-            raise SyntaxError(self.name + " is not an enumerated type!")
+            raise SyntaxError(self.typeName + " is not an enumerated type!")
         if "symbols"==name:
             return decl.getSymbols()
         else:

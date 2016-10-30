@@ -43,7 +43,7 @@ class Period ( BaseValue, IMultiplyable ):
                         raise Exception()
                     if step > 3 and not inTime:
                         raise Exception()
-                    if value == None:
+                    if value is None:
                         raise Exception()
                     if step == 6: # millis '.'
                         inMillis = True

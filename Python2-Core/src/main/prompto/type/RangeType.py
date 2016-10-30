@@ -5,7 +5,9 @@ from prompto.type.IntegerType import *
 class RangeType(ContainerType):
 
     def __init__(self, itemType):
-        super(RangeType, self).__init__(itemType.getName() + "[..]", itemType)
+        super(RangeType, self).__init__(TypeFamily.RANGE, itemType)
+        self.typeName = itemType.typeName + "[..]"
+
 
     def isAssignableTo(self, context, other):
         return self == other
@@ -13,7 +15,7 @@ class RangeType(ContainerType):
     def __eq__(self, obj):
         if id(obj) == id(self):
             return True
-        if obj == None:
+        if obj is None:
             return False
         if not isinstance(obj, RangeType):
             return False

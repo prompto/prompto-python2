@@ -1,0 +1,7 @@
+class MatchOp(object):
+    EQUALS = "EQUALS"
+    ROUGHLY = "ROUGHLY"
+    CONTAINS = "CONTAINS"
+    CONTAINED = "CONTAINED"
+    GREATER = "GREATER"
+    LESSER = "LESSER"

@@ -66,7 +66,7 @@ class FetchExpression(Section, IExpression):
             raise InternalError("Illegal source type: " + listType.getName())
         itemType = listType.getItemType()
         items = self.source.interpret(context)
-        if items == None:
+        if items is None:
             raise NullReferenceError()
         if not isinstance(items, (ListValue, TupleValue, SetValue)):
             raise InternalError("Illegal fetch source: " + str(items))

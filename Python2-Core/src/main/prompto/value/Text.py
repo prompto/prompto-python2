@@ -14,7 +14,12 @@ class Text(BaseValue, ISliceable, IMultiplyable):
         super(Text, self).__init__(TextType.instance)
         self.value = value
 
+
     def convertToPython(self):
+        return self.value
+
+
+    def getStorableData(self):
         return self.value
 
 

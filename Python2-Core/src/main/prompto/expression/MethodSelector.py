@@ -11,7 +11,7 @@ class MethodSelector(MemberSelector):
         super(MethodSelector, self).__init__(name, parent)
 
     def __str__(self):
-        if self.parent == None:
+        if self.parent is None:
             return self.name
         else:
             return str(self.parent) + '.' + self.name
@@ -23,7 +23,7 @@ class MethodSelector(MemberSelector):
             super(MethodSelector, self).toDialect(writer)
 
     def getCandidates(self, context):
-        if self.parent == None:
+        if self.parent is None:
             return self.getGlobalCandidates(context)
         else:
             return self.getCategoryCandidates(context)
@@ -35,7 +35,7 @@ class MethodSelector(MemberSelector):
         if isinstance(context.getParentContext(), InstanceContext):
             from prompto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
             typ = context.getParentContext().instanceType
-            cd = context.getRegisteredDeclaration(ConcreteCategoryDeclaration, typ.getName())
+            cd = context.getRegisteredDeclaration(ConcreteCategoryDeclaration, typ.typeName)
             if cd is not None:
                 members = cd.findMemberMethods(context, self.name)
                 if members is not None:
@@ -51,9 +51,9 @@ class MethodSelector(MemberSelector):
         type_ = self.checkParent(context)
         if not isinstance(type_, CategoryType):
             raise SyntaxError(self.parent.toString() + " is not a category")
-        cd = context.getRegisteredDeclaration(ConcreteCategoryDeclaration, type_.getName())
+        cd = context.getRegisteredDeclaration(ConcreteCategoryDeclaration, type_.typeName)
         if cd is None:
-            raise SyntaxError("Unknown category:" + type_.getName())
+            raise SyntaxError("Unknown category:" + type_.typeName)
         return cd.findMemberMethods(context, self.name)
 
     def newLocalContext(self, context, declaration):
@@ -90,7 +90,7 @@ class MethodSelector(MemberSelector):
 
     def newInstanceContext(self, context):
         value = self.parent.interpret(context)
-        if value == None or value is NullValue.instance:
+        if value is None or value is NullValue.instance:
             from prompto.error.NullReferenceError import NullReferenceError
             raise NullReferenceError()
         from prompto.type.CategoryType import CategoryType
@@ -104,7 +104,7 @@ class MethodSelector(MemberSelector):
         return context.newChildContext()
 
     def toInstanceExpression(self):
-        if self.parent == None:
+        if self.parent is None:
             from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
             return UnresolvedIdentifier(self.name)
         else:

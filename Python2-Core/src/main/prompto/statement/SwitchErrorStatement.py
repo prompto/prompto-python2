@@ -42,7 +42,7 @@ class SwitchErrorStatement(BaseSwitchStatement):
         local = context.newLocalContext()
         local.registerValue(ErrorVariable(self.errorName))
         super(SwitchErrorStatement, self).collectReturnTypes(local, types)
-        if self.alwaysInstructions != None:
+        if self.alwaysInstructions is not None:
             type_ = self.alwaysInstructions.check(context, None)
             if type_ != VoidType.instance:
                 types[type_.getName()] = type_
@@ -56,21 +56,21 @@ class SwitchErrorStatement(BaseSwitchStatement):
             switchValue = self.populateError(e, context)
             result = self.interpretSwitch(context, switchValue, e)
         finally:
-            if self.alwaysInstructions != None:
+            if self.alwaysInstructions is not None:
                 self.alwaysInstructions.interpret(context)
         return result
 
 
     def populateError(self, e, context):
         error = e.getExpression(context)
-        if error == None:
+        if error is None:
             ctor = ConstructorExpression(CategoryType("Error"), None)
             args = ArgumentAssignmentList()
             args.append(ArgumentAssignment(UnresolvedArgument("name"), TextLiteral(type(e).__name__)))
             args.append(ArgumentAssignment(UnresolvedArgument("text"), TextLiteral(e.getMessage())))
             ctor.setAssignments(args)
             error = ctor
-        if context.getRegisteredValue(INamedValue, self.errorName) == None:
+        if context.getRegisteredValue(INamedValue, self.errorName) is None:
             context.registerValue(ErrorVariable(self.errorName))
         if isinstance(error, IExpression):
             error = error.interpret(context)

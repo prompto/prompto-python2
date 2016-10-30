@@ -22,7 +22,7 @@ class PythonIdentifierExpression(PythonExpression):
         return self.identifier
 
     def __str__(self):
-        if self.parent == None:
+        if self.parent is None:
             return self.identifier
         else:
             return str(self.parent) + '.' + self.identifier

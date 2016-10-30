@@ -12,7 +12,7 @@ class BaseMethodDeclaration(BaseDeclaration, IMethodDeclaration):
     def __init__(self, name, arguments, returnType=None):
         super(BaseMethodDeclaration, self).__init__(name)
         from prompto.grammar.ArgumentList import ArgumentList
-        self.arguments = arguments if arguments != None else ArgumentList()
+        self.arguments = arguments if arguments is not None else ArgumentList()
         self.returnType = returnType
         self.memberOf = None
 

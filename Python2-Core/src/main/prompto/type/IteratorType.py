@@ -1,10 +1,14 @@
 from prompto.type.IterableType import IterableType
 from prompto.type.IntegerType import IntegerType
+from prompto.type.TypeFamily import TypeFamily
+
+
 
 class IteratorType(IterableType):
 
     def __init__(self, itemType):
-        super(IteratorType, self).__init__("Iterator<" + itemType.getName()+">", itemType)
+        super(IteratorType, self).__init__(TypeFamily.ITERATOR, itemType)
+        self.typeName = "Iterator<" + itemType.typeName + ">"
 
     def isAssignableTo(self, context, other):
         return isinstance(other, IteratorType) and self.itemType.isAssignableTo(context, other.itemType)

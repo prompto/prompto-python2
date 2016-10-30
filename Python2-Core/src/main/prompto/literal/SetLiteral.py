@@ -29,7 +29,7 @@ class SetLiteral(Literal):
         lastType = None
         for e in self.expressions:
             elemType = e.check(context)
-            if lastType == None:
+            if lastType is None:
                 lastType = elemType
             elif lastType != elemType:
                 if elemType.isAssignableTo(context, lastType):

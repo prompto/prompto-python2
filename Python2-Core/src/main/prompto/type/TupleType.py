@@ -3,13 +3,15 @@ from prompto.type.BooleanType import BooleanType
 from prompto.type.ListType import ListType
 from prompto.type.SetType import SetType
 from prompto.type.NativeType import NativeType
+from prompto.type.TypeFamily import TypeFamily
+
 
 
 class TupleType(NativeType):
     instance = None
 
     def __init__(self):
-        super(TupleType, self).__init__("Tuple")
+        super(TupleType, self).__init__(TypeFamily.TUPLE)
 
     def isAssignableTo(self, context, other):
         return isinstance(other, (TupleType, AnyType))

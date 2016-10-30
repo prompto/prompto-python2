@@ -13,4 +13,8 @@ class NullValue (BaseValue):
     def convertToPython(self):
         return None
 
+
+    def getStorableData(self):
+        return None # Yes!
+
 NullValue.instance = NullValue()

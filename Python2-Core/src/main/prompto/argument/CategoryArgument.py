@@ -4,15 +4,15 @@ from prompto.argument.ITypedArgument import ITypedArgument
 
 class CategoryArgument(BaseArgument, ITypedArgument):
 
-    def __init__(self, type_, name):
+    def __init__(self, typ, name):
         super(CategoryArgument, self).__init__(name)
-        self.type_ = type_
+        self.typ = typ
 
     def getSignature(self, dialect):
         return self.getProto()
 
     def getProto(self, context):
-        return self.type_.getName()
+        return self.typ.typeName
 
     def __str__(self):
         return self.name + ':' + self.getProto()
@@ -20,7 +20,7 @@ class CategoryArgument(BaseArgument, ITypedArgument):
     def __eq__(self, obj):
         if id(obj) == id(self):
             return True
-        if obj == None:
+        if obj is None:
             return False
         if not isinstance(obj, CategoryArgument):
             return False
@@ -30,17 +30,17 @@ class CategoryArgument(BaseArgument, ITypedArgument):
     def register(self, context):
         from prompto.grammar.INamedValue import INamedValue
         actual = context.getRegisteredValue(INamedValue, self.name)
-        if actual != None:
+        if actual is not None:
             raise SyntaxError("Duplicate argument: \"" + self.name + "\"")
         context.registerValue(self)
         if self.defaultExpression is not None:
             context.setValue(self.name, self.defaultExpression)
 
     def check(self, context):
-        self.type_.checkExists(context)
+        self.typ.checkExists(context)
 
     def getType(self, context=None):
-            return self.type_
+            return self.typ
 
     def toDialect(self, writer):
         if self.mutable:
@@ -52,8 +52,8 @@ class CategoryArgument(BaseArgument, ITypedArgument):
 
 
     def toEDialect(self, writer):
-        anonymous = "any"==self.type_.name
-        self.type_.toDialect(writer)
+        anonymous = "any"==self.typ.typeName
+        self.typ.toDialect(writer)
         if anonymous:
             writer.append(' ')
             writer.append(self.name)
@@ -63,11 +63,11 @@ class CategoryArgument(BaseArgument, ITypedArgument):
 
 
     def toODialect(self, writer):
-        self.type_.toDialect(writer)
+        self.typ.toDialect(writer)
         writer.append(' ')
         writer.append(self.name)
 
     def toSDialect(self, writer):
         writer.append(self.name)
         writer.append(':')
-        self.type_.toDialect(writer)
+        self.typ.toDialect(writer)
