@@ -52,14 +52,9 @@ class CategoryArgument(BaseArgument, ITypedArgument):
 
 
     def toEDialect(self, writer):
-        anonymous = "any"==self.typ.typeName
         self.typ.toDialect(writer)
-        if anonymous:
-            writer.append(' ')
-            writer.append(self.name)
-        if not anonymous:
-            writer.append(' ')
-            writer.append(self.name)
+        writer.append(' ')
+        writer.append(self.name)
 
 
     def toODialect(self, writer):
