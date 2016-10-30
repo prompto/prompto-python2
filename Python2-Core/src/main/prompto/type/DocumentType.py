@@ -1,6 +1,7 @@
 from prompto.type.AnyType import AnyType
 from prompto.type.NativeType import NativeType
 from prompto.store.TypeFamily import TypeFamily
+from prompto.type.TextType import TextType
 from prompto.value.NullValue import NullValue
 from prompto.value.Boolean import Boolean
 from prompto.value.Decimal import Decimal
