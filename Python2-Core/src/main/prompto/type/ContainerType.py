@@ -1,4 +1,4 @@
-from prompto.type.BooleanType import Boolean
+from prompto.type.BooleanType import BooleanType
 from prompto.type.IterableType import IterableType
 
 
