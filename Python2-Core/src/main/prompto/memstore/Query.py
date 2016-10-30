@@ -6,8 +6,8 @@ class Query(object):
 
     def __init__(self):
         self.predicates = []
-        self.start = None
-        self.end = None
+        self.first = None
+        self.last = None
         self.orderBys = None
 
     def predicate(self):

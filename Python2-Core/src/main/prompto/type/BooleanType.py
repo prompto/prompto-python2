@@ -1,6 +1,6 @@
 from prompto.type.AnyType import AnyType
 from prompto.type.NativeType import NativeType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

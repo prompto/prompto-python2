@@ -98,7 +98,7 @@ class MethodSelector(MemberSelector):
             value = context.loadSingleton(value.value)
         from prompto.value.ConcreteInstance import ConcreteInstance
         if not isinstance(value, ConcreteInstance):
-            from prompto.error.InvalidDataError import InvalidDataError
+            from prompto.store.InvalidValueError import InvalidValueError
             raise InvalidDataError("Not a concrete instance !")
         context = context.newInstanceContext(value, None)
         return context.newChildContext()

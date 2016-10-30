@@ -1,6 +1,6 @@
 from prompto.type.IterableType import IterableType
 from prompto.type.IntegerType import IntegerType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

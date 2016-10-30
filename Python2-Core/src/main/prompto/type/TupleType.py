@@ -3,7 +3,7 @@ from prompto.type.BooleanType import BooleanType
 from prompto.type.ListType import ListType
 from prompto.type.SetType import SetType
 from prompto.type.NativeType import NativeType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

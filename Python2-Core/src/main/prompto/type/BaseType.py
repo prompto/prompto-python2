@@ -1,6 +1,6 @@
 from prompto.type.IType import IType
 from prompto.expression.IExpression import IExpression
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 from prompto.value.ExpressionValue import ExpressionValue
 from prompto.error.SyntaxError import SyntaxError
 

@@ -1,4 +1,4 @@
-from prompto.error.InvalidDataError import InvalidDataError
+from prompto.store.InvalidValueError import InvalidValueError
 from prompto.runtime.BreakResult import BreakResult
 from prompto.statement.BaseStatement import BaseStatement
 from prompto.type.BooleanType import BooleanType

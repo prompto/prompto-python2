@@ -3,7 +3,7 @@ from prompto.declaration.IEnumeratedDeclaration import IEnumeratedDeclaration
 from prompto.type.BaseType import BaseType
 from prompto.type.ListType import ListType
 from prompto.type.TextType import TextType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

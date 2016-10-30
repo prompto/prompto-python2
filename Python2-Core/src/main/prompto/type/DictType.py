@@ -5,7 +5,7 @@ from prompto.type.IntegerType import IntegerType
 from prompto.type.ListType import ListType
 from prompto.type.SetType import SetType
 from prompto.type.TextType import TextType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

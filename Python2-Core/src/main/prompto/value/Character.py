@@ -1,4 +1,4 @@
-from prompto.error.InvalidDataError import InvalidDataError
+from prompto.store.InvalidValueError import InvalidValueError
 from prompto.type.CharacterType import CharacterType
 from prompto.value.IMultiplyable import IMultiplyable
 from prompto.value.BaseValue import BaseValue

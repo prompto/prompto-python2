@@ -75,7 +75,7 @@ class Period ( BaseValue, IMultiplyable ):
             return Period(years=data[0], months=data[1], weeks=data[2], days=data[3], \
                           hours=data[4], minutes=data[5], seconds=data[6], millis=data[7])
         except Exception, e:
-            from prompto.error.InvalidDataError import InvalidDataError
+            from prompto.store.InvalidValueError import InvalidValueError
             raise InvalidDataError("\"" + text + "\" is not a valid ISO 8601 period!");
  
     def __init__(self, years = 0, months = 0, weeks = 0, days = 0, \

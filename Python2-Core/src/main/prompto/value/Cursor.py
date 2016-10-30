@@ -2,7 +2,7 @@ from prompto.value.BaseValue import BaseValue
 from prompto.type.CursorType import CursorType
 from prompto.value.IIterable import IIterable
 from prompto.value.Integer import Integer
-from prompto.error.InvalidDataError import InvalidDataError
+from prompto.store.InvalidValueError import InvalidValueError
 
 class Cursor(BaseValue, IIterable):
 

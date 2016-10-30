@@ -1,6 +1,6 @@
 from prompto.value.BaseValue import BaseValue
 from prompto.value.IIterable import IIterable
-from prompto.error.InvalidDataError import InvalidDataError
+from prompto.store.InvalidValueError import InvalidValueError
 from prompto.runtime.Variable import Variable
 
 class IterableValue(BaseValue, IIterable):

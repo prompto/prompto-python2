@@ -1,4 +1,4 @@
-from prompto.declaration.AttributeInfo import AttributeInfo
+from prompto.store.AttributeInfo import AttributeInfo
 from prompto.declaration.BaseDeclaration import BaseDeclaration
 from prompto.expression.IExpression import IExpression
 from prompto.type.ContainerType import ContainerType

@@ -1,7 +1,7 @@
 import re
 
-from prompto.constraint.AttributeConstraint import *
-from prompto.error.InvalidDataError import *
+from prompto.constraint.AttributeConstraint import AttributeConstraint
+from prompto.store.InvalidValueError import InvalidValueError
 
 
 class MatchingPatternConstraint ( AttributeConstraint ) :
@@ -16,7 +16,7 @@ class MatchingPatternConstraint ( AttributeConstraint ) :
             toMatch = self.expression.interpret(context)
             self.pattern = re.compile(str(toMatch))
         if not re.match(self.pattern,str(value)):
-            raise InvalidDataError(str(value) + " does not match:" + str(self.pattern))
+            raise InvalidValueError(str(value) + " does not match:" + str(self.pattern))
 
     def toDialect(self, writer):
         writer.append(" matching ")

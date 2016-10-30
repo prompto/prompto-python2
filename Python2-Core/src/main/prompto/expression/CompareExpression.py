@@ -1,4 +1,4 @@
-from prompto.error.InvalidDataError import InvalidDataError
+from prompto.store.InvalidValueError import InvalidValueError
 from prompto.expression.IExpression import IExpression
 from prompto.expression.InstanceExpression import InstanceExpression
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
@@ -95,4 +95,4 @@ class CompareExpression ( IExpression ):
         elif self.operator in [CmpOp.GTE, CmpOp.LT]:
             return MatchOp.LESSER;
         else:
-            raise InvalidDataError(str(self.operator))
+            raise InvalidValueError(str(self.operator))

@@ -12,7 +12,7 @@ from prompto.runtime.Interpreter import Interpreter
 from prompto.runtime.utils.Out import Out
 from prompto.utils.CodeWriter import CodeWriter
 from prompto.store.DataStore import DataStore
-from prompto.store.MemStore import MemStore
+from prompto.memstore.MemStore import MemStore
 
 import os
 import unittest

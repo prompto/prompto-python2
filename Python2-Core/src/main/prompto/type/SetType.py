@@ -1,6 +1,6 @@
 from prompto.type.BooleanType import BooleanType
 from prompto.type.ContainerType import ContainerType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

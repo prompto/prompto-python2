@@ -1,5 +1,5 @@
 from prompto.type.BinaryType import BinaryType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

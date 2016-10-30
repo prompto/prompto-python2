@@ -10,7 +10,7 @@ from prompto.type.AnyType import AnyType
 from prompto.type.BaseType import BaseType
 from prompto.type.MissingType import MissingType
 from prompto.type.NullType import NullType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

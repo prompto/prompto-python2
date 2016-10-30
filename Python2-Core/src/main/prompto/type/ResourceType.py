@@ -1,5 +1,5 @@
 from prompto.type.CategoryType import CategoryType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

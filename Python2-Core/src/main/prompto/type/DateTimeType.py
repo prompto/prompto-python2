@@ -1,6 +1,6 @@
 from datetime import datetime
 from prompto.type.NativeType import NativeType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

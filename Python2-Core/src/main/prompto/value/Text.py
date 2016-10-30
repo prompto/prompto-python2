@@ -1,5 +1,5 @@
 from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
-from prompto.error.InvalidDataError import InvalidDataError
+from prompto.store.InvalidValueError import InvalidValueError
 from prompto.type.TextType import TextType
 from prompto.value.BaseValue import BaseValue
 from prompto.value.Character import Character

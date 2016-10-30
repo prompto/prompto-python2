@@ -1,6 +1,6 @@
 from prompto.type.BaseType import BaseType
 from prompto.type.TextType import TextType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

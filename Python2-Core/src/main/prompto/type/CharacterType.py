@@ -1,7 +1,7 @@
-from prompto.error.InvalidDataError import InvalidDataError
+from prompto.store.InvalidValueError import InvalidValueError
 from prompto.type.NativeType import NativeType
 from prompto.type.IntegerType import IntegerType
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 
 
 

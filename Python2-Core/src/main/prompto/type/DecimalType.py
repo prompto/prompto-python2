@@ -1,7 +1,7 @@
 from numbers import Number
 from prompto.type.BooleanType import BooleanType
 from prompto.type.NativeType import *
-from prompto.type.TypeFamily import TypeFamily
+from prompto.store.TypeFamily import TypeFamily
 from prompto.value.Decimal import Decimal
 
 class DecimalType(NativeType):

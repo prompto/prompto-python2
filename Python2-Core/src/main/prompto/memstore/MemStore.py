@@ -1,12 +1,8 @@
-from prompto.declaration.AttributeInfo import AttributeInfo
-from prompto.error.InvalidDataError import InvalidDataError
-from prompto.store.MatchOp import MatchOp
-from prompto.store.Query import Query
-from prompto.store.Store import IStorable, IStored
-from prompto.type.TypeFamily import TypeFamily
+from prompto.memstore.Query import Query
+from prompto.store.Store import IStorable, IStored, IStore, IQueryBuilder
 
 # a utility class for running unit tests only
-class MemStore(object):
+class MemStore(IStore):
 
     lastDbId = 0
 
@@ -43,10 +39,9 @@ class MemStore(object):
         return StorableDocument(categories)
 
 
-    def interpretFetchOne(self, context, typ, predicate):
-        interpreter = QueryInterpreter(context)
-        query = interpreter.buildFetchOneQuery(typ, predicate)
-        return self.fetchOne(query)
+
+    def newQueryBuilder(self):
+        return QueryBuilder()
 
 
     def fetchOne (self, query):
@@ -61,11 +56,6 @@ class MemStore(object):
         return self.documents.get(dbId, None)
 
 
-    def interpretFetchMany(self, context, typ, start, end, predicate, orderBy):
-        interpreter = QueryInterpreter(context)
-        query = interpreter.buildFetchManyQuery(typ, start, end, predicate, orderBy)
-        return self.fetchMany(query)
-
 
     def fetchMany(self, query):
         # iter all docs
@@ -77,8 +67,8 @@ class MemStore(object):
         if query.orderBys is not None:
             docs = self.sortDocs(docs, query.orderBys)
         # slice it if required
-        if query.start is not None or query.end is not None:
-            docs = self.sliceDocs(docs, query.start, query.end)
+        if query.first is not None or query.last is not None:
+            docs = self.sliceDocs(docs, query.first, query.last)
         # done
         return DocumentIterator(docs)
 
@@ -108,12 +98,12 @@ class MemStore(object):
             docs = sorted(docs, key=valueExtractor(clause), reverse = clause.descending)
         return docs
 
-    def sliceDocs(self, docs, start, end):
-        if start is None or start < 1:
-            start = 1
-        if end is None:
-            end = len(docs)
-        return docs[start-1:end]
+    def sliceDocs(self, docs, first, last):
+        if first is None or first < 1:
+            first = 1
+        if last is None:
+            last = len(docs)
+        return docs[first-1:last]
 
 
 
@@ -186,48 +176,31 @@ class StorableDocument(IStorable, IStored):
         else:
             return predicate.matches(self.document)
 
+class QueryBuilder(IQueryBuilder):
 
-class QueryInterpreter(object):
+    def __init__(self):
+        self.query = Query()
 
-    def __init__(self, context):
-        self.context = context
+    def build(self):
+        return self.query
 
+    def setFirst(self, first):
+        self.query.first = first
 
-    def buildFetchOneQuery(self, typ, predicate):
-        q = Query()
-        self.verifyType(q, typ)
-        if predicate is not None:
-            predicate.interpretQuery(self.context, q)
-        if typ is not None and predicate is not None:
-            q.And()
-        return q
+    def setLast(self, last):
+        self.query.last = last
 
+    def verify(self, info, match, value):
+        self.query.verify(info, match, value)
 
+    def And(self):
+        self.query.And()
 
-    def buildFetchManyQuery(self, typ, start, end, predicate, orderBy):
-        q = Query()
-        self.verifyType(q, typ)
-        q.start = self.interpretLimit(self.context, start)
-        q.end = self.interpretLimit(self.context, end)
-        if predicate is not None:
-            predicate.interpretQuery(self.context, q)
-        if typ is not None and predicate is not None:
-            q.And()
-        if orderBy is not None:
-            orderBy.interpretQuery(self.context, q)
-        return q
+    def Or(self):
+        self.query.Or()
 
+    def Not(self):
+        self.query.Not()
 
-    def verifyType(self, q, typ):
-        if typ is not None:
-            info = AttributeInfo("category", TypeFamily.TEXT, True, None)
-            q.verify(info, MatchOp.CONTAINS, typ.typeName)
-
-
-    def interpretLimit(self, context, exp):
-        if exp is None:
-            return None
-        value = exp.interpret(context).getStorableData()
-        if not isinstance(value, (int, long)):
-            raise InvalidDataError("Expecting an Integer, got:" + value.type.typeName)
-        return value
+    def addOrderByClause(self, info, descending):
+        self.query.addOrderByClause(info, descending)
