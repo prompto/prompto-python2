@@ -7,7 +7,6 @@ from prompto.error.SyntaxError import SyntaxError
 class BaseType(IType):
 
     def __init__(self, family):
-        assert isinstance(family, (TypeFamily, type(None)))
         self.family = family
         self.typeName = str(family).capitalize()
 

@@ -72,7 +72,7 @@ class EqualsExpression ( IExpression ):
         return Boolean.ValueOf(equal)
 
     def roughly(self, context, lval, rval):
-        if self.operator==EqOp.ROUGHLY and isinstance(lval, IValue):
+        if self.operator is EqOp.ROUGHLY and isinstance(lval, IValue):
             return lval.Roughly(context, rval)
         else:
             return self.areEqual(context,lval,rval)

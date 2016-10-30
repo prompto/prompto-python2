@@ -59,7 +59,7 @@ class DateTime(BaseValue):
         elif "second" == name:
             return Integer(self.value.second)
         elif "millisecond" == name:
-            return Integer(self.value.microsecond / 1000)
+            return Integer(self.value.microsecond // 1000)
         elif "tzOffset" == name:
             return Integer(0)  # self.value.getZone().toTimeZone().getRawOffset() / 1000)
         elif "tzName" == name:

@@ -26,6 +26,6 @@ class Cursor(BaseValue, IIterable):
         if "count" == name:
             return Integer(len(self))
         else:
-            raise InvalidDataError("No such member:" + name)
+            raise InvalidValueError("No such member:" + name)
 
 

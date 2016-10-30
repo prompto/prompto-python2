@@ -5,6 +5,7 @@ from prompto.error.SyntaxError import SyntaxError
 from prompto.store.AttributeInfo import AttributeInfo
 from prompto.store.MatchOp import MatchOp
 from prompto.store.TypeFamily import TypeFamily
+from prompto.type.AnyType import AnyType
 from prompto.type.BooleanType import BooleanType
 from prompto.store.DataStore import DataStore
 from prompto.type.CategoryType import CategoryType
@@ -50,7 +51,10 @@ class FetchOneExpression(Section, IExpression):
         filterType = self.predicate.check (context)
         if filterType is not BooleanType.instance:
             raise SyntaxError ("Filtering expression must return a boolean !")
-        return self.typ
+        if self.typ is None:
+            return AnyType.instance
+        else:
+            return self.typ
 
     def interpret (self, context):
         store = DataStore.instance

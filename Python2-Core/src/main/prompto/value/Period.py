@@ -71,7 +71,7 @@ class Period ( BaseValue, IMultiplyable ):
                         isNeg = False
             # must terminate by a value type
             if value is not None:
-                raise Exception();
+                raise Exception()
             return Period(years=data[0], months=data[1], weeks=data[2], days=data[3], \
                           hours=data[4], minutes=data[5], seconds=data[6], millis=data[7])
         except Exception, e:
@@ -130,7 +130,7 @@ class Period ( BaseValue, IMultiplyable ):
             raise SyntaxError("Illegal: Period * " + type(value).__name__)
         
     def ConvertTo(self, type_):
-        return self.value
+        return self
  
     def plus(self, period):
         millis = self.millis + period.millis

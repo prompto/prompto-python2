@@ -5,7 +5,7 @@ from prompto.type.TextType import TextType
 class EnumeratedCategoryType ( CategoryType ):
 
 	def __init__(self, name):
-		super(EnumeratedCategoryType, self).__init__(name) 
+		super(EnumeratedCategoryType, self).__init__(name, TypeFamily.ENUMERATED)
 	
 	def checkMember(self, context, name):
 		if "value"==name:

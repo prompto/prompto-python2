@@ -91,8 +91,8 @@ class CompareExpression ( IExpression ):
 
     def getMatchOp(self):
         if self.operator in [CmpOp.GT, CmpOp.LTE]:
-            return MatchOp.GREATER;
+            return MatchOp.GREATER
         elif self.operator in [CmpOp.GTE, CmpOp.LT]:
-            return MatchOp.LESSER;
+            return MatchOp.LESSER
         else:
             raise InvalidValueError(str(self.operator))

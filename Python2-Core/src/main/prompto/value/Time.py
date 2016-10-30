@@ -64,7 +64,7 @@ class Time(BaseValue):
         elif "second" == name:
             return Integer(self.value.second)
         elif "millisecond" == name:
-            return Integer(self.value.microsecond/1000)
+            return Integer(self.value.microsecond // 1000)
         else:
             raise SyntaxError("No such member:" + name)
 

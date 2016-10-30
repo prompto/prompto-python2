@@ -16,7 +16,7 @@ class TimeType(NativeType):
         super(TimeType, self).__init__(TypeFamily.TIME)
 
     def isAssignableTo(self, context, other):
-        return isinstance(other, TimeType) or isinstance(other, AnyType)
+        return isinstance(other, (TimeType, AnyType))
 
     def checkAdd(self, context, other, tryReverse):
         from prompto.type.DateTimeType import DateTimeType

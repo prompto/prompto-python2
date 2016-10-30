@@ -145,6 +145,8 @@ class CategoryType(BaseType):
             return True
         if self.typeName == other.typeName:
             return True
+        if isinstance(other, (AnyType, MissingType)):
+            return True
         if not isinstance(other, CategoryType):
             return False
         return self.isCategoryAssignableTo(context, other)

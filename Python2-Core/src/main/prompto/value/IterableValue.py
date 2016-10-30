@@ -27,5 +27,5 @@ class IterableValue(BaseValue, IIterable):
         if "count"==name:
             return self.length
         else:
-            raise InvalidDataError("No such member:" + name)
+            raise InvalidValueError("No such member:" + name)
 

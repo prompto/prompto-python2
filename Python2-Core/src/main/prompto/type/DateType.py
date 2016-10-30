@@ -17,7 +17,7 @@ class DateType(NativeType):
         super(DateType, self).__init__(TypeFamily.DATE)
 
     def isAssignableTo(self, context, other):
-        return isinstance(other, DateType) or isinstance(other, AnyType)
+        return isinstance(other, (DateType, AnyType))
 
     def checkAdd(self, context, other, tryReverse):
         if isinstance(other, PeriodType):

@@ -1,3 +1,4 @@
+from prompto.type.BooleanType import Boolean
 from prompto.type.IterableType import IterableType
 
 
@@ -8,7 +9,6 @@ class ContainerType ( IterableType ) :
 
     def checkContains(self, context, other):
         if self.itemType.isAssignableTo(context, other):
-            from prompto.type.BooleanType import BooleanType
             return BooleanType.instance
         else:
             return super(ContainerType, self).checkContains(context, other)

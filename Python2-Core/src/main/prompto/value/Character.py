@@ -28,7 +28,7 @@ class Character ( BaseValue, IMultiplyable) :
         if "codePoint" == name:
             return Integer(ord(self.value))
         else:
-            raise InvalidDataError("No such member:" + name)
+            raise InvalidValueError("No such member:" + name)
 
 
     def Add(self, context, value):

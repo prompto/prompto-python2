@@ -74,7 +74,7 @@ class Text(BaseValue, ISliceable, IMultiplyable):
         if "count" == name:
             return Integer(len(self.value))
         else:
-            raise InvalidDataError("No such member:" + name)
+            raise InvalidValueError("No such member:" + name)
 
 
     def getItem(self, context, index):
@@ -83,7 +83,7 @@ class Text(BaseValue, ISliceable, IMultiplyable):
             if isinstance(index, Integer):
                 return Character(self.value[index.IntegerValue() - 1])
             else:
-                raise InvalidDataError("No such item:" + str(index))
+                raise InvalidValueError("No such item:" + str(index))
         except IndexError:
             raise IndexOutOfRangeError()
 

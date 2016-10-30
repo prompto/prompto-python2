@@ -45,7 +45,7 @@ class StoreStatement(SimpleStatement):
             return False
         if not isinstance(other, StoreStatement):
             return False
-        return self.to_add == other.to_add
+        return self.to_del == other.to_del and self.to_add == other.to_add
 
 
     def check (self, context):
@@ -54,7 +54,7 @@ class StoreStatement(SimpleStatement):
 
     def interpret (self,  context):
         idsToDel = self.getIdsToDelete(context)
-        storablesToAdd = self.getStorablesToAdd(context);
+        storablesToAdd = self.getStorablesToAdd(context)
         if idsToDel is not None or storablesToAdd is not None:
             DataStore.instance.store(idsToDel, storablesToAdd)
 

@@ -9,7 +9,7 @@ class PeriodType(NativeType):
         super(PeriodType, self).__init__(TypeFamily.PERIOD)
 
     def isAssignableTo(self, context, other):
-        return isinstance(other, PeriodType) or isinstance(other, AnyType)
+        return isinstance(other, (PeriodType, AnyType))
 
     def checkAdd(self, context, other, tryReverse):
         if isinstance(other, PeriodType):
