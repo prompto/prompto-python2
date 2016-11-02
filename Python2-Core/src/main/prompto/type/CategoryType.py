@@ -322,9 +322,8 @@ class CategoryType(BaseType):
             return cmp(key1,key2)
 
 
-    def convertPythonValueToPromptoValue(self, context, value, returnType, decl = None):
-        if decl is None:
-            decl = self.getDeclaration(context)
+    def convertPythonValueToPromptoValue(self, context, value, returnType):
+        decl = self.getDeclaration(context)
         if decl is None:
             return super(CategoryType, self).convertPythonValueToPromptoValue(context, value, returnType)
         if DataStore.instance.isDbIdType(type(value)):
