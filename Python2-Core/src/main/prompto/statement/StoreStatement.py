@@ -68,7 +68,7 @@ class StoreStatement(SimpleStatement):
             if value is NullValue.instance:
                 continue
             elif isinstance(value, IInstance):
-                dbId = value.getMember("dbId")
+                dbId = value.getMember(context, "dbId")
                 if dbId is not None and dbId is not NullValue.instance:
                     idsToDel.append(dbId.getStorableData())
             elif value is IContainer:
@@ -76,7 +76,7 @@ class StoreStatement(SimpleStatement):
                     if item is NullValue.instance:
                         continue
                     elif isinstance(item, IInstance):
-                        dbId = item.getMember("dbId")
+                        dbId = item.getMember(context, "dbId")
                         if dbId is not None and dbId is not NullValue.instance:
                             idsToDel.append(dbId.getStorableData())
         if len(idsToDel) == 0:
