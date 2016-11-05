@@ -43,7 +43,7 @@ class BaseParserTest(unittest.TestCase):
         allStmts.register(self.coreContext)
 
     def listLibraryFiles(self, libraryName):
-        idx = __file__.index("/prompto-python2/Python2-Core/")
+        idx = __file__.index("/Python2-Core/")
         dir = __file__[0:idx] + "/prompto-libraries/" + libraryName
         if os.path.isdir(dir):
             files = os.listdir(dir)
