@@ -10,9 +10,9 @@ from prompto.declaration.TestMethodDeclaration import TestMethodDeclaration
 from prompto.runtime.Context import Context
 from prompto.runtime.Interpreter import Interpreter
 from prompto.runtime.utils.Out import Out
-from prompto.utils.CodeWriter import CodeWriter
 from prompto.store.DataStore import DataStore
 from prompto.memstore.MemStore import MemStore
+from prompto.utils.CodeWriter import CodeWriter
 
 import os
 import unittest
@@ -65,7 +65,7 @@ class BaseParserTest(unittest.TestCase):
             self.assertEqual(read, expected)
 
     def getResourceAsString(self, resourceName, mode):
-        idx = __file__.index("/prompto-python2/Python2-Core/")
+        idx = __file__.index("/Python2-Core/")
         file = __file__[0:idx] + "/prompto-tests/Tests/resources/" + resourceName
         if not os.path.exists(file):
             file = __file__[0:idx] + "/prompto-libraries/" + resourceName
@@ -73,7 +73,7 @@ class BaseParserTest(unittest.TestCase):
             return input.read()
 
     def getResourceAsStream(self, resourceName, mode):
-        idx = __file__.index("/prompto-python2/Python2-Core/")
+        idx = __file__.index("/Python2-Core/")
         file = __file__[0:idx] + "/prompto-tests/Tests/resources/" + resourceName
         if not os.path.exists(file):
             file = __file__[0:idx] + "/prompto-libraries/" + resourceName
@@ -145,15 +145,21 @@ class BaseParserTest(unittest.TestCase):
         parser = OCleverParser(text=code)
         return self.parse(OPromptoBuilder, parser)
 
-    def parseSString(self, code):
-        parser = SCleverParser(text=code)
-        return self.parse(SPromptoBuilder, parser)
-
     def parseOResource(self, resourceName):
         stream = self.getResourceAsStream(resourceName, 'rb')
         self.assertIsNotNone("resource not found:" + resourceName, stream)
         parser = OCleverParser(stream=stream)
         return self.parse(OPromptoBuilder, parser)
+
+    def parseSString(self, code):
+        parser = SCleverParser(text=code)
+        return self.parse(SPromptoBuilder, parser)
+
+    def parseSResource(self, resourceName):
+        stream = self.getResourceAsStream(resourceName, 'rb')
+        self.assertIsNotNone("resource not found:" + resourceName, stream)
+        parser = SCleverParser(stream=stream)
+        return self.parse(SPromptoBuilder, parser)
 
     def compareResourceEOE(self, resourceName):
         expected = self.getResourceAsString(resourceName, 'rb')
