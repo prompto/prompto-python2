@@ -14,11 +14,9 @@ class TestCore(BaseEParserTest):
 
     def testAny(self):
         self.runTests("core/any.pec")
-        self.assertEqual("a","b")
 
     def testAttribute(self):
         self.runTests("core/attribute.pec")
-        self.error()
 
     def testAttributes(self):
         self.runTests("core/attributes.pec")
