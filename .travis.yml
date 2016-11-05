@@ -1,0 +1,19 @@
+sudo: true
+language: python
+python:
+ - "2.7"
+before_install:
+  - sudo apt-get install unzip
+install:
+  - pip install antlr4-python2-runtime==4.5.3
+  - pip install nose==1.3.7
+  - curl https://codeload.github.com/prompto/prompto-tests/zip/master > prompto-tests.zip
+  - unzip prompto-tests.zip
+  - mv prompto-tests-master prompto-tests
+  - curl https://codeload.github.com/prompto/prompto-libraries/zip/master > prompto-libraries.zip
+  - unzip prompto-libraries.zip
+  - mv prompto-libraries-master prompto-libraries
+before_script:
+  - chmod 777 ./test.sh
+script:
+  - ./test.sh
