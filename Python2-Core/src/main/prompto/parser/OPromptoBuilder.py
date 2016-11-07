@@ -48,7 +48,7 @@ from prompto.expression.DocumentExpression import DocumentExpression
 from prompto.expression.EqualsExpression import EqualsExpression
 from prompto.expression.ExecuteExpression import ExecuteExpression
 from prompto.expression.FetchManyExpression import FetchManyExpression
-from prompto.expression.FetchExpression import FetchExpression
+from prompto.expression.FilteredExpression import FilteredExpression
 from prompto.expression.FetchOneExpression import FetchOneExpression
 from prompto.expression.InstanceExpression import InstanceExpression
 from prompto.expression.IntDivideExpression import IntDivideExpression
@@ -2065,18 +2065,11 @@ class OPromptoBuilder(OParserListener):
 
 
 
-    def exitFetch_list_expression(self, ctx):
-        itemName = self.getNodeValue(ctx.name)
-        source = self.getNodeValue(ctx.source)
-        filter = self.getNodeValue(ctx.predicate)
-        self.setNodeValue(ctx, FetchExpression(itemName, source, filter))
-
-
-
     def exitFetchOne (self, ctx):
         category = self.getNodeValue(ctx.typ)
         predicate = self.getNodeValue(ctx.predicate)
         self.setNodeValue(ctx, FetchOneExpression(category, predicate))
+
 
 
     def exitFetchMany (self, ctx):
@@ -2086,6 +2079,15 @@ class OPromptoBuilder(OParserListener):
         stop = self.getNodeValue(ctx.xstop)
         orderBy = self.getNodeValue(ctx.orderby)
         self.setNodeValue(ctx, FetchManyExpression(category, predicate, start, stop, orderBy))
+
+
+
+    def exitFiltered_list_expression(self, ctx):
+        itemName = self.getNodeValue(ctx.name)
+        source = self.getNodeValue(ctx.source)
+        filter = self.getNodeValue(ctx.predicate)
+        self.setNodeValue(ctx, FilteredExpression(itemName, source, filter))
+
 
 
     def exitClosure_expression(self, ctx):

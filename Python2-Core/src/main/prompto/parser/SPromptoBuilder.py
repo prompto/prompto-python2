@@ -47,7 +47,7 @@ from prompto.expression.DocumentExpression import DocumentExpression
 from prompto.expression.EqualsExpression import EqualsExpression
 from prompto.expression.ExecuteExpression import ExecuteExpression
 from prompto.expression.FetchManyExpression import FetchManyExpression
-from prompto.expression.FetchExpression import FetchExpression
+from prompto.expression.FilteredExpression import FilteredExpression
 from prompto.expression.FetchOneExpression import FetchOneExpression
 from prompto.expression.IntDivideExpression import IntDivideExpression
 from prompto.expression.ItemSelector import ItemSelector
@@ -932,14 +932,6 @@ class SPromptoBuilder(SParserListener):
 
 
 
-    def exitFetch_list_expression(self, ctx):
-        itemName = self.getNodeValue(ctx.name)
-        source = self.getNodeValue(ctx.source)
-        predicate = self.getNodeValue(ctx.predicate)
-        self.setNodeValue(ctx, FetchExpression(itemName, source, predicate))
-
-
-
     def exitFetchOne (self, ctx):
         category = self.getNodeValue(ctx.typ)
         predicate = self.getNodeValue(ctx.predicate)
@@ -954,6 +946,21 @@ class SPromptoBuilder(SParserListener):
         stop = self.getNodeValue(ctx.xstop)
         orderBy = self.getNodeValue(ctx.orderby)
         self.setNodeValue(ctx, FetchManyExpression(category, predicate, start, stop, orderBy))
+
+
+
+    def exitFilteredListExpression(self, ctx):
+        fetch = self.getNodeValue(ctx.filtered_list_suffix())
+        source = self.getNodeValue(ctx.src)
+        fetch.source = source
+        self.setNodeValue(ctx, fetch)
+
+
+
+    def exitFiltered_list_suffix(self, ctx):
+        itemName = self.getNodeValue(ctx.name)
+        predicate = self.getNodeValue(ctx.predicate)
+        self.setNodeValue(ctx, FilteredExpression(itemName, None, predicate))
 
 
     def exitFor_each_statement(self, ctx):

@@ -10,44 +10,44 @@ from prompto.type.SetType import SetType
 from prompto.value.ListValue import ListValue
 from prompto.value.TupleValue import TupleValue
 from prompto.value.SetValue import SetValue
-from prompto.value.Boolean import Boolean
+from prompto.error.SyntaxError import SyntaxError
 
 
-class FetchExpression(Section, IExpression):
+class FilteredExpression(Section, IExpression):
 
-    def __init__(self, itemName, source, filter_):
-        super(FetchExpression, self).__init__()
+    def __init__(self, itemName, source, predicate):
+        super(FilteredExpression, self).__init__()
         self.itemName = itemName
         self.source = source
-        self.filter = filter_
+        self.predicate = predicate
 
     def __str__(self):
-        return "fetch any " + self.itemName + " from " + str(self.source) + " where " + str(self.filter)
+        return "fetch any " + self.itemName + " from " + str(self.source) + " where " + str(self.predicate)
 
     def toSDialect(self, writer):
-        writer.append("fetch ")
-        writer.append(self.itemName)
-        writer.append(" from ")
         self.source.toDialect(writer)
+        writer.append(" filtered with ")
+        writer.append(self.itemName)
         writer.append(" where ")
-        self.filter.toDialect(writer)
+        self.predicate.toDialect(writer)
+
+
 
     def toEDialect(self, writer):
-        writer.append("fetch any ")
-        writer.append(self.itemName)
-        writer.append(" from ")
-        self.source.toDialect(writer)
-        writer.append(" where ")
-        self.filter.toDialect(writer)
+        self.toSDialect(writer)
+
+
 
     def toODialect(self, writer):
-        writer.append("fetch (")
-        writer.append(self.itemName)
-        writer.append(")")
-        writer.append(" from ")
+        writer.append("filtered (")
         self.source.toDialect(writer)
-        writer.append(" where ")
-        self.filter.toDialect(writer)
+        writer.append(") with (")
+        writer.append(self.itemName)
+        writer.append(") where (")
+        self.predicate.toDialect(writer)
+        writer.append(")")
+
+
 
     def check(self, context):
         listType = self.source.check(context)
@@ -55,7 +55,7 @@ class FetchExpression(Section, IExpression):
             raise SyntaxError("Expecting a collection type as data source !")
         local = context.newLocalContext()
         local.registerValue(TransientVariable(self.itemName, listType.getItemType()))
-        filterType = self.filter.check(local)
+        filterType = self.predicate.check(local)
         if filterType != BooleanType.instance:
             raise SyntaxError("Filtering expression must return a boolean !")
         return listType
@@ -73,4 +73,4 @@ class FetchExpression(Section, IExpression):
         local = context.newLocalContext()
         item = TransientVariable(self.itemName, itemType)
         local.registerValue(item)
-        return items.filter(local, self.itemName, self.filter)
+        return items.filter(local, self.itemName, self.predicate)

@@ -48,7 +48,7 @@ from prompto.expression.DocumentExpression import DocumentExpression
 from prompto.expression.EqualsExpression import EqualsExpression
 from prompto.expression.ExecuteExpression import ExecuteExpression
 from prompto.expression.FetchManyExpression import FetchManyExpression
-from prompto.expression.FetchExpression import FetchExpression
+from prompto.expression.FilteredExpression import FilteredExpression
 from prompto.expression.FetchOneExpression import FetchOneExpression
 from prompto.expression.IntDivideExpression import IntDivideExpression
 from prompto.expression.ItemSelector import ItemSelector
@@ -2109,23 +2109,10 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, DocumentType.instance)
 
 
-    def exitFetch_list_expression(self, ctx):
-        itemName = self.getNodeValue(ctx.name)
-        source = self.getNodeValue(ctx.source)
-        filter = self.getNodeValue(ctx.predicate)
-        self.setNodeValue(ctx, FetchExpression(itemName, source, filter))
-
-
     def exitFetchOne (self, ctx):
         category = self.getNodeValue(ctx.typ)
         xfilter = self.getNodeValue(ctx.predicate)
         self.setNodeValue(ctx, FetchOneExpression(category, xfilter))
-
-
-
-    def exitFetchListExpression(self, ctx):
-        exp = self.getNodeValue(ctx.getChild(0))
-        self.setNodeValue(ctx, exp)
 
 
 
@@ -2136,6 +2123,20 @@ class EPromptoBuilder(EParserListener):
         stop = self.getNodeValue(ctx.xstop)
         orderBy = self.getNodeValue(ctx.orderby)
         self.setNodeValue(ctx, FetchManyExpression(category, xfilter, start, stop, orderBy))
+
+
+
+    def exitFilteredListExpression(self, ctx):
+        fetch = self.getNodeValue(ctx.filtered_list_suffix())
+        source = self.getNodeValue(ctx.src)
+        fetch.source = source
+        self.setNodeValue(ctx, fetch)
+
+
+    def exitFiltered_list_suffix(self, ctx):
+        itemName = self.getNodeValue(ctx.name)
+        predicate = self.getNodeValue(ctx.predicate)
+        self.setNodeValue(ctx, FilteredExpression(itemName, None, predicate))
 
 
 
