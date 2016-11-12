@@ -1,6 +1,6 @@
 from prompto.expression.IExpression import IExpression
 from prompto.error.SyntaxError import SyntaxError
-from prompto.type.ContainerType import ContainerType
+from prompto.type.CategoryType import CategoryType
 from prompto.type.DecimalType import DecimalType
 from prompto.type.IntegerType import IntegerType
 from prompto.value.Decimal import Decimal
@@ -16,9 +16,15 @@ class CastExpression (IExpression):
 
     def check(self, context):
         actual = self.expression.check(context)
-        if not self.type.isAssignableTo(context, actual):
-            raise SyntaxError("Cannot cast " + str(actual) + " to " + str(self.type))
-        return self.type
+        # check upcast
+        if isinstance(actual, CategoryType) and actual.isDerivedFrom(context, self.type):
+            return self.type
+        # check downcast
+        if actual.isAssignableFrom(context, self.type):
+            return self.type
+        raise SyntaxError("Cannot cast " + str(actual) + " to " + str(self.type))
+
+
 
     def interpret(self, context):
         value = self.expression.interpret(context)

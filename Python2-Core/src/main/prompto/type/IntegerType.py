@@ -11,10 +11,11 @@ class IntegerType(NativeType):
     def __init__(self):
         super(IntegerType, self).__init__(TypeFamily.INTEGER)
 
-    def isAssignableTo(self, context, other):
-        from prompto.type.AnyType import AnyType
+    def isAssignableFrom(self, context, other):
         from prompto.type.DecimalType import DecimalType
-        return isinstance(other, IntegerType) or isinstance(other, DecimalType) or isinstance(other, AnyType)
+        return super(IntegerType, self).isAssignableFrom(context, other) or \
+            other is DecimalType.instance
+
 
     def checkAdd(self, context, other, tryReverse):
         if isinstance(other, IntegerType):

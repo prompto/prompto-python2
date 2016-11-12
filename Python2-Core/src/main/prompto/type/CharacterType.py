@@ -11,12 +11,6 @@ class CharacterType(NativeType):
     def __init__(self):
         super(CharacterType, self).__init__(TypeFamily.CHARACTER)
 
-    def isAssignableTo(self, context, other):
-        from prompto.type.TextType import TextType
-        from prompto.type.AnyType import AnyType
-        return isinstance(other, CharacterType) or isinstance(other, TextType) or isinstance(other, AnyType)
-
-
 
     def checkMember(self, context, name):
         if "codePoint" == name:
@@ -82,7 +76,7 @@ class CharacterType(NativeType):
             from prompto.value.Character import Character
             return Character(value.value[0:1])
         else:
-            raise InvalidDataError("Cannot convert " + str(value) + " to Character")
+            raise InvalidValueError("Cannot convert " + str(value) + " to Character")
 
 CharacterType.instance = CharacterType()
 

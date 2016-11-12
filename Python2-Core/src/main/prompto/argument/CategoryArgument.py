@@ -11,7 +11,7 @@ class CategoryArgument(BaseArgument, ITypedArgument):
     def getSignature(self, dialect):
         return self.getProto()
 
-    def getProto(self, context):
+    def getProto(self):
         return self.typ.typeName
 
     def __str__(self):

@@ -16,8 +16,6 @@ class DateType(NativeType):
     def __init__(self):
         super(DateType, self).__init__(TypeFamily.DATE)
 
-    def isAssignableTo(self, context, other):
-        return isinstance(other, (DateType, AnyType))
 
     def checkAdd(self, context, other, tryReverse):
         if isinstance(other, PeriodType):
@@ -63,6 +61,11 @@ class DateType(NativeType):
         if isinstance(left, Date) and isinstance(right, Date):
             return DateRange(left, right)
         return super(DateType, self).newRange(left, right)
+
+
+    def isAssignableFrom(self, context, other):
+        return super(DateType, self).isAssignableFrom(context, other) or \
+            other is DateTimeType.instance
 
 
     def sort(self, context, source, desc):

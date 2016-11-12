@@ -1,6 +1,6 @@
 from prompto.expression.IExpression import *
 from prompto.expression.Symbol import *
-
+from prompto.error.SyntaxError import SyntaxError
 
 class NativeSymbol ( Symbol, IExpression ):
 
@@ -9,27 +9,41 @@ class NativeSymbol ( Symbol, IExpression ):
         self.expression = expression
         self.type_ = None
 
+
+
     def getExpression(self):
         return self.expression
+
+
 
     def getType(self, context):
         return self.type_
 
+
+
     def setType(self, type_):
         self.type_ = type_
 
+
+
     def __str__(self):
         return self.symbol
+
+
 
     def toSDialect(self, writer):
         writer.append(self.symbol)
         writer.append(" = ")
         self.expression.toDialect(writer)
 
+
+
     def toODialect(self, writer):
         writer.append(self.symbol)
         writer.append(" = ")
         self.expression.toDialect(writer)
+
+
 
     def toEDialect(self, writer):
         writer.append(self.symbol)
@@ -48,11 +62,14 @@ class NativeSymbol ( Symbol, IExpression ):
         return self.getName()==obj.getName() \
                 and self.getExpression()==obj.getExpression()
 
+
     def check(self, context):
         actual = self.expression.check(context)
-        if not actual.isAssignableTo(context, self.type_.getDerivedFrom()):
+        if not self.type_.getDerivedFrom().isAssignableFrom(context, actual):
             raise SyntaxError("Cannot assign " + actual.getName() + " to " + self.type_.getDerivedFrom().getName())
         return self.type_
+
+
 
     def interpret(self, context):
         return self.expression.interpret(context)

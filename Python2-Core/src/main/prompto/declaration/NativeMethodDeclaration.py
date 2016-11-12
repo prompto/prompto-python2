@@ -3,8 +3,8 @@ from prompto.declaration.ConcreteMethodDeclaration import *
 
 class NativeMethodDeclaration(ConcreteMethodDeclaration):
 
-    def __init__(self, name, arguments, returnType, instructions):
-        super(NativeMethodDeclaration, self).__init__(name, arguments, returnType, instructions)
+    def __init__(self, name, arguments, returnType, statements):
+        super(NativeMethodDeclaration, self).__init__(name, arguments, returnType, statements)
 
     def interpret(self, context):
         context.enterMethod(self)
@@ -16,7 +16,7 @@ class NativeMethodDeclaration(ConcreteMethodDeclaration):
 
     def castToReturnType(self, context, value):
         # can only cast to specified type, and if required
-        if self.returnType is not None and value is not None and not value.type.isAssignableTo(context, self.returnType):
+        if self.returnType is not None and value is not None and not self.returnType.isAssignableFrom(context, value.type):
             # only cast if implemented, on a per type basis
             if self.returnType.nativeCast:
                 value = self.returnType.nativeCast(context, value)

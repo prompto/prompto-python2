@@ -13,8 +13,9 @@ class TupleType(NativeType):
     def __init__(self):
         super(TupleType, self).__init__(TypeFamily.TUPLE)
 
-    def isAssignableTo(self, context, other):
-        return isinstance(other, (TupleType, AnyType))
+    def isAssignableFrom(self, context, other):
+        return super(TupleType, self).isAssignableFrom(context, other) or \
+               isinstance(other, (ListType, SetType))
 
     def checkItem(self, context, other):
         from prompto.type.IntegerType import IntegerType

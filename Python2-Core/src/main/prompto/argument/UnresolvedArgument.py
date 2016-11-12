@@ -1,7 +1,6 @@
-from prompto.argument.MethodArgument import MethodArgument
-
 from prompto.argument.AttributeArgument import AttributeArgument
 from prompto.argument.INamedArgument import INamedArgument
+from prompto.argument.MethodArgument import MethodArgument
 from prompto.declaration.AttributeDeclaration import AttributeDeclaration
 from prompto.declaration.IDeclaration import IDeclaration
 from prompto.error.SyntaxError import SyntaxError
@@ -34,7 +33,7 @@ class UnresolvedArgument ( INamedArgument ):
     def check(self, context):
         self.resolveAndCheck(context)
 
-    def getProto(self, context):
+    def getProto(self):
         return self.name
 
     def getType(self, context):

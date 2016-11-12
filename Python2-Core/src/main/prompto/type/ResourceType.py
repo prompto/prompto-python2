@@ -15,7 +15,5 @@ class ResourceType ( CategoryType ):
             return False
         if not isinstance(obj, ResourceType):
             return False
-        return self.getName()==obj.getName()
+        return self.typeName == obj.typeName
 
-    def isAssignableTo(self, context, other):
-        return self==other

@@ -3,16 +3,15 @@ from prompto.type.MethodType import MethodType
 
 class ClosureValue(BaseValue):
 
-    def __init__(self, context, method):
-        super(ClosureValue, self).__init__(MethodType(context, method.getName()))
-        self.method = method
+    def __init__(self, context, typ):
+        super(ClosureValue, self).__init__(typ)
+        self.context = context
 
 
     def interpret(self, context):
-        thisContext = self.type.context
-        parentMost = thisContext.getParentMostContext()
+        parentMost = self.context.getParentMostContext()
         parentMost.setParentContext(context)
-        result = self.method.interpret(thisContext)
+        result = self.type.method.interpret(self.context)
         parentMost.setParentContext(None)
         return result
 

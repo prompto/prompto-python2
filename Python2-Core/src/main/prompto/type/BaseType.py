@@ -1,6 +1,5 @@
 from prompto.type.IType import IType
 from prompto.expression.IExpression import IExpression
-from prompto.store.TypeFamily import TypeFamily
 from prompto.value.ExpressionValue import ExpressionValue
 from prompto.error.SyntaxError import SyntaxError
 
@@ -92,11 +91,6 @@ class BaseType(IType):
         raise SyntaxError("Cannot iterate over " + self.typeName)
 
 
-    def checkAssignableTo(self, context, other):
-        if not self.isAssignableTo(context, other):
-            raise SyntaxError("Type: " + self.typeName + " is not compatible with: " + other.typeName)
-
-
     def checkRange(self, context, other):
         raise SyntaxError("Cannot create range of " + self.typeName + " and " + other.typeName)
 
@@ -121,11 +115,18 @@ class BaseType(IType):
         raise Exception("Unsupported!")
 
 
-    def doSort(self, context, source, cmp=None):
-        items = []
-        for item in source:
-            if isinstance(item, IExpression):
-                item = item.interpret(context)
-            items.append(item)
-        temp = sorted(items, cmp=cmp)
-        return [ExpressionValue(self, e) for e in temp]
+
+    def isAssignableFrom(self, context, other):
+        from prompto.type.NullType import NullType
+        return other is NullType.instance \
+            or self is other \
+            or self == other \
+            or self.typeName == other.typeName
+
+
+
+    def checkAssignableFrom(self, context, other):
+        if not self.isAssignableFrom(context, other):
+            raise SyntaxError("Type: " + self.typeName + " is not compatible with: " + other.typeName)
+
+
