@@ -82,7 +82,7 @@ class MethodFinder(object):
                         return Score.BETTER
                     if sp2.greaterThan(sp1):
                         return Score.WORSE
-        except PrestoError:
+        except PromptoError:
             pass
         return Score.SIMILAR
 

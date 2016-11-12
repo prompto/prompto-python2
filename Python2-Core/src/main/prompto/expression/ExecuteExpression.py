@@ -1,4 +1,4 @@
-from prompto.error.PrestoError import PrestoError
+from prompto.error.PromptoError import PromptoError
 from prompto.error.SyntaxError import SyntaxError
 from prompto.expression.CodeExpression import CodeExpression
 from prompto.expression.IExpression import IExpression
@@ -40,7 +40,7 @@ class ExecuteExpression ( Section, IExpression, ISection ):
                 return value.check(context)
             else:
                 raise SyntaxError("Expected code, got:" + str(value))
-        except PrestoError, e:
+        except PromptoError, e:
             raise SyntaxError(e.getMessage())
 
     def interpret(self, context):

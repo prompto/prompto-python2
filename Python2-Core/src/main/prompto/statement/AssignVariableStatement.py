@@ -68,7 +68,7 @@ class AssignVariableStatement ( SimpleStatement ):
         context.setValue(self.name, self.expression.interpret(context))
         return None
 
-    def resolve(self, context, methodDeclaration,checkInstance):
+    def resolve(self, context, methodDeclaration, checkInstance):
         # since we support implicit members, it's time to resolve them
         expression = self.getExpression()
         argument = methodDeclaration.getArguments().find(self.name)

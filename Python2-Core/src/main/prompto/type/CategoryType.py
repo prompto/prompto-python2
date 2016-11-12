@@ -1,6 +1,6 @@
 from prompto.declaration.AttributeDeclaration import AttributeDeclaration
 from prompto.declaration.IDeclaration import IDeclaration
-from prompto.error.PrestoError import PrestoError
+from prompto.error.PromptoError import PromptoError
 from prompto.error.SyntaxError import SyntaxError
 from prompto.grammar.Operator import Operator
 from prompto.runtime.Score import Score
@@ -281,7 +281,7 @@ class CategoryType(BaseType):
             proto = MethodCall(MethodSelector(name), args)
             finder = MethodFinder(context, proto)
             return finder.findMethod(True) is not None
-        except PrestoError:
+        except PromptoError:
             return False
 
 

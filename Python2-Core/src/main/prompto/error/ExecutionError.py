@@ -1,7 +1,7 @@
-from prompto.error.PrestoError import PrestoError
+from prompto.error.PromptoError import PromptoError
 
 
-class ExecutionError(PrestoError):
+class ExecutionError(PromptoError):
 
     def __init__(self, message=None, exception=None):
         super(ExecutionError, self).__init__(message, exception)

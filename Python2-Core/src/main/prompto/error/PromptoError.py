@@ -1,6 +1,6 @@
-class PrestoError ( Exception ):
+class PromptoError (Exception):
 
     def __init__(self, message = None, exception = None):
-        super(PrestoError, self).__init__(message, exception)
+        super(PromptoError, self).__init__(message, exception)
         self.message = message
         self.exception = exception
