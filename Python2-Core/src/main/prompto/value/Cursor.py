@@ -19,6 +19,13 @@ class Cursor(BaseValue, IIterable):
     def __len__(self):
         return len(self.stored)
 
+
+
+    def totalLength(self):
+        return self.stored.totalLength()
+
+
+
     def getIterator(self, context):
         for stored in self.stored:
             typ = self.readItemType(stored)
@@ -36,6 +43,8 @@ class Cursor(BaseValue, IIterable):
     def getMember(self, context, name, autoCreate=False):
         if "count" == name:
             return Integer(len(self))
+        elif "totalCount" == name:
+            return Integer(self.totalLength())
         else:
             raise InvalidValueError("No such member:" + name)
 
