@@ -58,7 +58,7 @@ class WhileStatement ( BaseStatement ):
         writer.append("}\n")
 
 
-    def toSDialect(self, writer):
+    def toMDialect(self, writer):
         self.toEDialect(writer)
 
 

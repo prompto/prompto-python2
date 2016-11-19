@@ -57,7 +57,7 @@ class AttributeDeclaration ( BaseDeclaration ):
                     writer.append(')')
             writer.append(';')
 
-    def toSDialect(self, writer):
+    def toMDialect(self, writer):
             if self.storable:
                 writer.append("storable ")
             writer.append("attr ")

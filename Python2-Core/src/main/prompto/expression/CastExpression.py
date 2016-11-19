@@ -37,7 +37,7 @@ class CastExpression (IExpression):
                 value.type = self.type
         return value
 
-    def toSDialect(self, writer):
+    def toMDialect(self, writer):
         self.toEDialect(writer)
 
     def toEDialect(self, writer):

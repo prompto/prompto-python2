@@ -24,7 +24,7 @@ class FilteredExpression(Section, IExpression):
     def __str__(self):
         return "fetch any " + self.itemName + " from " + str(self.source) + " where " + str(self.predicate)
 
-    def toSDialect(self, writer):
+    def toMDialect(self, writer):
         self.source.toDialect(writer)
         writer.append(" filtered with ")
         writer.append(self.itemName)
@@ -34,7 +34,7 @@ class FilteredExpression(Section, IExpression):
 
 
     def toEDialect(self, writer):
-        self.toSDialect(writer)
+        self.toMDialect(writer)
 
 
 
