@@ -4,6 +4,8 @@ from prompto.runtime.Context import *
 from prompto.runtime.LinkedVariable import LinkedVariable
 from prompto.runtime.Variable import *
 from prompto.type.MethodType import *
+from prompto.value.ClosureValue import ClosureValue
+
 
 
 class InstanceExpression(IExpression):
@@ -50,12 +52,21 @@ class InstanceExpression(IExpression):
             method = named.getFirst()
             return MethodType(method)
         else:
-            raise SyntaxError(self.name + "  is not an instance:" + type(named).__name__)
+            raise SyntaxError(self.name + "  is not a value:" + type(named).__name__)
 
 
     def interpret(self, context):
-        o = context.getValue(self.name)
-        if isinstance(o, IExpression):
-            o = o.interpret(context)
-        return o
+        if context.hasValue(self.name):
+            v = context.getValue(self.name)
+            # TODO not sure why interpret is needed in Python only
+            if isinstance(v, IExpression):
+                v = v.interpret(context)
+            return v
+        else:
+            named = context.getRegistered(self.name)
+            if isinstance(named, MethodDeclarationMap):
+                for decl in named.values():
+                    return ClosureValue(context, MethodType(decl))
+            else:
+                raise SyntaxError("No value or method with name:" + self.name)
 
