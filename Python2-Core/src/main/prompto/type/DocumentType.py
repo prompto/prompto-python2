@@ -34,7 +34,7 @@ class DocumentType ( NativeType ):
         if isinstance(other, (NullType, AnyType, MissingType)):
             return True
         else:
-            return super().isMoreSpecificThan(context, other)
+            return super(DocumentType, self).isMoreSpecificThan(context, other)
 
 
 
