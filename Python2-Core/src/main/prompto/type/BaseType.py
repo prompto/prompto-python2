@@ -31,6 +31,12 @@ class BaseType(IType):
         writer.append(self.typeName)
 
 
+
+    def getMemberMethods(selfself, context, name):
+        return []
+
+
+
     def checkAdd(self, context, other, tryReverse):
         from prompto.type.EnumeratedNativeType import EnumeratedNativeType
         if isinstance(other, EnumeratedNativeType):

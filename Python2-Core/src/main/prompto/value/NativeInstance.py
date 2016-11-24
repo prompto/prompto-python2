@@ -34,7 +34,7 @@ class NativeInstance(BaseValue, IInstance):
     def getType(self):
         return self.type
 
-    def getMember(self, context, attrName, autoCreate=False):
+    def getMemberValue(self, context, attrName, autoCreate=False):
         stacked = activeGetters.__dict__.get(attrName, None)
         first = stacked is None
         if first:
@@ -84,7 +84,7 @@ class NativeInstance(BaseValue, IInstance):
             decl = context.getRegisteredDeclaration(AttributeDeclaration, attrName)
             if decl.storable:
                 # TODO convert object graph if(value instanceof IInstance)
-                self.storable.SetMember(context, attrName, value)
+                self.storable.setMember(context, attrName, value)
 
     def __getattr__(self, item):
         return getattr(self.instance, item)

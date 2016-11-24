@@ -113,6 +113,16 @@ class Context(IContext):
         context.debugger = self.debugger
         return context
 
+
+    def newBuiltInContext(self, value):
+        context = BuiltInContext(value)
+        context.globals = self.globals
+        context.calling = self
+        context.parent = None
+        context.debugger = self.debugger
+        return context
+
+
     def newChildContext(self):
         context = Context()
         context.globals = self.globals
@@ -338,12 +348,22 @@ class DocumentContext(Context):
 
 
     def readValue(self, name):
-        return self.document.getMember(self.calling, name)
+        return self.document.getMemberValue(self.calling, name)
 
 
 
     def writeValue(self, name, value):
         self.document.setMember(self.calling, name, value)
+
+
+
+
+class BuiltInContext(Context):
+
+    def __init__(self, value):
+        super(BuiltInContext, self).__init__()
+        self.value = value
+
 
 
 class InstanceContext(Context):
@@ -388,7 +408,7 @@ class InstanceContext(Context):
             return self.getRegisteredDeclaration(ConcreteCategoryDeclaration, self.instanceType.typeName)
 
     def readValue(self, name):
-        value = self.instance.getMember(self.calling, name)
+        value = self.instance.getMemberValue(self.calling, name)
         if value is None:
             return None
         if isinstance(value, IExpression):

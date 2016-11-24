@@ -88,7 +88,7 @@ class BaseValueList(BaseValue, ISliceable):
             return False
         return self.items == obj.items
 
-    def getMember(self, context, name, autoCreate=False):
+    def getMemberValue(self, context, name, autoCreate=False):
         if "count" == name:
             return Integer(len(self.items))
         else:

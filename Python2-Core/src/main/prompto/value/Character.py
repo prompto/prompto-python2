@@ -24,7 +24,7 @@ class Character ( BaseValue, IMultiplyable) :
 
 
 
-    def getMember(self, context, name, autoCreate=False):
+    def getMemberValue(self, context, name, autoCreate=False):
         if "codePoint" == name:
             return Integer(ord(self.value))
         else:

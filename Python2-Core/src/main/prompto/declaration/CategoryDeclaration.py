@@ -12,14 +12,23 @@ class CategoryDeclaration(BaseDeclaration):
         self.attributes = attributes
         self.storable = False
 
+
+
     def setAttributes(self, attributes):
         self.attributes = attributes
+
+
 
     def getAttributes(self):
         return self.attributes
 
+
+
     def register(self, context):
         context.registerDeclaration(self)
+        self.registerMethods(context)
+
+
 
     def check(self, context):
         from prompto.declaration.AttributeDeclaration import AttributeDeclaration
@@ -30,6 +39,7 @@ class CategoryDeclaration(BaseDeclaration):
                     raise SyntaxError("Unknown attribute: \"" + attribute + "\"")
         from prompto.type.CategoryType import CategoryType
         return CategoryType(self.getName())
+
 
 
     def getType(self, context):

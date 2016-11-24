@@ -73,6 +73,7 @@ from prompto.expression.TernaryExpression import TernaryExpression
 from prompto.expression.ThisExpression import ThisExpression
 from prompto.expression.TypeExpression import TypeExpression
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
+from prompto.expression.UnresolvedSelector import UnresolvedSelector
 from prompto.grammar.ArgumentAssignment import ArgumentAssignment
 from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
 from prompto.grammar.ArgumentList import ArgumentList
@@ -696,7 +697,7 @@ class EPromptoBuilder(EParserListener):
 
     def exitMemberSelector(self, ctx):
         name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, MemberSelector(name))
+        self.setNodeValue(ctx, UnresolvedSelector(name))
 
 
 

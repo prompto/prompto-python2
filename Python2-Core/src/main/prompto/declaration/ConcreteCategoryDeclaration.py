@@ -197,7 +197,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
             return None
         return actual.findSetter(context, attrName)
 
-    def findMemberMethods(self, context, name):
+    def getMemberMethods(self, context, name):
         from prompto.runtime.Context import MethodDeclarationMap
         self.registerMethods(context)
         result = MethodDeclarationMap(name)
@@ -277,9 +277,9 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
                 writer.newLine()
         writer.dedent()
 
-    def findOperator(self, context, operator, type):
+    def getOperatorMethod(self, context, operator, type):
         methodName = "operator_" + operator.name
-        methods = self.findMemberMethods(context, methodName)
+        methods = self.getMemberMethods(context, methodName)
         if methods is None:
             return None
         # find best candidate

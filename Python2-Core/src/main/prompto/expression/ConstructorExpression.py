@@ -37,7 +37,7 @@ class ConstructorExpression(IExpression):
         with StringIO() as sb:
             if self.typ.mutable:
                 sb.write("mutable ")
-            sb.write(self.typ.getName())
+            sb.write(self.type.typeName)
             sb.write(' ')
             if self.copyFrom is not None:
                 sb.write("(from:")
@@ -76,7 +76,7 @@ class ConstructorExpression(IExpression):
         from prompto.type.CategoryType import CategoryType
         cd = context.getRegisteredDeclaration(CategoryDeclaration, self.typ.typeName)
         if cd is None:
-            raise SyntaxError("Unknown category " + self.typ.getName())
+            raise SyntaxError("Unknown category " + self.type.typeName)
         type = cd.getType(context)
         cd.checkConstructorContext(context)
         if self.copyFrom is not None:
@@ -87,7 +87,7 @@ class ConstructorExpression(IExpression):
             for assignment in self.assignments:
                 if not cd.hasAttribute(context, assignment.getName()):
                     raise SyntaxError("\"" + assignment.getName() +
-                        "\" is not an attribute of " + self.typ.getName())
+                        "\" is not an attribute of " + self.type.typeName)
                 assignment.check(context)
         return type
 
@@ -101,14 +101,14 @@ class ConstructorExpression(IExpression):
             if isinstance(copyObj, IInstance):
                 for name in copyObj.getMemberNames():
                     if cd.hasAttribute(context, name):
-                        value = copyObj.getMember(context, name)
-                        if value is not None and value.mutable and not self.typ.mutable:
+                        value = copyObj.getMemberValue(context, name)
+                        if value is not None and value.mutable and not self.type.mutable:
                             raise NotMutableError()
                         instance.setMember(context, name, value)
             elif isinstance(copyObj, Document):
                 for name in copyObj.getMemberNames():
                     if cd.hasAttribute(context, name):
-                        value = copyObj.getMember(context, name)
+                        value = copyObj.getMemberValue(context, name)
                         if value is not None and value.mutable and not self.typ.mutable:
                             raise NotMutableError()
                         # TODO convert to attribute type

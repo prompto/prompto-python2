@@ -4,15 +4,16 @@ from prompto.argument.ITypedArgument import ITypedArgument
 
 class CategoryArgument(BaseArgument, ITypedArgument):
 
-    def __init__(self, typ, name):
+    def __init__(self, type_, name, default=None):
         super(CategoryArgument, self).__init__(name)
-        self.typ = typ
+        self.type_ = type_
+        self.defaultExpression = default
 
     def getSignature(self, dialect):
         return self.getProto()
 
     def getProto(self):
-        return self.typ.typeName
+        return self.type_.typeName
 
     def __str__(self):
         return self.name + ':' + self.getProto()
@@ -34,13 +35,14 @@ class CategoryArgument(BaseArgument, ITypedArgument):
             raise SyntaxError("Duplicate argument: \"" + self.name + "\"")
         context.registerValue(self)
         if self.defaultExpression is not None:
-            context.setValue(self.name, self.defaultExpression)
+            value = self.defaultExpression.interpret(context)
+            context.setValue(self.name, value)
 
     def check(self, context):
-        self.typ.checkExists(context)
+        self.type_.checkExists(context)
 
     def getType(self, context=None):
-            return self.typ
+        return self.type_
 
     def toDialect(self, writer):
         if self.mutable:
@@ -52,17 +54,17 @@ class CategoryArgument(BaseArgument, ITypedArgument):
 
 
     def toEDialect(self, writer):
-        self.typ.toDialect(writer)
+        self.type_.toDialect(writer)
         writer.append(' ')
         writer.append(self.name)
 
 
     def toODialect(self, writer):
-        self.typ.toDialect(writer)
+        self.type_.toDialect(writer)
         writer.append(' ')
         writer.append(self.name)
 
     def toMDialect(self, writer):
         writer.append(self.name)
         writer.append(':')
-        self.typ.toDialect(writer)
+        self.type_.toDialect(writer)
