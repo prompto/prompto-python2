@@ -77,7 +77,6 @@ class BaseValueList(BaseValue, ISliceable):
                 idx = index.IntegerValue() - 1
                 self.items[idx] = value
             except IndexError:
-                from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
                 raise IndexOutOfRangeError()
         else:
             raise SyntaxError("No such item:" + str(index))

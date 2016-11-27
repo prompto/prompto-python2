@@ -16,13 +16,10 @@ from prompto.value.ExpressionValue import *
 from prompto.runtime.Variable import Variable
 from prompto.error.SyntaxError import SyntaxError
 from prompto.error.NotMutableError import NotMutableError
-
-# don't call getters from getters, so register them
 from prompto.value.NullValue import NullValue
 from prompto.value.Text import Text
 
-
-
+# don't call getters from getters, so register them
 activeGetters = threading.local()
 # don't call setters from setters, so register them
 activeSetters = threading.local()

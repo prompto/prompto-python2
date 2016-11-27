@@ -1,7 +1,7 @@
-from prompto.store.InvalidValueError import InvalidValueError
+from prompto.error.SyntaxError import SyntaxError
+from prompto.value.BaseValue import BaseValue
 from prompto.type.CharacterType import CharacterType
 from prompto.value.IMultiplyable import IMultiplyable
-from prompto.value.BaseValue import BaseValue
 from prompto.value.Integer import Integer
 
 
