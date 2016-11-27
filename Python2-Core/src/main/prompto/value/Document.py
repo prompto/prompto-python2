@@ -69,24 +69,26 @@ class Document ( BaseValue ):
             if value is None:
                 generator.writeNull()
             else:
-                value.toJson(None, generator, id(self), key, binaries)
+                value.toJson(None, generator, id(self), key, False, binaries)
         generator.writeEndObject()
         # done
         output.flush()
         return output.getvalue()
 
 
-    def toJson(self, context, generator, instanceId, fieldName, binaries):
-        generator.writeStartObject()
-        generator.writeFieldName("type")
-        generator.writeString(DocumentType.instance.typeName)
-        generator.writeFieldName("value")
+    def toJson(self, context, generator, instanceId, fieldName, withType, binaries):
+        if withType:
+            generator.writeStartObject()
+            generator.writeFieldName("type")
+            generator.writeString(DocumentType.instance.typeName)
+            generator.writeFieldName("value")
         generator.writeStartObject()
         for key, value in self.values.items():
             generator.writeFieldName(key)
             if value is None:
                 generator.writeNull()
             else:
-                value.toJson(context, generator, id(self), key, binaries)
+                value.toJson(context, generator, id(self), key, withType, binaries)
         generator.writeEndObject()
-        generator.writeEndObject()
+        if withType:
+            generator.writeEndObject()
