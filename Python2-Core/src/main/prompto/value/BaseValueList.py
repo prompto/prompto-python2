@@ -92,5 +92,5 @@ class BaseValueList(BaseValue, ISliceable):
         if "count" == name:
             return Integer(len(self.items))
         else:
-            return super(BaseValueList, self).getMember(context, name)
+            return super(BaseValueList, self).getMemberValue(context, name)
 

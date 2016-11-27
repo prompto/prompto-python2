@@ -66,7 +66,7 @@ class Time(BaseValue):
         elif "millisecond" == name:
             return Integer(self.value.microsecond // 1000)
         else:
-            raise SyntaxError("No such member:" + name)
+            return super(Time, self).getMemberValue(context, name, autoCreate)
 
 
     def ConvertTo(self, type_):

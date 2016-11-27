@@ -18,6 +18,11 @@ from prompto.error.SyntaxError import SyntaxError
 from prompto.error.NotMutableError import NotMutableError
 
 # don't call getters from getters, so register them
+from prompto.value.NullValue import NullValue
+from prompto.value.Text import Text
+
+
+
 activeGetters = threading.local()
 # don't call setters from setters, so register them
 activeSetters = threading.local()
@@ -102,8 +107,12 @@ class ConcreteInstance(BaseValue, IInstance, IMultiplyable):
         if getter is not None:
             context = context.newInstanceContext(self, None).newChildContext()
             return getter.interpret(context)
+        elif self.declaration.hasAttribute(context, attrName) or "dbId" == attrName:
+            return self.values.get(attrName, NullValue.instance)
+        elif "text" == attrName:
+            return Text(unicode(self))
         else:
-            return self.values.get(attrName, None)
+            return NullValue.instance
 
 
 

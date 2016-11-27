@@ -28,7 +28,7 @@ class Character ( BaseValue, IMultiplyable) :
         if "codePoint" == name:
             return Integer(ord(self.value))
         else:
-            raise InvalidValueError("No such member:" + name)
+            return super(Character, self).getMemberValue(context, name, autoCreate)
 
 
     def Add(self, context, value):

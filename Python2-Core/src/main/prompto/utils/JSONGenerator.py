@@ -65,3 +65,10 @@ class JSONGenerator(object):
         self.stream.write(str(value).encode())
         if self.state is State.BEGIN_VALUE:
             self.state = State.WITHIN_OBJECT
+
+    def writeNull(self):
+        if self.state in [State.BEGIN_OBJECT, State.WITHIN_OBJECT]:
+            raise Exception("Invalid state: " + str(self.state))
+        self.stream.write(str("null").encode())
+        if self.state is State.BEGIN_VALUE:
+            self.state = State.WITHIN_OBJECT

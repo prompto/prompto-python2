@@ -74,7 +74,7 @@ class Text(BaseValue, ISliceable, IMultiplyable):
         if "count" == name:
             return Integer(len(self.value))
         else:
-            raise InvalidValueError("No such member:" + name)
+            return super(Text, self).getMemberValue(context, name, autoCreate)
 
 
     def getItem(self, context, index):

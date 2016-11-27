@@ -56,7 +56,7 @@ class Date ( BaseValue ):
             day = 1 + self.value.toordinal() - date(self.value.year,1,1).toordinal()
             return Integer(day)
         else:
-            raise SyntaxError("No such member:" + name)
+            return super(Date, self).getMemberValue(context, name, autoCreate)
  
     def ConvertTo(self, type_):
         return self.value
