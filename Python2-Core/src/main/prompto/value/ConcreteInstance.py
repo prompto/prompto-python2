@@ -44,8 +44,7 @@ class ConcreteInstance(BaseValue, IInstance, IMultiplyable):
 
 
     def getType(self):
-        from prompto.type.CategoryType import CategoryType
-        return CategoryType(self.declaration.getName())
+        return self.type
 
 
     def getDbId(self):
