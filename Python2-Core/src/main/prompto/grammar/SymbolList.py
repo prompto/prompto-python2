@@ -1,3 +1,5 @@
+from io import StringIO
+
 from prompto.utils.ObjectList import ObjectList
 
 
@@ -9,4 +11,13 @@ class SymbolList (ObjectList):
             self.append(symbol)
 
     def __str__(self):
-        return "[" + super(SymbolList, self).__str__() + "]"
+        with StringIO() as sb:
+            sb.write(u"[")
+            for item in self:
+                sb.write(item.getName())
+                sb.write(u", ")
+            slen = sb.tell()
+            sb.truncate(slen - 2)
+            sb.seek(slen - 2)
+            sb.write(u"]")
+            return sb.getvalue()
