@@ -2,7 +2,7 @@ import unittest
 
 from prompto.argument.ExtendedArgument import ExtendedArgument
 from prompto.declaration.NativeMethodDeclaration import *
-from prompto.expression.AddExpression import *
+from prompto.expression.PlusExpression import *
 from prompto.expression.MemberSelector import MemberSelector
 from prompto.expression.NativeSymbol import *
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
@@ -179,7 +179,7 @@ class TestParserAtoms(unittest.TestCase):
         as_ = self.parse(statement,ECleverParser.argument_assignment)
         self.assertEquals("value",as_.getName())
         exp = as_.getExpression()
-        self.assertIsInstance(exp, AddExpression)
+        self.assertIsInstance(exp, PlusExpression)
         writer = CodeWriter(Dialect.E, Context.newGlobalContext())
         as_.toDialect(writer)
         self.assertEquals(statement, str(writer))
@@ -192,7 +192,7 @@ class TestParserAtoms(unittest.TestCase):
         as_ = ls[0]
         self.assertEquals("value",as_.getName())
         exp = as_.getExpression()
-        self.assertIsInstance(exp, AddExpression)
+        self.assertIsInstance(exp, PlusExpression)
         writer = CodeWriter(Dialect.E, Context.newGlobalContext())
         as_.toDialect(writer)
         self.assertEquals("\"person\" + p.name as value",str(writer))
@@ -209,7 +209,7 @@ class TestParserAtoms(unittest.TestCase):
         as_ = mc.getAssignments()[0]
         self.assertEquals("value",as_.getName())
         exp = as_.getExpression()
-        self.assertIsInstance(exp, AddExpression)
+        self.assertIsInstance(exp, PlusExpression)
         writer = CodeWriter(Dialect.E, Context.newGlobalContext())
         mc.toDialect(writer)
         self.assertEquals("print with \"person\" + p.name as value",str(writer))
