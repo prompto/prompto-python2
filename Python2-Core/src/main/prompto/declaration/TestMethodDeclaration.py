@@ -29,7 +29,7 @@ class TestMethodDeclaration(BaseDeclaration):
     def interpretNoError(self, context):
         # we land here only if no error was raised
         if self.error is not None:
-            self.printFailure (context, self.error.name, "no error")
+            self.printMissingError (context, self.error.name, "no error")
     
     def interpretAsserts(self, context):
         if self.assertions is None:
@@ -44,12 +44,18 @@ class TestMethodDeclaration(BaseDeclaration):
         finally:
             context.leaveMethod (self)
     
-    def printFailure(self, context, expected, actual):
-        print (self.name + " test failed, expected: " + expected + ", actual: " + actual, end='')
+    def printMissingError(self, context, expected, actual):
+        print (self.name + " test failed while expecting: " + expected + ", found: " + actual, end='')
+
+
+    def printFailedAssertion(self, context, expected, actual):
+        print (self.name + " test failed while verifying: " + expected + ", found: " + actual, end='')
     
+
     def printSuccess(self, context):
         print (self.name + " test successful", end='')
     
+
     def interpretBody(self, context):
         context.enterMethod (self)
         try:
@@ -70,7 +76,7 @@ class TestMethodDeclaration(BaseDeclaration):
         else:
             actualName = str(actual.getMemberValue (context, "name"))
             expectedName = "SUCCESS" if self.error is None else self.error.name
-            self.printFailure (context, expectedName, actualName)
+            self.printMissingError (context, expectedName, actualName)
     
     def toDialect(self, writer):
         if writer.isGlobalContext ():
