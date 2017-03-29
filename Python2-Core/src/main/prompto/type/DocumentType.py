@@ -30,6 +30,13 @@ class DocumentType ( NativeType ):
             raise Exception("text") # TODO
 
 
+    def isAssignableFrom(self, context, other):
+        from prompto.type.CategoryType import CategoryType
+        return super(DocumentType, self).isAssignableFrom(context, other) or \
+            other is AnyType.instance or \
+               (isinstance(other, CategoryType) and "Any"==other.typeName)
+
+
     def isMoreSpecificThan(self, context, other):
         if isinstance(other, (NullType, AnyType, MissingType)):
             return True
