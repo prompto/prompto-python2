@@ -152,6 +152,7 @@ from prompto.python.PythonMethodExpression import PythonMethodExpression
 from prompto.python.PythonModule import PythonModule
 from prompto.python.PythonNativeCall import PythonNativeCall, Python2NativeCall, Python3NativeCall
 from prompto.python.PythonNativeCategoryBinding import PythonNativeCategoryBinding, Python2NativeCategoryBinding, Python3NativeCategoryBinding
+from prompto.python.PythonSelfExpression import PythonSelfExpression
 from prompto.python.PythonStatement import PythonStatement
 from prompto.python.PythonTextLiteral import PythonTextLiteral
 from prompto.statement.AssignInstanceStatement import AssignInstanceStatement
@@ -1164,6 +1165,10 @@ class EPromptoBuilder(EParserListener):
         child = self.getNodeValue(ctx.child)
         child.setParent(parent)
         self.setNodeValue(ctx, child)
+
+
+    def exitPythonSelfExpression(self, ctx):
+        self.setNodeValue(ctx, PythonSelfExpression())
 
 
     def exitCSharpIdentifier(self, ctx):
