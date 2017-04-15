@@ -55,3 +55,6 @@ class BaseSwitchStatement(BaseStatement):
         if toThrow is not None:
             raise toThrow
         return None
+
+    def canReturn(self):
+        return True

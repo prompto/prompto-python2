@@ -1,4 +1,5 @@
 from prompto.error.NullReferenceError import NullReferenceError
+from prompto.error.SyntaxError import SyntaxError
 from prompto.parser.Dialect import Dialect
 from prompto.python.PythonNativeCall import Python2NativeCall
 from prompto.statement.NativeCall import NativeCall
@@ -31,9 +32,11 @@ class StatementList(list):
                 if nativeOnly and not isinstance(statement, Python2NativeCall):
                     continue
                 type_ = statement.check(context)
+                if not statement.canReturn():
+                    type_ = VoidType.instance
                 if type_ != VoidType.instance:
                     # unless necessary, don't collect AnyType returned by native statement check
-                    if len(types) == 0 or type_ != AnyType.instance or not nativeOnly:
+                    if len(types) == 0 or type_ is not AnyType.instance or not nativeOnly:
                         types[type_.typeName] = type_
             type_ = types.inferType(context)
             if returnType is not None:
@@ -52,6 +55,8 @@ class StatementList(list):
             context.enterStatement(statement)
             try:
                 result = statement.interpret(context)
+                if not statement.canReturn():
+                    result = None
                 if result is not None:
                     return result
             finally:

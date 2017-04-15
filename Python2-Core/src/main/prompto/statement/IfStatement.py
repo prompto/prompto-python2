@@ -8,16 +8,16 @@ class IfStatement ( BaseStatement ):
 
     def __init__(self, condition, statements):
         super(IfStatement, self).__init__()
-        self.elements = [IfElement(condition,statements)]
+        self.elements = [IfElement(condition, statements)]
 
     def addAdditionals(self, elements):
         self.elements.extend(elements)
 
     def addAdditional(self, condition, statements):
-        self.elements.append(IfElement(condition,statements))
+        self.elements.append(IfElement(condition, statements))
 
     def setFinal(self, statements):
-        self.elements.append(IfElement(None,statements))
+        self.elements.append(IfElement(None, statements))
 
     def check(self, context):
         return self.elements[0].check(context)
@@ -25,11 +25,15 @@ class IfStatement ( BaseStatement ):
 
     def interpret(self, context):
         for element in self.elements:
-            condition = element.getCondition()
+            condition = element.condition
             test = Boolean.TRUE if condition is None else condition.interpret(context)
             if isinstance(test, Boolean) and Boolean.TRUE==test:
                 return element.interpret(context)
         return None
+
+    def canReturn(self):
+        return True
+
 
     def toMDialect(self, writer):
         first = True
@@ -69,12 +73,6 @@ class IfElement ( BaseStatement ):
         super(IfElement, self).__init__()
         self.condition = condition
         self.statements = statements
-
-    def getCondition(self):
-        return self.condition
-
-    def getInstructions(self):
-        return self.statements
 
     def check(self, context):
         cond = self.condition.check(context)

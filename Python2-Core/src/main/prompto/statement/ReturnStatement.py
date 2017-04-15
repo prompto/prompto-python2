@@ -17,7 +17,7 @@ class ReturnStatement ( SimpleStatement ):
         return "return " + str(self.expression)
 
     def toDialect(self, writer):
-        writer.append("return ")
+        writer.append("return")
         if self.expression is not None:
             writer.append(" ")
             self.expression.toDialect(writer)
@@ -50,3 +50,7 @@ class ReturnStatement ( SimpleStatement ):
         else:
             value = self.expression.interpret(context)
             return NullValue.instance if value is None else value
+
+
+    def canReturn(self):
+        return True

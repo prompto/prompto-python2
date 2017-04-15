@@ -34,7 +34,7 @@ class DoWhileStatement ( BaseStatement ):
     def interpretCondition(self, context):
         value = self.condition.interpret(context)
         if not isinstance(value, Boolean):
-            raise InvalidDataError("Expected a Boolean, got:" + type(value).__name__)
+            raise InvalidValueError("Expected a Boolean, got:" + type(value).__name__)
         return value.value
 
     def toEDialect(self, writer):
@@ -57,3 +57,6 @@ class DoWhileStatement ( BaseStatement ):
 
     def toMDialect(self, writer):
         self.toEDialect(writer)
+
+    def canReturn(self):
+        return True
