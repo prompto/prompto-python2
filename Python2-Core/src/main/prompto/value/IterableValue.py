@@ -5,14 +5,14 @@ from prompto.runtime.Variable import Variable
 
 class IterableValue(BaseValue, IIterable):
 
-    def __init__(self, itemType, context, length, name, source, expression):
+    def __init__(self, context, name, itemType, source, length, expression):
         from prompto.type.IteratorType import IteratorType
         super(IterableValue, self).__init__(IteratorType(itemType))
-        self.itemType = itemType
         self.context = context
-        self.length = length
         self.name = name
+        self.itemType = itemType
         self.source = source
+        self.length = length
         self.expression = expression
 
     def getIterator(self, context):
