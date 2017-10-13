@@ -72,7 +72,7 @@ class CharacterType(NativeType):
 
     def nativeCast(self, context, value):
         from prompto.type.TextType import TextType
-        if isinstance(value.type, TextType) and len(value.value)>=1:
+        if isinstance(value.itype, TextType) and len(value.value)>=1:
             from prompto.value.Character import Character
             return Character(value.value[0:1])
         else:
