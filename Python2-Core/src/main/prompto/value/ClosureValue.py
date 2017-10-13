@@ -11,7 +11,7 @@ class ClosureValue(BaseValue):
     def interpret(self, context):
         parentMost = self.context.getParentMostContext()
         parentMost.setParentContext(context)
-        result = self.type.method.interpret(self.context)
+        result = self.itype.method.interpret(self.context)
         parentMost.setParentContext(None)
         return result
 

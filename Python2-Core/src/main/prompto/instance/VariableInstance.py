@@ -61,8 +61,8 @@ class VariableInstance(IAssignableInstance):
     def assign(self, context, expression):
         value = expression.interpret(context)
         if context.getRegisteredValue(INamedValue, self.name) is None:
-            typ = value.type if value is not NullValue.instance else expression.check(context)
-            context.registerValue(Variable(self.name, typ))
+            itype = value.itype if value is not NullValue.instance else expression.check(context)
+            context.registerValue(Variable(self.name, itype))
         context.setValue(self.name, value)
 
     def interpret(self, context):

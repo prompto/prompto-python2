@@ -35,10 +35,6 @@ class MemberSelector (SelectorExpression):
     def interpret(self, context):
         # resolve parent to keep clarity
         parent = self.resolveParent(context)
-        # special case for Symbol which evaluates as value
-        value = self.interpretSymbol(context, parent)
-        if value is not None:
-            return value
         # special case for singletons
         value = self.interpretSingleton(context, parent)
         if value is not None:
@@ -58,11 +54,13 @@ class MemberSelector (SelectorExpression):
         else:
             return instance.getMemberValue(context, self.name, True)
 
+
     def interpretTypeMember(self, context, parent):
         if isinstance(parent, TypeExpression):
            return parent.getMemberValue(context, self.name)
         else:
            return None
+
 
     def interpretSingleton(self, context, parent):
         from prompto.type.CategoryType import CategoryType
@@ -73,13 +71,6 @@ class MemberSelector (SelectorExpression):
                 return instance.getMemberValue(context, self.name, False)
         return None
 
-    def interpretSymbol(self, context, parent):
-        if isinstance(parent, SymbolExpression):
-            if "name"==self.name:
-                return Text(parent.name)
-            if "value"==self.name:
-                return parent.interpret(context)
-        return None
 
     def resolveParent(self, context):
         if isinstance(self.parent, UnresolvedIdentifier):

@@ -14,24 +14,31 @@ class EnumeratedNativeType ( BaseType ):
         self.typeName = typeName
         self.derivedFrom = derivedFrom
 
+
     def getDerivedFrom(self):
         return self.derivedFrom
 
+
     def checkMember(self, context, name):
-        if name=="symbols":
-            return ListType(self.derivedFrom)
-        elif "name"==name:
+        if name == "symbols":
+            return ListType(self)
+        elif "name" == name:
             return TextType.instance
-        elif name=="value":
-            return self
+        elif name == "value":
+            return self.derivedFrom
         else:
             return super(EnumeratedNativeType, self).checkMember(context, name)
+
+
+    def isAssignableFrom(self, context, other):
+        return self.typeName == other.typeName
+
 
     def getMemberValue(self, context, name):
         decl = context.getRegisteredDeclaration(IDeclaration, self.typeName)
         if not isinstance (decl, IEnumeratedDeclaration):
             raise SyntaxError(self.typeName + " is not an enumerated type!")
-        if "symbols"==name:
+        if "symbols" == name:
             return decl.getSymbols()
         else:
             raise SyntaxError("Unknown member:" + name)

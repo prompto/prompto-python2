@@ -86,7 +86,7 @@ class DateTime(BaseValue):
         value = self.value.replace(year=year, month=month) - td
         return DateTime(value)
 
-    def ConvertTo(self, type_):
+    def ConvertTo(self, itype):
         return self.value
 
 

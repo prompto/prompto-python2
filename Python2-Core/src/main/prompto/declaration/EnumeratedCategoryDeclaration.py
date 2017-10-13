@@ -8,8 +8,10 @@ class EnumeratedCategoryDeclaration ( ConcreteCategoryDeclaration, IEnumeratedDe
         super(EnumeratedCategoryDeclaration, self).__init__(name)
         self.symbols = None
 
+
     def getSymbols(self):
         return self.symbols
+
 
     def setSymbols(self, symbols):
         self.symbols = symbols
@@ -17,10 +19,12 @@ class EnumeratedCategoryDeclaration ( ConcreteCategoryDeclaration, IEnumeratedDe
         for s in symbols:
             s.setType(type)
 
+
     def register(self, context):
         context.registerDeclaration(self)
         for symbol in self.symbols:
             context.registerValue(symbol)
+
 
     def check(self, context):
         super(EnumeratedCategoryDeclaration, self).check(context)
@@ -28,8 +32,17 @@ class EnumeratedCategoryDeclaration ( ConcreteCategoryDeclaration, IEnumeratedDe
             s.check(context) # TODO
         return self.getType(context)
 
+
     def getType(self, context):
         return EnumeratedCategoryType(self.name)
+
+
+    def hasAttribute(self, context, name):
+        if "name" == name:
+            return True
+        else:
+            return super(EnumeratedCategoryDeclaration, self).hasAttribute(context, name)
+
 
     def toODialect(self, writer):
         writer.append("enumerated category ")

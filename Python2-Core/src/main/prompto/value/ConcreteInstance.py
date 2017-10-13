@@ -44,7 +44,7 @@ class ConcreteInstance(BaseValue, IInstance, IMultiplyable):
 
 
     def getType(self):
-        return self.type
+        return self.itype
 
 
     def getDbId(self):
@@ -217,7 +217,7 @@ class ConcreteInstance(BaseValue, IInstance, IMultiplyable):
 
 
     def interpretOperator(self, context, value, operator):
-        decl = self.declaration.getOperatorMethod(context, operator, value.type)
+        decl = self.declaration.getOperatorMethod(context, operator, value.itype)
         context = context.newInstanceContext(self, None)
         local = context.newChildContext()
         decl.registerArguments(local)

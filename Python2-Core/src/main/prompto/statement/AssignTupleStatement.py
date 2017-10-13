@@ -46,9 +46,9 @@ class AssignTupleStatement(SimpleStatement):
         return self.getNames() == obj.getNames() and self.getExpression() == obj.getExpression()
 
     def check(self, context):
-        type_ = self.expression.check(context)
-        if type_ != TupleType.instance:
-            raise SyntaxError("Expecting a tuple expression, got " + type_.getName())
+        itype = self.expression.check(context)
+        if itype != TupleType.instance:
+            raise SyntaxError("Expecting a tuple expression, got " + itype.getName())
         for name in self.names:
             actual = context.getRegistered(name)
             if actual is None:
@@ -70,6 +70,6 @@ class AssignTupleStatement(SimpleStatement):
             item = value.getItem(context, Integer(i))
             i += 1
             if context.getRegisteredValue(INamedValue, name) is None:
-                context.registerValue(Variable(name, item.type))
+                context.registerValue(Variable(name, item.itype))
             context.setValue(name, item)
         return None

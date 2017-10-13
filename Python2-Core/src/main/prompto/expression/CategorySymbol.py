@@ -10,7 +10,7 @@ class CategorySymbol(Symbol, IExpression):
     def __init__(self, symbol, assignments):
         super(CategorySymbol, self).__init__(symbol)
         self.assignments = assignments
-        self.type_ = None
+        self.itype = None
 
     def toDialect(self, writer):
         writer.append(self.symbol)
@@ -18,8 +18,8 @@ class CategorySymbol(Symbol, IExpression):
         self.assignments.toDialect(writer)
 
 
-    def setType(self, type_):
-        self.type = type_
+    def setType(self, itype):
+        self.type = itype
 
     def getType(self, context=None):
         return self.type
@@ -35,7 +35,7 @@ class CategorySymbol(Symbol, IExpression):
             if len(self.assignments)>0:
                 sb.write(str(self.assignments))
             else:
-                sb.write(self.type_.typeName)
+                sb.write(self.itype.typeName)
             return sb.getvalue()
 
     def check(self, context):

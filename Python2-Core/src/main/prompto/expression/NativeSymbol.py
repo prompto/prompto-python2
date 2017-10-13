@@ -1,13 +1,15 @@
 from prompto.expression.IExpression import *
 from prompto.expression.Symbol import *
 from prompto.error.SyntaxError import SyntaxError
+from prompto.value.Text import Text
+
 
 class NativeSymbol ( Symbol, IExpression ):
 
     def __init__(self, symbol, expression):
         super(NativeSymbol, self).__init__(symbol)
         self.expression = expression
-        self.type_ = None
+        self.itype = None
 
 
 
@@ -17,12 +19,12 @@ class NativeSymbol ( Symbol, IExpression ):
 
 
     def getType(self, context):
-        return self.type_
+        return self.itype
 
 
 
-    def setType(self, type_):
-        self.type_ = type_
+    def setType(self, itype):
+        self.itype = itype
 
 
 
@@ -65,11 +67,21 @@ class NativeSymbol ( Symbol, IExpression ):
 
     def check(self, context):
         actual = self.expression.check(context)
-        if not self.type_.getDerivedFrom().isAssignableFrom(context, actual):
-            raise SyntaxError("Cannot assign " + actual.getName() + " to " + self.type_.getDerivedFrom().getName())
-        return self.type_
+        if not self.itype.getDerivedFrom().isAssignableFrom(context, actual):
+            raise SyntaxError("Cannot assign " + actual.getName() + " to " + self.itype.getDerivedFrom().getName())
+        return self.itype
 
 
 
     def interpret(self, context):
-        return self.expression.interpret(context)
+        return self
+
+
+
+    def getMemberValue(self, context, name, autoCreate):
+        if "name" == name:
+            return Text(self.getName())
+        elif "value" == name:
+            return self.expression.interpret(context)
+        else:
+            return super(NativeSymbol, self).getMemberValue(context, name, autoCreate)

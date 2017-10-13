@@ -369,10 +369,10 @@ class BuiltInContext(Context):
 
 class InstanceContext(Context):
 
-    def __init__(self, instance, type):
+    def __init__(self, instance, itype):
         super(InstanceContext, self).__init__()
         self.instance = instance
-        self.instanceType = type if type is not None else instance.type
+        self.instanceType = itype if itype is not None else instance.itype
 
 
 

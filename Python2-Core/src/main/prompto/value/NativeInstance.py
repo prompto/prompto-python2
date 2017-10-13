@@ -32,7 +32,7 @@ class NativeInstance(BaseValue, IInstance):
         return mapped()
 
     def getType(self):
-        return self.type
+        return self.itype
 
     def getMemberValue(self, context, attrName, autoCreate=False):
         stacked = activeGetters.__dict__.get(attrName, None)
