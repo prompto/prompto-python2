@@ -9,13 +9,14 @@ from prompto.error.NotMutableError import NotMutableError
 
 class ConstructorExpression(IExpression):
 
-    def __init__(self, typ, assignments):
+    def __init__(self, itype, assignments):
         self.copyFrom = None
-        self.typ = typ
+        self.mutable = False
+        self.itype = itype
         self.setAssignments(assignments)
 
     def getType(self):
-        return self.typ
+        return self.itype
 
     def setAssignments(self, assignments):
         self.assignments = assignments
@@ -35,9 +36,9 @@ class ConstructorExpression(IExpression):
 
     def __str__(self):
         with StringIO() as sb:
-            if self.typ.mutable:
+            if self.mutable:
                 sb.write("mutable ")
-            sb.write(self.type.typeName)
+            sb.write(self.itype.typeName)
             sb.write(' ')
             if self.copyFrom is not None:
                 sb.write("(from:")
@@ -49,7 +50,7 @@ class ConstructorExpression(IExpression):
             return sb.getvalue()
 
     def toEDialect(self, writer):
-        self.typ.toDialect(writer)
+        self.itype.toDialect(writer)
         if self.copyFrom is not None:
             writer.append(" from ")
             writer.append(str(self.copyFrom))
@@ -59,7 +60,7 @@ class ConstructorExpression(IExpression):
             self.assignments.toDialect(writer)
 
     def toODialect(self, writer):
-        self.typ.toDialect(writer)
+        self.itype.toDialect(writer)
         assignments = ArgumentAssignmentList()
         if self.copyFrom is not None:
             from prompto.grammar.ArgumentAssignment import ArgumentAssignment
@@ -74,10 +75,10 @@ class ConstructorExpression(IExpression):
     def check(self, context):
         from prompto.declaration.CategoryDeclaration import CategoryDeclaration
         from prompto.type.CategoryType import CategoryType
-        cd = context.getRegisteredDeclaration(CategoryDeclaration, self.typ.typeName)
+        cd = context.getRegisteredDeclaration(CategoryDeclaration, self.itype.typeName)
         if cd is None:
-            raise SyntaxError("Unknown category " + self.type.typeName)
-        type = cd.getType(context)
+            raise SyntaxError("Unknown category " + self.itype.typeName)
+        itype = cd.getType(context)
         cd.checkConstructorContext(context)
         if self.copyFrom is not None:
             cft = self.copyFrom.check(context)
@@ -87,37 +88,37 @@ class ConstructorExpression(IExpression):
             for assignment in self.assignments:
                 if not cd.hasAttribute(context, assignment.getName()):
                     raise SyntaxError("\"" + assignment.getName() +
-                        "\" is not an attribute of " + self.type.typeName)
+                        "\" is not an attribute of " + self.itype.typeName)
                 assignment.check(context)
-        return type
+        return itype
 
     def interpret(self, context):
-        instance = self.typ.newInstance(context)
+        instance = self.itype.newInstance(context)
         instance.mutable = True
         if self.copyFrom is not None:
             copyObj = self.copyFrom.interpret(context)
             from prompto.declaration.CategoryDeclaration import CategoryDeclaration
-            cd = context.getRegisteredDeclaration(CategoryDeclaration, self.typ.typeName)
+            cd = context.getRegisteredDeclaration(CategoryDeclaration, self.itype.typeName)
             if isinstance(copyObj, IInstance):
                 for name in copyObj.getMemberNames():
                     if cd.hasAttribute(context, name):
                         value = copyObj.getMemberValue(context, name)
-                        if value is not None and value.mutable and not self.type.mutable:
+                        if value is not None and value.mutable and not self.itype.mutable:
                             raise NotMutableError()
                         instance.setMember(context, name, value)
             elif isinstance(copyObj, Document):
                 for name in copyObj.getMemberNames():
                     if cd.hasAttribute(context, name):
                         value = copyObj.getMemberValue(context, name)
-                        if value is not None and value.mutable and not self.typ.mutable:
+                        if value is not None and value.mutable and not self.itype.mutable:
                             raise NotMutableError()
                         # TODO convert to attribute type
                         instance.setMember(context, name, value)
         if self.assignments is not None:
             for assignment in self.assignments:
                 value = assignment.getExpression().interpret(context)
-                if value is not None and value.mutable and not self.typ.mutable:
+                if value is not None and value.mutable and not self.itype.mutable:
                     raise NotMutableError()
                 instance.setMember(context, assignment.getName(), value)
-        instance.mutable = self.typ.mutable
+        instance.mutable = self.itype.mutable
         return instance

@@ -1,7 +1,9 @@
 from prompto.declaration.AttributeDeclaration import AttributeDeclaration
 from prompto.declaration.IDeclaration import IDeclaration
+from prompto.declaration.IEnumeratedDeclaration import IEnumeratedDeclaration
 from prompto.error.PromptoError import PromptoError
 from prompto.error.SyntaxError import SyntaxError
+from prompto.expression.Symbol import Symbol
 from prompto.grammar.Operator import Operator
 from prompto.runtime.Score import Score
 from prompto.store.DataStore import DataStore
@@ -222,6 +224,8 @@ class CategoryType(BaseType):
             return True
         return False
 
+
+
     def scoreMostSpecific(self, context, t1, t2):
         if t1 == t2:
             return Score.SIMILAR
@@ -342,12 +346,18 @@ class CategoryType(BaseType):
         decl = self.getDeclaration(context)
         if decl is None:
             return super(CategoryType, self).convertPythonValueToPromptoValue(context, value, returnType)
+        if isinstance(decl, IEnumeratedDeclaration):
+            return self.loadEnumValue(context, decl, value)
         if DataStore.instance.isDbIdType(type(value)):
             value = DataStore.instance.fetchUnique(value)
         if isinstance(value, IStored):
             return decl.newInstanceFromStored(context, value)
         else:
             return super(CategoryType, self).convertPythonValueToPromptoValue(context, value, returnType)
+
+
+    def loadEnumValue(self, context, decl, name):
+        return context.getRegisteredValue( Symbol, name)
 
 
     def getMemberMethods(self, context, name):
