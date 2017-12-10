@@ -2,8 +2,8 @@ from antlr4 import Parser, Token
 
 class AbstractParser(Parser):
 
-    def __init__(self, input_):
-        super(AbstractParser, self).__init__(input_)
+    def __init__(self, input_, output):
+        super(AbstractParser, self).__init__(input_, output)
         self.path = ""
 
     def isText(self, token, text):
