@@ -1,13 +1,14 @@
-# Generated from java-escape by ANTLR 4.5
+# Generated from OLexer.g4 by ANTLR 4.7.1
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
 from io import StringIO
+import sys
 
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write(u"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\2")
+        buf.write(u"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\2")
         buf.write(u"\u00ad\u0662\b\1\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6")
         buf.write(u"\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t")
         buf.write(u"\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4")
@@ -203,9 +204,9 @@ def serializedATN():
         buf.write(u"\2\u0177\2\u0179\2\u017b\2\u017d\u00ad\3\2\r\4\2\13\13")
         buf.write(u"\16\16\4\2\f\f\17\17\4\2\13\13\"\"\6\2\f\f\17\17))^^")
         buf.write(u"\4\2C\\aa\5\2C\\aac|\6\2\f\f\17\17$$^^\4\2GGgg\4\2--")
-        buf.write(u"//\5\2\62;CHch\n\2$$))^^ddhhppttvv\u068f\2\3\3\2\2\2")
-        buf.write(u"\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2\2\r")
-        buf.write(u"\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25")
+        buf.write(u"//\5\2\62;CHch\n\2$$))^^ddhhppttvv\2\u068f\2\3\3\2\2")
+        buf.write(u"\2\2\5\3\2\2\2\2\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2\2")
+        buf.write(u"\r\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25")
         buf.write(u"\3\2\2\2\2\27\3\2\2\2\2\31\3\2\2\2\2\33\3\2\2\2\2\35")
         buf.write(u"\3\2\2\2\2\37\3\2\2\2\2!\3\2\2\2\2#\3\2\2\2\2%\3\2\2")
         buf.write(u"\2\2\'\3\2\2\2\2)\3\2\2\2\2+\3\2\2\2\2-\3\2\2\2\2/\3")
@@ -801,14 +802,13 @@ def serializedATN():
         buf.write(u"\u0620\u0626\u062c\u0632\u0638\u063e\u0645\u064a\u065c")
         buf.write(u"\u065e\3\b\2\2")
         return buf.getvalue()
-		
+
 
 class OLexer(Lexer):
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
     decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
-
 
     SPACE = 1
     WS = 2
@@ -982,6 +982,8 @@ class OLexer(Lexer):
     PERIOD_LITERAL = 170
     VERSION_LITERAL = 171
 
+    channelNames = [ u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN" ]
+
     modeNames = [ u"DEFAULT_MODE" ]
 
     literalNames = [ u"<INVALID>",
@@ -1082,9 +1084,9 @@ class OLexer(Lexer):
 
     grammarFileName = u"OLexer.g4"
 
-    def __init__(self, input=None):
-        super(OLexer, self).__init__(input)
-        self.checkVersion("4.5")
+    def __init__(self, input=None, output=sys.stdout):
+        super(OLexer, self).__init__(input, output=output)
+        self.checkVersion("4.7.1")
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None

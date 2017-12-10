@@ -1,19 +1,15 @@
-# Generated from java-escape by ANTLR 4.5
+# Generated from EParser.g4 by ANTLR 4.7.1
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
 from io import StringIO
-package = globals().get("__package__", None)
-ischild = len(package)>0 if package is not None else False
-if ischild:
-    from .EParserListener import EParserListener
-else:
-    from EParserListener import EParserListener
+import sys
+
 from .AbstractParser import AbstractParser
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write(u"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3")
+        buf.write(u"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3")
         buf.write(u"\u00b1\u092d\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6")
         buf.write(u"\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4")
         buf.write(u"\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t")
@@ -283,130 +279,130 @@ def serializedATN():
         buf.write(u"\u009e\u00a3\u00a5\u00a7\u00a7\b\2\64=\u0087\u0087\u008d")
         buf.write(u"\u008d\u0094\u0095\u009e\u009e\u00a3\u00a5\7\2\64=\u0087")
         buf.write(u"\u0087\u0094\u0094\u009e\u009e\u00a3\u00a7\7\2\64=\u0087")
-        buf.write(u"\u0087\u0094\u0094\u009e\u009e\u00a3\u00a5\u09b6\2\u01a4")
-        buf.write(u"\3\2\2\2\4\u01b9\3\2\2\2\6\u01c5\3\2\2\2\b\u01cb\3\2")
-        buf.write(u"\2\2\n\u01d1\3\2\2\2\f\u01e7\3\2\2\2\16\u0205\3\2\2\2")
-        buf.write(u"\20\u0222\3\2\2\2\22\u0224\3\2\2\2\24\u0234\3\2\2\2\26")
-        buf.write(u"\u023e\3\2\2\2\30\u024b\3\2\2\2\32\u0255\3\2\2\2\34\u0262")
-        buf.write(u"\3\2\2\2\36\u0281\3\2\2\2 \u029d\3\2\2\2\"\u02a6\3\2")
-        buf.write(u"\2\2$\u02bc\3\2\2\2&\u02be\3\2\2\2(\u02cb\3\2\2\2*\u02dd")
-        buf.write(u"\3\2\2\2,\u02f2\3\2\2\2.\u0307\3\2\2\2\60\u0309\3\2\2")
-        buf.write(u"\2\62\u030e\3\2\2\2\64\u032a\3\2\2\2\66\u032c\3\2\2\2")
-        buf.write(u"8\u0338\3\2\2\2:\u033f\3\2\2\2<\u0341\3\2\2\2>\u034a")
-        buf.write(u"\3\2\2\2@\u0353\3\2\2\2B\u0373\3\2\2\2D\u0375\3\2\2\2")
-        buf.write(u"F\u0383\3\2\2\2H\u038c\3\2\2\2J\u0393\3\2\2\2L\u03a7")
-        buf.write(u"\3\2\2\2N\u03bf\3\2\2\2P\u03c2\3\2\2\2R\u03f9\3\2\2\2")
-        buf.write(u"T\u03fb\3\2\2\2V\u03fd\3\2\2\2X\u041d\3\2\2\2Z\u048b")
-        buf.write(u"\3\2\2\2\\\u0495\3\2\2\2^\u0499\3\2\2\2`\u049e\3\2\2")
-        buf.write(u"\2b\u04a0\3\2\2\2d\u04b7\3\2\2\2f\u04b9\3\2\2\2h\u04be")
-        buf.write(u"\3\2\2\2j\u04d7\3\2\2\2l\u04d9\3\2\2\2n\u04de\3\2\2\2")
-        buf.write(u"p\u04e2\3\2\2\2r\u050c\3\2\2\2t\u050e\3\2\2\2v\u0528")
-        buf.write(u"\3\2\2\2x\u052a\3\2\2\2z\u0536\3\2\2\2|\u053a\3\2\2\2")
-        buf.write(u"~\u0546\3\2\2\2\u0080\u0548\3\2\2\2\u0082\u054f\3\2\2")
-        buf.write(u"\2\u0084\u0553\3\2\2\2\u0086\u0558\3\2\2\2\u0088\u0561")
-        buf.write(u"\3\2\2\2\u008a\u0566\3\2\2\2\u008c\u0569\3\2\2\2\u008e")
-        buf.write(u"\u056e\3\2\2\2\u0090\u057c\3\2\2\2\u0092\u0586\3\2\2")
-        buf.write(u"\2\u0094\u058a\3\2\2\2\u0096\u058c\3\2\2\2\u0098\u0595")
-        buf.write(u"\3\2\2\2\u009a\u059e\3\2\2\2\u009c\u05b0\3\2\2\2\u009e")
-        buf.write(u"\u05b3\3\2\2\2\u00a0\u05bc\3\2\2\2\u00a2\u05c4\3\2\2")
-        buf.write(u"\2\u00a4\u05cc\3\2\2\2\u00a6\u05de\3\2\2\2\u00a8\u05ef")
-        buf.write(u"\3\2\2\2\u00aa\u0600\3\2\2\2\u00ac\u0602\3\2\2\2\u00ae")
-        buf.write(u"\u0605\3\2\2\2\u00b0\u0609\3\2\2\2\u00b2\u060e\3\2\2")
-        buf.write(u"\2\u00b4\u0610\3\2\2\2\u00b6\u061a\3\2\2\2\u00b8\u061f")
-        buf.write(u"\3\2\2\2\u00ba\u0621\3\2\2\2\u00bc\u0623\3\2\2\2\u00be")
-        buf.write(u"\u0625\3\2\2\2\u00c0\u0627\3\2\2\2\u00c2\u0629\3\2\2")
-        buf.write(u"\2\u00c4\u0636\3\2\2\2\u00c6\u063a\3\2\2\2\u00c8\u063c")
-        buf.write(u"\3\2\2\2\u00ca\u0641\3\2\2\2\u00cc\u0646\3\2\2\2\u00ce")
-        buf.write(u"\u0648\3\2\2\2\u00d0\u0656\3\2\2\2\u00d2\u0664\3\2\2")
-        buf.write(u"\2\u00d4\u0666\3\2\2\2\u00d6\u0672\3\2\2\2\u00d8\u067e")
-        buf.write(u"\3\2\2\2\u00da\u0680\3\2\2\2\u00dc\u0684\3\2\2\2\u00de")
-        buf.write(u"\u068f\3\2\2\2\u00e0\u0693\3\2\2\2\u00e2\u06a5\3\2\2")
-        buf.write(u"\2\u00e4\u06ad\3\2\2\2\u00e6\u06b9\3\2\2\2\u00e8\u06bb")
-        buf.write(u"\3\2\2\2\u00ea\u06bd\3\2\2\2\u00ec\u06d0\3\2\2\2\u00ee")
-        buf.write(u"\u06d2\3\2\2\2\u00f0\u06d9\3\2\2\2\u00f2\u06e0\3\2\2")
-        buf.write(u"\2\u00f4\u06e9\3\2\2\2\u00f6\u06f2\3\2\2\2\u00f8\u06fb")
-        buf.write(u"\3\2\2\2\u00fa\u0712\3\2\2\2\u00fc\u0723\3\2\2\2\u00fe")
-        buf.write(u"\u0725\3\2\2\2\u0100\u0731\3\2\2\2\u0102\u0733\3\2\2")
-        buf.write(u"\2\u0104\u0735\3\2\2\2\u0106\u073b\3\2\2\2\u0108\u0742")
-        buf.write(u"\3\2\2\2\u010a\u0745\3\2\2\2\u010c\u074e\3\2\2\2\u010e")
-        buf.write(u"\u0756\3\2\2\2\u0110\u0762\3\2\2\2\u0112\u076a\3\2\2")
-        buf.write(u"\2\u0114\u0777\3\2\2\2\u0116\u0779\3\2\2\2\u0118\u077d")
-        buf.write(u"\3\2\2\2\u011a\u078b\3\2\2\2\u011c\u078d\3\2\2\2\u011e")
-        buf.write(u"\u0792\3\2\2\2\u0120\u0797\3\2\2\2\u0122\u079f\3\2\2")
-        buf.write(u"\2\u0124\u07b0\3\2\2\2\u0126\u07b2\3\2\2\2\u0128\u07b5")
-        buf.write(u"\3\2\2\2\u012a\u07b8\3\2\2\2\u012c\u07bb\3\2\2\2\u012e")
-        buf.write(u"\u07be\3\2\2\2\u0130\u07c1\3\2\2\2\u0132\u07c3\3\2\2")
-        buf.write(u"\2\u0134\u07c5\3\2\2\2\u0136\u07c7\3\2\2\2\u0138\u07c9")
-        buf.write(u"\3\2\2\2\u013a\u07d2\3\2\2\2\u013c\u07d4\3\2\2\2\u013e")
-        buf.write(u"\u07e5\3\2\2\2\u0140\u07e7\3\2\2\2\u0142\u07e9\3\2\2")
-        buf.write(u"\2\u0144\u07f1\3\2\2\2\u0146\u07f3\3\2\2\2\u0148\u07fa")
-        buf.write(u"\3\2\2\2\u014a\u0805\3\2\2\2\u014c\u0809\3\2\2\2\u014e")
-        buf.write(u"\u080d\3\2\2\2\u0150\u0814\3\2\2\2\u0152\u0816\3\2\2")
-        buf.write(u"\2\u0154\u081b\3\2\2\2\u0156\u081d\3\2\2\2\u0158\u082c")
-        buf.write(u"\3\2\2\2\u015a\u082e\3\2\2\2\u015c\u0836\3\2\2\2\u015e")
-        buf.write(u"\u0838\3\2\2\2\u0160\u0845\3\2\2\2\u0162\u0847\3\2\2")
-        buf.write(u"\2\u0164\u0852\3\2\2\2\u0166\u0862\3\2\2\2\u0168\u0869")
-        buf.write(u"\3\2\2\2\u016a\u0878\3\2\2\2\u016c\u087a\3\2\2\2\u016e")
-        buf.write(u"\u0883\3\2\2\2\u0170\u0885\3\2\2\2\u0172\u0894\3\2\2")
-        buf.write(u"\2\u0174\u0896\3\2\2\2\u0176\u0898\3\2\2\2\u0178\u089e")
-        buf.write(u"\3\2\2\2\u017a\u08a0\3\2\2\2\u017c\u08a7\3\2\2\2\u017e")
-        buf.write(u"\u08b2\3\2\2\2\u0180\u08b6\3\2\2\2\u0182\u08ba\3\2\2")
-        buf.write(u"\2\u0184\u08c5\3\2\2\2\u0186\u08d4\3\2\2\2\u0188\u08d6")
-        buf.write(u"\3\2\2\2\u018a\u08df\3\2\2\2\u018c\u08e1\3\2\2\2\u018e")
-        buf.write(u"\u08f0\3\2\2\2\u0190\u08f2\3\2\2\2\u0192\u08f4\3\2\2")
-        buf.write(u"\2\u0194\u08fa\3\2\2\2\u0196\u08fc\3\2\2\2\u0198\u0903")
-        buf.write(u"\3\2\2\2\u019a\u090e\3\2\2\2\u019c\u0912\3\2\2\2\u019e")
-        buf.write(u"\u0919\3\2\2\2\u01a0\u0928\3\2\2\2\u01a2\u092a\3\2\2")
-        buf.write(u"\2\u01a4\u01a5\7[\2\2\u01a5\u01a6\5\u00be`\2\u01a6\u01a7")
-        buf.write(u"\7K\2\2\u01a7\u01aa\7c\2\2\u01a8\u01ab\7U\2\2\u01a9\u01ab")
-        buf.write(u"\5\u00be`\2\u01aa\u01a8\3\2\2\2\u01aa\u01a9\3\2\2\2\u01ab")
-        buf.write(u"\u01b1\3\2\2\2\u01ac\u01ad\5$\23\2\u01ad\u01ae\7\23\2")
-        buf.write(u"\2\u01ae\u01af\7I\2\2\u01af\u01b2\3\2\2\2\u01b0\u01b2")
-        buf.write(u"\7\u009a\2\2\u01b1\u01ac\3\2\2\2\u01b1\u01b0\3\2\2\2")
-        buf.write(u"\u01b2\u01b3\3\2\2\2\u01b3\u01b4\5\u012e\u0098\2\u01b4")
-        buf.write(u"\u01b5\7\21\2\2\u01b5\u01b6\5\u0086D\2\u01b6\u01b7\5")
-        buf.write(u"\u0098M\2\u01b7\u01b8\5\u0088E\2\u01b8\3\3\2\2\2\u01b9")
-        buf.write(u"\u01ba\7[\2\2\u01ba\u01bb\5\u00be`\2\u01bb\u01bc\7K\2")
-        buf.write(u"\2\u01bc\u01bd\7c\2\2\u01bd\u01be\5\u00aaV\2\u01be\u01bf")
-        buf.write(u"\7\u009a\2\2\u01bf\u01c0\5\u012e\u0098\2\u01c0\u01c1")
-        buf.write(u"\7\21\2\2\u01c1\u01c2\5\u0086D\2\u01c2\u01c3\5\u0096")
-        buf.write(u"L\2\u01c3\u01c4\5\u0088E\2\u01c4\5\3\2\2\2\u01c5\u01c6")
-        buf.write(u"\5\u00c0a\2\u01c6\u01c7\7\u009a\2\2\u01c7\u01c8\5X-\2")
-        buf.write(u"\u01c8\u01c9\7K\2\2\u01c9\u01ca\5\u012c\u0097\2\u01ca")
-        buf.write(u"\7\3\2\2\2\u01cb\u01cc\5\u00c0a\2\u01cc\u01cf\5x=\2\u01cd")
-        buf.write(u"\u01ce\7I\2\2\u01ce\u01d0\5z>\2\u01cf\u01cd\3\2\2\2\u01cf")
-        buf.write(u"\u01d0\3\2\2\2\u01d0\t\3\2\2\2\u01d1\u01d2\7[\2\2\u01d2")
-        buf.write(u"\u01d3\5\u00bc_\2\u01d3\u01d5\7K\2\2\u01d4\u01d6\7\u0091")
-        buf.write(u"\2\2\u01d5\u01d4\3\2\2\2\u01d5\u01d6\3\2\2\2\u01d6\u01d7")
-        buf.write(u"\3\2\2\2\u01d7\u01d8\5\u00a6T\2\u01d8\u01da\7N\2\2\u01d9")
-        buf.write(u"\u01db\5\u009cO\2\u01da\u01d9\3\2\2\2\u01da\u01db\3\2")
-        buf.write(u"\2\2\u01db\u01e5\3\2\2\2\u01dc\u01e2\7\u009a\2\2\u01dd")
-        buf.write(u"\u01e0\5\u00e2r\2\u01de\u01df\7I\2\2\u01df\u01e1\5\u00ba")
-        buf.write(u"^\2\u01e0\u01de\3\2\2\2\u01e0\u01e1\3\2\2\2\u01e1\u01e3")
-        buf.write(u"\3\2\2\2\u01e2\u01dd\3\2\2\2\u01e2\u01e3\3\2\2\2\u01e3")
-        buf.write(u"\u01e4\3\2\2\2\u01e4\u01e6\7q\2\2\u01e5\u01dc\3\2\2\2")
-        buf.write(u"\u01e5\u01e6\3\2\2\2\u01e6\13\3\2\2\2\u01e7\u01e8\7[")
-        buf.write(u"\2\2\u01e8\u01e9\5\u00be`\2\u01e9\u01eb\7K\2\2\u01ea")
-        buf.write(u"\u01ec\7\u0091\2\2\u01eb\u01ea\3\2\2\2\u01eb\u01ec\3")
-        buf.write(u"\2\2\2\u01ec\u01ef\3\2\2\2\u01ed\u01f0\7U\2\2\u01ee\u01f0")
-        buf.write(u"\5\20\t\2\u01ef\u01ed\3\2\2\2\u01ef\u01ee\3\2\2\2\u01f0")
-        buf.write(u"\u0203\3\2\2\2\u01f1\u01fa\5$\23\2\u01f2\u01f3\7\23\2")
-        buf.write(u"\2\u01f3\u01f4\7I\2\2\u01f4\u01f5\7v\2\2\u01f5\u01f6")
-        buf.write(u"\7\21\2\2\u01f6\u01f7\5\u0086D\2\u01f7\u01f8\5\u00d0")
-        buf.write(u"i\2\u01f8\u01f9\5\u0088E\2\u01f9\u01fb\3\2\2\2\u01fa")
-        buf.write(u"\u01f2\3\2\2\2\u01fa\u01fb\3\2\2\2\u01fb\u0204\3\2\2")
-        buf.write(u"\2\u01fc\u01fd\7\u009a\2\2\u01fd\u01fe\7v\2\2\u01fe\u01ff")
-        buf.write(u"\7\21\2\2\u01ff\u0200\5\u0086D\2\u0200\u0201\5\u00d0")
-        buf.write(u"i\2\u0201\u0202\5\u0088E\2\u0202\u0204\3\2\2\2\u0203")
-        buf.write(u"\u01f1\3\2\2\2\u0203\u01fc\3\2\2\2\u0203\u0204\3\2\2")
-        buf.write(u"\2\u0204\r\3\2\2\2\u0205\u0206\7[\2\2\u0206\u0207\5\u00be")
-        buf.write(u"`\2\u0207\u0208\7K\2\2\u0208\u021b\7\u008f\2\2\u0209")
-        buf.write(u"\u0212\5$\23\2\u020a\u020b\7\23\2\2\u020b\u020c\7I\2")
-        buf.write(u"\2\u020c\u020d\7v\2\2\u020d\u020e\7\21\2\2\u020e\u020f")
-        buf.write(u"\5\u0086D\2\u020f\u0210\5\u00d0i\2\u0210\u0211\5\u0088")
-        buf.write(u"E\2\u0211\u0213\3\2\2\2\u0212\u020a\3\2\2\2\u0212\u0213")
-        buf.write(u"\3\2\2\2\u0213\u021c\3\2\2\2\u0214\u0215\7\u009a\2\2")
-        buf.write(u"\u0215\u0216\7v\2\2\u0216\u0217\7\21\2\2\u0217\u0218")
+        buf.write(u"\u0087\u0094\u0094\u009e\u009e\u00a3\u00a5\2\u09b6\2")
+        buf.write(u"\u01a4\3\2\2\2\4\u01b9\3\2\2\2\6\u01c5\3\2\2\2\b\u01cb")
+        buf.write(u"\3\2\2\2\n\u01d1\3\2\2\2\f\u01e7\3\2\2\2\16\u0205\3\2")
+        buf.write(u"\2\2\20\u0222\3\2\2\2\22\u0224\3\2\2\2\24\u0234\3\2\2")
+        buf.write(u"\2\26\u023e\3\2\2\2\30\u024b\3\2\2\2\32\u0255\3\2\2\2")
+        buf.write(u"\34\u0262\3\2\2\2\36\u0281\3\2\2\2 \u029d\3\2\2\2\"\u02a6")
+        buf.write(u"\3\2\2\2$\u02bc\3\2\2\2&\u02be\3\2\2\2(\u02cb\3\2\2\2")
+        buf.write(u"*\u02dd\3\2\2\2,\u02f2\3\2\2\2.\u0307\3\2\2\2\60\u0309")
+        buf.write(u"\3\2\2\2\62\u030e\3\2\2\2\64\u032a\3\2\2\2\66\u032c\3")
+        buf.write(u"\2\2\28\u0338\3\2\2\2:\u033f\3\2\2\2<\u0341\3\2\2\2>")
+        buf.write(u"\u034a\3\2\2\2@\u0353\3\2\2\2B\u0373\3\2\2\2D\u0375\3")
+        buf.write(u"\2\2\2F\u0383\3\2\2\2H\u038c\3\2\2\2J\u0393\3\2\2\2L")
+        buf.write(u"\u03a7\3\2\2\2N\u03bf\3\2\2\2P\u03c2\3\2\2\2R\u03f9\3")
+        buf.write(u"\2\2\2T\u03fb\3\2\2\2V\u03fd\3\2\2\2X\u041d\3\2\2\2Z")
+        buf.write(u"\u048b\3\2\2\2\\\u0495\3\2\2\2^\u0499\3\2\2\2`\u049e")
+        buf.write(u"\3\2\2\2b\u04a0\3\2\2\2d\u04b7\3\2\2\2f\u04b9\3\2\2\2")
+        buf.write(u"h\u04be\3\2\2\2j\u04d7\3\2\2\2l\u04d9\3\2\2\2n\u04de")
+        buf.write(u"\3\2\2\2p\u04e2\3\2\2\2r\u050c\3\2\2\2t\u050e\3\2\2\2")
+        buf.write(u"v\u0528\3\2\2\2x\u052a\3\2\2\2z\u0536\3\2\2\2|\u053a")
+        buf.write(u"\3\2\2\2~\u0546\3\2\2\2\u0080\u0548\3\2\2\2\u0082\u054f")
+        buf.write(u"\3\2\2\2\u0084\u0553\3\2\2\2\u0086\u0558\3\2\2\2\u0088")
+        buf.write(u"\u0561\3\2\2\2\u008a\u0566\3\2\2\2\u008c\u0569\3\2\2")
+        buf.write(u"\2\u008e\u056e\3\2\2\2\u0090\u057c\3\2\2\2\u0092\u0586")
+        buf.write(u"\3\2\2\2\u0094\u058a\3\2\2\2\u0096\u058c\3\2\2\2\u0098")
+        buf.write(u"\u0595\3\2\2\2\u009a\u059e\3\2\2\2\u009c\u05b0\3\2\2")
+        buf.write(u"\2\u009e\u05b3\3\2\2\2\u00a0\u05bc\3\2\2\2\u00a2\u05c4")
+        buf.write(u"\3\2\2\2\u00a4\u05cc\3\2\2\2\u00a6\u05de\3\2\2\2\u00a8")
+        buf.write(u"\u05ef\3\2\2\2\u00aa\u0600\3\2\2\2\u00ac\u0602\3\2\2")
+        buf.write(u"\2\u00ae\u0605\3\2\2\2\u00b0\u0609\3\2\2\2\u00b2\u060e")
+        buf.write(u"\3\2\2\2\u00b4\u0610\3\2\2\2\u00b6\u061a\3\2\2\2\u00b8")
+        buf.write(u"\u061f\3\2\2\2\u00ba\u0621\3\2\2\2\u00bc\u0623\3\2\2")
+        buf.write(u"\2\u00be\u0625\3\2\2\2\u00c0\u0627\3\2\2\2\u00c2\u0629")
+        buf.write(u"\3\2\2\2\u00c4\u0636\3\2\2\2\u00c6\u063a\3\2\2\2\u00c8")
+        buf.write(u"\u063c\3\2\2\2\u00ca\u0641\3\2\2\2\u00cc\u0646\3\2\2")
+        buf.write(u"\2\u00ce\u0648\3\2\2\2\u00d0\u0656\3\2\2\2\u00d2\u0664")
+        buf.write(u"\3\2\2\2\u00d4\u0666\3\2\2\2\u00d6\u0672\3\2\2\2\u00d8")
+        buf.write(u"\u067e\3\2\2\2\u00da\u0680\3\2\2\2\u00dc\u0684\3\2\2")
+        buf.write(u"\2\u00de\u068f\3\2\2\2\u00e0\u0693\3\2\2\2\u00e2\u06a5")
+        buf.write(u"\3\2\2\2\u00e4\u06ad\3\2\2\2\u00e6\u06b9\3\2\2\2\u00e8")
+        buf.write(u"\u06bb\3\2\2\2\u00ea\u06bd\3\2\2\2\u00ec\u06d0\3\2\2")
+        buf.write(u"\2\u00ee\u06d2\3\2\2\2\u00f0\u06d9\3\2\2\2\u00f2\u06e0")
+        buf.write(u"\3\2\2\2\u00f4\u06e9\3\2\2\2\u00f6\u06f2\3\2\2\2\u00f8")
+        buf.write(u"\u06fb\3\2\2\2\u00fa\u0712\3\2\2\2\u00fc\u0723\3\2\2")
+        buf.write(u"\2\u00fe\u0725\3\2\2\2\u0100\u0731\3\2\2\2\u0102\u0733")
+        buf.write(u"\3\2\2\2\u0104\u0735\3\2\2\2\u0106\u073b\3\2\2\2\u0108")
+        buf.write(u"\u0742\3\2\2\2\u010a\u0745\3\2\2\2\u010c\u074e\3\2\2")
+        buf.write(u"\2\u010e\u0756\3\2\2\2\u0110\u0762\3\2\2\2\u0112\u076a")
+        buf.write(u"\3\2\2\2\u0114\u0777\3\2\2\2\u0116\u0779\3\2\2\2\u0118")
+        buf.write(u"\u077d\3\2\2\2\u011a\u078b\3\2\2\2\u011c\u078d\3\2\2")
+        buf.write(u"\2\u011e\u0792\3\2\2\2\u0120\u0797\3\2\2\2\u0122\u079f")
+        buf.write(u"\3\2\2\2\u0124\u07b0\3\2\2\2\u0126\u07b2\3\2\2\2\u0128")
+        buf.write(u"\u07b5\3\2\2\2\u012a\u07b8\3\2\2\2\u012c\u07bb\3\2\2")
+        buf.write(u"\2\u012e\u07be\3\2\2\2\u0130\u07c1\3\2\2\2\u0132\u07c3")
+        buf.write(u"\3\2\2\2\u0134\u07c5\3\2\2\2\u0136\u07c7\3\2\2\2\u0138")
+        buf.write(u"\u07c9\3\2\2\2\u013a\u07d2\3\2\2\2\u013c\u07d4\3\2\2")
+        buf.write(u"\2\u013e\u07e5\3\2\2\2\u0140\u07e7\3\2\2\2\u0142\u07e9")
+        buf.write(u"\3\2\2\2\u0144\u07f1\3\2\2\2\u0146\u07f3\3\2\2\2\u0148")
+        buf.write(u"\u07fa\3\2\2\2\u014a\u0805\3\2\2\2\u014c\u0809\3\2\2")
+        buf.write(u"\2\u014e\u080d\3\2\2\2\u0150\u0814\3\2\2\2\u0152\u0816")
+        buf.write(u"\3\2\2\2\u0154\u081b\3\2\2\2\u0156\u081d\3\2\2\2\u0158")
+        buf.write(u"\u082c\3\2\2\2\u015a\u082e\3\2\2\2\u015c\u0836\3\2\2")
+        buf.write(u"\2\u015e\u0838\3\2\2\2\u0160\u0845\3\2\2\2\u0162\u0847")
+        buf.write(u"\3\2\2\2\u0164\u0852\3\2\2\2\u0166\u0862\3\2\2\2\u0168")
+        buf.write(u"\u0869\3\2\2\2\u016a\u0878\3\2\2\2\u016c\u087a\3\2\2")
+        buf.write(u"\2\u016e\u0883\3\2\2\2\u0170\u0885\3\2\2\2\u0172\u0894")
+        buf.write(u"\3\2\2\2\u0174\u0896\3\2\2\2\u0176\u0898\3\2\2\2\u0178")
+        buf.write(u"\u089e\3\2\2\2\u017a\u08a0\3\2\2\2\u017c\u08a7\3\2\2")
+        buf.write(u"\2\u017e\u08b2\3\2\2\2\u0180\u08b6\3\2\2\2\u0182\u08ba")
+        buf.write(u"\3\2\2\2\u0184\u08c5\3\2\2\2\u0186\u08d4\3\2\2\2\u0188")
+        buf.write(u"\u08d6\3\2\2\2\u018a\u08df\3\2\2\2\u018c\u08e1\3\2\2")
+        buf.write(u"\2\u018e\u08f0\3\2\2\2\u0190\u08f2\3\2\2\2\u0192\u08f4")
+        buf.write(u"\3\2\2\2\u0194\u08fa\3\2\2\2\u0196\u08fc\3\2\2\2\u0198")
+        buf.write(u"\u0903\3\2\2\2\u019a\u090e\3\2\2\2\u019c\u0912\3\2\2")
+        buf.write(u"\2\u019e\u0919\3\2\2\2\u01a0\u0928\3\2\2\2\u01a2\u092a")
+        buf.write(u"\3\2\2\2\u01a4\u01a5\7[\2\2\u01a5\u01a6\5\u00be`\2\u01a6")
+        buf.write(u"\u01a7\7K\2\2\u01a7\u01aa\7c\2\2\u01a8\u01ab\7U\2\2\u01a9")
+        buf.write(u"\u01ab\5\u00be`\2\u01aa\u01a8\3\2\2\2\u01aa\u01a9\3\2")
+        buf.write(u"\2\2\u01ab\u01b1\3\2\2\2\u01ac\u01ad\5$\23\2\u01ad\u01ae")
+        buf.write(u"\7\23\2\2\u01ae\u01af\7I\2\2\u01af\u01b2\3\2\2\2\u01b0")
+        buf.write(u"\u01b2\7\u009a\2\2\u01b1\u01ac\3\2\2\2\u01b1\u01b0\3")
+        buf.write(u"\2\2\2\u01b2\u01b3\3\2\2\2\u01b3\u01b4\5\u012e\u0098")
+        buf.write(u"\2\u01b4\u01b5\7\21\2\2\u01b5\u01b6\5\u0086D\2\u01b6")
+        buf.write(u"\u01b7\5\u0098M\2\u01b7\u01b8\5\u0088E\2\u01b8\3\3\2")
+        buf.write(u"\2\2\u01b9\u01ba\7[\2\2\u01ba\u01bb\5\u00be`\2\u01bb")
+        buf.write(u"\u01bc\7K\2\2\u01bc\u01bd\7c\2\2\u01bd\u01be\5\u00aa")
+        buf.write(u"V\2\u01be\u01bf\7\u009a\2\2\u01bf\u01c0\5\u012e\u0098")
+        buf.write(u"\2\u01c0\u01c1\7\21\2\2\u01c1\u01c2\5\u0086D\2\u01c2")
+        buf.write(u"\u01c3\5\u0096L\2\u01c3\u01c4\5\u0088E\2\u01c4\5\3\2")
+        buf.write(u"\2\2\u01c5\u01c6\5\u00c0a\2\u01c6\u01c7\7\u009a\2\2\u01c7")
+        buf.write(u"\u01c8\5X-\2\u01c8\u01c9\7K\2\2\u01c9\u01ca\5\u012c\u0097")
+        buf.write(u"\2\u01ca\7\3\2\2\2\u01cb\u01cc\5\u00c0a\2\u01cc\u01cf")
+        buf.write(u"\5x=\2\u01cd\u01ce\7I\2\2\u01ce\u01d0\5z>\2\u01cf\u01cd")
+        buf.write(u"\3\2\2\2\u01cf\u01d0\3\2\2\2\u01d0\t\3\2\2\2\u01d1\u01d2")
+        buf.write(u"\7[\2\2\u01d2\u01d3\5\u00bc_\2\u01d3\u01d5\7K\2\2\u01d4")
+        buf.write(u"\u01d6\7\u0091\2\2\u01d5\u01d4\3\2\2\2\u01d5\u01d6\3")
+        buf.write(u"\2\2\2\u01d6\u01d7\3\2\2\2\u01d7\u01d8\5\u00a6T\2\u01d8")
+        buf.write(u"\u01da\7N\2\2\u01d9\u01db\5\u009cO\2\u01da\u01d9\3\2")
+        buf.write(u"\2\2\u01da\u01db\3\2\2\2\u01db\u01e5\3\2\2\2\u01dc\u01e2")
+        buf.write(u"\7\u009a\2\2\u01dd\u01e0\5\u00e2r\2\u01de\u01df\7I\2")
+        buf.write(u"\2\u01df\u01e1\5\u00ba^\2\u01e0\u01de\3\2\2\2\u01e0\u01e1")
+        buf.write(u"\3\2\2\2\u01e1\u01e3\3\2\2\2\u01e2\u01dd\3\2\2\2\u01e2")
+        buf.write(u"\u01e3\3\2\2\2\u01e3\u01e4\3\2\2\2\u01e4\u01e6\7q\2\2")
+        buf.write(u"\u01e5\u01dc\3\2\2\2\u01e5\u01e6\3\2\2\2\u01e6\13\3\2")
+        buf.write(u"\2\2\u01e7\u01e8\7[\2\2\u01e8\u01e9\5\u00be`\2\u01e9")
+        buf.write(u"\u01eb\7K\2\2\u01ea\u01ec\7\u0091\2\2\u01eb\u01ea\3\2")
+        buf.write(u"\2\2\u01eb\u01ec\3\2\2\2\u01ec\u01ef\3\2\2\2\u01ed\u01f0")
+        buf.write(u"\7U\2\2\u01ee\u01f0\5\20\t\2\u01ef\u01ed\3\2\2\2\u01ef")
+        buf.write(u"\u01ee\3\2\2\2\u01f0\u0203\3\2\2\2\u01f1\u01fa\5$\23")
+        buf.write(u"\2\u01f2\u01f3\7\23\2\2\u01f3\u01f4\7I\2\2\u01f4\u01f5")
+        buf.write(u"\7v\2\2\u01f5\u01f6\7\21\2\2\u01f6\u01f7\5\u0086D\2\u01f7")
+        buf.write(u"\u01f8\5\u00d0i\2\u01f8\u01f9\5\u0088E\2\u01f9\u01fb")
+        buf.write(u"\3\2\2\2\u01fa\u01f2\3\2\2\2\u01fa\u01fb\3\2\2\2\u01fb")
+        buf.write(u"\u0204\3\2\2\2\u01fc\u01fd\7\u009a\2\2\u01fd\u01fe\7")
+        buf.write(u"v\2\2\u01fe\u01ff\7\21\2\2\u01ff\u0200\5\u0086D\2\u0200")
+        buf.write(u"\u0201\5\u00d0i\2\u0201\u0202\5\u0088E\2\u0202\u0204")
+        buf.write(u"\3\2\2\2\u0203\u01f1\3\2\2\2\u0203\u01fc\3\2\2\2\u0203")
+        buf.write(u"\u0204\3\2\2\2\u0204\r\3\2\2\2\u0205\u0206\7[\2\2\u0206")
+        buf.write(u"\u0207\5\u00be`\2\u0207\u0208\7K\2\2\u0208\u021b\7\u008f")
+        buf.write(u"\2\2\u0209\u0212\5$\23\2\u020a\u020b\7\23\2\2\u020b\u020c")
+        buf.write(u"\7I\2\2\u020c\u020d\7v\2\2\u020d\u020e\7\21\2\2\u020e")
+        buf.write(u"\u020f\5\u0086D\2\u020f\u0210\5\u00d0i\2\u0210\u0211")
+        buf.write(u"\5\u0088E\2\u0211\u0213\3\2\2\2\u0212\u020a\3\2\2\2\u0212")
+        buf.write(u"\u0213\3\2\2\2\u0213\u021c\3\2\2\2\u0214\u0215\7\u009a")
+        buf.write(u"\2\2\u0215\u0216\7v\2\2\u0216\u0217\7\21\2\2\u0217\u0218")
         buf.write(u"\5\u0086D\2\u0218\u0219\5\u00d0i\2\u0219\u021a\5\u0088")
         buf.write(u"E\2\u021a\u021c\3\2\2\2\u021b\u0209\3\2\2\2\u021b\u0214")
         buf.write(u"\3\2\2\2\u021b\u021c\3\2\2\2\u021c\17\3\2\2\2\u021d\u0223")
@@ -618,18 +614,18 @@ def serializedATN():
         buf.write(u"S\3\2\2\2\u03fb\u03fc\7Q\2\2\u03fcU\3\2\2\2\u03fd\u03ff")
         buf.write(u"\7\u008a\2\2\u03fe\u0400\5X-\2\u03ff\u03fe\3\2\2\2\u03ff")
         buf.write(u"\u0400\3\2\2\2\u0400W\3\2\2\2\u0401\u0402\b-\1\2\u0402")
-        buf.write(u"\u0403\7#\2\2\u0403\u041e\5X-,\u0404\u0405\7{\2\2\u0405")
-        buf.write(u"\u041e\5X-+\u0406\u0407\7?\2\2\u0407\u0408\7\21\2\2\u0408")
-        buf.write(u"\u041e\5X-\20\u0409\u041e\5b\62\2\u040a\u041e\5Z.\2\u040b")
-        buf.write(u"\u040c\5Z.\2\u040c\u040d\5v<\2\u040d\u041e\3\2\2\2\u040e")
-        buf.write(u"\u040f\7e\2\2\u040f\u0410\7\21\2\2\u0410\u041e\5\u00ba")
-        buf.write(u"^\2\u0411\u0412\7>\2\2\u0412\u0413\7\21\2\2\u0413\u041e")
-        buf.write(u"\5\u00b6\\\2\u0414\u041e\5h\65\2\u0415\u041e\5f\64\2")
-        buf.write(u"\u0416\u041e\5j\66\2\u0417\u041e\5r:\2\u0418\u041e\5")
-        buf.write(u"\u011c\u008f\2\u0419\u041e\5\u011e\u0090\2\u041a\u041e")
+        buf.write(u"\u041e\5b\62\2\u0403\u041e\5Z.\2\u0404\u0405\5Z.\2\u0405")
+        buf.write(u"\u0406\5v<\2\u0406\u041e\3\2\2\2\u0407\u0408\7#\2\2\u0408")
+        buf.write(u"\u041e\5X-,\u0409\u040a\7{\2\2\u040a\u041e\5X-+\u040b")
+        buf.write(u"\u040c\7?\2\2\u040c\u040d\7\21\2\2\u040d\u041e\5X-\20")
+        buf.write(u"\u040e\u040f\7e\2\2\u040f\u0410\7\21\2\2\u0410\u041e")
+        buf.write(u"\5\u00ba^\2\u0411\u0412\7>\2\2\u0412\u0413\7\21\2\2\u0413")
+        buf.write(u"\u041e\5\u00b6\\\2\u0414\u041e\5h\65\2\u0415\u041e\5")
+        buf.write(u"f\64\2\u0416\u041e\5j\66\2\u0417\u041e\5r:\2\u0418\u041e")
+        buf.write(u"\5\u011c\u008f\2\u0419\u041e\5\u011e\u0090\2\u041a\u041e")
         buf.write(u"\5t;\2\u041b\u041e\5n8\2\u041c\u041e\5^\60\2\u041d\u0401")
-        buf.write(u"\3\2\2\2\u041d\u0404\3\2\2\2\u041d\u0406\3\2\2\2\u041d")
-        buf.write(u"\u0409\3\2\2\2\u041d\u040a\3\2\2\2\u041d\u040b\3\2\2")
+        buf.write(u"\3\2\2\2\u041d\u0403\3\2\2\2\u041d\u0404\3\2\2\2\u041d")
+        buf.write(u"\u0407\3\2\2\2\u041d\u0409\3\2\2\2\u041d\u040b\3\2\2")
         buf.write(u"\2\u041d\u040e\3\2\2\2\u041d\u0411\3\2\2\2\u041d\u0414")
         buf.write(u"\3\2\2\2\u041d\u0415\3\2\2\2\u041d\u0416\3\2\2\2\u041d")
         buf.write(u"\u0417\3\2\2\2\u041d\u0418\3\2\2\2\u041d\u0419\3\2\2")
@@ -1263,11 +1259,11 @@ def serializedATN():
         buf.write(u"\u0883\u088c\u0894\u089e\u08a3\u08af\u08c2\u08cc\u08d4")
         buf.write(u"\u08df\u08e8\u08f0\u08fa\u08ff\u090b\u0919\u0920\u0928")
         return buf.getvalue()
-		
+
 
 class EParser ( AbstractParser ):
 
-    grammarFileName = "java-escape"
+    grammarFileName = "EParser.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -1811,9 +1807,9 @@ class EParser ( AbstractParser ):
     PERIOD_LITERAL=174
     VERSION_LITERAL=175
 
-    def __init__(self, input):
-        super(EParser, self).__init__(input)
-        self.checkVersion("4.5")
+    def __init__(self, input, output=sys.stdout):
+        super(EParser, self).__init__(input, output=output)
+        self.checkVersion("4.7.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -1884,11 +1880,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_enum_category_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterEnum_category_declaration"):
                 listener.enterEnum_category_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitEnum_category_declaration"):
                 listener.exitEnum_category_declaration(self)
 
 
@@ -1902,29 +1898,31 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 418
             self.match(EParser.DEFINE)
-            self.state = 419 
+            self.state = 419
             localctx.name = self.type_identifier()
             self.state = 420
             self.match(EParser.AS)
             self.state = 421
             self.match(EParser.ENUMERATED)
             self.state = 424
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.CATEGORY]:
                 self.state = 422
                 self.match(EParser.CATEGORY)
-
+                pass
             elif token in [EParser.TYPE_IDENTIFIER]:
-                self.state = 423 
+                self.state = 423
                 localctx.derived = self.type_identifier()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
             self.state = 431
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,1,self._ctx)
             if la_ == 1:
-                self.state = 426 
+                self.state = 426
                 localctx.attrs = self.attribute_list()
                 self.state = 427
                 self.match(EParser.COMMA)
@@ -1938,15 +1936,15 @@ class EParser ( AbstractParser ):
                 pass
 
 
-            self.state = 433 
+            self.state = 433
             self.symbols_token()
             self.state = 434
             self.match(EParser.COLON)
-            self.state = 435 
+            self.state = 435
             self.indent()
-            self.state = 436 
+            self.state = 436
             localctx.symbols = self.category_symbol_list()
-            self.state = 437 
+            self.state = 437
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -2008,11 +2006,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_enum_native_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterEnum_native_declaration"):
                 listener.enterEnum_native_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitEnum_native_declaration"):
                 listener.exitEnum_native_declaration(self)
 
 
@@ -2026,25 +2024,25 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 439
             self.match(EParser.DEFINE)
-            self.state = 440 
+            self.state = 440
             localctx.name = self.type_identifier()
             self.state = 441
             self.match(EParser.AS)
             self.state = 442
             self.match(EParser.ENUMERATED)
-            self.state = 443 
+            self.state = 443
             localctx.typ = self.native_type()
             self.state = 444
             self.match(EParser.WITH)
-            self.state = 445 
+            self.state = 445
             self.symbols_token()
             self.state = 446
             self.match(EParser.COLON)
-            self.state = 447 
+            self.state = 447
             self.indent()
-            self.state = 448 
+            self.state = 448
             localctx.symbols = self.native_symbol_list()
-            self.state = 449 
+            self.state = 449
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -2084,11 +2082,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_native_symbol
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNative_symbol"):
                 listener.enterNative_symbol(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNative_symbol"):
                 listener.exitNative_symbol(self)
 
 
@@ -2100,15 +2098,15 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 4, self.RULE_native_symbol)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 451 
+            self.state = 451
             localctx.name = self.symbol_identifier()
             self.state = 452
             self.match(EParser.WITH)
-            self.state = 453 
+            self.state = 453
             localctx.exp = self.expression(0)
             self.state = 454
             self.match(EParser.AS)
-            self.state = 455 
+            self.state = 455
             self.value_token()
         except RecognitionException as re:
             localctx.exception = re
@@ -2146,11 +2144,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_category_symbol
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCategory_symbol"):
                 listener.enterCategory_symbol(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCategory_symbol"):
                 listener.exitCategory_symbol(self)
 
 
@@ -2163,16 +2161,17 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 457 
+            self.state = 457
             localctx.name = self.symbol_identifier()
-            self.state = 458 
+            self.state = 458
             localctx.args = self.with_argument_assignment_list(0)
             self.state = 461
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.AND:
                 self.state = 459
                 self.match(EParser.AND)
-                self.state = 460 
+                self.state = 460
                 localctx.arg = self.argument_assignment()
 
 
@@ -2240,11 +2239,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_attribute_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAttribute_declaration"):
                 listener.enterAttribute_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAttribute_declaration"):
                 listener.exitAttribute_declaration(self)
 
 
@@ -2259,44 +2258,49 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 463
             self.match(EParser.DEFINE)
-            self.state = 464 
+            self.state = 464
             localctx.name = self.attribute_identifier()
             self.state = 465
             self.match(EParser.AS)
             self.state = 467
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.STORABLE:
                 self.state = 466
                 self.match(EParser.STORABLE)
 
 
-            self.state = 469 
+            self.state = 469
             localctx.typ = self.typedef(0)
             self.state = 470
             self.match(EParser.ATTRIBUTE)
             self.state = 472
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.IN or _la==EParser.MATCHING:
-                self.state = 471 
+                self.state = 471
                 localctx.match = self.attribute_constraint()
 
 
             self.state = 483
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.WITH:
                 self.state = 474
                 self.match(EParser.WITH)
                 self.state = 480
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==EParser.VARIABLE_IDENTIFIER:
-                    self.state = 475 
+                    self.state = 475
                     localctx.indices = self.variable_identifier_list()
                     self.state = 478
+                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==EParser.AND:
                         self.state = 476
                         self.match(EParser.AND)
-                        self.state = 477 
+                        self.state = 477
                         localctx.index = self.variable_identifier()
 
 
@@ -2379,11 +2383,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_concrete_category_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterConcrete_category_declaration"):
                 listener.enterConcrete_category_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitConcrete_category_declaration"):
                 listener.exitConcrete_category_declaration(self)
 
 
@@ -2398,11 +2402,12 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 485
             self.match(EParser.DEFINE)
-            self.state = 486 
+            self.state = 486
             localctx.name = self.type_identifier()
             self.state = 487
             self.match(EParser.AS)
             self.state = 489
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.STORABLE:
                 self.state = 488
@@ -2410,24 +2415,27 @@ class EParser ( AbstractParser ):
 
 
             self.state = 493
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.CATEGORY]:
                 self.state = 491
                 self.match(EParser.CATEGORY)
-
+                pass
             elif token in [EParser.TYPE_IDENTIFIER]:
-                self.state = 492 
+                self.state = 492
                 localctx.derived = self.derived_list()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
             self.state = 513
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
             if la_ == 1:
-                self.state = 495 
+                self.state = 495
                 localctx.attrs = self.attribute_list()
                 self.state = 504
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==EParser.COMMA:
                     self.state = 496
@@ -2438,11 +2446,11 @@ class EParser ( AbstractParser ):
                     self.match(EParser.METHODS)
                     self.state = 499
                     self.match(EParser.COLON)
-                    self.state = 500 
+                    self.state = 500
                     self.indent()
-                    self.state = 501 
+                    self.state = 501
                     localctx.methods = self.member_method_declaration_list()
-                    self.state = 502 
+                    self.state = 502
                     self.dedent()
 
 
@@ -2454,11 +2462,11 @@ class EParser ( AbstractParser ):
                 self.match(EParser.METHODS)
                 self.state = 508
                 self.match(EParser.COLON)
-                self.state = 509 
+                self.state = 509
                 self.indent()
-                self.state = 510 
+                self.state = 510
                 localctx.methods = self.member_method_declaration_list()
-                self.state = 511 
+                self.state = 511
                 self.dedent()
 
 
@@ -2527,11 +2535,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_singleton_category_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSingleton_category_declaration"):
                 listener.enterSingleton_category_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSingleton_category_declaration"):
                 listener.exitSingleton_category_declaration(self)
 
 
@@ -2546,18 +2554,20 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 515
             self.match(EParser.DEFINE)
-            self.state = 516 
+            self.state = 516
             localctx.name = self.type_identifier()
             self.state = 517
             self.match(EParser.AS)
             self.state = 518
             self.match(EParser.SINGLETON)
             self.state = 537
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
             if la_ == 1:
-                self.state = 519 
+                self.state = 519
                 localctx.attrs = self.attribute_list()
                 self.state = 528
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==EParser.COMMA:
                     self.state = 520
@@ -2568,11 +2578,11 @@ class EParser ( AbstractParser ):
                     self.match(EParser.METHODS)
                     self.state = 523
                     self.match(EParser.COLON)
-                    self.state = 524 
+                    self.state = 524
                     self.indent()
-                    self.state = 525 
+                    self.state = 525
                     localctx.methods = self.member_method_declaration_list()
-                    self.state = 526 
+                    self.state = 526
                     self.dedent()
 
 
@@ -2584,11 +2594,11 @@ class EParser ( AbstractParser ):
                 self.match(EParser.METHODS)
                 self.state = 532
                 self.match(EParser.COLON)
-                self.state = 533 
+                self.state = 533
                 self.indent()
-                self.state = 534 
+                self.state = 534
                 localctx.methods = self.member_method_declaration_list()
-                self.state = 535 
+                self.state = 535
                 self.dedent()
 
 
@@ -2634,11 +2644,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDerivedListItem"):
                 listener.enterDerivedListItem(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDerivedListItem"):
                 listener.exitDerivedListItem(self)
 
 
@@ -2654,11 +2664,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDerivedList"):
                 listener.enterDerivedList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDerivedList"):
                 listener.exitDerivedList(self)
 
 
@@ -2669,22 +2679,23 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 14, self.RULE_derived_list)
         try:
             self.state = 544
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
             if la_ == 1:
                 localctx = EParser.DerivedListContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 539 
+                self.state = 539
                 localctx.items = self.type_identifier_list()
                 pass
 
             elif la_ == 2:
                 localctx = EParser.DerivedListItemContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 540 
+                self.state = 540
                 localctx.items = self.type_identifier_list()
                 self.state = 541
                 self.match(EParser.AND)
-                self.state = 542 
+                self.state = 542
                 localctx.item = self.type_identifier()
                 pass
 
@@ -2756,11 +2767,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_operator_method_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOperator_method_declaration"):
                 listener.enterOperator_method_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOperator_method_declaration"):
                 listener.exitOperator_method_declaration(self)
 
 
@@ -2775,7 +2786,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 546
             self.match(EParser.DEFINE)
-            self.state = 547 
+            self.state = 547
             localctx.op = self.operator()
             self.state = 548
             self.match(EParser.AS)
@@ -2783,14 +2794,15 @@ class EParser ( AbstractParser ):
             self.match(EParser.OPERATOR)
             self.state = 550
             self.match(EParser.RECEIVING)
-            self.state = 551 
+            self.state = 551
             localctx.arg = self.operator_argument()
             self.state = 554
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.RETURNING:
                 self.state = 552
                 self.match(EParser.RETURNING)
-                self.state = 553 
+                self.state = 553
                 localctx.typ = self.typedef(0)
 
 
@@ -2798,11 +2810,11 @@ class EParser ( AbstractParser ):
             self.match(EParser.DOING)
             self.state = 557
             self.match(EParser.COLON)
-            self.state = 558 
+            self.state = 558
             self.indent()
-            self.state = 559 
+            self.state = 559
             localctx.stmts = self.statement_list()
-            self.state = 560 
+            self.state = 560
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -2855,11 +2867,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_setter_method_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSetter_method_declaration"):
                 listener.enterSetter_method_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSetter_method_declaration"):
                 listener.exitSetter_method_declaration(self)
 
 
@@ -2873,7 +2885,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 562
             self.match(EParser.DEFINE)
-            self.state = 563 
+            self.state = 563
             localctx.name = self.variable_identifier()
             self.state = 564
             self.match(EParser.AS)
@@ -2883,11 +2895,11 @@ class EParser ( AbstractParser ):
             self.match(EParser.DOING)
             self.state = 567
             self.match(EParser.COLON)
-            self.state = 568 
+            self.state = 568
             self.indent()
-            self.state = 569 
+            self.state = 569
             localctx.stmts = self.statement_list()
-            self.state = 570 
+            self.state = 570
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -2943,11 +2955,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_native_setter_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNative_setter_declaration"):
                 listener.enterNative_setter_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNative_setter_declaration"):
                 listener.exitNative_setter_declaration(self)
 
 
@@ -2962,11 +2974,12 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 572
             self.match(EParser.DEFINE)
-            self.state = 573 
+            self.state = 573
             localctx.name = self.variable_identifier()
             self.state = 574
             self.match(EParser.AS)
             self.state = 576
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.NATIVE:
                 self.state = 575
@@ -2979,11 +2992,11 @@ class EParser ( AbstractParser ):
             self.match(EParser.DOING)
             self.state = 580
             self.match(EParser.COLON)
-            self.state = 581 
+            self.state = 581
             self.indent()
-            self.state = 582 
+            self.state = 582
             localctx.stmts = self.native_statement_list()
-            self.state = 583 
+            self.state = 583
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -3036,11 +3049,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_getter_method_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterGetter_method_declaration"):
                 listener.enterGetter_method_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitGetter_method_declaration"):
                 listener.exitGetter_method_declaration(self)
 
 
@@ -3054,7 +3067,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 585
             self.match(EParser.DEFINE)
-            self.state = 586 
+            self.state = 586
             localctx.name = self.variable_identifier()
             self.state = 587
             self.match(EParser.AS)
@@ -3064,11 +3077,11 @@ class EParser ( AbstractParser ):
             self.match(EParser.DOING)
             self.state = 590
             self.match(EParser.COLON)
-            self.state = 591 
+            self.state = 591
             self.indent()
-            self.state = 592 
+            self.state = 592
             localctx.stmts = self.statement_list()
-            self.state = 593 
+            self.state = 593
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -3124,11 +3137,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_native_getter_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNative_getter_declaration"):
                 listener.enterNative_getter_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNative_getter_declaration"):
                 listener.exitNative_getter_declaration(self)
 
 
@@ -3143,11 +3156,12 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 595
             self.match(EParser.DEFINE)
-            self.state = 596 
+            self.state = 596
             localctx.name = self.variable_identifier()
             self.state = 597
             self.match(EParser.AS)
             self.state = 599
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.NATIVE:
                 self.state = 598
@@ -3160,11 +3174,11 @@ class EParser ( AbstractParser ):
             self.match(EParser.DOING)
             self.state = 603
             self.match(EParser.COLON)
-            self.state = 604 
+            self.state = 604
             self.indent()
-            self.state = 605 
+            self.state = 605
             localctx.stmts = self.native_statement_list()
-            self.state = 606 
+            self.state = 606
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -3261,11 +3275,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_native_category_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNative_category_declaration"):
                 listener.enterNative_category_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNative_category_declaration"):
                 listener.exitNative_category_declaration(self)
 
 
@@ -3280,11 +3294,12 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 608
             self.match(EParser.DEFINE)
-            self.state = 609 
+            self.state = 609
             localctx.name = self.type_identifier()
             self.state = 610
             self.match(EParser.AS)
             self.state = 612
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.STORABLE:
                 self.state = 611
@@ -3296,9 +3311,10 @@ class EParser ( AbstractParser ):
             self.state = 615
             self.match(EParser.CATEGORY)
             self.state = 623
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
             if la_ == 1:
-                self.state = 616 
+                self.state = 616
                 localctx.attrs = self.attribute_list()
                 self.state = 617
                 self.match(EParser.COMMA)
@@ -3318,16 +3334,17 @@ class EParser ( AbstractParser ):
 
             self.state = 625
             self.match(EParser.COLON)
-            self.state = 626 
+            self.state = 626
             self.indent()
-            self.state = 627 
+            self.state = 627
             localctx.bindings = self.native_category_bindings()
-            self.state = 628 
+            self.state = 628
             self.dedent()
             self.state = 637
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
             if la_ == 1:
-                self.state = 629 
+                self.state = 629
                 self.lfp()
                 self.state = 630
                 self.match(EParser.AND)
@@ -3335,11 +3352,11 @@ class EParser ( AbstractParser ):
                 self.match(EParser.METHODS)
                 self.state = 632
                 self.match(EParser.COLON)
-                self.state = 633 
+                self.state = 633
                 self.indent()
-                self.state = 634 
+                self.state = 634
                 localctx.methods = self.native_member_method_declaration_list()
-                self.state = 635 
+                self.state = 635
                 self.dedent()
 
 
@@ -3435,11 +3452,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_native_resource_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNative_resource_declaration"):
                 listener.enterNative_resource_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNative_resource_declaration"):
                 listener.exitNative_resource_declaration(self)
 
 
@@ -3453,7 +3470,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 639
             self.match(EParser.DEFINE)
-            self.state = 640 
+            self.state = 640
             localctx.name = self.type_identifier()
             self.state = 641
             self.match(EParser.AS)
@@ -3462,9 +3479,10 @@ class EParser ( AbstractParser ):
             self.state = 643
             self.match(EParser.RESOURCE)
             self.state = 651
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,21,self._ctx)
             if la_ == 1:
-                self.state = 644 
+                self.state = 644
                 localctx.attrs = self.attribute_list()
                 self.state = 645
                 self.match(EParser.COMMA)
@@ -3484,16 +3502,17 @@ class EParser ( AbstractParser ):
 
             self.state = 653
             self.match(EParser.COLON)
-            self.state = 654 
+            self.state = 654
             self.indent()
-            self.state = 655 
+            self.state = 655
             localctx.bindings = self.native_category_bindings()
-            self.state = 656 
+            self.state = 656
             self.dedent()
             self.state = 665
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
             if la_ == 1:
-                self.state = 657 
+                self.state = 657
                 self.lfp()
                 self.state = 658
                 self.match(EParser.AND)
@@ -3501,11 +3520,11 @@ class EParser ( AbstractParser ):
                 self.match(EParser.METHODS)
                 self.state = 660
                 self.match(EParser.COLON)
-                self.state = 661 
+                self.state = 661
                 self.indent()
-                self.state = 662 
+                self.state = 662
                 localctx.methods = self.native_member_method_declaration_list()
-                self.state = 663 
+                self.state = 663
                 self.dedent()
 
 
@@ -3555,11 +3574,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_native_category_bindings
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNative_category_bindings"):
                 listener.enterNative_category_bindings(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNative_category_bindings"):
                 listener.exitNative_category_bindings(self)
 
 
@@ -3581,11 +3600,11 @@ class EParser ( AbstractParser ):
             self.match(EParser.AS)
             self.state = 671
             self.match(EParser.COLON)
-            self.state = 672 
+            self.state = 672
             self.indent()
-            self.state = 673 
+            self.state = 673
             localctx.items = self.native_category_binding_list(0)
-            self.state = 674 
+            self.state = 674
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -3629,11 +3648,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNativeCategoryBindingListItem"):
                 listener.enterNativeCategoryBindingListItem(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNativeCategoryBindingListItem"):
                 listener.exitNativeCategoryBindingListItem(self)
 
 
@@ -3649,11 +3668,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNativeCategoryBindingList"):
                 listener.enterNativeCategoryBindingList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNativeCategoryBindingList"):
                 listener.exitNativeCategoryBindingList(self)
 
 
@@ -3671,7 +3690,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 677 
+            self.state = 677
             localctx.item = self.native_category_binding()
             self._ctx.stop = self._input.LT(-1)
             self.state = 685
@@ -3689,9 +3708,9 @@ class EParser ( AbstractParser ):
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 680 
+                    self.state = 680
                     self.lfp()
-                    self.state = 681 
+                    self.state = 681
                     localctx.item = self.native_category_binding() 
                 self.state = 687
                 self._errHandler.sync(self)
@@ -3737,11 +3756,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAttributeList"):
                 listener.enterAttributeList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAttributeList"):
                 listener.exitAttributeList(self)
 
 
@@ -3767,11 +3786,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAttributeListItem"):
                 listener.enterAttributeListItem(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAttributeListItem"):
                 listener.exitAttributeListItem(self)
 
 
@@ -3782,6 +3801,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 34, self.RULE_attribute_list)
         try:
             self.state = 698
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,25,self._ctx)
             if la_ == 1:
                 localctx = EParser.AttributeListContext(self, localctx)
@@ -3790,7 +3810,7 @@ class EParser ( AbstractParser ):
                 self.match(EParser.WITH)
                 self.state = 689
                 self.match(EParser.ATTRIBUTE)
-                self.state = 690 
+                self.state = 690
                 localctx.item = self.attribute_identifier()
                 pass
 
@@ -3801,14 +3821,15 @@ class EParser ( AbstractParser ):
                 self.match(EParser.WITH)
                 self.state = 692
                 self.match(EParser.ATTRIBUTES)
-                self.state = 693 
+                self.state = 693
                 localctx.items = self.attribute_identifier_list()
                 self.state = 696
+                self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,24,self._ctx)
                 if la_ == 1:
                     self.state = 694
                     self.match(EParser.AND)
-                    self.state = 695 
+                    self.state = 695
                     localctx.item = self.attribute_identifier()
 
 
@@ -3866,11 +3887,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_abstract_method_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAbstract_method_declaration"):
                 listener.enterAbstract_method_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAbstract_method_declaration"):
                 listener.exitAbstract_method_declaration(self)
 
 
@@ -3885,7 +3906,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 700
             self.match(EParser.DEFINE)
-            self.state = 701 
+            self.state = 701
             localctx.name = self.method_identifier()
             self.state = 702
             self.match(EParser.AS)
@@ -3894,20 +3915,22 @@ class EParser ( AbstractParser ):
             self.state = 704
             self.match(EParser.METHOD)
             self.state = 707
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.RECEIVING:
                 self.state = 705
                 self.match(EParser.RECEIVING)
-                self.state = 706 
+                self.state = 706
                 localctx.args = self.full_argument_list()
 
 
             self.state = 711
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.RETURNING:
                 self.state = 709
                 self.match(EParser.RETURNING)
-                self.state = 710 
+                self.state = 710
                 localctx.typ = self.typedef(0)
 
 
@@ -3978,11 +4001,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_concrete_method_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterConcrete_method_declaration"):
                 listener.enterConcrete_method_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitConcrete_method_declaration"):
                 listener.exitConcrete_method_declaration(self)
 
 
@@ -3997,27 +4020,29 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 713
             self.match(EParser.DEFINE)
-            self.state = 714 
+            self.state = 714
             localctx.name = self.method_identifier()
             self.state = 715
             self.match(EParser.AS)
             self.state = 716
             self.match(EParser.METHOD)
             self.state = 719
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.RECEIVING:
                 self.state = 717
                 self.match(EParser.RECEIVING)
-                self.state = 718 
+                self.state = 718
                 localctx.args = self.full_argument_list()
 
 
             self.state = 723
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.RETURNING:
                 self.state = 721
                 self.match(EParser.RETURNING)
-                self.state = 722 
+                self.state = 722
                 localctx.typ = self.typedef(0)
 
 
@@ -4025,11 +4050,11 @@ class EParser ( AbstractParser ):
             self.match(EParser.DOING)
             self.state = 726
             self.match(EParser.COLON)
-            self.state = 727 
+            self.state = 727
             self.indent()
-            self.state = 728 
+            self.state = 728
             localctx.stmts = self.statement_list()
-            self.state = 729 
+            self.state = 729
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -4101,11 +4126,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_native_method_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNative_method_declaration"):
                 listener.enterNative_method_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNative_method_declaration"):
                 listener.exitNative_method_declaration(self)
 
 
@@ -4120,11 +4145,12 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 731
             self.match(EParser.DEFINE)
-            self.state = 732 
+            self.state = 732
             localctx.name = self.method_identifier()
             self.state = 733
             self.match(EParser.AS)
             self.state = 735
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.NATIVE:
                 self.state = 734
@@ -4134,20 +4160,22 @@ class EParser ( AbstractParser ):
             self.state = 737
             self.match(EParser.METHOD)
             self.state = 740
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.RECEIVING:
                 self.state = 738
                 self.match(EParser.RECEIVING)
-                self.state = 739 
+                self.state = 739
                 localctx.args = self.full_argument_list()
 
 
             self.state = 744
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.RETURNING:
                 self.state = 742
                 self.match(EParser.RETURNING)
-                self.state = 743 
+                self.state = 743
                 localctx.typ = self.category_or_any_type()
 
 
@@ -4155,11 +4183,11 @@ class EParser ( AbstractParser ):
             self.match(EParser.DOING)
             self.state = 747
             self.match(EParser.COLON)
-            self.state = 748 
+            self.state = 748
             self.indent()
-            self.state = 749 
+            self.state = 749
             localctx.stmts = self.native_statement_list()
-            self.state = 750 
+            self.state = 750
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -4243,11 +4271,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_test_method_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterTest_method_declaration"):
                 listener.enterTest_method_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitTest_method_declaration"):
                 listener.exitTest_method_declaration(self)
 
 
@@ -4273,34 +4301,35 @@ class EParser ( AbstractParser ):
             self.match(EParser.DOING)
             self.state = 758
             self.match(EParser.COLON)
-            self.state = 759 
+            self.state = 759
             self.indent()
-            self.state = 760 
+            self.state = 760
             localctx.stmts = self.statement_list()
-            self.state = 761 
+            self.state = 761
             self.dedent()
-            self.state = 762 
+            self.state = 762
             self.lfp()
             self.state = 763
             self.match(EParser.AND)
             self.state = 764
             self.match(EParser.VERIFYING)
             self.state = 771
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.COLON]:
                 self.state = 765
                 self.match(EParser.COLON)
-                self.state = 766 
+                self.state = 766
                 self.indent()
-                self.state = 767 
+                self.state = 767
                 localctx.exps = self.assertion_list()
-                self.state = 768 
+                self.state = 768
                 self.dedent()
-
+                pass
             elif token in [EParser.SYMBOL_IDENTIFIER]:
-                self.state = 770 
+                self.state = 770
                 localctx.error = self.symbol_identifier()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -4327,11 +4356,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_assertion
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAssertion"):
                 listener.enterAssertion(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAssertion"):
                 listener.exitAssertion(self)
 
 
@@ -4343,7 +4372,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 44, self.RULE_assertion)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 773 
+            self.state = 773
             localctx.exp = self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -4376,11 +4405,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_full_argument_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterFull_argument_list"):
                 listener.enterFull_argument_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitFull_argument_list"):
                 listener.exitFull_argument_list(self)
 
 
@@ -4393,14 +4422,15 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 775 
+            self.state = 775
             localctx.items = self.argument_list()
             self.state = 778
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.AND:
                 self.state = 776
                 self.match(EParser.AND)
-                self.state = 777 
+                self.state = 777
                 localctx.item = self.argument()
 
 
@@ -4445,11 +4475,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_typed_argument
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterTyped_argument"):
                 listener.enterTyped_argument(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitTyped_argument"):
                 listener.exitTyped_argument(self)
 
 
@@ -4462,23 +4492,25 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 780 
+            self.state = 780
             localctx.typ = self.category_or_any_type()
-            self.state = 781 
+            self.state = 781
             localctx.name = self.variable_identifier()
             self.state = 783
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.WITH:
-                self.state = 782 
+                self.state = 782
                 localctx.attrs = self.attribute_list()
 
 
             self.state = 787
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.EQ:
                 self.state = 785
                 self.match(EParser.EQ)
-                self.state = 786 
+                self.state = 786
                 localctx.value = self.literal_expression()
 
 
@@ -4518,11 +4550,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCommentStatement"):
                 listener.enterCommentStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCommentStatement"):
                 listener.exitCommentStatement(self)
 
 
@@ -4538,11 +4570,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterStoreStatement"):
                 listener.enterStoreStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitStoreStatement"):
                 listener.exitStoreStatement(self)
 
 
@@ -4558,11 +4590,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterWithSingletonStatement"):
                 listener.enterWithSingletonStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitWithSingletonStatement"):
                 listener.exitWithSingletonStatement(self)
 
 
@@ -4578,11 +4610,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterWriteStatement"):
                 listener.enterWriteStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitWriteStatement"):
                 listener.exitWriteStatement(self)
 
 
@@ -4598,11 +4630,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterWhileStatement"):
                 listener.enterWhileStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitWhileStatement"):
                 listener.exitWhileStatement(self)
 
 
@@ -4618,11 +4650,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterWithResourceStatement"):
                 listener.enterWithResourceStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitWithResourceStatement"):
                 listener.exitWithResourceStatement(self)
 
 
@@ -4638,11 +4670,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterRaiseStatement"):
                 listener.enterRaiseStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitRaiseStatement"):
                 listener.exitRaiseStatement(self)
 
 
@@ -4658,11 +4690,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterBreakStatement"):
                 listener.enterBreakStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitBreakStatement"):
                 listener.exitBreakStatement(self)
 
 
@@ -4678,11 +4710,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAssignInstanceStatement"):
                 listener.enterAssignInstanceStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAssignInstanceStatement"):
                 listener.exitAssignInstanceStatement(self)
 
 
@@ -4698,11 +4730,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIfStatement"):
                 listener.enterIfStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIfStatement"):
                 listener.exitIfStatement(self)
 
 
@@ -4718,11 +4750,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSwitchStatement"):
                 listener.enterSwitchStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSwitchStatement"):
                 listener.exitSwitchStatement(self)
 
 
@@ -4738,11 +4770,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterTryStatement"):
                 listener.enterTryStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitTryStatement"):
                 listener.exitTryStatement(self)
 
 
@@ -4758,11 +4790,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMethodCallStatement"):
                 listener.enterMethodCallStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMethodCallStatement"):
                 listener.exitMethodCallStatement(self)
 
 
@@ -4778,11 +4810,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterReturnStatement"):
                 listener.enterReturnStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitReturnStatement"):
                 listener.exitReturnStatement(self)
 
 
@@ -4798,11 +4830,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAssignTupleStatement"):
                 listener.enterAssignTupleStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAssignTupleStatement"):
                 listener.exitAssignTupleStatement(self)
 
 
@@ -4818,11 +4850,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterClosureStatement"):
                 listener.enterClosureStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitClosureStatement"):
                 listener.exitClosureStatement(self)
 
 
@@ -4838,11 +4870,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterFlushStatement"):
                 listener.enterFlushStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitFlushStatement"):
                 listener.exitFlushStatement(self)
 
 
@@ -4858,11 +4890,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDoWhileStatement"):
                 listener.enterDoWhileStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDoWhileStatement"):
                 listener.exitDoWhileStatement(self)
 
 
@@ -4878,11 +4910,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterForEachStatement"):
                 listener.enterForEachStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitForEachStatement"):
                 listener.exitForEachStatement(self)
 
 
@@ -4893,137 +4925,138 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 50, self.RULE_statement)
         try:
             self.state = 808
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,37,self._ctx)
             if la_ == 1:
                 localctx = EParser.AssignInstanceStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 789 
+                self.state = 789
                 localctx.stmt = self.assign_instance_statement()
                 pass
 
             elif la_ == 2:
                 localctx = EParser.MethodCallStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 790 
+                self.state = 790
                 localctx.stmt = self.method_call_statement()
                 pass
 
             elif la_ == 3:
                 localctx = EParser.AssignTupleStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 791 
+                self.state = 791
                 localctx.stmt = self.assign_tuple_statement()
                 pass
 
             elif la_ == 4:
                 localctx = EParser.StoreStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 792 
+                self.state = 792
                 localctx.stmt = self.store_statement()
                 pass
 
             elif la_ == 5:
                 localctx = EParser.FlushStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
-                self.state = 793 
+                self.state = 793
                 localctx.stmt = self.flush_statement()
                 pass
 
             elif la_ == 6:
                 localctx = EParser.BreakStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 6)
-                self.state = 794 
+                self.state = 794
                 localctx.stmt = self.break_statement()
                 pass
 
             elif la_ == 7:
                 localctx = EParser.ReturnStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 7)
-                self.state = 795 
+                self.state = 795
                 localctx.stmt = self.return_statement()
                 pass
 
             elif la_ == 8:
                 localctx = EParser.IfStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 8)
-                self.state = 796 
+                self.state = 796
                 localctx.stmt = self.if_statement()
                 pass
 
             elif la_ == 9:
                 localctx = EParser.SwitchStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 9)
-                self.state = 797 
+                self.state = 797
                 localctx.stmt = self.switch_statement()
                 pass
 
             elif la_ == 10:
                 localctx = EParser.ForEachStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 10)
-                self.state = 798 
+                self.state = 798
                 localctx.stmt = self.for_each_statement()
                 pass
 
             elif la_ == 11:
                 localctx = EParser.WhileStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 11)
-                self.state = 799 
+                self.state = 799
                 localctx.stmt = self.while_statement()
                 pass
 
             elif la_ == 12:
                 localctx = EParser.DoWhileStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 12)
-                self.state = 800 
+                self.state = 800
                 localctx.stmt = self.do_while_statement()
                 pass
 
             elif la_ == 13:
                 localctx = EParser.RaiseStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 13)
-                self.state = 801 
+                self.state = 801
                 localctx.stmt = self.raise_statement()
                 pass
 
             elif la_ == 14:
                 localctx = EParser.TryStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 14)
-                self.state = 802 
+                self.state = 802
                 localctx.stmt = self.try_statement()
                 pass
 
             elif la_ == 15:
                 localctx = EParser.WriteStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 15)
-                self.state = 803 
+                self.state = 803
                 localctx.stmt = self.write_statement()
                 pass
 
             elif la_ == 16:
                 localctx = EParser.WithResourceStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 16)
-                self.state = 804 
+                self.state = 804
                 localctx.stmt = self.with_resource_statement()
                 pass
 
             elif la_ == 17:
                 localctx = EParser.WithSingletonStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 17)
-                self.state = 805 
+                self.state = 805
                 localctx.stmt = self.with_singleton_statement()
                 pass
 
             elif la_ == 18:
                 localctx = EParser.ClosureStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 18)
-                self.state = 806 
+                self.state = 806
                 localctx.decl = self.concrete_method_declaration()
                 pass
 
             elif la_ == 19:
                 localctx = EParser.CommentStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 19)
-                self.state = 807 
+                self.state = 807
                 localctx.decl = self.comment_statement()
                 pass
 
@@ -5049,11 +5082,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_flush_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterFlush_statement"):
                 listener.enterFlush_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitFlush_statement"):
                 listener.exitFlush_statement(self)
 
 
@@ -5103,11 +5136,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_store_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterStore_statement"):
                 listener.enterStore_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitStore_statement"):
                 listener.exitStore_statement(self)
 
 
@@ -5119,12 +5152,13 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 54, self.RULE_store_statement)
         try:
             self.state = 822
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,38,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 812
                 self.match(EParser.DELETE)
-                self.state = 813 
+                self.state = 813
                 localctx.to_del = self.expression_list()
                 pass
 
@@ -5132,7 +5166,7 @@ class EParser ( AbstractParser ):
                 self.enterOuterAlt(localctx, 2)
                 self.state = 814
                 self.match(EParser.STORE)
-                self.state = 815 
+                self.state = 815
                 localctx.to_add = self.expression_list()
                 pass
 
@@ -5140,13 +5174,13 @@ class EParser ( AbstractParser ):
                 self.enterOuterAlt(localctx, 3)
                 self.state = 816
                 self.match(EParser.DELETE)
-                self.state = 817 
+                self.state = 817
                 localctx.to_del = self.expression_list()
                 self.state = 818
                 self.match(EParser.AND)
                 self.state = 819
                 self.match(EParser.STORE)
-                self.state = 820 
+                self.state = 820
                 localctx.to_add = self.expression_list()
                 pass
 
@@ -5187,11 +5221,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterInvokeStatement"):
                 listener.enterInvokeStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitInvokeStatement"):
                 listener.exitInvokeStatement(self)
 
 
@@ -5211,11 +5245,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterUnresolvedWithArgsStatement"):
                 listener.enterUnresolvedWithArgsStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitUnresolvedWithArgsStatement"):
                 listener.exitUnresolvedWithArgsStatement(self)
 
 
@@ -5226,26 +5260,28 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 56, self.RULE_method_call_statement)
         try:
             self.state = 829
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER]:
                 localctx = EParser.UnresolvedWithArgsStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 824 
+                self.state = 824
                 localctx.exp = self.unresolved_expression(0)
                 self.state = 826
+                self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,39,self._ctx)
                 if la_ == 1:
-                    self.state = 825 
+                    self.state = 825
                     localctx.args = self.argument_assignment_list()
 
 
-
+                pass
             elif token in [EParser.INVOKE]:
                 localctx = EParser.InvokeStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 828 
+                self.state = 828
                 localctx.exp = self.invocation_expression()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -5297,11 +5333,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_with_resource_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterWith_resource_statement"):
                 listener.enterWith_resource_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitWith_resource_statement"):
                 listener.exitWith_resource_statement(self)
 
 
@@ -5315,7 +5351,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 831
             self.match(EParser.WITH)
-            self.state = 832 
+            self.state = 832
             localctx.stmt = self.assign_variable_statement()
             self.state = 833
             self.match(EParser.COMMA)
@@ -5323,11 +5359,11 @@ class EParser ( AbstractParser ):
             self.match(EParser.DO)
             self.state = 835
             self.match(EParser.COLON)
-            self.state = 836 
+            self.state = 836
             self.indent()
-            self.state = 837 
+            self.state = 837
             localctx.stmts = self.statement_list()
-            self.state = 838 
+            self.state = 838
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -5377,11 +5413,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_with_singleton_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterWith_singleton_statement"):
                 listener.enterWith_singleton_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitWith_singleton_statement"):
                 listener.exitWith_singleton_statement(self)
 
 
@@ -5395,7 +5431,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 840
             self.match(EParser.WITH)
-            self.state = 841 
+            self.state = 841
             localctx.typ = self.type_identifier()
             self.state = 842
             self.match(EParser.COMMA)
@@ -5403,11 +5439,11 @@ class EParser ( AbstractParser ):
             self.match(EParser.DO)
             self.state = 844
             self.match(EParser.COLON)
-            self.state = 845 
+            self.state = 845
             self.indent()
-            self.state = 846 
+            self.state = 846
             localctx.stmts = self.statement_list()
-            self.state = 847 
+            self.state = 847
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -5475,11 +5511,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_switch_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSwitch_statement"):
                 listener.enterSwitch_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSwitch_statement"):
                 listener.exitSwitch_statement(self)
 
 
@@ -5495,32 +5531,33 @@ class EParser ( AbstractParser ):
             self.match(EParser.SWITCH)
             self.state = 850
             self.match(EParser.ON)
-            self.state = 851 
+            self.state = 851
             localctx.exp = self.expression(0)
             self.state = 852
             self.match(EParser.COLON)
-            self.state = 853 
+            self.state = 853
             self.indent()
-            self.state = 854 
+            self.state = 854
             localctx.cases = self.switch_case_statement_list()
             self.state = 862
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,41,self._ctx)
             if la_ == 1:
-                self.state = 855 
+                self.state = 855
                 self.lfp()
                 self.state = 856
                 self.match(EParser.OTHERWISE)
                 self.state = 857
                 self.match(EParser.COLON)
-                self.state = 858 
+                self.state = 858
                 self.indent()
-                self.state = 859 
+                self.state = 859
                 localctx.stmts = self.statement_list()
-                self.state = 860 
+                self.state = 860
                 self.dedent()
 
 
-            self.state = 864 
+            self.state = 864
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -5572,11 +5609,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAtomicSwitchCase"):
                 listener.enterAtomicSwitchCase(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAtomicSwitchCase"):
                 listener.exitAtomicSwitchCase(self)
 
 
@@ -5608,11 +5645,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCollectionSwitchCase"):
                 listener.enterCollectionSwitchCase(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCollectionSwitchCase"):
                 listener.exitCollectionSwitchCase(self)
 
 
@@ -5623,21 +5660,22 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 64, self.RULE_switch_case_statement)
         try:
             self.state = 881
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,42,self._ctx)
             if la_ == 1:
                 localctx = EParser.AtomicSwitchCaseContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 866
                 self.match(EParser.WHEN)
-                self.state = 867 
+                self.state = 867
                 localctx.exp = self.atomic_literal()
                 self.state = 868
                 self.match(EParser.COLON)
-                self.state = 869 
+                self.state = 869
                 self.indent()
-                self.state = 870 
+                self.state = 870
                 localctx.stmts = self.statement_list()
-                self.state = 871 
+                self.state = 871
                 self.dedent()
                 pass
 
@@ -5648,15 +5686,15 @@ class EParser ( AbstractParser ):
                 self.match(EParser.WHEN)
                 self.state = 874
                 self.match(EParser.IN)
-                self.state = 875 
+                self.state = 875
                 localctx.exp = self.literal_collection()
                 self.state = 876
                 self.match(EParser.COLON)
-                self.state = 877 
+                self.state = 877
                 self.indent()
-                self.state = 878 
+                self.state = 878
                 localctx.stmts = self.statement_list()
-                self.state = 879 
+                self.state = 879
                 self.dedent()
                 pass
 
@@ -5721,11 +5759,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_for_each_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterFor_each_statement"):
                 listener.enterFor_each_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitFor_each_statement"):
                 listener.exitFor_each_statement(self)
 
 
@@ -5742,28 +5780,29 @@ class EParser ( AbstractParser ):
             self.match(EParser.FOR)
             self.state = 884
             self.match(EParser.EACH)
-            self.state = 885 
+            self.state = 885
             localctx.name1 = self.variable_identifier()
             self.state = 888
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.COMMA:
                 self.state = 886
                 self.match(EParser.COMMA)
-                self.state = 887 
+                self.state = 887
                 localctx.name2 = self.variable_identifier()
 
 
             self.state = 890
             self.match(EParser.IN)
-            self.state = 891 
+            self.state = 891
             localctx.source = self.expression(0)
             self.state = 892
             self.match(EParser.COLON)
-            self.state = 893 
+            self.state = 893
             self.indent()
-            self.state = 894 
+            self.state = 894
             localctx.stmts = self.statement_list()
-            self.state = 895 
+            self.state = 895
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -5814,11 +5853,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_do_while_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDo_while_statement"):
                 listener.enterDo_while_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDo_while_statement"):
                 listener.exitDo_while_statement(self)
 
 
@@ -5834,17 +5873,17 @@ class EParser ( AbstractParser ):
             self.match(EParser.DO)
             self.state = 898
             self.match(EParser.COLON)
-            self.state = 899 
+            self.state = 899
             self.indent()
-            self.state = 900 
+            self.state = 900
             localctx.stmts = self.statement_list()
-            self.state = 901 
+            self.state = 901
             self.dedent()
-            self.state = 902 
+            self.state = 902
             self.lfp()
             self.state = 903
             self.match(EParser.WHILE)
-            self.state = 904 
+            self.state = 904
             localctx.exp = self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -5888,11 +5927,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_while_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterWhile_statement"):
                 listener.enterWhile_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitWhile_statement"):
                 listener.exitWhile_statement(self)
 
 
@@ -5906,15 +5945,15 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 906
             self.match(EParser.WHILE)
-            self.state = 907 
+            self.state = 907
             localctx.exp = self.expression(0)
             self.state = 908
             self.match(EParser.COLON)
-            self.state = 909 
+            self.state = 909
             self.indent()
-            self.state = 910 
+            self.state = 910
             localctx.stmts = self.statement_list()
-            self.state = 911 
+            self.state = 911
             self.dedent()
         except RecognitionException as re:
             localctx.exception = re
@@ -5986,11 +6025,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_if_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIf_statement"):
                 listener.enterIf_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIf_statement"):
                 listener.exitIf_statement(self)
 
 
@@ -6004,39 +6043,41 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 913
             self.match(EParser.IF)
-            self.state = 914 
+            self.state = 914
             localctx.exp = self.expression(0)
             self.state = 915
             self.match(EParser.COLON)
-            self.state = 916 
+            self.state = 916
             self.indent()
-            self.state = 917 
+            self.state = 917
             localctx.stmts = self.statement_list()
-            self.state = 918 
+            self.state = 918
             self.dedent()
             self.state = 922
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,44,self._ctx)
             if la_ == 1:
-                self.state = 919 
+                self.state = 919
                 self.lfp()
-                self.state = 920 
+                self.state = 920
                 localctx.elseIfs = self.else_if_statement_list(0)
 
 
             self.state = 931
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,45,self._ctx)
             if la_ == 1:
-                self.state = 924 
+                self.state = 924
                 self.lfp()
                 self.state = 925
                 self.match(EParser.ELSE)
                 self.state = 926
                 self.match(EParser.COLON)
-                self.state = 927 
+                self.state = 927
                 self.indent()
-                self.state = 928 
+                self.state = 928
                 localctx.elseStmts = self.statement_list()
-                self.state = 929 
+                self.state = 929
                 self.dedent()
 
 
@@ -6091,11 +6132,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterElseIfStatementList"):
                 listener.enterElseIfStatementList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitElseIfStatementList"):
                 listener.exitElseIfStatementList(self)
 
 
@@ -6134,11 +6175,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterElseIfStatementListItem"):
                 listener.enterElseIfStatementListItem(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitElseIfStatementListItem"):
                 listener.exitElseIfStatementListItem(self)
 
 
@@ -6160,15 +6201,15 @@ class EParser ( AbstractParser ):
             self.match(EParser.ELSE)
             self.state = 935
             self.match(EParser.IF)
-            self.state = 936 
+            self.state = 936
             localctx.exp = self.expression(0)
             self.state = 937
             self.match(EParser.COLON)
-            self.state = 938 
+            self.state = 938
             self.indent()
-            self.state = 939 
+            self.state = 939
             localctx.stmts = self.statement_list()
-            self.state = 940 
+            self.state = 940
             self.dedent()
             self._ctx.stop = self._input.LT(-1)
             self.state = 954
@@ -6186,21 +6227,21 @@ class EParser ( AbstractParser ):
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 943 
+                    self.state = 943
                     self.lfp()
                     self.state = 944
                     self.match(EParser.ELSE)
                     self.state = 945
                     self.match(EParser.IF)
-                    self.state = 946 
+                    self.state = 946
                     localctx.exp = self.expression(0)
                     self.state = 947
                     self.match(EParser.COLON)
-                    self.state = 948 
+                    self.state = 948
                     self.indent()
-                    self.state = 949 
+                    self.state = 949
                     localctx.stmts = self.statement_list()
-                    self.state = 950 
+                    self.state = 950
                     self.dedent() 
                 self.state = 956
                 self._errHandler.sync(self)
@@ -6232,11 +6273,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_raise_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterRaise_statement"):
                 listener.enterRaise_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitRaise_statement"):
                 listener.exitRaise_statement(self)
 
 
@@ -6250,7 +6291,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 957
             self.match(EParser.RAISE)
-            self.state = 958 
+            self.state = 958
             localctx.exp = self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -6338,11 +6379,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_try_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterTry_statement"):
                 listener.enterTry_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitTry_statement"):
                 listener.exitTry_statement(self)
 
 
@@ -6359,75 +6400,79 @@ class EParser ( AbstractParser ):
             self.match(EParser.SWITCH)
             self.state = 961
             self.match(EParser.ON)
-            self.state = 962 
+            self.state = 962
             localctx.name = self.variable_identifier()
             self.state = 963
             self.match(EParser.DOING)
             self.state = 964
             self.match(EParser.COLON)
-            self.state = 965 
+            self.state = 965
             self.indent()
-            self.state = 966 
+            self.state = 966
             localctx.stmts = self.statement_list()
-            self.state = 967 
+            self.state = 967
             self.dedent()
-            self.state = 968 
+            self.state = 968
             self.lfs()
             self.state = 970
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,47,self._ctx)
             if la_ == 1:
-                self.state = 969 
+                self.state = 969
                 localctx.handlers = self.catch_statement_list()
 
 
             self.state = 983
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.OTHERWISE or _la==EParser.WHEN:
                 self.state = 975
+                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [EParser.OTHERWISE]:
                     self.state = 972
                     self.match(EParser.OTHERWISE)
-
+                    pass
                 elif token in [EParser.WHEN]:
                     self.state = 973
                     self.match(EParser.WHEN)
                     self.state = 974
                     self.match(EParser.ANY)
-
+                    pass
                 else:
                     raise NoViableAltException(self)
 
                 self.state = 977
                 self.match(EParser.COLON)
-                self.state = 978 
+                self.state = 978
                 self.indent()
-                self.state = 979 
+                self.state = 979
                 localctx.anyStmts = self.statement_list()
-                self.state = 980 
+                self.state = 980
                 self.dedent()
-                self.state = 981 
+                self.state = 981
                 self.lfs()
 
 
             self.state = 992
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.ALWAYS:
                 self.state = 985
                 self.match(EParser.ALWAYS)
                 self.state = 986
                 self.match(EParser.COLON)
-                self.state = 987 
+                self.state = 987
                 self.indent()
-                self.state = 988 
+                self.state = 988
                 localctx.finalStmts = self.statement_list()
-                self.state = 989 
+                self.state = 989
                 self.dedent()
-                self.state = 990 
+                self.state = 990
                 self.lfs()
 
 
-            self.state = 994 
+            self.state = 994
             self.lfs()
         except RecognitionException as re:
             localctx.exception = re
@@ -6482,11 +6527,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCatchAtomicStatement"):
                 listener.enterCatchAtomicStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCatchAtomicStatement"):
                 listener.exitCatchAtomicStatement(self)
 
 
@@ -6525,11 +6570,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCatchCollectionStatement"):
                 listener.enterCatchCollectionStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCatchCollectionStatement"):
                 listener.exitCatchCollectionStatement(self)
 
 
@@ -6540,23 +6585,24 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 80, self.RULE_catch_statement)
         try:
             self.state = 1015
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,51,self._ctx)
             if la_ == 1:
                 localctx = EParser.CatchAtomicStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 996
                 self.match(EParser.WHEN)
-                self.state = 997 
+                self.state = 997
                 localctx.name = self.symbol_identifier()
                 self.state = 998
                 self.match(EParser.COLON)
-                self.state = 999 
+                self.state = 999
                 self.indent()
-                self.state = 1000 
+                self.state = 1000
                 localctx.stmts = self.statement_list()
-                self.state = 1001 
+                self.state = 1001
                 self.dedent()
-                self.state = 1002 
+                self.state = 1002
                 self.lfs()
                 pass
 
@@ -6569,19 +6615,19 @@ class EParser ( AbstractParser ):
                 self.match(EParser.IN)
                 self.state = 1006
                 self.match(EParser.LBRAK)
-                self.state = 1007 
+                self.state = 1007
                 localctx.exp = self.symbol_list()
                 self.state = 1008
                 self.match(EParser.RBRAK)
                 self.state = 1009
                 self.match(EParser.COLON)
-                self.state = 1010 
+                self.state = 1010
                 self.indent()
-                self.state = 1011 
+                self.state = 1011
                 localctx.stmts = self.statement_list()
-                self.state = 1012 
+                self.state = 1012
                 self.dedent()
-                self.state = 1013 
+                self.state = 1013
                 self.lfs()
                 pass
 
@@ -6607,11 +6653,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_break_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterBreak_statement"):
                 listener.enterBreak_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitBreak_statement"):
                 listener.exitBreak_statement(self)
 
 
@@ -6651,11 +6697,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_return_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterReturn_statement"):
                 listener.enterReturn_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitReturn_statement"):
                 listener.exitReturn_statement(self)
 
 
@@ -6671,9 +6717,10 @@ class EParser ( AbstractParser ):
             self.state = 1019
             self.match(EParser.RETURN)
             self.state = 1021
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.LBRAK) | (1 << EParser.LCURL) | (1 << EParser.MINUS) | (1 << EParser.LT) | (1 << EParser.METHOD_T) | (1 << EParser.CODE) | (1 << EParser.DOCUMENT) | (1 << EParser.BLOB))) != 0) or ((((_la - 99)) & ~0x3f) == 0 and ((1 << (_la - 99)) & ((1 << (EParser.EXECUTE - 99)) | (1 << (EParser.FETCH - 99)) | (1 << (EParser.INVOKE - 99)) | (1 << (EParser.MUTABLE - 99)) | (1 << (EParser.NOT - 99)) | (1 << (EParser.NOTHING - 99)) | (1 << (EParser.READ - 99)) | (1 << (EParser.SELF - 99)) | (1 << (EParser.SORTED - 99)) | (1 << (EParser.THIS - 99)) | (1 << (EParser.BOOLEAN_LITERAL - 99)) | (1 << (EParser.CHAR_LITERAL - 99)) | (1 << (EParser.MIN_INTEGER - 99)) | (1 << (EParser.MAX_INTEGER - 99)) | (1 << (EParser.SYMBOL_IDENTIFIER - 99)) | (1 << (EParser.TYPE_IDENTIFIER - 99)))) != 0) or ((((_la - 163)) & ~0x3f) == 0 and ((1 << (_la - 163)) & ((1 << (EParser.VARIABLE_IDENTIFIER - 163)) | (1 << (EParser.TEXT_LITERAL - 163)) | (1 << (EParser.UUID_LITERAL - 163)) | (1 << (EParser.INTEGER_LITERAL - 163)) | (1 << (EParser.HEXA_LITERAL - 163)) | (1 << (EParser.DECIMAL_LITERAL - 163)) | (1 << (EParser.DATETIME_LITERAL - 163)) | (1 << (EParser.TIME_LITERAL - 163)) | (1 << (EParser.DATE_LITERAL - 163)) | (1 << (EParser.PERIOD_LITERAL - 163)) | (1 << (EParser.VERSION_LITERAL - 163)))) != 0):
-                self.state = 1020 
+                self.state = 1020
                 localctx.exp = self.expression(0)
 
 
@@ -6719,11 +6766,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIntDivideExpression"):
                 listener.enterIntDivideExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIntDivideExpression"):
                 listener.exitIntDivideExpression(self)
 
 
@@ -6748,11 +6795,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterTernaryExpression"):
                 listener.enterTernaryExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitTernaryExpression"):
                 listener.exitTernaryExpression(self)
 
 
@@ -6768,11 +6815,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterFetchStoreExpression"):
                 listener.enterFetchStoreExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitFetchStoreExpression"):
                 listener.exitFetchStoreExpression(self)
 
 
@@ -6796,11 +6843,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterContainsAllExpression"):
                 listener.enterContainsAllExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitContainsAllExpression"):
                 listener.exitContainsAllExpression(self)
 
 
@@ -6822,11 +6869,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNotEqualsExpression"):
                 listener.enterNotEqualsExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNotEqualsExpression"):
                 listener.exitNotEqualsExpression(self)
 
 
@@ -6848,11 +6895,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterInExpression"):
                 listener.enterInExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitInExpression"):
                 listener.exitInExpression(self)
 
 
@@ -6868,11 +6915,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDocumentExpression"):
                 listener.enterDocumentExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDocumentExpression"):
                 listener.exitDocumentExpression(self)
 
 
@@ -6890,11 +6937,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNotExpression"):
                 listener.enterNotExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNotExpression"):
                 listener.exitNotExpression(self)
 
 
@@ -6916,11 +6963,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterGreaterThanExpression"):
                 listener.enterGreaterThanExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitGreaterThanExpression"):
                 listener.exitGreaterThanExpression(self)
 
 
@@ -6936,11 +6983,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterInvocationExpression"):
                 listener.enterInvocationExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitInvocationExpression"):
                 listener.exitInvocationExpression(self)
 
 
@@ -6962,11 +7009,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOrExpression"):
                 listener.enterOrExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOrExpression"):
                 listener.exitOrExpression(self)
 
 
@@ -6986,11 +7033,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCodeExpression"):
                 listener.enterCodeExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCodeExpression"):
                 listener.exitCodeExpression(self)
 
 
@@ -7006,11 +7053,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAmbiguousExpression"):
                 listener.enterAmbiguousExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAmbiguousExpression"):
                 listener.exitAmbiguousExpression(self)
 
 
@@ -7032,11 +7079,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterLessThanOrEqualExpression"):
                 listener.enterLessThanOrEqualExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitLessThanOrEqualExpression"):
                 listener.exitLessThanOrEqualExpression(self)
 
 
@@ -7052,11 +7099,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterReadOneExpression"):
                 listener.enterReadOneExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitReadOneExpression"):
                 listener.exitReadOneExpression(self)
 
 
@@ -7078,11 +7125,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAndExpression"):
                 listener.enterAndExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAndExpression"):
                 listener.exitAndExpression(self)
 
 
@@ -7102,11 +7149,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMethodCallExpression"):
                 listener.enterMethodCallExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMethodCallExpression"):
                 listener.exitMethodCallExpression(self)
 
 
@@ -7126,11 +7173,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterClosureExpression"):
                 listener.enterClosureExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitClosureExpression"):
                 listener.exitClosureExpression(self)
 
 
@@ -7146,11 +7193,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSortedExpression"):
                 listener.enterSortedExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSortedExpression"):
                 listener.exitSortedExpression(self)
 
 
@@ -7166,11 +7213,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterBlobExpression"):
                 listener.enterBlobExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitBlobExpression"):
                 listener.exitBlobExpression(self)
 
 
@@ -7196,11 +7243,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNotContainsAnyExpression"):
                 listener.enterNotContainsAnyExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNotContainsAnyExpression"):
                 listener.exitNotContainsAnyExpression(self)
 
 
@@ -7222,11 +7269,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterContainsExpression"):
                 listener.enterContainsExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitContainsExpression"):
                 listener.exitContainsExpression(self)
 
 
@@ -7245,11 +7292,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterFilteredListExpression"):
                 listener.enterFilteredListExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitFilteredListExpression"):
                 listener.exitFilteredListExpression(self)
 
 
@@ -7265,11 +7312,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterConstructorExpression"):
                 listener.enterConstructorExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitConstructorExpression"):
                 listener.exitConstructorExpression(self)
 
 
@@ -7293,11 +7340,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNotContainsExpression"):
                 listener.enterNotContainsExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNotContainsExpression"):
                 listener.exitNotContainsExpression(self)
 
 
@@ -7320,11 +7367,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMultiplyExpression"):
                 listener.enterMultiplyExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMultiplyExpression"):
                 listener.exitMultiplyExpression(self)
 
 
@@ -7346,11 +7393,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterRoughlyEqualsExpression"):
                 listener.enterRoughlyEqualsExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitRoughlyEqualsExpression"):
                 listener.exitRoughlyEqualsExpression(self)
 
 
@@ -7370,11 +7417,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterExecuteExpression"):
                 listener.enterExecuteExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitExecuteExpression"):
                 listener.exitExecuteExpression(self)
 
 
@@ -7396,11 +7443,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterGreaterThanOrEqualExpression"):
                 listener.enterGreaterThanOrEqualExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitGreaterThanOrEqualExpression"):
                 listener.exitGreaterThanOrEqualExpression(self)
 
 
@@ -7424,11 +7471,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNotInExpression"):
                 listener.enterNotInExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNotInExpression"):
                 listener.exitNotInExpression(self)
 
 
@@ -7458,11 +7505,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIteratorExpression"):
                 listener.enterIteratorExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIteratorExpression"):
                 listener.exitIteratorExpression(self)
 
 
@@ -7478,11 +7525,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterUnresolvedExpression"):
                 listener.enterUnresolvedExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitUnresolvedExpression"):
                 listener.exitUnresolvedExpression(self)
 
 
@@ -7506,11 +7553,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIsNotExpression"):
                 listener.enterIsNotExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIsNotExpression"):
                 listener.exitIsNotExpression(self)
 
 
@@ -7533,11 +7580,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDivideExpression"):
                 listener.enterDivideExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDivideExpression"):
                 listener.exitDivideExpression(self)
 
 
@@ -7559,11 +7606,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIsExpression"):
                 listener.enterIsExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIsExpression"):
                 listener.exitIsExpression(self)
 
 
@@ -7581,11 +7628,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMinusExpression"):
                 listener.enterMinusExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMinusExpression"):
                 listener.exitMinusExpression(self)
 
 
@@ -7610,11 +7657,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.MINUS, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAddExpression"):
                 listener.enterAddExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAddExpression"):
                 listener.exitAddExpression(self)
 
 
@@ -7640,11 +7687,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNotContainsAllExpression"):
                 listener.enterNotContainsAllExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNotContainsAllExpression"):
                 listener.exitNotContainsAllExpression(self)
 
 
@@ -7660,11 +7707,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterInstanceExpression"):
                 listener.enterInstanceExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitInstanceExpression"):
                 listener.exitInstanceExpression(self)
 
 
@@ -7680,11 +7727,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterReadAllExpression"):
                 listener.enterReadAllExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitReadAllExpression"):
                 listener.exitReadAllExpression(self)
 
 
@@ -7708,11 +7755,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterContainsAnyExpression"):
                 listener.enterContainsAnyExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitContainsAnyExpression"):
                 listener.exitContainsAnyExpression(self)
 
 
@@ -7734,11 +7781,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCastExpression"):
                 listener.enterCastExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCastExpression"):
                 listener.exitCastExpression(self)
 
 
@@ -7761,11 +7808,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterModuloExpression"):
                 listener.enterModuloExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitModuloExpression"):
                 listener.exitModuloExpression(self)
 
 
@@ -7787,11 +7834,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterLessThanExpression"):
                 listener.enterLessThanExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitLessThanExpression"):
                 listener.exitLessThanExpression(self)
 
 
@@ -7813,11 +7860,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterEqualsExpression"):
                 listener.enterEqualsExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitEqualsExpression"):
                 listener.exitEqualsExpression(self)
 
 
@@ -7833,64 +7880,65 @@ class EParser ( AbstractParser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1051
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,53,self._ctx)
             if la_ == 1:
-                localctx = EParser.MinusExpressionContext(self, localctx)
+                localctx = EParser.InstanceExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
                 self.state = 1024
-                self.match(EParser.MINUS)
-                self.state = 1025 
-                localctx.exp = self.expression(42)
-                pass
-
-            elif la_ == 2:
-                localctx = EParser.NotExpressionContext(self, localctx)
-                self._ctx = localctx
-                _prevctx = localctx
-                self.state = 1026
-                self.match(EParser.NOT)
-                self.state = 1027 
-                localctx.exp = self.expression(41)
-                pass
-
-            elif la_ == 3:
-                localctx = EParser.CodeExpressionContext(self, localctx)
-                self._ctx = localctx
-                _prevctx = localctx
-                self.state = 1028
-                self.match(EParser.CODE)
-                self.state = 1029
-                self.match(EParser.COLON)
-                self.state = 1030 
-                localctx.exp = self.expression(14)
-                pass
-
-            elif la_ == 4:
-                localctx = EParser.InstanceExpressionContext(self, localctx)
-                self._ctx = localctx
-                _prevctx = localctx
-                self.state = 1031 
                 localctx.exp = self.instance_expression(0)
                 pass
 
-            elif la_ == 5:
+            elif la_ == 2:
                 localctx = EParser.UnresolvedExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 1032 
+                self.state = 1025
                 localctx.exp = self.unresolved_expression(0)
                 pass
 
-            elif la_ == 6:
+            elif la_ == 3:
                 localctx = EParser.MethodCallExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 1033 
+                self.state = 1026
                 localctx.exp = self.unresolved_expression(0)
-                self.state = 1034 
+                self.state = 1027
                 localctx.args = self.argument_assignment_list()
+                pass
+
+            elif la_ == 4:
+                localctx = EParser.MinusExpressionContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 1029
+                self.match(EParser.MINUS)
+                self.state = 1030
+                localctx.exp = self.expression(42)
+                pass
+
+            elif la_ == 5:
+                localctx = EParser.NotExpressionContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 1031
+                self.match(EParser.NOT)
+                self.state = 1032
+                localctx.exp = self.expression(41)
+                pass
+
+            elif la_ == 6:
+                localctx = EParser.CodeExpressionContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 1033
+                self.match(EParser.CODE)
+                self.state = 1034
+                self.match(EParser.COLON)
+                self.state = 1035
+                localctx.exp = self.expression(14)
                 pass
 
             elif la_ == 7:
@@ -7901,7 +7949,7 @@ class EParser ( AbstractParser ):
                 self.match(EParser.EXECUTE)
                 self.state = 1037
                 self.match(EParser.COLON)
-                self.state = 1038 
+                self.state = 1038
                 localctx.name = self.variable_identifier()
                 pass
 
@@ -7913,7 +7961,7 @@ class EParser ( AbstractParser ):
                 self.match(EParser.METHOD_T)
                 self.state = 1040
                 self.match(EParser.COLON)
-                self.state = 1041 
+                self.state = 1041
                 localctx.name = self.method_identifier()
                 pass
 
@@ -7921,7 +7969,7 @@ class EParser ( AbstractParser ):
                 localctx = EParser.BlobExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 1042 
+                self.state = 1042
                 localctx.exp = self.blob_expression()
                 pass
 
@@ -7929,7 +7977,7 @@ class EParser ( AbstractParser ):
                 localctx = EParser.DocumentExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 1043 
+                self.state = 1043
                 localctx.exp = self.document_expression()
                 pass
 
@@ -7937,7 +7985,7 @@ class EParser ( AbstractParser ):
                 localctx = EParser.ConstructorExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 1044 
+                self.state = 1044
                 localctx.exp = self.constructor_expression()
                 pass
 
@@ -7945,7 +7993,7 @@ class EParser ( AbstractParser ):
                 localctx = EParser.FetchStoreExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 1045 
+                self.state = 1045
                 localctx.exp = self.fetch_store_expression()
                 pass
 
@@ -7953,7 +8001,7 @@ class EParser ( AbstractParser ):
                 localctx = EParser.ReadAllExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 1046 
+                self.state = 1046
                 localctx.exp = self.read_all_expression()
                 pass
 
@@ -7961,7 +8009,7 @@ class EParser ( AbstractParser ):
                 localctx = EParser.ReadOneExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 1047 
+                self.state = 1047
                 localctx.exp = self.read_one_expression()
                 pass
 
@@ -7969,7 +8017,7 @@ class EParser ( AbstractParser ):
                 localctx = EParser.SortedExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 1048 
+                self.state = 1048
                 localctx.exp = self.sorted_expression()
                 pass
 
@@ -7977,7 +8025,7 @@ class EParser ( AbstractParser ):
                 localctx = EParser.AmbiguousExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 1049 
+                self.state = 1049
                 localctx.exp = self.ambiguous_expression()
                 pass
 
@@ -7985,7 +8033,7 @@ class EParser ( AbstractParser ):
                 localctx = EParser.InvocationExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 1050 
+                self.state = 1050
                 localctx.exp = self.invocation_expression()
                 pass
 
@@ -8000,6 +8048,7 @@ class EParser ( AbstractParser ):
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 1156
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,54,self._ctx)
                     if la_ == 1:
                         localctx = EParser.MultiplyExpressionContext(self, EParser.ExpressionContext(self, _parentctx, _parentState))
@@ -8009,9 +8058,9 @@ class EParser ( AbstractParser ):
                         if not self.precpred(self._ctx, 40):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 40)")
-                        self.state = 1054 
+                        self.state = 1054
                         self.multiply()
-                        self.state = 1055 
+                        self.state = 1055
                         localctx.right = self.expression(41)
                         pass
 
@@ -8023,9 +8072,9 @@ class EParser ( AbstractParser ):
                         if not self.precpred(self._ctx, 39):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 39)")
-                        self.state = 1058 
+                        self.state = 1058
                         self.divide()
-                        self.state = 1059 
+                        self.state = 1059
                         localctx.right = self.expression(40)
                         pass
 
@@ -8037,9 +8086,9 @@ class EParser ( AbstractParser ):
                         if not self.precpred(self._ctx, 38):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 38)")
-                        self.state = 1062 
+                        self.state = 1062
                         self.modulo()
-                        self.state = 1063 
+                        self.state = 1063
                         localctx.right = self.expression(39)
                         pass
 
@@ -8051,9 +8100,9 @@ class EParser ( AbstractParser ):
                         if not self.precpred(self._ctx, 37):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 37)")
-                        self.state = 1066 
+                        self.state = 1066
                         self.idivide()
-                        self.state = 1067 
+                        self.state = 1067
                         localctx.right = self.expression(38)
                         pass
 
@@ -8070,8 +8119,10 @@ class EParser ( AbstractParser ):
                         _la = self._input.LA(1)
                         if not(_la==EParser.PLUS or _la==EParser.MINUS):
                             localctx.op = self._errHandler.recoverInline(self)
-                        self.consume()
-                        self.state = 1071 
+                        else:
+                            self._errHandler.reportMatch(self)
+                            self.consume()
+                        self.state = 1071
                         localctx.right = self.expression(37)
                         pass
 
@@ -8085,7 +8136,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 35)")
                         self.state = 1073
                         self.match(EParser.LT)
-                        self.state = 1074 
+                        self.state = 1074
                         localctx.right = self.expression(36)
                         pass
 
@@ -8099,7 +8150,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 34)")
                         self.state = 1076
                         self.match(EParser.LTE)
-                        self.state = 1077 
+                        self.state = 1077
                         localctx.right = self.expression(35)
                         pass
 
@@ -8113,7 +8164,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 33)")
                         self.state = 1079
                         self.match(EParser.GT)
-                        self.state = 1080 
+                        self.state = 1080
                         localctx.right = self.expression(34)
                         pass
 
@@ -8127,7 +8178,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 32)")
                         self.state = 1082
                         self.match(EParser.GTE)
-                        self.state = 1083 
+                        self.state = 1083
                         localctx.right = self.expression(33)
                         pass
 
@@ -8141,7 +8192,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 29)")
                         self.state = 1085
                         self.match(EParser.EQ)
-                        self.state = 1086 
+                        self.state = 1086
                         localctx.right = self.expression(30)
                         pass
 
@@ -8155,7 +8206,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 28)")
                         self.state = 1088
                         self.match(EParser.LTGT)
-                        self.state = 1089 
+                        self.state = 1089
                         localctx.right = self.expression(29)
                         pass
 
@@ -8169,7 +8220,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 27)")
                         self.state = 1091
                         self.match(EParser.TILDE)
-                        self.state = 1092 
+                        self.state = 1092
                         localctx.right = self.expression(28)
                         pass
 
@@ -8183,7 +8234,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 26)")
                         self.state = 1094
                         self.match(EParser.OR)
-                        self.state = 1095 
+                        self.state = 1095
                         localctx.right = self.expression(27)
                         pass
 
@@ -8197,7 +8248,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 25)")
                         self.state = 1097
                         self.match(EParser.AND)
-                        self.state = 1098 
+                        self.state = 1098
                         localctx.right = self.expression(26)
                         pass
 
@@ -8211,11 +8262,11 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 24)")
                         self.state = 1100
                         self.match(EParser.IF)
-                        self.state = 1101 
+                        self.state = 1101
                         localctx.test = self.expression(0)
                         self.state = 1102
                         self.match(EParser.ELSE)
-                        self.state = 1103 
+                        self.state = 1103
                         localctx.ifFalse = self.expression(25)
                         pass
 
@@ -8229,7 +8280,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 22)")
                         self.state = 1106
                         self.match(EParser.IN)
-                        self.state = 1107 
+                        self.state = 1107
                         localctx.right = self.expression(23)
                         pass
 
@@ -8243,7 +8294,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 21)")
                         self.state = 1109
                         self.match(EParser.CONTAINS)
-                        self.state = 1110 
+                        self.state = 1110
                         localctx.right = self.expression(22)
                         pass
 
@@ -8259,7 +8310,7 @@ class EParser ( AbstractParser ):
                         self.match(EParser.CONTAINS)
                         self.state = 1113
                         self.match(EParser.ALL)
-                        self.state = 1114 
+                        self.state = 1114
                         localctx.right = self.expression(21)
                         pass
 
@@ -8275,7 +8326,7 @@ class EParser ( AbstractParser ):
                         self.match(EParser.CONTAINS)
                         self.state = 1117
                         self.match(EParser.ANY)
-                        self.state = 1118 
+                        self.state = 1118
                         localctx.right = self.expression(20)
                         pass
 
@@ -8291,7 +8342,7 @@ class EParser ( AbstractParser ):
                         self.match(EParser.NOT)
                         self.state = 1121
                         self.match(EParser.IN)
-                        self.state = 1122 
+                        self.state = 1122
                         localctx.right = self.expression(19)
                         pass
 
@@ -8307,7 +8358,7 @@ class EParser ( AbstractParser ):
                         self.match(EParser.NOT)
                         self.state = 1125
                         self.match(EParser.CONTAINS)
-                        self.state = 1126 
+                        self.state = 1126
                         localctx.right = self.expression(18)
                         pass
 
@@ -8325,7 +8376,7 @@ class EParser ( AbstractParser ):
                         self.match(EParser.CONTAINS)
                         self.state = 1130
                         self.match(EParser.ALL)
-                        self.state = 1131 
+                        self.state = 1131
                         localctx.right = self.expression(17)
                         pass
 
@@ -8343,7 +8394,7 @@ class EParser ( AbstractParser ):
                         self.match(EParser.CONTAINS)
                         self.state = 1135
                         self.match(EParser.ANY)
-                        self.state = 1136 
+                        self.state = 1136
                         localctx.right = self.expression(16)
                         pass
 
@@ -8359,11 +8410,11 @@ class EParser ( AbstractParser ):
                         self.match(EParser.FOR)
                         self.state = 1139
                         self.match(EParser.EACH)
-                        self.state = 1140 
+                        self.state = 1140
                         localctx.name = self.variable_identifier()
                         self.state = 1141
                         self.match(EParser.IN)
-                        self.state = 1142 
+                        self.state = 1142
                         localctx.source = self.expression(2)
                         pass
 
@@ -8379,7 +8430,7 @@ class EParser ( AbstractParser ):
                         self.match(EParser.IS)
                         self.state = 1146
                         self.match(EParser.NOT)
-                        self.state = 1147 
+                        self.state = 1147
                         localctx.right = self.is_expression()
                         pass
 
@@ -8393,7 +8444,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 30)")
                         self.state = 1149
                         self.match(EParser.IS)
-                        self.state = 1150 
+                        self.state = 1150
                         localctx.right = self.is_expression()
                         pass
 
@@ -8407,7 +8458,7 @@ class EParser ( AbstractParser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 23)")
                         self.state = 1152
                         self.match(EParser.AS)
-                        self.state = 1153 
+                        self.state = 1153
                         localctx.right = self.category_or_any_type()
                         pass
 
@@ -8419,7 +8470,7 @@ class EParser ( AbstractParser ):
                         if not self.precpred(self._ctx, 8):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
-                        self.state = 1155 
+                        self.state = 1155
                         self.filtered_list_suffix()
                         pass
 
@@ -8467,11 +8518,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterUnresolvedSelector"):
                 listener.enterUnresolvedSelector(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitUnresolvedSelector"):
                 listener.exitUnresolvedSelector(self)
 
 
@@ -8487,11 +8538,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterUnresolvedIdentifier"):
                 listener.enterUnresolvedIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitUnresolvedIdentifier"):
                 listener.exitUnresolvedIdentifier(self)
 
 
@@ -8509,7 +8560,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 1162 
+            self.state = 1162
             localctx.name = self.identifier()
             self._ctx.stop = self._input.LT(-1)
             self.state = 1168
@@ -8527,7 +8578,7 @@ class EParser ( AbstractParser ):
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 1165 
+                    self.state = 1165
                     localctx.selector = self.unresolved_selector() 
                 self.state = 1170
                 self._errHandler.sync(self)
@@ -8559,11 +8610,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_unresolved_selector
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterUnresolved_selector"):
                 listener.enterUnresolved_selector(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitUnresolved_selector"):
                 listener.exitUnresolved_selector(self)
 
 
@@ -8581,7 +8632,7 @@ class EParser ( AbstractParser ):
                 raise FailedPredicateException(self, "$parser.wasNot(EParser.WS)")
             self.state = 1172
             self.match(EParser.DOT)
-            self.state = 1173 
+            self.state = 1173
             localctx.name = self.identifier()
         except RecognitionException as re:
             localctx.exception = re
@@ -8616,11 +8667,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_invocation_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterInvocation_expression"):
                 listener.enterInvocation_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitInvocation_expression"):
                 listener.exitInvocation_expression(self)
 
 
@@ -8636,9 +8687,9 @@ class EParser ( AbstractParser ):
             self.match(EParser.INVOKE)
             self.state = 1176
             self.match(EParser.COLON)
-            self.state = 1177 
+            self.state = 1177
             localctx.name = self.variable_identifier()
-            self.state = 1178 
+            self.state = 1178
             self.invocation_trailer()
         except RecognitionException as re:
             localctx.exception = re
@@ -8659,11 +8710,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_invocation_trailer
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterInvocation_trailer"):
                 listener.enterInvocation_trailer(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitInvocation_trailer"):
                 listener.exitInvocation_trailer(self)
 
 
@@ -8718,11 +8769,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSelectorExpression"):
                 listener.enterSelectorExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSelectorExpression"):
                 listener.exitSelectorExpression(self)
 
 
@@ -8738,11 +8789,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSelectableExpression"):
                 listener.enterSelectableExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSelectableExpression"):
                 listener.exitSelectableExpression(self)
 
 
@@ -8760,7 +8811,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 1183 
+            self.state = 1183
             localctx.parent = self.selectable_expression()
             self._ctx.stop = self._input.LT(-1)
             self.state = 1189
@@ -8778,7 +8829,7 @@ class EParser ( AbstractParser ):
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 1186 
+                    self.state = 1186
                     localctx.selector = self.instance_selector() 
                 self.state = 1191
                 self._errHandler.sync(self)
@@ -8824,11 +8875,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSliceSelector"):
                 listener.enterSliceSelector(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSliceSelector"):
                 listener.exitSliceSelector(self)
 
 
@@ -8846,11 +8897,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMemberSelector"):
                 listener.enterMemberSelector(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMemberSelector"):
                 listener.exitMemberSelector(self)
 
 
@@ -8870,11 +8921,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterItemSelector"):
                 listener.enterItemSelector(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitItemSelector"):
                 listener.exitItemSelector(self)
 
 
@@ -8885,6 +8936,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 98, self.RULE_instance_selector)
         try:
             self.state = 1205
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,58,self._ctx)
             if la_ == 1:
                 localctx = EParser.MemberSelectorContext(self, localctx)
@@ -8895,7 +8947,7 @@ class EParser ( AbstractParser ):
                     raise FailedPredicateException(self, "$parser.wasNot(EParser.WS)")
                 self.state = 1193
                 self.match(EParser.DOT)
-                self.state = 1194 
+                self.state = 1194
                 localctx.name = self.variable_identifier()
                 pass
 
@@ -8908,7 +8960,7 @@ class EParser ( AbstractParser ):
                     raise FailedPredicateException(self, "$parser.wasNot(EParser.WS)")
                 self.state = 1196
                 self.match(EParser.LBRAK)
-                self.state = 1197 
+                self.state = 1197
                 localctx.xslice = self.slice_arguments()
                 self.state = 1198
                 self.match(EParser.RBRAK)
@@ -8923,7 +8975,7 @@ class EParser ( AbstractParser ):
                     raise FailedPredicateException(self, "$parser.wasNot(EParser.WS)")
                 self.state = 1201
                 self.match(EParser.LBRAK)
-                self.state = 1202 
+                self.state = 1202
                 localctx.exp = self.expression(0)
                 self.state = 1203
                 self.match(EParser.RBRAK)
@@ -8958,11 +9010,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_document_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDocument_expression"):
                 listener.enterDocument_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDocument_expression"):
                 listener.exitDocument_expression(self)
 
 
@@ -8977,11 +9029,12 @@ class EParser ( AbstractParser ):
             self.state = 1207
             self.match(EParser.DOCUMENT)
             self.state = 1210
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,59,self._ctx)
             if la_ == 1:
                 self.state = 1208
                 self.match(EParser.FROM)
-                self.state = 1209 
+                self.state = 1209
                 self.expression(0)
 
 
@@ -9013,11 +9066,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_blob_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterBlob_expression"):
                 listener.enterBlob_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitBlob_expression"):
                 listener.exitBlob_expression(self)
 
 
@@ -9033,7 +9086,7 @@ class EParser ( AbstractParser ):
             self.match(EParser.BLOB)
             self.state = 1213
             self.match(EParser.FROM)
-            self.state = 1214 
+            self.state = 1214
             self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -9089,11 +9142,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterConstructorFrom"):
                 listener.enterConstructorFrom(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitConstructorFrom"):
                 listener.exitConstructorFrom(self)
 
 
@@ -9119,11 +9172,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterConstructorNoFrom"):
                 listener.enterConstructorNoFrom(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitConstructorNoFrom"):
                 listener.exitConstructorNoFrom(self)
 
 
@@ -9135,34 +9188,38 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.state = 1237
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,65,self._ctx)
             if la_ == 1:
                 localctx = EParser.ConstructorFromContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1216 
+                self.state = 1216
                 localctx.typ = self.mutable_category_type()
                 self.state = 1217
                 self.match(EParser.FROM)
-                self.state = 1218 
+                self.state = 1218
                 localctx.firstArg = self.expression(0)
                 self.state = 1227
+                self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,62,self._ctx)
                 if la_ == 1:
                     self.state = 1220
+                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==EParser.COMMA:
                         self.state = 1219
                         self.match(EParser.COMMA)
 
 
-                    self.state = 1222 
+                    self.state = 1222
                     localctx.args = self.with_argument_assignment_list(0)
                     self.state = 1225
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,61,self._ctx)
                     if la_ == 1:
                         self.state = 1223
                         self.match(EParser.AND)
-                        self.state = 1224 
+                        self.state = 1224
                         localctx.arg = self.argument_assignment()
 
 
@@ -9173,19 +9230,21 @@ class EParser ( AbstractParser ):
             elif la_ == 2:
                 localctx = EParser.ConstructorNoFromContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1229 
+                self.state = 1229
                 localctx.typ = self.mutable_category_type()
                 self.state = 1235
+                self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,64,self._ctx)
                 if la_ == 1:
-                    self.state = 1230 
+                    self.state = 1230
                     localctx.args = self.with_argument_assignment_list(0)
                     self.state = 1233
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,63,self._ctx)
                     if la_ == 1:
                         self.state = 1231
                         self.match(EParser.AND)
-                        self.state = 1232 
+                        self.state = 1232
                         localctx.arg = self.argument_assignment()
 
 
@@ -9227,11 +9286,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_write_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterWrite_statement"):
                 listener.enterWrite_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitWrite_statement"):
                 listener.exitWrite_statement(self)
 
 
@@ -9245,11 +9304,11 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 1239
             self.match(EParser.WRITE)
-            self.state = 1240 
+            self.state = 1240
             localctx.what = self.expression(0)
             self.state = 1241
             self.match(EParser.TO)
-            self.state = 1242 
+            self.state = 1242
             localctx.target = self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -9282,11 +9341,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_ambiguous_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAmbiguous_expression"):
                 listener.enterAmbiguous_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAmbiguous_expression"):
                 listener.exitAmbiguous_expression(self)
 
 
@@ -9298,11 +9357,11 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 108, self.RULE_ambiguous_expression)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1244 
+            self.state = 1244
             localctx.method = self.unresolved_expression(0)
             self.state = 1245
             self.match(EParser.MINUS)
-            self.state = 1246 
+            self.state = 1246
             localctx.exp = self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -9341,11 +9400,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_filtered_list_suffix
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterFiltered_list_suffix"):
                 listener.enterFiltered_list_suffix(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitFiltered_list_suffix"):
                 listener.exitFiltered_list_suffix(self)
 
 
@@ -9361,11 +9420,11 @@ class EParser ( AbstractParser ):
             self.match(EParser.FILTERED)
             self.state = 1249
             self.match(EParser.WITH)
-            self.state = 1250 
+            self.state = 1250
             localctx.name = self.variable_identifier()
             self.state = 1251
             self.match(EParser.WHERE)
-            self.state = 1252 
+            self.state = 1252
             localctx.predicate = self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -9413,11 +9472,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterFetchOne"):
                 listener.enterFetchOne(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitFetchOne"):
                 listener.exitFetchOne(self)
 
 
@@ -9460,11 +9519,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterFetchMany"):
                 listener.enterFetchMany(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitFetchMany"):
                 listener.exitFetchMany(self)
 
 
@@ -9476,6 +9535,7 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.state = 1290
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,72,self._ctx)
             if la_ == 1:
                 localctx = EParser.FetchOneContext(self, localctx)
@@ -9486,15 +9546,16 @@ class EParser ( AbstractParser ):
                 self.match(EParser.ONE)
 
                 self.state = 1257
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==EParser.MUTABLE or _la==EParser.TYPE_IDENTIFIER:
-                    self.state = 1256 
+                    self.state = 1256
                     localctx.typ = self.mutable_category_type()
 
 
                 self.state = 1259
                 self.match(EParser.WHERE)
-                self.state = 1260 
+                self.state = 1260
                 localctx.predicate = self.expression(0)
                 pass
 
@@ -9504,65 +9565,70 @@ class EParser ( AbstractParser ):
                 self.state = 1261
                 self.match(EParser.FETCH)
                 self.state = 1279
+                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [EParser.ALL]:
                     self.state = 1262
                     self.match(EParser.ALL)
                     self.state = 1264
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,67,self._ctx)
                     if la_ == 1:
-                        self.state = 1263 
+                        self.state = 1263
                         localctx.typ = self.mutable_category_type()
 
 
-
+                    pass
                 elif token in [EParser.MUTABLE, EParser.TYPE_IDENTIFIER]:
-                    self.state = 1266 
+                    self.state = 1266
                     localctx.typ = self.mutable_category_type()
                     self.state = 1268
+                    self._errHandler.sync(self)
                     _la = self._input.LA(1)
                     if _la==EParser.ROWS:
                         self.state = 1267
                         self.match(EParser.ROWS)
 
 
-                    self.state = 1270 
+                    self.state = 1270
                     localctx.xstart = self.expression(0)
                     self.state = 1271
                     self.match(EParser.TO)
-                    self.state = 1272 
+                    self.state = 1272
                     localctx.xstop = self.expression(0)
-
+                    pass
                 elif token in [EParser.ROWS]:
                     self.state = 1274
                     self.match(EParser.ROWS)
-                    self.state = 1275 
+                    self.state = 1275
                     localctx.xstart = self.expression(0)
                     self.state = 1276
                     self.match(EParser.TO)
-                    self.state = 1277 
+                    self.state = 1277
                     localctx.xstop = self.expression(0)
-
+                    pass
                 else:
                     raise NoViableAltException(self)
 
                 self.state = 1283
+                self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,70,self._ctx)
                 if la_ == 1:
                     self.state = 1281
                     self.match(EParser.WHERE)
-                    self.state = 1282 
+                    self.state = 1282
                     localctx.predicate = self.expression(0)
 
 
                 self.state = 1288
+                self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,71,self._ctx)
                 if la_ == 1:
                     self.state = 1285
                     self.match(EParser.ORDER)
                     self.state = 1286
                     self.match(EParser.BY)
-                    self.state = 1287 
+                    self.state = 1287
                     localctx.orderby = self.order_by_list()
 
 
@@ -9612,11 +9678,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_sorted_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSorted_expression"):
                 listener.enterSorted_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSorted_expression"):
                 listener.exitSorted_expression(self)
 
 
@@ -9632,24 +9698,26 @@ class EParser ( AbstractParser ):
             self.state = 1292
             self.match(EParser.SORTED)
             self.state = 1294
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.DESC:
                 self.state = 1293
                 self.match(EParser.DESC)
 
 
-            self.state = 1296 
+            self.state = 1296
             localctx.source = self.instance_expression(0)
             self.state = 1302
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,74,self._ctx)
             if la_ == 1:
                 self.state = 1297
                 self.match(EParser.WITH)
-                self.state = 1298 
+                self.state = 1298
                 localctx.key = self.instance_expression(0)
                 self.state = 1299
                 self.match(EParser.AS)
-                self.state = 1300 
+                self.state = 1300
                 self.key_token()
 
 
@@ -9699,11 +9767,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterArgumentAssignmentListExpression"):
                 listener.enterArgumentAssignmentListExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitArgumentAssignmentListExpression"):
                 listener.exitArgumentAssignmentListExpression(self)
 
 
@@ -9725,11 +9793,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterArgumentAssignmentListNoExpression"):
                 listener.enterArgumentAssignmentListNoExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitArgumentAssignmentListNoExpression"):
                 listener.exitArgumentAssignmentListNoExpression(self)
 
 
@@ -9740,6 +9808,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 116, self.RULE_argument_assignment_list)
         try:
             self.state = 1318
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,78,self._ctx)
             if la_ == 1:
                 localctx = EParser.ArgumentAssignmentListExpressionContext(self, localctx)
@@ -9748,19 +9817,21 @@ class EParser ( AbstractParser ):
                 if not self.was(EParser.WS):
                     from antlr4.error.Errors import FailedPredicateException
                     raise FailedPredicateException(self, "$parser.was(EParser.WS)")
-                self.state = 1305 
+                self.state = 1305
                 localctx.exp = self.expression(0)
                 self.state = 1311
+                self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,76,self._ctx)
                 if la_ == 1:
-                    self.state = 1306 
+                    self.state = 1306
                     localctx.items = self.with_argument_assignment_list(0)
                     self.state = 1309
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,75,self._ctx)
                     if la_ == 1:
                         self.state = 1307
                         self.match(EParser.AND)
-                        self.state = 1308 
+                        self.state = 1308
                         localctx.item = self.argument_assignment()
 
 
@@ -9771,14 +9842,15 @@ class EParser ( AbstractParser ):
             elif la_ == 2:
                 localctx = EParser.ArgumentAssignmentListNoExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1313 
+                self.state = 1313
                 localctx.items = self.with_argument_assignment_list(0)
                 self.state = 1316
+                self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,77,self._ctx)
                 if la_ == 1:
                     self.state = 1314
                     self.match(EParser.AND)
-                    self.state = 1315 
+                    self.state = 1315
                     localctx.item = self.argument_assignment()
 
 
@@ -9822,11 +9894,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterArgumentAssignmentList"):
                 listener.enterArgumentAssignmentList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitArgumentAssignmentList"):
                 listener.exitArgumentAssignmentList(self)
 
 
@@ -9848,11 +9920,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterArgumentAssignmentListItem"):
                 listener.enterArgumentAssignmentListItem(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitArgumentAssignmentListItem"):
                 listener.exitArgumentAssignmentListItem(self)
 
 
@@ -9872,7 +9944,7 @@ class EParser ( AbstractParser ):
 
             self.state = 1321
             self.match(EParser.WITH)
-            self.state = 1322 
+            self.state = 1322
             localctx.item = self.argument_assignment()
             self._ctx.stop = self._input.LT(-1)
             self.state = 1329
@@ -9892,7 +9964,7 @@ class EParser ( AbstractParser ):
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
                     self.state = 1325
                     self.match(EParser.COMMA)
-                    self.state = 1326 
+                    self.state = 1326
                     localctx.item = self.argument_assignment() 
                 self.state = 1331
                 self._errHandler.sync(self)
@@ -9929,11 +10001,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_argument_assignment
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterArgument_assignment"):
                 listener.enterArgument_assignment(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitArgument_assignment"):
                 listener.exitArgument_assignment(self)
 
 
@@ -9945,11 +10017,11 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 120, self.RULE_argument_assignment)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1332 
+            self.state = 1332
             localctx.exp = self.expression(0)
             self.state = 1333
             self.match(EParser.AS)
-            self.state = 1334 
+            self.state = 1334
             localctx.name = self.variable_identifier()
         except RecognitionException as re:
             localctx.exception = re
@@ -9983,11 +10055,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_assign_instance_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAssign_instance_statement"):
                 listener.enterAssign_instance_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAssign_instance_statement"):
                 listener.exitAssign_instance_statement(self)
 
 
@@ -9999,11 +10071,11 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 122, self.RULE_assign_instance_statement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1336 
+            self.state = 1336
             localctx.inst = self.assignable_instance(0)
-            self.state = 1337 
+            self.state = 1337
             self.assign()
-            self.state = 1338 
+            self.state = 1338
             localctx.exp = self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -10043,11 +10115,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMemberInstance"):
                 listener.enterMemberInstance(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMemberInstance"):
                 listener.exitMemberInstance(self)
 
 
@@ -10067,11 +10139,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterItemInstance"):
                 listener.enterItemInstance(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitItemInstance"):
                 listener.exitItemInstance(self)
 
 
@@ -10082,6 +10154,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 124, self.RULE_child_instance)
         try:
             self.state = 1348
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,80,self._ctx)
             if la_ == 1:
                 localctx = EParser.MemberInstanceContext(self, localctx)
@@ -10092,7 +10165,7 @@ class EParser ( AbstractParser ):
                     raise FailedPredicateException(self, "$parser.wasNot(EParser.WS)")
                 self.state = 1341
                 self.match(EParser.DOT)
-                self.state = 1342 
+                self.state = 1342
                 localctx.name = self.variable_identifier()
                 pass
 
@@ -10105,7 +10178,7 @@ class EParser ( AbstractParser ):
                     raise FailedPredicateException(self, "$parser.wasNot(EParser.WS)")
                 self.state = 1344
                 self.match(EParser.LBRAK)
-                self.state = 1345 
+                self.state = 1345
                 localctx.exp = self.expression(0)
                 self.state = 1346
                 self.match(EParser.RBRAK)
@@ -10144,11 +10217,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_assign_tuple_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAssign_tuple_statement"):
                 listener.enterAssign_tuple_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAssign_tuple_statement"):
                 listener.exitAssign_tuple_statement(self)
 
 
@@ -10160,11 +10233,11 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 126, self.RULE_assign_tuple_statement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1350 
+            self.state = 1350
             localctx.items = self.variable_identifier_list()
-            self.state = 1351 
+            self.state = 1351
             self.assign()
-            self.state = 1352 
+            self.state = 1352
             localctx.exp = self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -10190,11 +10263,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_lfs
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterLfs"):
                 listener.enterLfs(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitLfs"):
                 listener.exitLfs(self)
 
 
@@ -10241,11 +10314,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_lfp
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterLfp"):
                 listener.enterLfp(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitLfp"):
                 listener.exitLfp(self)
 
 
@@ -10297,11 +10370,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_indent
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIndent"):
                 listener.enterIndent(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIndent"):
                 listener.exitIndent(self)
 
 
@@ -10355,11 +10428,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_dedent
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDedent"):
                 listener.enterDedent(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDedent"):
                 listener.exitDedent(self)
 
 
@@ -10405,11 +10478,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_null_literal
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNull_literal"):
                 listener.enterNull_literal(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNull_literal"):
                 listener.exitNull_literal(self)
 
 
@@ -10463,11 +10536,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterFullDeclarationList"):
                 listener.enterFullDeclarationList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitFullDeclarationList"):
                 listener.exitFullDeclarationList(self)
 
 
@@ -10481,13 +10554,14 @@ class EParser ( AbstractParser ):
             localctx = EParser.FullDeclarationListContext(self, localctx)
             self.enterOuterAlt(localctx, 1)
             self.state = 1383
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.COMMENT or _la==EParser.DEFINE:
-                self.state = 1382 
+                self.state = 1382
                 self.declarations()
 
 
-            self.state = 1385 
+            self.state = 1385
             self.lfs()
             self.state = 1386
             self.match(EParser.EOF)
@@ -10523,11 +10597,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_declarations
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDeclarations"):
                 listener.enterDeclarations(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDeclarations"):
                 listener.exitDeclarations(self)
 
 
@@ -10539,16 +10613,16 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 140, self.RULE_declarations)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1388 
+            self.state = 1388
             self.declaration()
             self.state = 1394
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,86,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 1389 
+                    self.state = 1389
                     self.lfp()
-                    self.state = 1390 
+                    self.state = 1390
                     self.declaration() 
                 self.state = 1396
                 self._errHandler.sync(self)
@@ -10606,11 +10680,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDeclaration"):
                 listener.enterDeclaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDeclaration"):
                 listener.exitDeclaration(self)
 
 
@@ -10627,38 +10701,39 @@ class EParser ( AbstractParser ):
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==EParser.COMMENT:
-                self.state = 1397 
+                self.state = 1397
                 self.comment_statement()
-                self.state = 1398 
+                self.state = 1398
                 self.lfp()
                 self.state = 1404
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
             self.state = 1410
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,88,self._ctx)
             if la_ == 1:
-                self.state = 1405 
+                self.state = 1405
                 self.attribute_declaration()
                 pass
 
             elif la_ == 2:
-                self.state = 1406 
+                self.state = 1406
                 self.category_declaration()
                 pass
 
             elif la_ == 3:
-                self.state = 1407 
+                self.state = 1407
                 self.resource_declaration()
                 pass
 
             elif la_ == 4:
-                self.state = 1408 
+                self.state = 1408
                 self.enum_declaration()
                 pass
 
             elif la_ == 5:
-                self.state = 1409 
+                self.state = 1409
                 self.method_declaration()
                 pass
 
@@ -10685,11 +10760,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_resource_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterResource_declaration"):
                 listener.enterResource_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitResource_declaration"):
                 listener.exitResource_declaration(self)
 
 
@@ -10701,7 +10776,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 144, self.RULE_resource_declaration)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1412 
+            self.state = 1412
             self.native_resource_declaration()
         except RecognitionException as re:
             localctx.exception = re
@@ -10729,11 +10804,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_enum_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterEnum_declaration"):
                 listener.enterEnum_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitEnum_declaration"):
                 listener.exitEnum_declaration(self)
 
 
@@ -10745,16 +10820,17 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 146, self.RULE_enum_declaration)
         try:
             self.state = 1416
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,89,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1414 
+                self.state = 1414
                 self.enum_category_declaration()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1415 
+                self.state = 1415
                 self.enum_native_declaration()
                 pass
 
@@ -10791,11 +10867,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_native_symbol_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNative_symbol_list"):
                 listener.enterNative_symbol_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNative_symbol_list"):
                 listener.exitNative_symbol_list(self)
 
 
@@ -10807,16 +10883,16 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 148, self.RULE_native_symbol_list)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1418 
+            self.state = 1418
             self.native_symbol()
             self.state = 1424
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,90,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 1419 
+                    self.state = 1419
                     self.lfp()
-                    self.state = 1420 
+                    self.state = 1420
                     self.native_symbol() 
                 self.state = 1426
                 self._errHandler.sync(self)
@@ -10854,11 +10930,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_category_symbol_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCategory_symbol_list"):
                 listener.enterCategory_symbol_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCategory_symbol_list"):
                 listener.exitCategory_symbol_list(self)
 
 
@@ -10870,16 +10946,16 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 150, self.RULE_category_symbol_list)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1427 
+            self.state = 1427
             self.category_symbol()
             self.state = 1433
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,91,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 1428 
+                    self.state = 1428
                     self.lfp()
-                    self.state = 1429 
+                    self.state = 1429
                     self.category_symbol() 
                 self.state = 1435
                 self._errHandler.sync(self)
@@ -10916,11 +10992,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_symbol_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSymbol_list"):
                 listener.enterSymbol_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSymbol_list"):
                 listener.exitSymbol_list(self)
 
 
@@ -10933,7 +11009,7 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1436 
+            self.state = 1436
             self.symbol_identifier()
             self.state = 1441
             self._errHandler.sync(self)
@@ -10941,7 +11017,7 @@ class EParser ( AbstractParser ):
             while _la==EParser.COMMA:
                 self.state = 1437
                 self.match(EParser.COMMA)
-                self.state = 1438 
+                self.state = 1438
                 self.symbol_identifier()
                 self.state = 1443
                 self._errHandler.sync(self)
@@ -10985,11 +11061,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMatchingSet"):
                 listener.enterMatchingSet(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMatchingSet"):
                 listener.exitMatchingSet(self)
 
 
@@ -11006,11 +11082,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.TEXT_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMatchingPattern"):
                 listener.enterMatchingPattern(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMatchingPattern"):
                 listener.exitMatchingPattern(self)
 
 
@@ -11028,11 +11104,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMatchingList"):
                 listener.enterMatchingList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMatchingList"):
                 listener.exitMatchingList(self)
 
 
@@ -11050,11 +11126,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMatchingRange"):
                 listener.enterMatchingRange(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMatchingRange"):
                 listener.exitMatchingRange(self)
 
 
@@ -11072,11 +11148,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMatchingExpression"):
                 listener.enterMatchingExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMatchingExpression"):
                 listener.exitMatchingExpression(self)
 
 
@@ -11087,13 +11163,14 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 154, self.RULE_attribute_constraint)
         try:
             self.state = 1454
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,93,self._ctx)
             if la_ == 1:
                 localctx = EParser.MatchingListContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1444
                 self.match(EParser.IN)
-                self.state = 1445 
+                self.state = 1445
                 localctx.source = self.list_literal()
                 pass
 
@@ -11102,7 +11179,7 @@ class EParser ( AbstractParser ):
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1446
                 self.match(EParser.IN)
-                self.state = 1447 
+                self.state = 1447
                 localctx.source = self.set_literal()
                 pass
 
@@ -11111,7 +11188,7 @@ class EParser ( AbstractParser ):
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1448
                 self.match(EParser.IN)
-                self.state = 1449 
+                self.state = 1449
                 localctx.source = self.range_literal()
                 pass
 
@@ -11129,7 +11206,7 @@ class EParser ( AbstractParser ):
                 self.enterOuterAlt(localctx, 5)
                 self.state = 1452
                 self.match(EParser.MATCHING)
-                self.state = 1453 
+                self.state = 1453
                 localctx.exp = self.expression(0)
                 pass
 
@@ -11165,11 +11242,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_list_literal
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterList_literal"):
                 listener.enterList_literal(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitList_literal"):
                 listener.exitList_literal(self)
 
 
@@ -11183,6 +11260,7 @@ class EParser ( AbstractParser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1457
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.MUTABLE:
                 self.state = 1456
@@ -11192,9 +11270,10 @@ class EParser ( AbstractParser ):
             self.state = 1459
             self.match(EParser.LBRAK)
             self.state = 1461
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.LBRAK) | (1 << EParser.LCURL) | (1 << EParser.MINUS) | (1 << EParser.LT) | (1 << EParser.METHOD_T) | (1 << EParser.CODE) | (1 << EParser.DOCUMENT) | (1 << EParser.BLOB))) != 0) or ((((_la - 99)) & ~0x3f) == 0 and ((1 << (_la - 99)) & ((1 << (EParser.EXECUTE - 99)) | (1 << (EParser.FETCH - 99)) | (1 << (EParser.INVOKE - 99)) | (1 << (EParser.MUTABLE - 99)) | (1 << (EParser.NOT - 99)) | (1 << (EParser.NOTHING - 99)) | (1 << (EParser.READ - 99)) | (1 << (EParser.SELF - 99)) | (1 << (EParser.SORTED - 99)) | (1 << (EParser.THIS - 99)) | (1 << (EParser.BOOLEAN_LITERAL - 99)) | (1 << (EParser.CHAR_LITERAL - 99)) | (1 << (EParser.MIN_INTEGER - 99)) | (1 << (EParser.MAX_INTEGER - 99)) | (1 << (EParser.SYMBOL_IDENTIFIER - 99)) | (1 << (EParser.TYPE_IDENTIFIER - 99)))) != 0) or ((((_la - 163)) & ~0x3f) == 0 and ((1 << (_la - 163)) & ((1 << (EParser.VARIABLE_IDENTIFIER - 163)) | (1 << (EParser.TEXT_LITERAL - 163)) | (1 << (EParser.UUID_LITERAL - 163)) | (1 << (EParser.INTEGER_LITERAL - 163)) | (1 << (EParser.HEXA_LITERAL - 163)) | (1 << (EParser.DECIMAL_LITERAL - 163)) | (1 << (EParser.DATETIME_LITERAL - 163)) | (1 << (EParser.TIME_LITERAL - 163)) | (1 << (EParser.DATE_LITERAL - 163)) | (1 << (EParser.PERIOD_LITERAL - 163)) | (1 << (EParser.VERSION_LITERAL - 163)))) != 0):
-                self.state = 1460 
+                self.state = 1460
                 self.expression_list()
 
 
@@ -11231,11 +11310,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_set_literal
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSet_literal"):
                 listener.enterSet_literal(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSet_literal"):
                 listener.exitSet_literal(self)
 
 
@@ -11249,6 +11328,7 @@ class EParser ( AbstractParser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1466
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.MUTABLE:
                 self.state = 1465
@@ -11258,9 +11338,10 @@ class EParser ( AbstractParser ):
             self.state = 1468
             self.match(EParser.LT)
             self.state = 1470
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.LBRAK) | (1 << EParser.LCURL) | (1 << EParser.MINUS) | (1 << EParser.LT) | (1 << EParser.METHOD_T) | (1 << EParser.CODE) | (1 << EParser.DOCUMENT) | (1 << EParser.BLOB))) != 0) or ((((_la - 99)) & ~0x3f) == 0 and ((1 << (_la - 99)) & ((1 << (EParser.EXECUTE - 99)) | (1 << (EParser.FETCH - 99)) | (1 << (EParser.INVOKE - 99)) | (1 << (EParser.MUTABLE - 99)) | (1 << (EParser.NOT - 99)) | (1 << (EParser.NOTHING - 99)) | (1 << (EParser.READ - 99)) | (1 << (EParser.SELF - 99)) | (1 << (EParser.SORTED - 99)) | (1 << (EParser.THIS - 99)) | (1 << (EParser.BOOLEAN_LITERAL - 99)) | (1 << (EParser.CHAR_LITERAL - 99)) | (1 << (EParser.MIN_INTEGER - 99)) | (1 << (EParser.MAX_INTEGER - 99)) | (1 << (EParser.SYMBOL_IDENTIFIER - 99)) | (1 << (EParser.TYPE_IDENTIFIER - 99)))) != 0) or ((((_la - 163)) & ~0x3f) == 0 and ((1 << (_la - 163)) & ((1 << (EParser.VARIABLE_IDENTIFIER - 163)) | (1 << (EParser.TEXT_LITERAL - 163)) | (1 << (EParser.UUID_LITERAL - 163)) | (1 << (EParser.INTEGER_LITERAL - 163)) | (1 << (EParser.HEXA_LITERAL - 163)) | (1 << (EParser.DECIMAL_LITERAL - 163)) | (1 << (EParser.DATETIME_LITERAL - 163)) | (1 << (EParser.TIME_LITERAL - 163)) | (1 << (EParser.DATE_LITERAL - 163)) | (1 << (EParser.PERIOD_LITERAL - 163)) | (1 << (EParser.VERSION_LITERAL - 163)))) != 0):
-                self.state = 1469 
+                self.state = 1469
                 self.expression_list()
 
 
@@ -11297,11 +11378,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_expression_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterExpression_list"):
                 listener.enterExpression_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitExpression_list"):
                 listener.exitExpression_list(self)
 
 
@@ -11314,7 +11395,7 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1474 
+            self.state = 1474
             self.expression(0)
             self.state = 1479
             self._errHandler.sync(self)
@@ -11322,7 +11403,7 @@ class EParser ( AbstractParser ):
             while _la==EParser.COMMA:
                 self.state = 1475
                 self.match(EParser.COMMA)
-                self.state = 1476 
+                self.state = 1476
                 self.expression(0)
                 self.state = 1481
                 self._errHandler.sync(self)
@@ -11364,11 +11445,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_range_literal
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterRange_literal"):
                 listener.enterRange_literal(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitRange_literal"):
                 listener.exitRange_literal(self)
 
 
@@ -11382,11 +11463,11 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 1482
             self.match(EParser.LBRAK)
-            self.state = 1483 
+            self.state = 1483
             localctx.low = self.expression(0)
             self.state = 1484
             self.match(EParser.RANGE)
-            self.state = 1485 
+            self.state = 1485
             localctx.high = self.expression(0)
             self.state = 1486
             self.match(EParser.RBRAK)
@@ -11431,11 +11512,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIteratorType"):
                 listener.enterIteratorType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIteratorType"):
                 listener.exitIteratorType(self)
 
 
@@ -11453,11 +11534,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSetType"):
                 listener.enterSetType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSetType"):
                 listener.exitSetType(self)
 
 
@@ -11477,11 +11558,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterListType"):
                 listener.enterListType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitListType"):
                 listener.exitListType(self)
 
 
@@ -11501,11 +11582,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDictType"):
                 listener.enterDictType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDictType"):
                 listener.exitDictType(self)
 
 
@@ -11527,11 +11608,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCursorType"):
                 listener.enterCursorType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCursorType"):
                 listener.exitCursorType(self)
 
 
@@ -11547,11 +11628,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPrimaryType"):
                 listener.enterPrimaryType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPrimaryType"):
                 listener.exitPrimaryType(self)
 
 
@@ -11566,15 +11647,16 @@ class EParser ( AbstractParser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1500
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.CODE, EParser.DOCUMENT, EParser.BLOB, EParser.IMAGE, EParser.UUID, EParser.TYPE_IDENTIFIER]:
                 localctx = EParser.PrimaryTypeContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 1489 
+                self.state = 1489
                 localctx.p = self.primary_type()
-
+                pass
             elif token in [EParser.CURSOR]:
                 localctx = EParser.CursorTypeContext(self, localctx)
                 self._ctx = localctx
@@ -11583,11 +11665,11 @@ class EParser ( AbstractParser ):
                 self.match(EParser.CURSOR)
                 self.state = 1491
                 self.match(EParser.LT)
-                self.state = 1492 
+                self.state = 1492
                 localctx.c = self.typedef(0)
                 self.state = 1493
                 self.match(EParser.GT)
-
+                pass
             elif token in [EParser.ITERATOR]:
                 localctx = EParser.IteratorTypeContext(self, localctx)
                 self._ctx = localctx
@@ -11596,11 +11678,11 @@ class EParser ( AbstractParser ):
                 self.match(EParser.ITERATOR)
                 self.state = 1496
                 self.match(EParser.LT)
-                self.state = 1497 
+                self.state = 1497
                 localctx.i = self.typedef(0)
                 self.state = 1498
                 self.match(EParser.GT)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -11614,6 +11696,7 @@ class EParser ( AbstractParser ):
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 1510
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,100,self._ctx)
                     if la_ == 1:
                         localctx = EParser.SetTypeContext(self, EParser.TypedefContext(self, _parentctx, _parentState))
@@ -11696,11 +11779,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNativeType"):
                 listener.enterNativeType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNativeType"):
                 listener.exitNativeType(self)
 
 
@@ -11716,11 +11799,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCategoryType"):
                 listener.enterCategoryType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCategoryType"):
                 listener.exitCategoryType(self)
 
 
@@ -11731,19 +11814,20 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 166, self.RULE_primary_type)
         try:
             self.state = 1517
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.CODE, EParser.DOCUMENT, EParser.BLOB, EParser.IMAGE, EParser.UUID]:
                 localctx = EParser.NativeTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1515 
+                self.state = 1515
                 localctx.n = self.native_type()
-
+                pass
             elif token in [EParser.TYPE_IDENTIFIER]:
                 localctx = EParser.CategoryTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1516 
+                self.state = 1516
                 localctx.c = self.category_type()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -11781,11 +11865,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.PERIOD, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPeriodType"):
                 listener.enterPeriodType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPeriodType"):
                 listener.exitPeriodType(self)
 
 
@@ -11799,11 +11883,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.BOOLEAN, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterBooleanType"):
                 listener.enterBooleanType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitBooleanType"):
                 listener.exitBooleanType(self)
 
 
@@ -11817,11 +11901,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DOCUMENT, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDocumentType"):
                 listener.enterDocumentType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDocumentType"):
                 listener.exitDocumentType(self)
 
 
@@ -11835,11 +11919,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.CHARACTER, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCharacterType"):
                 listener.enterCharacterType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCharacterType"):
                 listener.exitCharacterType(self)
 
 
@@ -11853,11 +11937,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.VERSION, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterVersionType"):
                 listener.enterVersionType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitVersionType"):
                 listener.exitVersionType(self)
 
 
@@ -11871,11 +11955,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.TEXT, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterTextType"):
                 listener.enterTextType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitTextType"):
                 listener.exitTextType(self)
 
 
@@ -11889,11 +11973,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.IMAGE, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterImageType"):
                 listener.enterImageType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitImageType"):
                 listener.exitImageType(self)
 
 
@@ -11907,11 +11991,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.TIME, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterTimeType"):
                 listener.enterTimeType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitTimeType"):
                 listener.exitTimeType(self)
 
 
@@ -11925,11 +12009,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.INTEGER, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIntegerType"):
                 listener.enterIntegerType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIntegerType"):
                 listener.exitIntegerType(self)
 
 
@@ -11943,11 +12027,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DATETIME, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDateTimeType"):
                 listener.enterDateTimeType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDateTimeType"):
                 listener.exitDateTimeType(self)
 
 
@@ -11961,11 +12045,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.BLOB, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterBlobType"):
                 listener.enterBlobType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitBlobType"):
                 listener.exitBlobType(self)
 
 
@@ -11979,11 +12063,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.UUID, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterUUIDType"):
                 listener.enterUUIDType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitUUIDType"):
                 listener.exitUUIDType(self)
 
 
@@ -11997,11 +12081,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DECIMAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDecimalType"):
                 listener.enterDecimalType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDecimalType"):
                 listener.exitDecimalType(self)
 
 
@@ -12015,11 +12099,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.CODE, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCodeType"):
                 listener.enterCodeType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCodeType"):
                 listener.exitCodeType(self)
 
 
@@ -12033,11 +12117,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DATE, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDateType"):
                 listener.enterDateType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDateType"):
                 listener.exitDateType(self)
 
 
@@ -12048,97 +12132,98 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 168, self.RULE_native_type)
         try:
             self.state = 1534
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.BOOLEAN]:
                 localctx = EParser.BooleanTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1519
                 self.match(EParser.BOOLEAN)
-
+                pass
             elif token in [EParser.CHARACTER]:
                 localctx = EParser.CharacterTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1520
                 self.match(EParser.CHARACTER)
-
+                pass
             elif token in [EParser.TEXT]:
                 localctx = EParser.TextTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1521
                 self.match(EParser.TEXT)
-
+                pass
             elif token in [EParser.IMAGE]:
                 localctx = EParser.ImageTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 1522
                 self.match(EParser.IMAGE)
-
+                pass
             elif token in [EParser.INTEGER]:
                 localctx = EParser.IntegerTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 1523
                 self.match(EParser.INTEGER)
-
+                pass
             elif token in [EParser.DECIMAL]:
                 localctx = EParser.DecimalTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 6)
                 self.state = 1524
                 self.match(EParser.DECIMAL)
-
+                pass
             elif token in [EParser.DOCUMENT]:
                 localctx = EParser.DocumentTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 7)
                 self.state = 1525
                 self.match(EParser.DOCUMENT)
-
+                pass
             elif token in [EParser.DATE]:
                 localctx = EParser.DateTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 8)
                 self.state = 1526
                 self.match(EParser.DATE)
-
+                pass
             elif token in [EParser.DATETIME]:
                 localctx = EParser.DateTimeTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 9)
                 self.state = 1527
                 self.match(EParser.DATETIME)
-
+                pass
             elif token in [EParser.TIME]:
                 localctx = EParser.TimeTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 10)
                 self.state = 1528
                 self.match(EParser.TIME)
-
+                pass
             elif token in [EParser.PERIOD]:
                 localctx = EParser.PeriodTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 11)
                 self.state = 1529
                 self.match(EParser.PERIOD)
-
+                pass
             elif token in [EParser.VERSION]:
                 localctx = EParser.VersionTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 12)
                 self.state = 1530
                 self.match(EParser.VERSION)
-
+                pass
             elif token in [EParser.CODE]:
                 localctx = EParser.CodeTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 13)
                 self.state = 1531
                 self.match(EParser.CODE)
-
+                pass
             elif token in [EParser.BLOB]:
                 localctx = EParser.BlobTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 14)
                 self.state = 1532
                 self.match(EParser.BLOB)
-
+                pass
             elif token in [EParser.UUID]:
                 localctx = EParser.UUIDTypeContext(self, localctx)
                 self.enterOuterAlt(localctx, 15)
                 self.state = 1533
                 self.match(EParser.UUID)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -12164,11 +12249,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_category_type
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCategory_type"):
                 listener.enterCategory_type(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCategory_type"):
                 listener.exitCategory_type(self)
 
 
@@ -12207,11 +12292,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_mutable_category_type
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMutable_category_type"):
                 listener.enterMutable_category_type(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMutable_category_type"):
                 listener.exitMutable_category_type(self)
 
 
@@ -12225,13 +12310,14 @@ class EParser ( AbstractParser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1539
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.MUTABLE:
                 self.state = 1538
                 self.match(EParser.MUTABLE)
 
 
-            self.state = 1541 
+            self.state = 1541
             self.category_type()
         except RecognitionException as re:
             localctx.exception = re
@@ -12255,11 +12341,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_code_type
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCode_type"):
                 listener.enterCode_type(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCode_type"):
                 listener.exitCode_type(self)
 
 
@@ -12309,11 +12395,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterConcreteCategoryDeclaration"):
                 listener.enterConcreteCategoryDeclaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitConcreteCategoryDeclaration"):
                 listener.exitConcreteCategoryDeclaration(self)
 
 
@@ -12329,11 +12415,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNativeCategoryDeclaration"):
                 listener.enterNativeCategoryDeclaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNativeCategoryDeclaration"):
                 listener.exitNativeCategoryDeclaration(self)
 
 
@@ -12349,11 +12435,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSingletonCategoryDeclaration"):
                 listener.enterSingletonCategoryDeclaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSingletonCategoryDeclaration"):
                 listener.exitSingletonCategoryDeclaration(self)
 
 
@@ -12364,25 +12450,26 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 176, self.RULE_category_declaration)
         try:
             self.state = 1548
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,105,self._ctx)
             if la_ == 1:
                 localctx = EParser.ConcreteCategoryDeclarationContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1545 
+                self.state = 1545
                 localctx.decl = self.concrete_category_declaration()
                 pass
 
             elif la_ == 2:
                 localctx = EParser.NativeCategoryDeclarationContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1546 
+                self.state = 1546
                 localctx.decl = self.native_category_declaration()
                 pass
 
             elif la_ == 3:
                 localctx = EParser.SingletonCategoryDeclarationContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 1547 
+                self.state = 1547
                 localctx.decl = self.singleton_category_declaration()
                 pass
 
@@ -12418,11 +12505,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_type_identifier_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterType_identifier_list"):
                 listener.enterType_identifier_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitType_identifier_list"):
                 listener.exitType_identifier_list(self)
 
 
@@ -12435,7 +12522,7 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1550 
+            self.state = 1550
             self.type_identifier()
             self.state = 1555
             self._errHandler.sync(self)
@@ -12443,7 +12530,7 @@ class EParser ( AbstractParser ):
             while _la==EParser.COMMA:
                 self.state = 1551
                 self.match(EParser.COMMA)
-                self.state = 1552 
+                self.state = 1552
                 self.type_identifier()
                 self.state = 1557
                 self._errHandler.sync(self)
@@ -12475,11 +12562,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_method_identifier
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMethod_identifier"):
                 listener.enterMethod_identifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMethod_identifier"):
                 listener.exitMethod_identifier(self)
 
 
@@ -12491,17 +12578,18 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 180, self.RULE_method_identifier)
         try:
             self.state = 1560
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.VARIABLE_IDENTIFIER]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1558 
+                self.state = 1558
                 self.variable_identifier()
-
+                pass
             elif token in [EParser.TYPE_IDENTIFIER]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1559 
+                self.state = 1559
                 self.type_identifier()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -12540,11 +12628,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterTypeIdentifier"):
                 listener.enterTypeIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitTypeIdentifier"):
                 listener.exitTypeIdentifier(self)
 
 
@@ -12559,11 +12647,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSymbolIdentifier"):
                 listener.enterSymbolIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSymbolIdentifier"):
                 listener.exitSymbolIdentifier(self)
 
 
@@ -12578,11 +12666,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterVariableIdentifier"):
                 listener.enterVariableIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitVariableIdentifier"):
                 listener.exitVariableIdentifier(self)
 
 
@@ -12593,25 +12681,26 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 182, self.RULE_identifier)
         try:
             self.state = 1565
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.VARIABLE_IDENTIFIER]:
                 localctx = EParser.VariableIdentifierContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1562 
+                self.state = 1562
                 self.variable_identifier()
-
+                pass
             elif token in [EParser.TYPE_IDENTIFIER]:
                 localctx = EParser.TypeIdentifierContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1563 
+                self.state = 1563
                 self.type_identifier()
-
+                pass
             elif token in [EParser.SYMBOL_IDENTIFIER]:
                 localctx = EParser.SymbolIdentifierContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 1564 
+                self.state = 1564
                 self.symbol_identifier()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -12636,11 +12725,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_variable_identifier
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterVariable_identifier"):
                 listener.enterVariable_identifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitVariable_identifier"):
                 listener.exitVariable_identifier(self)
 
 
@@ -12678,11 +12767,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_attribute_identifier
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAttribute_identifier"):
                 listener.enterAttribute_identifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAttribute_identifier"):
                 listener.exitAttribute_identifier(self)
 
 
@@ -12699,7 +12788,9 @@ class EParser ( AbstractParser ):
             _la = self._input.LA(1)
             if not(_la==EParser.STORABLE or _la==EParser.VARIABLE_IDENTIFIER):
                 self._errHandler.recoverInline(self)
-            self.consume()
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -12721,11 +12812,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_type_identifier
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterType_identifier"):
                 listener.enterType_identifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitType_identifier"):
                 listener.exitType_identifier(self)
 
 
@@ -12760,11 +12851,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_symbol_identifier
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSymbol_identifier"):
                 listener.enterSymbol_identifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSymbol_identifier"):
                 listener.exitSymbol_identifier(self)
 
 
@@ -12809,11 +12900,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_argument_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterArgument_list"):
                 listener.enterArgument_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitArgument_list"):
                 listener.exitArgument_list(self)
 
 
@@ -12826,7 +12917,7 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1575 
+            self.state = 1575
             self.argument()
             self.state = 1580
             self._errHandler.sync(self)
@@ -12834,7 +12925,7 @@ class EParser ( AbstractParser ):
             while _la==EParser.COMMA:
                 self.state = 1576
                 self.match(EParser.COMMA)
-                self.state = 1577 
+                self.state = 1577
                 self.argument()
                 self.state = 1582
                 self._errHandler.sync(self)
@@ -12878,11 +12969,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.MUTABLE, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOperatorArgument"):
                 listener.enterOperatorArgument(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOperatorArgument"):
                 listener.exitOperatorArgument(self)
 
 
@@ -12898,11 +12989,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCodeArgument"):
                 listener.enterCodeArgument(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCodeArgument"):
                 listener.exitCodeArgument(self)
 
 
@@ -12914,11 +13005,12 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.state = 1588
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,111,self._ctx)
             if la_ == 1:
                 localctx = EParser.CodeArgumentContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1583 
+                self.state = 1583
                 localctx.arg = self.code_argument()
                 pass
 
@@ -12926,13 +13018,14 @@ class EParser ( AbstractParser ):
                 localctx = EParser.OperatorArgumentContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1585
+                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==EParser.MUTABLE:
                     self.state = 1584
                     self.match(EParser.MUTABLE)
 
 
-                self.state = 1587 
+                self.state = 1587
                 localctx.arg = self.operator_argument()
                 pass
 
@@ -12963,11 +13056,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_operator_argument
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOperator_argument"):
                 listener.enterOperator_argument(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOperator_argument"):
                 listener.exitOperator_argument(self)
 
 
@@ -12979,17 +13072,18 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 196, self.RULE_operator_argument)
         try:
             self.state = 1592
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.VARIABLE_IDENTIFIER]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1590 
+                self.state = 1590
                 self.named_argument()
-
+                pass
             elif token in [EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.CODE, EParser.DOCUMENT, EParser.BLOB, EParser.IMAGE, EParser.UUID, EParser.ITERATOR, EParser.CURSOR, EParser.ANY, EParser.TYPE_IDENTIFIER]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1591 
+                self.state = 1591
                 self.typed_argument()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -13022,11 +13116,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_named_argument
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNamed_argument"):
                 listener.enterNamed_argument(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNamed_argument"):
                 listener.exitNamed_argument(self)
 
 
@@ -13039,14 +13133,15 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1594 
+            self.state = 1594
             self.variable_identifier()
             self.state = 1597
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.EQ:
                 self.state = 1595
                 self.match(EParser.EQ)
-                self.state = 1596 
+                self.state = 1596
                 self.literal_expression()
 
 
@@ -13077,11 +13172,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_code_argument
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCode_argument"):
                 listener.enterCode_argument(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCode_argument"):
                 listener.exitCode_argument(self)
 
 
@@ -13093,9 +13188,9 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 200, self.RULE_code_argument)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1599 
+            self.state = 1599
             self.code_type()
-            self.state = 1600 
+            self.state = 1600
             localctx.name = self.variable_identifier()
         except RecognitionException as re:
             localctx.exception = re
@@ -13123,11 +13218,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_category_or_any_type
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCategory_or_any_type"):
                 listener.enterCategory_or_any_type(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCategory_or_any_type"):
                 listener.exitCategory_or_any_type(self)
 
 
@@ -13139,17 +13234,18 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 202, self.RULE_category_or_any_type)
         try:
             self.state = 1604
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.CODE, EParser.DOCUMENT, EParser.BLOB, EParser.IMAGE, EParser.UUID, EParser.ITERATOR, EParser.CURSOR, EParser.TYPE_IDENTIFIER]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1602 
+                self.state = 1602
                 self.typedef(0)
-
+                pass
             elif token in [EParser.ANY]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1603 
+                self.state = 1603
                 self.any_type(0)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -13191,11 +13287,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.RBRAK, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAnyListType"):
                 listener.enterAnyListType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAnyListType"):
                 listener.exitAnyListType(self)
 
 
@@ -13209,11 +13305,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.ANY, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAnyType"):
                 listener.enterAnyType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAnyType"):
                 listener.exitAnyType(self)
 
 
@@ -13232,11 +13328,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.RCURL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAnyDictType"):
                 listener.enterAnyDictType(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAnyDictType"):
                 listener.exitAnyDictType(self)
 
 
@@ -13266,6 +13362,7 @@ class EParser ( AbstractParser ):
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
                     self.state = 1615
+                    self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,115,self._ctx)
                     if la_ == 1:
                         localctx = EParser.AnyListTypeContext(self, EParser.Any_typeContext(self, _parentctx, _parentState))
@@ -13330,11 +13427,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_member_method_declaration_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMember_method_declaration_list"):
                 listener.enterMember_method_declaration_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMember_method_declaration_list"):
                 listener.exitMember_method_declaration_list(self)
 
 
@@ -13346,16 +13443,16 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 206, self.RULE_member_method_declaration_list)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1620 
+            self.state = 1620
             self.member_method_declaration()
             self.state = 1626
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,117,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 1621 
+                    self.state = 1621
                     self.lfp()
-                    self.state = 1622 
+                    self.state = 1622
                     self.member_method_declaration() 
                 self.state = 1628
                 self._errHandler.sync(self)
@@ -13399,11 +13496,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_member_method_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMember_method_declaration"):
                 listener.enterMember_method_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMember_method_declaration"):
                 listener.exitMember_method_declaration(self)
 
 
@@ -13415,34 +13512,35 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 208, self.RULE_member_method_declaration)
         try:
             self.state = 1634
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,118,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1629 
+                self.state = 1629
                 self.setter_method_declaration()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1630 
+                self.state = 1630
                 self.getter_method_declaration()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 1631 
+                self.state = 1631
                 self.concrete_method_declaration()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 1632 
+                self.state = 1632
                 self.abstract_method_declaration()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 1633 
+                self.state = 1633
                 self.operator_method_declaration()
                 pass
 
@@ -13479,11 +13577,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_native_member_method_declaration_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNative_member_method_declaration_list"):
                 listener.enterNative_member_method_declaration_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNative_member_method_declaration_list"):
                 listener.exitNative_member_method_declaration_list(self)
 
 
@@ -13495,16 +13593,16 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 210, self.RULE_native_member_method_declaration_list)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1636 
+            self.state = 1636
             self.native_member_method_declaration()
             self.state = 1642
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,119,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 1637 
+                    self.state = 1637
                     self.lfp()
-                    self.state = 1638 
+                    self.state = 1638
                     self.native_member_method_declaration() 
                 self.state = 1644
                 self._errHandler.sync(self)
@@ -13540,11 +13638,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_native_member_method_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNative_member_method_declaration"):
                 listener.enterNative_member_method_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNative_member_method_declaration"):
                 listener.exitNative_member_method_declaration(self)
 
 
@@ -13556,22 +13654,23 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 212, self.RULE_native_member_method_declaration)
         try:
             self.state = 1648
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,120,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1645 
+                self.state = 1645
                 self.native_getter_declaration()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1646 
+                self.state = 1646
                 self.native_setter_declaration()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 1647 
+                self.state = 1647
                 self.native_method_declaration()
                 pass
 
@@ -13614,11 +13713,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPython2CategoryBinding"):
                 listener.enterPython2CategoryBinding(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPython2CategoryBinding"):
                 listener.exitPython2CategoryBinding(self)
 
 
@@ -13636,11 +13735,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPython3CategoryBinding"):
                 listener.enterPython3CategoryBinding(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPython3CategoryBinding"):
                 listener.exitPython3CategoryBinding(self)
 
 
@@ -13658,11 +13757,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaCategoryBinding"):
                 listener.enterJavaCategoryBinding(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaCategoryBinding"):
                 listener.exitJavaCategoryBinding(self)
 
 
@@ -13680,11 +13779,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpCategoryBinding"):
                 listener.enterCSharpCategoryBinding(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpCategoryBinding"):
                 listener.exitCSharpCategoryBinding(self)
 
 
@@ -13702,11 +13801,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaScriptCategoryBinding"):
                 listener.enterJavaScriptCategoryBinding(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaScriptCategoryBinding"):
                 listener.exitJavaScriptCategoryBinding(self)
 
 
@@ -13717,47 +13816,48 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 214, self.RULE_native_category_binding)
         try:
             self.state = 1660
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.JAVA]:
                 localctx = EParser.JavaCategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1650
                 self.match(EParser.JAVA)
-                self.state = 1651 
+                self.state = 1651
                 localctx.binding = self.java_class_identifier_expression(0)
-
+                pass
             elif token in [EParser.CSHARP]:
                 localctx = EParser.CSharpCategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1652
                 self.match(EParser.CSHARP)
-                self.state = 1653 
+                self.state = 1653
                 localctx.binding = self.csharp_identifier_expression(0)
-
+                pass
             elif token in [EParser.PYTHON2]:
                 localctx = EParser.Python2CategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1654
                 self.match(EParser.PYTHON2)
-                self.state = 1655 
+                self.state = 1655
                 localctx.binding = self.python_category_binding()
-
+                pass
             elif token in [EParser.PYTHON3]:
                 localctx = EParser.Python3CategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 1656
                 self.match(EParser.PYTHON3)
-                self.state = 1657 
+                self.state = 1657
                 localctx.binding = self.python_category_binding()
-
+                pass
             elif token in [EParser.JAVASCRIPT]:
                 localctx = EParser.JavaScriptCategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 1658
                 self.match(EParser.JAVASCRIPT)
-                self.state = 1659 
+                self.state = 1659
                 localctx.binding = self.javascript_category_binding()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -13787,11 +13887,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_python_category_binding
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPython_category_binding"):
                 listener.enterPython_category_binding(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPython_category_binding"):
                 listener.exitPython_category_binding(self)
 
 
@@ -13803,12 +13903,13 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 216, self.RULE_python_category_binding)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1662 
+            self.state = 1662
             self.identifier()
             self.state = 1664
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,122,self._ctx)
             if la_ == 1:
-                self.state = 1663 
+                self.state = 1663
                 self.python_module()
 
 
@@ -13853,11 +13954,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_python_module
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPython_module"):
                 listener.enterPython_module(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPython_module"):
                 listener.exitPython_module(self)
 
 
@@ -13871,11 +13972,11 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 1666
             self.match(EParser.FROM)
-            self.state = 1667 
+            self.state = 1667
             self.module_token()
             self.state = 1668
             self.match(EParser.COLON)
-            self.state = 1669 
+            self.state = 1669
             self.identifier()
             self.state = 1674
             self._errHandler.sync(self)
@@ -13884,7 +13985,7 @@ class EParser ( AbstractParser ):
                 if _alt==1:
                     self.state = 1670
                     self.match(EParser.DOT)
-                    self.state = 1671 
+                    self.state = 1671
                     self.identifier() 
                 self.state = 1676
                 self._errHandler.sync(self)
@@ -13916,11 +14017,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_javascript_category_binding
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascript_category_binding"):
                 listener.enterJavascript_category_binding(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascript_category_binding"):
                 listener.exitJavascript_category_binding(self)
 
 
@@ -13932,12 +14033,13 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 220, self.RULE_javascript_category_binding)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1677 
+            self.state = 1677
             self.identifier()
             self.state = 1679
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,124,self._ctx)
             if la_ == 1:
-                self.state = 1678 
+                self.state = 1678
                 self.javascript_module()
 
 
@@ -13985,11 +14087,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_javascript_module
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascript_module"):
                 listener.enterJavascript_module(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascript_module"):
                 listener.exitJavascript_module(self)
 
 
@@ -14004,18 +14106,19 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 1681
             self.match(EParser.FROM)
-            self.state = 1682 
+            self.state = 1682
             self.module_token()
             self.state = 1683
             self.match(EParser.COLON)
             self.state = 1685
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.SLASH:
                 self.state = 1684
                 self.match(EParser.SLASH)
 
 
-            self.state = 1687 
+            self.state = 1687
             self.javascript_identifier()
             self.state = 1692
             self._errHandler.sync(self)
@@ -14024,18 +14127,19 @@ class EParser ( AbstractParser ):
                 if _alt==1:
                     self.state = 1688
                     self.match(EParser.SLASH)
-                    self.state = 1689 
+                    self.state = 1689
                     self.javascript_identifier() 
                 self.state = 1694
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,126,self._ctx)
 
             self.state = 1697
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,127,self._ctx)
             if la_ == 1:
                 self.state = 1695
                 self.match(EParser.DOT)
-                self.state = 1696 
+                self.state = 1696
                 self.javascript_identifier()
 
 
@@ -14070,11 +14174,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_variable_identifier_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterVariable_identifier_list"):
                 listener.enterVariable_identifier_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitVariable_identifier_list"):
                 listener.exitVariable_identifier_list(self)
 
 
@@ -14087,7 +14191,7 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1699 
+            self.state = 1699
             self.variable_identifier()
             self.state = 1704
             self._errHandler.sync(self)
@@ -14095,7 +14199,7 @@ class EParser ( AbstractParser ):
             while _la==EParser.COMMA:
                 self.state = 1700
                 self.match(EParser.COMMA)
-                self.state = 1701 
+                self.state = 1701
                 self.variable_identifier()
                 self.state = 1706
                 self._errHandler.sync(self)
@@ -14132,11 +14236,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_attribute_identifier_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAttribute_identifier_list"):
                 listener.enterAttribute_identifier_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAttribute_identifier_list"):
                 listener.exitAttribute_identifier_list(self)
 
 
@@ -14148,7 +14252,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 226, self.RULE_attribute_identifier_list)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1707 
+            self.state = 1707
             self.attribute_identifier()
             self.state = 1712
             self._errHandler.sync(self)
@@ -14157,7 +14261,7 @@ class EParser ( AbstractParser ):
                 if _alt==1:
                     self.state = 1708
                     self.match(EParser.COMMA)
-                    self.state = 1709 
+                    self.state = 1709
                     self.attribute_identifier() 
                 self.state = 1714
                 self._errHandler.sync(self)
@@ -14197,11 +14301,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_method_declaration
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMethod_declaration"):
                 listener.enterMethod_declaration(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMethod_declaration"):
                 listener.exitMethod_declaration(self)
 
 
@@ -14213,28 +14317,29 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 228, self.RULE_method_declaration)
         try:
             self.state = 1719
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,130,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1715 
+                self.state = 1715
                 self.abstract_method_declaration()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1716 
+                self.state = 1716
                 self.concrete_method_declaration()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 1717 
+                self.state = 1717
                 self.native_method_declaration()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 1718 
+                self.state = 1718
                 self.test_method_declaration()
                 pass
 
@@ -14260,11 +14365,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_comment_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterComment_statement"):
                 listener.enterComment_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitComment_statement"):
                 listener.exitComment_statement(self)
 
 
@@ -14310,11 +14415,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_native_statement_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNative_statement_list"):
                 listener.enterNative_statement_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNative_statement_list"):
                 listener.exitNative_statement_list(self)
 
 
@@ -14326,16 +14431,16 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 232, self.RULE_native_statement_list)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1723 
+            self.state = 1723
             self.native_statement()
             self.state = 1729
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,131,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 1724 
+                    self.state = 1724
                     self.lfp()
-                    self.state = 1725 
+                    self.state = 1725
                     self.native_statement() 
                 self.state = 1731
                 self._errHandler.sync(self)
@@ -14378,11 +14483,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpNativeStatement"):
                 listener.enterCSharpNativeStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpNativeStatement"):
                 listener.exitCSharpNativeStatement(self)
 
 
@@ -14399,11 +14504,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaNativeStatement"):
                 listener.enterJavaNativeStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaNativeStatement"):
                 listener.exitJavaNativeStatement(self)
 
 
@@ -14420,11 +14525,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaScriptNativeStatement"):
                 listener.enterJavaScriptNativeStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaScriptNativeStatement"):
                 listener.exitJavaScriptNativeStatement(self)
 
 
@@ -14441,11 +14546,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPython2NativeStatement"):
                 listener.enterPython2NativeStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPython2NativeStatement"):
                 listener.exitPython2NativeStatement(self)
 
 
@@ -14462,11 +14567,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPython3NativeStatement"):
                 listener.enterPython3NativeStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPython3NativeStatement"):
                 listener.exitPython3NativeStatement(self)
 
 
@@ -14477,47 +14582,48 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 234, self.RULE_native_statement)
         try:
             self.state = 1742
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.JAVA]:
                 localctx = EParser.JavaNativeStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1732
                 self.match(EParser.JAVA)
-                self.state = 1733 
+                self.state = 1733
                 self.java_statement()
-
+                pass
             elif token in [EParser.CSHARP]:
                 localctx = EParser.CSharpNativeStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1734
                 self.match(EParser.CSHARP)
-                self.state = 1735 
+                self.state = 1735
                 self.csharp_statement()
-
+                pass
             elif token in [EParser.PYTHON2]:
                 localctx = EParser.Python2NativeStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1736
                 self.match(EParser.PYTHON2)
-                self.state = 1737 
+                self.state = 1737
                 self.python_native_statement()
-
+                pass
             elif token in [EParser.PYTHON3]:
                 localctx = EParser.Python3NativeStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 1738
                 self.match(EParser.PYTHON3)
-                self.state = 1739 
+                self.state = 1739
                 self.python_native_statement()
-
+                pass
             elif token in [EParser.JAVASCRIPT]:
                 localctx = EParser.JavaScriptNativeStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 1740
                 self.match(EParser.JAVASCRIPT)
-                self.state = 1741 
+                self.state = 1741
                 self.javascript_native_statement()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -14550,11 +14656,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_python_native_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPython_native_statement"):
                 listener.enterPython_native_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPython_native_statement"):
                 listener.exitPython_native_statement(self)
 
 
@@ -14567,9 +14673,10 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1744 
+            self.state = 1744
             self.python_statement()
             self.state = 1746
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.SEMI:
                 self.state = 1745
@@ -14577,9 +14684,10 @@ class EParser ( AbstractParser ):
 
 
             self.state = 1749
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.FROM:
-                self.state = 1748 
+                self.state = 1748
                 self.python_module()
 
 
@@ -14612,11 +14720,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_javascript_native_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascript_native_statement"):
                 listener.enterJavascript_native_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascript_native_statement"):
                 listener.exitJavascript_native_statement(self)
 
 
@@ -14629,9 +14737,10 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1751 
+            self.state = 1751
             self.javascript_statement()
             self.state = 1753
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.SEMI:
                 self.state = 1752
@@ -14639,9 +14748,10 @@ class EParser ( AbstractParser ):
 
 
             self.state = 1756
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.FROM:
-                self.state = 1755 
+                self.state = 1755
                 self.javascript_module()
 
 
@@ -14677,11 +14787,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_statement_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterStatement_list"):
                 listener.enterStatement_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitStatement_list"):
                 listener.exitStatement_list(self)
 
 
@@ -14693,16 +14803,16 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 240, self.RULE_statement_list)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1758 
+            self.state = 1758
             self.statement()
             self.state = 1764
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,137,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 1759 
+                    self.state = 1759
                     self.lfp()
-                    self.state = 1760 
+                    self.state = 1760
                     self.statement() 
                 self.state = 1766
                 self._errHandler.sync(self)
@@ -14740,11 +14850,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_assertion_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAssertion_list"):
                 listener.enterAssertion_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAssertion_list"):
                 listener.exitAssertion_list(self)
 
 
@@ -14756,16 +14866,16 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 242, self.RULE_assertion_list)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1767 
+            self.state = 1767
             self.assertion()
             self.state = 1773
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,138,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 1768 
+                    self.state = 1768
                     self.lfp()
-                    self.state = 1769 
+                    self.state = 1769
                     self.assertion() 
                 self.state = 1775
                 self._errHandler.sync(self)
@@ -14803,11 +14913,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_switch_case_statement_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSwitch_case_statement_list"):
                 listener.enterSwitch_case_statement_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSwitch_case_statement_list"):
                 listener.exitSwitch_case_statement_list(self)
 
 
@@ -14819,16 +14929,16 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 244, self.RULE_switch_case_statement_list)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1776 
+            self.state = 1776
             self.switch_case_statement()
             self.state = 1782
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,139,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 1777 
+                    self.state = 1777
                     self.lfp()
-                    self.state = 1778 
+                    self.state = 1778
                     self.switch_case_statement() 
                 self.state = 1784
                 self._errHandler.sync(self)
@@ -14866,11 +14976,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_catch_statement_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCatch_statement_list"):
                 listener.enterCatch_statement_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCatch_statement_list"):
                 listener.exitCatch_statement_list(self)
 
 
@@ -14882,16 +14992,16 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 246, self.RULE_catch_statement_list)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1785 
+            self.state = 1785
             self.catch_statement()
             self.state = 1791
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,140,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 1786 
+                    self.state = 1786
                     self.lfp()
-                    self.state = 1787 
+                    self.state = 1787
                     self.catch_statement() 
                 self.state = 1793
                 self._errHandler.sync(self)
@@ -14936,11 +15046,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.RBRAK, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterLiteralListLiteral"):
                 listener.enterLiteralListLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitLiteralListLiteral"):
                 listener.exitLiteralListLiteral(self)
 
 
@@ -14966,11 +15076,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterLiteralRangeLiteral"):
                 listener.enterLiteralRangeLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitLiteralRangeLiteral"):
                 listener.exitLiteralRangeLiteral(self)
 
 
@@ -14989,11 +15099,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.GT, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterLiteralSetLiteral"):
                 listener.enterLiteralSetLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitLiteralSetLiteral"):
                 listener.exitLiteralSetLiteral(self)
 
 
@@ -15004,17 +15114,18 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 248, self.RULE_literal_collection)
         try:
             self.state = 1808
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,141,self._ctx)
             if la_ == 1:
                 localctx = EParser.LiteralRangeLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1794
                 self.match(EParser.LBRAK)
-                self.state = 1795 
+                self.state = 1795
                 localctx.low = self.atomic_literal()
                 self.state = 1796
                 self.match(EParser.RANGE)
-                self.state = 1797 
+                self.state = 1797
                 localctx.high = self.atomic_literal()
                 self.state = 1798
                 self.match(EParser.RBRAK)
@@ -15025,7 +15136,7 @@ class EParser ( AbstractParser ):
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1800
                 self.match(EParser.LBRAK)
-                self.state = 1801 
+                self.state = 1801
                 self.literal_list_literal()
                 self.state = 1802
                 self.match(EParser.RBRAK)
@@ -15036,7 +15147,7 @@ class EParser ( AbstractParser ):
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1804
                 self.match(EParser.LT)
-                self.state = 1805 
+                self.state = 1805
                 self.literal_list_literal()
                 self.state = 1806
                 self.match(EParser.GT)
@@ -15078,11 +15189,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.MIN_INTEGER, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMinIntegerLiteral"):
                 listener.enterMinIntegerLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMinIntegerLiteral"):
                 listener.exitMinIntegerLiteral(self)
 
 
@@ -15097,11 +15208,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DATE_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDateLiteral"):
                 listener.enterDateLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDateLiteral"):
                 listener.exitDateLiteral(self)
 
 
@@ -15116,11 +15227,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.BOOLEAN_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterBooleanLiteral"):
                 listener.enterBooleanLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitBooleanLiteral"):
                 listener.exitBooleanLiteral(self)
 
 
@@ -15135,11 +15246,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.VERSION_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterVersionLiteral"):
                 listener.enterVersionLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitVersionLiteral"):
                 listener.exitVersionLiteral(self)
 
 
@@ -15154,11 +15265,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.HEXA_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterHexadecimalLiteral"):
                 listener.enterHexadecimalLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitHexadecimalLiteral"):
                 listener.exitHexadecimalLiteral(self)
 
 
@@ -15173,11 +15284,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.UUID_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterUUIDLiteral"):
                 listener.enterUUIDLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitUUIDLiteral"):
                 listener.exitUUIDLiteral(self)
 
 
@@ -15192,11 +15303,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.MAX_INTEGER, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMaxIntegerLiteral"):
                 listener.enterMaxIntegerLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMaxIntegerLiteral"):
                 listener.exitMaxIntegerLiteral(self)
 
 
@@ -15211,11 +15322,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DATETIME_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDateTimeLiteral"):
                 listener.enterDateTimeLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDateTimeLiteral"):
                 listener.exitDateTimeLiteral(self)
 
 
@@ -15230,11 +15341,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.PERIOD_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPeriodLiteral"):
                 listener.enterPeriodLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPeriodLiteral"):
                 listener.exitPeriodLiteral(self)
 
 
@@ -15249,11 +15360,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DECIMAL_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDecimalLiteral"):
                 listener.enterDecimalLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDecimalLiteral"):
                 listener.exitDecimalLiteral(self)
 
 
@@ -15268,11 +15379,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.TEXT_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterTextLiteral"):
                 listener.enterTextLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitTextLiteral"):
                 listener.exitTextLiteral(self)
 
 
@@ -15288,11 +15399,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNullLiteral"):
                 listener.enterNullLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNullLiteral"):
                 listener.exitNullLiteral(self)
 
 
@@ -15307,11 +15418,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.INTEGER_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIntegerLiteral"):
                 listener.enterIntegerLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIntegerLiteral"):
                 listener.exitIntegerLiteral(self)
 
 
@@ -15326,11 +15437,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.TIME_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterTimeLiteral"):
                 listener.enterTimeLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitTimeLiteral"):
                 listener.exitTimeLiteral(self)
 
 
@@ -15345,11 +15456,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.CHAR_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCharacterLiteral"):
                 listener.enterCharacterLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCharacterLiteral"):
                 listener.exitCharacterLiteral(self)
 
 
@@ -15360,97 +15471,98 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 250, self.RULE_atomic_literal)
         try:
             self.state = 1825
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.MIN_INTEGER]:
                 localctx = EParser.MinIntegerLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1810
                 localctx.t = self.match(EParser.MIN_INTEGER)
-
+                pass
             elif token in [EParser.MAX_INTEGER]:
                 localctx = EParser.MaxIntegerLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1811
                 localctx.t = self.match(EParser.MAX_INTEGER)
-
+                pass
             elif token in [EParser.INTEGER_LITERAL]:
                 localctx = EParser.IntegerLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1812
                 localctx.t = self.match(EParser.INTEGER_LITERAL)
-
+                pass
             elif token in [EParser.HEXA_LITERAL]:
                 localctx = EParser.HexadecimalLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 1813
                 localctx.t = self.match(EParser.HEXA_LITERAL)
-
+                pass
             elif token in [EParser.CHAR_LITERAL]:
                 localctx = EParser.CharacterLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 1814
                 localctx.t = self.match(EParser.CHAR_LITERAL)
-
+                pass
             elif token in [EParser.DATE_LITERAL]:
                 localctx = EParser.DateLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 6)
                 self.state = 1815
                 localctx.t = self.match(EParser.DATE_LITERAL)
-
+                pass
             elif token in [EParser.TIME_LITERAL]:
                 localctx = EParser.TimeLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 7)
                 self.state = 1816
                 localctx.t = self.match(EParser.TIME_LITERAL)
-
+                pass
             elif token in [EParser.TEXT_LITERAL]:
                 localctx = EParser.TextLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 8)
                 self.state = 1817
                 localctx.t = self.match(EParser.TEXT_LITERAL)
-
+                pass
             elif token in [EParser.DECIMAL_LITERAL]:
                 localctx = EParser.DecimalLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 9)
                 self.state = 1818
                 localctx.t = self.match(EParser.DECIMAL_LITERAL)
-
+                pass
             elif token in [EParser.DATETIME_LITERAL]:
                 localctx = EParser.DateTimeLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 10)
                 self.state = 1819
                 localctx.t = self.match(EParser.DATETIME_LITERAL)
-
+                pass
             elif token in [EParser.BOOLEAN_LITERAL]:
                 localctx = EParser.BooleanLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 11)
                 self.state = 1820
                 localctx.t = self.match(EParser.BOOLEAN_LITERAL)
-
+                pass
             elif token in [EParser.PERIOD_LITERAL]:
                 localctx = EParser.PeriodLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 12)
                 self.state = 1821
                 localctx.t = self.match(EParser.PERIOD_LITERAL)
-
+                pass
             elif token in [EParser.VERSION_LITERAL]:
                 localctx = EParser.VersionLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 13)
                 self.state = 1822
                 localctx.t = self.match(EParser.VERSION_LITERAL)
-
+                pass
             elif token in [EParser.UUID_LITERAL]:
                 localctx = EParser.UUIDLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 14)
                 self.state = 1823
                 localctx.t = self.match(EParser.UUID_LITERAL)
-
+                pass
             elif token in [EParser.NOTHING]:
                 localctx = EParser.NullLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 15)
-                self.state = 1824 
+                self.state = 1824
                 localctx.n = self.null_literal()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -15485,11 +15597,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_literal_list_literal
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterLiteral_list_literal"):
                 listener.enterLiteral_list_literal(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitLiteral_list_literal"):
                 listener.exitLiteral_list_literal(self)
 
 
@@ -15502,7 +15614,7 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1827 
+            self.state = 1827
             self.atomic_literal()
             self.state = 1832
             self._errHandler.sync(self)
@@ -15510,7 +15622,7 @@ class EParser ( AbstractParser ):
             while _la==EParser.COMMA:
                 self.state = 1828
                 self.match(EParser.COMMA)
-                self.state = 1829 
+                self.state = 1829
                 self.atomic_literal()
                 self.state = 1834
                 self._errHandler.sync(self)
@@ -15552,11 +15664,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterThisExpression"):
                 listener.enterThisExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitThisExpression"):
                 listener.exitThisExpression(self)
 
 
@@ -15572,11 +15684,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterParenthesisExpression"):
                 listener.enterParenthesisExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitParenthesisExpression"):
                 listener.exitParenthesisExpression(self)
 
 
@@ -15592,11 +15704,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterLiteralExpression"):
                 listener.enterLiteralExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitLiteralExpression"):
                 listener.exitLiteralExpression(self)
 
 
@@ -15612,11 +15724,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIdentifierExpression"):
                 listener.enterIdentifierExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIdentifierExpression"):
                 listener.exitIdentifierExpression(self)
 
 
@@ -15627,32 +15739,33 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 254, self.RULE_selectable_expression)
         try:
             self.state = 1839
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,144,self._ctx)
             if la_ == 1:
                 localctx = EParser.ParenthesisExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1835 
+                self.state = 1835
                 localctx.exp = self.parenthesis_expression()
                 pass
 
             elif la_ == 2:
                 localctx = EParser.LiteralExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1836 
+                self.state = 1836
                 localctx.exp = self.literal_expression()
                 pass
 
             elif la_ == 3:
                 localctx = EParser.IdentifierExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 1837 
+                self.state = 1837
                 localctx.exp = self.identifier()
                 pass
 
             elif la_ == 4:
                 localctx = EParser.ThisExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 1838 
+                self.state = 1838
                 localctx.exp = self.this_expression()
                 pass
 
@@ -15681,11 +15794,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_this_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterThis_expression"):
                 listener.enterThis_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitThis_expression"):
                 listener.exitThis_expression(self)
 
 
@@ -15702,7 +15815,9 @@ class EParser ( AbstractParser ):
             _la = self._input.LA(1)
             if not(_la==EParser.SELF or _la==EParser.THIS):
                 self._errHandler.recoverInline(self)
-            self.consume()
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -15731,11 +15846,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_parenthesis_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterParenthesis_expression"):
                 listener.enterParenthesis_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitParenthesis_expression"):
                 listener.exitParenthesis_expression(self)
 
 
@@ -15749,7 +15864,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 1843
             self.match(EParser.LPAR)
-            self.state = 1844 
+            self.state = 1844
             self.expression(0)
             self.state = 1845
             self.match(EParser.RPAR)
@@ -15779,11 +15894,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_literal_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterLiteral_expression"):
                 listener.enterLiteral_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitLiteral_expression"):
                 listener.exitLiteral_expression(self)
 
 
@@ -15795,17 +15910,18 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 260, self.RULE_literal_expression)
         try:
             self.state = 1849
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.NOTHING, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.MIN_INTEGER, EParser.MAX_INTEGER, EParser.TEXT_LITERAL, EParser.UUID_LITERAL, EParser.INTEGER_LITERAL, EParser.HEXA_LITERAL, EParser.DECIMAL_LITERAL, EParser.DATETIME_LITERAL, EParser.TIME_LITERAL, EParser.DATE_LITERAL, EParser.PERIOD_LITERAL, EParser.VERSION_LITERAL]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1847 
+                self.state = 1847
                 self.atomic_literal()
-
+                pass
             elif token in [EParser.LPAR, EParser.LBRAK, EParser.LCURL, EParser.LT, EParser.MUTABLE]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1848 
+                self.state = 1848
                 self.collection_literal()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -15847,11 +15963,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_collection_literal
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCollection_literal"):
                 listener.enterCollection_literal(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCollection_literal"):
                 listener.exitCollection_literal(self)
 
 
@@ -15863,34 +15979,35 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 262, self.RULE_collection_literal)
         try:
             self.state = 1856
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,146,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1851 
+                self.state = 1851
                 self.range_literal()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1852 
+                self.state = 1852
                 self.list_literal()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 1853 
+                self.state = 1853
                 self.set_literal()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 1854 
+                self.state = 1854
                 self.dict_literal()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 1855 
+                self.state = 1855
                 self.tuple_literal()
                 pass
 
@@ -15926,11 +16043,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_tuple_literal
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterTuple_literal"):
                 listener.enterTuple_literal(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitTuple_literal"):
                 listener.exitTuple_literal(self)
 
 
@@ -15944,6 +16061,7 @@ class EParser ( AbstractParser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1859
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.MUTABLE:
                 self.state = 1858
@@ -15953,9 +16071,10 @@ class EParser ( AbstractParser ):
             self.state = 1861
             self.match(EParser.LPAR)
             self.state = 1863
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.LBRAK) | (1 << EParser.LCURL) | (1 << EParser.MINUS) | (1 << EParser.LT) | (1 << EParser.METHOD_T) | (1 << EParser.CODE) | (1 << EParser.DOCUMENT) | (1 << EParser.BLOB))) != 0) or ((((_la - 99)) & ~0x3f) == 0 and ((1 << (_la - 99)) & ((1 << (EParser.EXECUTE - 99)) | (1 << (EParser.FETCH - 99)) | (1 << (EParser.INVOKE - 99)) | (1 << (EParser.MUTABLE - 99)) | (1 << (EParser.NOT - 99)) | (1 << (EParser.NOTHING - 99)) | (1 << (EParser.READ - 99)) | (1 << (EParser.SELF - 99)) | (1 << (EParser.SORTED - 99)) | (1 << (EParser.THIS - 99)) | (1 << (EParser.BOOLEAN_LITERAL - 99)) | (1 << (EParser.CHAR_LITERAL - 99)) | (1 << (EParser.MIN_INTEGER - 99)) | (1 << (EParser.MAX_INTEGER - 99)) | (1 << (EParser.SYMBOL_IDENTIFIER - 99)) | (1 << (EParser.TYPE_IDENTIFIER - 99)))) != 0) or ((((_la - 163)) & ~0x3f) == 0 and ((1 << (_la - 163)) & ((1 << (EParser.VARIABLE_IDENTIFIER - 163)) | (1 << (EParser.TEXT_LITERAL - 163)) | (1 << (EParser.UUID_LITERAL - 163)) | (1 << (EParser.INTEGER_LITERAL - 163)) | (1 << (EParser.HEXA_LITERAL - 163)) | (1 << (EParser.DECIMAL_LITERAL - 163)) | (1 << (EParser.DATETIME_LITERAL - 163)) | (1 << (EParser.TIME_LITERAL - 163)) | (1 << (EParser.DATE_LITERAL - 163)) | (1 << (EParser.PERIOD_LITERAL - 163)) | (1 << (EParser.VERSION_LITERAL - 163)))) != 0):
-                self.state = 1862 
+                self.state = 1862
                 self.expression_tuple()
 
 
@@ -15992,11 +16111,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_dict_literal
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDict_literal"):
                 listener.enterDict_literal(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDict_literal"):
                 listener.exitDict_literal(self)
 
 
@@ -16010,6 +16129,7 @@ class EParser ( AbstractParser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1868
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==EParser.MUTABLE:
                 self.state = 1867
@@ -16019,9 +16139,10 @@ class EParser ( AbstractParser ):
             self.state = 1870
             self.match(EParser.LCURL)
             self.state = 1872
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.LBRAK) | (1 << EParser.LCURL) | (1 << EParser.MINUS) | (1 << EParser.LT) | (1 << EParser.METHOD_T) | (1 << EParser.CODE) | (1 << EParser.DOCUMENT) | (1 << EParser.BLOB))) != 0) or ((((_la - 99)) & ~0x3f) == 0 and ((1 << (_la - 99)) & ((1 << (EParser.EXECUTE - 99)) | (1 << (EParser.FETCH - 99)) | (1 << (EParser.INVOKE - 99)) | (1 << (EParser.MUTABLE - 99)) | (1 << (EParser.NOT - 99)) | (1 << (EParser.NOTHING - 99)) | (1 << (EParser.READ - 99)) | (1 << (EParser.SELF - 99)) | (1 << (EParser.SORTED - 99)) | (1 << (EParser.THIS - 99)) | (1 << (EParser.BOOLEAN_LITERAL - 99)) | (1 << (EParser.CHAR_LITERAL - 99)) | (1 << (EParser.MIN_INTEGER - 99)) | (1 << (EParser.MAX_INTEGER - 99)) | (1 << (EParser.SYMBOL_IDENTIFIER - 99)) | (1 << (EParser.TYPE_IDENTIFIER - 99)))) != 0) or ((((_la - 163)) & ~0x3f) == 0 and ((1 << (_la - 163)) & ((1 << (EParser.VARIABLE_IDENTIFIER - 163)) | (1 << (EParser.TEXT_LITERAL - 163)) | (1 << (EParser.UUID_LITERAL - 163)) | (1 << (EParser.INTEGER_LITERAL - 163)) | (1 << (EParser.HEXA_LITERAL - 163)) | (1 << (EParser.DECIMAL_LITERAL - 163)) | (1 << (EParser.DATETIME_LITERAL - 163)) | (1 << (EParser.TIME_LITERAL - 163)) | (1 << (EParser.DATE_LITERAL - 163)) | (1 << (EParser.PERIOD_LITERAL - 163)) | (1 << (EParser.VERSION_LITERAL - 163)))) != 0):
-                self.state = 1871 
+                self.state = 1871
                 self.dict_entry_list()
 
 
@@ -16058,11 +16179,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_expression_tuple
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterExpression_tuple"):
                 listener.enterExpression_tuple(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitExpression_tuple"):
                 listener.exitExpression_tuple(self)
 
 
@@ -16075,14 +16196,15 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1876 
+            self.state = 1876
             self.expression(0)
             self.state = 1877
             self.match(EParser.COMMA)
             self.state = 1886
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.LBRAK) | (1 << EParser.LCURL) | (1 << EParser.MINUS) | (1 << EParser.LT) | (1 << EParser.METHOD_T) | (1 << EParser.CODE) | (1 << EParser.DOCUMENT) | (1 << EParser.BLOB))) != 0) or ((((_la - 99)) & ~0x3f) == 0 and ((1 << (_la - 99)) & ((1 << (EParser.EXECUTE - 99)) | (1 << (EParser.FETCH - 99)) | (1 << (EParser.INVOKE - 99)) | (1 << (EParser.MUTABLE - 99)) | (1 << (EParser.NOT - 99)) | (1 << (EParser.NOTHING - 99)) | (1 << (EParser.READ - 99)) | (1 << (EParser.SELF - 99)) | (1 << (EParser.SORTED - 99)) | (1 << (EParser.THIS - 99)) | (1 << (EParser.BOOLEAN_LITERAL - 99)) | (1 << (EParser.CHAR_LITERAL - 99)) | (1 << (EParser.MIN_INTEGER - 99)) | (1 << (EParser.MAX_INTEGER - 99)) | (1 << (EParser.SYMBOL_IDENTIFIER - 99)) | (1 << (EParser.TYPE_IDENTIFIER - 99)))) != 0) or ((((_la - 163)) & ~0x3f) == 0 and ((1 << (_la - 163)) & ((1 << (EParser.VARIABLE_IDENTIFIER - 163)) | (1 << (EParser.TEXT_LITERAL - 163)) | (1 << (EParser.UUID_LITERAL - 163)) | (1 << (EParser.INTEGER_LITERAL - 163)) | (1 << (EParser.HEXA_LITERAL - 163)) | (1 << (EParser.DECIMAL_LITERAL - 163)) | (1 << (EParser.DATETIME_LITERAL - 163)) | (1 << (EParser.TIME_LITERAL - 163)) | (1 << (EParser.DATE_LITERAL - 163)) | (1 << (EParser.PERIOD_LITERAL - 163)) | (1 << (EParser.VERSION_LITERAL - 163)))) != 0):
-                self.state = 1878 
+                self.state = 1878
                 self.expression(0)
                 self.state = 1883
                 self._errHandler.sync(self)
@@ -16090,7 +16212,7 @@ class EParser ( AbstractParser ):
                 while _la==EParser.COMMA:
                     self.state = 1879
                     self.match(EParser.COMMA)
-                    self.state = 1880 
+                    self.state = 1880
                     self.expression(0)
                     self.state = 1885
                     self._errHandler.sync(self)
@@ -16129,11 +16251,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_dict_entry_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDict_entry_list"):
                 listener.enterDict_entry_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDict_entry_list"):
                 listener.exitDict_entry_list(self)
 
 
@@ -16146,7 +16268,7 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1888 
+            self.state = 1888
             self.dict_entry()
             self.state = 1893
             self._errHandler.sync(self)
@@ -16154,7 +16276,7 @@ class EParser ( AbstractParser ):
             while _la==EParser.COMMA:
                 self.state = 1889
                 self.match(EParser.COMMA)
-                self.state = 1890 
+                self.state = 1890
                 self.dict_entry()
                 self.state = 1895
                 self._errHandler.sync(self)
@@ -16190,11 +16312,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_dict_entry
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDict_entry"):
                 listener.enterDict_entry(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDict_entry"):
                 listener.exitDict_entry(self)
 
 
@@ -16206,11 +16328,11 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 272, self.RULE_dict_entry)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1896 
+            self.state = 1896
             localctx.key = self.expression(0)
             self.state = 1897
             self.match(EParser.COLON)
-            self.state = 1898 
+            self.state = 1898
             localctx.value = self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -16254,11 +16376,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSliceFirstAndLast"):
                 listener.enterSliceFirstAndLast(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSliceFirstAndLast"):
                 listener.exitSliceFirstAndLast(self)
 
 
@@ -16276,11 +16398,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSliceLastOnly"):
                 listener.enterSliceLastOnly(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSliceLastOnly"):
                 listener.exitSliceLastOnly(self)
 
 
@@ -16298,11 +16420,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSliceFirstOnly"):
                 listener.enterSliceFirstOnly(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSliceFirstOnly"):
                 listener.exitSliceFirstOnly(self)
 
 
@@ -16313,22 +16435,23 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 274, self.RULE_slice_arguments)
         try:
             self.state = 1909
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,154,self._ctx)
             if la_ == 1:
                 localctx = EParser.SliceFirstAndLastContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 1900 
+                self.state = 1900
                 localctx.first = self.expression(0)
                 self.state = 1901
                 self.match(EParser.COLON)
-                self.state = 1902 
+                self.state = 1902
                 localctx.last = self.expression(0)
                 pass
 
             elif la_ == 2:
                 localctx = EParser.SliceFirstOnlyContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1904 
+                self.state = 1904
                 localctx.first = self.expression(0)
                 self.state = 1905
                 self.match(EParser.COLON)
@@ -16339,7 +16462,7 @@ class EParser ( AbstractParser ):
                 self.enterOuterAlt(localctx, 3)
                 self.state = 1907
                 self.match(EParser.COLON)
-                self.state = 1908 
+                self.state = 1908
                 localctx.last = self.expression(0)
                 pass
 
@@ -16374,11 +16497,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_assign_variable_statement
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAssign_variable_statement"):
                 listener.enterAssign_variable_statement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAssign_variable_statement"):
                 listener.exitAssign_variable_statement(self)
 
 
@@ -16390,11 +16513,11 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 276, self.RULE_assign_variable_statement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1911 
+            self.state = 1911
             self.variable_identifier()
-            self.state = 1912 
+            self.state = 1912
             self.assign()
-            self.state = 1913 
+            self.state = 1913
             self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -16433,11 +16556,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterChildInstance"):
                 listener.enterChildInstance(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitChildInstance"):
                 listener.exitChildInstance(self)
 
 
@@ -16452,11 +16575,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterRootInstance"):
                 listener.enterRootInstance(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitRootInstance"):
                 listener.exitRootInstance(self)
 
 
@@ -16474,7 +16597,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 1916 
+            self.state = 1916
             self.variable_identifier()
             self._ctx.stop = self._input.LT(-1)
             self.state = 1922
@@ -16491,7 +16614,7 @@ class EParser ( AbstractParser ):
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 1919 
+                    self.state = 1919
                     self.child_instance() 
                 self.state = 1924
                 self._errHandler.sync(self)
@@ -16534,11 +16657,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIsATypeExpression"):
                 listener.enterIsATypeExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIsATypeExpression"):
                 listener.exitIsATypeExpression(self)
 
 
@@ -16553,11 +16676,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIsOtherExpression"):
                 listener.enterIsOtherExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIsOtherExpression"):
                 listener.exitIsOtherExpression(self)
 
 
@@ -16568,6 +16691,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 280, self.RULE_is_expression)
         try:
             self.state = 1929
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,156,self._ctx)
             if la_ == 1:
                 localctx = EParser.IsATypeExpressionContext(self, localctx)
@@ -16578,14 +16702,14 @@ class EParser ( AbstractParser ):
                     raise FailedPredicateException(self, "$parser.willBeAOrAn()")
                 self.state = 1926
                 self.match(EParser.VARIABLE_IDENTIFIER)
-                self.state = 1927 
+                self.state = 1927
                 self.category_or_any_type()
                 pass
 
             elif la_ == 2:
                 localctx = EParser.IsOtherExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1928 
+                self.state = 1928
                 self.expression(0)
                 pass
 
@@ -16622,11 +16746,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_read_all_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterRead_all_expression"):
                 listener.enterRead_all_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitRead_all_expression"):
                 listener.exitRead_all_expression(self)
 
 
@@ -16644,7 +16768,7 @@ class EParser ( AbstractParser ):
             self.match(EParser.ALL)
             self.state = 1933
             self.match(EParser.FROM)
-            self.state = 1934 
+            self.state = 1934
             localctx.source = self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -16678,11 +16802,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_read_one_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterRead_one_expression"):
                 listener.enterRead_one_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitRead_one_expression"):
                 listener.exitRead_one_expression(self)
 
 
@@ -16700,7 +16824,7 @@ class EParser ( AbstractParser ):
             self.match(EParser.ONE)
             self.state = 1938
             self.match(EParser.FROM)
-            self.state = 1939 
+            self.state = 1939
             localctx.source = self.expression(0)
         except RecognitionException as re:
             localctx.exception = re
@@ -16733,11 +16857,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_order_by_list
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOrder_by_list"):
                 listener.enterOrder_by_list(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOrder_by_list"):
                 listener.exitOrder_by_list(self)
 
 
@@ -16749,7 +16873,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 286, self.RULE_order_by_list)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1941 
+            self.state = 1941
             self.order_by()
             self.state = 1946
             self._errHandler.sync(self)
@@ -16758,7 +16882,7 @@ class EParser ( AbstractParser ):
                 if _alt==1:
                     self.state = 1942
                     self.match(EParser.COMMA)
-                    self.state = 1943 
+                    self.state = 1943
                     self.order_by() 
                 self.state = 1948
                 self._errHandler.sync(self)
@@ -16801,11 +16925,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_order_by
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOrder_by"):
                 listener.enterOrder_by(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOrder_by"):
                 listener.exitOrder_by(self)
 
 
@@ -16818,7 +16942,7 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 1949 
+            self.state = 1949
             self.variable_identifier()
             self.state = 1954
             self._errHandler.sync(self)
@@ -16827,20 +16951,23 @@ class EParser ( AbstractParser ):
                 if _alt==1:
                     self.state = 1950
                     self.match(EParser.DOT)
-                    self.state = 1951 
+                    self.state = 1951
                     self.variable_identifier() 
                 self.state = 1956
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,158,self._ctx)
 
             self.state = 1958
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,159,self._ctx)
             if la_ == 1:
                 self.state = 1957
                 _la = self._input.LA(1)
                 if not(_la==EParser.ASC or _la==EParser.DESC):
                     self._errHandler.recoverInline(self)
-                self.consume()
+                else:
+                    self._errHandler.reportMatch(self)
+                    self.consume()
 
 
         except RecognitionException as re:
@@ -16877,11 +17004,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.PLUS, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOperatorPlus"):
                 listener.enterOperatorPlus(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOperatorPlus"):
                 listener.exitOperatorPlus(self)
 
 
@@ -16896,11 +17023,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOperatorDivide"):
                 listener.enterOperatorDivide(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOperatorDivide"):
                 listener.exitOperatorDivide(self)
 
 
@@ -16915,11 +17042,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOperatorIDivide"):
                 listener.enterOperatorIDivide(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOperatorIDivide"):
                 listener.exitOperatorIDivide(self)
 
 
@@ -16934,11 +17061,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOperatorMultiply"):
                 listener.enterOperatorMultiply(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOperatorMultiply"):
                 listener.exitOperatorMultiply(self)
 
 
@@ -16952,11 +17079,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.MINUS, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOperatorMinus"):
                 listener.enterOperatorMinus(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOperatorMinus"):
                 listener.exitOperatorMinus(self)
 
 
@@ -16971,11 +17098,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterOperatorModulo"):
                 listener.enterOperatorModulo(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitOperatorModulo"):
                 listener.exitOperatorModulo(self)
 
 
@@ -16986,43 +17113,44 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 290, self.RULE_operator)
         try:
             self.state = 1966
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.PLUS]:
                 localctx = EParser.OperatorPlusContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1960
                 self.match(EParser.PLUS)
-
+                pass
             elif token in [EParser.MINUS]:
                 localctx = EParser.OperatorMinusContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1961
                 self.match(EParser.MINUS)
-
+                pass
             elif token in [EParser.STAR]:
                 localctx = EParser.OperatorMultiplyContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 1962 
+                self.state = 1962
                 self.multiply()
-
+                pass
             elif token in [EParser.SLASH]:
                 localctx = EParser.OperatorDivideContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 1963 
+                self.state = 1963
                 self.divide()
-
+                pass
             elif token in [EParser.BSLASH]:
                 localctx = EParser.OperatorIDivideContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
-                self.state = 1964 
+                self.state = 1964
                 self.idivide()
-
+                pass
             elif token in [EParser.PERCENT, EParser.MODULO]:
                 localctx = EParser.OperatorModuloContext(self, localctx)
                 self.enterOuterAlt(localctx, 6)
-                self.state = 1965 
+                self.state = 1965
                 self.modulo()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -17048,11 +17176,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_new_token
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterNew_token"):
                 listener.enterNew_token(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitNew_token"):
                 listener.exitNew_token(self)
 
 
@@ -17092,11 +17220,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_key_token
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterKey_token"):
                 listener.enterKey_token(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitKey_token"):
                 listener.exitKey_token(self)
 
 
@@ -17136,11 +17264,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_module_token
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterModule_token"):
                 listener.enterModule_token(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitModule_token"):
                 listener.exitModule_token(self)
 
 
@@ -17180,11 +17308,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_value_token
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterValue_token"):
                 listener.enterValue_token(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitValue_token"):
                 listener.exitValue_token(self)
 
 
@@ -17224,11 +17352,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_symbols_token
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterSymbols_token"):
                 listener.enterSymbols_token(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitSymbols_token"):
                 listener.exitSymbols_token(self)
 
 
@@ -17267,11 +17395,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_assign
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterAssign"):
                 listener.enterAssign(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitAssign"):
                 listener.exitAssign(self)
 
 
@@ -17306,11 +17434,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_multiply
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterMultiply"):
                 listener.enterMultiply(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitMultiply"):
                 listener.exitMultiply(self)
 
 
@@ -17345,11 +17473,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_divide
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterDivide"):
                 listener.enterDivide(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitDivide"):
                 listener.exitDivide(self)
 
 
@@ -17384,11 +17512,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_idivide
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterIdivide"):
                 listener.enterIdivide(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitIdivide"):
                 listener.exitIdivide(self)
 
 
@@ -17426,11 +17554,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_modulo
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterModulo"):
                 listener.enterModulo(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitModulo"):
                 listener.exitModulo(self)
 
 
@@ -17447,7 +17575,9 @@ class EParser ( AbstractParser ):
             _la = self._input.LA(1)
             if not(_la==EParser.PERCENT or _la==EParser.MODULO):
                 self._errHandler.recoverInline(self)
-            self.consume()
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -17486,11 +17616,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascriptStatement"):
                 listener.enterJavascriptStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascriptStatement"):
                 listener.exitJavascriptStatement(self)
 
 
@@ -17510,11 +17640,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascriptReturnStatement"):
                 listener.enterJavascriptReturnStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascriptReturnStatement"):
                 listener.exitJavascriptReturnStatement(self)
 
 
@@ -17525,25 +17655,26 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 312, self.RULE_javascript_statement)
         try:
             self.state = 2000
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.RETURN]:
                 localctx = EParser.JavascriptReturnStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 1993
                 self.match(EParser.RETURN)
-                self.state = 1994 
+                self.state = 1994
                 localctx.exp = self.javascript_expression(0)
                 self.state = 1995
                 self.match(EParser.SEMI)
-
+                pass
             elif token in [EParser.LPAR, EParser.LBRAK, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
                 localctx = EParser.JavascriptStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 1997 
+                self.state = 1997
                 localctx.exp = self.javascript_expression(0)
                 self.state = 1998
                 self.match(EParser.SEMI)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -17586,11 +17717,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascriptSelectorExpression"):
                 listener.enterJavascriptSelectorExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascriptSelectorExpression"):
                 listener.exitJavascriptSelectorExpression(self)
 
 
@@ -17606,11 +17737,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascriptPrimaryExpression"):
                 listener.enterJavascriptPrimaryExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascriptPrimaryExpression"):
                 listener.exitJavascriptPrimaryExpression(self)
 
 
@@ -17628,7 +17759,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 2003 
+            self.state = 2003
             localctx.exp = self.javascript_primary_expression()
             self._ctx.stop = self._input.LT(-1)
             self.state = 2009
@@ -17646,7 +17777,7 @@ class EParser ( AbstractParser ):
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 2006 
+                    self.state = 2006
                     localctx.child = self.javascript_selector_expression() 
                 self.state = 2011
                 self._errHandler.sync(self)
@@ -17698,11 +17829,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_javascript_primary_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascript_primary_expression"):
                 listener.enterJavascript_primary_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascript_primary_expression"):
                 listener.exitJavascript_primary_expression(self)
 
 
@@ -17714,46 +17845,47 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 316, self.RULE_javascript_primary_expression)
         try:
             self.state = 2019
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,163,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 2012 
+                self.state = 2012
                 self.javascript_this_expression()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 2013 
+                self.state = 2013
                 self.javascript_new_expression()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 2014 
+                self.state = 2014
                 self.javascript_parenthesis_expression()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 2015 
+                self.state = 2015
                 self.javascript_identifier_expression()
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 2016 
+                self.state = 2016
                 self.javascript_literal_expression()
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 2017 
+                self.state = 2017
                 self.javascript_method_expression()
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 2018 
+                self.state = 2018
                 self.javascript_item_expression()
                 pass
 
@@ -17780,11 +17912,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_javascript_this_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascript_this_expression"):
                 listener.enterJavascript_this_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascript_this_expression"):
                 listener.exitJavascript_this_expression(self)
 
 
@@ -17796,7 +17928,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 318, self.RULE_javascript_this_expression)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2021 
+            self.state = 2021
             self.this_expression()
         except RecognitionException as re:
             localctx.exception = re
@@ -17824,11 +17956,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_javascript_new_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascript_new_expression"):
                 listener.enterJavascript_new_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascript_new_expression"):
                 listener.exitJavascript_new_expression(self)
 
 
@@ -17840,9 +17972,9 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 320, self.RULE_javascript_new_expression)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2023 
+            self.state = 2023
             self.new_token()
-            self.state = 2024 
+            self.state = 2024
             self.javascript_method_expression()
         except RecognitionException as re:
             localctx.exception = re
@@ -17882,11 +18014,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaScriptMemberExpression"):
                 listener.enterJavaScriptMemberExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaScriptMemberExpression"):
                 listener.exitJavaScriptMemberExpression(self)
 
 
@@ -17902,11 +18034,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaScriptItemExpression"):
                 listener.enterJavaScriptItemExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaScriptItemExpression"):
                 listener.exitJavaScriptItemExpression(self)
 
 
@@ -17924,11 +18056,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaScriptMethodExpression"):
                 listener.enterJavaScriptMethodExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaScriptMethodExpression"):
                 listener.exitJavaScriptMethodExpression(self)
 
 
@@ -17939,13 +18071,14 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 322, self.RULE_javascript_selector_expression)
         try:
             self.state = 2031
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,164,self._ctx)
             if la_ == 1:
                 localctx = EParser.JavaScriptMethodExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2026
                 self.match(EParser.DOT)
-                self.state = 2027 
+                self.state = 2027
                 localctx.method = self.javascript_method_expression()
                 pass
 
@@ -17954,14 +18087,14 @@ class EParser ( AbstractParser ):
                 self.enterOuterAlt(localctx, 2)
                 self.state = 2028
                 self.match(EParser.DOT)
-                self.state = 2029 
+                self.state = 2029
                 localctx.name = self.javascript_identifier()
                 pass
 
             elif la_ == 3:
                 localctx = EParser.JavaScriptItemExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 2030 
+                self.state = 2030
                 localctx.exp = self.javascript_item_expression()
                 pass
 
@@ -18000,11 +18133,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_javascript_method_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascript_method_expression"):
                 listener.enterJavascript_method_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascript_method_expression"):
                 listener.exitJavascript_method_expression(self)
 
 
@@ -18017,14 +18150,15 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2033 
+            self.state = 2033
             localctx.name = self.javascript_identifier()
             self.state = 2034
             self.match(EParser.LPAR)
             self.state = 2036
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.LBRAK) | (1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.SELF - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.THIS - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.BOOLEAN_LITERAL - 133)) | (1 << (EParser.CHAR_LITERAL - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)) | (1 << (EParser.TEXT_LITERAL - 133)) | (1 << (EParser.INTEGER_LITERAL - 133)) | (1 << (EParser.DECIMAL_LITERAL - 133)))) != 0):
-                self.state = 2035 
+                self.state = 2035
                 localctx.args = self.javascript_arguments(0)
 
 
@@ -18065,11 +18199,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascriptArgumentList"):
                 listener.enterJavascriptArgumentList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascriptArgumentList"):
                 listener.exitJavascriptArgumentList(self)
 
 
@@ -18091,11 +18225,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascriptArgumentListItem"):
                 listener.enterJavascriptArgumentListItem(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascriptArgumentListItem"):
                 listener.exitJavascriptArgumentListItem(self)
 
 
@@ -18113,7 +18247,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 2041 
+            self.state = 2041
             localctx.item = self.javascript_expression(0)
             self._ctx.stop = self._input.LT(-1)
             self.state = 2048
@@ -18133,7 +18267,7 @@ class EParser ( AbstractParser ):
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
                     self.state = 2044
                     self.match(EParser.COMMA)
-                    self.state = 2045 
+                    self.state = 2045
                     localctx.item = self.javascript_expression(0) 
                 self.state = 2050
                 self._errHandler.sync(self)
@@ -18168,11 +18302,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_javascript_item_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascript_item_expression"):
                 listener.enterJavascript_item_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascript_item_expression"):
                 listener.exitJavascript_item_expression(self)
 
 
@@ -18186,7 +18320,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 2051
             self.match(EParser.LBRAK)
-            self.state = 2052 
+            self.state = 2052
             localctx.exp = self.javascript_expression(0)
             self.state = 2053
             self.match(EParser.RBRAK)
@@ -18219,11 +18353,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_javascript_parenthesis_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascript_parenthesis_expression"):
                 listener.enterJavascript_parenthesis_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascript_parenthesis_expression"):
                 listener.exitJavascript_parenthesis_expression(self)
 
 
@@ -18237,7 +18371,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 2055
             self.match(EParser.LPAR)
-            self.state = 2056 
+            self.state = 2056
             localctx.exp = self.javascript_expression(0)
             self.state = 2057
             self.match(EParser.RPAR)
@@ -18264,11 +18398,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_javascript_identifier_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascript_identifier_expression"):
                 listener.enterJavascript_identifier_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascript_identifier_expression"):
                 listener.exitJavascript_identifier_expression(self)
 
 
@@ -18280,7 +18414,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 332, self.RULE_javascript_identifier_expression)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2059 
+            self.state = 2059
             localctx.name = self.javascript_identifier()
         except RecognitionException as re:
             localctx.exception = re
@@ -18317,11 +18451,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.INTEGER_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascriptIntegerLiteral"):
                 listener.enterJavascriptIntegerLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascriptIntegerLiteral"):
                 listener.exitJavascriptIntegerLiteral(self)
 
 
@@ -18336,11 +18470,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.BOOLEAN_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascriptBooleanLiteral"):
                 listener.enterJavascriptBooleanLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascriptBooleanLiteral"):
                 listener.exitJavascriptBooleanLiteral(self)
 
 
@@ -18355,11 +18489,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.CHAR_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascriptCharacterLiteral"):
                 listener.enterJavascriptCharacterLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascriptCharacterLiteral"):
                 listener.exitJavascriptCharacterLiteral(self)
 
 
@@ -18374,11 +18508,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.TEXT_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascriptTextLiteral"):
                 listener.enterJavascriptTextLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascriptTextLiteral"):
                 listener.exitJavascriptTextLiteral(self)
 
 
@@ -18393,11 +18527,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DECIMAL_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascriptDecimalLiteral"):
                 listener.enterJavascriptDecimalLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascriptDecimalLiteral"):
                 listener.exitJavascriptDecimalLiteral(self)
 
 
@@ -18408,37 +18542,38 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 334, self.RULE_javascript_literal_expression)
         try:
             self.state = 2066
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.INTEGER_LITERAL]:
                 localctx = EParser.JavascriptIntegerLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2061
                 localctx.t = self.match(EParser.INTEGER_LITERAL)
-
+                pass
             elif token in [EParser.DECIMAL_LITERAL]:
                 localctx = EParser.JavascriptDecimalLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 2062
                 localctx.t = self.match(EParser.DECIMAL_LITERAL)
-
+                pass
             elif token in [EParser.TEXT_LITERAL]:
                 localctx = EParser.JavascriptTextLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 2063
                 localctx.t = self.match(EParser.TEXT_LITERAL)
-
+                pass
             elif token in [EParser.BOOLEAN_LITERAL]:
                 localctx = EParser.JavascriptBooleanLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 2064
                 localctx.t = self.match(EParser.BOOLEAN_LITERAL)
-
+                pass
             elif token in [EParser.CHAR_LITERAL]:
                 localctx = EParser.JavascriptCharacterLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 2065
                 localctx.t = self.match(EParser.CHAR_LITERAL)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -18511,11 +18646,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_javascript_identifier
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavascript_identifier"):
                 listener.enterJavascript_identifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavascript_identifier"):
                 listener.exitJavascript_identifier(self)
 
 
@@ -18532,7 +18667,9 @@ class EParser ( AbstractParser ):
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)))) != 0)):
                 self._errHandler.recoverInline(self)
-            self.consume()
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -18569,11 +18706,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonStatement"):
                 listener.enterPythonStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonStatement"):
                 listener.exitPythonStatement(self)
 
 
@@ -18591,11 +18728,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonReturnStatement"):
                 listener.enterPythonReturnStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonReturnStatement"):
                 listener.exitPythonReturnStatement(self)
 
 
@@ -18606,21 +18743,22 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 338, self.RULE_python_statement)
         try:
             self.state = 2073
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.RETURN]:
                 localctx = EParser.PythonReturnStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2070
                 self.match(EParser.RETURN)
-                self.state = 2071 
+                self.state = 2071
                 localctx.exp = self.python_expression(0)
-
+                pass
             elif token in [EParser.LPAR, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
                 localctx = EParser.PythonStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 2072 
+                self.state = 2072
                 localctx.exp = self.python_expression(0)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -18663,11 +18801,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonSelectorExpression"):
                 listener.enterPythonSelectorExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonSelectorExpression"):
                 listener.exitPythonSelectorExpression(self)
 
 
@@ -18683,11 +18821,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonPrimaryExpression"):
                 listener.enterPythonPrimaryExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonPrimaryExpression"):
                 listener.exitPythonPrimaryExpression(self)
 
 
@@ -18705,7 +18843,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 2076 
+            self.state = 2076
             localctx.exp = self.python_primary_expression()
             self._ctx.stop = self._input.LT(-1)
             self.state = 2082
@@ -18723,7 +18861,7 @@ class EParser ( AbstractParser ):
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 2079 
+                    self.state = 2079
                     localctx.child = self.python_selector_expression() 
                 self.state = 2084
                 self._errHandler.sync(self)
@@ -18765,11 +18903,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonParenthesisExpression"):
                 listener.enterPythonParenthesisExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonParenthesisExpression"):
                 listener.exitPythonParenthesisExpression(self)
 
 
@@ -18785,11 +18923,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonIdentifierExpression"):
                 listener.enterPythonIdentifierExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonIdentifierExpression"):
                 listener.exitPythonIdentifierExpression(self)
 
 
@@ -18805,11 +18943,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonSelfExpression"):
                 listener.enterPythonSelfExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonSelfExpression"):
                 listener.exitPythonSelfExpression(self)
 
 
@@ -18825,11 +18963,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonLiteralExpression"):
                 listener.enterPythonLiteralExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonLiteralExpression"):
                 listener.exitPythonLiteralExpression(self)
 
 
@@ -18845,11 +18983,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonGlobalMethodExpression"):
                 listener.enterPythonGlobalMethodExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonGlobalMethodExpression"):
                 listener.exitPythonGlobalMethodExpression(self)
 
 
@@ -18860,39 +18998,40 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 342, self.RULE_python_primary_expression)
         try:
             self.state = 2090
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,170,self._ctx)
             if la_ == 1:
                 localctx = EParser.PythonSelfExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 2085 
+                self.state = 2085
                 localctx.exp = self.python_self_expression()
                 pass
 
             elif la_ == 2:
                 localctx = EParser.PythonParenthesisExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 2086 
+                self.state = 2086
                 localctx.exp = self.python_parenthesis_expression()
                 pass
 
             elif la_ == 3:
                 localctx = EParser.PythonIdentifierExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 2087 
+                self.state = 2087
                 localctx.exp = self.python_identifier_expression(0)
                 pass
 
             elif la_ == 4:
                 localctx = EParser.PythonLiteralExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
-                self.state = 2088 
+                self.state = 2088
                 localctx.exp = self.python_literal_expression()
                 pass
 
             elif la_ == 5:
                 localctx = EParser.PythonGlobalMethodExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
-                self.state = 2089 
+                self.state = 2089
                 localctx.exp = self.python_method_expression()
                 pass
 
@@ -18919,11 +19058,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_python_self_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPython_self_expression"):
                 listener.enterPython_self_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPython_self_expression"):
                 listener.exitPython_self_expression(self)
 
 
@@ -18935,7 +19074,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 344, self.RULE_python_self_expression)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2092 
+            self.state = 2092
             self.this_expression()
         except RecognitionException as re:
             localctx.exception = re
@@ -18975,11 +19114,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonMethodExpression"):
                 listener.enterPythonMethodExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonMethodExpression"):
                 listener.exitPythonMethodExpression(self)
 
 
@@ -18999,11 +19138,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonItemExpression"):
                 listener.enterPythonItemExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonItemExpression"):
                 listener.exitPythonItemExpression(self)
 
 
@@ -19014,25 +19153,26 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 346, self.RULE_python_selector_expression)
         try:
             self.state = 2100
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.DOT]:
                 localctx = EParser.PythonMethodExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2094
                 self.match(EParser.DOT)
-                self.state = 2095 
+                self.state = 2095
                 localctx.exp = self.python_method_expression()
-
+                pass
             elif token in [EParser.LBRAK]:
                 localctx = EParser.PythonItemExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 2096
                 self.match(EParser.LBRAK)
-                self.state = 2097 
+                self.state = 2097
                 localctx.exp = self.python_expression(0)
                 self.state = 2098
                 self.match(EParser.RBRAK)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -19070,11 +19210,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_python_method_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPython_method_expression"):
                 listener.enterPython_method_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPython_method_expression"):
                 listener.exitPython_method_expression(self)
 
 
@@ -19087,14 +19227,15 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2102 
+            self.state = 2102
             localctx.name = self.python_identifier()
             self.state = 2103
             self.match(EParser.LPAR)
             self.state = 2105
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.SELF - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.THIS - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.BOOLEAN_LITERAL - 133)) | (1 << (EParser.CHAR_LITERAL - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)) | (1 << (EParser.TEXT_LITERAL - 133)) | (1 << (EParser.INTEGER_LITERAL - 133)) | (1 << (EParser.DECIMAL_LITERAL - 133)))) != 0):
-                self.state = 2104 
+                self.state = 2104
                 localctx.args = self.python_argument_list()
 
 
@@ -19136,11 +19277,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonOrdinalOnlyArgumentList"):
                 listener.enterPythonOrdinalOnlyArgumentList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonOrdinalOnlyArgumentList"):
                 listener.exitPythonOrdinalOnlyArgumentList(self)
 
 
@@ -19156,11 +19297,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonNamedOnlyArgumentList"):
                 listener.enterPythonNamedOnlyArgumentList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonNamedOnlyArgumentList"):
                 listener.exitPythonNamedOnlyArgumentList(self)
 
 
@@ -19182,11 +19323,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonArgumentList"):
                 listener.enterPythonArgumentList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonArgumentList"):
                 listener.exitPythonArgumentList(self)
 
 
@@ -19197,29 +19338,30 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 350, self.RULE_python_argument_list)
         try:
             self.state = 2115
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,173,self._ctx)
             if la_ == 1:
                 localctx = EParser.PythonOrdinalOnlyArgumentListContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 2109 
+                self.state = 2109
                 localctx.ordinal = self.python_ordinal_argument_list(0)
                 pass
 
             elif la_ == 2:
                 localctx = EParser.PythonNamedOnlyArgumentListContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 2110 
+                self.state = 2110
                 localctx.named = self.python_named_argument_list(0)
                 pass
 
             elif la_ == 3:
                 localctx = EParser.PythonArgumentListContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 2111 
+                self.state = 2111
                 localctx.ordinal = self.python_ordinal_argument_list(0)
                 self.state = 2112
                 self.match(EParser.COMMA)
-                self.state = 2113 
+                self.state = 2113
                 localctx.named = self.python_named_argument_list(0)
                 pass
 
@@ -19259,11 +19401,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonOrdinalArgumentList"):
                 listener.enterPythonOrdinalArgumentList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonOrdinalArgumentList"):
                 listener.exitPythonOrdinalArgumentList(self)
 
 
@@ -19285,11 +19427,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonOrdinalArgumentListItem"):
                 listener.enterPythonOrdinalArgumentListItem(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonOrdinalArgumentListItem"):
                 listener.exitPythonOrdinalArgumentListItem(self)
 
 
@@ -19307,7 +19449,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 2118 
+            self.state = 2118
             localctx.item = self.python_expression(0)
             self._ctx.stop = self._input.LT(-1)
             self.state = 2125
@@ -19327,7 +19469,7 @@ class EParser ( AbstractParser ):
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
                     self.state = 2121
                     self.match(EParser.COMMA)
-                    self.state = 2122 
+                    self.state = 2122
                     localctx.item = self.python_expression(0) 
                 self.state = 2127
                 self._errHandler.sync(self)
@@ -19374,11 +19516,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonNamedArgumentList"):
                 listener.enterPythonNamedArgumentList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonNamedArgumentList"):
                 listener.exitPythonNamedArgumentList(self)
 
 
@@ -19406,11 +19548,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonNamedArgumentListItem"):
                 listener.enterPythonNamedArgumentListItem(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonNamedArgumentListItem"):
                 listener.exitPythonNamedArgumentListItem(self)
 
 
@@ -19428,11 +19570,11 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 2129 
+            self.state = 2129
             localctx.name = self.python_identifier()
             self.state = 2130
             self.match(EParser.EQ)
-            self.state = 2131 
+            self.state = 2131
             localctx.exp = self.python_expression(0)
             self._ctx.stop = self._input.LT(-1)
             self.state = 2141
@@ -19452,11 +19594,11 @@ class EParser ( AbstractParser ):
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
                     self.state = 2134
                     self.match(EParser.COMMA)
-                    self.state = 2135 
+                    self.state = 2135
                     localctx.name = self.python_identifier()
                     self.state = 2136
                     self.match(EParser.EQ)
-                    self.state = 2137 
+                    self.state = 2137
                     localctx.exp = self.python_expression(0) 
                 self.state = 2143
                 self._errHandler.sync(self)
@@ -19491,11 +19633,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_python_parenthesis_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPython_parenthesis_expression"):
                 listener.enterPython_parenthesis_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPython_parenthesis_expression"):
                 listener.exitPython_parenthesis_expression(self)
 
 
@@ -19509,7 +19651,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 2144
             self.match(EParser.LPAR)
-            self.state = 2145 
+            self.state = 2145
             localctx.exp = self.python_expression(0)
             self.state = 2146
             self.match(EParser.RPAR)
@@ -19554,11 +19696,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonChildIdentifier"):
                 listener.enterPythonChildIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonChildIdentifier"):
                 listener.exitPythonChildIdentifier(self)
 
 
@@ -19572,11 +19714,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DOLLAR_IDENTIFIER, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonPromptoIdentifier"):
                 listener.enterPythonPromptoIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonPromptoIdentifier"):
                 listener.exitPythonPromptoIdentifier(self)
 
 
@@ -19592,11 +19734,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonIdentifier"):
                 listener.enterPythonIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonIdentifier"):
                 listener.exitPythonIdentifier(self)
 
 
@@ -19611,6 +19753,7 @@ class EParser ( AbstractParser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 2151
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.DOLLAR_IDENTIFIER]:
                 localctx = EParser.PythonPromptoIdentifierContext(self, localctx)
@@ -19619,14 +19762,14 @@ class EParser ( AbstractParser ):
 
                 self.state = 2149
                 self.match(EParser.DOLLAR_IDENTIFIER)
-
+                pass
             elif token in [EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER]:
                 localctx = EParser.PythonIdentifierContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 2150 
+                self.state = 2150
                 localctx.name = self.python_identifier()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -19648,7 +19791,7 @@ class EParser ( AbstractParser ):
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
                     self.state = 2154
                     self.match(EParser.DOT)
-                    self.state = 2155 
+                    self.state = 2155
                     localctx.name = self.python_identifier() 
                 self.state = 2160
                 self._errHandler.sync(self)
@@ -19689,11 +19832,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.INTEGER_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonIntegerLiteral"):
                 listener.enterPythonIntegerLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonIntegerLiteral"):
                 listener.exitPythonIntegerLiteral(self)
 
 
@@ -19708,11 +19851,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.BOOLEAN_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonBooleanLiteral"):
                 listener.enterPythonBooleanLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonBooleanLiteral"):
                 listener.exitPythonBooleanLiteral(self)
 
 
@@ -19727,11 +19870,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.CHAR_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonCharacterLiteral"):
                 listener.enterPythonCharacterLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonCharacterLiteral"):
                 listener.exitPythonCharacterLiteral(self)
 
 
@@ -19746,11 +19889,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.TEXT_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonTextLiteral"):
                 listener.enterPythonTextLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonTextLiteral"):
                 listener.exitPythonTextLiteral(self)
 
 
@@ -19765,11 +19908,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DECIMAL_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPythonDecimalLiteral"):
                 listener.enterPythonDecimalLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPythonDecimalLiteral"):
                 listener.exitPythonDecimalLiteral(self)
 
 
@@ -19780,37 +19923,38 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 360, self.RULE_python_literal_expression)
         try:
             self.state = 2166
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.INTEGER_LITERAL]:
                 localctx = EParser.PythonIntegerLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2161
                 localctx.t = self.match(EParser.INTEGER_LITERAL)
-
+                pass
             elif token in [EParser.DECIMAL_LITERAL]:
                 localctx = EParser.PythonDecimalLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 2162
                 localctx.t = self.match(EParser.DECIMAL_LITERAL)
-
+                pass
             elif token in [EParser.TEXT_LITERAL]:
                 localctx = EParser.PythonTextLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 2163
                 localctx.t = self.match(EParser.TEXT_LITERAL)
-
+                pass
             elif token in [EParser.BOOLEAN_LITERAL]:
                 localctx = EParser.PythonBooleanLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 2164
                 localctx.t = self.match(EParser.BOOLEAN_LITERAL)
-
+                pass
             elif token in [EParser.CHAR_LITERAL]:
                 localctx = EParser.PythonCharacterLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 2165
                 localctx.t = self.match(EParser.CHAR_LITERAL)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -19886,11 +20030,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_python_identifier
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterPython_identifier"):
                 listener.enterPython_identifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitPython_identifier"):
                 listener.exitPython_identifier(self)
 
 
@@ -19907,7 +20051,9 @@ class EParser ( AbstractParser ):
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.SELF - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.THIS - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)))) != 0)):
                 self._errHandler.recoverInline(self)
-            self.consume()
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -19948,11 +20094,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaReturnStatement"):
                 listener.enterJavaReturnStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaReturnStatement"):
                 listener.exitJavaReturnStatement(self)
 
 
@@ -19970,11 +20116,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaStatement"):
                 listener.enterJavaStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaStatement"):
                 listener.exitJavaStatement(self)
 
 
@@ -19985,25 +20131,26 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 364, self.RULE_java_statement)
         try:
             self.state = 2177
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.RETURN]:
                 localctx = EParser.JavaReturnStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2170
                 self.match(EParser.RETURN)
-                self.state = 2171 
+                self.state = 2171
                 localctx.exp = self.java_expression(0)
                 self.state = 2172
                 self.match(EParser.SEMI)
-
+                pass
             elif token in [EParser.LPAR, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.NATIVE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
                 localctx = EParser.JavaStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 2174 
+                self.state = 2174
                 localctx.exp = self.java_expression(0)
                 self.state = 2175
                 self.match(EParser.SEMI)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -20046,11 +20193,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaSelectorExpression"):
                 listener.enterJavaSelectorExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaSelectorExpression"):
                 listener.exitJavaSelectorExpression(self)
 
 
@@ -20066,11 +20213,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaPrimaryExpression"):
                 listener.enterJavaPrimaryExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaPrimaryExpression"):
                 listener.exitJavaPrimaryExpression(self)
 
 
@@ -20088,7 +20235,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 2180 
+            self.state = 2180
             localctx.exp = self.java_primary_expression()
             self._ctx.stop = self._input.LT(-1)
             self.state = 2186
@@ -20106,7 +20253,7 @@ class EParser ( AbstractParser ):
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 2183 
+                    self.state = 2183
                     localctx.child = self.java_selector_expression() 
                 self.state = 2188
                 self._errHandler.sync(self)
@@ -20150,11 +20297,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_java_primary_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJava_primary_expression"):
                 listener.enterJava_primary_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJava_primary_expression"):
                 listener.exitJava_primary_expression(self)
 
 
@@ -20166,34 +20313,35 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 368, self.RULE_java_primary_expression)
         try:
             self.state = 2194
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,181,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 2189 
+                self.state = 2189
                 self.java_this_expression()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 2190 
+                self.state = 2190
                 self.java_new_expression()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 2191 
+                self.state = 2191
                 self.java_parenthesis_expression()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 2192 
+                self.state = 2192
                 self.java_identifier_expression(0)
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 2193 
+                self.state = 2193
                 self.java_literal_expression()
                 pass
 
@@ -20220,11 +20368,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_java_this_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJava_this_expression"):
                 listener.enterJava_this_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJava_this_expression"):
                 listener.exitJava_this_expression(self)
 
 
@@ -20236,7 +20384,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 370, self.RULE_java_this_expression)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2196 
+            self.state = 2196
             self.this_expression()
         except RecognitionException as re:
             localctx.exception = re
@@ -20264,11 +20412,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_java_new_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJava_new_expression"):
                 listener.enterJava_new_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJava_new_expression"):
                 listener.exitJava_new_expression(self)
 
 
@@ -20280,9 +20428,9 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 372, self.RULE_java_new_expression)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2198 
+            self.state = 2198
             self.new_token()
-            self.state = 2199 
+            self.state = 2199
             self.java_method_expression()
         except RecognitionException as re:
             localctx.exception = re
@@ -20320,11 +20468,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaItemExpression"):
                 listener.enterJavaItemExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaItemExpression"):
                 listener.exitJavaItemExpression(self)
 
 
@@ -20342,11 +20490,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaMethodExpression"):
                 listener.enterJavaMethodExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaMethodExpression"):
                 listener.exitJavaMethodExpression(self)
 
 
@@ -20357,21 +20505,22 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 374, self.RULE_java_selector_expression)
         try:
             self.state = 2204
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.DOT]:
                 localctx = EParser.JavaMethodExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2201
                 self.match(EParser.DOT)
-                self.state = 2202 
+                self.state = 2202
                 localctx.exp = self.java_method_expression()
-
+                pass
             elif token in [EParser.LBRAK]:
                 localctx = EParser.JavaItemExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 2203 
+                self.state = 2203
                 localctx.exp = self.java_item_expression()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -20409,11 +20558,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_java_method_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJava_method_expression"):
                 listener.enterJava_method_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJava_method_expression"):
                 listener.exitJava_method_expression(self)
 
 
@@ -20426,14 +20575,15 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2206 
+            self.state = 2206
             localctx.name = self.java_identifier()
             self.state = 2207
             self.match(EParser.LPAR)
             self.state = 2209
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.SELF - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.THIS - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.BOOLEAN_LITERAL - 133)) | (1 << (EParser.CHAR_LITERAL - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.NATIVE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)) | (1 << (EParser.TEXT_LITERAL - 133)) | (1 << (EParser.INTEGER_LITERAL - 133)) | (1 << (EParser.DECIMAL_LITERAL - 133)))) != 0):
-                self.state = 2208 
+                self.state = 2208
                 localctx.args = self.java_arguments(0)
 
 
@@ -20480,11 +20630,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaArgumentListItem"):
                 listener.enterJavaArgumentListItem(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaArgumentListItem"):
                 listener.exitJavaArgumentListItem(self)
 
 
@@ -20500,11 +20650,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaArgumentList"):
                 listener.enterJavaArgumentList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaArgumentList"):
                 listener.exitJavaArgumentList(self)
 
 
@@ -20522,7 +20672,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 2214 
+            self.state = 2214
             localctx.item = self.java_expression(0)
             self._ctx.stop = self._input.LT(-1)
             self.state = 2221
@@ -20542,7 +20692,7 @@ class EParser ( AbstractParser ):
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
                     self.state = 2217
                     self.match(EParser.COMMA)
-                    self.state = 2218 
+                    self.state = 2218
                     localctx.item = self.java_expression(0) 
                 self.state = 2223
                 self._errHandler.sync(self)
@@ -20577,11 +20727,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_java_item_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJava_item_expression"):
                 listener.enterJava_item_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJava_item_expression"):
                 listener.exitJava_item_expression(self)
 
 
@@ -20595,7 +20745,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 2224
             self.match(EParser.LBRAK)
-            self.state = 2225 
+            self.state = 2225
             localctx.exp = self.java_expression(0)
             self.state = 2226
             self.match(EParser.RBRAK)
@@ -20628,11 +20778,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_java_parenthesis_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJava_parenthesis_expression"):
                 listener.enterJava_parenthesis_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJava_parenthesis_expression"):
                 listener.exitJava_parenthesis_expression(self)
 
 
@@ -20646,7 +20796,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 2228
             self.match(EParser.LPAR)
-            self.state = 2229 
+            self.state = 2229
             localctx.exp = self.java_expression(0)
             self.state = 2230
             self.match(EParser.RPAR)
@@ -20685,11 +20835,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaIdentifier"):
                 listener.enterJavaIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaIdentifier"):
                 listener.exitJavaIdentifier(self)
 
 
@@ -20711,11 +20861,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaChildIdentifier"):
                 listener.enterJavaChildIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaChildIdentifier"):
                 listener.exitJavaChildIdentifier(self)
 
 
@@ -20733,7 +20883,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 2233 
+            self.state = 2233
             localctx.name = self.java_identifier()
             self._ctx.stop = self._input.LT(-1)
             self.state = 2240
@@ -20753,7 +20903,7 @@ class EParser ( AbstractParser ):
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
                     self.state = 2236
                     self.match(EParser.DOT)
-                    self.state = 2237 
+                    self.state = 2237
                     localctx.name = self.java_identifier() 
                 self.state = 2242
                 self._errHandler.sync(self)
@@ -20794,11 +20944,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaClassIdentifier"):
                 listener.enterJavaClassIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaClassIdentifier"):
                 listener.exitJavaClassIdentifier(self)
 
 
@@ -20817,11 +20967,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DOLLAR_IDENTIFIER, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaChildClassIdentifier"):
                 listener.enterJavaChildClassIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaChildClassIdentifier"):
                 listener.exitJavaChildClassIdentifier(self)
 
 
@@ -20839,7 +20989,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 2244 
+            self.state = 2244
             localctx.klass = self.java_identifier_expression(0)
             self._ctx.stop = self._input.LT(-1)
             self.state = 2250
@@ -20898,11 +21048,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.BOOLEAN_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaBooleanLiteral"):
                 listener.enterJavaBooleanLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaBooleanLiteral"):
                 listener.exitJavaBooleanLiteral(self)
 
 
@@ -20917,11 +21067,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.CHAR_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaCharacterLiteral"):
                 listener.enterJavaCharacterLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaCharacterLiteral"):
                 listener.exitJavaCharacterLiteral(self)
 
 
@@ -20936,11 +21086,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.INTEGER_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaIntegerLiteral"):
                 listener.enterJavaIntegerLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaIntegerLiteral"):
                 listener.exitJavaIntegerLiteral(self)
 
 
@@ -20955,11 +21105,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.TEXT_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaTextLiteral"):
                 listener.enterJavaTextLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaTextLiteral"):
                 listener.exitJavaTextLiteral(self)
 
 
@@ -20974,11 +21124,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DECIMAL_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJavaDecimalLiteral"):
                 listener.enterJavaDecimalLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJavaDecimalLiteral"):
                 listener.exitJavaDecimalLiteral(self)
 
 
@@ -20989,37 +21139,38 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 388, self.RULE_java_literal_expression)
         try:
             self.state = 2258
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.INTEGER_LITERAL]:
                 localctx = EParser.JavaIntegerLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2253
                 localctx.t = self.match(EParser.INTEGER_LITERAL)
-
+                pass
             elif token in [EParser.DECIMAL_LITERAL]:
                 localctx = EParser.JavaDecimalLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 2254
                 localctx.t = self.match(EParser.DECIMAL_LITERAL)
-
+                pass
             elif token in [EParser.TEXT_LITERAL]:
                 localctx = EParser.JavaTextLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 2255
                 localctx.t = self.match(EParser.TEXT_LITERAL)
-
+                pass
             elif token in [EParser.BOOLEAN_LITERAL]:
                 localctx = EParser.JavaBooleanLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 2256
                 localctx.t = self.match(EParser.BOOLEAN_LITERAL)
-
+                pass
             elif token in [EParser.CHAR_LITERAL]:
                 localctx = EParser.JavaCharacterLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 2257
                 localctx.t = self.match(EParser.CHAR_LITERAL)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -21095,11 +21246,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_java_identifier
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterJava_identifier"):
                 listener.enterJava_identifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitJava_identifier"):
                 listener.exitJava_identifier(self)
 
 
@@ -21116,7 +21267,9 @@ class EParser ( AbstractParser ):
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.NATIVE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)))) != 0)):
                 self._errHandler.recoverInline(self)
-            self.consume()
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -21157,11 +21310,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpReturnStatement"):
                 listener.enterCSharpReturnStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpReturnStatement"):
                 listener.exitCSharpReturnStatement(self)
 
 
@@ -21179,11 +21332,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpStatement"):
                 listener.enterCSharpStatement(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpStatement"):
                 listener.exitCSharpStatement(self)
 
 
@@ -21194,25 +21347,26 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 392, self.RULE_csharp_statement)
         try:
             self.state = 2269
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.RETURN]:
                 localctx = EParser.CSharpReturnStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2262
                 self.match(EParser.RETURN)
-                self.state = 2263 
+                self.state = 2263
                 localctx.exp = self.csharp_expression(0)
                 self.state = 2264
                 self.match(EParser.SEMI)
-
+                pass
             elif token in [EParser.LPAR, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
                 localctx = EParser.CSharpStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 2266 
+                self.state = 2266
                 localctx.exp = self.csharp_expression(0)
                 self.state = 2267
                 self.match(EParser.SEMI)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -21255,11 +21409,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpSelectorExpression"):
                 listener.enterCSharpSelectorExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpSelectorExpression"):
                 listener.exitCSharpSelectorExpression(self)
 
 
@@ -21275,11 +21429,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpPrimaryExpression"):
                 listener.enterCSharpPrimaryExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpPrimaryExpression"):
                 listener.exitCSharpPrimaryExpression(self)
 
 
@@ -21297,7 +21451,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 2272 
+            self.state = 2272
             localctx.exp = self.csharp_primary_expression()
             self._ctx.stop = self._input.LT(-1)
             self.state = 2278
@@ -21315,7 +21469,7 @@ class EParser ( AbstractParser ):
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 2275 
+                    self.state = 2275
                     localctx.child = self.csharp_selector_expression() 
                 self.state = 2280
                 self._errHandler.sync(self)
@@ -21359,11 +21513,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_csharp_primary_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCsharp_primary_expression"):
                 listener.enterCsharp_primary_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCsharp_primary_expression"):
                 listener.exitCsharp_primary_expression(self)
 
 
@@ -21375,34 +21529,35 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 396, self.RULE_csharp_primary_expression)
         try:
             self.state = 2286
+            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,190,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 2281 
+                self.state = 2281
                 self.csharp_this_expression()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 2282 
+                self.state = 2282
                 self.csharp_new_expression()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 2283 
+                self.state = 2283
                 self.csharp_parenthesis_expression()
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 2284 
+                self.state = 2284
                 self.csharp_identifier_expression(0)
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 2285 
+                self.state = 2285
                 self.csharp_literal_expression()
                 pass
 
@@ -21429,11 +21584,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_csharp_this_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCsharp_this_expression"):
                 listener.enterCsharp_this_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCsharp_this_expression"):
                 listener.exitCsharp_this_expression(self)
 
 
@@ -21445,7 +21600,7 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 398, self.RULE_csharp_this_expression)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2288 
+            self.state = 2288
             self.this_expression()
         except RecognitionException as re:
             localctx.exception = re
@@ -21473,11 +21628,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_csharp_new_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCsharp_new_expression"):
                 listener.enterCsharp_new_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCsharp_new_expression"):
                 listener.exitCsharp_new_expression(self)
 
 
@@ -21489,9 +21644,9 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 400, self.RULE_csharp_new_expression)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2290 
+            self.state = 2290
             self.new_token()
-            self.state = 2291 
+            self.state = 2291
             self.csharp_method_expression()
         except RecognitionException as re:
             localctx.exception = re
@@ -21531,11 +21686,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpMethodExpression"):
                 listener.enterCSharpMethodExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpMethodExpression"):
                 listener.exitCSharpMethodExpression(self)
 
 
@@ -21551,11 +21706,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpItemExpression"):
                 listener.enterCSharpItemExpression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpItemExpression"):
                 listener.exitCSharpItemExpression(self)
 
 
@@ -21566,21 +21721,22 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 402, self.RULE_csharp_selector_expression)
         try:
             self.state = 2296
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.DOT]:
                 localctx = EParser.CSharpMethodExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2293
                 self.match(EParser.DOT)
-                self.state = 2294 
+                self.state = 2294
                 localctx.exp = self.csharp_method_expression()
-
+                pass
             elif token in [EParser.LBRAK]:
                 localctx = EParser.CSharpItemExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 2295 
+                self.state = 2295
                 localctx.exp = self.csharp_item_expression()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -21618,11 +21774,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_csharp_method_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCsharp_method_expression"):
                 listener.enterCsharp_method_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCsharp_method_expression"):
                 listener.exitCsharp_method_expression(self)
 
 
@@ -21635,14 +21791,15 @@ class EParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2298 
+            self.state = 2298
             localctx.name = self.csharp_identifier()
             self.state = 2299
             self.match(EParser.LPAR)
             self.state = 2301
+            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.SELF - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.THIS - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.BOOLEAN_LITERAL - 133)) | (1 << (EParser.CHAR_LITERAL - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)) | (1 << (EParser.TEXT_LITERAL - 133)) | (1 << (EParser.INTEGER_LITERAL - 133)) | (1 << (EParser.DECIMAL_LITERAL - 133)))) != 0):
-                self.state = 2300 
+                self.state = 2300
                 localctx.args = self.csharp_arguments(0)
 
 
@@ -21683,11 +21840,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpArgumentList"):
                 listener.enterCSharpArgumentList(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpArgumentList"):
                 listener.exitCSharpArgumentList(self)
 
 
@@ -21709,11 +21866,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpArgumentListItem"):
                 listener.enterCSharpArgumentListItem(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpArgumentListItem"):
                 listener.exitCSharpArgumentListItem(self)
 
 
@@ -21731,7 +21888,7 @@ class EParser ( AbstractParser ):
             self._ctx = localctx
             _prevctx = localctx
 
-            self.state = 2306 
+            self.state = 2306
             localctx.item = self.csharp_expression(0)
             self._ctx.stop = self._input.LT(-1)
             self.state = 2313
@@ -21751,7 +21908,7 @@ class EParser ( AbstractParser ):
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
                     self.state = 2309
                     self.match(EParser.COMMA)
-                    self.state = 2310 
+                    self.state = 2310
                     localctx.item = self.csharp_expression(0) 
                 self.state = 2315
                 self._errHandler.sync(self)
@@ -21786,11 +21943,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_csharp_item_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCsharp_item_expression"):
                 listener.enterCsharp_item_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCsharp_item_expression"):
                 listener.exitCsharp_item_expression(self)
 
 
@@ -21804,7 +21961,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 2316
             self.match(EParser.LBRAK)
-            self.state = 2317 
+            self.state = 2317
             localctx.exp = self.csharp_expression(0)
             self.state = 2318
             self.match(EParser.RBRAK)
@@ -21837,11 +21994,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_csharp_parenthesis_expression
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCsharp_parenthesis_expression"):
                 listener.enterCsharp_parenthesis_expression(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCsharp_parenthesis_expression"):
                 listener.exitCsharp_parenthesis_expression(self)
 
 
@@ -21855,7 +22012,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 2320
             self.match(EParser.LPAR)
-            self.state = 2321 
+            self.state = 2321
             localctx.exp = self.csharp_expression(0)
             self.state = 2322
             self.match(EParser.RPAR)
@@ -21894,11 +22051,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpIdentifier"):
                 listener.enterCSharpIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpIdentifier"):
                 listener.exitCSharpIdentifier(self)
 
 
@@ -21920,11 +22077,11 @@ class EParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpChildIdentifier"):
                 listener.enterCSharpChildIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpChildIdentifier"):
                 listener.exitCSharpChildIdentifier(self)
 
 
@@ -21938,11 +22095,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DOLLAR_IDENTIFIER, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpPromptoIdentifier"):
                 listener.enterCSharpPromptoIdentifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpPromptoIdentifier"):
                 listener.exitCSharpPromptoIdentifier(self)
 
 
@@ -21957,6 +22114,7 @@ class EParser ( AbstractParser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 2327
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.DOLLAR_IDENTIFIER]:
                 localctx = EParser.CSharpPromptoIdentifierContext(self, localctx)
@@ -21965,14 +22123,14 @@ class EParser ( AbstractParser ):
 
                 self.state = 2325
                 self.match(EParser.DOLLAR_IDENTIFIER)
-
+                pass
             elif token in [EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.TEST, EParser.WRITE, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER]:
                 localctx = EParser.CSharpIdentifierContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 2326 
+                self.state = 2326
                 localctx.name = self.csharp_identifier()
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -21994,7 +22152,7 @@ class EParser ( AbstractParser ):
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
                     self.state = 2330
                     self.match(EParser.DOT)
-                    self.state = 2331 
+                    self.state = 2331
                     localctx.name = self.csharp_identifier() 
                 self.state = 2336
                 self._errHandler.sync(self)
@@ -22034,11 +22192,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.BOOLEAN_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpBooleanLiteral"):
                 listener.enterCSharpBooleanLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpBooleanLiteral"):
                 listener.exitCSharpBooleanLiteral(self)
 
 
@@ -22052,11 +22210,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.INTEGER_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpIntegerLiteral"):
                 listener.enterCSharpIntegerLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpIntegerLiteral"):
                 listener.exitCSharpIntegerLiteral(self)
 
 
@@ -22070,11 +22228,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.DECIMAL_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpDecimalLiteral"):
                 listener.enterCSharpDecimalLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpDecimalLiteral"):
                 listener.exitCSharpDecimalLiteral(self)
 
 
@@ -22088,11 +22246,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.CHAR_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpCharacterLiteral"):
                 listener.enterCSharpCharacterLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpCharacterLiteral"):
                 listener.exitCSharpCharacterLiteral(self)
 
 
@@ -22106,11 +22264,11 @@ class EParser ( AbstractParser ):
             return self.getToken(EParser.TEXT_LITERAL, 0)
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCSharpTextLiteral"):
                 listener.enterCSharpTextLiteral(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCSharpTextLiteral"):
                 listener.exitCSharpTextLiteral(self)
 
 
@@ -22121,37 +22279,38 @@ class EParser ( AbstractParser ):
         self.enterRule(localctx, 414, self.RULE_csharp_literal_expression)
         try:
             self.state = 2342
+            self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [EParser.INTEGER_LITERAL]:
                 localctx = EParser.CSharpIntegerLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2337
                 self.match(EParser.INTEGER_LITERAL)
-
+                pass
             elif token in [EParser.DECIMAL_LITERAL]:
                 localctx = EParser.CSharpDecimalLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 2338
                 self.match(EParser.DECIMAL_LITERAL)
-
+                pass
             elif token in [EParser.TEXT_LITERAL]:
                 localctx = EParser.CSharpTextLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 2339
                 self.match(EParser.TEXT_LITERAL)
-
+                pass
             elif token in [EParser.BOOLEAN_LITERAL]:
                 localctx = EParser.CSharpBooleanLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 2340
                 self.match(EParser.BOOLEAN_LITERAL)
-
+                pass
             elif token in [EParser.CHAR_LITERAL]:
                 localctx = EParser.CSharpCharacterLiteralContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 2341
                 self.match(EParser.CHAR_LITERAL)
-
+                pass
             else:
                 raise NoViableAltException(self)
 
@@ -22221,11 +22380,11 @@ class EParser ( AbstractParser ):
             return EParser.RULE_csharp_identifier
 
         def enterRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "enterCsharp_identifier"):
                 listener.enterCsharp_identifier(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, EParserListener ):
+            if hasattr(listener, "exitCsharp_identifier"):
                 listener.exitCsharp_identifier(self)
 
 
@@ -22242,7 +22401,9 @@ class EParser ( AbstractParser ):
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)))) != 0)):
                 self._errHandler.recoverInline(self)
-            self.consume()
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -22591,6 +22752,7 @@ class EParser ( AbstractParser ):
             if predIndex == 65:
                 return self.precpred(self._ctx, 1)
          
+
 
 
 
