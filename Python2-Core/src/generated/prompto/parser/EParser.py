@@ -275,11 +275,12 @@ def serializedATN():
         buf.write(u"\u0186\u0188\u018a\u018c\u018e\u0190\u0192\u0194\u0196")
         buf.write(u"\u0198\u019a\u019c\u019e\u01a0\u01a2\2\13\3\2\"#\4\2")
         buf.write(u"\u0091\u0091\u00a5\u00a5\4\2\u008d\u008d\u0095\u0095")
-        buf.write(u"\4\2LL]]\4\2\'\'ww\b\2\64=\u0087\u0087\u0094\u0094\u009e")
-        buf.write(u"\u009e\u00a3\u00a5\u00a7\u00a7\b\2\64=\u0087\u0087\u008d")
-        buf.write(u"\u008d\u0094\u0095\u009e\u009e\u00a3\u00a5\7\2\64=\u0087")
-        buf.write(u"\u0087\u0094\u0094\u009e\u009e\u00a3\u00a7\7\2\64=\u0087")
-        buf.write(u"\u0087\u0094\u0094\u009e\u009e\u00a3\u00a5\2\u09b6\2")
+        buf.write(u"\4\2LL]]\4\2\'\'ww\f\2\64=CCzz}}\u0087\u0087\u008d\u008d")
+        buf.write(u"\u0094\u0094\u009e\u009e\u00a3\u00a5\u00a7\u00a7\n\2")
+        buf.write(u"\64=CCzz}}\u0087\u0087\u0094\u0095\u009e\u009e\u00a3")
+        buf.write(u"\u00a5\13\2\64=CCzz}}\u0087\u0087\u008d\u008d\u0094\u0094")
+        buf.write(u"\u009e\u009e\u00a3\u00a7\13\2\64=CCzz}}\u0087\u0087\u008d")
+        buf.write(u"\u008d\u0094\u0094\u009e\u009e\u00a3\u00a5\2\u09b6\2")
         buf.write(u"\u01a4\3\2\2\2\4\u01b9\3\2\2\2\6\u01c5\3\2\2\2\b\u01cb")
         buf.write(u"\3\2\2\2\n\u01d1\3\2\2\2\f\u01e7\3\2\2\2\16\u0205\3\2")
         buf.write(u"\2\2\20\u0222\3\2\2\2\22\u0224\3\2\2\2\24\u0234\3\2\2")
@@ -17667,7 +17668,7 @@ class EParser ( AbstractParser ):
                 self.state = 1995
                 self.match(EParser.SEMI)
                 pass
-            elif token in [EParser.LPAR, EParser.LBRAK, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
+            elif token in [EParser.LPAR, EParser.LBRAK, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.UUID, EParser.NONE, EParser.NULL, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
                 localctx = EParser.JavascriptStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 1997
@@ -18157,7 +18158,7 @@ class EParser ( AbstractParser ):
             self.state = 2036
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.LBRAK) | (1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.SELF - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.THIS - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.BOOLEAN_LITERAL - 133)) | (1 << (EParser.CHAR_LITERAL - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)) | (1 << (EParser.TEXT_LITERAL - 133)) | (1 << (EParser.INTEGER_LITERAL - 133)) | (1 << (EParser.DECIMAL_LITERAL - 133)))) != 0):
+            if ((((_la - 20)) & ~0x3f) == 0 and ((1 << (_la - 20)) & ((1 << (EParser.LPAR - 20)) | (1 << (EParser.LBRAK - 20)) | (1 << (EParser.BOOLEAN - 20)) | (1 << (EParser.CHARACTER - 20)) | (1 << (EParser.TEXT - 20)) | (1 << (EParser.INTEGER - 20)) | (1 << (EParser.DECIMAL - 20)) | (1 << (EParser.DATE - 20)) | (1 << (EParser.TIME - 20)) | (1 << (EParser.DATETIME - 20)) | (1 << (EParser.PERIOD - 20)) | (1 << (EParser.VERSION - 20)) | (1 << (EParser.UUID - 20)))) != 0) or ((((_la - 120)) & ~0x3f) == 0 and ((1 << (_la - 120)) & ((1 << (EParser.NONE - 120)) | (1 << (EParser.NULL - 120)) | (1 << (EParser.READ - 120)) | (1 << (EParser.SELF - 120)) | (1 << (EParser.TEST - 120)) | (1 << (EParser.THIS - 120)) | (1 << (EParser.WRITE - 120)) | (1 << (EParser.BOOLEAN_LITERAL - 120)) | (1 << (EParser.CHAR_LITERAL - 120)) | (1 << (EParser.SYMBOL_IDENTIFIER - 120)) | (1 << (EParser.TYPE_IDENTIFIER - 120)) | (1 << (EParser.VARIABLE_IDENTIFIER - 120)) | (1 << (EParser.DOLLAR_IDENTIFIER - 120)) | (1 << (EParser.TEXT_LITERAL - 120)) | (1 << (EParser.INTEGER_LITERAL - 120)) | (1 << (EParser.DECIMAL_LITERAL - 120)))) != 0):
                 self.state = 2035
                 localctx.args = self.javascript_arguments(0)
 
@@ -18633,6 +18634,9 @@ class EParser ( AbstractParser ):
         def VERSION(self):
             return self.getToken(EParser.VERSION, 0)
 
+        def UUID(self):
+            return self.getToken(EParser.UUID, 0)
+
         def READ(self):
             return self.getToken(EParser.READ, 0)
 
@@ -18641,6 +18645,15 @@ class EParser ( AbstractParser ):
 
         def TEST(self):
             return self.getToken(EParser.TEST, 0)
+
+        def SELF(self):
+            return self.getToken(EParser.SELF, 0)
+
+        def NONE(self):
+            return self.getToken(EParser.NONE, 0)
+
+        def NULL(self):
+            return self.getToken(EParser.NULL, 0)
 
         def getRuleIndex(self):
             return EParser.RULE_javascript_identifier
@@ -18665,7 +18678,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 2068
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)))) != 0)):
+            if not(((((_la - 50)) & ~0x3f) == 0 and ((1 << (_la - 50)) & ((1 << (EParser.BOOLEAN - 50)) | (1 << (EParser.CHARACTER - 50)) | (1 << (EParser.TEXT - 50)) | (1 << (EParser.INTEGER - 50)) | (1 << (EParser.DECIMAL - 50)) | (1 << (EParser.DATE - 50)) | (1 << (EParser.TIME - 50)) | (1 << (EParser.DATETIME - 50)) | (1 << (EParser.PERIOD - 50)) | (1 << (EParser.VERSION - 50)) | (1 << (EParser.UUID - 50)))) != 0) or ((((_la - 120)) & ~0x3f) == 0 and ((1 << (_la - 120)) & ((1 << (EParser.NONE - 120)) | (1 << (EParser.NULL - 120)) | (1 << (EParser.READ - 120)) | (1 << (EParser.SELF - 120)) | (1 << (EParser.TEST - 120)) | (1 << (EParser.WRITE - 120)) | (1 << (EParser.SYMBOL_IDENTIFIER - 120)) | (1 << (EParser.TYPE_IDENTIFIER - 120)) | (1 << (EParser.VARIABLE_IDENTIFIER - 120)) | (1 << (EParser.DOLLAR_IDENTIFIER - 120)))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -18753,7 +18766,7 @@ class EParser ( AbstractParser ):
                 self.state = 2071
                 localctx.exp = self.python_expression(0)
                 pass
-            elif token in [EParser.LPAR, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
+            elif token in [EParser.LPAR, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.UUID, EParser.NONE, EParser.NULL, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
                 localctx = EParser.PythonStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 2072
@@ -19234,7 +19247,7 @@ class EParser ( AbstractParser ):
             self.state = 2105
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.SELF - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.THIS - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.BOOLEAN_LITERAL - 133)) | (1 << (EParser.CHAR_LITERAL - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)) | (1 << (EParser.TEXT_LITERAL - 133)) | (1 << (EParser.INTEGER_LITERAL - 133)) | (1 << (EParser.DECIMAL_LITERAL - 133)))) != 0):
+            if ((((_la - 20)) & ~0x3f) == 0 and ((1 << (_la - 20)) & ((1 << (EParser.LPAR - 20)) | (1 << (EParser.BOOLEAN - 20)) | (1 << (EParser.CHARACTER - 20)) | (1 << (EParser.TEXT - 20)) | (1 << (EParser.INTEGER - 20)) | (1 << (EParser.DECIMAL - 20)) | (1 << (EParser.DATE - 20)) | (1 << (EParser.TIME - 20)) | (1 << (EParser.DATETIME - 20)) | (1 << (EParser.PERIOD - 20)) | (1 << (EParser.VERSION - 20)) | (1 << (EParser.UUID - 20)))) != 0) or ((((_la - 120)) & ~0x3f) == 0 and ((1 << (_la - 120)) & ((1 << (EParser.NONE - 120)) | (1 << (EParser.NULL - 120)) | (1 << (EParser.READ - 120)) | (1 << (EParser.SELF - 120)) | (1 << (EParser.TEST - 120)) | (1 << (EParser.THIS - 120)) | (1 << (EParser.WRITE - 120)) | (1 << (EParser.BOOLEAN_LITERAL - 120)) | (1 << (EParser.CHAR_LITERAL - 120)) | (1 << (EParser.SYMBOL_IDENTIFIER - 120)) | (1 << (EParser.TYPE_IDENTIFIER - 120)) | (1 << (EParser.VARIABLE_IDENTIFIER - 120)) | (1 << (EParser.DOLLAR_IDENTIFIER - 120)) | (1 << (EParser.TEXT_LITERAL - 120)) | (1 << (EParser.INTEGER_LITERAL - 120)) | (1 << (EParser.DECIMAL_LITERAL - 120)))) != 0):
                 self.state = 2104
                 localctx.args = self.python_argument_list()
 
@@ -19763,7 +19776,7 @@ class EParser ( AbstractParser ):
                 self.state = 2149
                 self.match(EParser.DOLLAR_IDENTIFIER)
                 pass
-            elif token in [EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER]:
+            elif token in [EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.UUID, EParser.NONE, EParser.NULL, EParser.READ, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER]:
                 localctx = EParser.PythonIdentifierContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
@@ -20011,6 +20024,9 @@ class EParser ( AbstractParser ):
         def VERSION(self):
             return self.getToken(EParser.VERSION, 0)
 
+        def UUID(self):
+            return self.getToken(EParser.UUID, 0)
+
         def READ(self):
             return self.getToken(EParser.READ, 0)
 
@@ -20020,11 +20036,14 @@ class EParser ( AbstractParser ):
         def TEST(self):
             return self.getToken(EParser.TEST, 0)
 
-        def SELF(self):
-            return self.getToken(EParser.SELF, 0)
-
         def THIS(self):
             return self.getToken(EParser.THIS, 0)
+
+        def NONE(self):
+            return self.getToken(EParser.NONE, 0)
+
+        def NULL(self):
+            return self.getToken(EParser.NULL, 0)
 
         def getRuleIndex(self):
             return EParser.RULE_python_identifier
@@ -20049,7 +20068,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 2168
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.SELF - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.THIS - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)))) != 0)):
+            if not(((((_la - 50)) & ~0x3f) == 0 and ((1 << (_la - 50)) & ((1 << (EParser.BOOLEAN - 50)) | (1 << (EParser.CHARACTER - 50)) | (1 << (EParser.TEXT - 50)) | (1 << (EParser.INTEGER - 50)) | (1 << (EParser.DECIMAL - 50)) | (1 << (EParser.DATE - 50)) | (1 << (EParser.TIME - 50)) | (1 << (EParser.DATETIME - 50)) | (1 << (EParser.PERIOD - 50)) | (1 << (EParser.VERSION - 50)) | (1 << (EParser.UUID - 50)))) != 0) or ((((_la - 120)) & ~0x3f) == 0 and ((1 << (_la - 120)) & ((1 << (EParser.NONE - 120)) | (1 << (EParser.NULL - 120)) | (1 << (EParser.READ - 120)) | (1 << (EParser.TEST - 120)) | (1 << (EParser.THIS - 120)) | (1 << (EParser.WRITE - 120)) | (1 << (EParser.SYMBOL_IDENTIFIER - 120)) | (1 << (EParser.TYPE_IDENTIFIER - 120)) | (1 << (EParser.VARIABLE_IDENTIFIER - 120)))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -20143,7 +20162,7 @@ class EParser ( AbstractParser ):
                 self.state = 2172
                 self.match(EParser.SEMI)
                 pass
-            elif token in [EParser.LPAR, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.NATIVE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
+            elif token in [EParser.LPAR, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.UUID, EParser.NONE, EParser.NULL, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.NATIVE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
                 localctx = EParser.JavaStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 2174
@@ -20582,7 +20601,7 @@ class EParser ( AbstractParser ):
             self.state = 2209
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.SELF - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.THIS - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.BOOLEAN_LITERAL - 133)) | (1 << (EParser.CHAR_LITERAL - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.NATIVE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)) | (1 << (EParser.TEXT_LITERAL - 133)) | (1 << (EParser.INTEGER_LITERAL - 133)) | (1 << (EParser.DECIMAL_LITERAL - 133)))) != 0):
+            if ((((_la - 20)) & ~0x3f) == 0 and ((1 << (_la - 20)) & ((1 << (EParser.LPAR - 20)) | (1 << (EParser.BOOLEAN - 20)) | (1 << (EParser.CHARACTER - 20)) | (1 << (EParser.TEXT - 20)) | (1 << (EParser.INTEGER - 20)) | (1 << (EParser.DECIMAL - 20)) | (1 << (EParser.DATE - 20)) | (1 << (EParser.TIME - 20)) | (1 << (EParser.DATETIME - 20)) | (1 << (EParser.PERIOD - 20)) | (1 << (EParser.VERSION - 20)) | (1 << (EParser.UUID - 20)))) != 0) or ((((_la - 120)) & ~0x3f) == 0 and ((1 << (_la - 120)) & ((1 << (EParser.NONE - 120)) | (1 << (EParser.NULL - 120)) | (1 << (EParser.READ - 120)) | (1 << (EParser.SELF - 120)) | (1 << (EParser.TEST - 120)) | (1 << (EParser.THIS - 120)) | (1 << (EParser.WRITE - 120)) | (1 << (EParser.BOOLEAN_LITERAL - 120)) | (1 << (EParser.CHAR_LITERAL - 120)) | (1 << (EParser.SYMBOL_IDENTIFIER - 120)) | (1 << (EParser.TYPE_IDENTIFIER - 120)) | (1 << (EParser.VARIABLE_IDENTIFIER - 120)) | (1 << (EParser.NATIVE_IDENTIFIER - 120)) | (1 << (EParser.DOLLAR_IDENTIFIER - 120)) | (1 << (EParser.TEXT_LITERAL - 120)) | (1 << (EParser.INTEGER_LITERAL - 120)) | (1 << (EParser.DECIMAL_LITERAL - 120)))) != 0):
                 self.state = 2208
                 localctx.args = self.java_arguments(0)
 
@@ -21233,6 +21252,9 @@ class EParser ( AbstractParser ):
         def VERSION(self):
             return self.getToken(EParser.VERSION, 0)
 
+        def UUID(self):
+            return self.getToken(EParser.UUID, 0)
+
         def READ(self):
             return self.getToken(EParser.READ, 0)
 
@@ -21241,6 +21263,15 @@ class EParser ( AbstractParser ):
 
         def TEST(self):
             return self.getToken(EParser.TEST, 0)
+
+        def SELF(self):
+            return self.getToken(EParser.SELF, 0)
+
+        def NONE(self):
+            return self.getToken(EParser.NONE, 0)
+
+        def NULL(self):
+            return self.getToken(EParser.NULL, 0)
 
         def getRuleIndex(self):
             return EParser.RULE_java_identifier
@@ -21265,7 +21296,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 2260
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.NATIVE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)))) != 0)):
+            if not(((((_la - 50)) & ~0x3f) == 0 and ((1 << (_la - 50)) & ((1 << (EParser.BOOLEAN - 50)) | (1 << (EParser.CHARACTER - 50)) | (1 << (EParser.TEXT - 50)) | (1 << (EParser.INTEGER - 50)) | (1 << (EParser.DECIMAL - 50)) | (1 << (EParser.DATE - 50)) | (1 << (EParser.TIME - 50)) | (1 << (EParser.DATETIME - 50)) | (1 << (EParser.PERIOD - 50)) | (1 << (EParser.VERSION - 50)) | (1 << (EParser.UUID - 50)))) != 0) or ((((_la - 120)) & ~0x3f) == 0 and ((1 << (_la - 120)) & ((1 << (EParser.NONE - 120)) | (1 << (EParser.NULL - 120)) | (1 << (EParser.READ - 120)) | (1 << (EParser.SELF - 120)) | (1 << (EParser.TEST - 120)) | (1 << (EParser.WRITE - 120)) | (1 << (EParser.SYMBOL_IDENTIFIER - 120)) | (1 << (EParser.TYPE_IDENTIFIER - 120)) | (1 << (EParser.VARIABLE_IDENTIFIER - 120)) | (1 << (EParser.NATIVE_IDENTIFIER - 120)) | (1 << (EParser.DOLLAR_IDENTIFIER - 120)))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -21359,7 +21390,7 @@ class EParser ( AbstractParser ):
                 self.state = 2264
                 self.match(EParser.SEMI)
                 pass
-            elif token in [EParser.LPAR, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
+            elif token in [EParser.LPAR, EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.UUID, EParser.NONE, EParser.NULL, EParser.READ, EParser.SELF, EParser.TEST, EParser.THIS, EParser.WRITE, EParser.BOOLEAN_LITERAL, EParser.CHAR_LITERAL, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER, EParser.DOLLAR_IDENTIFIER, EParser.TEXT_LITERAL, EParser.INTEGER_LITERAL, EParser.DECIMAL_LITERAL]:
                 localctx = EParser.CSharpStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 2266
@@ -21798,7 +21829,7 @@ class EParser ( AbstractParser ):
             self.state = 2301
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.LPAR) | (1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.SELF - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.THIS - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.BOOLEAN_LITERAL - 133)) | (1 << (EParser.CHAR_LITERAL - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)) | (1 << (EParser.DOLLAR_IDENTIFIER - 133)) | (1 << (EParser.TEXT_LITERAL - 133)) | (1 << (EParser.INTEGER_LITERAL - 133)) | (1 << (EParser.DECIMAL_LITERAL - 133)))) != 0):
+            if ((((_la - 20)) & ~0x3f) == 0 and ((1 << (_la - 20)) & ((1 << (EParser.LPAR - 20)) | (1 << (EParser.BOOLEAN - 20)) | (1 << (EParser.CHARACTER - 20)) | (1 << (EParser.TEXT - 20)) | (1 << (EParser.INTEGER - 20)) | (1 << (EParser.DECIMAL - 20)) | (1 << (EParser.DATE - 20)) | (1 << (EParser.TIME - 20)) | (1 << (EParser.DATETIME - 20)) | (1 << (EParser.PERIOD - 20)) | (1 << (EParser.VERSION - 20)) | (1 << (EParser.UUID - 20)))) != 0) or ((((_la - 120)) & ~0x3f) == 0 and ((1 << (_la - 120)) & ((1 << (EParser.NONE - 120)) | (1 << (EParser.NULL - 120)) | (1 << (EParser.READ - 120)) | (1 << (EParser.SELF - 120)) | (1 << (EParser.TEST - 120)) | (1 << (EParser.THIS - 120)) | (1 << (EParser.WRITE - 120)) | (1 << (EParser.BOOLEAN_LITERAL - 120)) | (1 << (EParser.CHAR_LITERAL - 120)) | (1 << (EParser.SYMBOL_IDENTIFIER - 120)) | (1 << (EParser.TYPE_IDENTIFIER - 120)) | (1 << (EParser.VARIABLE_IDENTIFIER - 120)) | (1 << (EParser.DOLLAR_IDENTIFIER - 120)) | (1 << (EParser.TEXT_LITERAL - 120)) | (1 << (EParser.INTEGER_LITERAL - 120)) | (1 << (EParser.DECIMAL_LITERAL - 120)))) != 0):
                 self.state = 2300
                 localctx.args = self.csharp_arguments(0)
 
@@ -22124,7 +22155,7 @@ class EParser ( AbstractParser ):
                 self.state = 2325
                 self.match(EParser.DOLLAR_IDENTIFIER)
                 pass
-            elif token in [EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.READ, EParser.TEST, EParser.WRITE, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER]:
+            elif token in [EParser.BOOLEAN, EParser.CHARACTER, EParser.TEXT, EParser.INTEGER, EParser.DECIMAL, EParser.DATE, EParser.TIME, EParser.DATETIME, EParser.PERIOD, EParser.VERSION, EParser.UUID, EParser.NONE, EParser.NULL, EParser.READ, EParser.SELF, EParser.TEST, EParser.WRITE, EParser.SYMBOL_IDENTIFIER, EParser.TYPE_IDENTIFIER, EParser.VARIABLE_IDENTIFIER]:
                 localctx = EParser.CSharpIdentifierContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
@@ -22367,6 +22398,9 @@ class EParser ( AbstractParser ):
         def VERSION(self):
             return self.getToken(EParser.VERSION, 0)
 
+        def UUID(self):
+            return self.getToken(EParser.UUID, 0)
+
         def READ(self):
             return self.getToken(EParser.READ, 0)
 
@@ -22375,6 +22409,15 @@ class EParser ( AbstractParser ):
 
         def TEST(self):
             return self.getToken(EParser.TEST, 0)
+
+        def SELF(self):
+            return self.getToken(EParser.SELF, 0)
+
+        def NONE(self):
+            return self.getToken(EParser.NONE, 0)
+
+        def NULL(self):
+            return self.getToken(EParser.NULL, 0)
 
         def getRuleIndex(self):
             return EParser.RULE_csharp_identifier
@@ -22399,7 +22442,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 2344
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << EParser.BOOLEAN) | (1 << EParser.CHARACTER) | (1 << EParser.TEXT) | (1 << EParser.INTEGER) | (1 << EParser.DECIMAL) | (1 << EParser.DATE) | (1 << EParser.TIME) | (1 << EParser.DATETIME) | (1 << EParser.PERIOD) | (1 << EParser.VERSION))) != 0) or ((((_la - 133)) & ~0x3f) == 0 and ((1 << (_la - 133)) & ((1 << (EParser.READ - 133)) | (1 << (EParser.TEST - 133)) | (1 << (EParser.WRITE - 133)) | (1 << (EParser.SYMBOL_IDENTIFIER - 133)) | (1 << (EParser.TYPE_IDENTIFIER - 133)) | (1 << (EParser.VARIABLE_IDENTIFIER - 133)))) != 0)):
+            if not(((((_la - 50)) & ~0x3f) == 0 and ((1 << (_la - 50)) & ((1 << (EParser.BOOLEAN - 50)) | (1 << (EParser.CHARACTER - 50)) | (1 << (EParser.TEXT - 50)) | (1 << (EParser.INTEGER - 50)) | (1 << (EParser.DECIMAL - 50)) | (1 << (EParser.DATE - 50)) | (1 << (EParser.TIME - 50)) | (1 << (EParser.DATETIME - 50)) | (1 << (EParser.PERIOD - 50)) | (1 << (EParser.VERSION - 50)) | (1 << (EParser.UUID - 50)))) != 0) or ((((_la - 120)) & ~0x3f) == 0 and ((1 << (_la - 120)) & ((1 << (EParser.NONE - 120)) | (1 << (EParser.NULL - 120)) | (1 << (EParser.READ - 120)) | (1 << (EParser.SELF - 120)) | (1 << (EParser.TEST - 120)) | (1 << (EParser.WRITE - 120)) | (1 << (EParser.SYMBOL_IDENTIFIER - 120)) | (1 << (EParser.TYPE_IDENTIFIER - 120)) | (1 << (EParser.VARIABLE_IDENTIFIER - 120)))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
