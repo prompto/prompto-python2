@@ -10,6 +10,7 @@ from prompto.type.NativeType import NativeType
 
 
 class UnresolvedIdentifier(IExpression):
+
     def __init__(self, name):
         self.name = name
         self.resolved = None
@@ -17,8 +18,10 @@ class UnresolvedIdentifier(IExpression):
     def getName(self):
         return self.name
 
+
     def __str__(self):
         return self.name
+
 
     def toDialect(self, writer):
         try:
@@ -27,19 +30,24 @@ class UnresolvedIdentifier(IExpression):
         except:
             writer.append(self.name)
 
+
     def check(self, context):
         return self.resolveAndCheck(context, False)
 
+
     def checkMember(self, context):
         return self.resolveAndCheck(context, True)
+
 
     def interpret(self, context):
         self.resolveAndCheck(context, False)
         return self.resolved.interpret(context)
 
+
     def resolveAndCheck(self, context, forMember):
         self.resolve(context, forMember)
         return self.resolved.check(context)
+
 
     def resolve(self, context, forMember):
         if self.resolved is None:

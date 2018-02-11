@@ -762,7 +762,7 @@ class OPromptoBuilder(OParserListener):
 
     def exitCallableRoot(self, ctx):
         name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, UnresolvedIdentifier(name))
+        self.setNodeValue(ctx, name)
 
 
 
