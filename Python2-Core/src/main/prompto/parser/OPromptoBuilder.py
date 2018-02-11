@@ -752,13 +752,19 @@ class OPromptoBuilder(OParserListener):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MemberSelector(name))
 
+
+
     def exitCallableItemSelector(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, ItemSelector(exp))
 
+
+
     def exitCallableRoot(self, ctx):
         name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, name)
+        self.setNodeValue(ctx, UnresolvedIdentifier(name))
+
+
 
     def exitCallableSelector(self, ctx):
         parent = self.getNodeValue(ctx.parent)
