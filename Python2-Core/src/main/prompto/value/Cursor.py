@@ -1,11 +1,16 @@
+from io import StringIO
+
+from prompto.error.InternalError import InternalError
 from prompto.type.CategoryType import CategoryType
 from prompto.value.BaseValue import BaseValue
 from prompto.type.CursorType import CursorType
+from prompto.value.Boolean import Boolean
+from prompto.value.IFilterable import IFilterable
 from prompto.value.IIterable import IIterable
 from prompto.value.Integer import Integer
 from prompto.store.InvalidValueError import InvalidValueError
 
-class Cursor(BaseValue, IIterable):
+class Cursor(BaseValue, IIterable, IFilterable):
 
     def __init__(self, context, itemType, stored):
         super(Cursor, self).__init__(CursorType(itemType))
@@ -13,8 +18,12 @@ class Cursor(BaseValue, IIterable):
         self.stored = stored
         self.mutable = getattr(itemType, "mutable", False)
 
+
+
     def isEmpty(self):
         return len(self.stored)==0
+
+
 
     def __len__(self):
         return len(self.stored)
@@ -26,11 +35,27 @@ class Cursor(BaseValue, IIterable):
 
 
 
+    def __str__(self):
+        with StringIO() as sb:
+            sb.write(u"[")
+            for v in self.getIterator(self.context):
+                sb.write(unicode(v))
+                sb.write(u", ")
+            len = sb.tell()
+            if len > 2:
+                sb.seek(len-2)
+                sb.truncate(len - 2)
+            sb.write(u"]")
+            return sb.getvalue()
+
+
     def getIterator(self, context):
         for stored in self.stored:
             typ = self.readItemType(stored)
             val = typ.newInstanceFromStored(context, stored)
             yield val
+
+
 
     def readItemType(self, stored):
         # val = getattr(stored, "category")
@@ -40,6 +65,8 @@ class Cursor(BaseValue, IIterable):
         typ.mutable = self.mutable
         return typ
 
+
+
     def getMemberValue(self, context, name, autoCreate=False):
         if "count" == name:
             return Integer(len(self))
@@ -48,4 +75,29 @@ class Cursor(BaseValue, IIterable):
         else:
             raise InvalidValueError("No such member:" + name)
 
+
+
+    def filter(self, context, itemName, filter):
+        return FilteredCursor(self, context, itemName, filter)
+
+
+class FilteredCursor(Cursor):
+
+    def __init__(self, cursor, context, itemName, filter):
+        super(FilteredCursor, self).__init__(cursor.context, cursor.itype.itemType, cursor.stored)
+        self.ctx = context
+        self.itemName = itemName
+        self.filter = filter
+
+
+    def getIterator(self, context):
+        for stored in self.stored:
+            typ = self.readItemType(stored)
+            val = typ.newInstanceFromStored(self.ctx, stored)
+            self.ctx.setValue(self.itemName, val)
+            test = self.filter.interpret(self.ctx)
+            if not isinstance(test, Boolean):
+                raise InternalError("Illegal test result: " + test)
+            if test.getValue():
+                yield val
 
