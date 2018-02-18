@@ -1211,7 +1211,9 @@ class OPromptoBuilder(OParserListener):
         attrs = self.getNodeValue(ctx.attrs)
         bindings = self.getNodeValue(ctx.bindings)
         methods = self.getNodeValue(ctx.methods)
-        self.setNodeValue(ctx, NativeResourceDeclaration(name, attrs, bindings, None, methods))
+        decl = NativeResourceDeclaration(name, attrs, bindings, None, methods)
+        decl.storable = ctx.STORABLE() is not None
+        self.setNodeValue(ctx, decl)
 
     def exitResource_declaration(self, ctx):
         decl = self.getNodeValue(ctx.native_resource_declaration())
