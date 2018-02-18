@@ -23,7 +23,7 @@ class Version ( BaseValue ):
         self.minor = minor
         self.fix = fix
 
-    def compareTo(self, context, value):
+    def CompareTo(self, context, value):
         if isinstance(value, Version):
             if self.asInt() < value.asInt():
                 return -1

@@ -84,7 +84,7 @@ class Decimal(BaseValue, INumber, IMultiplyable):
         else:
             raise SyntaxError("Illegal: Decimal % " + type(value).__name__)
 
-    def compareTo(self, context, value):
+    def CompareTo(self, context, value):
         if isinstance(value, INumber):
             return cmp(self.value,value.DecimalValue())
         else:

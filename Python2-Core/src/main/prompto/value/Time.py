@@ -49,7 +49,7 @@ class Time(BaseValue):
             raise SyntaxError("Illegal: Time - " + type(value).__name__)
 
 
-    def compareTo(self, context, value):
+    def CompareTo(self, context, value):
         if isinstance(value, Time):
             return cmp(self.value,value.value)
         else:
@@ -92,11 +92,11 @@ class Time(BaseValue):
                (self.value.minute * 60 * 1000) + \
                (self.value.hour * 60 * 60 * 1000)
 
-    def compareTo(self, context, value):
+    def CompareTo(self, context, value):
         if isinstance(value, Time):
             return cmp(self.value,value.value)
         else:
-            super(Time, self).compareTo(context, value)
+            super(Time, self).CompareTo(context, value)
 
     def __eq__(self, obj):
         if isinstance(obj, Time):

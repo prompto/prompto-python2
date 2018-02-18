@@ -34,7 +34,7 @@ class DateTime(BaseValue):
             raise SyntaxError("Illegal: DateTime - " + type(value).__name__)
 
 
-    def compareTo(self, context, value):
+    def CompareTo(self, context, value):
         if isinstance(value, DateTime):
             return cmp(self.value, value.value)
         else:

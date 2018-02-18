@@ -42,7 +42,7 @@ class CompareExpression ( IExpression ):
                             + " " + str(self.operator) + " " + type(rval).__name__)
 
     def compare(self, context, lval, rval):
-        cmp = lval.compareTo(context, rval)
+        cmp = lval.CompareTo(context, rval)
         if self.operator==CmpOp.GT:
             return Boolean.ValueOf(cmp > 0)
         elif self.operator==CmpOp.LT:

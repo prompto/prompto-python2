@@ -27,8 +27,11 @@ class BaseValue(IValue):
     def Modulo(self, context, value):
         raise Exception("Integer divide not supported by " + type(self).__name__)
 
-    def compareTo(self, context, value):
+    def CompareTo(self, context, value):
         raise Exception("Compare not supported by " + type(self).__name__)
+
+    def Contains(self, context, value):
+        raise Exception("Contains not supported by " + type(self).__name__)
 
     def getMemberValue(self, context, name, autoCreate=False):
         from prompto.value.Text import Text

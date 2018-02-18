@@ -2,7 +2,6 @@ from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
 from prompto.store.InvalidValueError import InvalidValueError
 from prompto.type.TextType import TextType
 from prompto.value.BaseValue import BaseValue
-from prompto.value.Character import Character
 from prompto.value.IMultiplyable import IMultiplyable
 from prompto.value.ISliceable import ISliceable
 from prompto.value.Integer import Integer
@@ -53,11 +52,11 @@ class Text(BaseValue, ISliceable, IMultiplyable):
             super(Text, self).Multiply(context, value)
 
 
-    def compareTo(self, context, value):
+    def CompareTo(self, context, value):
         if isinstance(value, Text):
-            return cmp(self.value,value.value)
+            return cmp(self.value, value.value)
         else:
-            super(Text, self).compareTo(context, value)
+            super(Text, self).CompareTo(context, value)
 
 
     def hasItem(self, context, value):
@@ -118,13 +117,24 @@ class Text(BaseValue, ISliceable, IMultiplyable):
             raise IndexOutOfRangeError()
         return value
 
+
     def Roughly(self, context, value):
-        if isinstance(value, Character) or  isinstance(value, Text):
+        from prompto.value.Character import Character
+        if isinstance(value, (Character, Text)):
             if len(self.value)!=len(value.value):
                 return False
             return self.value.lower()==value.value.lower()
         else:
             return False
+
+
+    def Contains(self, context, value):
+        from prompto.value.Character import Character
+        if isinstance(value, (Text, Character)):
+            return self.value.index(value.value) >= 0
+        else:
+            return False
+
 
     def __str__(self):
         return self.value

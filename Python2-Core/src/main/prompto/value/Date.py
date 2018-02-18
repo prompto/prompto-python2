@@ -39,7 +39,7 @@ class Date ( BaseValue ):
         else:
             raise SyntaxError("Illegal: Date - " + type(value).__name__)
 
-    def compareTo(self, context, value):
+    def CompareTo(self, context, value):
         if isinstance(value, Date):
             return cmp(self.value,value.value)
         else:

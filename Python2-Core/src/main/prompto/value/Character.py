@@ -53,7 +53,7 @@ class Character ( BaseValue, IMultiplyable) :
             raise SyntaxError("Illegal: Character * " + type(value).__name__)
  
 
-    def compareTo(self, context, other):
+    def CompareTo(self, context, other):
         if isinstance(other, Character):
             if self.value < other.value:
                 return -1

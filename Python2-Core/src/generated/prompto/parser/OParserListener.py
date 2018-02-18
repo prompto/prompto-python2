@@ -679,21 +679,30 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#HasAnyExpression.
+    def enterHasAnyExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#HasAnyExpression.
+    def exitHasAnyExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#HasExpression.
+    def enterHasExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#HasExpression.
+    def exitHasExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#TernaryExpression.
     def enterTernaryExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by OParser#TernaryExpression.
     def exitTernaryExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by OParser#ContainsAllExpression.
-    def enterContainsAllExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by OParser#ContainsAllExpression.
-    def exitContainsAllExpression(self, ctx):
         pass
 
 
@@ -769,12 +778,30 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#NotHasAnyExpression.
+    def enterNotHasAnyExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#NotHasAnyExpression.
+    def exitNotHasAnyExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#AndExpression.
     def enterAndExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by OParser#AndExpression.
     def exitAndExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#NotHasExpression.
+    def enterNotHasExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#NotHasExpression.
+    def exitNotHasExpression(self, ctx):
         pass
 
 
@@ -787,12 +814,12 @@ class OParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by OParser#NotContainsAnyExpression.
-    def enterNotContainsAnyExpression(self, ctx):
+    # Enter a parse tree produced by OParser#NotHasAllExpression.
+    def enterNotHasAllExpression(self, ctx):
         pass
 
-    # Exit a parse tree produced by OParser#NotContainsAnyExpression.
-    def exitNotContainsAnyExpression(self, ctx):
+    # Exit a parse tree produced by OParser#NotHasAllExpression.
+    def exitNotHasAllExpression(self, ctx):
         pass
 
 
@@ -931,12 +958,12 @@ class OParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by OParser#NotContainsAllExpression.
-    def enterNotContainsAllExpression(self, ctx):
+    # Enter a parse tree produced by OParser#HasAllExpression.
+    def enterHasAllExpression(self, ctx):
         pass
 
-    # Exit a parse tree produced by OParser#NotContainsAllExpression.
-    def exitNotContainsAllExpression(self, ctx):
+    # Exit a parse tree produced by OParser#HasAllExpression.
+    def exitHasAllExpression(self, ctx):
         pass
 
 
@@ -955,15 +982,6 @@ class OParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by OParser#CastExpression.
     def exitCastExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by OParser#ContainsAnyExpression.
-    def enterContainsAnyExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by OParser#ContainsAnyExpression.
-    def exitContainsAnyExpression(self, ctx):
         pass
 
 

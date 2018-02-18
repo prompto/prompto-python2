@@ -625,6 +625,24 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#HasAnyExpression.
+    def enterHasAnyExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#HasAnyExpression.
+    def exitHasAnyExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#HasExpression.
+    def enterHasExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#HasExpression.
+    def exitHasExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#TernaryExpression.
     def enterTernaryExpression(self, ctx):
         pass
@@ -640,15 +658,6 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#FetchStoreExpression.
     def exitFetchStoreExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#ContainsAllExpression.
-    def enterContainsAllExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#ContainsAllExpression.
-    def exitContainsAllExpression(self, ctx):
         pass
 
 
@@ -751,6 +760,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#NotHasAnyExpression.
+    def enterNotHasAnyExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#NotHasAnyExpression.
+    def exitNotHasAnyExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#AndExpression.
     def enterAndExpression(self, ctx):
         pass
@@ -766,6 +784,15 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#MethodCallExpression.
     def exitMethodCallExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#NotHasExpression.
+    def enterNotHasExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#NotHasExpression.
+    def exitNotHasExpression(self, ctx):
         pass
 
 
@@ -787,21 +814,21 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#NotHasAllExpression.
+    def enterNotHasAllExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#NotHasAllExpression.
+    def exitNotHasAllExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#BlobExpression.
     def enterBlobExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by EParser#BlobExpression.
     def exitBlobExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#NotContainsAnyExpression.
-    def enterNotContainsAnyExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#NotContainsAnyExpression.
-    def exitNotContainsAnyExpression(self, ctx):
         pass
 
 
@@ -949,12 +976,12 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#NotContainsAllExpression.
-    def enterNotContainsAllExpression(self, ctx):
+    # Enter a parse tree produced by EParser#HasAllExpression.
+    def enterHasAllExpression(self, ctx):
         pass
 
-    # Exit a parse tree produced by EParser#NotContainsAllExpression.
-    def exitNotContainsAllExpression(self, ctx):
+    # Exit a parse tree produced by EParser#HasAllExpression.
+    def exitHasAllExpression(self, ctx):
         pass
 
 
@@ -973,15 +1000,6 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#ReadAllExpression.
     def exitReadAllExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#ContainsAnyExpression.
-    def enterContainsAnyExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#ContainsAnyExpression.
-    def exitContainsAnyExpression(self, ctx):
         pass
 
 

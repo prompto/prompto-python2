@@ -643,21 +643,30 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#HasAnyExpression.
+    def enterHasAnyExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#HasAnyExpression.
+    def exitHasAnyExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#HasExpression.
+    def enterHasExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#HasExpression.
+    def exitHasExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#TernaryExpression.
     def enterTernaryExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by MParser#TernaryExpression.
     def exitTernaryExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by MParser#ContainsAllExpression.
-    def enterContainsAllExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#ContainsAllExpression.
-    def exitContainsAllExpression(self, ctx):
         pass
 
 
@@ -724,12 +733,30 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#NotHasAnyExpression.
+    def enterNotHasAnyExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#NotHasAnyExpression.
+    def exitNotHasAnyExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#AndExpression.
     def enterAndExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by MParser#AndExpression.
     def exitAndExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#NotHasExpression.
+    def enterNotHasExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#NotHasExpression.
+    def exitNotHasExpression(self, ctx):
         pass
 
 
@@ -742,12 +769,12 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#NotContainsAnyExpression.
-    def enterNotContainsAnyExpression(self, ctx):
+    # Enter a parse tree produced by MParser#NotHasAllExpression.
+    def enterNotHasAllExpression(self, ctx):
         pass
 
-    # Exit a parse tree produced by MParser#NotContainsAnyExpression.
-    def exitNotContainsAnyExpression(self, ctx):
+    # Exit a parse tree produced by MParser#NotHasAllExpression.
+    def exitNotHasAllExpression(self, ctx):
         pass
 
 
@@ -886,12 +913,12 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#NotContainsAllExpression.
-    def enterNotContainsAllExpression(self, ctx):
+    # Enter a parse tree produced by MParser#HasAllExpression.
+    def enterHasAllExpression(self, ctx):
         pass
 
-    # Exit a parse tree produced by MParser#NotContainsAllExpression.
-    def exitNotContainsAllExpression(self, ctx):
+    # Exit a parse tree produced by MParser#HasAllExpression.
+    def exitHasAllExpression(self, ctx):
         pass
 
 
@@ -901,15 +928,6 @@ class MParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by MParser#InstanceExpression.
     def exitInstanceExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by MParser#ContainsAnyExpression.
-    def enterContainsAnyExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#ContainsAnyExpression.
-    def exitContainsAnyExpression(self, ctx):
         pass
 
 

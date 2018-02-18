@@ -88,7 +88,7 @@ class Integer(BaseValue, INumber, IMultiplyable):
         else:
             raise SyntaxError("Illegal: Integer % " + type(value).__name__)
 
-    def compareTo(self, context, value):
+    def CompareTo(self, context, value):
         if isinstance(value, Integer):
             return cmp(self.value, value.IntegerValue())
         elif isinstance(value, Decimal):
