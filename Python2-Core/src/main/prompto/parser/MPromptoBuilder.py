@@ -533,10 +533,23 @@ class MPromptoBuilder(MParserListener):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
-    def exitConstructor_expression(self, ctx):
+
+
+    def exitConstructorFrom(self, ctx):
+        typ = self.getNodeValue(ctx.typ)
+        copyFrom = self.getNodeValue(ctx.copyExp)
+        args = self.getNodeValue(ctx.args)
+        self.setNodeValue(ctx, ConstructorExpression(typ, copyFrom, args, True))
+
+
+    def exitConstructorNoFrom(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, ConstructorExpression(typ, args))
+        self.setNodeValue(ctx, ConstructorExpression(typ, None, args, True))
+
+
+    def exitCopy_from(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
 
     def exitCsharp_primary_expression(self, ctx):
         exp = self.getNodeValue(ctx.getChild(0))

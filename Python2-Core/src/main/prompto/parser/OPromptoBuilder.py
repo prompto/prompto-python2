@@ -744,12 +744,19 @@ class OPromptoBuilder(OParserListener):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
-    def exitConstructor_expression(self, ctx):
+    def exitConstructorFrom(self, ctx):
+        typ = self.getNodeValue(ctx.typ)
+        copyFrom = self.getNodeValue(ctx.copyExp)
+        args = self.getNodeValue(ctx.args)
+        self.setNodeValue(ctx, ConstructorExpression(typ, copyFrom, args, True))
+
+    def exitConstructorNoFrom(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         args = self.getNodeValue(ctx.args)
-        if args is None:
-            args = ArgumentAssignmentList()
-        self.setNodeValue(ctx, ConstructorExpression(typ, args))
+        self.setNodeValue(ctx, ConstructorExpression(typ, None, args, True))
+
+    def exitCopy_from(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
 
     def exitAssertion(self, ctx):
         exp = self.getNodeValue(ctx.exp)

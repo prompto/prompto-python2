@@ -1147,12 +1147,30 @@ class OParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by OParser#constructor_expression.
-    def enterConstructor_expression(self, ctx):
+    # Enter a parse tree produced by OParser#ConstructorFrom.
+    def enterConstructorFrom(self, ctx):
         pass
 
-    # Exit a parse tree produced by OParser#constructor_expression.
-    def exitConstructor_expression(self, ctx):
+    # Exit a parse tree produced by OParser#ConstructorFrom.
+    def exitConstructorFrom(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#ConstructorNoFrom.
+    def enterConstructorNoFrom(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#ConstructorNoFrom.
+    def exitConstructorNoFrom(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#copy_from.
+    def enterCopy_from(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#copy_from.
+    def exitCopy_from(self, ctx):
         pass
 
 
