@@ -432,8 +432,8 @@ def serializedATN():
         buf.write(u"\u02af\7n\2\2\u02af\u02b0\7q\2\2\u02b0\u02b1\7d\2\2\u02b1")
         buf.write(u"x\3\2\2\2\u02b2\u02b3\7K\2\2\u02b3\u02b4\7o\2\2\u02b4")
         buf.write(u"\u02b5\7c\2\2\u02b5\u02b6\7i\2\2\u02b6\u02b7\7g\2\2\u02b7")
-        buf.write(u"z\3\2\2\2\u02b8\u02b9\7W\2\2\u02b9\u02ba\7W\2\2\u02ba")
-        buf.write(u"\u02bb\7K\2\2\u02bb\u02bc\7F\2\2\u02bc|\3\2\2\2\u02bd")
+        buf.write(u"z\3\2\2\2\u02b8\u02b9\7W\2\2\u02b9\u02ba\7w\2\2\u02ba")
+        buf.write(u"\u02bb\7k\2\2\u02bb\u02bc\7f\2\2\u02bc|\3\2\2\2\u02bd")
         buf.write(u"\u02be\7K\2\2\u02be\u02bf\7v\2\2\u02bf\u02c0\7g\2\2\u02c0")
         buf.write(u"\u02c1\7t\2\2\u02c1\u02c2\7c\2\2\u02c2\u02c3\7v\2\2\u02c3")
         buf.write(u"\u02c4\7q\2\2\u02c4\u02c5\7t\2\2\u02c5~\3\2\2\2\u02c6")
@@ -998,7 +998,7 @@ class OLexer(Lexer):
             u"'=='", u"'~='", u"'~'", u"'<-'", u"'->'", u"'Boolean'", u"'Character'", 
             u"'Text'", u"'Integer'", u"'Decimal'", u"'Date'", u"'Time'", 
             u"'DateTime'", u"'Period'", u"'Version'", u"'Method'", u"'Code'", 
-            u"'Document'", u"'Blob'", u"'Image'", u"'UUID'", u"'Iterator'", 
+            u"'Document'", u"'Blob'", u"'Image'", u"'Uuid'", u"'Iterator'", 
             u"'Cursor'", u"'abstract'", u"'all'", u"'always'", u"'and'", 
             u"'any'", u"'as'", u"'attr'", u"'attribute'", u"'attributes'", 
             u"'bindings'", u"'break'", u"'by'", u"'case'", u"'catch'", u"'category'", 

@@ -1265,7 +1265,7 @@ class OParser ( AbstractParser ):
                      u"'Boolean'", u"'Character'", u"'Text'", u"'Integer'", 
                      u"'Decimal'", u"'Date'", u"'Time'", u"'DateTime'", 
                      u"'Period'", u"'Version'", u"'Method'", u"'Code'", 
-                     u"'Document'", u"'Blob'", u"'Image'", u"'UUID'", u"'Iterator'", 
+                     u"'Document'", u"'Blob'", u"'Image'", u"'Uuid'", u"'Iterator'", 
                      u"'Cursor'", u"'abstract'", u"'all'", u"'always'", 
                      u"'and'", u"'any'", u"'as'", u"<INVALID>", u"'attr'", 
                      u"'attribute'", u"'attributes'", u"'bindings'", u"'break'", 
