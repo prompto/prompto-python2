@@ -138,6 +138,21 @@ from prompto.literal.TupleLiteral import TupleLiteral
 from prompto.literal.UUIDLiteral import UUIDLiteral
 from prompto.literal.VersionLiteral import VersionLiteral
 from prompto.parser.Dialect import Dialect
+
+from prompto.jsx.JsxElement import JsxElement
+
+from prompto.jsx.JsxSelfClosing import JsxSelfClosing
+
+from prompto.jsx.JsxLiteral import JsxLiteral
+
+from prompto.jsx.JsxExpression import JsxExpression
+
+from prompto.jsx.JsxText import JsxText
+
+from prompto.jsx.JsxAttribute import JsxAttribute
+
+from prompto.jsx.JsxCode import JsxCode
+from prompto.parser import ParserUtils
 from prompto.parser.MParser import MParser
 from prompto.parser.MParserListener import MParserListener
 from prompto.parser.Section import Section
@@ -1947,3 +1962,78 @@ class MPromptoBuilder(MParserListener):
     def exitWriteStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
+    def exitJsxChild(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.jsx))
+
+
+    def exitJsxCode(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, JsxCode(exp))
+
+
+    def exitJsxExpression(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
+
+
+    def exitJsxElement(self, ctx):
+        elem = self.getNodeValue(ctx.jsx)
+        children = self.getNodeValue(ctx.children_)
+        elem.setChildren(children)
+        self.setNodeValue(ctx, elem)
+
+
+    def exitJsxSelfClosing(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.jsx))
+
+
+    def exitJsxText(self, ctx):
+        text = ParserUtils.getFullText(ctx.text)
+        self.setNodeValue(ctx, JsxText(text))
+
+
+    def exitJsxValue(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, JsxExpression(exp))
+
+
+    def exitJsx_attribute(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        value = self.getNodeValue(ctx.value)
+        self.setNodeValue(ctx, JsxAttribute(name, value))
+
+
+    def exitJsx_children(self, ctx):
+        expressions = [self.getNodeValue(cx) for cx in ctx.jsx_child()]
+        self.setNodeValue(ctx, expressions)
+
+
+    def exitJsx_element_name(self, ctx):
+        name = ctx.getText()
+        self.setNodeValue(ctx, name)
+
+
+    def exitJsx_expression(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.getChild(0)))
+
+
+    def exitJsx_identifier(self, ctx):
+        name = ctx.getText()
+        self.setNodeValue(ctx, name)
+
+
+    def exitJsxLiteral(self, ctx):
+        text = ctx.getText()
+        self.setNodeValue(ctx, JsxLiteral(text))
+
+
+    def exitJsx_opening(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
+        self.setNodeValue(ctx, JsxElement(name, attributes))
+
+
+    def exitJsx_self_closing(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
+        self.setNodeValue(ctx, JsxSelfClosing(name, attributes))

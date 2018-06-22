@@ -40,5 +40,6 @@ TypeFamily.ITERATOR = TypeFamily("ITERATOR")
 TypeFamily.CLASS = TypeFamily("CLASS")
 TypeFamily.TYPE = TypeFamily("TYPE")
 TypeFamily.CODE = TypeFamily("CODE")
+TypeFamily.JSX = TypeFamily("JSX")
 # volatile
 TypeFamily.MISSING = TypeFamily("MISSING")

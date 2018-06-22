@@ -688,6 +688,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#JsxExpression.
+    def enterJsxExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#JsxExpression.
+    def exitJsxExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#NotExpression.
     def enterNotExpression(self, ctx):
         pass
@@ -2533,6 +2542,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#keyword.
+    def enterKeyword(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#keyword.
+    def exitKeyword(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#new_token.
     def enterNew_token(self, ctx):
         pass
@@ -3511,6 +3529,204 @@ class MParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by MParser#csharp_identifier.
     def exitCsharp_identifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_expression.
+    def enterJsx_expression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_expression.
+    def exitJsx_expression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#JsxSelfClosing.
+    def enterJsxSelfClosing(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#JsxSelfClosing.
+    def exitJsxSelfClosing(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#JsxElement.
+    def enterJsxElement(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#JsxElement.
+    def exitJsxElement(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_fragment.
+    def enterJsx_fragment(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_fragment.
+    def exitJsx_fragment(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_fragment_start.
+    def enterJsx_fragment_start(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_fragment_start.
+    def exitJsx_fragment_start(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_fragment_end.
+    def enterJsx_fragment_end(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_fragment_end.
+    def exitJsx_fragment_end(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_self_closing.
+    def enterJsx_self_closing(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_self_closing.
+    def exitJsx_self_closing(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_opening.
+    def enterJsx_opening(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_opening.
+    def exitJsx_opening(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_closing.
+    def enterJsx_closing(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_closing.
+    def exitJsx_closing(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_element_name.
+    def enterJsx_element_name(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_element_name.
+    def exitJsx_element_name(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_identifier.
+    def enterJsx_identifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_identifier.
+    def exitJsx_identifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_hyphen_identifier.
+    def enterJsx_hyphen_identifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_hyphen_identifier.
+    def exitJsx_hyphen_identifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#hyphen_identifier.
+    def enterHyphen_identifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#hyphen_identifier.
+    def exitHyphen_identifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#identifier_or_keyword.
+    def enterIdentifier_or_keyword(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#identifier_or_keyword.
+    def exitIdentifier_or_keyword(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_attribute.
+    def enterJsx_attribute(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_attribute.
+    def exitJsx_attribute(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#JsxLiteral.
+    def enterJsxLiteral(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#JsxLiteral.
+    def exitJsxLiteral(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#JsxValue.
+    def enterJsxValue(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#JsxValue.
+    def exitJsxValue(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_children.
+    def enterJsx_children(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_children.
+    def exitJsx_children(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#JsxText.
+    def enterJsxText(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#JsxText.
+    def exitJsxText(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#JsxChild.
+    def enterJsxChild(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#JsxChild.
+    def exitJsxChild(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#JsxCode.
+    def enterJsxCode(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#JsxCode.
+    def exitJsxCode(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#jsx_text.
+    def enterJsx_text(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_text.
+    def exitJsx_text(self, ctx):
         pass
 
 

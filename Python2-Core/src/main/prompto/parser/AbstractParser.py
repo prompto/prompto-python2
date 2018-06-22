@@ -15,6 +15,9 @@ class AbstractParser(Parser):
     def wasNot(self, type):
         return self.lastHiddenTokenType()!=type
 
+    def wasNotWhiteSpace(self):
+        return self.wasNot(getattr(self, "WS"))
+
     def willBe(self, type):
         return self._input.LA(1)==type
 
