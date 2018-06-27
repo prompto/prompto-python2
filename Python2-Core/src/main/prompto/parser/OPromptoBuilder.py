@@ -21,6 +21,7 @@ from prompto.declaration.AbstractMethodDeclaration import AbstractMethodDeclarat
 from prompto.declaration.AttributeDeclaration import AttributeDeclaration
 from prompto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
 from prompto.declaration.ConcreteMethodDeclaration import ConcreteMethodDeclaration
+from prompto.declaration.ConcreteWidgetDeclaration import ConcreteWidgetDeclaration
 from prompto.declaration.DeclarationList import DeclarationList
 from prompto.declaration.EnumeratedCategoryDeclaration import EnumeratedCategoryDeclaration
 from prompto.declaration.EnumeratedNativeDeclaration import EnumeratedNativeDeclaration
@@ -200,6 +201,7 @@ from prompto.type.DateType import DateType
 from prompto.type.DecimalType import DecimalType
 from prompto.type.DictType import DictType
 from prompto.type.DocumentType import DocumentType
+from prompto.type.HtmlType import HtmlType
 from prompto.type.IntegerType import IntegerType
 from prompto.type.IteratorType import IteratorType
 from prompto.type.ListType import ListType
@@ -431,6 +433,9 @@ class OPromptoBuilder(OParserListener):
     def exitTextType(self, ctx):
         self.setNodeValue(ctx, TextType.instance)
 
+    def exitHtmlType(self, ctx):
+        self.setNodeValue(ctx, HtmlType.instance)
+
     def exitThisExpression(self, ctx):
         self.setNodeValue(ctx, ThisExpression())
 
@@ -501,15 +506,18 @@ class OPromptoBuilder(OParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitDerivedList(self, ctx):
         item = self.getNodeValue(ctx.item)
         self.setNodeValue(ctx, IdentifierList(item))
+
 
     def exitDerivedListItem(self, ctx):
         items = self.getNodeValue(ctx.items)
         item = self.getNodeValue(ctx.item)
         items.append(item)
         self.setNodeValue(ctx, items)
+
 
     def exitConcrete_category_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -523,9 +531,24 @@ class OPromptoBuilder(OParserListener):
         ccd.setMethods(methods)
         self.setNodeValue(ctx, ccd)
 
+
+    def exitConcrete_widget_declaration(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        derived = self.getNodeValue(ctx.derived)
+        methods = self.getNodeValue(ctx.methods)
+        ccd = ConcreteWidgetDeclaration(name, derived, methods)
+        self.setNodeValue(ctx, ccd)
+
+
     def exitConcreteCategoryDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
+
+
+    def exitConcreteWidgetDeclaration(self, ctx):
+        decl = self.getNodeValue(ctx.decl)
+        self.setNodeValue(ctx, decl)
+
 
     def exitType_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
@@ -1108,6 +1131,8 @@ class OPromptoBuilder(OParserListener):
             ctx_ = ctx.method_declaration()
         if ctx_ is None:
             ctx_ = ctx.resource_declaration()
+        if ctx_ is None:
+            ctx_ = ctx.widget_declaration()
         decl = self.getNodeValue(ctx_)
         if decl is not None:
             decl.comments = stmts

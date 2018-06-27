@@ -20,6 +20,7 @@ from prompto.declaration.AbstractMethodDeclaration import AbstractMethodDeclarat
 from prompto.declaration.AttributeDeclaration import AttributeDeclaration
 from prompto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
 from prompto.declaration.ConcreteMethodDeclaration import ConcreteMethodDeclaration
+from prompto.declaration.ConcreteWidgetDeclaration import ConcreteWidgetDeclaration
 from prompto.declaration.DeclarationList import DeclarationList
 from prompto.declaration.EnumeratedCategoryDeclaration import EnumeratedCategoryDeclaration
 from prompto.declaration.EnumeratedNativeDeclaration import EnumeratedNativeDeclaration
@@ -138,19 +139,12 @@ from prompto.literal.TupleLiteral import TupleLiteral
 from prompto.literal.UUIDLiteral import UUIDLiteral
 from prompto.literal.VersionLiteral import VersionLiteral
 from prompto.parser.Dialect import Dialect
-
 from prompto.jsx.JsxElement import JsxElement
-
 from prompto.jsx.JsxSelfClosing import JsxSelfClosing
-
 from prompto.jsx.JsxLiteral import JsxLiteral
-
 from prompto.jsx.JsxExpression import JsxExpression
-
 from prompto.jsx.JsxText import JsxText
-
 from prompto.jsx.JsxAttribute import JsxAttribute
-
 from prompto.jsx.JsxCode import JsxCode
 from prompto.parser import ParserUtils
 from prompto.parser.MParser import MParser
@@ -205,6 +199,7 @@ from prompto.type.DateType import DateType
 from prompto.type.DecimalType import DecimalType
 from prompto.type.DictType import DictType
 from prompto.type.DocumentType import DocumentType
+from prompto.type.HtmlType import HtmlType
 from prompto.type.IntegerType import IntegerType
 from prompto.type.IteratorType import IteratorType
 from prompto.type.ListType import ListType
@@ -537,6 +532,7 @@ class MPromptoBuilder(MParserListener):
         ccd.setMethods(methods)
         self.setNodeValue(ctx, ccd)
 
+
     def exitConcrete_method_declaration(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         name = self.getNodeValue(ctx.name)
@@ -544,10 +540,23 @@ class MPromptoBuilder(MParserListener):
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, ConcreteMethodDeclaration(name, args, typ, stmts))
 
+
+    def exitConcrete_widget_declaration(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        derived = self.getNodeValue(ctx.derived)
+        methods = self.getNodeValue(ctx.methods)
+        ccd = ConcreteWidgetDeclaration(name, derived, methods)
+        self.setNodeValue(ctx, ccd)
+
+
     def exitConcreteCategoryDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
+
+    def exitConcreteWidgetDeclaration(self, ctx):
+        decl = self.getNodeValue(ctx.decl)
+        self.setNodeValue(ctx, decl)
 
 
     def exitConstructorFrom(self, ctx):
@@ -681,6 +690,8 @@ class MPromptoBuilder(MParserListener):
             ctx_ = ctx.method_declaration()
         if ctx_ is None:
             ctx_ = ctx.resource_declaration()
+        if ctx_ is None:
+            ctx_ = ctx.widget_declaration()
         decl = self.getNodeValue(ctx_)
         if decl is not None:
             decl.comments = stmts
@@ -1830,6 +1841,11 @@ class MPromptoBuilder(MParserListener):
 
     def exitTextType(self, ctx):
         self.setNodeValue(ctx, TextType.instance)
+
+
+    def exitHtmlType(self, ctx):
+        self.setNodeValue(ctx, HtmlType.instance)
+
 
     def exitThisExpression(self, ctx):
         self.setNodeValue(ctx, ThisExpression())
