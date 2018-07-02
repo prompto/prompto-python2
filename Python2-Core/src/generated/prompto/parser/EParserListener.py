@@ -652,48 +652,12 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#TernaryExpression.
-    def enterTernaryExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#TernaryExpression.
-    def exitTernaryExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#FetchStoreExpression.
-    def enterFetchStoreExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#FetchStoreExpression.
-    def exitFetchStoreExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#NotEqualsExpression.
-    def enterNotEqualsExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#NotEqualsExpression.
-    def exitNotEqualsExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by EParser#InExpression.
     def enterInExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by EParser#InExpression.
     def exitInExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#DocumentExpression.
-    def enterDocumentExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#DocumentExpression.
-    def exitDocumentExpression(self, ctx):
         pass
 
 
@@ -706,15 +670,6 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#NotExpression.
-    def enterNotExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#NotExpression.
-    def exitNotExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by EParser#GreaterThanExpression.
     def enterGreaterThanExpression(self, ctx):
         pass
@@ -724,48 +679,12 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#InvocationExpression.
-    def enterInvocationExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#InvocationExpression.
-    def exitInvocationExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by EParser#OrExpression.
     def enterOrExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by EParser#OrExpression.
     def exitOrExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#CodeExpression.
-    def enterCodeExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#CodeExpression.
-    def exitCodeExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#AmbiguousExpression.
-    def enterAmbiguousExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#AmbiguousExpression.
-    def exitAmbiguousExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#LessThanOrEqualExpression.
-    def enterLessThanOrEqualExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#LessThanOrEqualExpression.
-    def exitLessThanOrEqualExpression(self, ctx):
         pass
 
 
@@ -814,15 +733,6 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#ClosureExpression.
-    def enterClosureExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#ClosureExpression.
-    def exitClosureExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by EParser#SortedExpression.
     def enterSortedExpression(self, ctx):
         pass
@@ -841,15 +751,6 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#BlobExpression.
-    def enterBlobExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#BlobExpression.
-    def exitBlobExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by EParser#ContainsExpression.
     def enterContainsExpression(self, ctx):
         pass
@@ -859,39 +760,12 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#FilteredListExpression.
-    def enterFilteredListExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#FilteredListExpression.
-    def exitFilteredListExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#ConstructorExpression.
-    def enterConstructorExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#ConstructorExpression.
-    def exitConstructorExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by EParser#NotContainsExpression.
     def enterNotContainsExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by EParser#NotContainsExpression.
     def exitNotContainsExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#MultiplyExpression.
-    def enterMultiplyExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#MultiplyExpression.
-    def exitMultiplyExpression(self, ctx):
         pass
 
 
@@ -922,30 +796,12 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#NotInExpression.
-    def enterNotInExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#NotInExpression.
-    def exitNotInExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by EParser#IteratorExpression.
     def enterIteratorExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by EParser#IteratorExpression.
     def exitIteratorExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#UnresolvedExpression.
-    def enterUnresolvedExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#UnresolvedExpression.
-    def exitUnresolvedExpression(self, ctx):
         pass
 
 
@@ -976,30 +832,12 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#MinusExpression.
-    def enterMinusExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#MinusExpression.
-    def exitMinusExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by EParser#AddExpression.
     def enterAddExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by EParser#AddExpression.
     def exitAddExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#HasAllExpression.
-    def enterHasAllExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#HasAllExpression.
-    def exitHasAllExpression(self, ctx):
         pass
 
 
@@ -1036,6 +874,177 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#ModuloExpression.
     def exitModuloExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#TernaryExpression.
+    def enterTernaryExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#TernaryExpression.
+    def exitTernaryExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#FetchStoreExpression.
+    def enterFetchStoreExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#FetchStoreExpression.
+    def exitFetchStoreExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#NotEqualsExpression.
+    def enterNotEqualsExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#NotEqualsExpression.
+    def exitNotEqualsExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#DocumentExpression.
+    def enterDocumentExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#DocumentExpression.
+    def exitDocumentExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#NotExpression.
+    def enterNotExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#NotExpression.
+    def exitNotExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#InvocationExpression.
+    def enterInvocationExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#InvocationExpression.
+    def exitInvocationExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#CodeExpression.
+    def enterCodeExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#CodeExpression.
+    def exitCodeExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#AmbiguousExpression.
+    def enterAmbiguousExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#AmbiguousExpression.
+    def exitAmbiguousExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#LessThanOrEqualExpression.
+    def enterLessThanOrEqualExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#LessThanOrEqualExpression.
+    def exitLessThanOrEqualExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#ClosureExpression.
+    def enterClosureExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#ClosureExpression.
+    def exitClosureExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#BlobExpression.
+    def enterBlobExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#BlobExpression.
+    def exitBlobExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#FilteredListExpression.
+    def enterFilteredListExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#FilteredListExpression.
+    def exitFilteredListExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#ConstructorExpression.
+    def enterConstructorExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#ConstructorExpression.
+    def exitConstructorExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#MultiplyExpression.
+    def enterMultiplyExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#MultiplyExpression.
+    def exitMultiplyExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#NotInExpression.
+    def enterNotInExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#NotInExpression.
+    def exitNotInExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#UnresolvedExpression.
+    def enterUnresolvedExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#UnresolvedExpression.
+    def exitUnresolvedExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#MinusExpression.
+    def enterMinusExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#MinusExpression.
+    def exitMinusExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#HasAllExpression.
+    def enterHasAllExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#HasAllExpression.
+    def exitHasAllExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#CssExpression.
+    def enterCssExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#CssExpression.
+    def exitCssExpression(self, ctx):
         pass
 
 
@@ -1810,6 +1819,33 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#method_identifier.
     def exitMethod_identifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#identifier_or_keyword.
+    def enterIdentifier_or_keyword(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#identifier_or_keyword.
+    def exitIdentifier_or_keyword(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#nospace_hyphen_identifier_or_keyword.
+    def enterNospace_hyphen_identifier_or_keyword(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#nospace_hyphen_identifier_or_keyword.
+    def exitNospace_hyphen_identifier_or_keyword(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#nospace_identifier_or_keyword.
+    def enterNospace_identifier_or_keyword(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#nospace_identifier_or_keyword.
+    def exitNospace_identifier_or_keyword(self, ctx):
         pass
 
 
@@ -3775,33 +3811,6 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#jsx_hyphen_identifier.
-    def enterJsx_hyphen_identifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#jsx_hyphen_identifier.
-    def exitJsx_hyphen_identifier(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#hyphen_identifier.
-    def enterHyphen_identifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#hyphen_identifier.
-    def exitHyphen_identifier(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#identifier_or_keyword.
-    def enterIdentifier_or_keyword(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#identifier_or_keyword.
-    def exitIdentifier_or_keyword(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by EParser#jsx_attribute.
     def enterJsx_attribute(self, ctx):
         pass
@@ -3871,6 +3880,60 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#jsx_text.
     def exitJsx_text(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#css_expression.
+    def enterCss_expression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#css_expression.
+    def exitCss_expression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#css_field.
+    def enterCss_field(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#css_field.
+    def exitCss_field(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#css_identifier.
+    def enterCss_identifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#css_identifier.
+    def exitCss_identifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#CssValue.
+    def enterCssValue(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#CssValue.
+    def exitCssValue(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#CssText.
+    def enterCssText(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#CssText.
+    def exitCssText(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#css_text.
+    def enterCss_text(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#css_text.
+    def exitCss_text(self, ctx):
         pass
 
 

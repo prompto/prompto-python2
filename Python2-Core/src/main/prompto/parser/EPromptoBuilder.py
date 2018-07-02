@@ -17,6 +17,10 @@ from prompto.csharp.CSharpNativeCategoryBinding import CSharpNativeCategoryBindi
 from prompto.csharp.CSharpStatement import CSharpStatement
 from prompto.csharp.CSharpTextLiteral import CSharpTextLiteral
 from prompto.csharp.CSharpThisExpression import CSharpThisExpression
+from prompto.css.CssCode import CssCode
+from prompto.css.CssExpression import CssExpression
+from prompto.css.CssField import CssField
+from prompto.css.CssText import CssText
 from prompto.declaration.AbstractMethodDeclaration import AbstractMethodDeclaration
 from prompto.declaration.AttributeDeclaration import AttributeDeclaration
 from prompto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
@@ -2114,3 +2118,30 @@ class EPromptoBuilder(EParserListener):
         name = self.getNodeValue(ctx.name)
         attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
         self.setNodeValue(ctx, JsxSelfClosing(name, attributes))
+
+
+    def exitCssExpression(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
+
+
+    def exitCss_expression(self, ctx):
+        exp = CssExpression()
+        [ exp.addField(self.getNodeValue(cx)) for cx in ctx.css_field() ]
+        self.setNodeValue(ctx, exp)
+
+
+    def exitCss_field(self, ctx):
+        name = ctx.name.getText()
+        value = self.getNodeValue(ctx.value)
+        self.setNodeValue(ctx, CssField(name, value))
+
+
+    def exitCssText(self, ctx):
+        text = ctx.text.getText()
+        self.setNodeValue(ctx, CssText(text))
+
+
+    def exitCssValue(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, CssCode(exp))
+

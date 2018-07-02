@@ -679,6 +679,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#x_expression.
+    def enterX_expression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#x_expression.
+    def exitX_expression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#IntDivideExpression.
     def enterIntDivideExpression(self, ctx):
         pass
@@ -991,6 +1000,15 @@ class OParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by OParser#InstanceExpression.
     def exitInstanceExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#CssExpression.
+    def enterCssExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#CssExpression.
+    def exitCssExpression(self, ctx):
         pass
 
 
@@ -1720,6 +1738,33 @@ class OParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by OParser#method_identifier.
     def exitMethod_identifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#identifier_or_keyword.
+    def enterIdentifier_or_keyword(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#identifier_or_keyword.
+    def exitIdentifier_or_keyword(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#nospace_hyphen_identifier_or_keyword.
+    def enterNospace_hyphen_identifier_or_keyword(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#nospace_hyphen_identifier_or_keyword.
+    def exitNospace_hyphen_identifier_or_keyword(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#nospace_identifier_or_keyword.
+    def enterNospace_identifier_or_keyword(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#nospace_identifier_or_keyword.
+    def exitNospace_identifier_or_keyword(self, ctx):
         pass
 
 
@@ -3703,33 +3748,6 @@ class OParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by OParser#jsx_hyphen_identifier.
-    def enterJsx_hyphen_identifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by OParser#jsx_hyphen_identifier.
-    def exitJsx_hyphen_identifier(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by OParser#hyphen_identifier.
-    def enterHyphen_identifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by OParser#hyphen_identifier.
-    def exitHyphen_identifier(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by OParser#identifier_or_keyword.
-    def enterIdentifier_or_keyword(self, ctx):
-        pass
-
-    # Exit a parse tree produced by OParser#identifier_or_keyword.
-    def exitIdentifier_or_keyword(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by OParser#jsx_attribute.
     def enterJsx_attribute(self, ctx):
         pass
@@ -3799,6 +3817,60 @@ class OParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by OParser#jsx_text.
     def exitJsx_text(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#css_expression.
+    def enterCss_expression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#css_expression.
+    def exitCss_expression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#css_field.
+    def enterCss_field(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#css_field.
+    def exitCss_field(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#css_identifier.
+    def enterCss_identifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#css_identifier.
+    def exitCss_identifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#CssValue.
+    def enterCssValue(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#CssValue.
+    def exitCssValue(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#CssText.
+    def enterCssText(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#CssText.
+    def exitCssText(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#css_text.
+    def enterCss_text(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#css_text.
+    def exitCss_text(self, ctx):
         pass
 
 
