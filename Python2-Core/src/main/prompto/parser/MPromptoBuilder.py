@@ -34,6 +34,7 @@ from prompto.declaration.NativeGetterMethodDeclaration import NativeGetterMethod
 from prompto.declaration.NativeMethodDeclaration import NativeMethodDeclaration
 from prompto.declaration.NativeResourceDeclaration import NativeResourceDeclaration
 from prompto.declaration.NativeSetterMethodDeclaration import NativeSetterMethodDeclaration
+from prompto.declaration.NativeWidgetDeclaration import NativeWidgetDeclaration
 from prompto.declaration.OperatorMethodDeclaration import OperatorMethodDeclaration
 from prompto.declaration.SetterMethodDeclaration import SetterMethodDeclaration
 from prompto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
@@ -559,6 +560,11 @@ class MPromptoBuilder(MParserListener):
 
 
     def exitConcreteWidgetDeclaration(self, ctx):
+        decl = self.getNodeValue(ctx.decl)
+        self.setNodeValue(ctx, decl)
+
+
+    def exitNativeWidgetDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
@@ -1320,10 +1326,12 @@ class MPromptoBuilder(MParserListener):
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, MultiplyExpression(left, right))
 
+
     def exitMutable_category_type(self, ctx):
         typ = self.getNodeValue(ctx.category_type())
         typ.mutable = ctx.MUTABLE() is not None
         self.setNodeValue(ctx, typ)
+
 
     def exitNamed_argument(self, ctx):
         name = self.getNodeValue(ctx.variable_identifier())
@@ -1331,6 +1339,7 @@ class MPromptoBuilder(MParserListener):
         exp = self.getNodeValue(ctx.literal_expression())
         arg.defaultExpression = exp
         self.setNodeValue(ctx, arg)
+
 
     def exitNative_category_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -1341,9 +1350,19 @@ class MPromptoBuilder(MParserListener):
         decl.storable = ctx.STORABLE() is not None
         self.setNodeValue(ctx, decl)
 
+
+    def exitNative_widget_declaration(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        bindings = self.getNodeValue(ctx.bindings)
+        methods = self.getNodeValue(ctx.methods)
+        decl = NativeWidgetDeclaration(name, bindings, methods)
+        self.setNodeValue(ctx, decl)
+
+
     def exitNative_category_bindings(self, ctx):
         items = self.getNodeValue(ctx.items)
         self.setNodeValue(ctx, items)
+
 
     def exitNative_method_declaration(self, ctx):
         typ = self.getNodeValue(ctx.typ)

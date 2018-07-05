@@ -67,6 +67,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#native_widget_declaration.
+    def enterNative_widget_declaration(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#native_widget_declaration.
+    def exitNative_widget_declaration(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#concrete_category_declaration.
     def enterConcrete_category_declaration(self, ctx):
         pass
@@ -1696,6 +1705,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#NativeWidgetDeclaration.
+    def enterNativeWidgetDeclaration(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#NativeWidgetDeclaration.
+    def exitNativeWidgetDeclaration(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#type_identifier_list.
     def enterType_identifier_list(self, ctx):
         pass
@@ -2701,15 +2719,6 @@ class MParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by MParser#modulo.
     def exitModulo(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by MParser#native_widget_declaration.
-    def enterNative_widget_declaration(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#native_widget_declaration.
-    def exitNative_widget_declaration(self, ctx):
         pass
 
 

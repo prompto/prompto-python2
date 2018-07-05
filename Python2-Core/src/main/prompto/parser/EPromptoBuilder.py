@@ -35,6 +35,7 @@ from prompto.declaration.NativeGetterMethodDeclaration import NativeGetterMethod
 from prompto.declaration.NativeMethodDeclaration import NativeMethodDeclaration
 from prompto.declaration.NativeResourceDeclaration import NativeResourceDeclaration
 from prompto.declaration.NativeSetterMethodDeclaration import NativeSetterMethodDeclaration
+from prompto.declaration.NativeWidgetDeclaration import NativeWidgetDeclaration
 from prompto.declaration.OperatorMethodDeclaration import OperatorMethodDeclaration
 from prompto.declaration.SetterMethodDeclaration import SetterMethodDeclaration
 from prompto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
@@ -580,8 +581,14 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, decl)
 
 
+    def exitNativeWidgetDeclaration(self, ctx):
+        decl = self.getNodeValue(ctx.decl)
+        self.setNodeValue(ctx, decl)
+
+
     def exitType_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
 
     def exitDerivedList(self, ctx):
         items = self.getNodeValue(ctx.items)
@@ -1251,10 +1258,12 @@ class EPromptoBuilder(EParserListener):
         xmap = self.getNodeValue(ctx.binding)
         self.setNodeValue(ctx, Python3NativeCategoryBinding(xmap.identifier, xmap.module))
 
+
     def exitNativeCategoryBindingList(self, ctx):
         item = self.getNodeValue(ctx.item)
         items = NativeCategoryBindingList(item)
         self.setNodeValue(ctx, items)
+
 
     def exitNativeCategoryBindingListItem(self, ctx):
         item = self.getNodeValue(ctx.item)
@@ -1262,9 +1271,11 @@ class EPromptoBuilder(EParserListener):
         items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitNative_category_bindings(self, ctx):
         items = self.getNodeValue(ctx.items)
         self.setNodeValue(ctx, items)
+
 
     def exitNative_category_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -1275,9 +1286,19 @@ class EPromptoBuilder(EParserListener):
         decl.storable = ctx.STORABLE() is not None
         self.setNodeValue(ctx, decl)
 
+
+    def exitNative_widget_declaration(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        bindings = self.getNodeValue(ctx.bindings)
+        methods = self.getNodeValue(ctx.methods)
+        decl = NativeWidgetDeclaration(name, bindings, methods)
+        self.setNodeValue(ctx, decl)
+
+
     def exitNativeCategoryDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
+
 
     def exitNative_resource_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -1288,9 +1309,11 @@ class EPromptoBuilder(EParserListener):
         decl.storable = ctx.STORABLE() is not None
         self.setNodeValue(ctx, decl)
 
+
     def exitResource_declaration(self, ctx):
         decl = self.getNodeValue(ctx.native_resource_declaration())
         self.setNodeValue(ctx, decl)
+
 
     def exitParenthesis_expression(self, ctx):
         exp = self.getNodeValue(ctx.expression())

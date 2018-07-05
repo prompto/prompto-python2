@@ -58,6 +58,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#native_widget_declaration.
+    def enterNative_widget_declaration(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#native_widget_declaration.
+    def exitNative_widget_declaration(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#concrete_category_declaration.
     def enterConcrete_category_declaration(self, ctx):
         pass
@@ -1723,6 +1732,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#NativeWidgetDeclaration.
+    def enterNativeWidgetDeclaration(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#NativeWidgetDeclaration.
+    def exitNativeWidgetDeclaration(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#type_identifier_list.
     def enterType_identifier_list(self, ctx):
         pass
@@ -2746,15 +2764,6 @@ class OParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by OParser#lfp.
     def exitLfp(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by OParser#native_widget_declaration.
-    def enterNative_widget_declaration(self, ctx):
-        pass
-
-    # Exit a parse tree produced by OParser#native_widget_declaration.
-    def exitNative_widget_declaration(self, ctx):
         pass
 
 
