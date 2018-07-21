@@ -1905,7 +1905,7 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, JavaScriptBooleanLiteral(text))
 
     def exitJavascript_category_binding(self, ctx):
-        identifier = ctx.identifier().getText()
+        identifier = ".".join([cx.getText() for cx in ctx.identifier()])
         module = self.getNodeValue(ctx.javascript_module())
         xmap = JavaScriptNativeCategoryBinding(identifier, module)
         self.setNodeValue(ctx, xmap)
