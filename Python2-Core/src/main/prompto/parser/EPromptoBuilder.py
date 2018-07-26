@@ -667,6 +667,7 @@ class EPromptoBuilder(EParserListener):
         arg = self.getNodeValue(ctx.arg)
         self.setNodeValue(ctx, arg)
 
+
     def exitArgument_list(self, ctx):
         items = ArgumentList()
         for rule in ctx.argument():
@@ -674,11 +675,14 @@ class EPromptoBuilder(EParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitFlush_statement(self, ctx):
         self.setNodeValue(ctx, FlushStatement())
 
+
     def exitFlushStatement(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.stmt))
+
 
     def exitFull_argument_list(self, ctx):
         items = self.getNodeValue(ctx.items)
@@ -687,11 +691,13 @@ class EPromptoBuilder(EParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitArgument_assignment(self, ctx):
         name = self.getNodeValue(ctx.name)
         exp = self.getNodeValue(ctx.exp)
         arg = UnresolvedArgument(name)
         self.setNodeValue(ctx, ArgumentAssignment(arg, exp))
+
 
     def exitArgumentAssignmentListExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
@@ -702,19 +708,26 @@ class EPromptoBuilder(EParserListener):
         item = self.getNodeValue(ctx.item)
         if item is not None:
             items.append(item)
+        else:
+            items.checkLastAnd()
         self.setNodeValue(ctx, items)
+
 
     def exitArgumentAssignmentListNoExpression(self, ctx):
         items = self.getNodeValue(ctx.items)
         item = self.getNodeValue(ctx.item)
         if item is not None:
             items.append(item)
+        else:
+            items.checkLastAnd()
         self.setNodeValue(ctx, items)
+
 
     def exitArgumentAssignmentList(self, ctx):
         item = self.getNodeValue(ctx.item)
-        items = ArgumentAssignmentList(item=item)
+        items = ArgumentAssignmentList(items=[item])
         self.setNodeValue(ctx, items)
+
 
     def exitArgumentAssignmentListItem(self, ctx):
         item = self.getNodeValue(ctx.item)
@@ -722,16 +735,20 @@ class EPromptoBuilder(EParserListener):
         items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitUnresolvedWithArgsStatement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, UnresolvedCall(exp, args))
 
+
     def exitUUIDType(self, ctx):
         self.setNodeValue(ctx, UUIDType.instance)
 
+
     def exitUUIDLiteral(self, ctx):
         self.setNodeValue(ctx, UUIDLiteral(ctx.t.text))
+
 
     def exitAddExpression(self, ctx):
         left = self.getNodeValue(ctx.left)

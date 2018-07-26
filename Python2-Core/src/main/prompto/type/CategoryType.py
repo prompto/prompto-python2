@@ -292,7 +292,7 @@ class CategoryType(BaseType):
             from prompto.expression.MethodSelector import MethodSelector
             exp = ExpressionValue(self, self.newInstance(context))
             arg = ArgumentAssignment(None, exp)
-            args = ArgumentAssignmentList(item=arg)
+            args = ArgumentAssignmentList(items=[arg])
             proto = MethodCall(MethodSelector(name), args)
             finder = MethodFinder(context, proto)
             return finder.findMethod(True) is not None
@@ -309,7 +309,7 @@ class CategoryType(BaseType):
         from prompto.expression.MethodSelector import MethodSelector
         exp = ExpressionValue(self, self.newInstance(context))
         arg = ArgumentAssignment(None, exp)
-        args = ArgumentAssignmentList(item=arg)
+        args = ArgumentAssignmentList(items=[arg])
         proto = MethodCall(MethodSelector(name), args)
         finder = MethodFinder(context, proto)
         method = finder.findMethod(True)
