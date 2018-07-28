@@ -271,7 +271,7 @@ class OPromptoBuilder(OParserListener):
 
     def exitTypeIdentifier(self, ctx):
         name = self.getNodeValue(ctx.type_identifier())
-        self.setNodeValue(ctx, UnresolvedIdentifier(name))
+        self.setNodeValue(ctx, UnresolvedIdentifier(name, Dialect.O))
 
     def exitMethod_expression(self, ctx):
         exp = self.getNodeValue(ctx.getChild(0))
@@ -643,16 +643,19 @@ class OPromptoBuilder(OParserListener):
 
     def exitMethodName(self, ctx):
         name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, UnresolvedIdentifier(name))
+        self.setNodeValue(ctx, UnresolvedIdentifier(name, Dialect.O))
+
 
     def exitMethodParent(self, ctx):
         name = self.getNodeValue(ctx.name)
         parent = self.getNodeValue(ctx.parent)
         self.setNodeValue(ctx, MethodSelector(name, parent))
 
+
     def exitCallableMemberSelector(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MemberSelector(name))
+
 
     def exitCallableItemSelector(self, ctx):
         exp = self.getNodeValue(ctx.exp)

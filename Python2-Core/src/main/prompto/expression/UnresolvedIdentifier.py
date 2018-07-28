@@ -6,14 +6,17 @@ from prompto.expression.InstanceExpression import InstanceExpression
 from prompto.error.SyntaxError import SyntaxError
 from prompto.expression.SymbolExpression import SymbolExpression
 from prompto.expression.TypeExpression import TypeExpression
+from prompto.parser.Dialect import Dialect
 from prompto.type.NativeType import NativeType
 
 
 class UnresolvedIdentifier(IExpression):
 
-    def __init__(self, name):
+    def __init__(self, name, dialect):
         self.name = name
+        self.dialect = dialect
         self.resolved = None
+
 
     def getName(self):
         return self.name
@@ -51,22 +54,35 @@ class UnresolvedIdentifier(IExpression):
 
     def resolve(self, context, forMember):
         if self.resolved is None:
-            self.resolved = self.resolveSymbol(context)
-            if self.resolved is None:
-                if self.name[0].isupper():
-                    if forMember:
-                        self.resolved = self.resolveType(context)
-                    else:
-                        self.resolved = self.resolveConstructor(context)
-                if self.resolved is None:
-                    self.resolved = self.resolveMethod(context)
-                    if self.resolved is None:
-                        self.resolved = self.resolveInstance(context)
+            self.resolved = self.doResolve(context, forMember)
         if self.resolved is None:
             # no other alternative
             raise SyntaxError("Unknown identifier:" + self.name)
         else:
             return self.resolved
+
+
+    def doResolve(self, context, forMember):
+        resolved = self.resolveSymbol(context)
+        if resolved is not None:
+            return resolved
+        resolved = self.resolveTypeOrConstructor(context, forMember)
+        if resolved is not None:
+            return resolved
+        resolved = self.resolveMethodCall(context)
+        if resolved is not None:
+            return resolved
+        resolved = self.resolveInstance(context)
+        return resolved
+
+
+    def resolveTypeOrConstructor(self, context, forMember):
+        if not self.name[0].isupper():
+            return None
+        if forMember:
+            return self.resolveType(context)
+        else:
+            return self.resolveConstructor(context)
 
 
     def resolveSymbol(self, context):
@@ -93,6 +109,7 @@ class UnresolvedIdentifier(IExpression):
                     return TypeExpression(type)
         return None
 
+
     def resolveConstructor(self, context):
         from prompto.type.CategoryType import CategoryType
         try:
@@ -102,7 +119,10 @@ class UnresolvedIdentifier(IExpression):
         except SyntaxError as e:
             return None
 
-    def resolveMethod(self, context):
+
+    def resolveMethodCall(self, context):
+        if not self.dialect is Dialect.E:
+            return None
         from prompto.statement.MethodCall import MethodCall
         from prompto.expression.MethodSelector import MethodSelector
         try:
@@ -111,6 +131,7 @@ class UnresolvedIdentifier(IExpression):
             return method
         except SyntaxError:
             return None
+
 
     def resolveInstance(self, context):
         try:

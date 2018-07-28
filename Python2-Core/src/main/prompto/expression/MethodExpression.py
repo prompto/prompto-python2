@@ -33,10 +33,11 @@ class MethodExpression(IExpression):
         else:
             named = context.getRegistered(self.name)
             if isinstance(named, MethodDeclarationMap):
-                for decl in named.values():
-                    return ClosureValue(context, MethodType(decl))
+                decl = named.getFirst()
+                return ClosureValue(context, MethodType(decl))
             else:
                 raise SyntaxError("No method with name:" + self.name)
+
 
     def toDialect(self, writer):
         if writer.dialect is Dialect.E:

@@ -5,10 +5,12 @@ from prompto.error.PromptoError import PromptoError
 from prompto.error.SyntaxError import SyntaxError
 from prompto.expression.Symbol import Symbol
 from prompto.grammar.Operator import Operator
+from prompto.parser.Dialect import Dialect
 from prompto.runtime.Score import Score
 from prompto.store.DataStore import DataStore
 from prompto.store.Store import IStored
 from prompto.type.AnyType import AnyType
+from prompto.type.MethodType import MethodType
 from prompto.type.TextType import TextType
 from prompto.type.BaseType import BaseType
 from prompto.type.MissingType import MissingType
@@ -148,6 +150,9 @@ class CategoryType(BaseType):
                     return ad.getType(context)
             elif "text" == name:
                 return TextType.instance
+            elif dd.hasMethod(context, name):
+                method = dd.getMemberMethodsMap(context, name).getFirst()
+                return MethodType(method)
             else:
                 raise SyntaxError("No attribute:" + name + " in category:" + self.typeName)
         else:
@@ -248,11 +253,11 @@ class CategoryType(BaseType):
     def sort(self, context, source, desc, key=None):
         if key is None:
             from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
-            key = UnresolvedIdentifier("key")
+            key = UnresolvedIdentifier("key", Dialect.O)
         decl = self.getDeclaration(context)
         if decl.hasAttribute(context, str(key)):
             return self.sortByAttribute(context, source, desc, str(key))
-        elif decl.hasMethod(context, str(key), None):
+        elif decl.hasMethod(context, str(key)):
             return self.sortByClassMethod(context, source, desc, str(key))
         elif self.globalMethodExists(context, source, str(key)):
             return self.sortByGlobalMethod(context, source, desc, str(key))
@@ -366,4 +371,4 @@ class CategoryType(BaseType):
         if not isinstance(cd, ConcreteCategoryDeclaration):
             raise SyntaxError("Unknown category:" + self.typeName)
         else:
-            return cd.getMemberMethods(context, name)
+            return cd.getMemberMethodsMap(context, name).values()

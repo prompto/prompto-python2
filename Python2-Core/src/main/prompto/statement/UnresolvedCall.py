@@ -20,11 +20,14 @@ class UnresolvedCall(SimpleStatement):
         self.caller = caller
         self.assignments = assignments
 
+
     def getCaller(self):
         return self.caller
 
+
     def getAssignments(self):
         return self.assignments
+
 
     def toDialect(self, writer):
         try:
@@ -35,8 +38,10 @@ class UnresolvedCall(SimpleStatement):
             if self.assignments is not None:
                 self.assignments.toDialect(writer)
 
+
     def check(self, context):
         return self.resolveAndCheck(context)
+
 
     def interpret(self, context):
         if self.resolved is None:
@@ -48,6 +53,7 @@ class UnresolvedCall(SimpleStatement):
         self.resolve(context)
         return self.resolved.check(context)
 
+
     def resolve(self, context):
         if self.resolved is None:
             if isinstance(self.caller, UnresolvedIdentifier):
@@ -55,6 +61,7 @@ class UnresolvedCall(SimpleStatement):
             else:
                 self.resolved = self.resolveMember(context)
         return self.resolved
+
 
     def resolveUnresolvedIdentifier(self, context):
         name = self.caller.getName()
@@ -71,9 +78,10 @@ class UnresolvedCall(SimpleStatement):
         else:
             return MethodCall(MethodSelector(name), self.assignments)
 
+
     def resolveUnresolvedMember(self, context, name):
         decl = context.getRegisteredDeclaration(ConcreteCategoryDeclaration, context.instanceType.typeName)
-        methods = decl.getMemberMethods(context, name)
+        methods = decl.getMemberMethodsMap(context, name)
         if methods is not None and len(methods)>0:
             return methods
         else:
@@ -84,6 +92,7 @@ class UnresolvedCall(SimpleStatement):
         parent = self.caller.getParent()
         name = self.caller.getName()
         return MethodCall(MethodSelector(name, parent), self.assignments)
+
 
     def interpretAssert(self, context, testMethodDeclaration):
         self.resolve(context)

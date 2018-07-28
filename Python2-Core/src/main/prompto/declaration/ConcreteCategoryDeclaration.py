@@ -2,6 +2,8 @@ from io import StringIO
 from prompto.error.SyntaxError import SyntaxError
 from prompto.declaration.IDeclaration import IDeclaration
 from prompto.declaration.CategoryDeclaration import CategoryDeclaration
+from prompto.runtime.Context import MethodDeclarationMap
+
 
 class ConcreteCategoryDeclaration ( CategoryDeclaration ):
 
@@ -49,6 +51,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
                 return True
         return False
 
+
     def ancestorHasAttribute(self, ancestor, context, name):
         actual = context.getRegisteredDeclaration(CategoryDeclaration, ancestor)
         if actual is None:
@@ -64,8 +67,8 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         if self.derivedFrom is not None:
             for name in self.derivedFrom:
                 names = self.getAncestorAttributes(context, name)
-            if names is not None:
-                all = all.union(names)
+                if names is not None:
+                    all = all.union(names)
         return None if len(all)==0 else all
 
 
@@ -74,6 +77,31 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         decl = context.getRegisteredDeclaration(CategoryDeclaration, ancestor)
         return None if decl is None else decl.getAllAttributes(context)
 
+
+
+    def hasMethod(self, context, name):
+        self.registerMethods(context)
+        if self.methodsMap.get(name) is not None:
+            return True
+        if self.hasDerivedMethod(context,name):
+            return True
+        return False
+
+
+    def hasDerivedMethod(self, context, name):
+        if self.derivedFrom is None:
+            return False
+        for ancestor in self.derivedFrom:
+            if self.ancestorHasMethod(ancestor,context,name):
+                return True
+        return False
+
+
+    def ancestorHasMethod(self, ancestor, context, name):
+        actual = context.getRegisteredDeclaration(CategoryDeclaration, ancestor)
+        if actual is None:
+            return False
+        return actual.hasMethod(context, name)
 
 
     def check(self, context):
@@ -90,11 +118,13 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
                     method.memberOf = self
                     self.registerMethodDeclaration(method,context)
 
+
     def checkMethods(self, context):
         self.registerMethods(context)
         if self.methods is not None:
             for method in self.methods:
                 method.checkMember(self, context)
+
 
     def registerMethodDeclaration(self, method, context):
         from prompto.declaration.SetterMethodDeclaration import SetterMethodDeclaration
@@ -116,7 +146,8 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
             if actual is None:
                 actual = MethodDeclarationMap(method.getName())
                 self.methodsMap[method.getName()] = actual
-            actual.register(method,context)
+            actual.register(method)
+
 
     def checkDerived(self, context):
         if self.derivedFrom is not None:
@@ -124,6 +155,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
                 cd = context.getRegisteredDeclaration(ConcreteCategoryDeclaration, category)
                 if cd is None:
                     raise SyntaxError("Unknown category: \"" + category + "\"")
+
 
     def isDerivedFrom(self, context, categoryType):
         if self.derivedFrom is None:
@@ -135,15 +167,18 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
                 return True
         return False
 
+
     def isAncestorDerivedFrom(self, ancestor, context, categoryType):
         actual = context.getRegisteredDeclaration(IDeclaration, ancestor)
         if actual is None and not isinstance(actual, CategoryDeclaration):
             return False
         return actual.isDerivedFrom(context, categoryType)
 
+
     def newInstance(self, context):
         from prompto.value.ConcreteInstance import ConcreteInstance
         return ConcreteInstance(context, self)
+
 
     def findGetter(self, context, attrName):
         from prompto.declaration.GetterMethodDeclaration import GetterMethodDeclaration
@@ -156,6 +191,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
             raise SyntaxError("Not a getter method!")
         return self.findDerivedGetter(context, attrName)
 
+
     def findDerivedGetter(self, context, attrName):
         if self.derivedFrom is None:
             return None
@@ -165,11 +201,13 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
                 return method
         return None
 
+
     def findAncestorGetter(self, ancestor, context, attrName):
         actual = context.getRegisteredDeclaration(IDeclaration, ancestor)
         if actual is None or not isinstance(actual, ConcreteCategoryDeclaration):
             return None
         return actual.findGetter(context, attrName)
+
 
     def findSetter(self, context, attrName):
         from prompto.declaration.SetterMethodDeclaration import SetterMethodDeclaration
@@ -182,6 +220,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
             raise SyntaxError("Not a setter method!")
         return self.findDerivedSetter(context,attrName)
 
+
     def findDerivedSetter(self, context, attrName):
         if self.derivedFrom is None:
             return None
@@ -191,22 +230,25 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
                 return method
         return None
 
+
     def findAncestorSetter(self, ancestor, context, attrName):
         actual = context.getRegisteredDeclaration(IDeclaration, ancestor)
         if actual is None or not isinstance(actual, ConcreteCategoryDeclaration):
             return None
         return actual.findSetter(context, attrName)
 
-    def getMemberMethods(self, context, name):
-        from prompto.runtime.Context import MethodDeclarationMap
+
+    def getMemberMethodsMap(self, context, name):
         self.registerMethods(context)
-        result = MethodDeclarationMap(name)
-        self.registerMemberMethods(context,result)
-        return result.values()
+        methods = MethodDeclarationMap(name)
+        self.registerMemberMethods(context, methods)
+        return methods
+
 
     def registerMemberMethods(self, context, result):
-        self.registerSelfMemberMethods(context,result)
-        self.registerDerivedMemberMethods(context,result)
+        self.registerSelfMemberMethods(context, result)
+        self.registerDerivedMemberMethods(context, result)
+
 
     def registerSelfMemberMethods(self, context, result):
         if self.methodsMap is None:
@@ -214,11 +256,10 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         actual = self.methodsMap.get(result.getName(), None)
         if actual is None:
             return
-        from prompto.runtime.Context import MethodDeclarationMap
         if not isinstance(actual, MethodDeclarationMap):
             raise SyntaxError("Not a member method!")
         for method in actual.values():
-            result.registerIfMissing(method, context)
+            result.registerIfMissing(method)
 
     def registerDerivedMemberMethods(self, context, result):
         if self.derivedFrom is None:
@@ -279,12 +320,12 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
 
     def getOperatorMethod(self, context, operator, type):
         methodName = "operator_" + operator.name
-        methods = self.getMemberMethods(context, methodName)
+        methods = self.getMemberMethodsMap(context, methodName)
         if methods is None:
             return None
         # find best candidate
         candidate = None
-        for method in methods:
+        for method in methods.values():
             potential = method.arguments[0].getType(context)
             if not potential.isAssignableFrom(context, type):
                 continue

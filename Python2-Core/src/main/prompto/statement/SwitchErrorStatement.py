@@ -20,20 +20,25 @@ class SwitchErrorStatement(BaseSwitchStatement):
         self.instructions = instructions
         self.alwaysInstructions = None
 
+
     def setAlwaysInstructions(self, list_):
         self.alwaysInstructions = list_
 
+
     def __str__(self):
         return ""  # TODO
+
 
     def checkSwitchCasesType(self, context):
         local = context.newLocalContext()
         local.registerValue(ErrorVariable(self.errorName))
         super(SwitchErrorStatement, self).checkSwitchCasesType(local)
 
+
     def checkSwitchType(self, context):
         from prompto.type.EnumeratedCategoryType import EnumeratedCategoryType
         return EnumeratedCategoryType("Error")
+
 
     def collectReturnTypes(self, context, types):
         itype = self.instructions.check(context, None)
@@ -77,6 +82,13 @@ class SwitchErrorStatement(BaseSwitchStatement):
         context.setValue(self.errorName, error)
         return error
 
+
+    def toDialect(self, writer):
+        writer = writer.newLocalWriter()
+        writer.context.registerValue(ErrorVariable(self.errorName))
+        super(SwitchErrorStatement, self).toDialect(writer)
+
+
     def toODialect(self, writer):
         writer.append("try (")
         writer.append(self.errorName)
@@ -102,6 +114,7 @@ class SwitchErrorStatement(BaseSwitchStatement):
             writer.append("}")
         writer.newLine()
 
+
     def toMDialect(self, writer):
         writer.append("try ")
         writer.append(self.errorName)
@@ -123,6 +136,7 @@ class SwitchErrorStatement(BaseSwitchStatement):
             self.alwaysInstructions.toDialect(writer)
             writer.dedent()
         writer.newLine()
+
 
     def toEDialect(self, writer):
         writer.append("switch on ")

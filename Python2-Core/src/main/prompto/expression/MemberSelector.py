@@ -1,10 +1,10 @@
 from prompto.error.NullReferenceError import NullReferenceError
 from prompto.expression.SelectorExpression import SelectorExpression
-from prompto.expression.SymbolExpression import SymbolExpression
 from prompto.expression.TypeExpression import TypeExpression
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
+from prompto.parser.Dialect import Dialect
+from prompto.type.MethodType import MethodType
 from prompto.value.NullValue import NullValue
-from prompto.value.Text import Text
 
 
 class MemberSelector (SelectorExpression):
@@ -16,10 +16,20 @@ class MemberSelector (SelectorExpression):
     def getName(self):
         return self.name
 
+
     def __str__(self):
         return str(self.parent) + "." + self.name
 
+
     def toDialect(self, writer):
+        if writer.dialect == Dialect.E:
+            type = self.check(writer.context)
+            if isinstance(type, MethodType):
+                writer.append("Method: ")
+        self.parentAndMemberToDialect(writer)
+
+
+    def parentAndMemberToDialect(self, writer):
         try:
             self.resolveParent(writer.context)
         except:
@@ -56,9 +66,9 @@ class MemberSelector (SelectorExpression):
 
 
     def interpretTypeMember(self, context, parent):
-        if isinstance(parent, TypeExpression):
+       if isinstance(parent, TypeExpression):
            return parent.getMemberValue(context, self.name)
-        else:
+       else:
            return None
 
 
