@@ -1408,6 +1408,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#annotation.
+    def enterAnnotation(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#annotation.
+    def exitAnnotation(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#resource_declaration.
     def enterResource_declaration(self, ctx):
         pass

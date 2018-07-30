@@ -1327,6 +1327,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#annotation.
+    def enterAnnotation(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#annotation.
+    def exitAnnotation(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#resource_declaration.
     def enterResource_declaration(self, ctx):
         pass
