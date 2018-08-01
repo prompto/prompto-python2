@@ -78,6 +78,7 @@ from prompto.expression.TernaryExpression import TernaryExpression
 from prompto.expression.ThisExpression import ThisExpression
 from prompto.expression.TypeExpression import TypeExpression
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
+from prompto.grammar.Annotation import Annotation
 from prompto.grammar.ArgumentAssignment import ArgumentAssignment
 from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
 from prompto.grammar.ArgumentList import ArgumentList
@@ -275,21 +276,37 @@ class MPromptoBuilder(MParserListener):
         exp = PlusExpression(left, right) if ctx.op.type == MParser.PLUS else SubtractExpression(left, right)
         self.setNodeValue(ctx, exp)
 
+
+    def exitAnnotation_constructor(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, Annotation(name, exp))
+
+
+    def exitAnnotation_identifier(self, ctx):
+        name = ctx.getText()
+        self.setNodeValue(ctx, name)
+
+
     def exitAndExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, AndExpression(left, right))
 
+
     def exitAnyDictType(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         self.setNodeValue(ctx, DictType(typ))
+
 
     def exitAnyListType(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         self.setNodeValue(ctx, ListType(typ))
 
+
     def exitAnyType(self, ctx):
         self.setNodeValue(ctx, AnyType.instance)
+
 
     def exitArgument_assignment(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -688,9 +705,12 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, DecimalType.instance)
 
     def exitDeclaration(self, ctx):
-        stmts = None
+        comments = None
         if ctx.comment_statement() is not None:
-            stmts = [self.getNodeValue(ctx_) for ctx_ in ctx.comment_statement()]
+            comments = [ self.getNodeValue(ctx_) for ctx_ in ctx.comment_statement() ]
+        annotations = None
+        if ctx.annotation_constructor() is not None:
+            annotations = [ self.getNodeValue(ctx_) for ctx_ in ctx.annotation_constructor() ]
         ctx_ = ctx.attribute_declaration()
         if ctx_ is None:
             ctx_ = ctx.category_declaration()
@@ -704,7 +724,8 @@ class MPromptoBuilder(MParserListener):
             ctx_ = ctx.widget_declaration()
         decl = self.getNodeValue(ctx_)
         if decl is not None:
-            decl.comments = stmts
+            decl.comments = comments
+            decl.annotations = annotations
             self.setNodeValue(ctx, decl)
 
     def exitDeclarations(self, ctx):

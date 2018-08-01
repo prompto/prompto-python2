@@ -80,6 +80,7 @@ from prompto.expression.ThisExpression import ThisExpression
 from prompto.expression.TypeExpression import TypeExpression
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
 from prompto.expression.UnresolvedSelector import UnresolvedSelector
+from prompto.grammar.Annotation import Annotation
 from prompto.grammar.ArgumentAssignment import ArgumentAssignment
 from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
 from prompto.grammar.ArgumentList import ArgumentList
@@ -1165,9 +1166,11 @@ class EPromptoBuilder(EParserListener):
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, JavaMethodExpression(name, args))
 
+
     def exitJavaMethodExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
 
     def exitFullDeclarationList(self, ctx):
         items = self.getNodeValue(ctx.declarations())
@@ -1175,10 +1178,14 @@ class EPromptoBuilder(EParserListener):
             items = DeclarationList()
         self.setNodeValue(ctx, items)
 
+
     def exitDeclaration(self, ctx):
-        stmts = None
+        comments = None
         if ctx.comment_statement() is not None:
-            stmts = [self.getNodeValue(ctx_) for ctx_ in ctx.comment_statement()]
+            comments = [ self.getNodeValue(ctx_) for ctx_ in ctx.comment_statement() ]
+        annotations = None
+        if ctx.annotation_constructor() is not None:
+            annotations = [ self.getNodeValue(ctx_) for ctx_ in ctx.annotation_constructor() ]
         ctx_ = ctx.attribute_declaration()
         if ctx_ is None:
             ctx_ = ctx.category_declaration()
@@ -1192,8 +1199,10 @@ class EPromptoBuilder(EParserListener):
             ctx_ = ctx.widget_declaration()
         decl = self.getNodeValue(ctx_)
         if decl is not None:
-            decl.comments = stmts
+            decl.comments = comments
+            decl.annotations = annotations
             self.setNodeValue(ctx, decl)
+
 
     def exitDeclarations(self, ctx):
         items = DeclarationList()
@@ -1202,32 +1211,42 @@ class EPromptoBuilder(EParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitJavaBooleanLiteral(self, ctx):
         self.setNodeValue(ctx, JavaBooleanLiteral(ctx.getText()))
+
 
     def exitJavaIntegerLiteral(self, ctx):
         self.setNodeValue(ctx, JavaIntegerLiteral(ctx.getText()))
 
+
     def exitJavaDecimalLiteral(self, ctx):
         self.setNodeValue(ctx, JavaDecimalLiteral(ctx.getText()))
+
 
     def exitJavaCharacterLiteral(self, ctx):
         self.setNodeValue(ctx, JavaCharacterLiteral(ctx.getText()))
 
+
     def exitJavaTextLiteral(self, ctx):
         self.setNodeValue(ctx, JavaTextLiteral(ctx.getText()))
+
 
     def exitCSharpBooleanLiteral(self, ctx):
         self.setNodeValue(ctx, CSharpBooleanLiteral(ctx.getText()))
 
+
     def exitCSharpIntegerLiteral(self, ctx):
         self.setNodeValue(ctx, CSharpIntegerLiteral(ctx.getText()))
+
 
     def exitCSharpDecimalLiteral(self, ctx):
         self.setNodeValue(ctx, CSharpDecimalLiteral(ctx.getText()))
 
+
     def exitCSharpCharacterLiteral(self, ctx):
         self.setNodeValue(ctx, CSharpCharacterLiteral(ctx.getText()))
+
 
     def exitCSharpTextLiteral(self, ctx):
         self.setNodeValue(ctx, CSharpTextLiteral(ctx.getText()))
@@ -1607,27 +1626,44 @@ class EPromptoBuilder(EParserListener):
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, IntDivideExpression(left, right))
 
+
     def exitModuloExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ModuloExpression(left, right))
+
+
+    def exitAnnotation_constructor(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, Annotation(name, exp))
+
+
+    def exitAnnotation_identifier(self, ctx):
+        name = ctx.getText()
+        self.setNodeValue(ctx, name)
+
 
     def exitAndExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, AndExpression(left, right))
 
+
     def exitNullLiteral(self, ctx):
         self.setNodeValue(ctx, NullLiteral.instance)
+
 
     def exitOperator_argument(self, ctx):
         stmt = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, stmt)
 
+
     def exitOperatorArgument(self, ctx):
         arg = self.getNodeValue(ctx.arg)
         arg.mutable = ctx.MUTABLE() is not None
         self.setNodeValue(ctx, arg)
+
 
     def exitOperatorPlus(self, ctx):
         self.setNodeValue(ctx, Operator.PLUS)
