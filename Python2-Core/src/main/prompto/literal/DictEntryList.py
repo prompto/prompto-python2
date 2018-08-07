@@ -1,5 +1,6 @@
 from io import StringIO
 
+
 class DictEntryList ( list ):
 
     def __init__(self, entry = None):
@@ -9,7 +10,7 @@ class DictEntryList ( list ):
 
     def __str__(self):
         with StringIO() as sb:
-            sb.write(u'{')
+            sb.write(u'<')
             for item in self:
                 sb.write(unicode(item))
                 sb.write(u", ")
@@ -17,14 +18,18 @@ class DictEntryList ( list ):
             if slen>2:
                 sb.truncate(slen-2)
                 sb.seek(slen-2)
-            sb.write(u'}')
+            else:
+                sb.write(u':')
+            sb.write(u'>')
             return sb.getvalue()
 
     def toDialect(self, writer):
-        writer.append('{')
+        writer.append('<')
         if len(self)>0:
             for entry in self:
                 entry.toDialect(writer)
                 writer.append(", ")
             writer.trimLast(2)
-        writer.append('}')
+        else:
+            writer.append(':')
+        writer.append('>')

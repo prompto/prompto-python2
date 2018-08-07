@@ -2452,6 +2452,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#document_literal.
+    def enterDocument_literal(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#document_literal.
+    def exitDocument_literal(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#expression_tuple.
     def enterExpression_tuple(self, ctx):
         pass
