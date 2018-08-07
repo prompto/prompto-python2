@@ -134,6 +134,8 @@ from prompto.literal.DecimalLiteral import DecimalLiteral
 from prompto.literal.DictEntry import DictEntry
 from prompto.literal.DictEntryList import DictEntryList
 from prompto.literal.DictLiteral import DictLiteral
+from prompto.literal.DocEntryList import DocEntryList
+from prompto.literal.DocumentLiteral import DocumentLiteral
 from prompto.literal.HexaLiteral import HexaLiteral
 from prompto.literal.IntegerLiteral import IntegerLiteral, MinIntegerLiteral, MaxIntegerLiteral
 from prompto.literal.ListLiteral import ListLiteral
@@ -1769,31 +1771,44 @@ class EPromptoBuilder(EParserListener):
         stmt = StoreStatement(to_del, to_add)
         self.setNodeValue(ctx, stmt)
 
+
     def exitSorted_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
         desc = ctx.DESC() is not None
         key = self.getNodeValue(ctx.key)
         self.setNodeValue(ctx, SortedExpression(source, desc, key))
 
+
     def exitSortedExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
 
     def exitDocumentExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
+
     def exitDocument_expression(self, ctx):
         exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, DocumentExpression(exp))
 
+
     def exitDocumentType(self, ctx):
         self.setNodeValue(ctx, DocumentType.instance)
+
+
+    def exitDocument_literal(self, ctx):
+        entries = self.getNodeValue(ctx.dict_entry_list())
+        items = DocEntryList(entries=entries)
+        self.setNodeValue(ctx, DocumentLiteral(items))
+
 
     def exitFetchOne(self, ctx):
         category = self.getNodeValue(ctx.typ)
         xfilter = self.getNodeValue(ctx.predicate)
         self.setNodeValue(ctx, FetchOneExpression(category, xfilter))
+
 
     def exitFetchMany(self, ctx):
         category = self.getNodeValue(ctx.typ)

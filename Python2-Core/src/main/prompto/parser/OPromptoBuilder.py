@@ -134,6 +134,8 @@ from prompto.literal.DecimalLiteral import DecimalLiteral
 from prompto.literal.DictEntry import DictEntry
 from prompto.literal.DictEntryList import DictEntryList
 from prompto.literal.DictLiteral import DictLiteral
+from prompto.literal.DocEntryList import DocEntryList
+from prompto.literal.DocumentLiteral import DocumentLiteral
 from prompto.literal.HexaLiteral import HexaLiteral
 from prompto.literal.IntegerLiteral import IntegerLiteral, MinIntegerLiteral, MaxIntegerLiteral
 from prompto.literal.ListLiteral import ListLiteral
@@ -1723,11 +1725,13 @@ class OPromptoBuilder(OParserListener):
     def exitStoreStatement(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.stmt))
 
+
     def exitStore_statement(self, ctx):
         to_del = self.getNodeValue(ctx.to_del)
         to_add = self.getNodeValue(ctx.to_add)
         stmt = StoreStatement(to_del, to_add)
         self.setNodeValue(ctx, stmt)
+
 
     def exitSorted_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
@@ -1735,17 +1739,27 @@ class OPromptoBuilder(OParserListener):
         key = self.getNodeValue(ctx.key)
         self.setNodeValue(ctx, SortedExpression(source, desc, key))
 
+
     def exitDocument_expression(self, ctx):
         exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, DocumentExpression(exp))
 
+
     def exitDocumentType(self, ctx):
         self.setNodeValue(ctx, DocumentType.instance)
+
+
+    def exitDocument_literal(self, ctx):
+        entries = self.getNodeValue(ctx.dict_entry_list())
+        items = DocEntryList(entries=entries)
+        self.setNodeValue(ctx, DocumentLiteral(items))
+
 
     def exitFetchOne(self, ctx):
         category = self.getNodeValue(ctx.typ)
         predicate = self.getNodeValue(ctx.predicate)
         self.setNodeValue(ctx, FetchOneExpression(category, predicate))
+
 
     def exitFetchMany(self, ctx):
         category = self.getNodeValue(ctx.typ)
@@ -1755,11 +1769,13 @@ class OPromptoBuilder(OParserListener):
         orderBy = self.getNodeValue(ctx.orderby)
         self.setNodeValue(ctx, FetchManyExpression(category, predicate, start, stop, orderBy))
 
+
     def exitFiltered_list_expression(self, ctx):
         itemName = self.getNodeValue(ctx.name)
         source = self.getNodeValue(ctx.source)
         xfilter = self.getNodeValue(ctx.predicate)
         self.setNodeValue(ctx, FilteredExpression(itemName, source, xfilter))
+
 
     def exitClosure_expression(self, ctx):
         name = self.getNodeValue(ctx.name)

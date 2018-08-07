@@ -132,6 +132,8 @@ from prompto.literal.DecimalLiteral import DecimalLiteral
 from prompto.literal.DictEntry import DictEntry
 from prompto.literal.DictEntryList import DictEntryList
 from prompto.literal.DictLiteral import DictLiteral
+from prompto.literal.DocEntryList import DocEntryList
+from prompto.literal.DocumentLiteral import DocumentLiteral
 from prompto.literal.HexaLiteral import HexaLiteral
 from prompto.literal.IntegerLiteral import IntegerLiteral, MinIntegerLiteral, MaxIntegerLiteral
 from prompto.literal.ListLiteral import ListLiteral
@@ -762,32 +764,45 @@ class MPromptoBuilder(MParserListener):
         typ = self.getNodeValue(ctx.d)
         self.setNodeValue(ctx, DictType(typ))
 
+
     def exitDivideExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, DivideExpression(left, right))
+
 
     def exitDo_while_statement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, DoWhileStatement(exp, stmts))
 
+
     def exitDocumentType(self, ctx):
         self.setNodeValue(ctx, DocumentType.instance)
+
 
     def exitDocument_expression(self, ctx):
         exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, DocumentExpression(exp))
 
+
+    def exitDocument_literal(self, ctx):
+        entries = self.getNodeValue(ctx.dict_entry_list())
+        items = DocEntryList(entries=entries)
+        self.setNodeValue(ctx, DocumentLiteral(items))
+
+
     def exitDoWhileStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitElseIfStatementList(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         stmts = self.getNodeValue(ctx.stmts)
         elem = IfElement(exp, stmts)
         self.setNodeValue(ctx, IfElementList(elem))
+
 
     def exitElseIfStatementListItem(self, ctx):
         items = self.getNodeValue(ctx.items)
