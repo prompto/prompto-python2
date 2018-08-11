@@ -133,7 +133,9 @@ from prompto.literal.DateTimeLiteral import DateTimeLiteral
 from prompto.literal.DecimalLiteral import DecimalLiteral
 from prompto.literal.DictEntry import DictEntry
 from prompto.literal.DictEntryList import DictEntryList
+from prompto.literal.DictIdentifierKey import DictIdentifierKey
 from prompto.literal.DictLiteral import DictLiteral
+from prompto.literal.DictTextKey import DictTextKey
 from prompto.literal.DocEntryList import DocEntryList
 from prompto.literal.DocumentLiteral import DocumentLiteral
 from prompto.literal.HexaLiteral import HexaLiteral
@@ -429,6 +431,7 @@ class EPromptoBuilder(EParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitLiteral_expression(self, ctx):
         value = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, value)
@@ -525,9 +528,18 @@ class EPromptoBuilder(EParserListener):
         typ = self.getNodeValue(ctx.d)
         self.setNodeValue(ctx, DictType(typ))
 
+    def exitDictKeyIdentifier(self, ctx):
+        name = ctx.name.getText()
+        self.setNodeValue(ctx, DictIdentifierKey(name))
+
+    def exitDictKeyText(self, ctx):
+        name = ctx.name.text
+        self.setNodeValue(ctx, DictTextKey(name))
+
     def exitAttributeList(self, ctx):
         item = self.getNodeValue(ctx.item)
         self.setNodeValue(ctx, IdentifierList(item))
+
 
     def exitAttributeListItem(self, ctx):
         items = self.getNodeValue(ctx.items)

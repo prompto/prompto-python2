@@ -1948,6 +1948,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#any_identifier.
+    def enterAny_identifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#any_identifier.
+    def exitAny_identifier(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#argument_list.
     def enterArgument_list(self, ctx):
         pass
@@ -2593,6 +2602,24 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#dict_entry.
     def exitDict_entry(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#DictKeyIdentifier.
+    def enterDictKeyIdentifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#DictKeyIdentifier.
+    def exitDictKeyIdentifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#DictKeyText.
+    def enterDictKeyText(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#DictKeyText.
+    def exitDictKeyText(self, ctx):
         pass
 
 

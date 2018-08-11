@@ -1867,6 +1867,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#any_identifier.
+    def enterAny_identifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#any_identifier.
+    def exitAny_identifier(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#argument_list.
     def enterArgument_list(self, ctx):
         pass
@@ -2512,6 +2521,24 @@ class OParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by OParser#dict_entry.
     def exitDict_entry(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#DictKeyIdentifier.
+    def enterDictKeyIdentifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#DictKeyIdentifier.
+    def exitDictKeyIdentifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#DictKeyText.
+    def enterDictKeyText(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#DictKeyText.
+    def exitDictKeyText(self, ctx):
         pass
 
 

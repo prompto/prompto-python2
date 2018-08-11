@@ -131,7 +131,9 @@ from prompto.literal.DateTimeLiteral import DateTimeLiteral
 from prompto.literal.DecimalLiteral import DecimalLiteral
 from prompto.literal.DictEntry import DictEntry
 from prompto.literal.DictEntryList import DictEntryList
+from prompto.literal.DictIdentifierKey import DictIdentifierKey
 from prompto.literal.DictLiteral import DictLiteral
+from prompto.literal.DictTextKey import DictTextKey
 from prompto.literal.DocEntryList import DocEntryList
 from prompto.literal.DocumentLiteral import DocumentLiteral
 from prompto.literal.HexaLiteral import HexaLiteral
@@ -278,37 +280,30 @@ class MPromptoBuilder(MParserListener):
         exp = PlusExpression(left, right) if ctx.op.type == MParser.PLUS else SubtractExpression(left, right)
         self.setNodeValue(ctx, exp)
 
-
     def exitAnnotation_constructor(self, ctx):
         name = self.getNodeValue(ctx.name)
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, Annotation(name, exp))
 
-
     def exitAnnotation_identifier(self, ctx):
         name = ctx.getText()
         self.setNodeValue(ctx, name)
-
 
     def exitAndExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, AndExpression(left, right))
 
-
     def exitAnyDictType(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         self.setNodeValue(ctx, DictType(typ))
-
 
     def exitAnyListType(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         self.setNodeValue(ctx, ListType(typ))
 
-
     def exitAnyType(self, ctx):
         self.setNodeValue(ctx, AnyType.instance)
-
 
     def exitArgument_assignment(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -556,14 +551,12 @@ class MPromptoBuilder(MParserListener):
         ccd.setMethods(methods)
         self.setNodeValue(ctx, ccd)
 
-
     def exitConcrete_method_declaration(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, ConcreteMethodDeclaration(name, args, typ, stmts))
-
 
     def exitConcrete_widget_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -572,21 +565,17 @@ class MPromptoBuilder(MParserListener):
         ccd = ConcreteWidgetDeclaration(name, derived, methods)
         self.setNodeValue(ctx, ccd)
 
-
     def exitConcreteCategoryDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
-
 
     def exitConcreteWidgetDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
-
     def exitNativeWidgetDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
-
 
     def exitConstructorFrom(self, ctx):
         typ = self.getNodeValue(ctx.typ)
@@ -594,12 +583,10 @@ class MPromptoBuilder(MParserListener):
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, ConstructorExpression(typ, copyFrom, args, True))
 
-
     def exitConstructorNoFrom(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, ConstructorExpression(typ, None, args, True))
-
 
     def exitCopy_from(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
@@ -709,10 +696,10 @@ class MPromptoBuilder(MParserListener):
     def exitDeclaration(self, ctx):
         comments = None
         if ctx.comment_statement() is not None:
-            comments = [ self.getNodeValue(ctx_) for ctx_ in ctx.comment_statement() ]
+            comments = [self.getNodeValue(ctx_) for ctx_ in ctx.comment_statement()]
         annotations = None
         if ctx.annotation_constructor() is not None:
-            annotations = [ self.getNodeValue(ctx_) for ctx_ in ctx.annotation_constructor() ]
+            annotations = [self.getNodeValue(ctx_) for ctx_ in ctx.annotation_constructor()]
         ctx_ = ctx.attribute_declaration()
         if ctx_ is None:
             ctx_ = ctx.category_declaration()
@@ -764,45 +751,45 @@ class MPromptoBuilder(MParserListener):
         typ = self.getNodeValue(ctx.d)
         self.setNodeValue(ctx, DictType(typ))
 
+    def exitDictKeyIdentifier(self, ctx):
+        name = ctx.name.getText()
+        self.setNodeValue(ctx, DictIdentifierKey(name))
+
+    def exitDictKeyText(self, ctx):
+        name = ctx.name.text
+        self.setNodeValue(ctx, DictTextKey(name))
 
     def exitDivideExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, DivideExpression(left, right))
 
-
     def exitDo_while_statement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, DoWhileStatement(exp, stmts))
 
-
     def exitDocumentType(self, ctx):
         self.setNodeValue(ctx, DocumentType.instance)
-
 
     def exitDocument_expression(self, ctx):
         exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, DocumentExpression(exp))
-
 
     def exitDocument_literal(self, ctx):
         entries = self.getNodeValue(ctx.dict_entry_list())
         items = DocEntryList(entries=entries)
         self.setNodeValue(ctx, DocumentLiteral(items))
 
-
     def exitDoWhileStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
-
 
     def exitElseIfStatementList(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         stmts = self.getNodeValue(ctx.stmts)
         elem = IfElement(exp, stmts)
         self.setNodeValue(ctx, IfElementList(elem))
-
 
     def exitElseIfStatementListItem(self, ctx):
         items = self.getNodeValue(ctx.items)
@@ -1362,12 +1349,10 @@ class MPromptoBuilder(MParserListener):
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, MultiplyExpression(left, right))
 
-
     def exitMutable_category_type(self, ctx):
         typ = self.getNodeValue(ctx.category_type())
         typ.mutable = ctx.MUTABLE() is not None
         self.setNodeValue(ctx, typ)
-
 
     def exitNamed_argument(self, ctx):
         name = self.getNodeValue(ctx.variable_identifier())
@@ -1375,7 +1360,6 @@ class MPromptoBuilder(MParserListener):
         exp = self.getNodeValue(ctx.literal_expression())
         arg.defaultExpression = exp
         self.setNodeValue(ctx, arg)
-
 
     def exitNative_category_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -1386,7 +1370,6 @@ class MPromptoBuilder(MParserListener):
         decl.storable = ctx.STORABLE() is not None
         self.setNodeValue(ctx, decl)
 
-
     def exitNative_widget_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         bindings = self.getNodeValue(ctx.bindings)
@@ -1394,11 +1377,9 @@ class MPromptoBuilder(MParserListener):
         decl = NativeWidgetDeclaration(name, bindings, methods)
         self.setNodeValue(ctx, decl)
 
-
     def exitNative_category_bindings(self, ctx):
         items = self.getNodeValue(ctx.items)
         self.setNodeValue(ctx, items)
-
 
     def exitNative_method_declaration(self, ctx):
         typ = self.getNodeValue(ctx.typ)
@@ -1901,10 +1882,8 @@ class MPromptoBuilder(MParserListener):
     def exitTextType(self, ctx):
         self.setNodeValue(ctx, TextType.instance)
 
-
     def exitHtmlType(self, ctx):
         self.setNodeValue(ctx, HtmlType.instance)
-
 
     def exitThisExpression(self, ctx):
         self.setNodeValue(ctx, ThisExpression())
@@ -2041,15 +2020,12 @@ class MPromptoBuilder(MParserListener):
     def exitJsxChild(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.jsx))
 
-
     def exitJsxCode(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, JsxCode(exp))
 
-
     def exitJsxExpression(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
-
 
     def exitJsxElement(self, ctx):
         elem = self.getNodeValue(ctx.jsx)
@@ -2057,85 +2033,68 @@ class MPromptoBuilder(MParserListener):
         elem.setChildren(children)
         self.setNodeValue(ctx, elem)
 
-
     def exitJsxSelfClosing(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.jsx))
-
 
     def exitJsxText(self, ctx):
         text = ParserUtils.getFullText(ctx.text)
         self.setNodeValue(ctx, JsxText(text))
 
-
     def exitJsxValue(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, JsxExpression(exp))
-
 
     def exitJsx_attribute(self, ctx):
         name = self.getNodeValue(ctx.name)
         value = self.getNodeValue(ctx.value)
         self.setNodeValue(ctx, JsxAttribute(name, value))
 
-
     def exitJsx_children(self, ctx):
         expressions = [self.getNodeValue(cx) for cx in ctx.jsx_child()]
         self.setNodeValue(ctx, expressions)
-
 
     def exitJsx_element_name(self, ctx):
         name = ctx.getText()
         self.setNodeValue(ctx, name)
 
-
     def exitJsx_expression(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.getChild(0)))
-
 
     def exitJsx_identifier(self, ctx):
         name = ctx.getText()
         self.setNodeValue(ctx, name)
 
-
     def exitJsxLiteral(self, ctx):
         text = ctx.getText()
         self.setNodeValue(ctx, JsxLiteral(text))
 
-
     def exitJsx_opening(self, ctx):
         name = self.getNodeValue(ctx.name)
-        attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
+        attributes = [self.getNodeValue(cx) for cx in ctx.jsx_attribute()]
         self.setNodeValue(ctx, JsxElement(name, attributes))
-
 
     def exitJsx_self_closing(self, ctx):
         name = self.getNodeValue(ctx.name)
-        attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
+        attributes = [self.getNodeValue(cx) for cx in ctx.jsx_attribute()]
         self.setNodeValue(ctx, JsxSelfClosing(name, attributes))
-
 
     def exitCssExpression(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
 
-
     def exitCss_expression(self, ctx):
         exp = CssExpression()
-        [ exp.addField(self.getNodeValue(cx)) for cx in ctx.css_field() ]
+        [exp.addField(self.getNodeValue(cx)) for cx in ctx.css_field()]
         self.setNodeValue(ctx, exp)
-
 
     def exitCss_field(self, ctx):
         name = ctx.name.getText()
         value = self.getNodeValue(ctx.value)
         self.setNodeValue(ctx, CssField(name, value))
 
-
     def exitCssText(self, ctx):
         text = ctx.text.getText()
         self.setNodeValue(ctx, CssText(text))
 
-
     def exitCssValue(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, CssCode(exp))
-

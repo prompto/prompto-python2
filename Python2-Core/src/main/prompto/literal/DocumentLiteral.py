@@ -34,7 +34,7 @@ class DocumentLiteral(Literal):
             self.check(context)
             doc = Document()
             for e in self.entries:
-                key = e.getKey().interpret(context)
+                key = e.getKey().asText()
                 val = e.getValue().interpret(context)
                 doc.setMember(context, key.value, val)
             return doc
