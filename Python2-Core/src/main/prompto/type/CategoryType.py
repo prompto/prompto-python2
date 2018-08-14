@@ -185,7 +185,8 @@ class CategoryType(BaseType):
 
 
     def isAssignableFromCategory(self, context, other):
-        return other.isDerivedFrom(context, self) or \
+        return "Any" == self.typeName or \
+               other.isDerivedFrom(context, self) or \
                other.isDerivedFromAnonymous(context, self)
 
 
