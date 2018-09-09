@@ -2083,7 +2083,7 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitJsxElement(self, ctx):
-        elem = self.getNodeValue(ctx.jsx)
+        elem = self.getNodeValue(ctx.opening)
         children = self.getNodeValue(ctx.children_)
         elem.setChildren(children)
         self.setNodeValue(ctx, elem)
