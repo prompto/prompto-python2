@@ -1246,6 +1246,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#jsx_ws.
+    def enterJsx_ws(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#jsx_ws.
+    def exitJsx_ws(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#indent.
     def enterIndent(self, ctx):
         pass
