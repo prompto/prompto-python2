@@ -1,3 +1,5 @@
+from antlr4 import TerminalNode, Token
+
 from prompto.argument.CategoryArgument import CategoryArgument
 from prompto.argument.CodeArgument import CodeArgument
 from prompto.argument.ExtendedArgument import ExtendedArgument
@@ -126,6 +128,7 @@ from prompto.javascript.JavaScriptNewExpression import JavaScriptNewExpression
 from prompto.javascript.JavaScriptStatement import JavaScriptStatement
 from prompto.javascript.JavaScriptTextLiteral import JavaScriptTextLiteral
 from prompto.javascript.JavaScriptThisExpression import JavaScriptThisExpression
+from prompto.jsx.JsxClosing import JsxClosing
 from prompto.literal.BooleanLiteral import BooleanLiteral
 from prompto.literal.CharacterLiteral import CharacterLiteral
 from prompto.literal.DateLiteral import DateLiteral
@@ -159,6 +162,7 @@ from prompto.jsx.JsxExpression import JsxExpression
 from prompto.jsx.JsxText import JsxText
 from prompto.jsx.JsxCode import JsxCode
 from prompto.parser import ParserUtils
+from prompto.parser.ELexer import ELexer
 from prompto.parser.EParser import EParser
 from prompto.parser.EParserListener import EParserListener
 from prompto.parser.Section import Section
@@ -274,6 +278,38 @@ class EPromptoBuilder(EParserListener):
             return token
         else:
             return None
+
+    def getHiddenTokensBefore(self, node):
+        token = node if isinstance(node, Token) else node.symbol
+        hidden = self.input.getHiddenTokensToLeft(token.tokenIndex)
+        return self.getHiddenTokensText(hidden)
+
+    def getHiddenTokensAfter(self, node):
+        token = node if isinstance(node, Token) else node.symbol
+        hidden = self.input.getHiddenTokensToRight(token.tokenIndex)
+        return self.getHiddenTokensText(hidden)
+
+    def getHiddenTokensText(self, hidden):
+        if hidden is None or len(hidden)==0:
+            return None
+        return "".join([token.text for token in hidden])
+
+    def getJsxWhiteSpace(self, ctx):
+        if ctx.children is None:
+            return None
+        within = "".join([child.getText() for child in filter(self.isNotIndent, ctx.children)])
+        if within is None:
+            return None
+        before = self.getHiddenTokensBefore(ctx.start)
+        if before is not None:
+            within = before + within
+        after = self.getHiddenTokensAfter(ctx.stop)
+        if after is not None:
+            within = within + after
+        return within
+
+    def isNotIndent(self, tree):
+        return (not isinstance(tree, TerminalNode)) or tree.symbol.type != ELexer.INDENT
 
     def exitIdentifierExpression(self, ctx):
         name = self.getNodeValue(ctx.exp)
@@ -2162,6 +2198,8 @@ class EPromptoBuilder(EParserListener):
 
     def exitJsxElement(self, ctx):
         elem = self.getNodeValue(ctx.opening)
+        closing = self.getNodeValue(ctx.closing)
+        elem.setClosing(closing)
         children = self.getNodeValue(ctx.children_)
         elem.setChildren(children)
         self.setNodeValue(ctx, elem)
@@ -2184,7 +2222,8 @@ class EPromptoBuilder(EParserListener):
     def exitJsx_attribute(self, ctx):
         name = self.getNodeValue(ctx.name)
         value = self.getNodeValue(ctx.value)
-        self.setNodeValue(ctx, JsxAttribute(name, value))
+        suite = self.getJsxWhiteSpace(ctx.jsx_ws())
+        self.setNodeValue(ctx, JsxAttribute(name, value, suite))
 
 
     def exitJsx_children(self, ctx):
@@ -2213,14 +2252,21 @@ class EPromptoBuilder(EParserListener):
 
     def exitJsx_opening(self, ctx):
         name = self.getNodeValue(ctx.name)
+        suite = self.getJsxWhiteSpace(ctx.jsx_ws())
         attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
-        self.setNodeValue(ctx, JsxElement(name, attributes))
+        self.setNodeValue(ctx, JsxElement(name, suite, attributes, None))
+
+
+    def exitJsx_closing(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        self.setNodeValue(ctx, JsxClosing(name, None))
 
 
     def exitJsx_self_closing(self, ctx):
         name = self.getNodeValue(ctx.name)
+        suite = self.getJsxWhiteSpace(ctx.jsx_ws())
         attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
-        self.setNodeValue(ctx, JsxSelfClosing(name, attributes))
+        self.setNodeValue(ctx, JsxSelfClosing(name, suite, attributes, None))
 
 
     def exitCssExpression(self, ctx):
