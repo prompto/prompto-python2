@@ -1032,20 +1032,20 @@ def serializedATN():
         buf.write(u"\u0726\7\25\2\2\u0726\u0728\5\u00caf\2\u0727\u0725\3")
         buf.write(u"\2\2\2\u0728\u072b\3\2\2\2\u0729\u0727\3\2\2\2\u0729")
         buf.write(u"\u072a\3\2\2\2\u072a\u00f1\3\2\2\2\u072b\u0729\3\2\2")
-        buf.write(u"\2\u072c\u0731\5\u00caf\2\u072d\u072e\7\25\2\2\u072e")
-        buf.write(u"\u0730\5\u00caf\2\u072f\u072d\3\2\2\2\u0730\u0733\3\2")
-        buf.write(u"\2\2\u0731\u072f\3\2\2\2\u0731\u0732\3\2\2\2\u0732\u0735")
-        buf.write(u"\3\2\2\2\u0733\u0731\3\2\2\2\u0734\u0736\5\u00f4{\2\u0735")
-        buf.write(u"\u0734\3\2\2\2\u0735\u0736\3\2\2\2\u0736\u00f3\3\2\2")
-        buf.write(u"\2\u0737\u0738\7o\2\2\u0738\u0739\5\u0144\u00a3\2\u0739")
-        buf.write(u"\u073b\7\21\2\2\u073a\u073c\7%\2\2\u073b\u073a\3\2\2")
-        buf.write(u"\2\u073b\u073c\3\2\2\2\u073c\u073d\3\2\2\2\u073d\u0742")
-        buf.write(u"\5\u016c\u00b7\2\u073e\u073f\7%\2\2\u073f\u0741\5\u016c")
-        buf.write(u"\u00b7\2\u0740\u073e\3\2\2\2\u0741\u0744\3\2\2\2\u0742")
-        buf.write(u"\u0740\3\2\2\2\u0742\u0743\3\2\2\2\u0743\u0747\3\2\2")
-        buf.write(u"\2\u0744\u0742\3\2\2\2\u0745\u0746\7\25\2\2\u0746\u0748")
-        buf.write(u"\5\u016c\u00b7\2\u0747\u0745\3\2\2\2\u0747\u0748\3\2")
-        buf.write(u"\2\2\u0748\u00f5\3\2\2\2\u0749\u074e\5\u00ccg\2\u074a")
+        buf.write(u"\2\u072c\u0731\5\u016c\u00b7\2\u072d\u072e\7\25\2\2\u072e")
+        buf.write(u"\u0730\5\u016c\u00b7\2\u072f\u072d\3\2\2\2\u0730\u0733")
+        buf.write(u"\3\2\2\2\u0731\u072f\3\2\2\2\u0731\u0732\3\2\2\2\u0732")
+        buf.write(u"\u0735\3\2\2\2\u0733\u0731\3\2\2\2\u0734\u0736\5\u00f4")
+        buf.write(u"{\2\u0735\u0734\3\2\2\2\u0735\u0736\3\2\2\2\u0736\u00f3")
+        buf.write(u"\3\2\2\2\u0737\u0738\7o\2\2\u0738\u0739\5\u0144\u00a3")
+        buf.write(u"\2\u0739\u073b\7\21\2\2\u073a\u073c\7%\2\2\u073b\u073a")
+        buf.write(u"\3\2\2\2\u073b\u073c\3\2\2\2\u073c\u073d\3\2\2\2\u073d")
+        buf.write(u"\u0742\5\u016c\u00b7\2\u073e\u073f\7%\2\2\u073f\u0741")
+        buf.write(u"\5\u016c\u00b7\2\u0740\u073e\3\2\2\2\u0741\u0744\3\2")
+        buf.write(u"\2\2\u0742\u0740\3\2\2\2\u0742\u0743\3\2\2\2\u0743\u0747")
+        buf.write(u"\3\2\2\2\u0744\u0742\3\2\2\2\u0745\u0746\7\25\2\2\u0746")
+        buf.write(u"\u0748\5\u016c\u00b7\2\u0747\u0745\3\2\2\2\u0747\u0748")
+        buf.write(u"\3\2\2\2\u0748\u00f5\3\2\2\2\u0749\u074e\5\u00ccg\2\u074a")
         buf.write(u"\u074b\7\23\2\2\u074b\u074d\5\u00ccg\2\u074c\u074a\3")
         buf.write(u"\2\2\2\u074d\u0750\3\2\2\2\u074e\u074c\3\2\2\2\u074e")
         buf.write(u"\u074f\3\2\2\2\u074f\u00f7\3\2\2\2\u0750\u074e\3\2\2")
@@ -15177,11 +15177,11 @@ class EParser ( AbstractParser ):
             super(EParser.Javascript_category_bindingContext, self).__init__(parent, invokingState)
             self.parser = parser
 
-        def identifier(self, i=None):
+        def javascript_identifier(self, i=None):
             if i is None:
-                return self.getTypedRuleContexts(EParser.IdentifierContext)
+                return self.getTypedRuleContexts(EParser.Javascript_identifierContext)
             else:
-                return self.getTypedRuleContext(EParser.IdentifierContext,i)
+                return self.getTypedRuleContext(EParser.Javascript_identifierContext,i)
 
 
         def DOT(self, i=None):
@@ -15215,7 +15215,7 @@ class EParser ( AbstractParser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1834
-            self.identifier()
+            self.javascript_identifier()
             self.state = 1839
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,133,self._ctx)
@@ -15224,7 +15224,7 @@ class EParser ( AbstractParser ):
                     self.state = 1835
                     self.match(EParser.DOT)
                     self.state = 1836
-                    self.identifier() 
+                    self.javascript_identifier() 
                 self.state = 1841
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,133,self._ctx)

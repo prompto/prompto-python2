@@ -1133,7 +1133,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, JavaScriptBooleanLiteral(text))
 
     def exitJavascript_category_binding(self, ctx):
-        identifier = ".".join([cx.getText() for cx in ctx.identifier()])
+        identifier = ".".join([cx.getText() for cx in ctx.javascript_identifier()])
         module = self.getNodeValue(ctx.javascript_module())
         xmap = JavaScriptNativeCategoryBinding(identifier, module)
         self.setNodeValue(ctx, xmap)
