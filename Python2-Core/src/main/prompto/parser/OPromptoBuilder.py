@@ -277,6 +277,7 @@ class OPromptoBuilder(OParserListener):
         else:
             return None
 
+
     def getHiddenTokensAfter(self, node):
         token = node if isinstance(node, Token) else node.symbol
         hidden = self.input.getHiddenTokensToRight(token.tokenIndex)
@@ -284,24 +285,38 @@ class OPromptoBuilder(OParserListener):
             return None
         return "".join([token.text for token in hidden])
 
+
+    def readAnnotations(self, contexts):
+        return [ self.getNodeValue(ctx_) for ctx_ in contexts ]
+
+
+    def readComments(self, contexts):
+        return [ self.getNodeValue(ctx_) for ctx_ in contexts ]
+
+
     def exitTypeIdentifier(self, ctx):
         name = self.getNodeValue(ctx.type_identifier())
         self.setNodeValue(ctx, UnresolvedIdentifier(name, Dialect.O))
+
 
     def exitMethod_expression(self, ctx):
         exp = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, exp)
 
+
     def exitAn_expression(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         self.setNodeValue(ctx, typ)
+
 
     def exitBlob_expression(self, ctx):
         exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, BlobExpression(exp))
 
+
     def exitBlobType(self, ctx):
         self.setNodeValue(ctx, BlobType.instance)
+
 
     def exitBooleanLiteral(self, ctx):
         self.setNodeValue(ctx, BooleanLiteral(ctx.t.text))
@@ -771,19 +786,29 @@ class OPromptoBuilder(OParserListener):
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, GetterMethodDeclaration(name, stmts))
 
+
     def exitNative_setter_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, NativeSetterMethodDeclaration(name, stmts))
+
 
     def exitNative_getter_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, NativeGetterMethodDeclaration(name, stmts))
 
+
     def exitMember_method_declaration(self, ctx):
-        decl = self.getNodeValue(ctx.getChild(0))
-        self.setNodeValue(ctx, decl)
+        comments = self.readComments(ctx.comment_statement())
+        annotations = self.readAnnotations(ctx.annotation_constructor())
+        ctx_ = ctx.children[ctx.getChildCount()-1]
+        decl = self.getNodeValue(ctx_)
+        if decl is not None:
+            decl.comments = comments
+            decl.annotations = annotations
+            self.setNodeValue(ctx, decl)
+
 
     def exitStatement_list(self, ctx):
         items = StatementList()
@@ -792,11 +817,13 @@ class OPromptoBuilder(OParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitAbstract_method_declaration(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, AbstractMethodDeclaration(name, args, typ))
+
 
     def exitConcrete_method_declaration(self, ctx):
         typ = self.getNodeValue(ctx.typ)
@@ -1158,28 +1185,15 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitDeclaration(self, ctx):
-        comments = None
-        if ctx.comment_statement() is not None:
-            comments = [ self.getNodeValue(ctx_) for ctx_ in ctx.comment_statement() ]
-        annotations = None
-        if ctx.annotation_constructor() is not None:
-            annotations = [ self.getNodeValue(ctx_) for ctx_ in ctx.annotation_constructor() ]
-        ctx_ = ctx.attribute_declaration()
-        if ctx_ is None:
-            ctx_ = ctx.category_declaration()
-        if ctx_ is None:
-            ctx_ = ctx.enum_declaration()
-        if ctx_ is None:
-            ctx_ = ctx.method_declaration()
-        if ctx_ is None:
-            ctx_ = ctx.resource_declaration()
-        if ctx_ is None:
-            ctx_ = ctx.widget_declaration()
+        comments = self.readComments(ctx.comment_statement())
+        annotations = self.readAnnotations(ctx.annotation_constructor())
+        ctx_ = ctx.children[ctx.getChildCount()-1]
         decl = self.getNodeValue(ctx_)
         if decl is not None:
             decl.comments = comments
             decl.annotations = annotations
             self.setNodeValue(ctx, decl)
+
 
     def exitDeclarations(self, ctx):
         items = DeclarationList()
@@ -1188,14 +1202,18 @@ class OPromptoBuilder(OParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitJavaBooleanLiteral(self, ctx):
         self.setNodeValue(ctx, JavaBooleanLiteral(ctx.getText()))
+
 
     def exitJavaIntegerLiteral(self, ctx):
         self.setNodeValue(ctx, JavaIntegerLiteral(ctx.getText()))
 
+
     def exitJavaDecimalLiteral(self, ctx):
         self.setNodeValue(ctx, JavaDecimalLiteral(ctx.getText()))
+
 
     def exitJavaCharacterLiteral(self, ctx):
         self.setNodeValue(ctx, JavaCharacterLiteral(ctx.getText()))

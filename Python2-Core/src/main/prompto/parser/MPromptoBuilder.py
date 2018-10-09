@@ -282,10 +282,12 @@ class MPromptoBuilder(MParserListener):
         hidden = self.input.getHiddenTokensToRight(token.tokenIndex)
         return self.getHiddenTokensText(hidden)
 
+
     def getHiddenTokensText(self, hidden):
         if hidden is None or len(hidden)==0:
             return None
         return "".join([token.text for token in hidden])
+
 
     def getJsxWhiteSpace(self, ctx):
         if ctx.children is None:
@@ -301,8 +303,18 @@ class MPromptoBuilder(MParserListener):
             within = within + after
         return within
 
+
     def isNotIndent(self, tree):
         return (not isinstance(tree, TerminalNode)) or tree.symbol.type != MLexer.INDENT
+
+
+    def readAnnotations(self, contexts):
+        return [ self.getNodeValue(ctx_) for ctx_ in contexts ]
+
+
+    def readComments(self, contexts):
+        return [ self.getNodeValue(ctx_) for ctx_ in contexts ]
+
 
     def exitAbstract_method_declaration(self, ctx):
         typ = self.getNodeValue(ctx.typ)
@@ -501,8 +513,14 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, items)
 
     def exitMember_method_declaration(self, ctx):
-        decl = self.getNodeValue(ctx.getChild(0))
-        self.setNodeValue(ctx, decl)
+        comments = self.readComments(ctx.comment_statement())
+        annotations = self.readAnnotations(ctx.annotation_constructor())
+        ctx_ = ctx.children[ctx.getChildCount()-1]
+        decl = self.getNodeValue(ctx_)
+        if decl is not None:
+            decl.comments = comments
+            decl.annotations = annotations
+            self.setNodeValue(ctx, decl)
 
     def exitCategory_symbol_list(self, ctx):
         items = CategorySymbolList()
@@ -730,28 +748,15 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, DecimalType.instance)
 
     def exitDeclaration(self, ctx):
-        comments = None
-        if ctx.comment_statement() is not None:
-            comments = [self.getNodeValue(ctx_) for ctx_ in ctx.comment_statement()]
-        annotations = None
-        if ctx.annotation_constructor() is not None:
-            annotations = [self.getNodeValue(ctx_) for ctx_ in ctx.annotation_constructor()]
-        ctx_ = ctx.attribute_declaration()
-        if ctx_ is None:
-            ctx_ = ctx.category_declaration()
-        if ctx_ is None:
-            ctx_ = ctx.enum_declaration()
-        if ctx_ is None:
-            ctx_ = ctx.method_declaration()
-        if ctx_ is None:
-            ctx_ = ctx.resource_declaration()
-        if ctx_ is None:
-            ctx_ = ctx.widget_declaration()
+        comments = self.readComments(ctx.comment_statement())
+        annotations = self.readAnnotations(ctx.annotation_constructor())
+        ctx_ = ctx.children[ctx.getChildCount()-1]
         decl = self.getNodeValue(ctx_)
         if decl is not None:
             decl.comments = comments
             decl.annotations = annotations
             self.setNodeValue(ctx, decl)
+
 
     def exitDeclarations(self, ctx):
         items = DeclarationList()
