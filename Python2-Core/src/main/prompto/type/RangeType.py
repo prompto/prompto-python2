@@ -16,8 +16,7 @@ class RangeType(ContainerType):
             return False
         if not isinstance(obj, RangeType):
             return False
-        return self.getItemType() == obj.getItemType()
-
+        return self.itemType == obj.itemType
 
 
     def checkItem(self, context, other):
@@ -28,17 +27,18 @@ class RangeType(ContainerType):
             return super.checkItem(context, other)
 
 
-
     def checkSlice(self, context):
         return self
-
 
 
     def checkIterator(self, context):
         return self.itemType
 
 
-
     def checkContainsAllOrAny(self, context, other):
         from prompto.type.BooleanType import BooleanType
         return BooleanType.instance
+
+
+    def withItemType(self, itemType):
+        return RangeType(itemType)

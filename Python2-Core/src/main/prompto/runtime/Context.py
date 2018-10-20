@@ -10,9 +10,7 @@ from prompto.runtime.Variable import Variable
 from prompto.type.DecimalType import DecimalType
 from prompto.type.MethodType import MethodType
 from prompto.value.ClosureValue import ClosureValue
-from prompto.value.ContextualExpression import ContextualExpression
 from prompto.value.Decimal import Decimal
-from prompto.value.ExpressionValue import ExpressionValue
 from prompto.value.ConcreteInstance import ConcreteInstance
 from prompto.error.SyntaxError import SyntaxError
 from prompto.value.Integer import Integer
@@ -29,6 +27,7 @@ class Context(IContext):
         context.debugger = None
         return context
 
+
     def __init__(self):
         self.globals = None
         self.calling = None
@@ -40,14 +39,18 @@ class Context(IContext):
         self.values = dict()
         self.nativeBindings = dict()
 
+
     def isGlobalContext(self):
         return id(self) == id(self.globals)
+
 
     def setDebugger(self, debugger):
         self.debugger = debugger
 
+
     def getDebugger(self):
         return self.debugger
+
 
     def __str__(self):
         with StringIO() as sb:
@@ -68,8 +71,10 @@ class Context(IContext):
             sb.write("}")
             return sb.getvalue()
 
+
     def getCallingContext(self):
         return self.calling
+
 
     def getParentMostContext(self):
         if self.parent is None:
@@ -77,11 +82,21 @@ class Context(IContext):
         else:
             return self.parent.getParentMostContext()
 
+    def getClosestInstanceContext(self):
+        if self.parent is None:
+            return None
+        elif isinstance(self.parent, InstanceContext):
+            return self.parent
+        else:
+            return self.parent.getClosestInstanceContext()
+
     def getParentContext(self):
         return self.parent
 
+
     def setParentContext(self, parent):
         self.parent = parent
+
 
     def newResourceContext(self):
         context = ResourceContext()
@@ -91,6 +106,7 @@ class Context(IContext):
         context.debugger = self.debugger
         return context
 
+
     def newLocalContext(self):
         context = Context()
         context.globals = self.globals
@@ -99,6 +115,7 @@ class Context(IContext):
         context.debugger = self.debugger
         return context
 
+
     def newDocumentContext(self, doc, isChild):
         context = DocumentContext(doc)
         context.globals = self.globals
@@ -106,6 +123,7 @@ class Context(IContext):
         context.parent = self if isChild else None
         context.debugger = self.debugger
         return context
+
 
     def newInstanceContext(self, instance, typ, isChild = False):
         context = InstanceContext(instance, typ)
@@ -133,8 +151,10 @@ class Context(IContext):
         context.debugger = self.debugger
         return context
 
+
     def findAttribute(self, name):
         return self.getRegisteredDeclaration(AttributeDeclaration, name)
+
 
     def getAllAttributes(self):
         if id(self) != id(self.globals):
@@ -146,6 +166,7 @@ class Context(IContext):
                 if isinstance(decl, AttributeDeclaration):
                     list.append(decl)
             return list
+
 
     def getRegistered(self, name):
         # resolve upwards, since local names override global ones
@@ -161,6 +182,7 @@ class Context(IContext):
             return self.globals.getRegistered(name)
         return None
 
+
     def getRegisteredDeclaration(self, klass, name):
         # resolve upwards, since local names override global ones
         actual = self.declarations.get(name, None)
@@ -172,6 +194,17 @@ class Context(IContext):
             return actual
         else:
             return None
+
+
+    def getLocalDeclaration(self, klass, name):
+        actual = self.declarations.get(name, None)
+        if actual is not None:
+            return actual if isinstance(actual, klass) else None
+        elif self.parent is not None:
+            return self.parent.getLocalDeclaration(klass, name)
+        else:
+            return None
+
 
     def registerDeclaration(self, declaration):
         actual = self.getRegistered(declaration.getName())

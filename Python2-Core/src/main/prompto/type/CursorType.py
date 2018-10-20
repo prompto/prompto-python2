@@ -10,9 +10,11 @@ class CursorType(IterableType):
         super(CursorType, self).__init__(TypeFamily.CURSOR, itemType)
         self.typeName = "Cursor<" + itemType.typeName+">"
 
+
     def isAssignableFrom(self, context, other):
         return super(CursorType, self).isAssignableFrom(context, other) or \
                (isinstance(other, CursorType) and self.itemType.isAssignableFrom(context, other.itemType))
+
 
     def __eq__(self, obj):
         if obj is self:
@@ -21,8 +23,10 @@ class CursorType(IterableType):
             return False
         return self.itemType==obj.itemType
 
+
     def checkIterator(self, context):
         return self.itemType
+
 
     def checkMember(self, context, name):
         if "count"==name:
@@ -31,3 +35,7 @@ class CursorType(IterableType):
             return IntegerType.instance
         else:
             return super(CursorType, self).checkMember(context, name)
+
+
+    def withItemType(self, itemType):
+        return CursorType(itemType)

@@ -10,8 +10,10 @@ class NativeCategoryDeclaration ( ConcreteCategoryDeclaration ):
         self.boundedClass = None
         self.methods = methods
 
+
     def __str__(self):
         return self.getName() + (":" + str(self.attributes)) if self.attributes is not None else ""
+
 
     def register(self, context):
         super(NativeCategoryDeclaration, self).register(context)
@@ -19,9 +21,11 @@ class NativeCategoryDeclaration ( ConcreteCategoryDeclaration ):
         if bounded is not None:
             context.registerNativeBinding(bounded, self)
 
+
     def newInstance(self, context):
         from prompto.value.NativeInstance import NativeInstance
         return NativeInstance(context, self)
+
 
     def getBoundedClass(self, fail):
         if self.boundedClass is None:
@@ -31,6 +35,7 @@ class NativeCategoryDeclaration ( ConcreteCategoryDeclaration ):
                 if fail and self.boundedClass is None:
                     raise SyntaxError("No Python class:" + str(binding))
         return self.boundedClass
+
 
     def getBinding(self, fail):
         for binding in self.categoryBindings:

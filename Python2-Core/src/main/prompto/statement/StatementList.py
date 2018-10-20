@@ -16,7 +16,16 @@ class StatementList(list):
         if statement is not None:
             self.append(statement)
 
-    def check(self, context, returnType, nativeOnly=False):
+
+    def check(self, context, returnType):
+        return self.checkStatements(context, returnType, False)
+
+
+    def checkNative(self, context, returnType):
+        return self.checkStatements(context, returnType, True)
+
+
+    def checkStatements(self, context, returnType, nativeOnly):
         if returnType == VoidType.instance:
             for statement in self:
                 if nativeOnly and not isinstance(statement, Python2NativeCall):
@@ -44,11 +53,13 @@ class StatementList(list):
             else:
                 return itype
 
+
     def interpret(self, context):
         try:
             return self.doInterpret(context)
         except ReferenceError:
             raise NullReferenceError()
+
 
     def doInterpret(self, context):
         for statement in self:
@@ -63,11 +74,13 @@ class StatementList(list):
                 context.leaveStatement(statement)
         return None
 
+
     def interpretNative(self, context, returnType):
         try:
             return self.doInterpretNative(context, returnType)
         except ReferenceError:
             raise NullReferenceError()
+
 
     def doInterpretNative(self, context, returnType):
         for statement in self:
@@ -81,6 +94,7 @@ class StatementList(list):
             finally:
                 context.leaveStatement(statement)
         return None
+
 
     def toDialect(self, writer):
         for statement in self:

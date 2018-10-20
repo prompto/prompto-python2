@@ -13,17 +13,22 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         self.methods = None
         self.methodsMap = None
 
+
     def setDerivedFrom(self, derivedFrom):
         self.derivedFrom = derivedFrom
+
 
     def getDerivedFrom(self):
         return self.derivedFrom
 
+
     def setMethods(self, methods):
         self.methods = methods
 
+
     def getMethods(self):
         return self.methods
+
 
     def __str__(self):
         sb = StringIO(self.getName())
@@ -36,12 +41,14 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
             sb.write(str(self.attributes))
         return sb.getvalue()
 
+
     def hasAttribute(self, context, name):
         if super(ConcreteCategoryDeclaration, self).hasAttribute(context, name):
             return True
         if self.hasDerivedAttribute(context,name):
             return True
         return False
+
 
     def hasDerivedAttribute(self, context, name):
         if self.derivedFrom is None:
@@ -104,10 +111,10 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         return actual.hasMethod(context, name)
 
 
-    def check(self, context):
+    def check(self, context, isStart):
         self.checkDerived(context)
         self.checkMethods(context)
-        return super(ConcreteCategoryDeclaration, self).check(context)
+        return super(ConcreteCategoryDeclaration, self).check(context, isStart)
 
 
     def registerMethods(self, context):

@@ -3,6 +3,8 @@ from prompto.expression.InstanceExpression import InstanceExpression
 from prompto.expression.MemberSelector import MemberSelector
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
 from prompto.runtime.Context import InstanceContext
+from prompto.runtime.Variable import Variable
+from prompto.type.MethodType import MethodType
 from prompto.value.NullValue import NullValue
 from prompto.value.TypeValue import TypeValue
 
@@ -12,11 +14,13 @@ class MethodSelector(MemberSelector):
     def __init__(self, name, parent=None):
         super(MethodSelector, self).__init__(name, parent)
 
+
     def __str__(self):
         if self.parent is None:
             return self.name
         else:
             return str(self.parent) + '.' + self.name
+
 
     def toDialect(self, writer):
         if self.parent is None:
@@ -24,11 +28,16 @@ class MethodSelector(MemberSelector):
         else:
             super(MethodSelector, self).parentAndMemberToDialect(writer)
 
+
     def getCandidates(self, context, checkInstance):
-        if self.parent is None:
+        named = context.getRegistered(self.name)
+        if isinstance(named, Variable) and isinstance(named.getType(context), MethodType):
+            return {named.getType(context).method}
+        elif self.parent is None:
             return self.getGlobalCandidates(context)
         else:
             return self.getMemberCandidates(context, checkInstance)
+
 
     def getGlobalCandidates(self, context):
         from prompto.runtime.Context import MethodDeclarationMap
@@ -61,7 +70,6 @@ class MethodSelector(MemberSelector):
             return self.checkParent(context)
 
 
-
     def checkParentInstance(self, context):
         name = None
         if isinstance(self.parent, InstanceExpression):
@@ -78,7 +86,6 @@ class MethodSelector(MemberSelector):
         return self.checkParent(context)
 
 
-
     def getCategoryCandidates(self, context):
         from prompto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
         from prompto.type.CategoryType import CategoryType
@@ -91,7 +98,6 @@ class MethodSelector(MemberSelector):
         return cd.getMemberMethods(context, self.name)
 
 
-
     def newLocalContext(self, context, declaration):
         if self.parent is not None:
             return self.newInstanceContext(context)
@@ -100,6 +106,7 @@ class MethodSelector(MemberSelector):
         else:
             return context.newLocalContext()
 
+
     def newLocalCheckContext(self, context, declaration):
         if self.parent is not None:
             return self.newInstanceCheckContext(context)
@@ -107,7 +114,6 @@ class MethodSelector(MemberSelector):
             return self.newLocalInstanceContext(context)
         else:
             return context.newLocalContext()
-
 
 
     def newLocalInstanceContext(self, context):
@@ -119,7 +125,6 @@ class MethodSelector(MemberSelector):
         return context
 
 
-
     def newInstanceCheckContext(self, context):
         from prompto.type.CategoryType import CategoryType
         typ = self.parent.check (context)
@@ -128,7 +133,6 @@ class MethodSelector(MemberSelector):
             return context.newChildContext ()
         else:
             return context.newChildContext()
-
 
 
     def newInstanceContext(self, context):
@@ -147,7 +151,6 @@ class MethodSelector(MemberSelector):
         else:
             context = context.newBuiltInContext(value)
             return context.newChildContext()
-
 
 
     def toInstanceExpression(self):

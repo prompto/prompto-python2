@@ -8,18 +8,23 @@ class AbstractMethodDeclaration(BaseMethodDeclaration):
         super(AbstractMethodDeclaration, self).__init__(name, arguments)
         self.returnType = returnType if returnType is not None else VoidType.instance
 
+
     def checkMember(self, category, context):
         pass  # TODO
 
-    def check(self, context):
+
+    def check(self, context, isStart):
         if self.arguments is not None:
             self.arguments.check(context)
-        local = context.newLocalContext()
-        self.registerArguments(local)
+        if isStart:
+            local = context.newLocalContext()
+            self.registerArguments(local)
         return self.returnType
+
 
     def interpret(self, context):
         raise SyntaxError("Should never get there !")
+
 
     def toMDialect(self, writer):
         writer.append("abstract def ")
@@ -31,6 +36,7 @@ class AbstractMethodDeclaration(BaseMethodDeclaration):
             writer.append("->")
             self.returnType.toDialect(writer)
 
+
     def toODialect(self, writer):
         writer.append("abstract ")
         if self.returnType is not None and self.returnType is not VoidType.instance:
@@ -41,6 +47,7 @@ class AbstractMethodDeclaration(BaseMethodDeclaration):
         writer.append(" (")
         self.arguments.toDialect(writer)
         writer.append(");")
+
 
     def toEDialect(self, writer):
         writer.append("define ")

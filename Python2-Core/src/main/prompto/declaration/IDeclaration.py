@@ -4,4 +4,5 @@ from prompto.parser.ISection import ISection
 
 class IDeclaration (INamed, ISection, IDialectElement):
 
-    pass
+    def check(self, context, isStart):
+        pass

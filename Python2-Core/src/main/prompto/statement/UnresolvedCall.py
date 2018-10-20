@@ -5,10 +5,12 @@ from prompto.error.SyntaxError import SyntaxError
 from prompto.expression.ConstructorExpression import ConstructorExpression
 from prompto.expression.MethodSelector import MethodSelector
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
+from prompto.grammar.INamed import INamed
 from prompto.runtime.Context import InstanceContext
 from prompto.statement.MethodCall import MethodCall
 from prompto.statement.SimpleStatement import SimpleStatement
 from prompto.type.CategoryType import CategoryType
+from prompto.type.MethodType import MethodType
 from prompto.utils.CodeWriter import CodeWriter
 
 
@@ -19,14 +21,6 @@ class UnresolvedCall(SimpleStatement):
         self.resolved = None
         self.caller = caller
         self.assignments = assignments
-
-
-    def getCaller(self):
-        return self.caller
-
-
-    def getAssignments(self):
-        return self.assignments
 
 
     def toDialect(self, writer):
@@ -64,12 +58,22 @@ class UnresolvedCall(SimpleStatement):
 
 
     def resolveUnresolvedIdentifier(self, context):
-        name = self.caller.getName()
+        name = self.caller.name
         # if this happens in the context of a member method, then we need to check for category members first
-        if isinstance(context.getParentContext(), InstanceContext):
-            decl = self.resolveUnresolvedMember(context.getParentContext(), name)
+        instance = context.getClosestInstanceContext()
+        if instance is not None:
+            decl = self.resolveUnresolvedMember(instance, name)
             if decl is not None:
                 return MethodCall(MethodSelector(name), self.assignments)
+        # it could be a reference to a local closure
+        named = context.getRegisteredValue(INamed, name)
+        if named is not None:
+            itype = named.getType(context)
+            if isinstance(itype, MethodType):
+                call = MethodCall(MethodSelector(name), self.assignments)
+                call.variableName = name
+                return call
+        # can only be global then
         decl = context.getRegisteredDeclaration(IDeclaration, name)
         if decl is None:
             raise SyntaxError("Unknown name:" + name)

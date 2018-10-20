@@ -28,12 +28,12 @@ class DictType ( ContainerType ):
             return False
         if not isinstance(obj, DictType):
             return False
-        return self.getItemType()==obj.getItemType()
+        return self.itemType==obj.itemType
 
 
 
     def checkAdd(self, context, other, tryReverse):
-        if isinstance(other, DictType) and self.getItemType()==other.getItemType():
+        if isinstance(other, DictType) and self.itemType==other.itemType:
             return self
         else:
             return super(DictType, self).checkAdd(context, other, tryReverse)
@@ -60,8 +60,10 @@ class DictType ( ContainerType ):
         else:
             return super(DictType, self).checkItem(context,other)
 
+
     def checkIterator(self, context):
         return EntryType(self.itemType)
+
 
     def checkMember(self, context, name):
         if "count"==name:
@@ -72,3 +74,7 @@ class DictType ( ContainerType ):
             return ListType(self.itemType)
         else:
             return super(DictType, self).checkMember(context, name)
+
+
+    def withItemType(self, itemType):
+        return DictType(itemType)

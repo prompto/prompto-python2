@@ -30,7 +30,7 @@ class CategoryDeclaration(BaseDeclaration):
 
 
 
-    def check(self, context):
+    def check(self, context, isStart):
         from prompto.declaration.AttributeDeclaration import AttributeDeclaration
         if self.attributes is not None:
             for attribute in self.attributes:
@@ -98,7 +98,7 @@ class CategoryDeclaration(BaseDeclaration):
             return
         data = stored.getData(name)
         if data is not None:
-            value = decl.typ.convertPythonValueToPromptoValue(context, data, None)
+            value = decl.itype.convertPythonValueToPromptoValue(context, data, None)
             if value is not None:
                 instance.setMember(context, name, value)
 

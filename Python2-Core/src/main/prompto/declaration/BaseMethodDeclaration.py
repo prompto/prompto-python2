@@ -15,6 +15,8 @@ class BaseMethodDeclaration(BaseDeclaration, IMethodDeclaration):
         self.arguments = arguments if arguments is not None else ArgumentList()
         self.returnType = returnType
         self.memberOf = None
+        self.closureOf = None
+
 
     def getSignature(self, dialect):
         sb = StringIO()
@@ -35,6 +37,7 @@ class BaseMethodDeclaration(BaseDeclaration, IMethodDeclaration):
     def __str__(self):
         return self.getName() + ":(" + str(self.arguments) + ')'
 
+
     def getProto(self):
         sb = StringIO()
         for arg in self.arguments:
@@ -45,23 +48,29 @@ class BaseMethodDeclaration(BaseDeclaration, IMethodDeclaration):
             val = val[:-1]  # strip "/"
         return val
 
+
     def getArguments(self):
         return self.arguments
+
 
     def getReturnType(self):
         return self.returnType
 
+
     def register(self, context):
         context.registerMethodDeclaration(self)
 
+
     def registerArguments(self, context):
         self.arguments.register(context)
+
 
     def getType(self, context):
         try:
             return self.check(context)
         except SyntaxError, e:
             raise Exception(e)
+
 
     def isAssignableTo(self, context, assignments, checkInstance):
         from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
@@ -84,9 +93,11 @@ class BaseMethodDeclaration(BaseDeclaration, IMethodDeclaration):
         except SyntaxError:
             return False
 
+
     def isArgAssignableTo(self, context, argument, assignment, checkInstance):
         from prompto.grammar.Specificity import Specificity
         return self.computeSpecificity(context, argument, assignment, checkInstance) != Specificity.INCOMPATIBLE
+
 
     def computeSpecificity(self, context, argument, assignment, checkInstance):
         from prompto.error.PromptoError import PromptoError
@@ -113,10 +124,12 @@ class BaseMethodDeclaration(BaseDeclaration, IMethodDeclaration):
             pass
         return Specificity.INCOMPATIBLE
 
+
     def interpret(self, context):
         from prompto.error.InternalError import InternalError
 
         raise InternalError("Should never get there!")
+
 
     def isEligibleAsMain(self):
         return False

@@ -23,14 +23,16 @@ class SetType(ContainerType):
             return False
         if not isinstance(obj, SetType):
             return False
-        return self.getItemType() == obj.getItemType()
+        return self.itemType == obj.itemType
+
 
     def checkAdd(self, context, other, tryReverse):
         from prompto.type.ListType import ListType
-        if isinstance(other, (ListType, SetType)) and self.getItemType() == other.getItemType():
+        if isinstance(other, (ListType, SetType)) and self.itemType == other.itemType:
             return self
         else:
             return super(SetType, self).checkAdd(context, other, tryReverse)
+
 
     def checkItem(self, context, other):
         from prompto.type.IntegerType import IntegerType
@@ -39,11 +41,14 @@ class SetType(ContainerType):
         else:
             return super(SetType, self).checkItem(context, other)
 
+
     def checkContainsAllOrAny(self, context, other):
         return BooleanType.instance
 
+
     def checkIterator(self, context):
         return self.itemType
+
 
     def checkMember(self, context, name):
         from prompto.type.IntegerType import IntegerType
@@ -52,3 +57,6 @@ class SetType(ContainerType):
         else:
             return super(SetType, self).checkMember(context, name)
 
+
+    def withItemType(self, itemType):
+        return SetType(itemType)

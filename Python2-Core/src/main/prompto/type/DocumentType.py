@@ -53,6 +53,7 @@ class DocumentType ( NativeType ):
             instance.setMember(context, key, value)
         return instance
 
+
     def readJSONField(self, context, node, parts):
         if node is None:
             return NullValue.instance
@@ -72,6 +73,11 @@ class DocumentType ( NativeType ):
             raise Exception("object")
         else:
             raise Exception(str(type(node)))
+
+
+    def withItemType(self, itemType):
+        return self
+
 
 DocumentType.instance = DocumentType()
 
