@@ -9,6 +9,8 @@ from prompto.value.IFilterable import IFilterable
 from prompto.value.IIterable import IIterable
 from prompto.value.Integer import Integer
 from prompto.store.InvalidValueError import InvalidValueError
+from prompto.value.ListValue import ListValue
+
 
 class Cursor(BaseValue, IIterable, IFilterable):
 
@@ -19,20 +21,16 @@ class Cursor(BaseValue, IIterable, IFilterable):
         self.mutable = getattr(itemType, "mutable", False)
 
 
-
     def isEmpty(self):
         return len(self.stored)==0
-
 
 
     def __len__(self):
         return len(self.stored)
 
 
-
     def totalLength(self):
         return self.stored.totalLength()
-
 
 
     def __str__(self):
@@ -56,7 +54,6 @@ class Cursor(BaseValue, IIterable, IFilterable):
             yield val
 
 
-
     def readItemType(self, stored):
         # val = getattr(stored, "category")
         # category = val[-1]
@@ -64,7 +61,6 @@ class Cursor(BaseValue, IIterable, IFilterable):
         typ = CategoryType(category)
         typ.mutable = self.mutable
         return typ
-
 
 
     def getMemberValue(self, context, name, autoCreate=False):
@@ -76,9 +72,13 @@ class Cursor(BaseValue, IIterable, IFilterable):
             raise InvalidValueError("No such member:" + name)
 
 
-
     def filter(self, context, itemName, filter):
         return FilteredCursor(self, context, itemName, filter)
+
+
+    def toListValue(self, context):
+        items = [ item for item in self.getIterator(context)]
+        return ListValue(self.itype.itemType, items=items)
 
 
 class FilteredCursor(Cursor):
