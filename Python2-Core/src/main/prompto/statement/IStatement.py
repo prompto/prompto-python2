@@ -7,3 +7,5 @@ class IStatement ( IExpression, ISection ):
     def canReturn(self):
         return False
 
+    def isSimple(self):
+        return False

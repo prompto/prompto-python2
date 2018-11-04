@@ -1,4 +1,4 @@
-from prompto.statement.SimpleStatement import SimpleStatement
+from prompto.statement.BaseStatement import BaseStatement
 from prompto.type.VoidType import VoidType
 from prompto.store.DataStore import DataStore
 from prompto.value.IContainer import IContainer
@@ -8,11 +8,17 @@ from prompto.value.NullValue import NullValue
 
 
 
-class StoreStatement(SimpleStatement):
+class StoreStatement(BaseStatement):
 
-    def __init__(self, to_del, to_add):
+    def __init__(self, to_del, to_add, andThen):
+        super(BaseStatement, self).__init__()
         self.to_del = to_del
         self.to_add = to_add
+        self.andThen = andThen
+
+
+    def isSimple(self):
+        return self.andThen is None
 
 
     def toDialect (self, writer):
@@ -24,6 +30,16 @@ class StoreStatement(SimpleStatement):
         if self.to_add is not None:
             writer.append ("store ")
             self.itemsToDialect(self.to_add, writer)
+        if self.andThen is not None:
+            if writer.dialect is Dialect.O:
+                writer.append("then {").newLine().indent()
+                self.andThen.toDialect(writer)
+                writer.dedent().append("}")
+            else:
+                writer.append("then:").newLine().indent()
+                self.andThen.toDialect(writer)
+                writer.dedent()
+
 
     def itemsToDialect (self, items, writer):
         if writer.dialect is not Dialect.E:
@@ -35,8 +51,10 @@ class StoreStatement(SimpleStatement):
         if writer.dialect is not Dialect.E:
             writer.append(')')
 
+
     def __str__(self):
         return "store " + str(self.to_add)
+
 
     def __eq__(self, other):
         if other is self:
@@ -52,11 +70,14 @@ class StoreStatement(SimpleStatement):
         # TODO check expression
         return VoidType.instance
 
+
     def interpret (self,  context):
         idsToDel = self.getIdsToDelete(context)
         storablesToAdd = self.getStorablesToAdd(context)
         if idsToDel is not None or storablesToAdd is not None:
             DataStore.instance.store(idsToDel, storablesToAdd)
+        if self.andThen is not None:
+            self.andThen.interpret(context)
 
 
     def getIdsToDelete(self, context):
@@ -83,7 +104,6 @@ class StoreStatement(SimpleStatement):
             return None
         else:
             return idsToDel
-
 
 
     def getStorablesToAdd(self, context):
