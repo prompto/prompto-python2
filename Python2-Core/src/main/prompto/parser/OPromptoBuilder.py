@@ -188,6 +188,8 @@ from prompto.statement.CollectionSwitchCase import CollectionSwitchCase
 from prompto.statement.CommentStatement import CommentStatement
 from prompto.statement.DeclarationStatement import DeclarationStatement
 from prompto.statement.DoWhileStatement import DoWhileStatement
+from prompto.statement.FetchManyStatement import FetchManyStatement
+from prompto.statement.FetchOneStatement import FetchOneStatement
 from prompto.statement.FlushStatement import FlushStatement
 from prompto.statement.ForEachStatement import ForEachStatement
 from prompto.statement.IfStatement import IfElement, IfStatement, IfElementList
@@ -1783,10 +1785,8 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, DocumentLiteral(items))
 
 
-    def exitFetchOne(self, ctx):
-        category = self.getNodeValue(ctx.typ)
-        predicate = self.getNodeValue(ctx.predicate)
-        self.setNodeValue(ctx, FetchOneExpression(category, predicate))
+    def exitFetchStatement(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.stmt))
 
 
     def exitFetchMany(self, ctx):
@@ -1798,23 +1798,51 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, FetchManyExpression(category, predicate, start, stop, orderBy))
 
 
+    def exitFetchManyAsync(self, ctx):
+        category = self.getNodeValue(ctx.typ)
+        predicate = self.getNodeValue(ctx.predicate)
+        start = self.getNodeValue(ctx.xstart)
+        stop = self.getNodeValue(ctx.xstop)
+        orderBy = self.getNodeValue(ctx.orderby)
+        name = self.getNodeValue(ctx.name)
+        stmts = self.getNodeValue(ctx.stmts)
+        self.setNodeValue(ctx, FetchManyStatement(category, predicate, start, stop, orderBy, name, stmts))
+
+
+    def exitFetchOne(self, ctx):
+        category = self.getNodeValue(ctx.typ)
+        predicate = self.getNodeValue(ctx.predicate)
+        self.setNodeValue(ctx, FetchOneExpression(category, predicate))
+
+
+    def exitFetchOneAsync(self, ctx):
+        category = self.getNodeValue(ctx.typ)
+        predicate = self.getNodeValue(ctx.predicate)
+        name = self.getNodeValue(ctx.name)
+        stmts = self.getNodeValue(ctx.stmts)
+        self.setNodeValue(ctx, FetchOneStatement(category, predicate, name, stmts))
+
+
     def exitFiltered_list_expression(self, ctx):
         itemName = self.getNodeValue(ctx.name)
+        predicate = self.getNodeValue(ctx.predicate)
         source = self.getNodeValue(ctx.source)
-        xfilter = self.getNodeValue(ctx.predicate)
-        self.setNodeValue(ctx, FilteredExpression(itemName, source, xfilter))
+        self.setNodeValue(ctx, FilteredExpression(itemName, source, predicate))
 
 
     def exitClosure_expression(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MethodExpression(name))
 
+
     def exitCode_type(self, ctx):
         self.setNodeValue(ctx, CodeType.instance)
+
 
     def exitExecuteExpression(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, ExecuteExpression(name))
+
 
     def exitExpression_list(self, ctx):
         items = []

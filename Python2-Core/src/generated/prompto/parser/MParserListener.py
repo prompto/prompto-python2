@@ -283,6 +283,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#FetchStatement.
+    def enterFetchStatement(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#FetchStatement.
+    def exitFetchStatement(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#FlushStatement.
     def enterFlushStatement(self, ctx):
         pass
@@ -1180,6 +1189,24 @@ class MParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by MParser#FetchMany.
     def exitFetchMany(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#FetchOneAsync.
+    def enterFetchOneAsync(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#FetchOneAsync.
+    def exitFetchOneAsync(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#FetchManyAsync.
+    def enterFetchManyAsync(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#FetchManyAsync.
+    def exitFetchManyAsync(self, ctx):
         pass
 
 

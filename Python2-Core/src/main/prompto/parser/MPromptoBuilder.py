@@ -187,6 +187,8 @@ from prompto.statement.CollectionSwitchCase import CollectionSwitchCase
 from prompto.statement.CommentStatement import CommentStatement
 from prompto.statement.DeclarationStatement import DeclarationStatement
 from prompto.statement.DoWhileStatement import DoWhileStatement
+from prompto.statement.FetchManyStatement import FetchManyStatement
+from prompto.statement.FetchOneStatement import FetchOneStatement
 from prompto.statement.FlushStatement import FlushStatement
 from prompto.statement.ForEachStatement import ForEachStatement
 from prompto.statement.IfStatement import IfElement, IfElementList, IfStatement
@@ -891,16 +893,14 @@ class MPromptoBuilder(MParserListener):
         items.append(ArgumentAssignment(None, exp))
         self.setNodeValue(ctx, items)
 
+
     def exitFlush_statement(self, ctx):
         self.setNodeValue(ctx, FlushStatement())
+
 
     def exitFlushStatement(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.stmt))
 
-    def exitFetchOne(self, ctx):
-        category = self.getNodeValue(ctx.typ)
-        predicate = self.getNodeValue(ctx.predicate)
-        self.setNodeValue(ctx, FetchOneExpression(category, predicate))
 
     def exitFetchMany(self, ctx):
         category = self.getNodeValue(ctx.typ)
@@ -910,16 +910,47 @@ class MPromptoBuilder(MParserListener):
         orderBy = self.getNodeValue(ctx.orderby)
         self.setNodeValue(ctx, FetchManyExpression(category, predicate, start, stop, orderBy))
 
+
+    def exitFetchManyAsync(self, ctx):
+        category = self.getNodeValue(ctx.typ)
+        predicate = self.getNodeValue(ctx.predicate)
+        start = self.getNodeValue(ctx.xstart)
+        stop = self.getNodeValue(ctx.xstop)
+        orderBy = self.getNodeValue(ctx.orderby)
+        name = self.getNodeValue(ctx.name)
+        stmts = self.getNodeValue(ctx.stmts)
+        self.setNodeValue(ctx, FetchManyStatement(category, predicate, start, stop, orderBy, name, stmts))
+
+
+    def exitFetchStatement(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.stmt))
+
+
+    def exitFetchOne(self, ctx):
+        category = self.getNodeValue(ctx.typ)
+        predicate = self.getNodeValue(ctx.predicate)
+        self.setNodeValue(ctx, FetchOneExpression(category, predicate))
+
+
+    def exitFetchOneAsync(self, ctx):
+        category = self.getNodeValue(ctx.typ)
+        predicate = self.getNodeValue(ctx.predicate)
+        name = self.getNodeValue(ctx.name)
+        stmts = self.getNodeValue(ctx.stmts)
+        self.setNodeValue(ctx, FetchOneStatement(category, predicate, name, stmts))
+
+
     def exitFilteredListExpression(self, ctx):
         fetch = self.getNodeValue(ctx.filtered_list_suffix())
-        source = self.getNodeValue(ctx.src)
-        fetch.source = source
+        fetch.source = self.getNodeValue(ctx.src)
         self.setNodeValue(ctx, fetch)
+
 
     def exitFiltered_list_suffix(self, ctx):
         itemName = self.getNodeValue(ctx.name)
         predicate = self.getNodeValue(ctx.predicate)
         self.setNodeValue(ctx, FilteredExpression(itemName, None, predicate))
+
 
     def exitFor_each_statement(self, ctx):
         name1 = self.getNodeValue(ctx.name1)
@@ -927,6 +958,7 @@ class MPromptoBuilder(MParserListener):
         source = self.getNodeValue(ctx.source)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, ForEachStatement(name1, name2, source, stmts))
+
 
     def exitForEachStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
