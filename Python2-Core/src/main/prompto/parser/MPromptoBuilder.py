@@ -964,16 +964,19 @@ class MPromptoBuilder(MParserListener):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitFullDeclarationList(self, ctx):
         items = self.getNodeValue(ctx.declarations())
         if items is None:
             items = DeclarationList()
         self.setNodeValue(ctx, items)
 
+
     def exitGetter_method_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, GetterMethodDeclaration(name, stmts))
+
 
     def exitNative_setter_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
