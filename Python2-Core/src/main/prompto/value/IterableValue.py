@@ -1,3 +1,5 @@
+from io import StringIO
+
 from prompto.value.BaseValue import BaseValue
 from prompto.value.IIterable import IIterable
 from prompto.store.InvalidValueError import InvalidValueError
@@ -15,6 +17,7 @@ class IterableValue(BaseValue, IIterable):
         self.length = length
         self.expression = expression
 
+
     def getIterator(self, context):
         for value in self.source:
             child = context.newChildContext()
@@ -23,9 +26,21 @@ class IterableValue(BaseValue, IIterable):
             value = self.expression.interpret(child)
             yield value
 
+
     def getMemberValue(self, context, name, autoCreate):
         if "count"==name:
             return self.length
         else:
-            raise InvalidValueError("No such member:" + name)
+            return super(IterableValue, self).getMemberValue(context, name, autoCreate)
+
+
+    def __str__(self):
+        with StringIO() as sb:
+            for item in self.getIterator(self.context):
+                sb.write(unicode(item))
+                sb.write(u", ")
+            len = sb.tell()
+            if len > 0:
+                sb.truncate(len - 2)
+            return sb.getvalue()
 
