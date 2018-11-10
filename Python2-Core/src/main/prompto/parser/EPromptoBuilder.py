@@ -335,7 +335,7 @@ class EPromptoBuilder(EParserListener):
     def exitMethodCallExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         args = self.getNodeValue(ctx.args)
-        call = UnresolvedCall(exp, args)
+        call = UnresolvedCall(exp, args, None)
         self.setNodeValue(ctx, call)
 
 
@@ -804,7 +804,8 @@ class EPromptoBuilder(EParserListener):
     def exitUnresolvedWithArgsStatement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, UnresolvedCall(exp, args))
+        stmts = self.getNodeValue(ctx.stmts)
+        self.setNodeValue(ctx, UnresolvedCall(exp, args, stmts))
 
 
     def exitUUIDType(self, ctx):
@@ -821,9 +822,11 @@ class EPromptoBuilder(EParserListener):
         exp = PlusExpression(left, right) if ctx.op.type == EParser.PLUS else SubtractExpression(left, right)
         self.setNodeValue(ctx, exp)
 
+
     def exitNative_member_method_declaration(self, ctx):
         decl = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, decl)
+
 
     def exitNative_member_method_declaration_list(self, ctx):
         items = MethodDeclarationList()

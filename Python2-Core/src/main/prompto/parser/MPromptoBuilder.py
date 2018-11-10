@@ -1363,33 +1363,47 @@ class MPromptoBuilder(MParserListener):
         exp = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, MatchingCollectionConstraint(exp))
 
+
     def exitMaxIntegerLiteral(self, ctx):
         self.setNodeValue(ctx, MaxIntegerLiteral())
+
 
     def exitMemberInstance(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MemberInstance(None, name))
 
+
     def exitMemberSelector(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MemberSelector(name))
 
+
     def exitMethod_call(self, ctx):
         method = self.getNodeValue(ctx.method)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, UnresolvedCall(method, args))
+        self.setNodeValue(ctx, UnresolvedCall(method, args, None))
+
+
+    def exitMethod_call_statement(self, ctx):
+        call = self.getNodeValue(ctx.method)
+        call.andThen = self.getNodeValue(ctx.stmts)
+        self.setNodeValue(ctx, call)
+
 
     def exitMethod_declaration(self, ctx):
         value = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, value)
 
+
     def exitMethod_identifier(self, ctx):
         stmt = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, stmt)
 
+
     def exitMethod_expression(self, ctx):
         exp = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, exp)
+
 
     def exitMethodCallStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)

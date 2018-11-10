@@ -706,7 +706,13 @@ class OPromptoBuilder(OParserListener):
     def exitMethod_call(self, ctx):
         selector = self.getNodeValue(ctx.method)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, UnresolvedCall(selector, args))
+        self.setNodeValue(ctx, UnresolvedCall(selector, args, None))
+
+
+    def exitMethod_call_statement(self, ctx):
+        call = self.getNodeValue(ctx.method)
+        call.andThen = self.getNodeValue(ctx.stmts)
+        self.setNodeValue(ctx, call)
 
 
     def exitMethod_declaration(self, ctx):
@@ -834,13 +840,16 @@ class OPromptoBuilder(OParserListener):
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, ConcreteMethodDeclaration(name, args, typ, stmts))
 
+
     def exitSingleStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, StatementList(stmt))
 
+
     def exitMethodCallStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitConstructorFrom(self, ctx):
         typ = self.getNodeValue(ctx.typ)
@@ -848,17 +857,21 @@ class OPromptoBuilder(OParserListener):
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, ConstructorExpression(typ, copyFrom, args, True))
 
+
     def exitConstructorNoFrom(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, ConstructorExpression(typ, None, args, True))
 
+
     def exitCopy_from(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
+
 
     def exitAssertion(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
 
     def exitAssertion_list(self, ctx):
         items = []

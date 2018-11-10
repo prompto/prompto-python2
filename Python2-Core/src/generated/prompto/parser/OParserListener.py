@@ -643,6 +643,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#method_call_statement.
+    def enterMethod_call_statement(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#method_call_statement.
+    def exitMethod_call_statement(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#MethodName.
     def enterMethodName(self, ctx):
         pass
