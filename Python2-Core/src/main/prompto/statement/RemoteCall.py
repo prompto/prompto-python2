@@ -1,14 +1,13 @@
 from prompto.parser.Dialect import Dialect
-from prompto.runtime.Context import Context
 from prompto.runtime.Variable import Variable
 from prompto.statement.UnresolvedCall import UnresolvedCall
 from prompto.type.VoidType import VoidType
 
 
-class AsynchronousCall(UnresolvedCall):
+class RemoteCall(UnresolvedCall):
 
     def __init__(self, caller, assignments, resultName, andThen):
-        super(AsynchronousCall, self).__init__(caller, assignments)
+        super(RemoteCall, self).__init__(caller, assignments)
         self.resultName = resultName
         self.andThen = andThen
 
@@ -18,7 +17,7 @@ class AsynchronousCall(UnresolvedCall):
 
 
     def toDialect(self, writer):
-        super(AsynchronousCall, self).toDialect(writer)
+        super(RemoteCall, self).toDialect(writer)
         resultType = self.resolveAndCheck(writer.context)
         writer.append(" then")
         writer = writer.newChildWriter()
@@ -47,7 +46,7 @@ class AsynchronousCall(UnresolvedCall):
 
     def interpret(self, context):
         resultType = self.resolveAndCheck(context)
-        resultValue = super(AsynchronousCall, self).interpret(context)
+        resultValue = super(RemoteCall, self).interpret(context)
         context = context.newChildContext()
         if self.resultName is not None:
             context.registerValue(Variable(self.resultName, resultType))
