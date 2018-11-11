@@ -182,6 +182,7 @@ from prompto.python.PythonTextLiteral import PythonTextLiteral
 from prompto.statement.AssignInstanceStatement import AssignInstanceStatement
 from prompto.statement.AssignTupleStatement import AssignTupleStatement
 from prompto.statement.AssignVariableStatement import AssignVariableStatement
+from prompto.statement.AsynchronousCall import AsynchronousCall
 from prompto.statement.AtomicSwitchCase import AtomicSwitchCase
 from prompto.statement.BreakStatement import BreakStatement
 from prompto.statement.CollectionSwitchCase import CollectionSwitchCase
@@ -706,13 +707,17 @@ class OPromptoBuilder(OParserListener):
     def exitMethod_call(self, ctx):
         selector = self.getNodeValue(ctx.method)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, UnresolvedCall(selector, args, None))
+        self.setNodeValue(ctx, UnresolvedCall(selector, args))
 
 
     def exitMethod_call_statement(self, ctx):
         call = self.getNodeValue(ctx.method)
-        call.andThen = self.getNodeValue(ctx.stmts)
-        self.setNodeValue(ctx, call)
+        name = self.getNodeValue(ctx.name)
+        stmts = self.getNodeValue(ctx.stmts)
+        if name is not None or stmts is not None:
+            self.setNodeValue(ctx, AsynchronousCall(call.caller, call.assignments, name, stmts))
+        else:
+            self.setNodeValue(ctx, call)
 
 
     def exitMethod_declaration(self, ctx):
