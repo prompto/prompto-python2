@@ -16,7 +16,6 @@ class UnresolvedSelector(SelectorExpression):
         self.resolved = None
 
 
-
     def __str__(self):
         return self.name if self.parent is None else str(self.parent) + '.' + self.name
 
@@ -35,15 +34,12 @@ class UnresolvedSelector(SelectorExpression):
             writer.append(self.name)
 
 
-
     def check(self, context):
         return self.resolveAndCheck(context, False)
 
 
-
     def checkMember(self, context):
         return self.resolveAndCheck(context, True)
-
 
 
     def interpret(self, context):
@@ -51,25 +47,27 @@ class UnresolvedSelector(SelectorExpression):
         return self.resolved.interpret(context)
 
 
-
     def resolveAndCheck(self, context, forMember):
         self.resolve(context, forMember)
         return AnyType.instance if self.resolved is None else self.resolved.check(context)
 
 
-
     def resolve(self, context, forMember):
         if self.resolved is None:
-            self.resolved = self.resolveMethod(context)
+            self.resolved = self.tryResolveMethod(context, None)
             if self.resolved is None:
-                self.resolved = self.resolveMember(context)
+                self.resolved = self.tryResolveMember(context)
         if self.resolved is None:
             raise SyntaxError("Unknown identifier:" + self.name)
         return self.resolved
 
 
+    def resolveMethod(self, context, assignments):
+        if self.resolved is None:
+            self.resolved = self.tryResolveMethod(context, assignments)
 
-    def resolveMember(self, context):
+
+    def tryResolveMember(self, context):
         try:
             member = MemberSelector(self.name, self.parent)
             member.check(context)
@@ -78,13 +76,13 @@ class UnresolvedSelector(SelectorExpression):
             return None
 
 
-    def resolveMethod(self, context):
+    def tryResolveMethod(self, context, assignments):
         try:
             resolvedParent = self.parent
             if isinstance(resolvedParent, UnresolvedIdentifier):
                 resolvedParent.checkMember(context)
                 resolvedParent = resolvedParent.resolved
-            method = UnresolvedCall(MethodSelector(self.name, resolvedParent), None)
+            method = UnresolvedCall(MethodSelector(self.name, resolvedParent), assignments)
             method.check(context)
             return method
         except SyntaxError:
