@@ -621,12 +621,12 @@ def serializedATN():
         buf.write(u"?\3\2\2\2\u0388\u038e\5\u00c4c\2\u0389\u038a\5B\"\2\u038a")
         buf.write(u"\u038b\7\25\2\2\u038b\u038c\5\u00c4c\2\u038c\u038e\3")
         buf.write(u"\2\2\2\u038d\u0388\3\2\2\2\u038d\u0389\3\2\2\2\u038e")
-        buf.write(u"A\3\2\2\2\u038f\u0390\b\"\1\2\u0390\u0391\5\u00ccg\2")
-        buf.write(u"\u0391\u0396\3\2\2\2\u0392\u0393\f\3\2\2\u0393\u0395")
-        buf.write(u"\5D#\2\u0394\u0392\3\2\2\2\u0395\u0398\3\2\2\2\u0396")
-        buf.write(u"\u0394\3\2\2\2\u0396\u0397\3\2\2\2\u0397C\3\2\2\2\u0398")
-        buf.write(u"\u0396\3\2\2\2\u0399\u039a\7\25\2\2\u039a\u03a0\5\u00ce")
-        buf.write(u"h\2\u039b\u039c\7\30\2\2\u039c\u039d\5b\62\2\u039d\u039e")
+        buf.write(u"A\3\2\2\2\u038f\u0390\b\"\1\2\u0390\u0391\5f\64\2\u0391")
+        buf.write(u"\u0396\3\2\2\2\u0392\u0393\f\3\2\2\u0393\u0395\5D#\2")
+        buf.write(u"\u0394\u0392\3\2\2\2\u0395\u0398\3\2\2\2\u0396\u0394")
+        buf.write(u"\3\2\2\2\u0396\u0397\3\2\2\2\u0397C\3\2\2\2\u0398\u0396")
+        buf.write(u"\3\2\2\2\u0399\u039a\7\25\2\2\u039a\u03a0\5\u00ceh\2")
+        buf.write(u"\u039b\u039c\7\30\2\2\u039c\u039d\5b\62\2\u039d\u039e")
         buf.write(u"\7\31\2\2\u039e\u03a0\3\2\2\2\u039f\u0399\3\2\2\2\u039f")
         buf.write(u"\u039b\3\2\2\2\u03a0E\3\2\2\2\u03a1\u03a2\7\u009f\2\2")
         buf.write(u"\u03a2\u03a3\5\u0130\u0099\2\u03a3\u03a4\7\21\2\2\u03a4")
@@ -5722,11 +5722,11 @@ class MParser ( AbstractParser ):
 
         def __init__(self, parser, ctx): # actually a MParser.Callable_parentContext)
             super(MParser.CallableRootContext, self).__init__(parser)
-            self.name = None # IdentifierContext
+            self.exp = None # Instance_expressionContext
             self.copyFrom(ctx)
 
-        def identifier(self):
-            return self.getTypedRuleContext(MParser.IdentifierContext,0)
+        def instance_expression(self):
+            return self.getTypedRuleContext(MParser.Instance_expressionContext,0)
 
 
         def enterRule(self, listener):
@@ -5753,7 +5753,7 @@ class MParser ( AbstractParser ):
             _prevctx = localctx
 
             self.state = 910
-            localctx.name = self.identifier()
+            localctx.exp = self.instance_expression(0)
             self._ctx.stop = self._input.LT(-1)
             self.state = 916
             self._errHandler.sync(self)

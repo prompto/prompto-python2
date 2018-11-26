@@ -439,29 +439,36 @@ class MPromptoBuilder(MParserListener):
         exp = self.getNodeValue(ctx.expression())
         self.setNodeValue(ctx, BlobExpression(exp))
 
+
     def exitBlobType(self, ctx):
         self.setNodeValue(ctx, BlobType.instance)
+
 
     def exitBooleanLiteral(self, ctx):
         self.setNodeValue(ctx, BooleanLiteral(ctx.t.text))
 
+
     def exitBooleanType(self, ctx):
         self.setNodeValue(ctx, BooleanType.instance)
 
+
     def exitBreakStatement(self, ctx):
         self.setNodeValue(ctx, BreakStatement())
+
 
     def exitCallableMemberSelector(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MemberSelector(name))
 
+
     def exitCallableItemSelector(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, ItemSelector(exp))
 
+
     def exitCallableRoot(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, UnresolvedIdentifier(name, Dialect.M))
+        self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
+
 
     def exitCallableSelector(self, ctx):
         parent = self.getNodeValue(ctx.parent)
@@ -469,10 +476,12 @@ class MPromptoBuilder(MParserListener):
         select.setParent(parent)
         self.setNodeValue(ctx, select)
 
+
     def exitCastExpression(self, ctx):
         typ = self.getNodeValue(ctx.right)
         exp = self.getNodeValue(ctx.left)
         self.setNodeValue(ctx, CastExpression(exp, typ))
+
 
     def exitCatchAtomicStatement(self, ctx):
         name = self.getNodeValue(ctx.name)
