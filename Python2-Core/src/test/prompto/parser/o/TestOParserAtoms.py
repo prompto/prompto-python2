@@ -1,4 +1,5 @@
 import unittest
+from datetime import datetime, date
 
 from prompto.argument.ExtendedArgument import ExtendedArgument
 from prompto.declaration.NativeMethodDeclaration import *
