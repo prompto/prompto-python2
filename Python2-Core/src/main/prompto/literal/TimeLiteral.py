@@ -12,4 +12,3 @@ class TimeLiteral(Literal):
 
     def check(self, context):
         return TimeType.instance
-	
