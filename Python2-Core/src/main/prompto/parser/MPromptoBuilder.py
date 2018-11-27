@@ -1689,9 +1689,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, method)
 
     def exitPython_module(self, ctx):
-        ids = []
-        for ic in ctx.identifier():
-            ids.append(ic.getText())
+        ids = [c.getText() for c in ctx.python_identifier()]
         module = PythonModule(ids)
         self.setNodeValue(ctx, module)
 

@@ -1194,7 +1194,7 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, PythonNativeCall(stmt, module))
 
     def exitPython_module(self, ctx):
-        ids = [c.getText() for c in ctx.identifier()]
+        ids = [c.getText() for c in ctx.python_identifier()]
         module = PythonModule(ids)
         self.setNodeValue(ctx, module)
 
