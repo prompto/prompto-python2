@@ -10,6 +10,7 @@ class MIndentingLexer(MLexer):
             itype = token.type
         return cls.symbolicNames[itype]
 
+
     def __init__(self, input_):
         super(MIndentingLexer, self).__init__(input_)
         self.tokens = []
@@ -17,19 +18,23 @@ class MIndentingLexer(MLexer):
         self.wasLF = False
         self.addLF = True
 
+
     def getDialect(self):
         return Dialect.M
+
 
     def nextToken(self):
         t = self.getNextToken()
         self.wasLF = t.type==MLexer.LF
         return t
 
+
     def getNextToken(self):
         if len(self.tokens)>0:
             return self.tokens.pop(0)
         self.interpret(super(MIndentingLexer, self).nextToken())
         return self.nextToken()
+
 
     def interpret(self, token):
         t = token.type
@@ -39,6 +44,7 @@ class MIndentingLexer(MLexer):
             self.interpretLFTAB(token)
         else:
             self.interpretAnyToken(token)
+
 
     def interpretEOF(self, eof):
         # gracefully handle missing lf/dedents
@@ -51,6 +57,7 @@ class MIndentingLexer(MLexer):
         if self.addLF and not self.wasLF:
             self.tokens.append(self.deriveToken(eof, MLexer.LF))
         self.tokens.append(eof)
+
 
     def interpretLFTAB(self, lftab):
         # count TABs following LF
@@ -77,10 +84,12 @@ class MIndentingLexer(MLexer):
                 pass # TODO, fire an error through token
             self.interpret(next)
 
+
     def deriveToken(self, token, type):
         res = token.clone()
         res.type = type
         return res
+
 
     def countIndents(self, text):
         count = 0
@@ -90,6 +99,7 @@ class MIndentingLexer(MLexer):
             elif c=='\t':
                 count += 4
         return int(count/4)
+
 
     def interpretAnyToken(self, token):
         self.tokens.append(token)
