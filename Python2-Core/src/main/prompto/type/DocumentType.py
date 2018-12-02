@@ -1,3 +1,5 @@
+from prompto.error.PromptoError import PromptoError
+from prompto.literal.TextLiteral import TextLiteral
 from prompto.type.MissingType import MissingType
 from prompto.type.NullType import NullType
 from prompto.type.TextType import TextType
@@ -78,6 +80,87 @@ class DocumentType ( NativeType ):
     def withItemType(self, itemType):
         return self
 
+
+    def sort(self, context, source, desc, key):
+        if key is None:
+            key = TextLiteral('"key"')
+        if self.globalMethodExists(context, str(key)):
+            return self.sortByGlobalMethod(context, source, desc, str(key))
+        elif isinstance(key, TextLiteral):
+            return self.sortByEntry(context, source, desc, key.getValue().getStorableData())
+        else:
+            return self.sortByExpression(context, source, desc, key)
+
+
+    def sortByExpression(self, context, source, desc, exp):
+
+        def compare(o1, o2):
+            co = context.newDocumentContext(o1, False)
+            key1 = exp.interpret(co)
+            co = context.newDocumentContext(o2, False)
+            key2 = exp.interpret(co)
+            return self.compareKeys(key1, key2)
+
+        return sorted(source, cmp=compare, reverse=desc)
+
+
+    def sortByEntry(self, context, source, desc, name):
+
+        def compare(o1, o2):
+            key1 = o1.getMemberValue(context, name)
+            key2 = o2.getMemberValue(context, name)
+            return self.compareKeys(key1, key2)
+
+        return sorted(source, cmp=compare, reverse=desc)
+
+
+    def globalMethodExists(self, context, name):
+        from prompto.runtime.Context import MethodDeclarationMap
+        methods = context.getRegisteredDeclaration(MethodDeclarationMap, name)
+        if methods is None:
+            return False
+        else:
+            return methods.get(self.typeName, None)
+
+
+    def sortByGlobalMethod(self, context, source, desc, name):
+        from prompto.statement.MethodCall import MethodCall
+        from prompto.value.ExpressionValue import ExpressionValue
+        from prompto.grammar.ArgumentAssignment import ArgumentAssignment
+        from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
+        from prompto.expression.MethodSelector import MethodSelector
+        from prompto.value.Document import Document
+        exp = ExpressionValue(self, Document())
+        arg = ArgumentAssignment(None, exp)
+        args = ArgumentAssignmentList(items=[arg])
+        call = MethodCall(MethodSelector(name), args)
+        return self.doSortByGlobalMethod(context, source, desc, call)
+
+
+
+    def doSortByGlobalMethod(self, context, source, desc, call):
+        from prompto.value.ExpressionValue import ExpressionValue
+
+        def compare(o1, o2):
+            assignment = call.assignments[0]
+            assignment.setExpression(ExpressionValue(self, o1))
+            key1 = call.interpret(context)
+            assignment.setExpression(ExpressionValue(self, o2))
+            key2 = call.interpret(context)
+            return self.compareKeys(key1, key2)
+
+        return sorted(source, cmp=compare, reverse=desc)
+
+
+    def compareKeys(self, key1, key2):
+        if key1 is None and key2 is None:
+            return 0
+        elif key1 is None:
+            return -1
+        elif key2 is None:
+            return 1
+        else:
+            return cmp(key1,key2)
 
 DocumentType.instance = DocumentType()
 

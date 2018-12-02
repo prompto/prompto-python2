@@ -248,12 +248,14 @@ class CategoryType(BaseType):
             return Score.WORSE
         return Score.SIMILAR  # should never happen
 
+
     def newInstance(self, context):
         from prompto.declaration.CategoryDeclaration import CategoryDeclaration
         decl = context.getRegisteredDeclaration(CategoryDeclaration, self.typeName)
         return decl.newInstance(context)
 
-    def sort(self, context, source, desc, key=None):
+
+    def sort(self, context, source, desc, key):
         if key is None:
             from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
             key = UnresolvedIdentifier("key", Dialect.O)
@@ -261,11 +263,12 @@ class CategoryType(BaseType):
         if decl.hasAttribute(context, str(key)):
             return self.sortByAttribute(context, source, desc, str(key))
         elif decl.hasMethod(context, str(key)):
-            return self.sortByClassMethod(context, source, desc, str(key))
-        elif self.globalMethodExists(context, source, str(key)):
+            return self.sortByMemberMethod(context, source, desc, str(key))
+        elif self.globalMethodExists(context, str(key)):
             return self.sortByGlobalMethod(context, source, desc, str(key))
         else:
             return self.sortByExpression(context, source, desc, key)
+
 
     def sortByExpression(self, context, source, desc, exp):
 
@@ -278,6 +281,7 @@ class CategoryType(BaseType):
 
         return sorted(source, cmp=compare, reverse=desc)
 
+
     def sortByAttribute(self, context, source, desc, name):
 
         def compare(o1, o2):
@@ -287,10 +291,12 @@ class CategoryType(BaseType):
 
         return sorted(source, cmp=compare, reverse=desc)
 
-    def sortByClassMethod(self, context, source, name):
+
+    def sortByMemberMethod(self, context, source, desc, name):
         return None
 
-    def globalMethodExists(self, context, source, name):
+
+    def globalMethodExists(self, context, name):
         from prompto.statement.MethodCall import MethodCall
         from prompto.runtime.MethodFinder import MethodFinder
         try:
@@ -310,7 +316,6 @@ class CategoryType(BaseType):
 
     def sortByGlobalMethod(self, context, source, desc, name):
         from prompto.statement.MethodCall import MethodCall
-        from prompto.runtime.MethodFinder import MethodFinder
         from prompto.value.ExpressionValue import ExpressionValue
         from prompto.grammar.ArgumentAssignment import ArgumentAssignment
         from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
@@ -318,22 +323,20 @@ class CategoryType(BaseType):
         exp = ExpressionValue(self, self.newInstance(context))
         arg = ArgumentAssignment(None, exp)
         args = ArgumentAssignmentList(items=[arg])
-        proto = MethodCall(MethodSelector(name), args)
-        finder = MethodFinder(context, proto)
-        method = finder.findMethod(True)
-        return self.doSortByGlobalMethod(context, source, desc, proto, method)
+        call = MethodCall(MethodSelector(name), args)
+        return self.doSortByGlobalMethod(context, source, desc, call)
 
 
 
-    def doSortByGlobalMethod(self, context, source, desc, method, declaration):
+    def doSortByGlobalMethod(self, context, source, desc, call):
         from prompto.value.ExpressionValue import ExpressionValue
 
         def compare(o1, o2):
-            assignment = method.assignments[0]
+            assignment = call.assignments[0]
             assignment.setExpression(ExpressionValue(self, o1))
-            key1 = method.interpret(context)
+            key1 = call.interpret(context)
             assignment.setExpression(ExpressionValue(self, o2))
-            key2 = method.interpret(context)
+            key2 = call.interpret(context)
             return self.compareKeys(key1, key2)
 
         return sorted(source, cmp=compare, reverse=desc)
