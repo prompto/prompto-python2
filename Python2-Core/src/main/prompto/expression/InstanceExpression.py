@@ -1,11 +1,13 @@
-from prompto.argument.IArgument import *
+from prompto.argument.IArgument import IArgument
+from prompto.declaration.AttributeDeclaration import AttributeDeclaration
+from prompto.declaration.IDeclaration import IDeclaration
+from prompto.expression.IExpression import IExpression
 from prompto.parser.Dialect import Dialect
-from prompto.runtime.Context import *
+from prompto.runtime.Context import MethodDeclarationMap
 from prompto.runtime.LinkedVariable import LinkedVariable
-from prompto.runtime.Variable import *
-from prompto.type.MethodType import *
+from prompto.runtime.Variable import Variable
+from prompto.type.MethodType import MethodType
 from prompto.value.ClosureValue import ClosureValue
-
 
 
 class InstanceExpression(IExpression):
@@ -14,16 +16,20 @@ class InstanceExpression(IExpression):
         super(InstanceExpression, self).__init__()
         self.name = name
 
+
     def getName(self):
         return self.name
+
 
     def __str__(self):
         return self.name
 
-    def toDialect(self, writer, requireMethod = True):
+
+    def toDialect(self, writer, requireMethod=True):
         if requireMethod and self.requiresMethod(writer):
             writer.append("Method: ")
         writer.append(self.name)
+
 
     def requiresMethod(self, writer):
         if writer.dialect is not Dialect.E:
@@ -33,9 +39,12 @@ class InstanceExpression(IExpression):
             return True
         return False
 
+
     def check(self, context):
         from prompto.declaration.CategoryDeclaration import CategoryDeclaration
         named = context.getRegistered(self.name)
+        if named is None:
+            named = context.getRegisteredDeclaration(IDeclaration, self.name)
         if named is None:
             raise SyntaxError("Unknown identifier:" + self.name)
         elif isinstance(named, Variable):  # local variable
@@ -69,4 +78,3 @@ class InstanceExpression(IExpression):
                 return ClosureValue(context, MethodType(decl))
             else:
                 raise SyntaxError("No value or method with name:" + self.name)
-
