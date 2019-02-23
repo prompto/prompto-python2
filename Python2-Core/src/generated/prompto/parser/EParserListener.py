@@ -1129,6 +1129,42 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#ParenthesisExpression.
+    def enterParenthesisExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#ParenthesisExpression.
+    def exitParenthesisExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#LiteralExpression.
+    def enterLiteralExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#LiteralExpression.
+    def exitLiteralExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#IdentifierExpression.
+    def enterIdentifierExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#IdentifierExpression.
+    def exitIdentifierExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#ThisExpression.
+    def enterThisExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#ThisExpression.
+    def exitThisExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#SelectorExpression.
     def enterSelectorExpression(self, ctx):
         pass
@@ -2512,42 +2548,6 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#literal_list_literal.
     def exitLiteral_list_literal(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#ParenthesisExpression.
-    def enterParenthesisExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#ParenthesisExpression.
-    def exitParenthesisExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#LiteralExpression.
-    def enterLiteralExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#LiteralExpression.
-    def exitLiteralExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#IdentifierExpression.
-    def enterIdentifierExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#IdentifierExpression.
-    def exitIdentifierExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#ThisExpression.
-    def enterThisExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#ThisExpression.
-    def exitThisExpression(self, ctx):
         pass
 
 

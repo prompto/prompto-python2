@@ -80,6 +80,7 @@ from prompto.expression.TernaryExpression import TernaryExpression
 from prompto.expression.ThisExpression import ThisExpression
 from prompto.expression.TypeExpression import TypeExpression
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
+from prompto.expression.UnresolvedSelector import UnresolvedSelector
 from prompto.grammar.Annotation import Annotation
 from prompto.grammar.ArgumentAssignment import ArgumentAssignment
 from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
@@ -454,27 +455,6 @@ class MPromptoBuilder(MParserListener):
 
     def exitBreakStatement(self, ctx):
         self.setNodeValue(ctx, BreakStatement())
-
-
-    def exitCallableMemberSelector(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, MemberSelector(name))
-
-
-    def exitCallableItemSelector(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, ItemSelector(exp))
-
-
-    def exitCallableRoot(self, ctx):
-        self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
-
-
-    def exitCallableSelector(self, ctx):
-        parent = self.getNodeValue(ctx.parent)
-        select = self.getNodeValue(ctx.select)
-        select.setParent(parent)
-        self.setNodeValue(ctx, select)
 
 
     def exitCastExpression(self, ctx):
@@ -1388,14 +1368,17 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, MemberSelector(name))
 
 
-    def exitMethod_call(self, ctx):
-        method = self.getNodeValue(ctx.method)
+    def exitMethod_call_expression(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        caller = UnresolvedIdentifier(name, Dialect.M)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, UnresolvedCall(method, args))
+        self.setNodeValue(ctx, UnresolvedCall(caller, args))
 
 
     def exitMethod_call_statement(self, ctx):
+        parent = self.getNodeValue(ctx.parent)
         call = self.getNodeValue(ctx.method)
+        call.setParent(parent)
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
         if name is not None or stmts is not None:
@@ -1427,14 +1410,14 @@ class MPromptoBuilder(MParserListener):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
-    def exitMethodName(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, UnresolvedIdentifier(name, Dialect.M))
 
-    def exitMethodParent(self, ctx):
-        parent = self.getNodeValue(ctx.parent)
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, MethodSelector(name, parent))
+    def exitMethodSelector(self, ctx):
+        call = self.getNodeValue(ctx.method)
+        if isinstance(call.caller, UnresolvedIdentifier):
+            name = call.caller.name
+            call.caller = UnresolvedSelector(name)
+        self.setNodeValue(ctx, call)
+
 
     def exitMinIntegerLiteral(self, ctx):
         self.setNodeValue(ctx, MinIntegerLiteral())
