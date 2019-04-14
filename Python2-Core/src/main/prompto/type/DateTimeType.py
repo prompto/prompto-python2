@@ -71,6 +71,12 @@ class DateTimeType(NativeType):
             return IntegerType.instance
         elif "tzName" == name:
             return TextType.instance
+        elif "date" == name:
+            from prompto.type.DateType import DateType
+            return DateType.instance
+        elif "time" == name:
+            from prompto.type.TimeType import TimeType
+            return TimeType.instance
         else:
             return super(DateTimeType, self).checkMember(context, name)
 
