@@ -115,6 +115,7 @@ class ConstructorExpression(IExpression):
                 assignment.check(context)
         return cd.getType(context)
 
+
     def interpret(self, context):
         from prompto.declaration.CategoryDeclaration import CategoryDeclaration
         cd = context.getRegisteredDeclaration(CategoryDeclaration, self.itype.typeName)
