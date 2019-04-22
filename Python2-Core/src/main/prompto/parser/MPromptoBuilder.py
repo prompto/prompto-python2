@@ -41,6 +41,7 @@ from prompto.declaration.OperatorMethodDeclaration import OperatorMethodDeclarat
 from prompto.declaration.SetterMethodDeclaration import SetterMethodDeclaration
 from prompto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
 from prompto.declaration.TestMethodDeclaration import TestMethodDeclaration
+from prompto.expression.InstanceExpression import InstanceExpression
 from prompto.expression.MutableExpression import MutableExpression
 from prompto.expression.PlusExpression import PlusExpression
 from prompto.expression.AndExpression import AndExpression
@@ -1452,7 +1453,8 @@ class MPromptoBuilder(MParserListener):
 
 
     def exitMutableSelectableExpression(self, ctx):
-        self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
+        name = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, InstanceExpression(name))
 
 
     def exitMutableSelectorExpression(self, ctx):
@@ -2056,24 +2058,31 @@ class MPromptoBuilder(MParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitUUIDType(self, ctx):
         self.setNodeValue(ctx, UUIDType.instance)
+
 
     def exitUUIDLiteral(self, ctx):
         self.setNodeValue(ctx, UUIDLiteral(ctx.t.text))
 
+
     def exitValue_token(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
 
     def exitAttribute_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
 
+
     def exitVariable_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
 
     def exitVariableIdentifier(self, ctx):
         name = self.getNodeValue(ctx.variable_identifier())
         self.setNodeValue(ctx, name)
+
 
     def exitAttribute_identifier_list(self, ctx):
         items = IdentifierList()
@@ -2082,12 +2091,14 @@ class MPromptoBuilder(MParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitVariable_identifier_list(self, ctx):
         items = IdentifierList()
         for c in ctx.variable_identifier():
             item = self.getNodeValue(c)
             items.append(item)
         self.setNodeValue(ctx, items)
+
 
     def exitWhile_statement(self, ctx):
         exp = self.getNodeValue(ctx.exp)

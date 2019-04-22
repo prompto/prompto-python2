@@ -294,6 +294,7 @@ class EPromptoBuilder(EParserListener):
         hidden = self.input.getHiddenTokensToRight(token.tokenIndex)
         return self.getHiddenTokensText(hidden)
 
+
     def getHiddenTokensText(self, hidden):
         if hidden is None or len(hidden)==0:
             return None
@@ -314,9 +315,10 @@ class EPromptoBuilder(EParserListener):
             within = within + after
         return within
 
-    @staticmethod
+
     def isNotIndent(self, tree):
         return (not isinstance(tree, TerminalNode)) or tree.symbol.type != ELexer.INDENT
+
 
     def readAnnotations(self, contexts):
         return [ self.getNodeValue(ctx_) for ctx_ in contexts ]
