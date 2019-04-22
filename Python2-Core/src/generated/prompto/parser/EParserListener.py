@@ -877,6 +877,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#MutableInstanceExpression.
+    def enterMutableInstanceExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#MutableInstanceExpression.
+    def exitMutableInstanceExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#ReadAllExpression.
     def enterReadAllExpression(self, ctx):
         pass
@@ -1207,6 +1216,24 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#ItemSelector.
     def exitItemSelector(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#MutableSelectableExpression.
+    def enterMutableSelectableExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#MutableSelectableExpression.
+    def exitMutableSelectableExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#MutableSelectorExpression.
+    def enterMutableSelectorExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#MutableSelectorExpression.
+    def exitMutableSelectorExpression(self, ctx):
         pass
 
 

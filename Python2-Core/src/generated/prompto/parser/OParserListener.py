@@ -967,6 +967,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#MutableInstanceExpression.
+    def enterMutableInstanceExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#MutableInstanceExpression.
+    def exitMutableInstanceExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#CssExpression.
     def enterCssExpression(self, ctx):
         pass
@@ -1090,6 +1099,24 @@ class OParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by OParser#SelectableExpression.
     def exitSelectableExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#MutableSelectableExpression.
+    def enterMutableSelectableExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#MutableSelectableExpression.
+    def exitMutableSelectableExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#MutableSelectorExpression.
+    def enterMutableSelectorExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#MutableSelectorExpression.
+    def exitMutableSelectorExpression(self, ctx):
         pass
 
 

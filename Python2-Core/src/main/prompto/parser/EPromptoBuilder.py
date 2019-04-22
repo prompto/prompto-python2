@@ -42,6 +42,8 @@ from prompto.declaration.OperatorMethodDeclaration import OperatorMethodDeclarat
 from prompto.declaration.SetterMethodDeclaration import SetterMethodDeclaration
 from prompto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
 from prompto.declaration.TestMethodDeclaration import TestMethodDeclaration
+from prompto.expression.InstanceExpression import InstanceExpression
+from prompto.expression.MutableExpression import MutableExpression
 from prompto.expression.PlusExpression import PlusExpression
 from prompto.expression.AndExpression import AndExpression
 from prompto.expression.BlobExpression import BlobExpression
@@ -312,6 +314,7 @@ class EPromptoBuilder(EParserListener):
             within = within + after
         return within
 
+    @staticmethod
     def isNotIndent(self, tree):
         return (not isinstance(tree, TerminalNode)) or tree.symbol.type != ELexer.INDENT
 
@@ -1762,30 +1765,53 @@ class EPromptoBuilder(EParserListener):
         clause = OrderByClause(names, ctx.DESC() is not None)
         self.setNodeValue(ctx, clause)
 
+
     def exitOrder_by_list(self, ctx):
         list_ = OrderByClauseList()
         for ctx_ in ctx.order_by():
             list_.append(self.getNodeValue(ctx_))
         self.setNodeValue(ctx, list_)
 
+
     def exitOrExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, OrExpression(left, right))
+
 
     def exitMultiplyExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, MultiplyExpression(left, right))
 
+
     def exitMutable_category_type(self, ctx):
         typ = self.getNodeValue(ctx.category_type())
         typ.mutable = ctx.MUTABLE() is not None
         self.setNodeValue(ctx, typ)
 
+
+    def exitMutableInstanceExpression(self, ctx):
+        source = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, MutableExpression(source))
+
+
+    def exitMutableSelectableExpression(self, ctx):
+        name = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, InstanceExpression(name))
+
+
+    def exitMutableSelectorExpression(self, ctx):
+        parent = self.getNodeValue(ctx.parent)
+        selector = self.getNodeValue(ctx.selector)
+        selector.parent = parent
+        self.setNodeValue(ctx, selector)
+
+
     def exitMinusExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, MinusExpression(exp))
+
 
     def exitNotExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
