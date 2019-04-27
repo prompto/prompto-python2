@@ -300,11 +300,11 @@ class CategoryType(BaseType):
         from prompto.statement.MethodCall import MethodCall
         from prompto.runtime.MethodFinder import MethodFinder
         try:
-            from prompto.value.ExpressionValue import ExpressionValue
+            from prompto.expression.ValueExpression import ValueExpression
             from prompto.grammar.ArgumentAssignment import ArgumentAssignment
             from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
             from prompto.expression.MethodSelector import MethodSelector
-            exp = ExpressionValue(self, self.newInstance(context))
+            exp = ValueExpression(self, self.newInstance(context))
             arg = ArgumentAssignment(None, exp)
             args = ArgumentAssignmentList(items=[arg])
             proto = MethodCall(MethodSelector(name), args)
@@ -316,11 +316,11 @@ class CategoryType(BaseType):
 
     def sortByGlobalMethod(self, context, source, desc, name):
         from prompto.statement.MethodCall import MethodCall
-        from prompto.value.ExpressionValue import ExpressionValue
+        from prompto.expression.ValueExpression import ValueExpression
         from prompto.grammar.ArgumentAssignment import ArgumentAssignment
         from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
         from prompto.expression.MethodSelector import MethodSelector
-        exp = ExpressionValue(self, self.newInstance(context))
+        exp = ValueExpression(self, self.newInstance(context))
         arg = ArgumentAssignment(None, exp)
         args = ArgumentAssignmentList(items=[arg])
         call = MethodCall(MethodSelector(name), args)
@@ -329,13 +329,13 @@ class CategoryType(BaseType):
 
 
     def doSortByGlobalMethod(self, context, source, desc, call):
-        from prompto.value.ExpressionValue import ExpressionValue
+        from prompto.expression.ValueExpression import ValueExpression
 
         def compare(o1, o2):
             assignment = call.assignments[0]
-            assignment.setExpression(ExpressionValue(self, o1))
+            assignment.setExpression(ValueExpression(self, o1))
             key1 = call.interpret(context)
-            assignment.setExpression(ExpressionValue(self, o2))
+            assignment.setExpression(ValueExpression(self, o2))
             key2 = call.interpret(context)
             return self.compareKeys(key1, key2)
 

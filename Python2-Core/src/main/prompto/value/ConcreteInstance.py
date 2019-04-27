@@ -8,12 +8,12 @@ from prompto.grammar.Operator import Operator
 from prompto.store.DataStore import DataStore
 from prompto.type.DecimalType import DecimalType
 from prompto.utils.TypeUtils import fieldToValue
+from prompto.value.BaseValue import BaseValue
 from prompto.value.Decimal import Decimal
 from prompto.value.Integer import Integer
 from prompto.value.IInstance import IInstance
 from prompto.value.IMultiplyable import IMultiplyable
 from prompto.declaration.AttributeDeclaration import AttributeDeclaration
-from prompto.value.ExpressionValue import *
 from prompto.runtime.Variable import Variable
 from prompto.error.SyntaxError import SyntaxError
 from prompto.error.NotMutableError import NotMutableError
