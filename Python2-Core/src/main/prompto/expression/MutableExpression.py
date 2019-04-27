@@ -1,6 +1,7 @@
-from prompto.expression.ConstructorExpression import ConstructorExpression
 from prompto.expression.IExpression import IExpression
 from prompto.type.CategoryType import CategoryType
+from prompto.value.IInstance import IInstance
+from prompto.value.NullValue import NullValue
 
 
 class MutableExpression(IExpression):
@@ -17,9 +18,13 @@ class MutableExpression(IExpression):
 
 
     def interpret(self, context):
-        sourceType = self.check(context)
-        ctor = ConstructorExpression(sourceType, self.source, None, True)
-        return ctor.interpret(context)
+        value = self.source.interpret(context)
+        if value is None or value is NullValue.instance:
+            return value
+        elif isinstance(value, IInstance):
+            return value.toMutable()
+        else:
+            raise SyntaxError("Expected a category instance, got:" + str(value))
 
 
     def toDialect(self, writer):

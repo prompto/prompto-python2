@@ -1,3 +1,4 @@
+import copy
 import threading
 
 from io import StringIO
@@ -38,6 +39,14 @@ class ConcreteInstance(BaseValue, IInstance, IMultiplyable):
             self.storable = DataStore.instance.newStorable(categories)
         self.mutable = False
         self.values = dict()
+
+
+    def toMutable(self):
+        from prompto.type.CategoryType import CategoryType
+        result = copy.copy(self)
+        result.itype = CategoryType(self.itype.typeName, True)
+        result.mutable = True
+        return result
 
 
     def getDeclaration(self):
