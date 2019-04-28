@@ -45,6 +45,7 @@ from prompto.declaration.TestMethodDeclaration import TestMethodDeclaration
 from prompto.expression.MutableExpression import MutableExpression
 from prompto.expression.PlusExpression import PlusExpression
 from prompto.expression.AndExpression import AndExpression
+from prompto.expression.ArrowExpression import ArrowExpression
 from prompto.expression.BlobExpression import BlobExpression
 from prompto.expression.CastExpression import CastExpression
 from prompto.expression.CategorySymbol import CategorySymbol
@@ -65,7 +66,6 @@ from prompto.expression.ItemSelector import ItemSelector
 from prompto.expression.IteratorExpression import IteratorExpression
 from prompto.expression.MemberSelector import MemberSelector
 from prompto.expression.MethodExpression import MethodExpression
-from prompto.expression.MethodSelector import MethodSelector
 from prompto.expression.MinusExpression import MinusExpression
 from prompto.expression.ModuloExpression import ModuloExpression
 from prompto.expression.MultiplyExpression import MultiplyExpression
@@ -283,9 +283,17 @@ class OPromptoBuilder(OParserListener):
             return None
 
 
+    def getHiddenTokensBefore(self, node):
+        return self.getHiddenTokens(node, self.input.getHiddenTokensToLeft)
+
+
     def getHiddenTokensAfter(self, node):
+        return self.getHiddenTokens(node, self.input.getHiddenTokensToRight)
+
+
+    def getHiddenTokens(self, node, fetcher):
         token = node if isinstance(node, Token) else node.symbol
-        hidden = self.input.getHiddenTokensToRight(token.tokenIndex)
+        hidden = fetcher(token.tokenIndex)
         if hidden is None or len(hidden) == 0:
             return None
         return "".join([token.text for token in hidden])
@@ -730,15 +738,52 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, items)
 
 
+    def exitArrow_prefix(self, ctx):
+        args = self.getNodeValue (ctx.arrow_args())
+        argsSuite = self.getHiddenTokensBefore(ctx.EGT())
+        arrowSuite = self.getHiddenTokensAfter(ctx.EGT())
+        self.setNodeValue(ctx, ArrowExpression(args, argsSuite, arrowSuite))
+
+
+    def exitArrowExpression(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
+
+
+    def exitArrowExpressionBody(self, ctx):
+        arrow = self.getNodeValue(ctx.arrow_prefix())
+        exp = self.getNodeValue(ctx.expression())
+        arrow.setExpression(exp)
+        self.setNodeValue(ctx, arrow)
+
+
+    def exitArrowListArg(self, ctx):
+        list = self.getNodeValue(ctx.variable_identifier_list())
+        self.setNodeValue(ctx, list)
+
+
+    def exitArrowSingleArg(self, ctx):
+        arg = self.getNodeValue(ctx.variable_identifier())
+        self.setNodeValue(ctx, IdentifierList(arg))
+
+
+    def exitArrowStatementsBody(self, ctx):
+        arrow = self.getNodeValue(ctx.arrow_prefix())
+        stmts = self.getNodeValue(ctx.statement_list())
+        arrow.statements = stmts
+        self.setNodeValue(ctx, arrow)
+
+
     def exitAddExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         exp = PlusExpression(left, right) if ctx.op.type == OParser.PLUS else SubtractExpression(left, right)
         self.setNodeValue(ctx, exp)
 
+
     def exitNative_member_method_declaration(self, ctx):
         decl = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, decl)
+
 
     def exitNative_member_method_declaration_list(self, ctx):
         items = MethodDeclarationList()
@@ -1788,6 +1833,11 @@ class OPromptoBuilder(OParserListener):
         desc = ctx.DESC() is not None
         key = self.getNodeValue(ctx.key)
         self.setNodeValue(ctx, SortedExpression(source, desc, key))
+
+
+    def exitSorted_key(self, ctx):
+        exp = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, exp)
 
 
     def exitDocument_expression(self, ctx):

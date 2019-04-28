@@ -153,13 +153,8 @@ class BaseType(IType):
         raise Exception("Unsupported!")
 
 
-    def sort(self, context, source, desc, key=None):
-        raise Exception("Unsupported!")
-
-
     def readJSONValue(self, context, node, parts):
         raise Exception("Unsupported!")
-
 
 
     def isAssignableFrom(self, context, other):
@@ -170,9 +165,10 @@ class BaseType(IType):
             or self.typeName == other.typeName
 
 
-
     def checkAssignableFrom(self, context, other):
         if not self.isAssignableFrom(context, other):
             raise SyntaxError("Type: " + self.typeName + " is not compatible with: " + other.typeName)
 
 
+    def getSortKeyReader(self, context, expression):
+        raise Exception("Unsupported!")

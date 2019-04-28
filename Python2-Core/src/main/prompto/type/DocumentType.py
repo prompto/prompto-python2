@@ -1,4 +1,7 @@
 from prompto.error.PromptoError import PromptoError
+from prompto.expression.ValueExpression import ValueExpression
+from prompto.grammar.ArgumentAssignment import ArgumentAssignment
+from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
 from prompto.literal.TextLiteral import TextLiteral
 from prompto.type.MissingType import MissingType
 from prompto.type.NullType import NullType
@@ -81,37 +84,45 @@ class DocumentType ( NativeType ):
         return self
 
 
-    def sort(self, context, source, desc, key):
+    def getSortKeyReader(self, context, key):
         if key is None:
             key = TextLiteral('"key"')
         if self.globalMethodExists(context, str(key)):
-            return self.sortByGlobalMethod(context, source, desc, str(key))
+            return self.getGlobalMethodSortKeyReader(context, str(key))
         elif isinstance(key, TextLiteral):
-            return self.sortByEntry(context, source, desc, key.getValue().getStorableData())
+            return self.getEntrySortKeyReader(context, key.getValue().getStorableData())
         else:
-            return self.sortByExpression(context, source, desc, key)
+            return self.getExpressionSortKeyReader(context, key)
 
 
-    def sortByExpression(self, context, source, desc, exp):
+    def getGlobalMethodSortKeyReader(self, context, name):
+        from prompto.statement.MethodCall import MethodCall
+        from prompto.value.Document import Document
+        exp = ValueExpression(self, Document())
+        arg = ArgumentAssignment(None, exp)
+        args = ArgumentAssignmentList(items=[arg])
+        from prompto.expression.MethodSelector import MethodSelector
+        call = MethodCall(MethodSelector(name), args)
 
-        def compare(o1, o2):
-            co = context.newDocumentContext(o1, False)
-            key1 = exp.interpret(co)
-            co = context.newDocumentContext(o2, False)
-            key2 = exp.interpret(co)
-            return self.compareKeys(key1, key2)
+        def keyGetter(o):
+            assignment = call.assignments[0]
+            assignment.setExpression(ValueExpression(self, o))
+            return call.interpret(context)
 
-        return sorted(source, cmp=compare, reverse=desc)
+        return keyGetter
 
 
-    def sortByEntry(self, context, source, desc, name):
+    def getEntrySortKeyReader(self, context, name):
+        return lambda o: o.getMemberValue(context, name)
 
-        def compare(o1, o2):
-            key1 = o1.getMemberValue(context, name)
-            key2 = o2.getMemberValue(context, name)
-            return self.compareKeys(key1, key2)
 
-        return sorted(source, cmp=compare, reverse=desc)
+    def getExpressionSortKeyReader(self, context, exp):
+
+        def keyGetter(o):
+            co = context.newDocumentContext(o, False)
+            return exp.interpret(co)
+
+        return keyGetter
 
 
     def globalMethodExists(self, context, name):
@@ -122,45 +133,6 @@ class DocumentType ( NativeType ):
         else:
             return methods.get(self.typeName, None)
 
-
-    def sortByGlobalMethod(self, context, source, desc, name):
-        from prompto.statement.MethodCall import MethodCall
-        from prompto.expression.ValueExpression import ValueExpression
-        from prompto.grammar.ArgumentAssignment import ArgumentAssignment
-        from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
-        from prompto.expression.MethodSelector import MethodSelector
-        from prompto.value.Document import Document
-        exp = ValueExpression(self, Document())
-        arg = ArgumentAssignment(None, exp)
-        args = ArgumentAssignmentList(items=[arg])
-        call = MethodCall(MethodSelector(name), args)
-        return self.doSortByGlobalMethod(context, source, desc, call)
-
-
-
-    def doSortByGlobalMethod(self, context, source, desc, call):
-        from prompto.expression.ValueExpression import ValueExpression
-
-        def compare(o1, o2):
-            assignment = call.assignments[0]
-            assignment.setExpression(ValueExpression(self, o1))
-            key1 = call.interpret(context)
-            assignment.setExpression(ValueExpression(self, o2))
-            key2 = call.interpret(context)
-            return self.compareKeys(key1, key2)
-
-        return sorted(source, cmp=compare, reverse=desc)
-
-
-    def compareKeys(self, key1, key2):
-        if key1 is None and key2 is None:
-            return 0
-        elif key1 is None:
-            return -1
-        elif key2 is None:
-            return 1
-        else:
-            return cmp(key1,key2)
 
 DocumentType.instance = DocumentType()
 

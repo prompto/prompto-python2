@@ -55,10 +55,6 @@ class CharacterType(NativeType):
         return super(CharacterType, self).newRange(left, right)
 
 
-    def sort(self, context, list_, desc):
-        return sorted(list_, reverse=desc)
-
-
     def toString(self, value):
         return "'" + str(value) + "'"
 
