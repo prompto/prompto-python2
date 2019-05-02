@@ -3,6 +3,7 @@ from prompto.declaration.IDeclaration import IDeclaration
 from prompto.declaration.IEnumeratedDeclaration import IEnumeratedDeclaration
 from prompto.error.PromptoError import PromptoError
 from prompto.error.SyntaxError import SyntaxError
+from prompto.expression.ArrowExpression import ArrowExpression
 from prompto.expression.MethodSelector import MethodSelector
 from prompto.expression.Symbol import Symbol
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
@@ -270,6 +271,8 @@ class CategoryType(BaseType):
             return self.getMemberMethodSortKeyReader(context, str(key))
         elif self.globalMethodExists(context, str(key)):
             return self.getGlobalMethodSortKeyReader(context, str(key))
+        elif isinstance(key, ArrowExpression):
+            return key.getSortKeyReader(context, self)
         else:
             return self.getExpressionSortKeyReader(context, key)
 
