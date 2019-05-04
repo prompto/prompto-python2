@@ -72,8 +72,8 @@ class Cursor(BaseValue, IIterable, IFilterable):
             raise InvalidValueError("No such member:" + name)
 
 
-    def filter(self, context, itemName, filter):
-        return FilteredCursor(self, context, itemName, filter)
+    def filter(self, predicate):
+        return FilteredCursor(self, predicate)
 
 
     def toListValue(self, context):
@@ -83,21 +83,15 @@ class Cursor(BaseValue, IIterable, IFilterable):
 
 class FilteredCursor(Cursor):
 
-    def __init__(self, cursor, context, itemName, filter):
+    def __init__(self, cursor, predicate):
         super(FilteredCursor, self).__init__(cursor.context, cursor.itype.itemType, cursor.stored)
-        self.ctx = context
-        self.itemName = itemName
-        self.filter = filter
+        self.predicate = predicate
 
 
     def getIterator(self, context):
         for stored in self.stored:
             typ = self.readItemType(stored)
-            val = typ.newInstanceFromStored(self.ctx, stored)
-            self.ctx.setValue(self.itemName, val)
-            test = self.filter.interpret(self.ctx)
-            if not isinstance(test, Boolean):
-                raise InternalError("Illegal test result: " + test)
-            if test.getValue():
+            val = typ.newInstanceFromStored(self.context, stored)
+            if self.predicate(val):
                 yield val
 

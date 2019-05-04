@@ -73,14 +73,16 @@ class SetValue(BaseValue, IContainer, IFilterable):
 
 
     def merge(self, items):
-        data = set()
-        data |= self.items
-        if isinstance(items, set):
-            data |= items
+        if(len(items)==0):
+            return self
         else:
-            data |= set(items)
-        return SetValue(self.itype.itemType, data)
-
+            data = set()
+            data |= self.items
+            if isinstance(items, set):
+                data |= items
+            else:
+                data |= set(items)
+            return SetValue(self.itype.itemType, data)
 
 
     def Subtract(self, context, value):
@@ -107,16 +109,9 @@ class SetValue(BaseValue, IContainer, IFilterable):
             return SetValue(self.itype.itemType, data)
 
 
-    def filter(self, context, itemName, filter):
-        result = set()
-        for o in self.getIterator(context):
-            context.setValue(itemName, o)
-            test = filter.interpret(context)
-            from prompto.value.Boolean import Boolean
-            if not isinstance(test, Boolean):
-                raise InternalError("Illegal test result: " + test)
-            if test.getValue():
-                result.add(o)
+    def filter(self, predicate):
+        items = filter(predicate, self.items)
+        result = set(items)
         return SetValue(self.itype.itemType, result)
 
 
