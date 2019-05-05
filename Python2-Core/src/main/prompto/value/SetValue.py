@@ -107,16 +107,9 @@ class SetValue(BaseValue, IContainer, IFilterable):
             return SetValue(self.itype.itemType, data)
 
 
-    def filter(self, context, itemName, filter):
-        result = set()
-        for o in self.getIterator(context):
-            context.setValue(itemName, o)
-            test = filter.interpret(context)
-            from prompto.value.Boolean import Boolean
-            if not isinstance(test, Boolean):
-                raise InternalError("Illegal test result: " + test)
-            if test.getValue():
-                result.add(o)
+    def filter(self, predicate):
+        items = filter(predicate, self.items)
+        result = set(items)
         return SetValue(self.itype.itemType, result)
 
 
