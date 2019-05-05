@@ -42,6 +42,7 @@ from prompto.declaration.OperatorMethodDeclaration import OperatorMethodDeclarat
 from prompto.declaration.SetterMethodDeclaration import SetterMethodDeclaration
 from prompto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
 from prompto.declaration.TestMethodDeclaration import TestMethodDeclaration
+from prompto.expression.ArrowExpression import ArrowExpression
 from prompto.expression.InstanceExpression import InstanceExpression
 from prompto.expression.MutableExpression import MutableExpression
 from prompto.expression.PlusExpression import PlusExpression
@@ -301,7 +302,7 @@ class EPromptoBuilder(EParserListener):
         return "".join([token.text for token in hidden])
 
 
-    def getJsxWhiteSpace(self, ctx):
+    def getWhiteSpacePlus(self, ctx):
         if ctx.children is None:
             return None
         within = "".join([child.getText() for child in filter(self.isNotIndent, ctx.children)])
@@ -824,6 +825,41 @@ class EPromptoBuilder(EParserListener):
 
     def exitUUIDLiteral(self, ctx):
         self.setNodeValue(ctx, UUIDLiteral(ctx.t.text))
+
+
+    def exitArrow_prefix(self, ctx):
+        args = self.getNodeValue (ctx.arrow_args())
+        argsSuite = self.getHiddenTokensBefore(ctx.EGT())
+        arrowSuite = self.getHiddenTokensAfter(ctx.EGT())
+        self.setNodeValue(ctx, ArrowExpression(args, argsSuite, arrowSuite))
+
+
+    def exitArrowExpression(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
+
+
+    def exitArrowExpressionBody(self, ctx):
+        arrow = self.getNodeValue(ctx.arrow_prefix())
+        exp = self.getNodeValue(ctx.expression())
+        arrow.setExpression(exp)
+        self.setNodeValue(ctx, arrow)
+
+
+    def exitArrowListArg(self, ctx):
+        list = self.getNodeValue(ctx.variable_identifier_list())
+        self.setNodeValue(ctx, list)
+
+
+    def exitArrowSingleArg(self, ctx):
+        arg = self.getNodeValue(ctx.variable_identifier())
+        self.setNodeValue(ctx, IdentifierList(arg))
+
+
+    def exitArrowStatementsBody(self, ctx):
+        arrow = self.getNodeValue(ctx.arrow_prefix())
+        stmts = self.getNodeValue(ctx.statement_list())
+        arrow.statements = stmts
+        self.setNodeValue(ctx, arrow)
 
 
     def exitAddExpression(self, ctx):
@@ -1869,6 +1905,11 @@ class EPromptoBuilder(EParserListener):
         key = self.getNodeValue(ctx.key)
         self.setNodeValue(ctx, SortedExpression(source, desc, key))
 
+    def exitSorted_key(self, ctx):
+        exp = self.getNodeValue(ctx.getChild(0))
+        self.setNodeValue(ctx, exp)
+
+
 
     def exitSortedExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
@@ -2292,7 +2333,7 @@ class EPromptoBuilder(EParserListener):
     def exitJsx_attribute(self, ctx):
         name = self.getNodeValue(ctx.name)
         value = self.getNodeValue(ctx.value)
-        suite = self.getJsxWhiteSpace(ctx.jsx_ws())
+        suite = self.getWhiteSpacePlus(ctx.ws_plus())
         self.setNodeValue(ctx, JsxAttribute(name, value, suite))
 
 
@@ -2322,7 +2363,7 @@ class EPromptoBuilder(EParserListener):
 
     def exitJsx_opening(self, ctx):
         name = self.getNodeValue(ctx.name)
-        suite = self.getJsxWhiteSpace(ctx.jsx_ws())
+        suite = self.getWhiteSpacePlus(ctx.ws_plus())
         attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
         self.setNodeValue(ctx, JsxElement(name, suite, attributes, None))
 
@@ -2334,7 +2375,7 @@ class EPromptoBuilder(EParserListener):
 
     def exitJsx_self_closing(self, ctx):
         name = self.getNodeValue(ctx.name)
-        suite = self.getJsxWhiteSpace(ctx.jsx_ws())
+        suite = self.getWhiteSpacePlus(ctx.ws_plus())
         attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
         self.setNodeValue(ctx, JsxSelfClosing(name, suite, attributes, None))
 

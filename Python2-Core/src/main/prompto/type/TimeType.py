@@ -59,15 +59,12 @@ class TimeType(NativeType):
         else:
             return super(TimeType, self).checkMember(context, name)
 
+
     def newRange(self, left, right):
         if isinstance(left, Time) and isinstance(right, Time):
             return TimeRange(left, right)
         else:
             return super(TimeType, self).newRange(left, right)
-
-
-    def sort(self, context, source, desc):
-        return sorted(source, reverse=desc)
 
 
     def toString(self, value):

@@ -105,16 +105,13 @@ class IntegerType(NativeType):
         return super(IntegerType, self).newRange(left, right)
 
 
-    def sort(self, context, source, desc):
-        return sorted(source, reverse=desc)
-
-
     def convertPythonValueToPromptoValue(self, context, value, returnType):
         if isinstance(value, Number):
             from prompto.value.Integer import Integer
             return Integer(long(value))
         else:
             return value  # TODO for now
+
 
     def getMemberMethods(self, context, name):
         if name == "format":
