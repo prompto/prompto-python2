@@ -742,6 +742,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#ArrowExpression.
+    def enterArrowExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#ArrowExpression.
+    def exitArrowExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#NotHasExpression.
     def enterNotHasExpression(self, ctx):
         pass
@@ -1300,12 +1309,12 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#jsx_ws.
-    def enterJsx_ws(self, ctx):
+    # Enter a parse tree produced by MParser#ws_plus.
+    def enterWs_plus(self, ctx):
         pass
 
-    # Exit a parse tree produced by MParser#jsx_ws.
-    def exitJsx_ws(self, ctx):
+    # Exit a parse tree produced by MParser#ws_plus.
+    def exitWs_plus(self, ctx):
         pass
 
 
@@ -2611,6 +2620,60 @@ class MParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by MParser#IsOtherExpression.
     def exitIsOtherExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#ArrowExpressionBody.
+    def enterArrowExpressionBody(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#ArrowExpressionBody.
+    def exitArrowExpressionBody(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#ArrowStatementsBody.
+    def enterArrowStatementsBody(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#ArrowStatementsBody.
+    def exitArrowStatementsBody(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#arrow_prefix.
+    def enterArrow_prefix(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#arrow_prefix.
+    def exitArrow_prefix(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#ArrowSingleArg.
+    def enterArrowSingleArg(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#ArrowSingleArg.
+    def exitArrowSingleArg(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#ArrowListArg.
+    def enterArrowListArg(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#ArrowListArg.
+    def exitArrowListArg(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#sorted_key.
+    def enterSorted_key(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#sorted_key.
+    def exitSorted_key(self, ctx):
         pass
 
 

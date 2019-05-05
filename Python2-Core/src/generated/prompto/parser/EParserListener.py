@@ -733,6 +733,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#ArrowExpression.
+    def enterArrowExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#ArrowExpression.
+    def exitArrowExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#MethodCallExpression.
     def enterMethodCallExpression(self, ctx):
         pass
@@ -1444,12 +1453,12 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#jsx_ws.
-    def enterJsx_ws(self, ctx):
+    # Enter a parse tree produced by EParser#ws_plus.
+    def enterWs_plus(self, ctx):
         pass
 
-    # Exit a parse tree produced by EParser#jsx_ws.
-    def exitJsx_ws(self, ctx):
+    # Exit a parse tree produced by EParser#ws_plus.
+    def exitWs_plus(self, ctx):
         pass
 
 
@@ -2755,6 +2764,60 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#IsOtherExpression.
     def exitIsOtherExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#ArrowExpressionBody.
+    def enterArrowExpressionBody(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#ArrowExpressionBody.
+    def exitArrowExpressionBody(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#ArrowStatementsBody.
+    def enterArrowStatementsBody(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#ArrowStatementsBody.
+    def exitArrowStatementsBody(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#arrow_prefix.
+    def enterArrow_prefix(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#arrow_prefix.
+    def exitArrow_prefix(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#ArrowSingleArg.
+    def enterArrowSingleArg(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#ArrowSingleArg.
+    def exitArrowSingleArg(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#ArrowListArg.
+    def enterArrowListArg(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#ArrowListArg.
+    def exitArrowListArg(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#sorted_key.
+    def enterSorted_key(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#sorted_key.
+    def exitSorted_key(self, ctx):
         pass
 
 
