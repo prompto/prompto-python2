@@ -1489,6 +1489,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#repl.
+    def enterRepl(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#repl.
+    def exitRepl(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#FullDeclarationList.
     def enterFullDeclarationList(self, ctx):
         pass
