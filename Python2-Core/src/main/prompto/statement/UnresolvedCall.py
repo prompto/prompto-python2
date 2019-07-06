@@ -48,8 +48,6 @@ class UnresolvedCall(BaseStatement):
 
     def resolveAndCheck(self, context):
         self.resolve(context)
-        if self.resolved is None:
-            self.resolve(context)
         return self.resolved.check(context)
 
 
