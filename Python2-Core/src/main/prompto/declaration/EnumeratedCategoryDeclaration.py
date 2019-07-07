@@ -13,6 +13,11 @@ class EnumeratedCategoryDeclaration ( ConcreteCategoryDeclaration, IEnumeratedDe
         return self.symbols
 
 
+    def getSymbol(self, name):
+        matches = filter(lambda s: s.getName()==name, self.symbols)
+        return matches[0] if len(matches) > 0 else None
+
+
     def setSymbols(self, symbols):
         self.symbols = symbols
         type = EnumeratedCategoryType(self.name)

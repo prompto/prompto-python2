@@ -1,5 +1,5 @@
+from prompto.declaration.BuiltInMethodDeclaration import BuiltInMethodDeclaration
 from prompto.declaration.IDeclaration import IDeclaration
-from prompto.declaration.IEnumeratedDeclaration import IEnumeratedDeclaration
 from prompto.type.BaseType import BaseType
 from prompto.type.ListType import ListType
 from prompto.type.TextType import TextType
@@ -35,11 +35,40 @@ class EnumeratedNativeType ( BaseType ):
 
 
     def getMemberValue(self, context, name):
+        from prompto.declaration.EnumeratedNativeDeclaration import EnumeratedNativeDeclaration
         decl = context.getRegisteredDeclaration(IDeclaration, self.typeName)
-        if not isinstance (decl, IEnumeratedDeclaration):
+        if not isinstance (decl, EnumeratedNativeDeclaration):
             raise SyntaxError(self.typeName + " is not an enumerated type!")
         if "symbols" == name:
             return decl.getSymbols()
         else:
             raise SyntaxError("Unknown member:" + name)
 
+    def getMemberMethods(self, context, name):
+        if name == "symbolOf":
+            return [SymbolOfMethodDeclaration(self)]
+        else:
+            return super(EnumeratedNativeType, self).getMemberMethods(context, name)
+
+
+class SymbolOfMethodDeclaration(BuiltInMethodDeclaration):
+
+    def __init__(self, enumType):
+        from prompto.argument.CategoryArgument import CategoryArgument
+        NAME_ARGUMENT = CategoryArgument(TextType.instance, "name")
+        super(SymbolOfMethodDeclaration, self).__init__("symbolOf", NAME_ARGUMENT)
+        self.type = enumType
+
+
+    def interpret(self, context):
+        from prompto.declaration.EnumeratedNativeDeclaration import EnumeratedNativeDeclaration
+        decl = context.getRegisteredDeclaration(IDeclaration, self.type.typeName)
+        if not isinstance(decl, EnumeratedNativeDeclaration):
+            raise SyntaxError(self.type.typeName + " is not an enumerated type!")
+        symbolName = context.getValue("name").value
+        return decl.getSymbol(symbolName)
+
+
+    def check(self, context, isStart):
+        from prompto.type.BooleanType import BooleanType
+        return BooleanType.instance
