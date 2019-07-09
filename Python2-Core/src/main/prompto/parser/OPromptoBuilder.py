@@ -1620,50 +1620,60 @@ class OPromptoBuilder(OParserListener):
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.HAS, right))
 
+
     def exitNotHasExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.NOT_HAS, right))
+
 
     def exitHasAllExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.HAS_ALL, right))
 
+
     def exitNotHasAllExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.NOT_HAS_ALL, right))
+
 
     def exitHasAnyExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.HAS_ANY, right))
 
+
     def exitNotHasAnyExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.NOT_HAS_ANY, right))
+
 
     def exitContainsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.CONTAINS, right))
 
+
     def exitNotContainsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.NOT_CONTAINS, right))
+
 
     def exitDivideExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, DivideExpression(left, right))
 
+
     def exitIntDivideExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, IntDivideExpression(left, right))
+
 
     def exitModuloExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
@@ -1673,13 +1683,38 @@ class OPromptoBuilder(OParserListener):
 
     def exitAnnotation_constructor(self, ctx):
         name = self.getNodeValue(ctx.name)
+        args = DictEntryList()
         exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, Annotation(name, exp))
+        if exp is not None:
+            args.append(DictEntry(None, exp))
+        for argCtx in ctx.annotation_argument():
+            arg = self.getNodeValue(argCtx)
+            args.append(arg)
+        self.setNodeValue(ctx, Annotation(name, args))
+
+
+    def exitAnnotation_argument(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, DictEntry(name, exp))
 
 
     def exitAnnotation_identifier(self, ctx):
-        name = ctx.getText()
-        self.setNodeValue(ctx, name)
+        self.setNodeValue(ctx, ctx.getText())
+
+
+    def exitAnnotation_argument_name(self, ctx):
+        self.setNodeValue(ctx, ctx.getText())
+
+
+    def exitAnnotationLiteralValue(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, exp)
+
+
+    def exitAnnotationTypeValue(self, ctx):
+        typ = self.getNodeValue(ctx.typ)
+        self.setNodeValue(ctx, TypeExpression(typ))
 
 
     def exitAndExpression(self, ctx):

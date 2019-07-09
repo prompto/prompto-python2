@@ -1740,13 +1740,38 @@ class EPromptoBuilder(EParserListener):
 
     def exitAnnotation_constructor(self, ctx):
         name = self.getNodeValue(ctx.name)
+        args = DictEntryList()
         exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, Annotation(name, exp))
+        if exp is not None:
+            args.append(DictEntry(None, exp))
+        for argCtx in ctx.annotation_argument():
+            arg = self.getNodeValue(argCtx)
+            args.append(arg)
+        self.setNodeValue(ctx, Annotation(name, args))
+
+
+    def exitAnnotation_argument(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, DictEntry(name, exp))
 
 
     def exitAnnotation_identifier(self, ctx):
-        name = ctx.getText()
-        self.setNodeValue(ctx, name)
+        self.setNodeValue(ctx, ctx.getText())
+
+
+    def exitAnnotation_argument_name(self, ctx):
+        self.setNodeValue(ctx, ctx.getText())
+
+
+    def exitAnnotationLiteralValue(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, exp)
+
+
+    def exitAnnotationTypeValue(self, ctx):
+        typ = self.getNodeValue(ctx.typ)
+        self.setNodeValue(ctx, TypeExpression(typ))
 
 
     def exitAndExpression(self, ctx):
