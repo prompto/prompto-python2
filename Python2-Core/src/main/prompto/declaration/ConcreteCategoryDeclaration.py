@@ -22,6 +22,13 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         return self.derivedFrom
 
 
+    def isAWidget(self, context):
+        if self.derivedFrom is None or len(self.derivedFrom) != 1:
+            return False
+        parent = context.getRegisteredDeclaration(CategoryDeclaration, self.derivedFrom[0])
+        return parent.isAWidget(context)
+
+
     def setMethods(self, methods):
         self.methods = methods
 
@@ -113,6 +120,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
 
     def check(self, context, isStart):
         self.checkDerived(context)
+        self.processAnnotations((context, False))
         self.checkMethods(context)
         return super(ConcreteCategoryDeclaration, self).check(context, isStart)
 
@@ -268,11 +276,13 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         for method in actual.values():
             result.registerIfMissing(method)
 
+
     def registerDerivedMemberMethods(self, context, result):
         if self.derivedFrom is None:
             return
         for ancestor in self.derivedFrom:
             self.registerAncestorMemberMethods(ancestor, context, result)
+
 
     def registerAncestorMemberMethods(self, ancestor, context, result):
         actual = context.getRegisteredDeclaration(IDeclaration, ancestor)
@@ -280,11 +290,13 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
             return
         actual.registerMemberMethods(context, result)
 
+
     def toEDialect(self, writer):
         hasMethods = self.methods is not None and len(self.methods)>0
         self.protoToEDialect(writer, hasMethods, False) # no bindings
         if hasMethods:
             self.methodsToEDialect(writer, self.methods)
+
 
     def categoryTypeToEDialect(self, writer):
         if self.derivedFrom is None:
@@ -292,27 +304,37 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         else:
             self.derivedFrom.toDialect(writer, True)
 
+
     def toODialect(self, writer):
         hasMethods = self.methods is not None and len(self.methods)>0
         self.allToODialect(writer, hasMethods)
 
+
     def categoryTypeToODialect(self, writer):
-        writer.append("category")
+        if self.isAWidget(writer.context):
+            writer.append("widget")
+        else:
+            writer.append("category")
+
 
     def categoryExtensionToODialect(self, writer):
         if self.derivedFrom is not None:
             writer.append(" extends ")
             self.derivedFrom.toDialect(writer, True)
 
+
     def bodyToODialect(self, writer):
         self.methodsToODialect(writer, self.methods)
+
 
     def toMDialect(self, writer):
         self.protoToMDialect(writer, self.derivedFrom)
         self.methodsToMDialect(writer)
 
+
     def categoryTypeToMDialect(self, writer):
         writer.append("class")
+
 
     def methodsToMDialect(self, writer):
         writer.indent()

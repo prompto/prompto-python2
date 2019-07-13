@@ -13,21 +13,21 @@ class CategoryDeclaration(BaseDeclaration):
         self.storable = False
 
 
-
     def setAttributes(self, attributes):
         self.attributes = attributes
-
 
 
     def getAttributes(self):
         return self.attributes
 
 
-
     def register(self, context):
         context.registerDeclaration(self)
         self.registerMethods(context)
 
+
+    def isAWidget(self, context):
+        return False
 
 
     def check(self, context, isStart):
@@ -109,8 +109,20 @@ class CategoryDeclaration(BaseDeclaration):
 
     def toDialect(self, writer):
         writer = writer.newInstanceWriter(self.getType(writer.context))
+        self.processAnnotations(writer.context, True)
         super(CategoryDeclaration, self).toDialect(writer)
 
+
+
+    def processAnnotations(self, context, processDerivedFrom):
+        if processDerivedFrom:
+            derivedFrom = self.getDerivedFrom()
+            if derivedFrom is not None:
+                for name in derivedFrom:
+                    decl = context.getRegisteredDeclaration(CategoryDeclaration, name)
+                    decl.processAnnotations(context, True)
+        if self.annotations is not None:
+            [ann.processCategory(context, self) for ann  in self.annotations]
 
 
     def protoToEDialect(self, writer, hasMethods, hasBindings):
