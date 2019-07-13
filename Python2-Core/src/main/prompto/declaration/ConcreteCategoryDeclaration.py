@@ -119,6 +119,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
 
 
     def check(self, context, isStart):
+        context = context.newInstanceContext(None, self.getType(context))
         self.checkDerived(context)
         self.processAnnotations(context, False)
         self.checkMethods(context)
@@ -138,7 +139,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
         self.registerMethods(context)
         if self.methods is not None:
             for method in self.methods:
-                method.checkMember(self, context)
+                method.checkChild(context)
 
 
     def registerMethodDeclaration(self, method, context):
