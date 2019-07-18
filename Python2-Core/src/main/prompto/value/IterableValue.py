@@ -1,11 +1,14 @@
 from io import StringIO
 
 from prompto.value.BaseValue import BaseValue
+from prompto.value.IFilterable import IFilterable
 from prompto.value.IIterable import IIterable
 from prompto.store.InvalidValueError import InvalidValueError
 from prompto.runtime.Variable import Variable
+from prompto.value.ListValue import ListValue
 
-class IterableValue(BaseValue, IIterable):
+
+class IterableValue(BaseValue, IIterable, IFilterable):
 
     def __init__(self, context, name, itemType, source, length, expression):
         from prompto.type.IteratorType import IteratorType
@@ -32,6 +35,14 @@ class IterableValue(BaseValue, IIterable):
             return self.length
         else:
             return super(IterableValue, self).getMemberValue(context, name, autoCreate)
+
+
+    def filter(self, predicate):
+        items = []
+        for value in self.source:
+            if predicate(value):
+                items.append(value)
+        return ListValue(self.itemType, items)
 
 
     def __str__(self):
