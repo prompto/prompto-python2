@@ -3,7 +3,6 @@ from io import StringIO
 from prompto.value.BaseValue import BaseValue
 from prompto.value.IFilterable import IFilterable
 from prompto.value.IIterable import IIterable
-from prompto.store.InvalidValueError import InvalidValueError
 from prompto.runtime.Variable import Variable
 from prompto.value.ListValue import ListValue
 
