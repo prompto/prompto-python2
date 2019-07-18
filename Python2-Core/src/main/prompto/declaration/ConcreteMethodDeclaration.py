@@ -25,11 +25,6 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         return self.statements
 
 
-    def checkMember(self, category, context):
-        context = context.newInstanceContext(None, category.getType(context), False)
-        return self.checkChild(context)
-
-
     def check(self, context, isStart):
         if self.canBeChecked(context):
             return self.fullCheck(context, isStart)
@@ -60,15 +55,19 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
             self.registerArguments(context)
         if self.arguments is not None:
             self.arguments.check(context)
-        return self.statements.check(context, self.returnType)
+        return self.checkStatements(context, self.returnType)
 
 
     def checkChild(self, context):
         if self.arguments is not None:
             self.arguments.check(context)
-        child = context.newChildContext()
-        self.registerArguments(child)
-        return self.statements.check(child, self.returnType)
+        context = context.newChildContext()
+        self.registerArguments(context)
+        return self.checkStatements(context, self.returnType)
+
+
+    def checkStatements(self, context, returnType):
+        return self.statements.check(context, returnType)
 
 
     def interpret(self, context):
@@ -77,6 +76,7 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
             return self.statements.interpret(context)
         finally:
             context.leaveMethod(self)
+
 
     def isEligibleAsMain(self):
         if self.arguments is None or self.arguments.isEmpty():
@@ -89,11 +89,13 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
                     return itype.itemType is TextType.instance
         return super(ConcreteMethodDeclaration, self).isEligibleAsMain()
 
+
     def toDialect(self, writer):
         if writer.isGlobalContext():
             writer = writer.newLocalWriter()
         self.registerArguments(writer.context)
         super(ConcreteMethodDeclaration, self).toDialect(writer)
+
 
     def toMDialect(self, writer):
         writer.append("def ")

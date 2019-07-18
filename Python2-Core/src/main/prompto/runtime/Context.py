@@ -85,8 +85,6 @@ class Context(IContext):
     def getClosestInstanceContext(self):
         if self.parent is None:
             return None
-        elif isinstance(self.parent, InstanceContext):
-            return self.parent
         else:
             return self.parent.getClosestInstanceContext()
 
@@ -414,6 +412,10 @@ class InstanceContext(Context):
         super(InstanceContext, self).__init__()
         self.instance = instance
         self.instanceType = itype if itype is not None else instance.itype
+
+
+    def getClosestInstanceContext(self):
+        return self
 
 
     def getRegistered(self, name):
