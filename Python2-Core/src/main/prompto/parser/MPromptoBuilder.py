@@ -85,8 +85,7 @@ from prompto.expression.TypeExpression import TypeExpression
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
 from prompto.expression.UnresolvedSelector import UnresolvedSelector
 from prompto.grammar.Annotation import Annotation
-from prompto.grammar.ArgumentAssignment import ArgumentAssignment
-from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
+from prompto.grammar.Argument import Argument
 from prompto.grammar.ArgumentList import ArgumentList
 from prompto.grammar.CategorySymbolList import CategorySymbolList
 from prompto.grammar.CmpOp import CmpOp
@@ -163,6 +162,7 @@ from prompto.jsx.JsxExpression import JsxExpression
 from prompto.jsx.JsxText import JsxText
 from prompto.jsx.JsxAttribute import JsxAttribute
 from prompto.jsx.JsxCode import JsxCode
+from prompto.param.ParameterList import ParameterList
 from prompto.parser import ParserUtils
 from prompto.parser.MLexer import MLexer
 from prompto.parser.MParser import MParser
@@ -428,12 +428,12 @@ class MPromptoBuilder(MParserListener):
         name = self.getNodeValue(ctx.name)
         exp = self.getNodeValue(ctx.exp)
         arg = UnresolvedParameter(name)
-        item = ArgumentAssignment(arg, exp)
+        item = Argument(arg, exp)
         self.setNodeValue(ctx, item)
 
     def exitArgumentAssignmentList(self, ctx):
         item = self.getNodeValue(ctx.item)
-        items = ArgumentAssignmentList(items=[item])
+        items = ArgumentList(items=[item])
         self.setNodeValue(ctx, items)
 
     def exitArgumentAssignmentListItem(self, ctx):
@@ -443,7 +443,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, items)
 
     def exitArgument_list(self, ctx):
-        items = ArgumentList()
+        items = ParameterList()
         for rule in ctx.argument():
             item = self.getNodeValue(rule)
             items.append(item)
@@ -946,8 +946,8 @@ class MPromptoBuilder(MParserListener):
 
     def exitExpressionAssignmentList(self, ctx):
         exp = self.getNodeValue(ctx.exp)
-        items = ArgumentAssignmentList()
-        items.append(ArgumentAssignment(None, exp))
+        items = ArgumentList()
+        items.append(Argument(None, exp))
         self.setNodeValue(ctx, items)
 
 

@@ -86,8 +86,7 @@ from prompto.expression.TypeExpression import TypeExpression
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
 from prompto.expression.UnresolvedSelector import UnresolvedSelector
 from prompto.grammar.Annotation import Annotation
-from prompto.grammar.ArgumentAssignment import ArgumentAssignment
-from prompto.grammar.ArgumentAssignmentList import ArgumentAssignmentList
+from prompto.grammar.Argument import Argument
 from prompto.grammar.ArgumentList import ArgumentList
 from prompto.grammar.CategorySymbolList import CategorySymbolList
 from prompto.grammar.CmpOp import CmpOp
@@ -164,6 +163,7 @@ from prompto.jsx.JsxAttribute import JsxAttribute
 from prompto.jsx.JsxExpression import JsxExpression
 from prompto.jsx.JsxText import JsxText
 from prompto.jsx.JsxCode import JsxCode
+from prompto.param.ParameterList import ParameterList
 from prompto.parser import ParserUtils
 from prompto.parser.ELexer import ELexer
 from prompto.parser.EParser import EParser
@@ -741,7 +741,7 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitArgument_list(self, ctx):
-        items = ArgumentList()
+        items = ParameterList()
         for rule in ctx.argument():
             item = self.getNodeValue(rule)
             items.append(item)
@@ -768,15 +768,15 @@ class EPromptoBuilder(EParserListener):
         name = self.getNodeValue(ctx.name)
         exp = self.getNodeValue(ctx.exp)
         arg = UnresolvedParameter(name)
-        self.setNodeValue(ctx, ArgumentAssignment(arg, exp))
+        self.setNodeValue(ctx, Argument(arg, exp))
 
 
     def exitArgumentAssignmentListExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         items = self.getNodeValue(ctx.items)
         if items is None:
-            items = ArgumentAssignmentList()
-        items.insert(0, ArgumentAssignment(None, exp))
+            items = ArgumentList()
+        items.insert(0, Argument(None, exp))
         item = self.getNodeValue(ctx.item)
         if item is not None:
             items.append(item)
@@ -797,7 +797,7 @@ class EPromptoBuilder(EParserListener):
 
     def exitArgumentAssignmentList(self, ctx):
         item = self.getNodeValue(ctx.item)
-        items = ArgumentAssignmentList(items=[item])
+        items = ArgumentList(items=[item])
         self.setNodeValue(ctx, items)
 
 
@@ -957,7 +957,7 @@ class EPromptoBuilder(EParserListener):
         arg = self.getNodeValue(ctx.arg)
         if arg is not None:
             if args is None:
-                args = ArgumentAssignmentList()
+                args = ArgumentList()
             args.append(arg)
         self.setNodeValue(ctx, ConstructorExpression(typ, copyFrom, args, True))
 
@@ -968,7 +968,7 @@ class EPromptoBuilder(EParserListener):
         arg = self.getNodeValue(ctx.arg)
         if arg is not None:
             if args is None:
-                args = ArgumentAssignmentList()
+                args = ArgumentList()
             args.append(arg)
         self.setNodeValue(ctx, ConstructorExpression(typ, None, args, True))
 

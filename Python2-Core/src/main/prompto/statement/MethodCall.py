@@ -3,7 +3,7 @@ from prompto.error.NotMutableError import NotMutableError
 from prompto.runtime.Context import MethodDeclarationMap
 from prompto.statement.SimpleStatement import SimpleStatement
 from prompto.declaration.ConcreteMethodDeclaration import *
-from prompto.grammar.ArgumentAssignmentList import *
+from prompto.grammar.ArgumentList import *
 from prompto.runtime.MethodFinder import *
 from prompto.declaration.ClosureDeclaration import ClosureDeclaration
 from prompto.value.ClosureValue import ClosureValue
@@ -52,32 +52,32 @@ class MethodCall(SimpleStatement):
 
     def fullCheck(self, declaration, parent, local):
         try:
-            assignments = self.makeAssignments(parent, declaration)
+            assignments = self.makeArguments(parent, declaration)
             declaration.registerArguments(local)
             for assignment in assignments:
                 expression = assignment.resolve(local, declaration, True)
-                value = assignment.getArgument().checkValue(parent, expression)
+                value = assignment.getParameter().checkValue(parent, expression)
                 local.setValue(assignment.getName(), value)
             return declaration.check(local, False)
         except PromptoError, e:
             raise SyntaxError(e.message)
 
 
-    def makeAssignments(self, context, declaration):
+    def makeArguments(self, context, declaration):
         if self.assignments is None:
-            return ArgumentAssignmentList()
+            return ArgumentList()
         else:
-            return self.assignments.makeAssignments(context, declaration)
+            return self.assignments.makeArguments(context, declaration)
 
 
     def interpret(self, context):
         declaration = self.findDeclaration(context)
         local = self.selector.newLocalContext(context, declaration)
         declaration.registerArguments(local)
-        assignments = self.makeAssignments(context, declaration)
+        assignments = self.makeArguments(context, declaration)
         for assignment in assignments:
             expression = assignment.resolve(local, declaration, True)
-            argument = assignment.getArgument()
+            argument = assignment.getParameter()
             value = argument.checkValue(context, expression)
             if value is not None and argument.mutable and not value.mutable:
                 raise NotMutableError()
