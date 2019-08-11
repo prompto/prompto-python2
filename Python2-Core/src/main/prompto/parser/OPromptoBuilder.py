@@ -1,9 +1,9 @@
 from antlr4 import Token
 
-from prompto.argument.CategoryArgument import CategoryArgument
-from prompto.argument.CodeArgument import CodeArgument
-from prompto.argument.ExtendedArgument import ExtendedArgument
-from prompto.argument.UnresolvedArgument import UnresolvedArgument
+from prompto.param.CategoryParameter import CategoryParameter
+from prompto.param.CodeParameter import CodeParameter
+from prompto.param.ExtendedParameter import ExtendedParameter
+from prompto.param.UnresolvedParameter import UnresolvedParameter
 from prompto.constraint.MatchingCollectionConstraint import MatchingCollectionConstraint
 from prompto.constraint.MatchingExpressionConstraint import MatchingExpressionConstraint
 from prompto.constraint.MatchingPatternConstraint import MatchingPatternConstraint
@@ -666,7 +666,7 @@ class OPromptoBuilder(OParserListener):
         name = self.getNodeValue(ctx.name)
         attrs = self.getNodeValue(ctx.attrs)
         exp = self.getNodeValue(ctx.value)
-        arg = CategoryArgument(typ, name) if attrs is None else ExtendedArgument(typ, name, attrs)
+        arg = CategoryParameter(typ, name) if attrs is None else ExtendedParameter(typ, name, attrs)
         arg.defaultExpression = exp
         self.setNodeValue(ctx, arg)
 
@@ -714,7 +714,7 @@ class OPromptoBuilder(OParserListener):
     def exitArgument_assignment(self, ctx):
         name = self.getNodeValue(ctx.name)
         exp = self.getNodeValue(ctx.exp)
-        arg = UnresolvedArgument(name)
+        arg = UnresolvedParameter(name)
         self.setNodeValue(ctx, ArgumentAssignment(arg, exp))
 
 
@@ -1429,7 +1429,7 @@ class OPromptoBuilder(OParserListener):
 
     def exitNamed_argument(self, ctx):
         name = self.getNodeValue(ctx.variable_identifier())
-        arg = UnresolvedArgument(name)
+        arg = UnresolvedParameter(name)
         exp = self.getNodeValue(ctx.literal_expression())
         arg.defaultValue = exp
         self.setNodeValue(ctx, arg)
@@ -1969,7 +1969,7 @@ class OPromptoBuilder(OParserListener):
 
     def exitCode_argument(self, ctx):
         name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, CodeArgument(name))
+        self.setNodeValue(ctx, CodeParameter(name))
 
     def exitCategory_or_any_type(self, ctx):
         stmt = self.getNodeValue(ctx.getChild(0))

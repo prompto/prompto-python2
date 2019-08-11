@@ -1,15 +1,15 @@
-from prompto.argument.BaseArgument import BaseArgument
-from prompto.argument.INamedArgument import INamedArgument
+from prompto.param.BaseParameter import BaseParameter
+from prompto.param.INamedParameter import INamedParameter
 from prompto.declaration.IMethodDeclaration import IMethodDeclaration
 from prompto.grammar.INamedValue import INamedValue
 from prompto.type.MethodType import MethodType
 from prompto.error.SyntaxError import SyntaxError
 
-class MethodArgument ( BaseArgument, INamedArgument ):
+class MethodParameter (BaseParameter, INamedParameter):
 
 
     def __init__(self, name):
-        super(MethodArgument, self).__init__(name)
+        super(MethodParameter, self).__init__(name)
 
 
 
@@ -33,7 +33,7 @@ class MethodArgument ( BaseArgument, INamedArgument ):
             return True
         if obj is None:
             return False
-        if not isinstance(obj, MethodArgument):
+        if not isinstance(obj, MethodParameter):
             return False
         return self.getName()==obj.getName()
 
