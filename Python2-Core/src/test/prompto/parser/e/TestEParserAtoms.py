@@ -206,10 +206,10 @@ class TestParserAtoms(unittest.TestCase):
         mc = self.parse(statement,ECleverParser.method_call_statement)
         self.assertIsNotNone(mc)
         self.assertEquals("print",mc.caller.getName())
-        self.assertIsNotNone(mc.assignments)
-        as_ = mc.assignments[0]
-        self.assertEquals("value",as_.getName())
-        exp = as_.getExpression()
+        self.assertIsNotNone(mc.arguments)
+        arg = mc.arguments[0]
+        self.assertEquals("value",arg.getName())
+        exp = arg.getExpression()
         self.assertIsInstance(exp, PlusExpression)
         writer = CodeWriter(Dialect.E, Context.newGlobalContext())
         mc.toDialect(writer)
