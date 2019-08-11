@@ -1,10 +1,12 @@
 from prompto.declaration.AbstractMethodDeclaration import AbstractMethodDeclaration
+from prompto.declaration.ConcreteMethodDeclaration import ConcreteMethodDeclaration
+from prompto.declaration.IDeclaration import IDeclaration
 from prompto.error.NotMutableError import NotMutableError
+from prompto.error.PromptoError import PromptoError
+from prompto.grammar.ArgumentList import ArgumentList
 from prompto.runtime.Context import MethodDeclarationMap
+from prompto.runtime.MethodFinder import MethodFinder
 from prompto.statement.SimpleStatement import SimpleStatement
-from prompto.declaration.ConcreteMethodDeclaration import *
-from prompto.grammar.ArgumentList import *
-from prompto.runtime.MethodFinder import *
 from prompto.declaration.ClosureDeclaration import ClosureDeclaration
 from prompto.value.ClosureValue import ClosureValue
 from prompto.value.Boolean import Boolean
@@ -13,14 +15,14 @@ from prompto.utils.CodeWriter import CodeWriter
 
 class MethodCall(SimpleStatement):
 
-    def __init__(self, selector, assignments=None):
+    def __init__(self, selector, arguments=None):
         super(MethodCall, self).__init__()
         self.selector = selector
-        self.assignments = assignments
+        self.arguments = arguments
 
 
     def __str__(self):
-        suffix = str(self.assignments) if self.assignments is not None else ""
+        suffix = str(self.arguments) if self.arguments is not None else ""
         return str(self.selector) + suffix
 
 
@@ -52,36 +54,36 @@ class MethodCall(SimpleStatement):
 
     def fullCheck(self, declaration, parent, local):
         try:
-            assignments = self.makeArguments(parent, declaration)
+            arguments = self.makeArguments(parent, declaration)
             declaration.registerArguments(local)
-            for assignment in assignments:
-                expression = assignment.resolve(local, declaration, True)
-                value = assignment.getParameter().checkValue(parent, expression)
-                local.setValue(assignment.getName(), value)
+            for argument in arguments:
+                expression = argument.resolve(local, declaration, True)
+                value = argument.getParameter().checkValue(parent, expression)
+                local.setValue(argument.getName(), value)
             return declaration.check(local, False)
         except PromptoError, e:
             raise SyntaxError(e.message)
 
 
     def makeArguments(self, context, declaration):
-        if self.assignments is None:
+        if self.arguments is None:
             return ArgumentList()
         else:
-            return self.assignments.makeArguments(context, declaration)
+            return self.arguments.makeArguments(context, declaration)
 
 
     def interpret(self, context):
         declaration = self.findDeclaration(context)
         local = self.selector.newLocalContext(context, declaration)
         declaration.registerArguments(local)
-        assignments = self.makeArguments(context, declaration)
-        for assignment in assignments:
-            expression = assignment.resolve(local, declaration, True)
-            argument = assignment.getParameter()
-            value = argument.checkValue(context, expression)
-            if value is not None and argument.mutable and not value.mutable:
+        arguments = self.makeArguments(context, declaration)
+        for argument in arguments:
+            expression = argument.resolve(local, declaration, True)
+            parameter = argument.getParameter()
+            value = parameter.checkValue(context, expression)
+            if value is not None and parameter.mutable and not value.mutable:
                 raise NotMutableError()
-            local.setValue(assignment.getName(), value)
+            local.setValue(argument.getName(), value)
         return declaration.interpret(local)
 
 
@@ -110,14 +112,14 @@ class MethodCall(SimpleStatement):
         if self.requiresInvoke(writer):
             writer.append("invoke: ")
         self.selector.toDialect(writer)
-        if self.assignments is not None:
-            self.assignments.toDialect(writer)
+        if self.arguments is not None:
+            self.arguments.toDialect(writer)
         elif writer.dialect is not Dialect.E:
             writer.append("()")
 
 
     def requiresInvoke(self, writer):
-        if writer.dialect is not Dialect.E or (self.assignments is not None and len(self.assignments) > 0):
+        if writer.dialect is not Dialect.E or (self.arguments is not None and len(self.arguments) > 0):
             return False
         try:
             finder = MethodFinder(writer.context, self)
