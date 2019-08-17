@@ -1,9 +1,13 @@
+from prompto.expression.ArrowExpression import ArrowExpression
 from prompto.param.BaseParameter import BaseParameter
 from prompto.param.INamedParameter import INamedParameter
 from prompto.declaration.IMethodDeclaration import IMethodDeclaration
 from prompto.grammar.INamedValue import INamedValue
 from prompto.type.MethodType import MethodType
 from prompto.error.SyntaxError import SyntaxError
+from prompto.value.ArrowValue import ArrowValue
+from prompto.value.ContextualExpression import ContextualExpression
+
 
 class MethodParameter (BaseParameter, INamedParameter):
 
@@ -12,20 +16,16 @@ class MethodParameter (BaseParameter, INamedParameter):
         super(MethodParameter, self).__init__(name)
 
 
-
     def getSignature(self, dialect):
         return self.getName()
-
 
 
     def __str__(self):
         return self.getName()
 
 
-
     def getProto(self):
         return self.getName()
-
 
 
     def __eq__(self, obj):
@@ -38,13 +38,11 @@ class MethodParameter (BaseParameter, INamedParameter):
         return self.getName()==obj.getName()
 
 
-
     def register(self, context):
         actual = context.getRegisteredValue(INamedValue,self.name)
         if actual is not None:
             raise SyntaxError("Duplicate argument: \"" + self.name + "\"")
         context.registerValue(self)
-
 
 
     def check(self, context):
@@ -53,11 +51,21 @@ class MethodParameter (BaseParameter, INamedParameter):
             raise SyntaxError("Unknown method: \"" + self.name + "\"")
 
 
+    def checkValue(self, context, expression):
+        isArrow = isinstance(expression, ContextualExpression) and isinstance(expression.expression, ArrowExpression)
+        if isArrow:
+            return self.checkArrowValue(context, expression)
+        else:
+            return super(MethodParameter, self).checkValue(context, expression)
+
+
+    def checkArrowValue(self, context, expression):
+        return ArrowValue(self.getDeclaration(context), expression.calling, expression.expression) # TODO check
+
 
     def getType(self, context):
         method = self.getDeclaration(context)
         return MethodType(method)
-
 
 
     def getDeclaration(self, context):

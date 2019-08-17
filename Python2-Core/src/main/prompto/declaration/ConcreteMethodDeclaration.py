@@ -41,9 +41,9 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
 
     def mustBeBeCheckedInCallContext(self, context):
         # if at least one argument is 'Code'
-        if self.arguments is None:
+        if self.parameters is None:
             return False
-        for arg in self.arguments:
+        for arg in self.parameters:
             if isinstance(arg, CodeParameter):
                 return True
         return False
@@ -53,14 +53,14 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         if isStart:
             context = context.newLocalContext()
             self.registerArguments(context)
-        if self.arguments is not None:
-            self.arguments.check(context)
+        if self.parameters is not None:
+            self.parameters.check(context)
         return self.checkStatements(context, self.returnType)
 
 
     def checkChild(self, context):
-        if self.arguments is not None:
-            self.arguments.check(context)
+        if self.parameters is not None:
+            self.parameters.check(context)
         context = context.newChildContext()
         self.registerArguments(context)
         return self.checkStatements(context, self.returnType)
@@ -79,10 +79,10 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
 
 
     def isEligibleAsMain(self):
-        if self.arguments is None or self.arguments.isEmpty():
+        if self.parameters is None or self.parameters.isEmpty():
             return True
-        if self.arguments.size()==1:
-            arg = self.arguments[0]
+        if self.parameters.size()==1:
+            arg = self.parameters[0]
             if isinstance(arg, CategoryParameter):
                 itype = arg.getType()
                 if isinstance(itype, DictType):
@@ -101,7 +101,7 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         writer.append("def ")
         writer.append(self.name)
         writer.append(" (")
-        self.arguments.toDialect(writer)
+        self.parameters.toDialect(writer)
         writer.append(")")
         if self.returnType is not None and self.returnType is not VoidType.instance:
             writer.append("->")
@@ -115,7 +115,7 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         writer.append("define ")
         writer.append(self.name)
         writer.append(" as method ")
-        self.arguments.toDialect(writer)
+        self.parameters.toDialect(writer)
         if self.returnType is not None and self.returnType is not VoidType.instance:
             writer.append("returning ")
             self.returnType.toDialect(writer)
@@ -132,7 +132,7 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         writer.append("method ")
         writer.append(self.name)
         writer.append(" (")
-        self.arguments.toDialect(writer)
+        self.parameters.toDialect(writer)
         writer.append(") {\n")
         writer.indent()
         self.statements.toDialect(writer)

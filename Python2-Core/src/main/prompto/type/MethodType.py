@@ -34,3 +34,6 @@ class MethodType(BaseType):
         # TODO Auto-generated method stub
         return False
 
+
+    def checkArrowExpression(self, expression):
+        return self
