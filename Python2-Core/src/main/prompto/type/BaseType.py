@@ -31,10 +31,12 @@ class BaseType(IType):
         writer.append(self.typeName)
 
 
-
     def getMemberMethods(selfself, context, name):
         return []
 
+
+    def getStaticMemberMethods(selfself, context, name):
+        return []
 
 
     def checkAdd(self, context, other, tryReverse):
@@ -127,6 +129,10 @@ class BaseType(IType):
             return TextType.instance
         else:
             raise SyntaxError("Cannot read member from " + self.typeName)
+
+
+    def checkStaticMember(self, context, name):
+        raise SyntaxError("Cannot read member from " + self.typeName)
 
 
     def checkSlice(self, context):

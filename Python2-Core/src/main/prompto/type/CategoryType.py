@@ -140,31 +140,74 @@ class CategoryType(BaseType):
         self.getDeclaration(context)
 
     def checkMember(self, context, name):
-        dd = context.getRegisteredDeclaration(IDeclaration, self.typeName)
-        if dd is None:
+        decl = context.getRegisteredDeclaration(IDeclaration, self.typeName)
+        if decl is None:
             raise SyntaxError("Unknown category:" + self.typeName)
         from prompto.declaration.CategoryDeclaration import CategoryDeclaration
         from prompto.declaration.EnumeratedNativeDeclaration import EnumeratedNativeDeclaration
-        if isinstance(dd, EnumeratedNativeDeclaration):
-            return dd.type.checkMember(context, name)
-        elif isinstance(dd, CategoryDeclaration):
-            if dd.storable and "dbId" == name:
-                return AnyType.instance
-            elif dd.hasAttribute(context, name):
-                ad = context.getRegisteredDeclaration(AttributeDeclaration, name)
-                if ad is None:
-                    raise SyntaxError("Missing atttribute:" + name)
-                else:
-                    return ad.getType(context)
-            elif "text" == name:
-                return TextType.instance
-            elif dd.hasMethod(context, name):
-                method = dd.getMemberMethodsMap(context, name).getFirst()
-                return MethodType(method)
-            else:
-                raise SyntaxError("No attribute:" + name + " in category:" + self.typeName)
+        if isinstance(decl, EnumeratedNativeDeclaration):
+            return decl.type.checkMember(context, name)
+        elif isinstance(decl, CategoryDeclaration):
+            return self.checkCategoryMember(context, decl, name)
         else:
             raise SyntaxError("Not a category:" + self.typeName)
+
+
+    def checkCategoryMember(self, context, decl, name):
+        if decl.storable and "dbId" == name:
+            return AnyType.instance
+        elif decl.hasAttribute(context, name):
+            ad = context.getRegisteredDeclaration(AttributeDeclaration, name)
+            if ad is None:
+                raise SyntaxError("Missing atttribute:" + name)
+            else:
+                return ad.getType(context)
+        elif "text" == name:
+            return TextType.instance
+        elif decl.hasMethod(context, name):
+            method = decl.getMemberMethodsMap(context, name).getFirst()
+            return MethodType(method)
+        else:
+            raise SyntaxError("No attribute:" + name + " in category:" + self.typeName)
+
+
+    def checkStaticMember(self, context, name):
+        from prompto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
+
+        decl = context.getRegisteredDeclaration (IDeclaration, self.typeName)
+        if decl is None:
+            raise SyntaxError("Unknown category:" + self.typeName)
+        if isinstance(decl, IEnumeratedDeclaration):
+            return decl.getType(context).checkStaticMember(context, name)
+        elif isinstance(decl, SingletonCategoryDeclaration):
+            return self.checkCategoryMember(context, decl, name)
+        else:
+            raise SyntaxError("No attribute:" + name + " in category:" + self.typeName)
+
+
+    def getStaticMemberMethods(self, context, name):
+        from prompto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
+
+        decl = self.getDeclaration(context)
+        if isinstance(decl, IEnumeratedDeclaration):
+            return decl.getType(context).getStaticMemberMethods(context, name)
+        elif isinstance(decl, SingletonCategoryDeclaration):
+            return decl.getType(context).getMemberMethods(context, name)
+        else:
+            return super(CategoryType, self).getStaticMemberMethods(context, name)
+
+
+    def getStaticMemberValue(self, context, name):
+        from prompto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
+
+        decl = self.getDeclaration(context)
+        if isinstance(decl, IEnumeratedDeclaration):
+            return decl.getType(context).getStaticMemberValue(context, name)
+        elif isinstance(decl, SingletonCategoryDeclaration):
+            singleton = context.loadSingleton(self)
+            return singleton.getMemberValue(context, name, False)
+        else:
+            return super(CategoryType, self).getStaticMemberValue(context, name)
 
 
     def isDerivedFrom(self, context, other):

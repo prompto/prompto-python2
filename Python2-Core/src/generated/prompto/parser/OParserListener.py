@@ -1354,6 +1354,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#type_literal.
+    def enterType_literal(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#type_literal.
+    def exitType_literal(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#null_literal.
     def enterNull_literal(self, ctx):
         pass
@@ -2494,6 +2503,15 @@ class OParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by OParser#UUIDLiteral.
     def exitUUIDLiteral(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#TypeLiteral.
+    def enterTypeLiteral(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#TypeLiteral.
+    def exitTypeLiteral(self, ctx):
         pass
 
 

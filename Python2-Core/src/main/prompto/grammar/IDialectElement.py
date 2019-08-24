@@ -12,11 +12,19 @@ class IDialectElement(object):
         else:
             raise Exception("Unsupported dialect:" + str(writer.dialect))
 
+
     def toEDialect(self, writer):
         raise Exception("You must override toEDialect in " + type(self).__name__)
+
 
     def toODialect(self, writer):
         raise Exception("You must override toODialect in " + type(self).__name__)
 
+
     def toMDialect(self, writer):
         raise Exception("You must override toMDialect in " + type(self).__name__)
+
+
+    def parentToDialect(self, writer):
+        self.toDialect(writer)
+

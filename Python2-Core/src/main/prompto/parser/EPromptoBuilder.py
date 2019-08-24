@@ -1,5 +1,6 @@
 from antlr4 import TerminalNode, Token
 
+from prompto.literal.TypeLiteral import TypeLiteral
 from prompto.param.CategoryParameter import CategoryParameter
 from prompto.param.CodeParameter import CodeParameter
 from prompto.param.ExtendedParameter import ExtendedParameter
@@ -376,7 +377,7 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, BlobType.instance)
 
     def exitBooleanLiteral(self, ctx):
-        self.setNodeValue(ctx, BooleanLiteral(ctx.t.text))
+        self.setNodeValue(ctx, BooleanLiteral(ctx.getText()))
 
     def exitBreakStatement(self, ctx):
         self.setNodeValue(ctx, BreakStatement())
@@ -388,22 +389,22 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, MaxIntegerLiteral())
 
     def exitIntegerLiteral(self, ctx):
-        self.setNodeValue(ctx, IntegerLiteral(ctx.t.text))
+        self.setNodeValue(ctx, IntegerLiteral(ctx.getText()))
 
     def exitDecimalLiteral(self, ctx):
-        self.setNodeValue(ctx, DecimalLiteral(ctx.t.text))
+        self.setNodeValue(ctx, DecimalLiteral(ctx.getText()))
 
     def exitHexadecimalLiteral(self, ctx):
-        self.setNodeValue(ctx, HexaLiteral(ctx.t.text))
+        self.setNodeValue(ctx, HexaLiteral(ctx.getText()))
 
     def exitCharacterLiteral(self, ctx):
-        self.setNodeValue(ctx, CharacterLiteral(ctx.t.text))
+        self.setNodeValue(ctx, CharacterLiteral(ctx.getText()))
 
     def exitDateLiteral(self, ctx):
-        self.setNodeValue(ctx, DateLiteral(ctx.t.text))
+        self.setNodeValue(ctx, DateLiteral(ctx.getText()))
 
     def exitDateTimeLiteral(self, ctx):
-        self.setNodeValue(ctx, DateTimeLiteral(ctx.t.text))
+        self.setNodeValue(ctx, DateTimeLiteral(ctx.getText()))
 
     def exitTernaryExpression(self, ctx):
         condition = self.getNodeValue(ctx.test)
@@ -421,19 +422,19 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, TestMethodDeclaration(name, stmts, exps, error))
 
     def exitTextLiteral(self, ctx):
-        self.setNodeValue(ctx, TextLiteral(ctx.t.text))
+        self.setNodeValue(ctx, TextLiteral(ctx.getText()))
 
     def exitTimeLiteral(self, ctx):
-        self.setNodeValue(ctx, TimeLiteral(ctx.t.text))
+        self.setNodeValue(ctx, TimeLiteral(ctx.getText()))
 
     def exitPeriodLiteral(self, ctx):
-        self.setNodeValue(ctx, PeriodLiteral(ctx.t.text))
+        self.setNodeValue(ctx, PeriodLiteral(ctx.getText()))
 
     def exitPeriodType(self, ctx):
         self.setNodeValue(ctx, PeriodType.instance)
 
     def exitVersionLiteral(self, ctx):
-        self.setNodeValue(ctx, VersionLiteral(ctx.t.text))
+        self.setNodeValue(ctx, VersionLiteral(ctx.getText()))
 
     def exitVersionType(self, ctx):
         self.setNodeValue(ctx, VersionType.instance)
@@ -662,16 +663,6 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, ctx.getText())
 
 
-    def exitDerivedList(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        self.setNodeValue(ctx, items)
-
-    def exitDerivedListItem(self, ctx):
-        items = self.getNodeValue(ctx.items)
-        item = self.getNodeValue(ctx.item)
-        items.append(item)
-        self.setNodeValue(ctx, items)
-
     def exitType_identifier_list(self, ctx):
         items = IdentifierList()
         for rule in ctx.type_identifier():
@@ -679,9 +670,33 @@ class EPromptoBuilder(EParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
+    def exitTypeLiteral(self, ctx):
+        typ = self.getNodeValue(ctx.type_literal())
+        self.setNodeValue(ctx, typ)
+
+
+    def exitType_literal(self, ctx):
+        typ = self.getNodeValue(ctx.typedef())
+        self.setNodeValue(ctx, TypeLiteral(typ))
+
+
+    def exitDerivedList(self, ctx):
+        items = self.getNodeValue(ctx.items)
+        self.setNodeValue(ctx, items)
+
+
+    def exitDerivedListItem(self, ctx):
+        items = self.getNodeValue(ctx.items)
+        item = self.getNodeValue(ctx.item)
+        items.append(item)
+        self.setNodeValue(ctx, items)
+
+
     def exitInstanceExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
 
     def exitSelectableExpression(self, ctx):
         parent = self.getNodeValue(ctx.parent)
@@ -773,16 +788,16 @@ class EPromptoBuilder(EParserListener):
 
     def exitArgumentAssignmentListExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
-        items = self.getNodeValue(ctx.items)
-        if items is None:
-            items = ArgumentList()
-        items.insert(0, Argument(None, exp))
-        item = self.getNodeValue(ctx.item)
-        if item is not None:
-            items.append(item)
+        args = self.getNodeValue(ctx.items)
+        if args is None:
+            args = ArgumentList()
+        args.insert(0, Argument(None, exp))
+        arg = self.getNodeValue(ctx.item)
+        if arg is not None:
+            args.append(arg)
         else:
-            items.checkLastAnd()
-        self.setNodeValue(ctx, items)
+            args.checkLastAnd()
+        self.setNodeValue(ctx, args)
 
 
     def exitArgumentAssignmentListNoExpression(self, ctx):
@@ -824,7 +839,7 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitUUIDLiteral(self, ctx):
-        self.setNodeValue(ctx, UUIDLiteral(ctx.t.text))
+        self.setNodeValue(ctx, UUIDLiteral(ctx.getText()))
 
 
     def exitArrow_prefix(self, ctx):
@@ -959,6 +974,8 @@ class EPromptoBuilder(EParserListener):
             if args is None:
                 args = ArgumentList()
             args.append(arg)
+        elif args is not None:
+            args.checkLastAnd()
         self.setNodeValue(ctx, ConstructorExpression(typ, copyFrom, args, True))
 
 
@@ -970,6 +987,8 @@ class EPromptoBuilder(EParserListener):
             if args is None:
                 args = ArgumentList()
             args.append(arg)
+        elif args is not None:
+            args.checkLastAnd()
         self.setNodeValue(ctx, ConstructorExpression(typ, None, args, True))
 
     def exitAssertion(self, ctx):

@@ -1,5 +1,6 @@
 from antlr4 import Token, TerminalNode
 
+from prompto.literal.TypeLiteral import TypeLiteral
 from prompto.param.CategoryParameter import CategoryParameter
 from prompto.param.CodeParameter import CodeParameter
 from prompto.param.UnresolvedParameter import UnresolvedParameter
@@ -513,7 +514,7 @@ class MPromptoBuilder(MParserListener):
 
 
     def exitBooleanLiteral(self, ctx):
-        self.setNodeValue(ctx, BooleanLiteral(ctx.t.text))
+        self.setNodeValue(ctx, BooleanLiteral(ctx.getText()))
 
 
     def exitBooleanType(self, ctx):
@@ -593,7 +594,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, typ)
 
     def exitCharacterLiteral(self, ctx):
-        self.setNodeValue(ctx, CharacterLiteral(ctx.t.text))
+        self.setNodeValue(ctx, CharacterLiteral(ctx.getText()))
 
     def exitCharacterType(self, ctx):
         self.setNodeValue(ctx, CharacterType.instance)
@@ -789,10 +790,10 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, CSharpTextLiteral(ctx.getText()))
 
     def exitDateLiteral(self, ctx):
-        self.setNodeValue(ctx, DateLiteral(ctx.t.text))
+        self.setNodeValue(ctx, DateLiteral(ctx.getText()))
 
     def exitDateTimeLiteral(self, ctx):
-        self.setNodeValue(ctx, DateTimeLiteral(ctx.t.text))
+        self.setNodeValue(ctx, DateTimeLiteral(ctx.getText()))
 
     def exitDateTimeType(self, ctx):
         self.setNodeValue(ctx, DateTimeType.instance)
@@ -801,7 +802,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, DateType.instance)
 
     def exitDecimalLiteral(self, ctx):
-        self.setNodeValue(ctx, DecimalLiteral(ctx.t.text))
+        self.setNodeValue(ctx, DecimalLiteral(ctx.getText()))
 
     def exitDecimalType(self, ctx):
         self.setNodeValue(ctx, DecimalType.instance)
@@ -1056,7 +1057,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, CompareExpression(left, CmpOp.GTE, right))
 
     def exitHexadecimalLiteral(self, ctx):
-        self.setNodeValue(ctx, HexaLiteral(ctx.t.text))
+        self.setNodeValue(ctx, HexaLiteral(ctx.getText()))
 
     def exitIdentifierExpression(self, ctx):
         name = self.getNodeValue(ctx.exp)
@@ -1093,7 +1094,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, IntDivideExpression(left, right))
 
     def exitIntegerLiteral(self, ctx):
-        self.setNodeValue(ctx, IntegerLiteral(ctx.t.text))
+        self.setNodeValue(ctx, IntegerLiteral(ctx.getText()))
 
     def exitIntegerType(self, ctx):
         self.setNodeValue(ctx, IntegerType.instance)
@@ -1731,13 +1732,13 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, exp)
 
     def exitPeriodLiteral(self, ctx):
-        self.setNodeValue(ctx, PeriodLiteral(ctx.t.text))
+        self.setNodeValue(ctx, PeriodLiteral(ctx.getText()))
 
     def exitPeriodType(self, ctx):
         self.setNodeValue(ctx, PeriodType.instance)
 
     def exitVersionLiteral(self, ctx):
-        self.setNodeValue(ctx, VersionLiteral(ctx.t.text))
+        self.setNodeValue(ctx, VersionLiteral(ctx.getText()))
 
     def exitVersionType(self, ctx):
         self.setNodeValue(ctx, VersionType.instance)
@@ -2053,7 +2054,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, exp)
 
     def exitTextLiteral(self, ctx):
-        self.setNodeValue(ctx, TextLiteral(ctx.t.text))
+        self.setNodeValue(ctx, TextLiteral(ctx.getText()))
 
     def exitTest_method_declaration(self, ctx):
         name = ctx.name.text
@@ -2073,7 +2074,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, ThisExpression())
 
     def exitTimeLiteral(self, ctx):
-        self.setNodeValue(ctx, TimeLiteral(ctx.t.text))
+        self.setNodeValue(ctx, TimeLiteral(ctx.getText()))
 
     def exitTimeType(self, ctx):
         self.setNodeValue(ctx, TimeType.instance)
@@ -2094,6 +2095,7 @@ class MPromptoBuilder(MParserListener):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitTuple_literal(self, ctx):
         mutable = ctx.MUTABLE() is not None
         items = self.getNodeValue(ctx.expression_tuple())
@@ -2101,14 +2103,40 @@ class MPromptoBuilder(MParserListener):
         value = TupleLiteral(mutable, items)
         self.setNodeValue(ctx, value)
 
+
     def exitSet_literal(self, ctx):
         items = self.getNodeValue(ctx.expression_list())
         items = items if items is not None else []
         value = SetLiteral(items)
         self.setNodeValue(ctx, value)
 
+
     def exitType_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
+
+    def exitType_identifier_list(self, ctx):
+        items = IdentifierList()
+        for rule in ctx.type_identifier():
+            item = self.getNodeValue(rule)
+            items.append(item)
+        self.setNodeValue(ctx, items)
+
+
+    def exitType_literal(self, ctx):
+        typ = self.getNodeValue(ctx.typedef())
+        self.setNodeValue(ctx, TypeLiteral(typ))
+
+
+    def exitTypeIdentifier(self, ctx):
+        name = self.getNodeValue(ctx.type_identifier())
+        self.setNodeValue(ctx, name)
+
+
+    def exitTypeLiteral(self, ctx):
+        typ = self.getNodeValue(ctx.type_literal())
+        self.setNodeValue(ctx, typ)
+
 
     def exitTyped_argument(self, ctx):
         typ = self.getNodeValue(ctx.typ)
@@ -2120,24 +2148,13 @@ class MPromptoBuilder(MParserListener):
         arg.defaultExpression = exp
         self.setNodeValue(ctx, arg)
 
-    def exitTypeIdentifier(self, ctx):
-        name = self.getNodeValue(ctx.type_identifier())
-        self.setNodeValue(ctx, name)
-
-    def exitType_identifier_list(self, ctx):
-        items = IdentifierList()
-        for rule in ctx.type_identifier():
-            item = self.getNodeValue(rule)
-            items.append(item)
-        self.setNodeValue(ctx, items)
-
 
     def exitUUIDType(self, ctx):
         self.setNodeValue(ctx, UUIDType.instance)
 
 
     def exitUUIDLiteral(self, ctx):
-        self.setNodeValue(ctx, UUIDLiteral(ctx.t.text))
+        self.setNodeValue(ctx, UUIDLiteral(ctx.getText()))
 
 
     def exitValue_token(self, ctx):

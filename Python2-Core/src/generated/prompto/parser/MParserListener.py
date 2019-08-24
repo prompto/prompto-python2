@@ -1336,6 +1336,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#type_literal.
+    def enterType_literal(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#type_literal.
+    def exitType_literal(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#null_literal.
     def enterNull_literal(self, ctx):
         pass
@@ -2467,6 +2476,15 @@ class MParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by MParser#UUIDLiteral.
     def exitUUIDLiteral(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#TypeLiteral.
+    def enterTypeLiteral(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#TypeLiteral.
+    def exitTypeLiteral(self, ctx):
         pass
 
 

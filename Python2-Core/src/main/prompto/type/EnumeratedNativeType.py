@@ -20,12 +20,17 @@ class EnumeratedNativeType ( BaseType ):
 
 
     def checkMember(self, context, name):
-        if name == "symbols":
-            return ListType(self)
-        elif "name" == name:
+        if "name" == name:
             return TextType.instance
         elif name == "value":
             return self.derivedFrom
+        else:
+            return super(EnumeratedNativeType, self).checkMember(context, name)
+
+
+    def checkStaticMember(self, context, name):
+        if name == "symbols":
+            return ListType(self)
         else:
             return super(EnumeratedNativeType, self).checkMember(context, name)
 
@@ -34,7 +39,7 @@ class EnumeratedNativeType ( BaseType ):
         return self.typeName == other.typeName
 
 
-    def getMemberValue(self, context, name):
+    def getStaticMemberValue(self, context, name):
         from prompto.declaration.EnumeratedNativeDeclaration import EnumeratedNativeDeclaration
         decl = context.getRegisteredDeclaration(IDeclaration, self.typeName)
         if not isinstance (decl, EnumeratedNativeDeclaration):
@@ -44,11 +49,12 @@ class EnumeratedNativeType ( BaseType ):
         else:
             raise SyntaxError("Unknown member:" + name)
 
-    def getMemberMethods(self, context, name):
+
+    def getStaticMemberMethods(self, context, name):
         if name == "symbolOf":
             return [SymbolOfMethodDeclaration(self)]
         else:
-            return super(EnumeratedNativeType, self).getMemberMethods(context, name)
+            return super(EnumeratedNativeType, self).getStaticMemberMethods(context, name)
 
 
 class SymbolOfMethodDeclaration(BuiltInMethodDeclaration):

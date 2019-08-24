@@ -1,5 +1,6 @@
 from antlr4 import Token
 
+from prompto.literal.TypeLiteral import TypeLiteral
 from prompto.param.CategoryParameter import CategoryParameter
 from prompto.param.CodeParameter import CodeParameter
 from prompto.param.ExtendedParameter import ExtendedParameter
@@ -332,7 +333,7 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitBooleanLiteral(self, ctx):
-        self.setNodeValue(ctx, BooleanLiteral(ctx.t.text))
+        self.setNodeValue(ctx, BooleanLiteral(ctx.getText()))
 
     def exitBreakStatement(self, ctx):
         self.setNodeValue(ctx, BreakStatement())
@@ -344,22 +345,22 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, MaxIntegerLiteral())
 
     def exitIntegerLiteral(self, ctx):
-        self.setNodeValue(ctx, IntegerLiteral(ctx.t.text))
+        self.setNodeValue(ctx, IntegerLiteral(ctx.getText()))
 
     def exitDecimalLiteral(self, ctx):
-        self.setNodeValue(ctx, DecimalLiteral(ctx.t.text))
+        self.setNodeValue(ctx, DecimalLiteral(ctx.getText()))
 
     def exitHexadecimalLiteral(self, ctx):
-        self.setNodeValue(ctx, HexaLiteral(ctx.t.text))
+        self.setNodeValue(ctx, HexaLiteral(ctx.getText()))
 
     def exitCharacterLiteral(self, ctx):
-        self.setNodeValue(ctx, CharacterLiteral(ctx.t.text))
+        self.setNodeValue(ctx, CharacterLiteral(ctx.getText()))
 
     def exitDateLiteral(self, ctx):
-        self.setNodeValue(ctx, DateLiteral(ctx.t.text))
+        self.setNodeValue(ctx, DateLiteral(ctx.getText()))
 
     def exitDateTimeLiteral(self, ctx):
-        self.setNodeValue(ctx, DateTimeLiteral(ctx.t.text))
+        self.setNodeValue(ctx, DateTimeLiteral(ctx.getText()))
 
     def exitTernaryExpression(self, ctx):
         condition = self.getNodeValue(ctx.test)
@@ -377,19 +378,19 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, TestMethodDeclaration(name, stmts, exps, error))
 
     def exitTextLiteral(self, ctx):
-        self.setNodeValue(ctx, TextLiteral(ctx.t.text))
+        self.setNodeValue(ctx, TextLiteral(ctx.getText()))
 
     def exitTimeLiteral(self, ctx):
-        self.setNodeValue(ctx, TimeLiteral(ctx.t.text))
+        self.setNodeValue(ctx, TimeLiteral(ctx.getText()))
 
     def exitPeriodLiteral(self, ctx):
-        self.setNodeValue(ctx, PeriodLiteral(ctx.t.text))
+        self.setNodeValue(ctx, PeriodLiteral(ctx.getText()))
 
     def exitPeriodType(self, ctx):
         self.setNodeValue(ctx, PeriodType.instance)
 
     def exitVersionLiteral(self, ctx):
-        self.setNodeValue(ctx, VersionLiteral(ctx.t.text))
+        self.setNodeValue(ctx, VersionLiteral(ctx.getText()))
 
     def exitVersionType(self, ctx):
         self.setNodeValue(ctx, VersionType.instance)
@@ -566,11 +567,13 @@ class OPromptoBuilder(OParserListener):
         item = self.getNodeValue(ctx.item)
         self.setNodeValue(ctx, IdentifierList(item))
 
+
     def exitDerivedListItem(self, ctx):
         items = self.getNodeValue(ctx.items)
         item = self.getNodeValue(ctx.item)
         items.append(item)
         self.setNodeValue(ctx, items)
+
 
     def exitConcrete_category_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -584,6 +587,7 @@ class OPromptoBuilder(OParserListener):
         ccd.setMethods(methods)
         self.setNodeValue(ctx, ccd)
 
+
     def exitConcrete_widget_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         derived = self.getNodeValue(ctx.derived)
@@ -591,20 +595,25 @@ class OPromptoBuilder(OParserListener):
         ccd = ConcreteWidgetDeclaration(name, derived, methods)
         self.setNodeValue(ctx, ccd)
 
+
     def exitConcreteCategoryDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
+
 
     def exitConcreteWidgetDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
+
     def exitNativeWidgetDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
 
+
     def exitType_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
 
     def exitType_identifier_list(self, ctx):
         items = IdentifierList()
@@ -613,19 +622,32 @@ class OPromptoBuilder(OParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
+    def exitTypeLiteral(self, ctx):
+        typ = self.getNodeValue(ctx.type_literal())
+        self.setNodeValue(ctx, typ)
+
+
+    def exitType_literal(self, ctx):
+        typ = self.getNodeValue(ctx.typedef())
+        self.setNodeValue(ctx, TypeLiteral(typ))
+
     def exitInstanceExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
+
     def exitSelectableExpression(self, ctx):
         parent = self.getNodeValue(ctx.parent)
         self.setNodeValue(ctx, parent)
+
 
     def exitSelectorExpression(self, ctx):
         parent = self.getNodeValue(ctx.parent)
         selector = self.getNodeValue(ctx.selector)
         selector.setParent(parent)
         self.setNodeValue(ctx, selector)
+
 
     def exitMemberSelector(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -1422,7 +1444,7 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, UUIDType.instance)
 
     def exitUUIDLiteral(self, ctx):
-        self.setNodeValue(ctx, UUIDLiteral(ctx.t.text))
+        self.setNodeValue(ctx, UUIDLiteral(ctx.getText()))
 
     def exitValue_token(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
