@@ -160,7 +160,7 @@ from prompto.parser.Dialect import Dialect
 from prompto.jsx.JsxLiteral import JsxLiteral
 from prompto.jsx.JsxElement import JsxElement
 from prompto.jsx.JsxSelfClosing import JsxSelfClosing
-from prompto.jsx.JsxAttribute import JsxAttribute
+from prompto.jsx.JsxProperty import JsxProperty
 from prompto.jsx.JsxExpression import JsxExpression
 from prompto.jsx.JsxText import JsxText
 from prompto.jsx.JsxCode import JsxCode
@@ -2378,7 +2378,7 @@ class EPromptoBuilder(EParserListener):
         name = self.getNodeValue(ctx.name)
         value = self.getNodeValue(ctx.value)
         suite = self.getWhiteSpacePlus(ctx.ws_plus())
-        self.setNodeValue(ctx, JsxAttribute(name, value, suite))
+        self.setNodeValue(ctx, JsxProperty(name, value, suite))
 
 
     def exitJsx_children(self, ctx):

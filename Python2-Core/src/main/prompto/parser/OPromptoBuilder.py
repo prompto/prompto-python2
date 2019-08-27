@@ -159,7 +159,7 @@ from prompto.parser.Dialect import Dialect
 from prompto.jsx.JsxSelfClosing import JsxSelfClosing
 from prompto.jsx.JsxElement import JsxElement
 from prompto.jsx.JsxLiteral import JsxLiteral
-from prompto.jsx.JsxAttribute import JsxAttribute
+from prompto.jsx.JsxProperty import JsxProperty
 from prompto.jsx.JsxExpression import JsxExpression
 from prompto.jsx.JsxCode import JsxCode
 from prompto.jsx.JsxText import JsxText
@@ -2276,7 +2276,7 @@ class OPromptoBuilder(OParserListener):
         value = self.getNodeValue(ctx.value)
         stop = ctx.value.stop if value is not None else ctx.name.stop
         suite = None if value is None else self.getHiddenTokensAfter(stop)
-        self.setNodeValue(ctx, JsxAttribute(name, value, suite))
+        self.setNodeValue(ctx, JsxProperty(name, value, suite))
 
     def exitJsx_children(self, ctx):
         expressions = [self.getNodeValue(cx) for cx in ctx.jsx_child()]
