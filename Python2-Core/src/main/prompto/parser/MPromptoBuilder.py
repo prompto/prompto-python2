@@ -2124,7 +2124,7 @@ class MPromptoBuilder(MParserListener):
 
 
     def exitType_literal(self, ctx):
-        typ = self.getNodeValue(ctx.typedef())
+        typ = self.getNodeValue(ctx.category_or_any_type())
         self.setNodeValue(ctx, TypeLiteral(typ))
 
 
