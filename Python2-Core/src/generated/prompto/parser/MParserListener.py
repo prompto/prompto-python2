@@ -1966,15 +1966,6 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#any_identifier.
-    def enterAny_identifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#any_identifier.
-    def exitAny_identifier(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by MParser#argument_list.
     def enterArgument_list(self, ctx):
         pass
