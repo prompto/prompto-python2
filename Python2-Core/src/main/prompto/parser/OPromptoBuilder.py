@@ -215,6 +215,7 @@ from prompto.type.BooleanType import BooleanType
 from prompto.type.CategoryType import CategoryType
 from prompto.type.CharacterType import CharacterType
 from prompto.type.CodeType import CodeType
+from prompto.type.CssType import CssType
 from prompto.type.DateTimeType import DateTimeType
 from prompto.type.DateType import DateType
 from prompto.type.DecimalType import DecimalType
@@ -1627,15 +1628,22 @@ class OPromptoBuilder(OParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitInExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.IN, right))
 
+
     def exitNotInExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, ContainsExpression(left, ContOp.NOT_IN, right))
+
+
+    def exitCssType(self, ctx):
+        self.setNodeValue(ctx, CssType.instance)
+
 
     def exitHasExpression(self, ctx):
         left = self.getNodeValue(ctx.left)

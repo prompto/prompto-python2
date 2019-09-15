@@ -1651,6 +1651,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#CssType.
+    def enterCssType(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#CssType.
+    def exitCssType(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#CharacterType.
     def enterCharacterType(self, ctx):
         pass
