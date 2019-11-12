@@ -22,6 +22,12 @@ class AbstractMethodDeclaration(BaseMethodDeclaration):
         return self.returnType
 
 
+    def checkChild(self, context):
+        if self.parameters is not None:
+            self.parameters.check(context)
+        return self.returnType
+
+
     def interpret(self, context):
         raise SyntaxError("Should never get there !")
 
