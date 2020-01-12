@@ -1,5 +1,6 @@
 from antlr4 import Token
 
+from prompto.jsx.JsxFragment import JsxFragment
 from prompto.literal.TypeLiteral import TypeLiteral
 from prompto.param.CategoryParameter import CategoryParameter
 from prompto.param.CodeParameter import CodeParameter
@@ -336,32 +337,42 @@ class OPromptoBuilder(OParserListener):
     def exitBooleanLiteral(self, ctx):
         self.setNodeValue(ctx, BooleanLiteral(ctx.getText()))
 
+
     def exitBreakStatement(self, ctx):
         self.setNodeValue(ctx, BreakStatement())
+
 
     def exitMinIntegerLiteral(self, ctx):
         self.setNodeValue(ctx, MinIntegerLiteral())
 
+
     def exitMaxIntegerLiteral(self, ctx):
         self.setNodeValue(ctx, MaxIntegerLiteral())
+
 
     def exitIntegerLiteral(self, ctx):
         self.setNodeValue(ctx, IntegerLiteral(ctx.getText()))
 
+
     def exitDecimalLiteral(self, ctx):
         self.setNodeValue(ctx, DecimalLiteral(ctx.getText()))
+
 
     def exitHexadecimalLiteral(self, ctx):
         self.setNodeValue(ctx, HexaLiteral(ctx.getText()))
 
+
     def exitCharacterLiteral(self, ctx):
         self.setNodeValue(ctx, CharacterLiteral(ctx.getText()))
+
 
     def exitDateLiteral(self, ctx):
         self.setNodeValue(ctx, DateLiteral(ctx.getText()))
 
+
     def exitDateTimeLiteral(self, ctx):
         self.setNodeValue(ctx, DateTimeLiteral(ctx.getText()))
+
 
     def exitTernaryExpression(self, ctx):
         condition = self.getNodeValue(ctx.test)
@@ -458,54 +469,75 @@ class OPromptoBuilder(OParserListener):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
+
     def exitVariableIdentifier(self, ctx):
         name = self.getNodeValue(ctx.variable_identifier())
         self.setNodeValue(ctx, InstanceExpression(name))
 
+
     def exitSymbol_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
 
     def exitNative_symbol(self, ctx):
         name = self.getNodeValue(ctx.name)
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, NativeSymbol(name, exp))
 
+
     def exitSymbolIdentifier(self, ctx):
         name = self.getNodeValue(ctx.symbol_identifier())
         self.setNodeValue(ctx, SymbolExpression(name))
 
+
+    def exitSymbolLiteral(self, ctx):
+        name = ctx.getText()
+        self.setNodeValue(ctx, SymbolExpression(name))
+
+
     def exitBooleanType(self, ctx):
         self.setNodeValue(ctx, BooleanType.instance)
+
 
     def exitCharacterType(self, ctx):
         self.setNodeValue(ctx, CharacterType.instance)
 
+
     def exitTextType(self, ctx):
         self.setNodeValue(ctx, TextType.instance)
+
 
     def exitHtmlType(self, ctx):
         self.setNodeValue(ctx, HtmlType.instance)
 
+
     def exitThisExpression(self, ctx):
         self.setNodeValue(ctx, ThisExpression())
+
 
     def exitIntegerType(self, ctx):
         self.setNodeValue(ctx, IntegerType.instance)
 
+
     def exitDecimalType(self, ctx):
         self.setNodeValue(ctx, DecimalType.instance)
+
 
     def exitDateType(self, ctx):
         self.setNodeValue(ctx, DateType.instance)
 
+
     def exitDateTimeType(self, ctx):
         self.setNodeValue(ctx, DateTimeType.instance)
+
 
     def exitTimeType(self, ctx):
         self.setNodeValue(ctx, TimeType.instance)
 
+
     def exitCodeType(self, ctx):
         self.setNodeValue(ctx, CodeType.instance)
+
 
     def exitPrimaryType(self, ctx):
         typ = self.getNodeValue(ctx.p)
@@ -650,9 +682,14 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, selector)
 
 
+    def exitMember_identifier(self, ctx):
+        self.setNodeValue(ctx, ctx.getText())
+
+
     def exitMemberSelector(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MemberSelector(name))
+
 
     def exitIsAnExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
@@ -660,25 +697,30 @@ class OPromptoBuilder(OParserListener):
         right = TypeExpression(typ)
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.IS_A, right))
 
+
     def exitIsNotAnExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         typ = self.getNodeValue(ctx.right)
         right = TypeExpression(typ)
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.IS_NOT_A, right))
 
+
     def exitIsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.IS, right))
+
 
     def exitIsNotExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.IS_NOT, right))
 
+
     def exitItemSelector(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, ItemSelector(exp))
+
 
     def exitSliceSelector(self, ctx):
         xslice = self.getNodeValue(ctx.xslice)
@@ -2238,27 +2280,35 @@ class OPromptoBuilder(OParserListener):
         name = ctx.name.getText()
         self.setNodeValue(ctx, JavaScriptMemberExpression(name))
 
+
     def exitJavascript_primary_expression(self, ctx):
         exp = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, exp)
+
 
     def exitJavascriptStatement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, JavaScriptStatement(exp, False))
 
+
     def exitJavascriptTextLiteral(self, ctx):
         text = ctx.t.text
         self.setNodeValue(ctx, JavaScriptTextLiteral(text))
 
+
     def exitJsxChild(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.jsx))
 
+
     def exitJsxCode(self, ctx):
         exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, JsxCode(exp))
+        suite = self.getHiddenTokensAfter(ctx.RCURL())
+        self.setNodeValue(ctx, JsxCode(exp, suite))
+
 
     def exitJsxExpression(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
+
 
     def exitJsxElement(self, ctx):
         elem = self.getNodeValue(ctx.opening)
@@ -2268,16 +2318,25 @@ class OPromptoBuilder(OParserListener):
         elem.setChildren(children)
         self.setNodeValue(ctx, elem)
 
+
+    def exitJsxLiteral(self, ctx):
+        text = ctx.getText()
+        self.setNodeValue(ctx, JsxLiteral(text))
+
+
     def exitJsxSelfClosing(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.jsx))
+
 
     def exitJsxText(self, ctx):
         text = ParserUtils.getFullText(ctx.text)
         self.setNodeValue(ctx, JsxText(text))
 
+
     def exitJsxValue(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, JsxExpression(exp))
+
 
     def exitJsx_attribute(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -2286,24 +2345,38 @@ class OPromptoBuilder(OParserListener):
         suite = None if value is None else self.getHiddenTokensAfter(stop)
         self.setNodeValue(ctx, JsxProperty(name, value, suite))
 
+
     def exitJsx_children(self, ctx):
         expressions = [self.getNodeValue(cx) for cx in ctx.jsx_child()]
         self.setNodeValue(ctx, expressions)
+
+
+    def exitJsx_closing(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        suite = self.getHiddenTokensAfter(ctx.GT())
+        self.setNodeValue(ctx, JsxClosing(name, suite))
+
 
     def exitJsx_element_name(self, ctx):
         name = ctx.getText()
         self.setNodeValue(ctx, name)
 
+
     def exitJsx_expression(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.getChild(0)))
+
+
+    def exitJsx_fragment(self, ctx):
+        suite = self.getHiddenTokensAfter(ctx.jsx_fragment_start().stop)
+        fragment = JsxFragment(suite)
+        fragment.children = self.getNodeValue(ctx.children_)
+        self.setNodeValue(ctx, fragment)
+
 
     def exitJsx_identifier(self, ctx):
         name = ctx.getText()
         self.setNodeValue(ctx, name)
 
-    def exitJsxLiteral(self, ctx):
-        text = ctx.getText()
-        self.setNodeValue(ctx, JsxLiteral(text))
 
     def exitJsx_opening(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -2312,20 +2385,18 @@ class OPromptoBuilder(OParserListener):
         openingSuite = self.getHiddenTokensAfter(ctx.GT())
         self.setNodeValue(ctx, JsxElement(name, nameSuite, attributes, openingSuite))
 
-    def exitJsx_closing(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        suite = self.getHiddenTokensAfter(ctx.GT())
-        self.setNodeValue(ctx, JsxClosing(name, suite))
 
     def exitJsx_self_closing(self, ctx):
         name = self.getNodeValue(ctx.name)
         nameSuite = self.getHiddenTokensAfter(ctx.name.stop)
         attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
-        openingSuite = self.getHiddenTokensAfter(ctx.GT())
-        self.setNodeValue(ctx, JsxSelfClosing(name, nameSuite, attributes, openingSuite))
+        suite = self.getHiddenTokensAfter(ctx.GT())
+        self.setNodeValue(ctx, JsxSelfClosing(name, nameSuite, attributes, suite))
+
 
     def exitCssExpression(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
+
 
     def exitCss_expression(self, ctx):
         exp = CssExpression()

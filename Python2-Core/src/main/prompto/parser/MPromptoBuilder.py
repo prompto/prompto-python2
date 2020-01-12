@@ -1,5 +1,6 @@
 from antlr4 import Token, TerminalNode
 
+from prompto.jsx.JsxFragment import JsxFragment
 from prompto.literal.TypeLiteral import TypeLiteral
 from prompto.param.CategoryParameter import CategoryParameter
 from prompto.param.CodeParameter import CodeParameter
@@ -558,13 +559,16 @@ class MPromptoBuilder(MParserListener):
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, CategorySymbol(name, args))
 
+
     def exitCategory_type(self, ctx):
         name = ctx.getText()
         self.setNodeValue(ctx, CategoryType(name))
 
+
     def exitNative_member_method_declaration(self, ctx):
         decl = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, decl)
+
 
     def exitNative_member_method_declaration_list(self, ctx):
         items = MethodDeclarationList()
@@ -572,6 +576,7 @@ class MPromptoBuilder(MParserListener):
             item = self.getNodeValue(rule)
             items.append(item)
         self.setNodeValue(ctx, items)
+
 
     def exitMember_method_declaration(self, ctx):
         comments = self.readComments(ctx.comment_statement())
@@ -583,6 +588,7 @@ class MPromptoBuilder(MParserListener):
             decl.annotations = annotations
             self.setNodeValue(ctx, decl)
 
+
     def exitCategory_symbol_list(self, ctx):
         items = CategorySymbolList()
         for rule in ctx.category_symbol():
@@ -590,15 +596,19 @@ class MPromptoBuilder(MParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitCategoryType(self, ctx):
         typ = self.getNodeValue(ctx.c)
         self.setNodeValue(ctx, typ)
 
+
     def exitCharacterLiteral(self, ctx):
         self.setNodeValue(ctx, CharacterLiteral(ctx.getText()))
 
+
     def exitCharacterType(self, ctx):
         self.setNodeValue(ctx, CharacterType.instance)
+
 
     def exitChildInstance(self, ctx):
         parent = self.getNodeValue(ctx.assignable_instance())
@@ -1427,6 +1437,10 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, MaxIntegerLiteral())
 
 
+    def exitMember_identifier(self, ctx):
+        self.setNodeValue(ctx, ctx.getText())
+
+
     def exitMemberInstance(self, ctx):
         name = self.getNodeValue(ctx.name)
         self.setNodeValue(ctx, MemberInstance(None, name))
@@ -1946,20 +1960,24 @@ class MPromptoBuilder(MParserListener):
         name = self.getNodeValue(ctx.variable_identifier())
         self.setNodeValue(ctx, VariableInstance(name))
 
+
     def exitRoughlyEqualsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.ROUGHLY, right))
 
+
     def exitSelectableExpression(self, ctx):
         parent = self.getNodeValue(ctx.parent)
         self.setNodeValue(ctx, parent)
+
 
     def exitSelectorExpression(self, ctx):
         parent = self.getNodeValue(ctx.parent)
         selector = self.getNodeValue(ctx.selector)
         selector.setParent(parent)
         self.setNodeValue(ctx, selector)
+
 
     def exitMember_method_declaration_list(self, ctx):
         items = MethodDeclarationList()
@@ -1968,10 +1986,12 @@ class MPromptoBuilder(MParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitSetter_method_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, SetterMethodDeclaration(name, stmts))
+
 
     def exitSingleton_category_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -1979,14 +1999,17 @@ class MPromptoBuilder(MParserListener):
         methods = self.getNodeValue(ctx.methods)
         self.setNodeValue(ctx, SingletonCategoryDeclaration(name, attrs, methods))
 
+
     def exitSingletonCategoryDeclaration(self, ctx):
         decl = self.getNodeValue(ctx.decl)
         self.setNodeValue(ctx, decl)
+
 
     def exitSliceFirstAndLast(self, ctx):
         first = self.getNodeValue(ctx.first)
         last = self.getNodeValue(ctx.last)
         self.setNodeValue(ctx, SliceSelector(first, last))
+
 
     def exitSliceFirstOnly(self, ctx):
         first = self.getNodeValue(ctx.first)
@@ -2040,6 +2063,7 @@ class MPromptoBuilder(MParserListener):
         stmt.setDefaultCase(stmts)
         self.setNodeValue(ctx, stmt)
 
+
     def exitSwitch_case_statement_list(self, ctx):
         items = SwitchCaseList()
         for rule in ctx.switch_case_statement():
@@ -2047,19 +2071,29 @@ class MPromptoBuilder(MParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitSwitchStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitSymbol_identifier(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
 
     def exitSymbolIdentifier(self, ctx):
         name = self.getNodeValue(ctx.symbol_identifier())
         self.setNodeValue(ctx, name)
 
+
+    def exitSymbolLiteral(self, ctx):
+        name = ctx.getText()
+        self.setNodeValue(ctx, SymbolExpression(name))
+
+
     def exitSymbols_token(self, ctx):
         self.setNodeValue(ctx, ctx.getText())
+
 
     def exitTernaryExpression(self, ctx):
         condition = self.getNodeValue(ctx.test)
@@ -2068,8 +2102,10 @@ class MPromptoBuilder(MParserListener):
         exp = TernaryExpression(condition, ifTrue, ifFalse)
         self.setNodeValue(ctx, exp)
 
+
     def exitTextLiteral(self, ctx):
         self.setNodeValue(ctx, TextLiteral(ctx.getText()))
+
 
     def exitTest_method_declaration(self, ctx):
         name = ctx.name.text
@@ -2079,11 +2115,14 @@ class MPromptoBuilder(MParserListener):
         error = None if errorName is None else SymbolExpression(errorName)
         self.setNodeValue(ctx, TestMethodDeclaration(name, stmts, exps, error))
 
+
     def exitTextType(self, ctx):
         self.setNodeValue(ctx, TextType.instance)
 
+
     def exitHtmlType(self, ctx):
         self.setNodeValue(ctx, HtmlType.instance)
+
 
     def exitThisExpression(self, ctx):
         self.setNodeValue(ctx, ThisExpression())
@@ -2229,28 +2268,35 @@ class MPromptoBuilder(MParserListener):
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, WithResourceStatement(stmt, stmts))
 
+
     def exitWithResourceStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitWrite_statement(self, ctx):
         what = self.getNodeValue(ctx.what)
         target = self.getNodeValue(ctx.target)
         self.setNodeValue(ctx, WriteStatement(what, target))
 
+
     def exitWriteStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitJsxChild(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.jsx))
 
+
     def exitJsxCode(self, ctx):
         exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, JsxCode(exp))
+        self.setNodeValue(ctx, JsxCode(exp, None))
+
 
     def exitJsxExpression(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
+
 
     def exitJsxElement(self, ctx):
         elem = self.getNodeValue(ctx.opening)
@@ -2260,16 +2306,25 @@ class MPromptoBuilder(MParserListener):
         elem.setChildren(children)
         self.setNodeValue(ctx, elem)
 
+
+    def exitJsxLiteral(self, ctx):
+        text = ctx.getText()
+        self.setNodeValue(ctx, JsxLiteral(text))
+
+
     def exitJsxSelfClosing(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.jsx))
+
 
     def exitJsxText(self, ctx):
         text = ParserUtils.getFullText(ctx.text)
         self.setNodeValue(ctx, JsxText(text))
 
+
     def exitJsxValue(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, JsxExpression(exp))
+
 
     def exitJsx_attribute(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -2277,24 +2332,37 @@ class MPromptoBuilder(MParserListener):
         suite = self.getWhiteSpacePlus(ctx.ws_plus())
         self.setNodeValue(ctx, JsxProperty(name, value, suite))
 
+
     def exitJsx_children(self, ctx):
         expressions = [self.getNodeValue(cx) for cx in ctx.jsx_child()]
         self.setNodeValue(ctx, expressions)
+
+
+    def exitJsx_closing(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        self.setNodeValue(ctx, JsxClosing(name, None))
+
 
     def exitJsx_element_name(self, ctx):
         name = ctx.getText()
         self.setNodeValue(ctx, name)
 
+
     def exitJsx_expression(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.getChild(0)))
+
+
+    def exitJsx_fragment(self, ctx):
+        suite = self.getWhiteSpacePlus(ctx.ws_plus(0))
+        fragment = JsxFragment(suite)
+        fragment.children = self.getNodeValue(ctx.children_)
+        self.setNodeValue(ctx, fragment)
+
 
     def exitJsx_identifier(self, ctx):
         name = ctx.getText()
         self.setNodeValue(ctx, name)
 
-    def exitJsxLiteral(self, ctx):
-        text = ctx.getText()
-        self.setNodeValue(ctx, JsxLiteral(text))
 
     def exitJsx_opening(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -2302,9 +2370,6 @@ class MPromptoBuilder(MParserListener):
         attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
         self.setNodeValue(ctx, JsxElement(name, suite, attributes, None))
 
-    def exitJsx_closing(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, JsxClosing(name, None))
 
     def exitJsx_self_closing(self, ctx):
         name = self.getNodeValue(ctx.name)
@@ -2312,8 +2377,10 @@ class MPromptoBuilder(MParserListener):
         attributes = [ self.getNodeValue(cx) for cx in ctx.jsx_attribute() ]
         self.setNodeValue(ctx, JsxSelfClosing(name, suite, attributes, None))
 
+
     def exitCssExpression(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
+
 
     def exitCss_expression(self, ctx):
         exp = CssExpression()

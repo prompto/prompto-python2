@@ -27,9 +27,9 @@ from prompto.store.TypeFamily import TypeFamily
 
 class CategoryType(BaseType):
 
-    def __init__(self, name, family = TypeFamily.CATEGORY, mutable = False):
+    def __init__(self, typeName, family = TypeFamily.CATEGORY, mutable = False):
         super(CategoryType, self).__init__(family)
-        self.typeName = name
+        self.typeName = typeName
         self.mutable = mutable
 
     def __eq__(self, obj):
@@ -68,6 +68,7 @@ class CategoryType(BaseType):
         if decl is None:
             raise SyntaxError("Unknown category: \"" + self.typeName + "\"")
         return decl
+
 
     def checkMultiply(self, context, other, tryReverse):
         typ = self.checkOperator(context, other, tryReverse, Operator.MULTIPLY)
@@ -136,10 +137,14 @@ class CategoryType(BaseType):
         else:
             raise SyntaxError("Unsupported operation: " + self.typeName + " " + operator.token + " " + other.name)
 
+
     def checkExists(self, context):
         self.getDeclaration(context)
 
+
     def checkMember(self, context, name):
+        if "category" == name:
+            return CategoryType("Category")
         decl = context.getRegisteredDeclaration(IDeclaration, self.typeName)
         if decl is None:
             raise SyntaxError("Unknown category:" + self.typeName)
