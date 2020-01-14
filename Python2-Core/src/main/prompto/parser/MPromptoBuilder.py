@@ -1,5 +1,6 @@
 from antlr4 import Token, TerminalNode
 
+from prompto.expression.SuperExpression import SuperExpression
 from prompto.jsx.JsxFragment import JsxFragment
 from prompto.literal.TypeLiteral import TypeLiteral
 from prompto.param.CategoryParameter import CategoryParameter
@@ -2052,6 +2053,10 @@ class MPromptoBuilder(MParserListener):
             item = self.getNodeValue(rule)
             items.append(item)
         self.setNodeValue(ctx, items)
+
+
+    def exitSuperExpression(self, ctx):
+        self.setNodeValue(ctx, SuperExpression())
 
 
     def exitSwitch_statement(self, ctx):

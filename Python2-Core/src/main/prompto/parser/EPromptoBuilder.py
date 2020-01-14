@@ -1,5 +1,6 @@
 from antlr4 import TerminalNode, Token
 
+from prompto.expression.SuperExpression import SuperExpression
 from prompto.literal.TypeLiteral import TypeLiteral
 from prompto.param.CategoryParameter import CategoryParameter
 from prompto.param.CodeParameter import CodeParameter
@@ -851,7 +852,7 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitUnresolvedWithArgsStatement(self, ctx):
-        exp = self.getNodeValue(ctx.exp)
+        exp = self.getNodeValue(ctx.exp1) if ctx.exp1 is not None else self.getNodeValue(ctx.exp2)
         args = self.getNodeValue(ctx.args)
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
@@ -1584,6 +1585,7 @@ class EPromptoBuilder(EParserListener):
         elem = IfElement(exp, stmts)
         self.setNodeValue(ctx, IfElementList(elem))
 
+
     def exitElseIfStatementListItem(self, ctx):
         items = self.getNodeValue(ctx.items)
         exp = self.getNodeValue(ctx.exp)
@@ -1592,33 +1594,45 @@ class EPromptoBuilder(EParserListener):
         items.add(elem)
         self.setNodeValue(ctx, items)
 
+
     def exitIfStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
+
+    def exitSuperExpression(self, ctx):
+        self.setNodeValue(ctx, SuperExpression())
+
 
     def exitSwitchStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitAssignTupleStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitRaiseStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitWriteStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitWithResourceStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitWhileStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitDoWhileStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)

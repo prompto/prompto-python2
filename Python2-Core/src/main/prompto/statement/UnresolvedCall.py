@@ -12,6 +12,7 @@ from prompto.statement.BaseStatement import BaseStatement
 from prompto.type.CategoryType import CategoryType
 from prompto.type.MethodType import MethodType
 from prompto.utils.CodeWriter import CodeWriter
+from prompto.parser.Dialect import Dialect
 
 
 class UnresolvedCall(BaseStatement):
@@ -35,6 +36,8 @@ class UnresolvedCall(BaseStatement):
             self.caller.toDialect(writer)
             if self.arguments is not None:
                 self.arguments.toDialect(writer)
+            elif writer.dialect is not Dialect.E:
+                writer.append("()")
 
 
     def check(self, context):
@@ -60,7 +63,10 @@ class UnresolvedCall(BaseStatement):
                 self.resolved = self.resolveUnresolvedSelector(context)
             else:
                 self.resolved = self.resolveMember(context)
-        return self.resolved
+        if self.resolved is None:
+            raise SyntaxError("Unknown method: " + str(self))
+        else:
+            return self.resolved
 
 
     def resolveUnresolvedSelector(self, context):

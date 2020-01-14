@@ -1093,6 +1093,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#SuperExpression.
+    def enterSuperExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#SuperExpression.
+    def exitSuperExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#SelectorExpression.
     def enterSelectorExpression(self, ctx):
         pass
@@ -2557,6 +2566,15 @@ class OParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by OParser#this_expression.
     def exitThis_expression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#super_expression.
+    def enterSuper_expression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#super_expression.
+    def exitSuper_expression(self, ctx):
         pass
 
 

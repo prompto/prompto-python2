@@ -1,5 +1,6 @@
 from antlr4 import Token
 
+from prompto.expression.SuperExpression import SuperExpression
 from prompto.jsx.JsxFragment import JsxFragment
 from prompto.literal.TypeLiteral import TypeLiteral
 from prompto.param.CategoryParameter import CategoryParameter
@@ -1533,6 +1534,7 @@ class OPromptoBuilder(OParserListener):
         elem = IfElement(exp, stmts)
         self.setNodeValue(ctx, IfElementList(elem))
 
+
     def exitElseIfStatementListItem(self, ctx):
         items = self.getNodeValue(ctx.items)
         exp = self.getNodeValue(ctx.exp)
@@ -1541,41 +1543,55 @@ class OPromptoBuilder(OParserListener):
         items.add(elem)
         self.setNodeValue(ctx, items)
 
+
     def exitIfStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
+
+    def exitSuperExpression(self, ctx):
+        self.setNodeValue(ctx, SuperExpression())
+
 
     def exitSwitchStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitAssignTupleStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitRaiseStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitWriteStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitWithResourceStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitWhileStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitDoWhileStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitTryStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitEqualsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
