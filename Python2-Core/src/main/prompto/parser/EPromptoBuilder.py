@@ -961,6 +961,7 @@ class EPromptoBuilder(EParserListener):
             decl.annotations = annotations
             self.setNodeValue(ctx, decl)
 
+
     def exitStatement_list(self, ctx):
         items = StatementList()
         for rule in ctx.statement():
@@ -968,30 +969,40 @@ class EPromptoBuilder(EParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitAbstract_method_declaration(self, ctx):
         typ = self.getNodeValue(ctx.typ)
+        if isinstance(typ, CategoryType):
+            typ.mutable = ctx.MUTABLE() is not None
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, AbstractMethodDeclaration(name, args, typ))
 
+
     def exitConcrete_method_declaration(self, ctx):
         typ = self.getNodeValue(ctx.typ)
+        if isinstance(typ, CategoryType):
+            typ.mutable = ctx.MUTABLE() is not None
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, ConcreteMethodDeclaration(name, args, typ, stmts))
 
+
     def exitMethod_declaration(self, ctx):
         value = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, value)
+
 
     def exitMethodCallStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
 
+
     def exitMethod_identifier(self, ctx):
         stmt = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, stmt)
+
 
     def exitConstructorFrom(self, ctx):
         typ = self.getNodeValue(ctx.typ)

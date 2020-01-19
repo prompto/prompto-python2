@@ -917,6 +917,8 @@ class OPromptoBuilder(OParserListener):
 
     def exitAbstract_method_declaration(self, ctx):
         typ = self.getNodeValue(ctx.typ)
+        if isinstance(typ, CategoryType):
+            typ.mutable = ctx.MUTABLE() is not None
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
         self.setNodeValue(ctx, AbstractMethodDeclaration(name, args, typ))
@@ -924,6 +926,8 @@ class OPromptoBuilder(OParserListener):
 
     def exitConcrete_method_declaration(self, ctx):
         typ = self.getNodeValue(ctx.typ)
+        if isinstance(typ, CategoryType):
+            typ.mutable = ctx.MUTABLE() is not None
         name = self.getNodeValue(ctx.name)
         args = self.getNodeValue(ctx.args)
         stmts = self.getNodeValue(ctx.stmts)
