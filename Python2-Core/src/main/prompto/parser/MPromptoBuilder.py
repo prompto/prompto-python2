@@ -229,6 +229,7 @@ from prompto.type.IntegerType import IntegerType
 from prompto.type.IteratorType import IteratorType
 from prompto.type.ListType import ListType
 from prompto.type.PeriodType import PeriodType
+from prompto.type.SetType import SetType
 from prompto.type.TextType import TextType
 from prompto.type.TimeType import TimeType
 from prompto.type.UUIDType import UUIDType
@@ -1996,6 +1997,11 @@ class MPromptoBuilder(MParserListener):
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, SetterMethodDeclaration(name, stmts))
+
+
+    def exitSetType(self, ctx):
+        typ = self.getNodeValue(ctx.s)
+        self.setNodeValue(ctx, SetType(typ))
 
 
     def exitSingleton_category_declaration(self, ctx):

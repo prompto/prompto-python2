@@ -232,6 +232,7 @@ from prompto.type.IntegerType import IntegerType
 from prompto.type.IteratorType import IteratorType
 from prompto.type.ListType import ListType
 from prompto.type.PeriodType import PeriodType
+from prompto.type.SetType import SetType
 from prompto.type.TextType import TextType
 from prompto.type.TimeType import TimeType
 
@@ -924,6 +925,7 @@ class EPromptoBuilder(EParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitMember_method_declaration_list(self, ctx):
         items = MethodDeclarationList()
         for rule in ctx.member_method_declaration():
@@ -931,25 +933,35 @@ class EPromptoBuilder(EParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitSetter_method_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, SetterMethodDeclaration(name, stmts))
+
+
+    def exitSetType(self, ctx):
+        typ = self.getNodeValue(ctx.s)
+        self.setNodeValue(ctx, SetType(typ))
+
 
     def exitGetter_method_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, GetterMethodDeclaration(name, stmts))
 
+
     def exitNative_setter_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, NativeSetterMethodDeclaration(name, stmts))
 
+
     def exitNative_getter_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, NativeGetterMethodDeclaration(name, stmts))
+
 
     def exitMember_method_declaration(self, ctx):
         comments = self.readComments(ctx.comment_statement())
