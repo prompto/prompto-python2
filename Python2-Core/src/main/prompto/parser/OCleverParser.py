@@ -13,7 +13,7 @@ class OCleverParser(OParser):
         chars = None
         if stream is not None:
             bytes = stream.read()
-            data = codecs.decode(bytes)
+            data = codecs.decode(bytes, "utf-8")
             chars = InputStream(data)
             stream.close()
         elif text is not None:
