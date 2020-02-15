@@ -2434,14 +2434,17 @@ class OPromptoBuilder(OParserListener):
         [ exp.addField(self.getNodeValue(cx)) for cx in ctx.css_field() ]
         self.setNodeValue(ctx, exp)
 
+
     def exitCss_field(self, ctx):
         name = ctx.name.getText()
         value = self.getNodeValue(ctx.value)
         self.setNodeValue(ctx, CssField(name, value))
 
+
     def exitCssText(self, ctx):
-        text = ctx.text.getText()
+        text = self.input.getText(ctx.text.start, ctx.text.stop)
         self.setNodeValue(ctx, CssText(text))
+
 
     def exitCssValue(self, ctx):
         exp = self.getNodeValue(ctx.exp)
