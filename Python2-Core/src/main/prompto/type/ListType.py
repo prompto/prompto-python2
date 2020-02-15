@@ -82,7 +82,7 @@ class ListType(ContainerType):
         if name == "join":
             return [JoinListMethodDeclaration()]
         else:
-            return super(ListType).getMemberMethods(context, name)
+            return super(ListType, self).getMemberMethods(context, name)
 
 
     def convertPythonValueToPromptoValue(self, context, value, returnType):
