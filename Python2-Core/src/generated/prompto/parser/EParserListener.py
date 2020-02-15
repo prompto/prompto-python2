@@ -4171,6 +4171,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#jsx_char.
+    def enterJsx_char(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#jsx_char.
+    def exitJsx_char(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#css_expression.
     def enterCss_expression(self, ctx):
         pass
