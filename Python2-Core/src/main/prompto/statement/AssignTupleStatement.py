@@ -5,7 +5,7 @@ from prompto.statement.SimpleStatement import SimpleStatement
 from prompto.type.AnyType import AnyType
 from prompto.type.TupleType import TupleType
 from prompto.type.VoidType import VoidType
-from prompto.value.Integer import Integer
+from prompto.value.IntegerValue import IntegerValue
 from prompto.value.TupleValue import TupleValue
 
 
@@ -67,7 +67,7 @@ class AssignTupleStatement(SimpleStatement):
             raise SyntaxError("Expecting a tuple expression, got " + type(value).__name__)
         i = 1
         for name in self.names:
-            item = value.getItem(context, Integer(i))
+            item = value.getItem(context, IntegerValue(i))
             i += 1
             if context.getRegisteredValue(INamedValue, name) is None:
                 context.registerValue(Variable(name, item.itype))

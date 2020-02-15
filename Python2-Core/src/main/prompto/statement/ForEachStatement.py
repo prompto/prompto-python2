@@ -9,7 +9,7 @@ from prompto.statement.SimpleStatement import SimpleStatement
 from prompto.type.IntegerType import IntegerType
 from prompto.value.IContainer import IContainer
 from prompto.value.IIterable import IIterable
-from prompto.value.Integer import Integer
+from prompto.value.IntegerValue import IntegerValue
 
 
 class ForEachStatement(BaseStatement):
@@ -75,7 +75,7 @@ class ForEachStatement(BaseStatement):
             child.setValue(self.v2, item)
             child.registerValue(TransientVariable(self.v1, IntegerType.instance))
             i += 1
-            child.setValue(self.v1, Integer(i))
+            child.setValue(self.v1, IntegerValue(i))
             value = self.statements.interpret(child)
             if value is BreakResult.instance:
                 break

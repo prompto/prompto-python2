@@ -6,7 +6,7 @@ from prompto.type.NativeType import *
 from prompto.type.PeriodType import *
 from prompto.type.RangeType import *
 from prompto.type.TimeType import *
-from prompto.value.Date import *
+from prompto.value.DateValue import *
 from prompto.value.DateRange import *
 
 
@@ -58,7 +58,7 @@ class DateType(NativeType):
             return super(DateType, self).checkMember(context, name)
 
     def newRange(self, left, right):
-        if isinstance(left, Date) and isinstance(right, Date):
+        if isinstance(left, DateValue) and isinstance(right, DateValue):
             return DateRange(left, right)
         return super(DateType, self).newRange(left, right)
 

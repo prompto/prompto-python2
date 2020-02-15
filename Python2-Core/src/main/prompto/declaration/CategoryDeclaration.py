@@ -1,7 +1,7 @@
 from prompto.declaration.BaseDeclaration import BaseDeclaration
 from prompto.error.SyntaxError import SyntaxError
 from prompto.utils.TypeUtils import fieldToValue
-from prompto.value.Document import Document
+from prompto.value.DocumentValue import DocumentValue
 from prompto.type.CategoryType import CategoryType
 from prompto.error.InternalError import InternalError
 

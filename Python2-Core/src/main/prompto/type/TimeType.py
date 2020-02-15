@@ -5,7 +5,7 @@ from prompto.type.IntegerType import *
 from prompto.type.NativeType import *
 from prompto.type.PeriodType import *
 from prompto.type.RangeType import *
-from prompto.value.Time import *
+from prompto.value.TimeValue import *
 from prompto.value.TimeRange import *
 
 
@@ -61,7 +61,7 @@ class TimeType(NativeType):
 
 
     def newRange(self, left, right):
-        if isinstance(left, Time) and isinstance(right, Time):
+        if isinstance(left, TimeValue) and isinstance(right, TimeValue):
             return TimeRange(left, right)
         else:
             return super(TimeType, self).newRange(left, right)

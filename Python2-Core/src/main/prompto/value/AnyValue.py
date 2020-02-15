@@ -1,10 +1,10 @@
 from prompto.value.BaseValue import BaseValue
 from prompto.type.AnyType import AnyType
 
-class Any(BaseValue):
+class AnyValue(BaseValue):
 
     def __init__(self):
-        super(Any, self).__init__(AnyType.instance)
+        super(AnyValue, self).__init__(AnyType.instance)
         self.text = None
         self.id = id(self)
 

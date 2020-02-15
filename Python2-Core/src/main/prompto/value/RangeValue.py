@@ -3,14 +3,14 @@ from prompto.error.InternalError import InternalError
 from prompto.value.BaseValue import BaseValue
 from prompto.value.IRange import IRange
 from prompto.value.IValue import IValue
-from prompto.value.Integer import Integer
+from prompto.value.IntegerValue import IntegerValue
 
 
-class Range(BaseValue, IRange):
+class RangeValue(BaseValue, IRange):
 
     def __init__(self, itemType, left, right):
         from prompto.type.RangeType import RangeType
-        super(Range, self).__init__(RangeType(itemType))
+        super(RangeValue, self).__init__(RangeType(itemType))
         # can't just use T extends Comparable<T> because LocalDate and LocalTime extend Comparable<R>
         cmp_ = self.compare(left, right)
         if cmp_ < 0:
@@ -34,7 +34,7 @@ class Range(BaseValue, IRange):
         return self.size() == 0
 
     def __eq__(self, obj):
-        if not isinstance(obj, Range):
+        if not isinstance(obj, RangeValue):
             return False
         else:
             return self.low == obj.low and self.high == obj.high
@@ -43,7 +43,7 @@ class Range(BaseValue, IRange):
         return cmp(val,self.low) >= 0 and cmp(val,self.high) <= 0
 
     def getItem(self, context, index):
-        if isinstance(index, Integer):
+        if isinstance(index, IntegerValue):
             try:
                 value = self.computeItem(index.IntegerValue())
                 if isinstance(value, IValue):
@@ -71,5 +71,5 @@ class Range(BaseValue, IRange):
         size = self.size()
         index = 1
         while index <= size:
-            yield self.getItem(context, Integer(index))
+            yield self.getItem(context, IntegerValue(index))
             index += 1

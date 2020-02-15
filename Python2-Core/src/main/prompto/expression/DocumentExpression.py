@@ -6,7 +6,7 @@ from zipfile import ZipFile
 from prompto.error.ReadWriteError import ReadWriteError
 from prompto.expression.IExpression import IExpression
 from prompto.type.DocumentType import DocumentType
-from prompto.value.Document import Document
+from prompto.value.DocumentValue import DocumentValue
 
 
 class DocumentExpression ( IExpression ):
@@ -21,14 +21,14 @@ class DocumentExpression ( IExpression ):
 
     def interpret(self, context):
         if self.source is None:
-            return Document()
+            return DocumentValue()
         else:
             value = self.source.interpret(context)
             return self.documentFromValue(context, value)
 
     def documentFromValue(self, context, value):
-        from prompto.value.Blob import Blob
-        if isinstance(value, Blob):
+        from prompto.value.BlobValue import BlobValue
+        if isinstance(value, BlobValue):
             return self.documentFromBlob(context, value)
         else:
             raise Exception("documentFromValue not supported for " + type(value).__name__)

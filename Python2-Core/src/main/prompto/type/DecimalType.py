@@ -2,7 +2,7 @@ from numbers import Number
 from prompto.type.BooleanType import BooleanType
 from prompto.type.NativeType import *
 from prompto.store.TypeFamily import TypeFamily
-from prompto.value.Decimal import Decimal
+from prompto.value.DecimalValue import DecimalValue
 
 class DecimalType(NativeType):
     instance = None
@@ -77,7 +77,7 @@ class DecimalType(NativeType):
 
     def convertPythonValueToPromptoValue(self, context, value, returnType):
         if isinstance(value, Number):
-            return Decimal(float(value))
+            return DecimalValue(float(value))
         else:
             return value  # TODO for now
 

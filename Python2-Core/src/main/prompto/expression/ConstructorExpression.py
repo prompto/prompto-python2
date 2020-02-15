@@ -2,7 +2,7 @@ from io import StringIO
 from prompto.expression.IExpression import IExpression
 from prompto.grammar.ArgumentList import ArgumentList
 from prompto.type.DocumentType import DocumentType
-from prompto.value.Document import Document
+from prompto.value.DocumentValue import DocumentValue
 from prompto.value.IInstance import IInstance
 from prompto.error.SyntaxError import SyntaxError
 from prompto.error.NotMutableError import NotMutableError
@@ -135,7 +135,7 @@ class ConstructorExpression(IExpression):
                         if value is not None and value.mutable and not self.itype.mutable:
                             raise NotMutableError()
                         instance.setMember(context, name, value)
-            elif isinstance(copyObj, Document):
+            elif isinstance(copyObj, DocumentValue):
                 for name in copyObj.getMemberNames():
                     if name == "dbId":
                         continue

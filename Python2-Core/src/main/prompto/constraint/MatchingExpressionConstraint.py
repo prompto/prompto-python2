@@ -2,7 +2,7 @@ from prompto.constraint.AttributeConstraint import AttributeConstraint
 from prompto.store.InvalidValueError import InvalidValueError
 from prompto.runtime.TransientVariable import TransientVariable
 from prompto.type.AnyType import AnyType
-from prompto.value.Boolean import Boolean
+from prompto.value.BooleanValue import BooleanValue
 
 
 class MatchingExpressionConstraint ( AttributeConstraint ) :
@@ -16,7 +16,7 @@ class MatchingExpressionConstraint ( AttributeConstraint ) :
         child.registerValue(TransientVariable("value", AnyType.instance))
         child.setValue("value", value)
         test = self.expression.interpret(child)
-        if not Boolean.TRUE==test:
+        if not BooleanValue.TRUE == test:
             raise InvalidValueError(str(value) + " does not match:" + str(self.expression))
 
     def toDialect(self, writer):

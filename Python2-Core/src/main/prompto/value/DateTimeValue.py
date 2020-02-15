@@ -2,14 +2,14 @@ from datetime import date, datetime, timedelta
 from prompto.type.DateTimeType import DateTimeType
 
 from prompto.error.SyntaxError import SyntaxError
-from prompto.value.Period import *
-from prompto.value.Text import *
+from prompto.value.PeriodValue import *
+from prompto.value.TextValue import *
 
 
-class DateTime(BaseValue):
+class DateTimeValue(BaseValue):
 
     def __init__(self, value=None, year=None, month=None, day=None, hour=None, minute=None, second=None, millis=None):
-        super(DateTime, self).__init__(DateTimeType.instance)
+        super(DateTimeValue, self).__init__(DateTimeType.instance)
         if value is None:
             value = datetime(year, month, day, hour, minute, second, millis)
         self.value = value
@@ -18,61 +18,61 @@ class DateTime(BaseValue):
         return self.value
 
     def Add(self, context, value):
-        if isinstance(value, Period):
+        if isinstance(value, PeriodValue):
             return self.plus(value)
         else:
             raise SyntaxError("Illegal: DateTime + " + type(value).__name__)
 
 
     def Subtract(self, context, value):
-        if isinstance(value, DateTime):
+        if isinstance(value, DateTimeValue):
             td = self.value - value.value
-            return Period(delta=td)
-        elif isinstance(value, Period):
+            return PeriodValue(delta=td)
+        elif isinstance(value, PeriodValue):
             return self.minus(value)
         else:
             raise SyntaxError("Illegal: DateTime - " + type(value).__name__)
 
 
     def CompareTo(self, context, value):
-        if isinstance(value, DateTime):
+        if isinstance(value, DateTimeValue):
             return cmp(self.value, value.value)
         else:
             raise SyntaxError("Illegal comparison: DateTime + " + type(value).__name__)
 
 
     def getMemberValue(self, context, name, autoCreate=False):
-        from prompto.value.Integer import Integer
+        from prompto.value.IntegerValue import IntegerValue
         if "year" == name:
-            return Integer(self.value.year)
+            return IntegerValue(self.value.year)
         elif "month" == name:
-            return Integer(self.value.month)
+            return IntegerValue(self.value.month)
         elif "dayOfMonth" == name:
-            return Integer(self.value.day)
+            return IntegerValue(self.value.day)
         elif "dayOfYear" == name:
             day = 1 + self.value.toordinal() - date(self.value.year, 1, 1).toordinal()
-            return Integer(day)
+            return IntegerValue(day)
         elif "hour" == name:
-            return Integer(self.value.hour)
+            return IntegerValue(self.value.hour)
         elif "minute" == name:
-            return Integer(self.value.minute)
+            return IntegerValue(self.value.minute)
         elif "second" == name:
-            return Integer(self.value.second)
+            return IntegerValue(self.value.second)
         elif "millisecond" == name:
-            return Integer(self.value.microsecond // 1000)
+            return IntegerValue(self.value.microsecond // 1000)
         elif "tzOffset" == name:
-            return Integer(0)  # self.value.getZone().toTimeZone().getRawOffset() / 1000)
+            return IntegerValue(0)  # self.value.getZone().toTimeZone().getRawOffset() / 1000)
         elif "tzName" == name:
-            from prompto.value.Text import Text
-            return Text("Z")  # self.value.getZone().toTimeZone().getDisplayName())
+            from prompto.value.TextValue import TextValue
+            return TextValue("Z")  # self.value.getZone().toTimeZone().getDisplayName())
         elif "date" == name:
-            from prompto.value.Date import Date
-            return Date(years=self.value.year, months=self.value.month, days=self.value.day)
+            from prompto.value.DateValue import DateValue
+            return DateValue(years=self.value.year, months=self.value.month, days=self.value.day)
         elif "time" == name:
-            from prompto.value.Time import Time
-            return Time(hours=self.value.hour, minutes=self.value.minute, seconds=self.value.second, millis=self.value.microsecond // 1000)
+            from prompto.value.TimeValue import TimeValue
+            return TimeValue(hours=self.value.hour, minutes=self.value.minute, seconds=self.value.second, millis=self.value.microsecond // 1000)
         else:
-            return super(DateTime, self).getMemberValue(context, name, autoCreate)
+            return super(DateTimeValue, self).getMemberValue(context, name, autoCreate)
 
     def plus(self, period):
         td = timedelta(weeks=period.weeks, days=period.days, hours=period.hours, minutes=period.minutes,
@@ -85,7 +85,7 @@ class DateTime(BaseValue):
         else:
             month = self.value.month
         value = self.value.replace(year=year, month=month) + td
-        return DateTime(value)
+        return DateTimeValue(value)
 
     def minus(self, period):
         td = timedelta(weeks=period.weeks, days=period.days, hours=period.hours, minutes=period.minutes,
@@ -98,21 +98,21 @@ class DateTime(BaseValue):
         else:
             month = self.value.month
         value = self.value.replace(year=year, month=month) - td
-        return DateTime(value)
+        return DateTimeValue(value)
 
     def ConvertTo(self, itype):
         return self.value
 
 
     def __eq__(self, obj):
-        if isinstance(obj, DateTime):
+        if isinstance(obj, DateTimeValue):
             return self.value == obj.value
         else:
             return self.value == obj
 
 
     def __cmp__(self, other):
-        if isinstance(other, DateTime):
+        if isinstance(other, DateTimeValue):
             return cmp(self.value, other.value)
         else:
             return cmp(self.value, other)
@@ -168,4 +168,4 @@ class DateTime(BaseValue):
             micro = 0
         zone = None
         dt = datetime(year, month, day, hour, minute, second, micro, zone)
-        return DateTime(value=dt)
+        return DateTimeValue(value=dt)

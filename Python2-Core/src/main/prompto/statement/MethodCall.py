@@ -11,7 +11,7 @@ from prompto.statement.SimpleStatement import SimpleStatement
 from prompto.declaration.ClosureDeclaration import ClosureDeclaration
 from prompto.value.ArrowValue import ArrowValue
 from prompto.value.ClosureValue import ClosureValue
-from prompto.value.Boolean import Boolean
+from prompto.value.BooleanValue import BooleanValue
 from prompto.parser.Dialect import Dialect
 from prompto.utils.CodeWriter import CodeWriter
 
@@ -91,7 +91,7 @@ class MethodCall(SimpleStatement):
 
     def interpretAssert(self, context, testMethodDeclaration):
         value = self.interpret(context)
-        if isinstance(value, Boolean):
+        if isinstance(value, BooleanValue):
             return value.value
         else:
             writer = CodeWriter(self.dialect, context)

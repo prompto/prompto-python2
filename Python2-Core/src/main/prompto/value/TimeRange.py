@@ -1,10 +1,10 @@
 from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
-from prompto.value.Range import Range
-from prompto.value.Time import Time
-from prompto.value.Period import Period
+from prompto.value.RangeValue import RangeValue
+from prompto.value.TimeValue import TimeValue
+from prompto.value.PeriodValue import PeriodValue
 
 
-class TimeRange(Range):
+class TimeRange(RangeValue):
 
     def __init__(self, left, right):
         from prompto.type.TimeType import TimeType
@@ -17,7 +17,7 @@ class TimeRange(Range):
         return cmp(o1.value, o2.value)
 
     def computeItem(self, index):
-        result = self.low.plus(Period(seconds=index - 1))
+        result = self.low.plus(PeriodValue(seconds=index - 1))
         if cmp(result.value,self.high.value)>0:
             raise IndexOutOfRangeError()
         return result

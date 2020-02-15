@@ -3,10 +3,10 @@ from prompto.literal.DocEntryList import DocEntryList
 from prompto.literal.Literal import Literal
 from prompto.type.MissingType import MissingType
 from prompto.type.TextType import TextType
-from prompto.value.Dictionary import Dictionary
+from prompto.value.DictValue import DictValue
 from prompto.error.SyntaxError import SyntaxError
 from prompto.utils.TypeUtils import inferElementType
-from prompto.value.Document import Document
+from prompto.value.DocumentValue import DocumentValue
 
 
 class DocumentLiteral(Literal):
@@ -16,7 +16,7 @@ class DocumentLiteral(Literal):
     def __init__(self, entries=None):
         if entries is None:
             entries = DocEntryList()
-        super(DocumentLiteral, self).__init__("{}", Document())
+        super(DocumentLiteral, self).__init__("{}", DocumentValue())
         self.entries = entries
 
 
@@ -32,7 +32,7 @@ class DocumentLiteral(Literal):
     def interpret(self, context):
         if len(self.entries) > 0:
             self.check(context)
-            doc = Document()
+            doc = DocumentValue()
             for e in self.entries:
                 key = e.getKey().asText()
                 val = e.getValue().interpret(context)

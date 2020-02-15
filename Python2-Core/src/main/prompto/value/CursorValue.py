@@ -4,18 +4,18 @@ from prompto.error.InternalError import InternalError
 from prompto.type.CategoryType import CategoryType
 from prompto.value.BaseValue import BaseValue
 from prompto.type.CursorType import CursorType
-from prompto.value.Boolean import Boolean
+from prompto.value.BooleanValue import BooleanValue
 from prompto.value.IFilterable import IFilterable
 from prompto.value.IIterable import IIterable
-from prompto.value.Integer import Integer
+from prompto.value.IntegerValue import IntegerValue
 from prompto.store.InvalidValueError import InvalidValueError
 from prompto.value.ListValue import ListValue
 
 
-class Cursor(BaseValue, IIterable, IFilterable):
+class CursorValue(BaseValue, IIterable, IFilterable):
 
     def __init__(self, context, itemType, stored):
-        super(Cursor, self).__init__(CursorType(itemType))
+        super(CursorValue, self).__init__(CursorType(itemType))
         self.context = context
         self.stored = stored
         self.mutable = getattr(itemType, "mutable", False)
@@ -65,9 +65,9 @@ class Cursor(BaseValue, IIterable, IFilterable):
 
     def getMemberValue(self, context, name, autoCreate=False):
         if "count" == name:
-            return Integer(len(self))
+            return IntegerValue(len(self))
         elif "totalCount" == name:
-            return Integer(self.totalLength())
+            return IntegerValue(self.totalLength())
         else:
             raise InvalidValueError("No such member:" + name)
 
@@ -81,7 +81,7 @@ class Cursor(BaseValue, IIterable, IFilterable):
         return ListValue(self.itype.itemType, items=items)
 
 
-class FilteredCursor(Cursor):
+class FilteredCursor(CursorValue):
 
     def __init__(self, cursor, predicate):
         super(FilteredCursor, self).__init__(cursor.context, cursor.itype.itemType, cursor.stored)

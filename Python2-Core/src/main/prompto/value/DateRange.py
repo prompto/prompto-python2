@@ -1,10 +1,10 @@
 from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
-from prompto.value.Date import Date
-from prompto.value.Period import Period
-from prompto.value.Range import Range
+from prompto.value.DateValue import DateValue
+from prompto.value.PeriodValue import PeriodValue
+from prompto.value.RangeValue import RangeValue
 
 
-class DateRange(Range):
+class DateRange(RangeValue):
 
     def __init__(self, left, right):
         from prompto.type.DateType import DateType
@@ -19,7 +19,7 @@ class DateRange(Range):
         return cmp(o1.value, o2.value)
 
     def computeItem(self, index):
-        result = self.low.plus(Period(days=index - 1))
+        result = self.low.plus(PeriodValue(days=index - 1))
         if cmp(result,self.high)>0:
             raise IndexOutOfRangeError()
         return result

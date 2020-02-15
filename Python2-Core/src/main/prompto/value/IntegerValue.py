@@ -1,18 +1,18 @@
 from prompto.value.BaseValue import BaseValue
 from prompto.value.INumber import INumber
 from prompto.value.IMultiplyable import IMultiplyable
-from prompto.value.Decimal import Decimal
+from prompto.value.DecimalValue import DecimalValue
 from prompto.error.SyntaxError import SyntaxError
 
-class Integer(BaseValue, INumber, IMultiplyable):
+class IntegerValue(BaseValue, INumber, IMultiplyable):
 
     @staticmethod
     def Parse(text):
-        return Integer(long(text))
+        return IntegerValue(long(text))
 
     def __init__(self, value):
         from prompto.type.IntegerType import IntegerType
-        super(Integer, self).__init__(IntegerType.instance)
+        super(IntegerValue, self).__init__(IntegerType.instance)
         self.value = value
 
 
@@ -33,26 +33,26 @@ class Integer(BaseValue, INumber, IMultiplyable):
 
 
     def Add(self, context, value):
-        if isinstance(value, Integer):
-            return Integer(self.IntegerValue() + value.IntegerValue())
-        elif isinstance(value, Decimal):
-            return Decimal(value.DecimalValue() + self.value)
+        if isinstance(value, IntegerValue):
+            return IntegerValue(self.IntegerValue() + value.IntegerValue())
+        elif isinstance(value, DecimalValue):
+            return DecimalValue(value.DecimalValue() + self.value)
         else:
             raise SyntaxError("Illegal: Integer + " + type(value).__name__)
 
     def Subtract(self, context, value):
-        if isinstance(value, Integer):
-            return Integer(self.IntegerValue() - value.IntegerValue())
-        elif isinstance(value, Decimal):
-            return Decimal(self.DecimalValue() - value.DecimalValue())
+        if isinstance(value, IntegerValue):
+            return IntegerValue(self.IntegerValue() - value.IntegerValue())
+        elif isinstance(value, DecimalValue):
+            return DecimalValue(self.DecimalValue() - value.DecimalValue())
         else:
             raise SyntaxError("Illegal: Integer - " + type(value).__name__)
 
     def Multiply(self, context, value):
-        if isinstance(value, Integer):
-            return Integer(self.IntegerValue() * value.IntegerValue())
-        elif isinstance(value, Decimal):
-            return Decimal(value.DecimalValue() * self.IntegerValue())
+        if isinstance(value, IntegerValue):
+            return IntegerValue(self.IntegerValue() * value.IntegerValue())
+        elif isinstance(value, DecimalValue):
+            return DecimalValue(value.DecimalValue() * self.IntegerValue())
         elif isinstance(value, IMultiplyable):
             return value.Multiply(context, self)
         else:
@@ -64,34 +64,34 @@ class Integer(BaseValue, INumber, IMultiplyable):
             if value.DecimalValue() == 0.0:
                 raise DivideByZeroError()
             else:
-                return Decimal(self.DecimalValue() / value.DecimalValue())
+                return DecimalValue(self.DecimalValue() / value.DecimalValue())
         else:
             raise SyntaxError("Illegal: Integer / " + type(value).__name__)
 
     def IntDivide(self, context, value):
         from prompto.error.DivideByZeroError import DivideByZeroError
-        if isinstance(value, Integer):
+        if isinstance(value, IntegerValue):
             if value.IntegerValue() == 0:
                 raise DivideByZeroError()
             else:
-                return Integer(int(self.IntegerValue() // value.IntegerValue()))
+                return IntegerValue(int(self.IntegerValue() // value.IntegerValue()))
         else:
             raise SyntaxError("Illegal: Integer \\ " + type(value).__name__)
 
     def Modulo(self, context, value):
         from prompto.error.DivideByZeroError import DivideByZeroError
-        if isinstance(value, Integer):
+        if isinstance(value, IntegerValue):
             mod = value.IntegerValue()
             if mod == 0:
                 raise DivideByZeroError()
-            return Integer(self.IntegerValue() % mod)
+            return IntegerValue(self.IntegerValue() % mod)
         else:
             raise SyntaxError("Illegal: Integer % " + type(value).__name__)
 
     def CompareTo(self, context, value):
-        if isinstance(value, Integer):
+        if isinstance(value, IntegerValue):
             return cmp(self.value, value.IntegerValue())
-        elif isinstance(value, Decimal):
+        elif isinstance(value, DecimalValue):
             return cmp(self.DecimalValue(), value.DecimalValue())
         else:
             raise SyntaxError("Illegal comparison: Integer and " + type(value).__name__)

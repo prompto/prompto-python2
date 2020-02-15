@@ -8,7 +8,7 @@ from prompto.store.MatchOp import MatchOp
 from prompto.type.CharacterType import CharacterType
 from prompto.type.ContainerType import ContainerType
 from prompto.type.TextType import TextType
-from prompto.value.Boolean import Boolean
+from prompto.value.BooleanValue import BooleanValue
 from prompto.value.IContainer import IContainer
 from prompto.utils.CodeWriter import CodeWriter
 from prompto.value.IInstance import IInstance
@@ -76,7 +76,7 @@ class ContainsExpression(IExpression):
             if result is not None:
                 if self.operator.name.find("NOT") == 0:
                     result = not result
-                return Boolean.ValueOf(result)
+                return BooleanValue.ValueOf(result)
         #prepare exception
         if self.operator.name.find("IN") >= 0:
             tmp = lval
@@ -112,7 +112,7 @@ class ContainsExpression(IExpression):
         lval = self.left.interpret(context)
         rval = self.right.interpret(context)
         result = self.interpretValue(context, lval, rval)
-        if result is Boolean.TRUE:
+        if result is BooleanValue.TRUE:
             return True
         writer = CodeWriter(test.dialect, context)
         self.toDialect(writer)
