@@ -14,6 +14,7 @@ from prompto.store.DataStore import DataStore
 from prompto.memstore.MemStore import MemStore
 from prompto.utils.CodeWriter import CodeWriter
 
+import io
 import os
 import unittest
 
@@ -69,7 +70,7 @@ class BaseParserTest(unittest.TestCase):
         file = __file__[0:idx] + "/prompto-tests/Tests/resources/" + resourceName
         if not os.path.exists(file):
             file = __file__[0:idx] + "/prompto-libraries/" + resourceName
-        with open(file, mode) as input:
+        with io.open(file, mode, encoding="utf-8") as input:
             return input.read()
 
     def getResourceAsStream(self, resourceName, mode):
@@ -77,7 +78,7 @@ class BaseParserTest(unittest.TestCase):
         file = __file__[0:idx] + "/prompto-tests/Tests/resources/" + resourceName
         if not os.path.exists(file):
             file = __file__[0:idx] + "/prompto-libraries/" + resourceName
-        return open(file, mode)
+        return io.open(file, mode, encoding="utf-8")
 
     def loadResource(self, resourceName):
         decls = self.parseResource(resourceName)
@@ -136,7 +137,7 @@ class BaseParserTest(unittest.TestCase):
         return self.parse(EPromptoBuilder, parser)
 
     def parseEResource(self, resourceName):
-        stream = self.getResourceAsStream(resourceName, 'rb')
+        stream = self.getResourceAsStream(resourceName, 'r')
         self.assertIsNotNone("resource not found:" + resourceName, stream)
         parser = ECleverParser(stream=stream)
         return self.parse(EPromptoBuilder, parser)
@@ -146,7 +147,7 @@ class BaseParserTest(unittest.TestCase):
         return self.parse(OPromptoBuilder, parser)
 
     def parseOResource(self, resourceName):
-        stream = self.getResourceAsStream(resourceName, 'rb')
+        stream = self.getResourceAsStream(resourceName, 'r')
         self.assertIsNotNone("resource not found:" + resourceName, stream)
         parser = OCleverParser(stream=stream)
         return self.parse(OPromptoBuilder, parser)
@@ -156,13 +157,13 @@ class BaseParserTest(unittest.TestCase):
         return self.parse(MPromptoBuilder, parser)
 
     def parseMResource(self, resourceName):
-        stream = self.getResourceAsStream(resourceName, 'rb')
+        stream = self.getResourceAsStream(resourceName, 'r')
         self.assertIsNotNone("resource not found:" + resourceName, stream)
         parser = MCleverParser(stream=stream)
         return self.parse(MPromptoBuilder, parser)
 
     def compareResourceEOE(self, resourceName):
-        expected = self.getResourceAsString(resourceName, 'rb')
+        expected = self.getResourceAsString(resourceName, 'r')
         # print(expected)
         # parse e source code
         dle = self.parseEString(expected)
@@ -171,7 +172,7 @@ class BaseParserTest(unittest.TestCase):
         # rewrite as o
         writer = CodeWriter(Dialect.O, context)
         dle.toDialect(writer)
-        o = str(writer)
+        o = unicode(writer)
         # print(o)
         # parse o source code
         dlo = self.parseOString(o)
@@ -180,13 +181,13 @@ class BaseParserTest(unittest.TestCase):
         # rewrite as e
         writer = CodeWriter(Dialect.E, context)
         dlo.toDialect(writer)
-        actual = str(writer)
+        actual = unicode(writer)
         # print(actual)
         # ensure equivalent
         self.assertEquivalent(expected, actual)
 
     def compareResourceEME(self, resourceName):
-        expected = self.getResourceAsString(resourceName, 'rb')
+        expected = self.getResourceAsString(resourceName, 'r')
         # print(expected)
         # parse e source code
         dle = self.parseEString(expected)
@@ -195,7 +196,7 @@ class BaseParserTest(unittest.TestCase):
         # rewrite as p
         writer = CodeWriter(Dialect.M, context)
         dle.toDialect(writer)
-        p = str(writer)
+        p = unicode(writer)
         # print(p)
         # parse p source code
         dlp = self.parseMString(p)
@@ -204,13 +205,13 @@ class BaseParserTest(unittest.TestCase):
         # rewrite as e
         writer = CodeWriter(Dialect.E, context)
         dlp.toDialect(writer)
-        actual = str(writer)
+        actual = unicode(writer)
         # print(actual)
         # ensure equivalent
         self.assertEquivalent(expected, actual)
 
     def compareResourceOEO(self, resourceName):
-        expected = self.getResourceAsString(resourceName, 'rb')
+        expected = self.getResourceAsString(resourceName, 'r')
         # print(expected)
         # parse o source code
         dlo = self.parseOString(expected)
@@ -219,7 +220,7 @@ class BaseParserTest(unittest.TestCase):
         # rewrite as e
         writer = CodeWriter(Dialect.E, context)
         dlo.toDialect(writer)
-        e = str(writer)
+        e = unicode(writer)
         # print(e)
         # parse e source code
         dle = self.parseEString(e)
@@ -228,13 +229,13 @@ class BaseParserTest(unittest.TestCase):
         # rewrite as o
         writer = CodeWriter(Dialect.O, context)
         dle.toDialect(writer)
-        actual = str(writer)
+        actual = unicode(writer)
         # print(actual)
         # ensure equivalent
         self.assertEquivalent(expected, actual)
 
     def compareResourceOMO(self, resourceName):
-        expected = self.getResourceAsString(resourceName, 'rb')
+        expected = self.getResourceAsString(resourceName, 'r')
         # print(expected)
         # parse o source code
         dlo = self.parseOString(expected)
@@ -243,7 +244,7 @@ class BaseParserTest(unittest.TestCase):
         # rewrite as p
         writer = CodeWriter(Dialect.M, context)
         dlo.toDialect(writer)
-        p = str(writer)
+        p = unicode(writer)
         # print(p)
         # parse p source code
         dlp = self.parseMString(p)
@@ -252,16 +253,16 @@ class BaseParserTest(unittest.TestCase):
         # rewrite as o
         writer = CodeWriter(Dialect.O, context)
         dlp.toDialect(writer)
-        actual = str(writer)
+        actual = unicode(writer)
         # print(actual)
         # ensure equivalent
         self.assertEquivalent(expected, actual)
 
     def assertEquivalent(self, expected, actual):
-        expected = self.removeWhitespace(expected).replace("modulo","%")
-        actual = self.removeWhitespace(actual).replace("modulo","%")
+        expected = self.removeWhitespace(expected).replace(u"modulo",u"%")
+        actual = self.removeWhitespace(actual).replace(u"modulo",u"%")
         self.assertEquals(expected, actual)
 
     def removeWhitespace(self, s):
-        return s.replace(" ", "").replace("\t", "").replace("\n", "")
+        return s.replace(u" ", u"").replace(u"\t", u"").replace(u"\n", u"")
 
