@@ -15,7 +15,7 @@ class ECleverParser(EParser):
         chars = None
         if stream is not None:
             bytes = stream.read()
-            data = codecs.decode(bytes, "utf-8")
+            data = bytes if isinstance(bytes, unicode) else codecs.decode(bytes, "utf-8")
             chars = InputStream(data)
             stream.close()
         elif text is not None:
