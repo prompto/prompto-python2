@@ -19,4 +19,7 @@ class TestReader(BaseEParserTest):
     def testReader(self):
         self.runTests("reader/reader.pec")
 
+    def testYaml(self):
+        self.runTests("reader/yaml.pec")
+
 

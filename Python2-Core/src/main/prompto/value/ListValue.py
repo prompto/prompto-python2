@@ -25,6 +25,10 @@ class ListValue(BaseValueList, IFilterable):
         return self.storables
 
 
+    def convertToPython(self):
+        return [ o.convertToPython() for o in self.items ]
+
+
     def Add(self, context, value):
         from prompto.value.SetValue import SetValue
         if isinstance(value, (ListValue, SetValue)):
@@ -60,6 +64,13 @@ class ListValue(BaseValueList, IFilterable):
                 return ListValue(self.itype.itemType, items=result)
         else:
             raise SyntaxError("Illegal: List * " + type(value).__name__)
+
+
+    def toJson(self, context, generator, instanceId, fieldName, withType, binaries):
+        generator.writeStartArray()
+        [ o.toJson(context, generator, instanceId, fieldName, withType, binaries) for o in self.items ]
+        generator.writeEndArray()
+
 
     def __str__(self):
         with StringIO() as sb:

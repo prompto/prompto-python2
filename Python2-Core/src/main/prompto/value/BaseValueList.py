@@ -1,3 +1,4 @@
+from prompto.type.NativeType import NativeType
 from prompto.value.BaseValue import BaseValue
 from prompto.value.ISliceable import ISliceable
 from prompto.value.IntegerValue import IntegerValue
@@ -99,6 +100,7 @@ class BaseValueList(BaseValue, ISliceable):
         if not isinstance(obj, BaseValueList):
             return False
         return self.items == obj.items
+
 
     def getMemberValue(self, context, name, autoCreate=False):
         if "count" == name:
