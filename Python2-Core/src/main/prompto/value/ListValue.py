@@ -15,6 +15,7 @@ class ListValue(BaseValueList, IFilterable):
         if item is not None:
             self.items.append(item)
 
+
     def newInstance(self, items):
         return ListValue(self.itype.itemType, items=items)
 
