@@ -5,6 +5,7 @@ python:
 install:
   - pip install antlr4-python2-runtime==4.7.1
   - pip install nose==1.3.7
+  - pip install pyyaml
 before_script:
   - chmod 777 ./test.sh
 script:
