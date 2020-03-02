@@ -19,6 +19,10 @@ class EnumeratedNativeType ( BaseType ):
         return self.derivedFrom
 
 
+    def checkExists(self, context):
+        pass # TODO
+
+
     def checkMember(self, context, name):
         if "name" == name:
             return TextType.instance
@@ -35,10 +39,6 @@ class EnumeratedNativeType ( BaseType ):
             return super(EnumeratedNativeType, self).checkMember(context, name)
 
 
-    def isAssignableFrom(self, context, other):
-        return self.typeName == other.typeName
-
-
     def getStaticMemberValue(self, context, name):
         from prompto.declaration.EnumeratedNativeDeclaration import EnumeratedNativeDeclaration
         decl = context.getRegisteredDeclaration(IDeclaration, self.typeName)
@@ -48,6 +48,10 @@ class EnumeratedNativeType ( BaseType ):
             return decl.getSymbols()
         else:
             raise SyntaxError("Unknown member:" + name)
+
+
+    def isAssignableFrom(self, context, other):
+        return self.typeName == other.typeName
 
 
     def getStaticMemberMethods(self, context, name):

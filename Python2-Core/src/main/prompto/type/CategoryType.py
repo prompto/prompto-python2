@@ -134,12 +134,13 @@ class CategoryType(BaseType):
         else:
             return super(CategoryType, self).checkSubstract(context, other)
 
+
     def checkOperator(self, context, other, tryReverse, operator):
         from prompto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
         actual = self.getDeclaration(context)
         if isinstance(actual, ConcreteCategoryDeclaration):
             try:
-                method = actual.getOperatorMethod(self, operator, other)
+                method = actual.getOperatorMethod(context, operator, other)
                 if method is None:
                     return None
                 context = context.newInstanceContext(None, self)
@@ -252,9 +253,13 @@ class CategoryType(BaseType):
 
 
     def isAssignableFrom(self, context, other):
-        return super(CategoryType, self).isAssignableFrom(context, other) or \
-            (isinstance(other, CategoryType) and self.isAssignableFromCategory(context, other))
-
+        actual = self.resolve(context, None)
+        other = other.resolve(context, None)
+        if actual is self:
+            return super(CategoryType, self).isAssignableFrom(context, other) or \
+                (isinstance(other, CategoryType) and self.isAssignableFromCategory(context, other))
+        else:
+            return actual.isAssignableFrom(context, other)
 
 
     def isAssignableFromCategory(self, context, other):

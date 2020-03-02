@@ -13,6 +13,10 @@ class EnumeratedCategoryType ( CategoryType ):
         super(EnumeratedCategoryType, self).__init__(name, TypeFamily.ENUMERATED)
 
 
+    def checkExists(self, context):
+        pass # TODO
+
+
     def checkMember(self, context, name):
         if "name" == name:
             return TextType.instance

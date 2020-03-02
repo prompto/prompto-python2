@@ -29,6 +29,7 @@ class CategoryParameter(BaseParameter, ITypedParameter):
         return self.getType() == obj.getType() \
             and self.getName() == obj.getName()
 
+
     def register(self, context):
         actual = context.contextForValue(self.name)
         if actual is self:
@@ -38,16 +39,20 @@ class CategoryParameter(BaseParameter, ITypedParameter):
             value = self.defaultExpression.interpret(context)
             context.setValue(self.name, value)
 
+
     def check(self, context):
         self.resolve(context)
         self.resolved.checkExists(context)
 
+
     def resolve(self, context):
         if self.resolved is None:
-            self.resolved = self.itype.resolve(context)
+            self.resolved = self.itype.resolve(context, None)
+
 
     def getType(self, context=None):
         return self.itype
+
 
     def toDialect(self, writer):
         if self.mutable:

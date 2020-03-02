@@ -110,9 +110,11 @@ class BaseMethodDeclaration(BaseDeclaration, IMethodDeclaration):
 
         try:
             requiredType = parameter.getType(context)
+            requiredType = requiredType.resolve(context, None)
             expression = argument.getExpression()
             checkArrow = isinstance(requiredType, MethodType) and isinstance(expression, ContextualExpression) and isinstance(expression.expression, ArrowExpression)
             actualType = requiredType.checkArrowExpression(expression) if checkArrow else expression.check(context)
+            actualType = actualType.resolve(context, None)
             # retrieve actual runtime type
             if checkInstance and isinstance(actualType, CategoryType):
                 value = argument.getExpression().interpret(context.getCallingContext())
