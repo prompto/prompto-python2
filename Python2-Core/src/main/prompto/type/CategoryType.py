@@ -31,6 +31,7 @@ class CategoryType(BaseType):
         super(CategoryType, self).__init__(family)
         self.typeName = typeName
         self.mutable = mutable
+        self.resolved = None
 
     def __eq__(self, obj):
         if obj is None:
@@ -47,6 +48,29 @@ class CategoryType(BaseType):
             return AnyType.instance
         else:
             return self
+
+
+    def resolve(self, context, onError = None):
+        if self.resolved is None:
+            typ = self.anyfy()
+            if isinstance(typ, NativeType):
+                self.resolved = typ
+            else:
+                if(isinstance(context, CategoryType)):
+                    raise SyntaxError("what!!")
+                decl = context.getRegisteredDeclaration(IDeclaration, typ.typeName)
+                if decl is None:
+                    if onError is not None:
+                        onError(typ)
+                        return None
+                    else:
+                        raise SyntaxError("Unknown type:" + typ.typeName)
+                elif isinstance(decl, MethodDeclarationMap):
+                    self.resolved = MethodType(decl.getFirst())
+                else:
+                    found = decl.getType(context)
+                    self.resolved = typ if type(found)==type(typ) else found
+        return self.resolved
 
 
     def toDialect(self, writer, skipMutable = False):
@@ -71,10 +95,12 @@ class CategoryType(BaseType):
         inst.mutable = self.mutable
         return inst
 
+
     def checkUnique(self, context):
         actual = context.getRegisteredDeclaration(IDeclaration, self.typeName)
         if actual is not None:
             raise SyntaxError("Duplicate name: \"" + self.typeName + "\"")
+
 
     def getDeclaration(self, context):
         from prompto.declaration.CategoryDeclaration import CategoryDeclaration

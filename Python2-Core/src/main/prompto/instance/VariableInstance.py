@@ -8,6 +8,7 @@ from prompto.type.DocumentType import DocumentType
 
 
 class VariableInstance(IAssignableInstance):
+
     def __init__(self, name):
         super(VariableInstance, self).__init__()
         self.name = name
