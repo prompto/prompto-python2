@@ -1825,6 +1825,7 @@ class OPromptoBuilder(OParserListener):
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, AndExpression(left, right))
 
+
     def exitNullLiteral(self, ctx):
         self.setNodeValue(ctx, NullLiteral.instance)
 
@@ -1833,28 +1834,36 @@ class OPromptoBuilder(OParserListener):
         stmt = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, stmt)
 
+
     def exitOperatorArgument(self, ctx):
         arg = self.getNodeValue(ctx.arg)
-        arg.mutable = ctx.MUTABLE() is not None
+        arg.setMutable(ctx.MUTABLE() is not None)
         self.setNodeValue(ctx, arg)
+
 
     def exitOperatorPlus(self, ctx):
         self.setNodeValue(ctx, Operator.PLUS)
 
+
     def exitOperatorMinus(self, ctx):
         self.setNodeValue(ctx, Operator.MINUS)
+
 
     def exitOperatorMultiply(self, ctx):
         self.setNodeValue(ctx, Operator.MULTIPLY)
 
+
     def exitOperatorDivide(self, ctx):
         self.setNodeValue(ctx, Operator.DIVIDE)
+
 
     def exitOperatorIDivide(self, ctx):
         self.setNodeValue(ctx, Operator.IDIVIDE)
 
+
     def exitOperatorModulo(self, ctx):
         self.setNodeValue(ctx, Operator.MODULO)
+
 
     def exitOperator_method_declaration(self, ctx):
         op = self.getNodeValue(ctx.op)

@@ -1697,40 +1697,51 @@ class MPromptoBuilder(MParserListener):
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.CONTAINS, right))
 
+
     def exitNotContainsExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, EqualsExpression(left, EqOp.NOT_CONTAINS, right))
 
+
     def exitNullLiteral(self, ctx):
         self.setNodeValue(ctx, NullLiteral.instance)
+
 
     def exitOperator_argument(self, ctx):
         stmt = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, stmt)
 
+
     def exitOperatorArgument(self, ctx):
         arg = self.getNodeValue(ctx.arg)
-        arg.mutable = ctx.MUTABLE() is not None
+        arg.setMutable(ctx.MUTABLE() is not None)
         self.setNodeValue(ctx, arg)
+
 
     def exitOperatorPlus(self, ctx):
         self.setNodeValue(ctx, Operator.PLUS)
 
+
     def exitOperatorMinus(self, ctx):
         self.setNodeValue(ctx, Operator.MINUS)
+
 
     def exitOperatorMultiply(self, ctx):
         self.setNodeValue(ctx, Operator.MULTIPLY)
 
+
     def exitOperatorDivide(self, ctx):
         self.setNodeValue(ctx, Operator.DIVIDE)
+
 
     def exitOperatorIDivide(self, ctx):
         self.setNodeValue(ctx, Operator.IDIVIDE)
 
+
     def exitOperatorModulo(self, ctx):
         self.setNodeValue(ctx, Operator.MODULO)
+
 
     def exitOperator_method_declaration(self, ctx):
         op = self.getNodeValue(ctx.op)
