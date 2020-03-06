@@ -13,10 +13,12 @@ from prompto.grammar.ArgumentList import ArgumentList
 from prompto.grammar.Operator import Operator
 from prompto.parser.Dialect import Dialect
 from prompto.runtime.Score import Score
+from prompto.runtime.Context import MethodDeclarationMap
 from prompto.store.DataStore import DataStore
 from prompto.store.Store import IStored
 from prompto.type.AnyType import AnyType
 from prompto.type.MethodType import MethodType
+from prompto.type.NativeType import NativeType
 from prompto.type.TextType import TextType
 from prompto.type.BaseType import BaseType
 from prompto.type.MissingType import MissingType
