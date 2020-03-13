@@ -17,7 +17,7 @@ class ResourceType ( CategoryType ):
             return False
         return self.typeName == obj.typeName
 
-    def asMutable(self, mutable):
+    def asMutable(self, context, mutable):
         if mutable:
             pass # TODO throw
         return self

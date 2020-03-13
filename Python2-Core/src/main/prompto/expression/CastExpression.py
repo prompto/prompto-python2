@@ -13,14 +13,14 @@ from prompto.value.DecimalValue import DecimalValue
 from prompto.value.IntegerValue import IntegerValue
 
 
-def getTargetType(context, itype):
+def getTargetType(context, itype, mutable):
     if isinstance(itype, IterableType):
-        itemType = getTargetType(context, itype.itemType)
-        return itype.withItemType(itemType)
+        itemType = getTargetType(context, itype.itemType, False)
+        return itype.withItemType(itemType).asMutable(context, mutable)
     elif isinstance(itype, NativeType):
-        return itype
+        return itype.asMutable(context, mutable)
     else:
-        return getTargetAtomicType(context, itype)
+        return getTargetAtomicType(context, itype).asMutable(context, mutable)
 
 
 def getTargetAtomicType(context, itype):
@@ -36,17 +36,18 @@ def getTargetAtomicType(context, itype):
         return decl.getType(context)
 
 
-
 class CastExpression (IExpression):
 
-    def __init__(self, expression, itype):
+
+    def __init__(self, expression, itype, mutable):
         self.expression = expression
         self.itype = itype.anyfy()
+        self.mutable = mutable
 
 
     def check(self, context):
         actual = self.expression.check(context).anyfy()
-        target = getTargetType(context, self.itype)
+        target = getTargetType(context, self.itype, self.mutable)
         # check any
         if actual == AnyType.instance:
             return target
@@ -63,7 +64,7 @@ class CastExpression (IExpression):
     def interpret(self, context):
         value = self.expression.interpret(context)
         if value is not None:
-            target = getTargetType(context, self.itype)
+            target = getTargetType(context, self.itype, self.mutable)
             if isinstance(value, IntegerValue) and target == DecimalType.instance:
                 value = DecimalValue(value.DecimalValue())
             elif isinstance(value, DecimalValue) and target == IntegerType.instance:
@@ -80,11 +81,15 @@ class CastExpression (IExpression):
     def toEDialect(self, writer):
         self.expression.toDialect(writer)
         writer.append(" as ")
+        if self.mutable:
+            writer.append("mutable ")
         self.itype.toDialect(writer)
 
 
     def toODialect(self, writer):
         writer.append("(")
+        if self.mutable:
+            writer.append("mutable ")
         self.itype.toDialect(writer)
         writer.append(")")
         self.expression.toDialect(writer)
