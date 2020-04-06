@@ -11,3 +11,6 @@ class BinaryValue(BaseValue):
         self.binary = binary
 
 
+    def __getattr__(self, item):
+        return getattr(self.binary, item, None)
+
