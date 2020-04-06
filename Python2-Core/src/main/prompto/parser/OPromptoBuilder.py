@@ -1,5 +1,6 @@
 from antlr4 import Token
 
+from prompto.expression.ReadBlobExpression import ReadBlobExpression
 from prompto.expression.SuperExpression import SuperExpression
 from prompto.jsx.JsxFragment import JsxFragment
 from prompto.literal.TypeLiteral import TypeLiteral
@@ -2111,22 +2112,32 @@ class OPromptoBuilder(OParserListener):
         ecd.setSymbols(symbols)
         self.setNodeValue(ctx, ecd)
 
+
     def exitEnum_declaration(self, ctx):
         value = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, value)
+
 
     def exitRead_all_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, ReadAllExpression(source))
 
+
+    def exitRead_blob_expression(self, ctx):
+        source = self.getNodeValue(ctx.source)
+        self.setNodeValue(ctx, ReadBlobExpression(source))
+
+
     def exitRead_one_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, ReadOneExpression(source))
+
 
     def exitWrite_statement(self, ctx):
         what = self.getNodeValue(ctx.what)
         target = self.getNodeValue(ctx.target)
         self.setNodeValue(ctx, WriteStatement(what, target))
+
 
     def exitWith_singleton_statement(self, ctx):
         name = self.getNodeValue(ctx.typ)
@@ -2134,25 +2145,31 @@ class OPromptoBuilder(OParserListener):
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, WithSingletonStatement(typ, stmts))
 
+
     def exitWithSingletonStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitWith_resource_statement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, WithResourceStatement(stmt, stmts))
 
+
     def exitAnyType(self, ctx):
         self.setNodeValue(ctx, AnyType.instance)
+
 
     def exitAnyListType(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         self.setNodeValue(ctx, ListType(typ))
 
+
     def exitAnyDictType(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         self.setNodeValue(ctx, DictType(typ))
+
 
     def exitCastExpression(self, ctx):
         typ = self.getNodeValue(ctx.right)

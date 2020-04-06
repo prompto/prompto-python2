@@ -1,5 +1,6 @@
 from antlr4 import TerminalNode, Token
 
+from prompto.expression.ReadBlobExpression import ReadBlobExpression
 from prompto.expression.SuperExpression import SuperExpression
 from prompto.literal.TypeLiteral import TypeLiteral
 from prompto.param.CategoryParameter import CategoryParameter
@@ -2167,6 +2168,7 @@ class EPromptoBuilder(EParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitEnum_category_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
         attrs = self.getNodeValue(ctx.attrs)
@@ -2179,30 +2181,47 @@ class EPromptoBuilder(EParserListener):
         ecd.setSymbols(symbols)
         self.setNodeValue(ctx, ecd)
 
+
     def exitEnum_declaration(self, ctx):
         value = self.getNodeValue(ctx.getChild(0))
         self.setNodeValue(ctx, value)
+
 
     def exitRead_all_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, ReadAllExpression(source))
 
+
+    def exitRead_blob_expression(self, ctx):
+        source = self.getNodeValue(ctx.source)
+        self.setNodeValue(ctx, ReadBlobExpression(source))
+
+
     def exitRead_one_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, ReadOneExpression(source))
+
 
     def exitReadAllExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
+
+    def exitReadBlobExpression(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, exp)
+
+
     def exitReadOneExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
 
     def exitWrite_statement(self, ctx):
         what = self.getNodeValue(ctx.what)
         target = self.getNodeValue(ctx.target)
         self.setNodeValue(ctx, WriteStatement(what, target))
+
 
     def exitWith_singleton_statement(self, ctx):
         name = self.getNodeValue(ctx.typ)
@@ -2210,9 +2229,11 @@ class EPromptoBuilder(EParserListener):
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, WithSingletonStatement(typ, stmts))
 
+
     def exitWithSingletonStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitWith_resource_statement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)

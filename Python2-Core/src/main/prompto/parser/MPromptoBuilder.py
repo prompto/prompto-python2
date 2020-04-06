@@ -1,5 +1,6 @@
 from antlr4 import Token, TerminalNode
 
+from prompto.expression.ReadBlobExpression import ReadBlobExpression
 from prompto.expression.SuperExpression import SuperExpression
 from prompto.jsx.JsxFragment import JsxFragment
 from prompto.literal.TypeLiteral import TypeLiteral
@@ -1937,41 +1938,56 @@ class MPromptoBuilder(MParserListener):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, PythonStatement(exp, False))
 
+
     def exitPythonTextLiteral(self, ctx):
         self.setNodeValue(ctx, PythonTextLiteral(ctx.getText()))
+
 
     def exitRaise_statement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, RaiseStatement(exp))
 
+
     def exitRaiseStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitRange_literal(self, ctx):
         low = self.getNodeValue(ctx.low)
         high = self.getNodeValue(ctx.high)
         self.setNodeValue(ctx, RangeLiteral(low, high))
 
+
     def exitRead_all_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, ReadAllExpression(source))
+
+
+    def exitRead_blob_expression(self, ctx):
+        source = self.getNodeValue(ctx.source)
+        self.setNodeValue(ctx, ReadBlobExpression(source))
+
 
     def exitRead_one_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, ReadOneExpression(source))
 
+
     def exitResource_declaration(self, ctx):
         decl = self.getNodeValue(ctx.native_resource_declaration())
         self.setNodeValue(ctx, decl)
+
 
     def exitReturn_statement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, ReturnStatement(exp))
 
+
     def exitReturnStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitRootInstance(self, ctx):
         name = self.getNodeValue(ctx.variable_identifier())

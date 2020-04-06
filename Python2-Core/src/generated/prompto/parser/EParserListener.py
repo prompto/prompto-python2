@@ -1030,6 +1030,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#ReadBlobExpression.
+    def enterReadBlobExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#ReadBlobExpression.
+    def exitReadBlobExpression(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#MultiplyExpression.
     def enterMultiplyExpression(self, ctx):
         pass
@@ -2917,6 +2926,15 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#sorted_key.
     def exitSorted_key(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#read_blob_expression.
+    def enterRead_blob_expression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#read_blob_expression.
+    def exitRead_blob_expression(self, ctx):
         pass
 
 
