@@ -15,14 +15,22 @@ class DecimalValue(BaseValue, INumber, IMultiplyable):
         super(DecimalValue, self).__init__(DecimalType.instance)
         self.value = value
 
+
+    def getStorableData(self):
+        return self.value
+
+
     def convertToPython(self):
         return self.value
+
 
     def IntegerValue(self):
         return long(self.value)
 
+
     def DecimalValue(self):
         return self.value
+
 
     def Add(self, context, value):
         from prompto.value.IntegerValue import IntegerValue
@@ -32,6 +40,7 @@ class DecimalValue(BaseValue, INumber, IMultiplyable):
             return DecimalValue(self.value + value.DecimalValue())
         else:
             raise SyntaxError("Illegal: Decimal + " + type(value).__name__)
+
 
     def Subtract(self, context, value):
         from prompto.value.IntegerValue import IntegerValue
@@ -63,6 +72,7 @@ class DecimalValue(BaseValue, INumber, IMultiplyable):
         else:
             raise SyntaxError("Illegal: Decimal / " + type(value).__name__)
 
+
     def IntDivide(self, context, value):
         from prompto.error.DivideByZeroError import DivideByZeroError
         from prompto.value.IntegerValue import IntegerValue
@@ -74,6 +84,7 @@ class DecimalValue(BaseValue, INumber, IMultiplyable):
         else:
             raise SyntaxError("Illegal: Decimal / " + type(value).__name__)
 
+
     def Modulo(self, context, value):
         from prompto.error.DivideByZeroError import DivideByZeroError
         if isinstance(value, INumber):
@@ -83,6 +94,7 @@ class DecimalValue(BaseValue, INumber, IMultiplyable):
                 return DecimalValue(self.DecimalValue() % value.DecimalValue())
         else:
             raise SyntaxError("Illegal: Decimal % " + type(value).__name__)
+
 
     def CompareTo(self, context, value):
         if isinstance(value, INumber):
