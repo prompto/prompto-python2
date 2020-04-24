@@ -2,4 +2,7 @@ from prompto.declaration.IDeclaration import IDeclaration
 
 
 class IMethodDeclaration ( IDeclaration ):
-    pass
+
+    # noinspection PyMethodOverriding
+    def check(self, context, flags):
+        pass

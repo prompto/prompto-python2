@@ -25,9 +25,9 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         return self.statements
 
 
-    def check(self, context, isStart):
+    def check(self, context, flags):
         if self.canBeChecked(context):
-            return self.fullCheck(context, isStart)
+            return self.fullCheck(context, flags)
         else:
             return VoidType.instance
 
@@ -49,10 +49,12 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         return False
 
 
-    def fullCheck(self, context, isStart):
-        if isStart:
+    def fullCheck(self, context, flags):
+        if flags.isStart:
             context = context.newLocalContext()
             self.registerArguments(context)
+        elif self.memberOf is not None and not flags.isMember:
+            self.memberOf.processAnnotations(context, True)
         if self.parameters is not None:
             self.parameters.check(context)
         return self.checkStatements(context, self.returnType)

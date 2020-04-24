@@ -6,6 +6,7 @@ from prompto.error.NotMutableError import NotMutableError
 from prompto.error.PromptoError import PromptoError
 from prompto.grammar.ArgumentList import ArgumentList
 from prompto.runtime.Context import MethodDeclarationMap
+from prompto.runtime.ContextFlags import ContextFlags
 from prompto.runtime.MethodFinder import MethodFinder
 from prompto.statement.SimpleStatement import SimpleStatement
 from prompto.declaration.ClosureDeclaration import ClosureDeclaration
@@ -51,7 +52,7 @@ class MethodCall(SimpleStatement):
 
     def lightCheck(self, declaration, local):
         declaration.registerArguments(local)
-        return declaration.check(local, False)
+        return declaration.check(local, ContextFlags.NONE)
 
 
     def fullCheck(self, declaration, parent, local):
@@ -62,7 +63,7 @@ class MethodCall(SimpleStatement):
                 expression = argument.resolve(local, declaration, True)
                 value = argument.getParameter().checkValue(parent, expression)
                 local.setValue(argument.getName(), value)
-            return declaration.check(local, False)
+            return declaration.check(local, ContextFlags.NONE)
         except PromptoError, e:
             raise SyntaxError(e.message)
 

@@ -61,5 +61,5 @@ class ToListMethodDeclaration(BuiltInMethodDeclaration):
         return value.toListValue(context)
 
 
-    def check(self, context, isStart=False):
+    def check(self, context, flags):
         return ListType(self.itemType)

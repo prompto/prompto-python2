@@ -85,7 +85,7 @@ class AttributeDeclaration ( BaseDeclaration ):
     def register(self, context):
         context.registerDeclaration(self)
 
-    def check(self, context, isStart):
+    def check(self, context):
         self.itype.checkExists(context)
         return self.itype
 
