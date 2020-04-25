@@ -109,7 +109,6 @@ class CategoryDeclaration(BaseDeclaration):
 
     def toDialect(self, writer):
         writer = writer.newInstanceWriter(self.getType(writer.context))
-        self.processAnnotations(writer.context, True)
         super(CategoryDeclaration, self).toDialect(writer)
 
 
@@ -120,7 +119,8 @@ class CategoryDeclaration(BaseDeclaration):
             if derivedFrom is not None:
                 for name in derivedFrom:
                     decl = context.getRegisteredDeclaration(CategoryDeclaration, name)
-                    decl.processAnnotations(context, True)
+                    if decl is not None:
+                        decl.processAnnotations(context, True)
         if self.annotations is not None:
             [ann.processCategory(context, self) for ann  in self.annotations]
 
