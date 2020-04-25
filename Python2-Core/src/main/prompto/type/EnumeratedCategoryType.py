@@ -73,5 +73,5 @@ class SymbolOfMethodDeclaration(BuiltInMethodDeclaration):
         return decl.getSymbol(symbolName)
 
 
-    def check(self, context, flags):
+    def check(self, context, isStart):
         return self.enumType

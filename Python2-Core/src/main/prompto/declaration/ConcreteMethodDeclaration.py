@@ -25,15 +25,15 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         return self.statements
 
 
-    def check(self, context, flags):
-        if self.canBeChecked(context):
-            return self.fullCheck(context, flags)
+    def check(self, context, isStart):
+        if self.canBeChecked(context, isStart):
+            return self.fullCheck(context, isStart)
         else:
             return VoidType.instance
 
 
-    def canBeChecked(self, context):
-        if context.isGlobalContext():
+    def canBeChecked(self, context, isStart):
+        if isStart:
             return not self.mustBeBeCheckedInCallContext(context)
         else:
             return True
@@ -49,8 +49,8 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         return False
 
 
-    def fullCheck(self, context, flags):
-        if flags.isStart:
+    def fullCheck(self, context, isStart):
+        if isStart:
             context = context.newLocalContext()
             self.registerArguments(context)
         if self.parameters is not None:

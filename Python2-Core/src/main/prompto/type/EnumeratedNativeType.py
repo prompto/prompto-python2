@@ -79,6 +79,6 @@ class SymbolOfMethodDeclaration(BuiltInMethodDeclaration):
         return decl.getSymbol(symbolName)
 
 
-    def check(self, context, flags):
+    def check(self, context, isStart):
         from prompto.type.BooleanType import BooleanType
         return BooleanType.instance

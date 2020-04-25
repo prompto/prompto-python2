@@ -33,6 +33,6 @@ class BaseJoinMethodDeclaration(BuiltInMethodDeclaration):
         return TextValue(joined)
 
 
-    def check(self, context, flags):
+    def check(self, context, isStart):
         from prompto.type.BooleanType import BooleanType
         return BooleanType.instance
