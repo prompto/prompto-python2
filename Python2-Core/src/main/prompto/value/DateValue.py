@@ -14,6 +14,7 @@ class DateValue (BaseValue):
         days = int(text[8:10])
         return DateValue(years=years, months=months, days=days)
 
+
     def __init__(self, value=None, years=None, months=None, days=None):
         from prompto.type.DateType import DateType
         super(DateValue, self).__init__(DateType.instance)
@@ -24,12 +25,18 @@ class DateValue (BaseValue):
     def getValue(self):
         return self.value
 
+
+    def convertToPython(self):
+        return self.value
+
+
     def Add(self, context, value):
         if isinstance(value, PeriodValue):
             return self.plus(value)
         else:
             raise SyntaxError("Illegal: Date + " + type(value).__name__)
- 
+
+
     def Subtract(self, context, value):
         if isinstance(value, DateValue):
             td = self.value - value.value
@@ -39,11 +46,13 @@ class DateValue (BaseValue):
         else:
             raise SyntaxError("Illegal: Date - " + type(value).__name__)
 
+
     def CompareTo(self, context, value):
         if isinstance(value, DateValue):
             return cmp(self.value,value.value)
         else:
             raise SyntaxError("Illegal comparison: Date - " + type(value).__name__)
+
 
     def getMemberValue(self, context, name, autoCreate=False):
         if "year"==name:
