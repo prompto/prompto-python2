@@ -13,15 +13,12 @@ class CharacterValue (BaseValue, IMultiplyable) :
         self.value = value
 
 
-
     def convertToPython(self):
         return self.value
 
 
-
     def getValue(self):
         return self.value
-
 
 
     def getMemberValue(self, context, name, autoCreate=False):
@@ -34,7 +31,6 @@ class CharacterValue (BaseValue, IMultiplyable) :
     def Add(self, context, value):
         from prompto.value.TextValue import TextValue
         return TextValue(self.value + str(value))
-
 
 
     def Multiply(self, context, value):
