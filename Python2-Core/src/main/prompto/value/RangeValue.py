@@ -39,8 +39,16 @@ class RangeValue(BaseValue, IRange):
         else:
             return self.low == obj.low and self.high == obj.high
 
+    def getMemberValue(self, context, name, autoCreate=False):
+        if name == "count":
+            return IntegerValue(self.size())
+        else:
+            return super(RangeValue, self).getMemberValue(context, name, autoCreate)
+
+
     def hasItem(self, context, val):
         return cmp(val,self.low) >= 0 and cmp(val,self.high) <= 0
+
 
     def getItem(self, context, index):
         if isinstance(index, IntegerValue):
