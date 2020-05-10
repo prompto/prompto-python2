@@ -169,3 +169,7 @@ class DateTimeValue(BaseValue):
         zone = None
         dt = datetime(year, month, day, hour, minute, second, micro, zone)
         return DateTimeValue(value=dt)
+
+    def toDocumentValue(self, context):
+        from prompto.value.TextValue import TextValue
+        return TextValue(str(self))

@@ -117,5 +117,12 @@ class TimeValue(BaseValue):
         else:
             s = s[0:12]
         return s
+
+
     def __hash__(self):
         return hash(self.value)
+
+
+    def toDocumentValue(self, context):
+        from prompto.value.TextValue import TextValue
+        return TextValue(str(self))
