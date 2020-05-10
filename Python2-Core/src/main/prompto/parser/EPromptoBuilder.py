@@ -2050,7 +2050,7 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitDocument_expression(self, ctx):
-        exp = self.getNodeValue(ctx.expression())
+        exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, DocumentExpression(exp))
 
 

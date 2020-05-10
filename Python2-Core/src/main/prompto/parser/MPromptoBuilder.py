@@ -892,7 +892,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, DocumentType.instance)
 
     def exitDocument_expression(self, ctx):
-        exp = self.getNodeValue(ctx.expression())
+        exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, DocumentExpression(exp))
 
     def exitDocument_literal(self, ctx):
