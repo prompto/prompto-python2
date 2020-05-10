@@ -37,6 +37,13 @@ class DocumentType ( NativeType ):
             raise Exception("text") # TODO
 
 
+    def checkAdd(self, context, other, tryReverse):
+        if other is self:
+            return self
+        else:
+            return super(DocumentType, self).checkAdd(context, other, tryReverse)
+
+
     def isAssignableFrom(self, context, other):
         from prompto.type.CategoryType import CategoryType
         return super(DocumentType, self).isAssignableFrom(context, other) or \
