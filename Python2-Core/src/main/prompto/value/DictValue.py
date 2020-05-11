@@ -13,7 +13,7 @@ from prompto.value.IntegerValue import IntegerValue
 from prompto.value.ListValue import ListValue
 from prompto.value.NullValue import NullValue
 from prompto.value.SetValue import SetValue
-
+from prompto.value.TextValue import TextValue
 
 
 class DictValue(BaseValue, IContainer):
@@ -22,7 +22,7 @@ class DictValue(BaseValue, IContainer):
     def merge(dict1, dict2):
         return DictValue(dict1.itype.itemType, False, value=dict(dict1.value.items() + dict2.value.items()))
 
-    def __init__(self, itemType, mutable, copyFrom=None, value=None):
+    def __init__(self, itemType, mutable=False, copyFrom=None, value=None):
         super(DictValue, self).__init__(DictType(itemType))
         self.mutable = mutable
         if copyFrom is not None:
@@ -47,8 +47,17 @@ class DictValue(BaseValue, IContainer):
             raise SyntaxError("Illegal: Dict + " + type(value).__name__)
 
 
+    def swap(self, context):
+        swapped = DictValue(TextType.instance, True)
+        for k,v in self.value.items():
+            if not isinstance(v, TextValue):
+                v = TextValue(v.getMember(context, "text", False))
+            swapped.setItem(context, v, k)
+        swapped.mutable = False
+        return swapped
+
+
     def hasItem(self, context, value):
-        from prompto.value.TextValue import TextValue
         if isinstance(value, TextValue):
             return self.value.get(value.value, None) is not None
         else:
@@ -59,7 +68,6 @@ class DictValue(BaseValue, IContainer):
         if "count" == name:
             return IntegerValue(self.size())
         elif "keys" == name:
-            from prompto.value.TextValue import TextValue
             res = set([TextValue(k) for k in self.value.keys()])
             return SetValue(TextType.instance, items=res)
         elif "values" == name:
@@ -69,14 +77,13 @@ class DictValue(BaseValue, IContainer):
 
 
     def setItem(self, context, item, value):
-        from prompto.value.TextValue import TextValue
         if isinstance(item, TextValue):
             self.value[item.value] = value
         else:
             raise SyntaxError("No such item:" + str(item))
 
+
     def getItem(self, context, item):
-        from prompto.value.TextValue import TextValue
         if isinstance(item, TextValue):
             value = self.value.get(item.value, NullValue.instance)
             if isinstance(value, IValue):
@@ -118,7 +125,6 @@ class DictValue(BaseValue, IContainer):
             return sb.getvalue()
 
     def getKeys(self):
-        from prompto.value.TextValue import TextValue
         for k in self.value.iterkeys():
             yield TextValue(k)
 
@@ -132,7 +138,6 @@ class KVPValue(BaseValue):
 
     def __init__(self, key, value):
         super(KVPValue, self).__init__(MissingType.instance)
-        from prompto.value.TextValue import TextValue
         self.key = TextValue(key)
         self.value = value
 
