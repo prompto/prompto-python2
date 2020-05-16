@@ -2,8 +2,12 @@ from prompto.expression.ValueExpression import ValueExpression
 from prompto.grammar.Argument import Argument
 from prompto.grammar.ArgumentList import ArgumentList
 from prompto.literal.TextLiteral import TextLiteral
+from prompto.type.IType import IType
+from prompto.type.IntegerType import IntegerType
+from prompto.type.ListType import ListType
 from prompto.type.MissingType import MissingType
 from prompto.type.NullType import NullType
+from prompto.type.SetType import SetType
 from prompto.type.TextType import TextType
 from prompto.type.AnyType import AnyType
 from prompto.type.NativeType import NativeType
@@ -24,7 +28,13 @@ class DocumentType ( NativeType ):
 
 
     def checkMember(self, context, name):
-        if name == "text":
+        if "count" == name:
+            return IntegerType.instance
+        elif "keys" == name:
+            return SetType(TextType.instance)
+        elif "values" == name:
+            return ListType(AnyType.instance)
+        elif name == "text":
             return TextType.instance
         else:
             return AnyType.instance
@@ -104,6 +114,15 @@ class DocumentType ( NativeType ):
             return self.getExpressionSortKeyReader(context, key)
 
 
+    def globalMethodExists(self, context, name):
+        from prompto.runtime.Context import MethodDeclarationMap
+        methods = context.getRegisteredDeclaration(MethodDeclarationMap, name)
+        if methods is None:
+            return False
+        else:
+            return methods.get(self.typeName, None)
+
+
     def getGlobalMethodSortKeyReader(self, context, name):
         from prompto.statement.MethodCall import MethodCall
         from prompto.value.DocumentValue import DocumentValue
@@ -132,15 +151,6 @@ class DocumentType ( NativeType ):
             return exp.interpret(co)
 
         return keyGetter
-
-
-    def globalMethodExists(self, context, name):
-        from prompto.runtime.Context import MethodDeclarationMap
-        methods = context.getRegisteredDeclaration(MethodDeclarationMap, name)
-        if methods is None:
-            return False
-        else:
-            return methods.get(self.typeName, None)
 
 
 DocumentType.instance = DocumentType()
