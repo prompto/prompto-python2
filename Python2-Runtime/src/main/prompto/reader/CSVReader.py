@@ -11,6 +11,7 @@ class csvDialect(csv.Dialect):
     lineterminator = '\r\n'
     quoting = csv.QUOTE_MINIMAL
 
+
 def csvIterate(text, columns, delimiter, encloser):
     dialect = csvDialect()
     dialect.delimiter = delimiter
@@ -18,9 +19,16 @@ def csvIterate(text, columns, delimiter, encloser):
     file = StringIO(text)
     return DictReader(file, columns, dialect)
 
+
 def csvRead(text, columns, delimiter, encloser):
     reader = csvIterate(text, columns, delimiter, encloser)
     return [doc for doc in reader]
+
+
+def csvReadHeaders(text, delimiter, encloser):
+    reader = csvIterate(text, None, delimiter, encloser)
+    return reader.fieldnames
+
 
 class DictReader(csv.DictReader):
 
