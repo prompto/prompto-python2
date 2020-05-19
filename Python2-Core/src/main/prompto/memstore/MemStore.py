@@ -5,6 +5,7 @@ from prompto.store.Store import IStorable, IStored, IStore, IQueryBuilder
 class MemStore(IStore):
 
     lastDbId = 0
+    sequences = dict()
 
     @staticmethod
     def nextDbId():
@@ -13,6 +14,12 @@ class MemStore(IStore):
 
     def __init__(self):
         self.documents = dict()
+
+
+    def nextSequenceValue(self, name):
+        value = MemStore.sequences.get(name, 0) + 1
+        MemStore.sequences[name] = value
+        return value
 
 
     def isDbIdType(self, typ):

@@ -1,6 +1,9 @@
 from prompto.python.PythonExpression import PythonExpression
 from types import ModuleType
 
+from prompto.store.DataStore import DataStore
+
+
 class PythonIdentifierExpression(PythonExpression):
 
     @staticmethod
@@ -11,15 +14,19 @@ class PythonIdentifierExpression(PythonExpression):
             result = PythonIdentifierExpression(parent=result, identifier=part)
         return result
 
+
     def __init__(self, identifier, parent=None):
         self.parent = parent
         self.identifier = identifier
 
+
     def getParent(self):
         return self.parent
 
+
     def getIdentifier(self):
         return self.identifier
+
 
     def __str__(self):
         if self.parent is None:
@@ -27,11 +34,13 @@ class PythonIdentifierExpression(PythonExpression):
         else:
             return str(self.parent) + '.' + self.identifier
 
+
     def toDialect(self, writer):
         if self.parent is not None:
             self.parent.toDialect(writer)
             writer.append(".")
         writer.append(self.identifier)
+
 
     def interpret(self, context, module):
         if self.parent is None:
@@ -39,8 +48,9 @@ class PythonIdentifierExpression(PythonExpression):
         else:
             return self.interpret_child(context, module)
 
+
     def interpret_root(self, context, module):
-        o = self.interpret_presto(context)
+        o = self.interpret_prompto(context)
         if o is not None:
             return o
         o = self.interpret_global()
@@ -54,17 +64,22 @@ class PythonIdentifierExpression(PythonExpression):
             return o
         return None
 
-    def interpret_presto(self, context):
+
+    def interpret_prompto(self, context):
         if self.identifier=="$context":
             return context
+        elif self.identifier == "$store":
+            return DataStore.instance
         else:
             return None
+
 
     def interpret_global(self):
         try:
             return eval(self.identifier)
         except:
             return None
+
 
     def interpret_module(self, module):
         if module is None:
@@ -92,6 +107,7 @@ class PythonIdentifierExpression(PythonExpression):
         if o is not None:
             o = self.interpret_field(o)
         return o
+
 
     def interpret_field(self, o):
         if isinstance(o, ModuleType):
