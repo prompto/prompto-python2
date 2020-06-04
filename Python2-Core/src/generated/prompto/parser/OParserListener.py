@@ -328,6 +328,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#ReadStatement.
+    def enterReadStatement(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#ReadStatement.
+    def exitReadStatement(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#FlushStatement.
     def enterFlushStatement(self, ctx):
         pass
@@ -1216,6 +1225,15 @@ class OParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by OParser#FetchManyAsync.
     def exitFetchManyAsync(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#read_statement.
+    def enterRead_statement(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#read_statement.
+    def exitRead_statement(self, ctx):
         pass
 
 

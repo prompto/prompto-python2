@@ -188,6 +188,7 @@ from prompto.python.PythonTextLiteral import PythonTextLiteral
 from prompto.statement.AssignInstanceStatement import AssignInstanceStatement
 from prompto.statement.AssignTupleStatement import AssignTupleStatement
 from prompto.statement.AssignVariableStatement import AssignVariableStatement
+from prompto.statement.ReadStatement import ReadStatement
 from prompto.statement.RemoteCall import RemoteCall
 from prompto.statement.AtomicSwitchCase import AtomicSwitchCase
 from prompto.statement.BreakStatement import BreakStatement
@@ -2131,6 +2132,17 @@ class OPromptoBuilder(OParserListener):
     def exitRead_one_expression(self, ctx):
         source = self.getNodeValue(ctx.source)
         self.setNodeValue(ctx, ReadOneExpression(source))
+
+
+    def exitRead_statement(self, ctx):
+        source = self.getNodeValue(ctx.source)
+        name = self.getNodeValue(ctx.name)
+        stmts = self.getNodeValue(ctx.stmts)
+        self.setNodeValue(ctx, ReadStatement(source, name, stmts))
+
+
+    def exitReadStatement(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.stmt))
 
 
     def exitWrite_statement(self, ctx):

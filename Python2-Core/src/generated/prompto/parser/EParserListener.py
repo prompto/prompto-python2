@@ -319,6 +319,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#ReadStatement.
+    def enterReadStatement(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#ReadStatement.
+    def exitReadStatement(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#FlushStatement.
     def enterFlushStatement(self, ctx):
         pass
@@ -1360,6 +1369,15 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#FetchManyAsync.
     def exitFetchManyAsync(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#read_statement.
+    def enterRead_statement(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#read_statement.
+    def exitRead_statement(self, ctx):
         pass
 
 
