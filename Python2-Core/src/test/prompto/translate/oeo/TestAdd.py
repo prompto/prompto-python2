@@ -29,11 +29,17 @@ class TestAdd(BaseOParserTest):
     def testAddList(self):
         self.compareResourceOEO("add/addList.poc")
 
+    def testAddListDerived(self):
+        self.compareResourceOEO("add/addListDerived.poc")
+
     def testAddPeriod(self):
         self.compareResourceOEO("add/addPeriod.poc")
 
     def testAddSet(self):
         self.compareResourceOEO("add/addSet.poc")
+
+    def testAddSetDerived(self):
+        self.compareResourceOEO("add/addSetDerived.poc")
 
     def testAddTextCharacter(self):
         self.compareResourceOEO("add/addTextCharacter.poc")
