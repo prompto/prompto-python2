@@ -3,6 +3,9 @@ from antlr4 import Token, TerminalNode
 from prompto.expression.ReadBlobExpression import ReadBlobExpression
 from prompto.expression.SuperExpression import SuperExpression
 from prompto.jsx.JsxFragment import JsxFragment
+from prompto.literal.DocEntry import DocEntry
+from prompto.literal.DocIdentifierKey import DocIdentifierKey
+from prompto.literal.DocTextKey import DocTextKey
 from prompto.literal.TypeLiteral import TypeLiteral
 from prompto.param.CategoryParameter import CategoryParameter
 from prompto.param.CodeParameter import CodeParameter
@@ -383,10 +386,10 @@ class MPromptoBuilder(MParserListener):
 
     def exitAnnotation_constructor(self, ctx):
         name = self.getNodeValue(ctx.name)
-        args = DictEntryList()
+        args = DocEntryList()
         exp = self.getNodeValue(ctx.exp)
         if exp is not None:
-            args.append(DictEntry(None, exp))
+            args.append(DocEntry(None, exp))
         for argCtx in ctx.annotation_argument():
             arg = self.getNodeValue(argCtx)
             args.append(arg)
@@ -396,7 +399,7 @@ class MPromptoBuilder(MParserListener):
     def exitAnnotation_argument(self, ctx):
         name = self.getNodeValue(ctx.name)
         exp = self.getNodeValue(ctx.exp)
-        self.setNodeValue(ctx, DictEntry(name, exp))
+        self.setNodeValue(ctx, DocEntry(name, exp))
 
 
     def exitAnnotation_identifier(self, ctx):
@@ -844,15 +847,18 @@ class MPromptoBuilder(MParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
     def exitDerived_list(self, ctx):
         items = self.getNodeValue(ctx.items)
         self.setNodeValue(ctx, items)
+
 
     def exitDict_entry(self, ctx):
         key = self.getNodeValue(ctx.key)
         value = self.getNodeValue(ctx.value)
         entry = DictEntry(key, value)
         self.setNodeValue(ctx, entry)
+
 
     def exitDict_entry_list(self, ctx):
         items = DictEntryList()
@@ -861,55 +867,93 @@ class MPromptoBuilder(MParserListener):
             items.append(item)
         self.setNodeValue(ctx, items)
 
+
+    def exitDoc_entry(self, ctx):
+        key = self.getNodeValue(ctx.key)
+        value = self.getNodeValue(ctx.value)
+        entry = DocEntry(key, value)
+        self.setNodeValue(ctx, entry)
+
+
+    def exitDoc_entry_list(self, ctx):
+        items = DocEntryList()
+        for rule in ctx.doc_entry():
+            item = self.getNodeValue(rule)
+            items.append(item)
+        self.setNodeValue(ctx, items)
+
+
+    def exitDocKeyIdentifier(self, ctx):
+        name = ctx.name.getText()
+        self.setNodeValue(ctx, DocIdentifierKey(name))
+
+
+    def exitDocKeyText(self, ctx):
+        name = ctx.name.text
+        self.setNodeValue(ctx, DocTextKey(name))
+
+
     def exitDict_literal(self, ctx):
         mutable = ctx.MUTABLE() is not None
         items = self.getNodeValue(ctx.dict_entry_list())
         value = DictLiteral(mutable, items)
         self.setNodeValue(ctx, value)
 
+
     def exitDictType(self, ctx):
         typ = self.getNodeValue(ctx.d)
         self.setNodeValue(ctx, DictType(typ))
+
 
     def exitDictKeyIdentifier(self, ctx):
         name = ctx.name.getText()
         self.setNodeValue(ctx, DictIdentifierKey(name))
 
+
     def exitDictKeyText(self, ctx):
         name = ctx.name.text
         self.setNodeValue(ctx, DictTextKey(name))
+
 
     def exitDivideExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         self.setNodeValue(ctx, DivideExpression(left, right))
 
+
     def exitDo_while_statement(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         stmts = self.getNodeValue(ctx.stmts)
         self.setNodeValue(ctx, DoWhileStatement(exp, stmts))
 
+
     def exitDocumentType(self, ctx):
         self.setNodeValue(ctx, DocumentType.instance)
+
 
     def exitDocument_expression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, DocumentExpression(exp))
 
+
     def exitDocument_literal(self, ctx):
-        entries = self.getNodeValue(ctx.dict_entry_list())
-        items = DocEntryList(entries=entries)
-        self.setNodeValue(ctx, DocumentLiteral(items))
+        entries = self.getNodeValue(ctx.doc_entry_list())
+        if entries is None:
+            entries = DocEntryList()
+        self.setNodeValue(ctx, DocumentLiteral(entries))
+
 
     def exitDoWhileStatement(self, ctx):
         stmt = self.getNodeValue(ctx.stmt)
         self.setNodeValue(ctx, stmt)
+
 
     def exitElseIfStatementList(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         stmts = self.getNodeValue(ctx.stmts)
         elem = IfElement(exp, stmts)
         self.setNodeValue(ctx, IfElementList(elem))
+
 
     def exitElseIfStatementListItem(self, ctx):
         items = self.getNodeValue(ctx.items)
@@ -918,6 +962,7 @@ class MPromptoBuilder(MParserListener):
         elem = IfElement(exp, stmts)
         items.add(elem)
         self.setNodeValue(ctx, items)
+
 
     def exitEnum_category_declaration(self, ctx):
         name = self.getNodeValue(ctx.name)
