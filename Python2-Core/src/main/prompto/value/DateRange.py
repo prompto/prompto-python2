@@ -19,7 +19,7 @@ class DateRange(RangeValue):
         return cmp(o1.value, o2.value)
 
     def computeItem(self, index):
-        result = self.low.plus(PeriodValue(days=index - 1))
+        result = self.low.plusPeriod(PeriodValue(days=index - 1))
         if cmp(result,self.high)>0:
             raise IndexOutOfRangeError()
         return result

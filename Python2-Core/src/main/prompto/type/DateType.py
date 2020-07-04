@@ -1,13 +1,11 @@
-from prompto.type.AnyType import *
-from prompto.type.BooleanType import *
-from prompto.type.DateTimeType import *
-from prompto.type.IntegerType import *
-from prompto.type.NativeType import *
-from prompto.type.PeriodType import *
-from prompto.type.RangeType import *
-from prompto.type.TimeType import *
-from prompto.value.DateValue import *
-from prompto.value.DateRange import *
+from prompto.store.TypeFamily import TypeFamily
+from prompto.type.BooleanType import BooleanType
+from prompto.type.NativeType import NativeType
+from prompto.type.PeriodType import PeriodType
+from prompto.type.RangeType import RangeType
+from prompto.type.TimeType import TimeType
+from prompto.value.DateRange import DateRange
+from prompto.value.DateValue import DateValue
 
 
 class DateType(NativeType):
@@ -20,7 +18,11 @@ class DateType(NativeType):
     def checkAdd(self, context, other, tryReverse):
         if isinstance(other, PeriodType):
             return self  # ignore time section
-        return super(DateType, self).checkAdd(context, other, tryReverse)
+        elif isinstance(other, TimeType):
+            from prompto.type.DateTimeType import DateTimeType
+            return DateTimeType.instance
+        else:
+            return super(DateType, self).checkAdd(context, other, tryReverse)
 
     def checkSubstract(self, context, other):
         if isinstance(other, PeriodType):
@@ -31,6 +33,7 @@ class DateType(NativeType):
             return super(DateType, self).checkSubstract(context, other)
 
     def checkCompare(self, context, other):
+        from prompto.type.DateTimeType import DateTimeType
         if isinstance(other, DateType):
             return BooleanType.instance
         elif isinstance(other, DateTimeType):
@@ -64,6 +67,7 @@ class DateType(NativeType):
 
 
     def isAssignableFrom(self, context, other):
+        from prompto.type.DateTimeType import DateTimeType
         return super(DateType, self).isAssignableFrom(context, other) or \
             other is DateTimeType.instance
 
