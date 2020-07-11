@@ -1,5 +1,4 @@
 from prompto.error.IndexOutOfRangeError import IndexOutOfRangeError
-from prompto.value.DateValue import DateValue
 from prompto.value.PeriodValue import PeriodValue
 from prompto.value.RangeValue import RangeValue
 
