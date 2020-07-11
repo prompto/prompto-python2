@@ -5,7 +5,7 @@ from prompto.statement.StatementList import StatementList
 from prompto.type.DictType import DictType
 from prompto.type.TextType import TextType
 from prompto.type.VoidType import VoidType
-
+from prompto.error.SyntaxError import SyntaxError
 
 class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
 
@@ -26,14 +26,14 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
 
 
     def check(self, context, isStart):
-        if self.canBeChecked(context, isStart):
+        if self.canBeChecked(context):
             return self.fullCheck(context, isStart)
         else:
             return VoidType.instance
 
 
-    def canBeChecked(self, context, isStart):
-        if isStart:
+    def canBeChecked(self, context):
+        if context.isGlobalContext():
             return not self.mustBeBeCheckedInCallContext(context)
         else:
             return True
@@ -67,13 +67,20 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
 
 
     def checkStatements(self, context, returnType):
-        return self.statements.check(context, returnType)
+        try:
+            return self.statements.check(context, returnType)
+        except SyntaxError as e:
+            e.suffix = " in method '" + self.name + "'"
+            raise e
 
 
     def interpret(self, context):
         context.enterMethod(self)
         try:
             return self.statements.interpret(context)
+        except SyntaxError as e:
+            e.suffix = " in method " + self.name
+            raise e
         finally:
             context.leaveMethod(self)
 
@@ -111,6 +118,7 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         self.statements.toDialect(writer)
         writer.dedent()
 
+
     def toEDialect(self, writer):
         writer.append("define ")
         writer.append(self.name)
@@ -124,6 +132,7 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         writer.indent()
         self.statements.toDialect(writer)
         writer.dedent()
+
 
     def toODialect(self, writer):
         if self.returnType is not None and self.returnType is not VoidType.instance:

@@ -1,3 +1,4 @@
+from __future__ import print_function
 from antlr4 import ParseTreeWalker
 from prompto.parser.Dialect import Dialect
 from prompto.parser.ECleverParser import ECleverParser
@@ -13,6 +14,7 @@ from prompto.runtime.utils.Out import Out
 from prompto.store.DataStore import DataStore
 from prompto.memstore.MemStore import MemStore
 from prompto.utils.CodeWriter import CodeWriter
+from prompto.error.SyntaxError import SyntaxError
 
 import io
 import os
@@ -101,8 +103,12 @@ class BaseParserTest(unittest.TestCase):
 
     def checkOutput(self, resource):
         DataStore.instance = MemStore()
-        self.runResource(resource)
+        try:
+            self.runResource(resource)
+        except SyntaxError as e:
+            print(e.message, end = "")
         self.checkExpected(resource)
+
 
     def checkExpected(self, resource):
         read = Out.read()
@@ -115,6 +121,7 @@ class BaseParserTest(unittest.TestCase):
                     return
             self.assertEquals(expected[0], read)  # to get a display
 
+
     def readExpected(self, resourceName):
         idx = resourceName.index('.')
         resourceName = resourceName[0:idx] + ".txt"
@@ -125,6 +132,7 @@ class BaseParserTest(unittest.TestCase):
         finally:
             input.close()
 
+
     def parse(self, builder, parser):
         tree = parser.declaration_list()
         builder = builder(parser)
@@ -132,9 +140,11 @@ class BaseParserTest(unittest.TestCase):
         walker.walk(builder, tree)
         return builder.getNodeValue(tree)
 
+
     def parseEString(self, code):
         parser = ECleverParser(text=code)
         return self.parse(EPromptoBuilder, parser)
+
 
     def parseEResource(self, resourceName):
         stream = self.getResourceAsStream(resourceName, 'r')
@@ -142,9 +152,11 @@ class BaseParserTest(unittest.TestCase):
         parser = ECleverParser(stream=stream)
         return self.parse(EPromptoBuilder, parser)
 
+
     def parseOString(self, code):
         parser = OCleverParser(text=code)
         return self.parse(OPromptoBuilder, parser)
+
 
     def parseOResource(self, resourceName):
         stream = self.getResourceAsStream(resourceName, 'r')
@@ -152,15 +164,18 @@ class BaseParserTest(unittest.TestCase):
         parser = OCleverParser(stream=stream)
         return self.parse(OPromptoBuilder, parser)
 
+
     def parseMString(self, code):
         parser = MCleverParser(text=code)
         return self.parse(MPromptoBuilder, parser)
+
 
     def parseMResource(self, resourceName):
         stream = self.getResourceAsStream(resourceName, 'r')
         self.assertIsNotNone("resource not found:" + resourceName, stream)
         parser = MCleverParser(stream=stream)
         return self.parse(MPromptoBuilder, parser)
+
 
     def compareResourceEOE(self, resourceName):
         expected = self.getResourceAsString(resourceName, 'r')
@@ -186,6 +201,7 @@ class BaseParserTest(unittest.TestCase):
         # ensure equivalent
         self.assertEquivalent(expected, actual)
 
+
     def compareResourceEME(self, resourceName):
         expected = self.getResourceAsString(resourceName, 'r')
         # print(expected)
@@ -209,6 +225,7 @@ class BaseParserTest(unittest.TestCase):
         # print(actual)
         # ensure equivalent
         self.assertEquivalent(expected, actual)
+
 
     def compareResourceOEO(self, resourceName):
         expected = self.getResourceAsString(resourceName, 'r')
@@ -234,6 +251,7 @@ class BaseParserTest(unittest.TestCase):
         # ensure equivalent
         self.assertEquivalent(expected, actual)
 
+
     def compareResourceOMO(self, resourceName):
         expected = self.getResourceAsString(resourceName, 'r')
         # print(expected)
@@ -258,10 +276,12 @@ class BaseParserTest(unittest.TestCase):
         # ensure equivalent
         self.assertEquivalent(expected, actual)
 
+
     def assertEquivalent(self, expected, actual):
         expected = self.removeWhitespace(expected).replace(u"modulo",u"%")
         actual = self.removeWhitespace(actual).replace(u"modulo",u"%")
         self.assertEquals(expected, actual)
+
 
     def removeWhitespace(self, s):
         return s.replace(u" ", u"").replace(u"\t", u"").replace(u"\n", u"")
