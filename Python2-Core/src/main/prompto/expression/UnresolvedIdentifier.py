@@ -1,8 +1,8 @@
 from prompto.declaration.EnumeratedNativeDeclaration import EnumeratedNativeDeclaration
-from prompto.expression.ConstructorExpression import ConstructorExpression
 from prompto.declaration.IDeclaration import IDeclaration
-from prompto.expression.IExpression import IExpression
+from prompto.expression.ConstructorExpression import ConstructorExpression
 from prompto.expression.InstanceExpression import InstanceExpression
+from prompto.expression.IExpression import IExpression
 from prompto.error.SyntaxError import SyntaxError
 from prompto.expression.SymbolExpression import SymbolExpression
 from prompto.expression.TypeExpression import TypeExpression
@@ -36,6 +36,11 @@ class UnresolvedIdentifier(IExpression):
 
     def check(self, context):
         return self.resolveAndCheck(context, False)
+
+
+    def checkAttribute(self, context):
+        self.resolve(context, False)
+        return self.resolved.checkAttribute(context)
 
 
     def checkQuery(self, context):

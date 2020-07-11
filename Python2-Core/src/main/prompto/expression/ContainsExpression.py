@@ -1,13 +1,6 @@
-from prompto.declaration.AttributeDeclaration import AttributeDeclaration
 from prompto.expression.IExpression import IExpression
-from prompto.expression.InstanceExpression import InstanceExpression
-from prompto.expression.MemberSelector import MemberSelector
-from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
 from prompto.grammar.ContOp import ContOp
 from prompto.store.MatchOp import MatchOp
-from prompto.type.CharacterType import CharacterType
-from prompto.type.ContainerType import ContainerType
-from prompto.type.TextType import TextType
 from prompto.value.BooleanValue import BooleanValue
 from prompto.value.IContainer import IContainer
 from prompto.utils.CodeWriter import CodeWriter
@@ -137,7 +130,7 @@ class ContainsExpression(IExpression):
 
 
     def checkQuery(self, context):
-        decl = context.checkAttribute(self.left)
+        decl = self.left.checkAttribute(context)
         if not decl.storable:
             raise SyntaxError(decl.name + " is not storable")
         rt = self.right.check(context)
@@ -145,7 +138,7 @@ class ContainsExpression(IExpression):
 
 
     def interpretQuery(self, context, query):
-        decl = context.checkAttribute(self.left)
+        decl = self.left.checkAttribute(context)
         if decl is None or not decl.storable:
             raise SyntaxError("Unable to interpret predicate")
         value = self.right.interpret(context)
