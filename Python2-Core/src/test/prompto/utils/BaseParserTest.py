@@ -45,6 +45,7 @@ class BaseParserTest(unittest.TestCase):
                     allStmts.extend(stmts)
         allStmts.register(self.coreContext)
 
+
     def listLibraryFiles(self, libraryName):
         idx = __file__.index("/Python2-Core/")
         dir = __file__[0:idx] + "/prompto-libraries/" + libraryName
@@ -56,8 +57,11 @@ class BaseParserTest(unittest.TestCase):
         else:
             return None
 
-    def runTests(self, resource):
+
+    def runTests(self, resource, register = False):
         stmts = self.parseResource(resource)
+        if register:
+            stmts.register(self.coreContext)
         for decl in stmts:
             if not isinstance(decl, TestMethodDeclaration):
                 continue
@@ -67,6 +71,7 @@ class BaseParserTest(unittest.TestCase):
             read = Out.read()
             self.assertEqual(read, expected)
 
+
     def getResourceAsString(self, resourceName, mode):
         idx = __file__.index("/Python2-Core/")
         file = __file__[0:idx] + "/prompto-tests/Tests/resources/" + resourceName
@@ -75,12 +80,14 @@ class BaseParserTest(unittest.TestCase):
         with io.open(file, mode, encoding="utf-8") as input:
             return input.read()
 
+
     def getResourceAsStream(self, resourceName, mode):
         idx = __file__.index("/Python2-Core/")
         file = __file__[0:idx] + "/prompto-tests/Tests/resources/" + resourceName
         if not os.path.exists(file):
             file = __file__[0:idx] + "/prompto-libraries/" + resourceName
         return io.open(file, mode, encoding="utf-8")
+
 
     def loadResource(self, resourceName):
         decls = self.parseResource(resourceName)
