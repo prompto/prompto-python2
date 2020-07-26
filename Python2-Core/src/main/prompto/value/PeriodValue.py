@@ -1,5 +1,7 @@
 from datetime import timedelta
 from StringIO import StringIO
+from math import floor
+
 from prompto.type.PeriodType import PeriodType
 from prompto.value.BaseValue import BaseValue
 from prompto.value.IMultiplyable import IMultiplyable
@@ -72,14 +74,13 @@ class PeriodValue (BaseValue, IMultiplyable):
             # must terminate by a value type
             if value is not None:
                 raise Exception()
-            return PeriodValue(years=data[0], months=data[1], weeks=data[2], days=data[3], \
-                               hours=data[4], minutes=data[5], seconds=data[6], millis=data[7])
+            return PeriodValue(years=data[0], months=data[1], weeks=data[2], days=data[3], hours=data[4], minutes=data[5], seconds=data[6], millis=data[7])
         except Exception, e:
             from prompto.store.InvalidValueError import InvalidValueError
-            raise InvalidDataError("\"" + text + "\" is not a valid ISO 8601 period!");
- 
-    def __init__(self, years = 0, months = 0, weeks = 0, days = 0, \
-                 hours = 0, minutes = 0, seconds = 0, millis = 0, delta=None):
+            raise InvalidValueError("\"" + text + "\" is not a valid ISO 8601 period!")
+
+
+    def __init__(self, years = 0, months = 0, weeks = 0, days = 0, hours = 0, minutes = 0, seconds = 0, millis = 0, delta=None):
         super(PeriodValue, self).__init__(PeriodType.instance)
         if delta is not None:
             millis = delta.microseconds / 1000
@@ -103,18 +104,30 @@ class PeriodValue (BaseValue, IMultiplyable):
         self.seconds = seconds
         self.millis = millis
 
+
+    def convertToPython(self):
+        return self
+
+
+    def totalMilliseconds(self):
+        td = timedelta(weeks=self.weeks, days=self.days, hours=self.hours, minutes=self.minutes, seconds=self.seconds, milliseconds=self.millis)
+        return floor((td.total_seconds() * 1000) + (self.years * 365 * 24 * 60 * 60 * 1000) + (self.months * ( 365 / 12 ) * 24 * 60 * 60 * 1000))
+
+
     def Add(self, context, value):
         if isinstance(value, PeriodValue):
             return self.plus(value)
         else:
             raise SyntaxError("Illegal: Period + " + type(value).__name__)
- 
+
+
     def Subtract(self, context, value):
         if isinstance(value, PeriodValue):
             return self.minus(value)
         else:
             raise SyntaxError("Illegal: Period - " + type(value).__name__)
-    
+
+
     def Multiply(self, context, value):
         if isinstance(value, IntegerValue):
             count = value.IntegerValue()
@@ -128,10 +141,12 @@ class PeriodValue (BaseValue, IMultiplyable):
                 return self.times(count)
         else:
             raise SyntaxError("Illegal: Period * " + type(value).__name__)
-        
+
+
     def ConvertTo(self, itype):
         return self
- 
+
+
     def plus(self, period):
         millis = self.millis + period.millis
         seconds = int(millis/1000)
@@ -144,6 +159,7 @@ class PeriodValue (BaseValue, IMultiplyable):
                            self.minutes + period.minutes, \
                            self.seconds + period.seconds + seconds, \
                            millis)
+
 
     def minus(self, period):
         days = self.days - period.days
@@ -168,9 +184,11 @@ class PeriodValue (BaseValue, IMultiplyable):
                            self.weeks - period.weeks, \
                            days, hours, minutes, seconds, millis)
 
+
     def inverse(self):
         return PeriodValue(-self.years, -self.months, -self.weeks, -self.days, \
                            -self.hours, -self.minutes, -self.seconds, -self.millis)
+
 
     def times(self, count):
         return PeriodValue(self.years * count, \
@@ -181,6 +199,7 @@ class PeriodValue (BaseValue, IMultiplyable):
                            self.minutes * count, \
                            self.seconds * count, \
                            self.millis * count)
+
 
     def __str__(self):
         s = StringIO()
@@ -216,6 +235,7 @@ class PeriodValue (BaseValue, IMultiplyable):
         finally:
             s.close()
 
+
     def __eq__(self, obj):
         if isinstance(obj, PeriodValue):
             return self.years==obj.years \
@@ -228,6 +248,7 @@ class PeriodValue (BaseValue, IMultiplyable):
                 and self.millis==obj.millis
         else:
             return False
+
 
     def toDocumentValue(self, context):
         from prompto.value.TextValue import TextValue

@@ -14,8 +14,14 @@ class DateTimeValue(BaseValue):
             value = datetime(year, month, day, hour, minute, second, millis)
         self.value = value
 
+
     def getValue(self):
         return self.value
+
+
+    def convertToPython(self):
+        return self.value
+
 
     def Add(self, context, value):
         if isinstance(value, PeriodValue):
@@ -74,6 +80,7 @@ class DateTimeValue(BaseValue):
         else:
             return super(DateTimeValue, self).getMemberValue(context, name, autoCreate)
 
+
     def plus(self, period):
         td = timedelta(weeks=period.weeks, days=period.days, hours=period.hours, minutes=period.minutes,
                        seconds=period.seconds, milliseconds=period.millis)
@@ -87,6 +94,7 @@ class DateTimeValue(BaseValue):
         value = self.value.replace(year=year, month=month) + td
         return DateTimeValue(value)
 
+
     def minus(self, period):
         td = timedelta(weeks=period.weeks, days=period.days, hours=period.hours, minutes=period.minutes,
                        seconds=period.seconds, milliseconds=period.millis)
@@ -99,6 +107,7 @@ class DateTimeValue(BaseValue):
             month = self.value.month
         value = self.value.replace(year=year, month=month) - td
         return DateTimeValue(value)
+
 
     def ConvertTo(self, itype):
         return self.value
@@ -127,6 +136,7 @@ class DateTimeValue(BaseValue):
         if self.value.tzinfo is None:
             s = s + "Z"
         return s
+
 
     def __hash__(self):
         return hash(self.value)
@@ -169,6 +179,7 @@ class DateTimeValue(BaseValue):
         zone = None
         dt = datetime(year, month, day, hour, minute, second, micro, zone)
         return DateTimeValue(value=dt)
+
 
     def toDocumentValue(self, context):
         from prompto.value.TextValue import TextValue
