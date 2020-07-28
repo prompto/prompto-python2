@@ -19,5 +19,13 @@ class ContextualExpression(BaseValue, IExpression):
         return self.expression.check(self.calling)
 
 
+    def checkReference(self, context):
+        return self.expression.checkReference(self.calling)
+
+
     def interpret(self, context):
         return self.expression.interpret(self.calling)
+
+
+    def interpretReference(self, context):
+        return self.expression.interpretReference(self.calling)

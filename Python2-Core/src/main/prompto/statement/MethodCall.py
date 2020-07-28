@@ -1,14 +1,14 @@
+from prompto.declaration.IDeclaration import IDeclaration
 from prompto.declaration.AbstractMethodDeclaration import AbstractMethodDeclaration
 from prompto.declaration.ArrowDeclaration import ArrowDeclaration
-from prompto.declaration.ConcreteMethodDeclaration import ConcreteMethodDeclaration
-from prompto.declaration.IDeclaration import IDeclaration
-from prompto.error.NotMutableError import NotMutableError
 from prompto.error.PromptoError import PromptoError
 from prompto.grammar.ArgumentList import ArgumentList
+from prompto.statement.SimpleStatement import SimpleStatement
+from prompto.declaration.ConcreteMethodDeclaration import ConcreteMethodDeclaration
 from prompto.runtime.Context import MethodDeclarationMap
 from prompto.runtime.MethodFinder import MethodFinder
-from prompto.statement.SimpleStatement import SimpleStatement
 from prompto.declaration.ClosureDeclaration import ClosureDeclaration
+from prompto.type.MethodType import MethodType
 from prompto.value.ArrowValue import ArrowValue
 from prompto.value.ClosureValue import ClosureValue
 from prompto.value.BooleanValue import BooleanValue
@@ -33,6 +33,15 @@ class MethodCall(SimpleStatement):
         declaration = finder.findMethod(False)
         local = context if self.isLocalClosure(context) else self.selector.newLocalCheckContext(context, declaration)
         return self.doCheck(declaration, context, local)
+
+
+    def checkReference(self, context):
+        finder = MethodFinder(context, self)
+        method = finder.findMethod(False)
+        if method is not None:
+            return MethodType(method)
+        else:
+            return None
 
 
     def isLocalClosure(self, context):
@@ -84,9 +93,15 @@ class MethodCall(SimpleStatement):
             parameter = argument.getParameter()
             value = parameter.checkValue(context, expression)
             if value is not None and parameter.mutable and not value.mutable:
+                from prompto.error.NotMutableError import NotMutableError
                 raise NotMutableError()
             local.setValue(argument.getName(), value)
         return declaration.interpret(local)
+
+
+    def interpretReference(self, context):
+        declaration = self.findDeclaration(context)
+        return ClosureValue(context, MethodType(declaration))
 
 
     def interpretAssert(self, context, testMethodDeclaration):
