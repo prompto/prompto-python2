@@ -113,7 +113,7 @@ class MethodSelector(MemberSelector):
         if self.parent is not None:
             return self.newInstanceContext(context)
         elif declaration.memberOf is not None:
-            return self.newLocalInstanceContext(context)
+            return self.newLocalInstanceContext(context, declaration)
         else:
             return context.newLocalContext()
 
@@ -122,7 +122,7 @@ class MethodSelector(MemberSelector):
         if self.parent is not None:
             return self.newInstanceCheckContext(context)
         elif declaration.memberOf is not None:
-            return self.newLocalInstanceContext(context)
+            return self.newLocalInstanceContext(context, declaration)
         else:
             return context.newLocalContext()
 
@@ -131,7 +131,7 @@ class MethodSelector(MemberSelector):
         instance = context.getClosestInstanceContext()
         if instance is not None:
             required = declaration.memberOf.getType(context)
-            actual = instance.getInstanceType()
+            actual = instance.instanceType
             if not required.isAssignableFrom(context, actual):
                 instance = None
         if instance is None:
