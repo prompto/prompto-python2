@@ -86,10 +86,12 @@ class UnresolvedCall(BaseStatement):
         named = context.getRegisteredValue(INamed, name)
         if named is not None:
             itype = named.getType(context)
-            if isinstance(itype, MethodType):
-                call = MethodCall(MethodSelector(name), self.arguments)
-                call.variableName = name
-                return call
+            if itype is not None:
+                itype = itype.resolve(context)
+                if isinstance(itype, MethodType):
+                    call = MethodCall(MethodSelector(name), self.arguments)
+                    call.variableName = name
+                    return call
         # can only be global then
         decl = context.getRegisteredDeclaration(IDeclaration, name)
         if decl is None:
