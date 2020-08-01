@@ -1,6 +1,5 @@
 from prompto.expression.ArrowExpression import ArrowExpression
 from prompto.param.BaseParameter import BaseParameter
-from prompto.param.INamedParameter import INamedParameter
 from prompto.declaration.IMethodDeclaration import IMethodDeclaration
 from prompto.grammar.INamedInstance import INamedInstance
 from prompto.type.MethodType import MethodType
@@ -9,7 +8,7 @@ from prompto.value.ArrowValue import ArrowValue
 from prompto.value.ContextualExpression import ContextualExpression
 
 
-class MethodParameter (BaseParameter, INamedParameter):
+class MethodParameter (BaseParameter):
 
 
     def __init__(self, name):
