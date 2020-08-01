@@ -1,6 +1,7 @@
 from prompto.expression.IExpression import IExpression
 from prompto.parser.Dialect import Dialect
 from prompto.parser.Section import Section
+from prompto.runtime.Context import MethodDeclarationMap
 from prompto.type.TypeType import TypeType
 from prompto.value.TypeValue import TypeValue
 
@@ -8,6 +9,7 @@ from prompto.value.TypeValue import TypeValue
 class TypeLiteral(Section, IExpression):
 
     def __init__(self, typ):
+        super(Section, self).__init__()
         self.typ = typ
 
 
@@ -21,8 +23,13 @@ class TypeLiteral(Section, IExpression):
 
     def toDialect(self, writer):
         if writer.dialect is Dialect.E:
-            writer.append("Type: ")
+            decl = writer.context.getRegisteredDeclaration(MethodDeclarationMap, self.typ.typeName)
+            if isinstance(decl, MethodDeclarationMap):
+                writer.append("Method: ")
+            else:
+                writer.append("Type: ")
         self.typ.toDialect(writer)
+
 
     def parentToDialect(self, writer):
         self.typ.toDialect(writer)
