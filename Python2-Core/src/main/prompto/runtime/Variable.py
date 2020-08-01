@@ -1,7 +1,7 @@
-from prompto.grammar.INamedValue import INamedValue
+from prompto.grammar.INamedInstance import INamedInstance
 
 
-class Variable ( INamedValue ):
+class Variable (INamedInstance):
 
     def __init__(self, name, type):
         self.name = name

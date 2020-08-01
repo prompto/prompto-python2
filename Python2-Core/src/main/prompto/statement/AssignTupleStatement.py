@@ -1,5 +1,5 @@
 from prompto.expression.IExpression import IExpression
-from prompto.grammar.INamedValue import INamedValue
+from prompto.grammar.INamedInstance import INamedInstance
 from prompto.runtime.Variable import Variable
 from prompto.statement.SimpleStatement import SimpleStatement
 from prompto.type.AnyType import AnyType
@@ -69,7 +69,7 @@ class AssignTupleStatement(SimpleStatement):
         for name in self.names:
             item = value.getItem(context, IntegerValue(i))
             i += 1
-            if context.getRegisteredValue(INamedValue, name) is None:
+            if context.getRegisteredValue(INamedInstance, name) is None:
                 context.registerValue(Variable(name, item.itype))
             context.setValue(name, item)
         return None

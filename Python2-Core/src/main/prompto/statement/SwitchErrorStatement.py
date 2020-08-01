@@ -4,7 +4,7 @@ from prompto.expression.ConstructorExpression import ConstructorExpression
 from prompto.expression.IExpression import IExpression
 from prompto.grammar.Argument import Argument
 from prompto.grammar.ArgumentList import ArgumentList
-from prompto.grammar.INamedValue import INamedValue
+from prompto.grammar.INamedInstance import INamedInstance
 from prompto.literal.TextLiteral import TextLiteral
 from prompto.runtime.ErrorVariable import ErrorVariable
 from prompto.statement.BaseSwitchStatement import BaseSwitchStatement
@@ -75,7 +75,7 @@ class SwitchErrorStatement(BaseSwitchStatement):
             args.append(Argument(UnresolvedParameter("text"), TextLiteral(e.getMessage())))
             ctor.setArguments(args)
             error = ctor
-        if context.getRegisteredValue(INamedValue, self.errorName) is None:
+        if context.getRegisteredValue(INamedInstance, self.errorName) is None:
             context.registerValue(ErrorVariable(self.errorName))
         if isinstance(error, IExpression):
             error = error.interpret(context)
