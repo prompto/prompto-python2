@@ -1,9 +1,10 @@
-# Generated from ArgsParser.g4 by ANTLR 4.7.1
+# Generated from ArgsParser.g4 by ANTLR 4.8
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
 from io import StringIO
 import sys
+
 
 def serializedATN():
     with StringIO() as buf:
@@ -52,9 +53,10 @@ class ArgsParser ( Parser ):
 
     def __init__(self, input, output=sys.stdout):
         super(ArgsParser, self).__init__(input, output=output)
-        self.checkVersion("4.7.1")
+        self.checkVersion("4.8")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
+
 
 
 
@@ -110,6 +112,7 @@ class ArgsParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class EntryContext(ParserRuleContext):
 
@@ -176,6 +179,7 @@ class ArgsParser ( Parser ):
             self.exitRule()
         return localctx
 
+
     class KeyContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
@@ -214,6 +218,7 @@ class ArgsParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
     class ValueContext(ParserRuleContext):
 

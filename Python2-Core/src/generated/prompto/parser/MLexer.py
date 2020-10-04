@@ -1,9 +1,10 @@
-# Generated from MLexer.g4 by ANTLR 4.7.1
+# Generated from MLexer.g4 by ANTLR 4.8
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
 from io import StringIO
 import sys
+
 
 
 def serializedATN():
@@ -1153,7 +1154,7 @@ class MLexer(Lexer):
 
     def __init__(self, input=None, output=sys.stdout):
         super(MLexer, self).__init__(input, output=output)
-        self.checkVersion("4.7.1")
+        self.checkVersion("4.8")
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
