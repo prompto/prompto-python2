@@ -2492,7 +2492,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, CssField(name, value))
 
     def exitCssText(self, ctx):
-        text = self.input.getText((ctx.text.start, ctx.text.stop))
+        text = self.input.getText(ctx.text.start, ctx.text.stop)
         self.setNodeValue(ctx, CssText(text))
 
     def exitCssValue(self, ctx):
