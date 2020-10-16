@@ -151,13 +151,13 @@ class PeriodValue (BaseValue, IMultiplyable):
         millis = self.millis + period.millis
         seconds = int(millis/1000)
         millis %= 1000
-        return PeriodValue(self.years + period.years, \
-                           self.months + period.months, \
-                           self.weeks + period.weeks, \
-                           self.days + period.days, \
-                           self.hours + period.hours, \
-                           self.minutes + period.minutes, \
-                           self.seconds + period.seconds + seconds, \
+        return PeriodValue(self.years + period.years,
+                           self.months + period.months,
+                           self.weeks + period.weeks,
+                           self.days + period.days,
+                           self.hours + period.hours,
+                           self.minutes + period.minutes,
+                           self.seconds + period.seconds + seconds,
                            millis)
 
 
@@ -179,26 +179,48 @@ class PeriodValue (BaseValue, IMultiplyable):
         if hours < 0:
             days += int(hours/24)
             hours = abs (hours % 24)
-        return PeriodValue(self.years - period.years, \
-                           self.months - period.months, \
-                           self.weeks - period.weeks, \
+        return PeriodValue(self.years - period.years,
+                           self.months - period.months,
+                           self.weeks - period.weeks,
                            days, hours, minutes, seconds, millis)
 
 
     def inverse(self):
-        return PeriodValue(-self.years, -self.months, -self.weeks, -self.days, \
+        return PeriodValue(-self.years, -self.months, -self.weeks, -self.days,
                            -self.hours, -self.minutes, -self.seconds, -self.millis)
 
 
     def times(self, count):
-        return PeriodValue(self.years * count, \
-                           self.months * count, \
-                           self.weeks * count, \
-                           self.days * count, \
-                           self.hours * count, \
-                           self.minutes * count, \
-                           self.seconds * count, \
+        return PeriodValue(self.years * count,
+                           self.months * count,
+                           self.weeks * count,
+                           self.days * count,
+                           self.hours * count,
+                           self.minutes * count,
+                           self.seconds * count,
                            self.millis * count)
+
+
+    def getMemberValue(self, context, name, autoCreate=False):
+        from prompto.value.IntegerValue import IntegerValue
+        if "years" == name:
+            return IntegerValue(self.years)
+        elif "months" == name:
+            return IntegerValue(self.months)
+        elif "weeks" == name:
+            return IntegerValue(self.weeks)
+        elif "days" == name:
+            return IntegerValue(self.days)
+        elif "hours" == name:
+            return IntegerValue(self.hours)
+        elif "minutes" == name:
+            return IntegerValue(self.minutes)
+        elif "seconds" == name:
+            return IntegerValue(self.seconds)
+        elif "milliseconds" == name:
+            return IntegerValue(self.millis)
+        else:
+            return super(PeriodValue, self).getMemberValue(context, name, autoCreate)
 
 
     def __str__(self):
