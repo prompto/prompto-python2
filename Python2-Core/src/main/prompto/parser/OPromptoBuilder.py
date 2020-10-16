@@ -885,8 +885,14 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitNative_member_method_declaration(self, ctx):
-        decl = self.getNodeValue(ctx.getChild(0))
-        self.setNodeValue(ctx, decl)
+        comments = self.readComments(ctx.comment_statement())
+        annotations = self.readAnnotations(ctx.annotation_constructor())
+        ctx_ = ctx.children[ctx.getChildCount()-1]
+        decl = self.getNodeValue(ctx_)
+        if decl is not None:
+            decl.comments = comments
+            decl.annotations = annotations
+            self.setNodeValue(ctx, decl)
 
 
     def exitNative_member_method_declaration_list(self, ctx):
