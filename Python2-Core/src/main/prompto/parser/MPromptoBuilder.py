@@ -723,12 +723,12 @@ class MPromptoBuilder(MParserListener):
         typ = self.getNodeValue(ctx.typ)
         copyFrom = self.getNodeValue(ctx.copyExp)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, ConstructorExpression(typ, copyFrom, args, True))
+        self.setNodeValue(ctx, ConstructorExpression(typ, copyFrom, args))
 
     def exitConstructorNoFrom(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         args = self.getNodeValue(ctx.args)
-        self.setNodeValue(ctx, ConstructorExpression(typ, None, args, True))
+        self.setNodeValue(ctx, ConstructorExpression(typ, None, args))
 
     def exitCopy_from(self, ctx):
         self.setNodeValue(ctx, self.getNodeValue(ctx.exp))

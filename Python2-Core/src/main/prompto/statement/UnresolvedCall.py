@@ -97,7 +97,7 @@ class UnresolvedCall(BaseStatement):
         if decl is None:
             raise SyntaxError("Unknown name:" + name)
         if isinstance(decl, CategoryDeclaration):
-            return ConstructorExpression(CategoryType(name), None, self.arguments, False)
+            return ConstructorExpression(CategoryType(name), None, self.arguments)
         else:
             return MethodCall(MethodSelector(name), self.arguments)
 

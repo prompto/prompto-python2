@@ -69,7 +69,7 @@ class SwitchErrorStatement(BaseSwitchStatement):
     def populateError(self, e, context):
         error = e.getExpression(context)
         if error is None:
-            ctor = ConstructorExpression(CategoryType("Error"), None)
+            ctor = ConstructorExpression(CategoryType("Error"), None, None)
             args = ArgumentList()
             args.append(Argument(UnresolvedParameter("name"), TextLiteral(type(e).__name__)))
             args.append(Argument(UnresolvedParameter("text"), TextLiteral(e.getMessage())))
