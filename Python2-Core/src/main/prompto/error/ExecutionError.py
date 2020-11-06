@@ -18,7 +18,7 @@ class ExecutionError(PromptoError):
             args = ArgumentList()
             args.append(Argument(UnresolvedParameter("name"), TextLiteral(type(self).__name__)))
             args.append(Argument(UnresolvedParameter("text"), TextLiteral(self.message)))
-            exp = ConstructorExpression(CategoryType("Error"), args, None, None)
+            exp = ConstructorExpression(CategoryType("Error"), args, None)
         if context.getRegisteredValue(object, errorName) is None:
             from prompto.runtime.ErrorVariable import ErrorVariable
             context.registerValue(ErrorVariable(errorName))
