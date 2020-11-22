@@ -2298,7 +2298,7 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, ListType(typ))
 
     def exitAnyDictType(self, ctx):
-        typ = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.any_type())
         self.setNodeValue(ctx, DictType(typ))
 
     def exitCastExpression(self, ctx):

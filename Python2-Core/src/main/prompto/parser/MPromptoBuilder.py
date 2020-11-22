@@ -426,11 +426,11 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, AndExpression(left, right))
 
     def exitAnyDictType(self, ctx):
-        typ = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.any_type())
         self.setNodeValue(ctx, DictType(typ))
 
     def exitAnyListType(self, ctx):
-        typ = self.getNodeValue(ctx.typ)
+        typ = self.getNodeValue(ctx.any_type())
         self.setNodeValue(ctx, ListType(typ))
 
     def exitAnyType(self, ctx):
