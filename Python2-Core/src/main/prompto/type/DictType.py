@@ -1,4 +1,5 @@
 from prompto.declaration.BuiltInMethodDeclaration import BuiltInMethodDeclaration
+from prompto.error.NotMutableError import NotMutableError
 from prompto.type.BooleanType import BooleanType
 from prompto.type.ContainerType import ContainerType
 from prompto.type.EntryType import EntryType
@@ -8,7 +9,7 @@ from prompto.type.ListType import ListType
 from prompto.type.SetType import SetType
 from prompto.type.TextType import TextType
 from prompto.store.TypeFamily import TypeFamily
-
+from prompto.type.VoidType import VoidType
 
 
 class DictType ( ContainerType ):
@@ -63,11 +64,11 @@ class DictType ( ContainerType ):
 
 
     def checkMember(self, context, name):
-        if "count"==name:
+        if "count" == name:
             return IntegerType.instance
-        elif "keys"==name:
+        elif "keys" == name:
             return SetType(TextType.instance)
-        elif "values"==name:
+        elif "values" == name:
             return ListType(self.itemType)
         else:
             return super(DictType, self).checkMember(context, name)
@@ -76,6 +77,8 @@ class DictType ( ContainerType ):
     def getMemberMethods(self, context, name):
         if name == "swap":
             return [SwapMethodDeclaration()]
+        elif name == "remove":
+            return [RemoveMethodDeclaration()]
         else:
             return super(DictType, self).getMemberMethods(context, name)
 
@@ -97,3 +100,23 @@ class SwapMethodDeclaration(BuiltInMethodDeclaration):
 
     def check(self, context, isStart):
         return DictType(TextType.instance)
+
+
+class RemoveMethodDeclaration(BuiltInMethodDeclaration):
+
+    def __init__(self):
+        from prompto.param.CategoryParameter import CategoryParameter
+        KEY_ARGUMENT = CategoryParameter(TextType.instance, "key")
+        super(RemoveMethodDeclaration, self).__init__("remove", KEY_ARGUMENT)
+
+
+    def interpret(self, context):
+        dict = self.getValue(context)
+        if not dict.mutable:
+            raise NotMutableError()
+        key = context.getValue("key")
+        dict.remove(key)
+
+
+    def check(self, context, isStart):
+        return VoidType.instance
