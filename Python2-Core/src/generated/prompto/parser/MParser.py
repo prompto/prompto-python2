@@ -1,4 +1,4 @@
-# Generated from MParser.g4 by ANTLR 4.8
+# Generated from MParser.g4 by ANTLR 4.9
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
@@ -2221,7 +2221,7 @@ class MParser ( AbstractParser ):
 
     def __init__(self, input, output=sys.stdout):
         super(MParser, self).__init__(input, output=output)
-        self.checkVersion("4.8")
+        self.checkVersion("4.9")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
