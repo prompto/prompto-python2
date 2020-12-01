@@ -49,6 +49,16 @@ class ListValue(BaseValueList, IFilterable):
             return super(ListValue, self).Add(context, value)
 
 
+    def removeItem(self, item):
+        del self.items[item.value - 1]
+
+
+    def removeValue(self, value):
+        idx = self.items.index(value)
+        if idx > -1:
+            del self.items[idx]
+
+
     def Multiply(self, context, value):
         if isinstance(value, IntegerValue):
             count = value.IntegerValue()

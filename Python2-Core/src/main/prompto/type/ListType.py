@@ -1,8 +1,10 @@
+from prompto.declaration.BuiltInMethodDeclaration import BuiltInMethodDeclaration
+from prompto.error.NotMutableError import NotMutableError
 from prompto.type.AnyType import AnyType
 from prompto.type.BooleanType import BooleanType
 from prompto.type.ContainerType import ContainerType, BaseJoinMethodDeclaration
 from prompto.store.TypeFamily import TypeFamily
-
+from prompto.type.VoidType import VoidType
 
 
 class ListType(ContainerType):
@@ -81,6 +83,10 @@ class ListType(ContainerType):
     def getMemberMethods(self, context, name):
         if name == "join":
             return [JoinListMethodDeclaration()]
+        elif name == "removeItem":
+            return [RemoveItemMethodDeclaration()]
+        elif name == "removeValue":
+            return [RemoveValueMethodDeclaration()]
         else:
             return super(ListType, self).getMemberMethods(context, name)
 
@@ -102,3 +108,45 @@ class JoinListMethodDeclaration(BaseJoinMethodDeclaration):
 
     def getItems(self, context):
         return self.getValue(context).items
+
+
+class RemoveItemMethodDeclaration(BuiltInMethodDeclaration):
+
+    def __init__(self):
+        from prompto.type.IntegerType import IntegerType
+        from prompto.param.CategoryParameter import CategoryParameter
+        ITEM_ARGUMENT = CategoryParameter(IntegerType.instance, "item")
+        super(RemoveItemMethodDeclaration, self).__init__("removeItem", ITEM_ARGUMENT)
+
+
+    def interpret(self, context):
+        list = self.getValue(context)
+        if not list.mutable:
+            raise NotMutableError()
+        item = context.getValue("item")
+        list.removeItem(item)
+
+
+    def check(self, context, isStart):
+        return VoidType.instance
+
+
+class RemoveValueMethodDeclaration(BuiltInMethodDeclaration):
+
+    def __init__(self):
+        from prompto.param.CategoryParameter import CategoryParameter
+        VALUE_ARGUMENT = CategoryParameter(AnyType.instance, "value")
+        super(RemoveValueMethodDeclaration, self).__init__("removeValue", VALUE_ARGUMENT)
+
+
+    def interpret(self, context):
+        list = self.getValue(context)
+        if not list.mutable:
+            raise NotMutableError()
+        value = context.getValue("value")
+        list.removeValue(value)
+
+
+    def check(self, context, isStart):
+        return VoidType.instance
+
