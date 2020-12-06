@@ -22,7 +22,7 @@ class DictType ( ContainerType ):
 
     def isAssignableFrom(self, context, other):
         return super(DictType, self).isAssignableFrom(context, other) or \
-               (isinstance(other, DictType) and self.itemType.isAssignableFrom(context, other.getItemType()))
+            (isinstance(other, DictType) and self.itemType.isAssignableFrom(context, other.itemType))
 
 
     def __eq__(self, obj):
