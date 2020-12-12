@@ -1381,6 +1381,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#comment_statement.
+    def enterComment_statement(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#comment_statement.
+    def exitComment_statement(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#repl.
     def enterRepl(self, ctx):
         pass
@@ -2242,15 +2251,6 @@ class MParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by MParser#method_declaration.
     def exitMethod_declaration(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by MParser#comment_statement.
-    def enterComment_statement(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#comment_statement.
-    def exitComment_statement(self, ctx):
         pass
 
 
