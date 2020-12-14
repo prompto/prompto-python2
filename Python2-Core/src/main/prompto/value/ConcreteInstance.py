@@ -173,6 +173,8 @@ class ConcreteInstance(BaseValue, IInstance, IMultiplyable):
     def __eq__(self, obj):
         if not isinstance(obj, ConcreteInstance):
             return False
+        if self.declaration != obj.declaration:
+            return False
         return self.values == obj.values
 
     def __str__(self):
