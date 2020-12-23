@@ -1173,7 +1173,7 @@ class MPromptoBuilder(MParserListener):
             expression = predicate
         else:
             raise Exception("What?")
-        self.setNodeValue(ctx, FilteredExpression(itemName, expression))
+        self.setNodeValue(ctx, FilteredExpression(None, expression))
 
 
     def exitArrowFilterExpression(self, ctx):
