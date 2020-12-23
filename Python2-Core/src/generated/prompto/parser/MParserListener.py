@@ -661,15 +661,6 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#NotEqualsExpression.
-    def enterNotEqualsExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#NotEqualsExpression.
-    def exitNotEqualsExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by MParser#InExpression.
     def enterInExpression(self, ctx):
         pass
@@ -697,12 +688,12 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#GreaterThanExpression.
-    def enterGreaterThanExpression(self, ctx):
+    # Enter a parse tree produced by MParser#CompareExpression.
+    def enterCompareExpression(self, ctx):
         pass
 
-    # Exit a parse tree produced by MParser#GreaterThanExpression.
-    def exitGreaterThanExpression(self, ctx):
+    # Exit a parse tree produced by MParser#CompareExpression.
+    def exitCompareExpression(self, ctx):
         pass
 
 
@@ -724,24 +715,6 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#LessThanOrEqualExpression.
-    def enterLessThanOrEqualExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#LessThanOrEqualExpression.
-    def exitLessThanOrEqualExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by MParser#NotHasAnyExpression.
-    def enterNotHasAnyExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#NotHasAnyExpression.
-    def exitNotHasAnyExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by MParser#AndExpression.
     def enterAndExpression(self, ctx):
         pass
@@ -760,30 +733,12 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#NotHasExpression.
-    def enterNotHasExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#NotHasExpression.
-    def exitNotHasExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by MParser#ClosureExpression.
     def enterClosureExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by MParser#ClosureExpression.
     def exitClosureExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by MParser#NotHasAllExpression.
-    def enterNotHasAllExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#NotHasAllExpression.
-    def exitNotHasAllExpression(self, ctx):
         pass
 
 
@@ -805,30 +760,12 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#NotContainsExpression.
-    def enterNotContainsExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#NotContainsExpression.
-    def exitNotContainsExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by MParser#MultiplyExpression.
     def enterMultiplyExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by MParser#MultiplyExpression.
     def exitMultiplyExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by MParser#RoughlyEqualsExpression.
-    def enterRoughlyEqualsExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#RoughlyEqualsExpression.
-    def exitRoughlyEqualsExpression(self, ctx):
         pass
 
 
@@ -841,39 +778,12 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#GreaterThanOrEqualExpression.
-    def enterGreaterThanOrEqualExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#GreaterThanOrEqualExpression.
-    def exitGreaterThanOrEqualExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by MParser#NotInExpression.
-    def enterNotInExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#NotInExpression.
-    def exitNotInExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by MParser#IteratorExpression.
     def enterIteratorExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by MParser#IteratorExpression.
     def exitIteratorExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by MParser#IsNotExpression.
-    def enterIsNotExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#IsNotExpression.
-    def exitIsNotExpression(self, ctx):
         pass
 
 
@@ -967,21 +877,39 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#LessThanExpression.
-    def enterLessThanExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#LessThanExpression.
-    def exitLessThanExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by MParser#EqualsExpression.
     def enterEqualsExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by MParser#EqualsExpression.
     def exitEqualsExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#ArrowFilterExpression.
+    def enterArrowFilterExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#ArrowFilterExpression.
+    def exitArrowFilterExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#ExplicitFilterExpression.
+    def enterExplicitFilterExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#ExplicitFilterExpression.
+    def exitExplicitFilterExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#OtherFilterExpression.
+    def enterOtherFilterExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#OtherFilterExpression.
+    def exitOtherFilterExpression(self, ctx):
         pass
 
 
