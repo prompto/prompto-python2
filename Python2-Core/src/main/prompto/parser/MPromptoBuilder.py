@@ -1236,7 +1236,7 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, NativeGetterMethodDeclaration(name, stmts))
 
 
-    def exitGreaterThanExpression(self, ctx):
+    def exitCompareExpression(self, ctx):
         left = self.getNodeValue(ctx.left)
         right = self.getNodeValue(ctx.right)
         if ctx.op.type == MLexer.LT:
