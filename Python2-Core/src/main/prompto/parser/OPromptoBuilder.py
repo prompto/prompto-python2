@@ -492,6 +492,16 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, items)
 
 
+    def exitDictKeyIdentifier(self, ctx):
+        name = ctx.name.getText()
+        self.setNodeValue(ctx, DictIdentifierKey(name))
+
+
+    def exitDictKeyText(self, ctx):
+        name = ctx.name.text
+        self.setNodeValue(ctx, DictTextKey(name))
+
+
     def exitDoc_entry(self, ctx):
         key = self.getNodeValue(ctx.key)
         value = self.getNodeValue(ctx.value)
@@ -641,16 +651,6 @@ class OPromptoBuilder(OParserListener):
     def exitDictType(self, ctx):
         typ = self.getNodeValue(ctx.d)
         self.setNodeValue(ctx, DictType(typ))
-
-
-    def exitDictKeyIdentifier(self, ctx):
-        name = ctx.name.getText()
-        self.setNodeValue(ctx, DictIdentifierKey(name))
-
-
-    def exitDictKeyText(self, ctx):
-        name = ctx.name.text
-        self.setNodeValue(ctx, DictTextKey(name))
 
 
     def exitAttribute_identifier_list(self, ctx):
@@ -1025,14 +1025,6 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, stmt)
 
 
-    def exitMethodSelector(self, ctx):
-        call = self.getNodeValue(ctx.method)
-        if isinstance(call.caller, UnresolvedIdentifier):
-            name = call.caller.name
-            call.caller = UnresolvedSelector(name)
-        self.setNodeValue(ctx, call)
-
-
     def exitConstructorFrom(self, ctx):
         typ = self.getNodeValue(ctx.typ)
         copyFrom = self.getNodeValue(ctx.copyExp)
@@ -1113,6 +1105,14 @@ class OPromptoBuilder(OParserListener):
     def exitMethodExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
+
+
+    def exitMethodSelector(self, ctx):
+        call = self.getNodeValue(ctx.method)
+        if isinstance(call.caller, UnresolvedIdentifier):
+            name = call.caller.name
+            call.caller = UnresolvedSelector(name)
+        self.setNodeValue(ctx, call)
 
 
     def exitNative_statement_list(self, ctx):

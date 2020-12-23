@@ -252,6 +252,7 @@ ECleverParser = None
 
 class EPromptoBuilder(EParserListener):
 
+    # noinspection PyUnresolvedReferences
     def __init__(self, parser):
         self.input = parser.getTokenStream()
         self.path = parser.path

@@ -12,7 +12,6 @@ from prompto.error.SyntaxError import SyntaxError
 from prompto.value.NullValue import NullValue
 
 
-
 class ContainsExpression(IExpression):
 
     def __init__(self, left, operator, right):
