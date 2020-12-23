@@ -4,6 +4,8 @@ from prompto.store.TypeFamily import TypeFamily
 
 class CssType(NativeType):
 
+	instance = None
+
 	def __init__(self):
 		super(CssType, self).__init__(TypeFamily.CSS)
 
