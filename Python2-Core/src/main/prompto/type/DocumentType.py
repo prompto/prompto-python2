@@ -41,10 +41,7 @@ class DocumentType ( NativeType ):
 
 
     def checkItem(self, context, itemType):
-        if itemType is TextType.instance:
-            return AnyType.instance
-        else:
-            raise Exception("text") # TODO
+        return AnyType.instance
 
 
     def checkAdd(self, context, other, tryReverse):
@@ -66,7 +63,6 @@ class DocumentType ( NativeType ):
             return True
         else:
             return super(DocumentType, self).isMoreSpecificThan(context, other)
-
 
 
     def readJSONValue(self, context, node, parts):
