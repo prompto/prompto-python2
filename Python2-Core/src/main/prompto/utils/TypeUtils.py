@@ -31,7 +31,7 @@ def fieldType(context, name, data):
         return typeToIType(type(data))
     else:
         decl = context.getRegisteredDeclaration(name)
-        return decl.typ
+        return decl.itype
 
 typeToITypedict = { types.NoneType: VoidType.instance,
                     types.BooleanType : BooleanType.instance,
@@ -85,7 +85,7 @@ def inferCommonRootType(context, type1, type2):
 def inferCommonCategoryType(context, type1, type2, trySwap):
     from prompto.declaration.CategoryDeclaration import CategoryDeclaration
     from prompto.type.CategoryType import CategoryType
-    decl1 = context.getRegisteredDeclaration(CategoryDeclaration, type1.typeName);
+    decl1 = context.getRegisteredDeclaration(CategoryDeclaration, type1.typeName)
     if decl1.derivedFrom is not None:
         for name in decl1.derivedFrom:
             parentType = CategoryType(name)

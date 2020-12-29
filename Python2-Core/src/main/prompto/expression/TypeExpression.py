@@ -5,20 +5,20 @@ from prompto.type.TypeType import TypeType
 
 class TypeExpression(IExpression):
 
-    def __init__(self, typ):
-        self.typ = typ
+    def __init__(self, itype):
+        self.itype = itype
 
     def __str__(self):
-        return str(self.typ)
+        return str(self.itype)
 
     def check(self, context):
-        return TypeType(self.typ)
+        return TypeType(self.itype)
 
     def interpret(self, context):
-        return TypeValue(self.typ)
+        return TypeValue(self.itype)
 
     def getMemberValue(self, context, name):
-        return self.typ.getStaticMemberValue(context, name)
+        return self.itype.getStaticMemberValue(context, name)
 
     def toDialect(self, writer):
-        self.typ.toDialect(writer)
+        writer.append(str(self.itype))
