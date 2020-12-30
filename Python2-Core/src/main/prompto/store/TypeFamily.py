@@ -1,5 +1,43 @@
 class TypeFamily(object):
-    
+
+    BOOLEAN = None
+    CHARACTER = None
+    INTEGER = None
+    DECIMAL = None
+    TEXT = None
+    UUID = None
+    DATE = None
+    TIME = None
+    DATETIME = None
+    PERIOD = None
+    VERSION = None
+    LIST = None
+    SET = None
+    TUPLE = None
+    RANGE = None
+    BLOB = None
+    IMAGE = None
+    DOCUMENT = None
+    CATEGORY = None
+    RESOURCE = None
+    DICTIONARY = None
+    ENUMERATED = None
+    # non storable
+    VOID = None
+    NULL = None
+    ANY = None
+    METHOD = None
+    CURSOR = None
+    ITERATOR = None
+    CLASS = None
+    TYPE = None
+    CODE = None
+    JSX = None
+    CSS = None
+    HTML = None
+    # volatile
+    MISSING = None
+
     def __init__(self, name):
         self.name = name
         
