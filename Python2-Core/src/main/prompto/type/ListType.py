@@ -81,12 +81,14 @@ class ListType(ContainerType):
 
 
     def getMemberMethods(self, context, name):
-        if name == "join":
-            return [JoinListMethodDeclaration()]
+        if name == "toSet":
+            return [ToSetMethodDeclaration(self.itemType)]
+        elif name == "join":
+            return [JoinListMethodDeclaration.getInstance()]
         elif name == "removeItem":
-            return [RemoveItemMethodDeclaration()]
+            return [RemoveItemMethodDeclaration.getInstance()]
         elif name == "removeValue":
-            return [RemoveValueMethodDeclaration()]
+            return [RemoveValueMethodDeclaration.getInstance()]
         else:
             return super(ListType, self).getMemberMethods(context, name)
 
@@ -104,13 +106,31 @@ class ListType(ContainerType):
         return ListType(itemType)
 
 
+
 class JoinListMethodDeclaration(BaseJoinMethodDeclaration):
+
+    instance = None
+
+    @classmethod
+    def getInstance(cls):
+        if cls.instance is None:
+            cls.instance = JoinListMethodDeclaration()
+        return cls.instance
 
     def getItems(self, context):
         return self.getValue(context).items
 
 
 class RemoveItemMethodDeclaration(BuiltInMethodDeclaration):
+
+    instance = None
+
+    @classmethod
+    def getInstance(cls):
+        if cls.instance is None:
+            cls.instance = RemoveItemMethodDeclaration()
+        return cls.instance
+
 
     def __init__(self):
         from prompto.type.IntegerType import IntegerType
@@ -133,6 +153,15 @@ class RemoveItemMethodDeclaration(BuiltInMethodDeclaration):
 
 class RemoveValueMethodDeclaration(BuiltInMethodDeclaration):
 
+    instance = None
+
+    @classmethod
+    def getInstance(cls):
+        if cls.instance is None:
+            cls.instance = RemoveValueMethodDeclaration()
+        return cls.instance
+
+
     def __init__(self):
         from prompto.param.CategoryParameter import CategoryParameter
         VALUE_ARGUMENT = CategoryParameter(AnyType.instance, "value")
@@ -150,3 +179,19 @@ class RemoveValueMethodDeclaration(BuiltInMethodDeclaration):
     def check(self, context, isStart):
         return VoidType.instance
 
+
+class ToSetMethodDeclaration(BuiltInMethodDeclaration):
+
+    def __init__(self, itemType):
+        super(ToSetMethodDeclaration, self).__init__("toSet")
+        self.itemType = itemType
+
+
+    def interpret(self, context):
+        value = self.getValue(context)
+        return value.toSetValue(context)
+
+
+    def check(self, context, isStart):
+        from prompto.type.SetType import SetType
+        return SetType(self.itemType)

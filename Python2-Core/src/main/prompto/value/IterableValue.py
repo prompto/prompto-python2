@@ -5,6 +5,7 @@ from prompto.value.IFilterable import IFilterable
 from prompto.value.IIterable import IIterable
 from prompto.runtime.Variable import Variable
 from prompto.value.ListValue import ListValue
+from prompto.value.SetValue import SetValue
 
 
 class IterableValue(BaseValue, IIterable, IFilterable):
@@ -54,3 +55,12 @@ class IterableValue(BaseValue, IIterable, IFilterable):
                 sb.truncate(len - 2)
             return sb.getvalue()
 
+
+    def toListValue(self, context):
+        items = [ item for item in self.getIterator(context)]
+        return ListValue(self.itemType, items=items)
+
+
+    def toSetValue(self, context):
+        items = [ item for item in self.getIterator(context)]
+        return SetValue(self.itemType, items=set(items))

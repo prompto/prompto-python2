@@ -73,14 +73,16 @@ class SetValue(BaseValue, IContainer, IFilterable):
 
 
     def merge(self, items):
-        data = set()
-        data |= self.items
-        if isinstance(items, set):
-            data |= items
+        if(len(items)==0):
+            return self
         else:
-            data |= set(items)
-        return SetValue(self.itype.itemType, data)
-
+            data = set()
+            data |= self.items
+            if isinstance(items, set):
+                data |= items
+            else:
+                data |= set(items)
+            return SetValue(self.itype.itemType, data)
 
 
     def Subtract(self, context, value):
@@ -119,3 +121,7 @@ class SetValue(BaseValue, IContainer, IFilterable):
         else:
             return super(SetValue, self).getMemberValue(context, name)
 
+
+    def toListValue(self, context):
+        from prompto.value.ListValue import ListValue
+        return ListValue(self.itype.itemType, items=list(self.items))
