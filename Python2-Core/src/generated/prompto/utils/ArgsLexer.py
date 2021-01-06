@@ -1,4 +1,4 @@
-# Generated from ArgsLexer.g4 by ANTLR 4.9
+# Generated from ArgsLexer.g4 by ANTLR 4.9.1
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
@@ -60,7 +60,7 @@ class ArgsLexer(Lexer):
 
     def __init__(self, input=None, output=sys.stdout):
         super(ArgsLexer, self).__init__(input, output=output)
-        self.checkVersion("4.9")
+        self.checkVersion("4.9.1")
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
