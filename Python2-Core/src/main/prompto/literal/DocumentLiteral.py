@@ -1,11 +1,5 @@
-from prompto.literal.DictEntryList import DictEntryList
 from prompto.literal.DocEntryList import DocEntryList
 from prompto.literal.Literal import Literal
-from prompto.type.MissingType import MissingType
-from prompto.type.TextType import TextType
-from prompto.value.DictValue import DictValue
-from prompto.error.SyntaxError import SyntaxError
-from prompto.utils.TypeUtils import inferElementType
 from prompto.value.DocumentValue import DocumentValue
 
 

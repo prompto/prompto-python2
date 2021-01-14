@@ -3,12 +3,12 @@ from prompto.type.CharacterType import CharacterType
 from prompto.type.DecimalType import DecimalType
 from prompto.type.IntegerType import IntegerType
 from prompto.type.TextType import TextType
+from prompto.type.TypeMap import TypeMap
 from prompto.value.DecimalValue import DecimalValue
 from prompto.value.SetValue import SetValue
 from prompto.type.MissingType import MissingType
 from prompto.type.SetType import SetType
 from prompto.value.TextValue import TextValue
-from prompto.utils.TypeUtils import inferElementType
 
 
 class SetLiteral(Literal):
@@ -21,9 +21,18 @@ class SetLiteral(Literal):
 
     def check(self, context):
         if self.itemType is None:
-            self.itemType = inferElementType(context, self.expressions)
+            self.itemType = self.inferElementType(context)
         return SetType(self.itemType)
 
+
+    def inferElementType(self, context):
+        if len(self.expressions) == 0:
+            return MissingType.instance
+        else:
+            types = TypeMap()
+            for exp in self.expressions:
+                types.add(exp.check(context))
+            return types.inferType(context)
 
     def interpret(self, context):
         if len(self.expressions)>0:

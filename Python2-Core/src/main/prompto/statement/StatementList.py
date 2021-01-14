@@ -3,7 +3,6 @@ from prompto.error.SyntaxError import SyntaxError
 from prompto.parser.Dialect import Dialect
 from prompto.python.PythonNativeCall import Python2NativeCall
 from prompto.statement.NativeCall import NativeCall
-from prompto.statement.SimpleStatement import SimpleStatement
 from prompto.type.AnyType import AnyType
 from prompto.type.TypeMap import TypeMap
 from prompto.type.VoidType import VoidType
@@ -31,12 +30,12 @@ class StatementList(list):
                 if nativeOnly and not isinstance(statement, Python2NativeCall):
                     continue
                 itype = statement.check(context)
-                if itype != VoidType.instance:
+                if itype is not VoidType.instance:
                     raise SyntaxError("Illegal return!")
         else:
             types = TypeMap()
             if returnType is not None:
-                types[returnType.typeName] = returnType
+                types.add(returnType)
             for statement in self:
                 if nativeOnly and not isinstance(statement, Python2NativeCall):
                     continue
@@ -46,7 +45,7 @@ class StatementList(list):
                 if itype != VoidType.instance:
                     # unless necessary, don't collect AnyType returned by native statement check
                     if len(types) == 0 or itype is not AnyType.instance or not nativeOnly:
-                        types[itype.typeName] = itype
+                        types.add(itype)
             itype = types.inferType(context)
             if returnType is not None:
                 return returnType
