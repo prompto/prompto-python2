@@ -787,21 +787,21 @@ class OParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by OParser#ClosureExpression.
-    def enterClosureExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by OParser#ClosureExpression.
-    def exitClosureExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by OParser#ContainsExpression.
     def enterContainsExpression(self, ctx):
         pass
 
     # Exit a parse tree produced by OParser#ContainsExpression.
     def exitContainsExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#TypeExpression.
+    def enterTypeExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#TypeExpression.
+    def exitTypeExpression(self, ctx):
         pass
 
 
@@ -967,12 +967,12 @@ class OParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by OParser#closure_expression.
-    def enterClosure_expression(self, ctx):
+    # Enter a parse tree produced by OParser#type_expression.
+    def enterType_expression(self, ctx):
         pass
 
-    # Exit a parse tree produced by OParser#closure_expression.
-    def exitClosure_expression(self, ctx):
+    # Exit a parse tree produced by OParser#type_expression.
+    def exitType_expression(self, ctx):
         pass
 
 

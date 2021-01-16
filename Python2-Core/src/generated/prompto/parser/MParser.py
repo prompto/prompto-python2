@@ -1729,7 +1729,7 @@ class MParser ( AbstractParser ):
     RULE_return_statement = 44
     RULE_expression = 45
     RULE_filter_expression = 46
-    RULE_closure_expression = 47
+    RULE_type_expression = 47
     RULE_selectable_expression = 48
     RULE_instance_expression = 49
     RULE_mutable_instance_expression = 50
@@ -1959,7 +1959,7 @@ class MParser ( AbstractParser ):
                    u"do_while_statement", u"while_statement", u"if_statement", 
                    u"else_if_statement_list", u"raise_statement", u"try_statement", 
                    u"catch_statement", u"break_statement", u"return_statement", 
-                   u"expression", u"filter_expression", u"closure_expression", 
+                   u"expression", u"filter_expression", u"type_expression", 
                    u"selectable_expression", u"instance_expression", u"mutable_instance_expression", 
                    u"method_expression", u"instance_selector", u"blob_expression", 
                    u"document_expression", u"constructor_expression", u"copy_from", 
@@ -7580,26 +7580,6 @@ class MParser ( AbstractParser ):
                 listener.exitArrowExpression(self)
 
 
-    class ClosureExpressionContext(ExpressionContext):
-
-        def __init__(self, parser, ctx): # actually a MParser.ExpressionContext)
-            super(MParser.ClosureExpressionContext, self).__init__(parser)
-            self.exp = None # Closure_expressionContext
-            self.copyFrom(ctx)
-
-        def closure_expression(self):
-            return self.getTypedRuleContext(MParser.Closure_expressionContext,0)
-
-
-        def enterRule(self, listener):
-            if hasattr(listener, "enterClosureExpression"):
-                listener.enterClosureExpression(self)
-
-        def exitRule(self, listener):
-            if hasattr(listener, "exitClosureExpression"):
-                listener.exitClosureExpression(self)
-
-
     class ContainsExpressionContext(ExpressionContext):
 
         def __init__(self, parser, ctx): # actually a MParser.ExpressionContext)
@@ -7649,6 +7629,26 @@ class MParser ( AbstractParser ):
         def exitRule(self, listener):
             if hasattr(listener, "exitFilteredListExpression"):
                 listener.exitFilteredListExpression(self)
+
+
+    class TypeExpressionContext(ExpressionContext):
+
+        def __init__(self, parser, ctx): # actually a MParser.ExpressionContext)
+            super(MParser.TypeExpressionContext, self).__init__(parser)
+            self.exp = None # Type_expressionContext
+            self.copyFrom(ctx)
+
+        def type_expression(self):
+            return self.getTypedRuleContext(MParser.Type_expressionContext,0)
+
+
+        def enterRule(self, listener):
+            if hasattr(listener, "enterTypeExpression"):
+                listener.enterTypeExpression(self)
+
+        def exitRule(self, listener):
+            if hasattr(listener, "exitTypeExpression"):
+                listener.exitTypeExpression(self)
 
 
     class MultiplyExpressionContext(ExpressionContext):
@@ -8124,11 +8124,11 @@ class MParser ( AbstractParser ):
                 pass
 
             elif la_ == 10:
-                localctx = MParser.ClosureExpressionContext(self, localctx)
+                localctx = MParser.TypeExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 1152
-                localctx.exp = self.closure_expression()
+                localctx.exp = self.type_expression()
                 pass
 
 
@@ -8636,10 +8636,10 @@ class MParser ( AbstractParser ):
         return localctx
 
 
-    class Closure_expressionContext(ParserRuleContext):
+    class Type_expressionContext(ParserRuleContext):
 
         def __init__(self, parser, parent=None, invokingState=-1):
-            super(MParser.Closure_expressionContext, self).__init__(parent, invokingState)
+            super(MParser.Type_expressionContext, self).__init__(parent, invokingState)
             self.parser = parser
             self.name = None # Type_identifierContext
 
@@ -8648,23 +8648,23 @@ class MParser ( AbstractParser ):
 
 
         def getRuleIndex(self):
-            return MParser.RULE_closure_expression
+            return MParser.RULE_type_expression
 
         def enterRule(self, listener):
-            if hasattr(listener, "enterClosure_expression"):
-                listener.enterClosure_expression(self)
+            if hasattr(listener, "enterType_expression"):
+                listener.enterType_expression(self)
 
         def exitRule(self, listener):
-            if hasattr(listener, "exitClosure_expression"):
-                listener.exitClosure_expression(self)
+            if hasattr(listener, "exitType_expression"):
+                listener.exitType_expression(self)
 
 
 
 
-    def closure_expression(self):
+    def type_expression(self):
 
-        localctx = MParser.Closure_expressionContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 94, self.RULE_closure_expression)
+        localctx = MParser.Type_expressionContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 94, self.RULE_type_expression)
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1259

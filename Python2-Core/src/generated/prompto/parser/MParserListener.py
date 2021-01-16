@@ -733,15 +733,6 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#ClosureExpression.
-    def enterClosureExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#ClosureExpression.
-    def exitClosureExpression(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by MParser#ContainsExpression.
     def enterContainsExpression(self, ctx):
         pass
@@ -757,6 +748,15 @@ class MParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by MParser#FilteredListExpression.
     def exitFilteredListExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#TypeExpression.
+    def enterTypeExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#TypeExpression.
+    def exitTypeExpression(self, ctx):
         pass
 
 
@@ -913,12 +913,12 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#closure_expression.
-    def enterClosure_expression(self, ctx):
+    # Enter a parse tree produced by MParser#type_expression.
+    def enterType_expression(self, ctx):
         pass
 
-    # Exit a parse tree produced by MParser#closure_expression.
-    def exitClosure_expression(self, ctx):
+    # Exit a parse tree produced by MParser#type_expression.
+    def exitType_expression(self, ctx):
         pass
 
 
