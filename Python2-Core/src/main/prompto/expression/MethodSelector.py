@@ -3,7 +3,7 @@ from prompto.expression.InstanceExpression import InstanceExpression
 from prompto.expression.MemberSelector import MemberSelector
 from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
 from prompto.grammar.INamedInstance import INamedInstance
-from prompto.runtime.Context import InstanceContext
+from prompto.runtime.Context import Context, InstanceContext
 from prompto.type.MethodType import MethodType
 from prompto.value.NullValue import NullValue
 from prompto.value.TypeValue import TypeValue
@@ -54,9 +54,10 @@ class MethodSelector(MemberSelector):
         from prompto.runtime.Context import MethodDeclarationMap
         methods = set()
         # if called from a member method, could be a member method called without this/self
-        if isinstance(context.getParentContext(), InstanceContext):
+        parentContext = context.getParentContext()
+        if isinstance(parentContext, InstanceContext):
             from prompto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
-            typ = context.getParentContext().instanceType
+            typ = parentContext.instanceType
             cd = context.getRegisteredDeclaration(ConcreteCategoryDeclaration, typ.typeName)
             if cd is not None:
                 members = cd.getMemberMethodsMap(context, self.name)
@@ -159,15 +160,15 @@ class MethodSelector(MemberSelector):
 
 
     def newInstanceContext(self, context):
-        from prompto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
+        from prompto.type.CategoryType import CategoryType
         from prompto.expression.CategorySymbol import CategorySymbol
         from prompto.value.ConcreteInstance import ConcreteInstance
         from prompto.value.NativeInstance import NativeInstance
-        from prompto.type.CategoryType import CategoryType
-        from prompto.error.NullReferenceError import NullReferenceError
+        from prompto.declaration.SingletonCategoryDeclaration import SingletonCategoryDeclaration
 
         value = self.parent.interpret(context)
         if value is None or value is NullValue.instance:
+            from prompto.error.NullReferenceError import NullReferenceError
             raise NullReferenceError()
         if isinstance(value, TypeValue):
             typ = value.value

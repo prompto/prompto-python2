@@ -1775,8 +1775,8 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitClosureExpression(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, MethodExpression(name))
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, MethodExpression(exp))
 
 
     def exitIf_statement(self, ctx):

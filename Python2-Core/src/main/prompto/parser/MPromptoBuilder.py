@@ -665,12 +665,12 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, child)
 
 
-    def exitClosure_expression(self, ctx):
+    def exitType_expression(self, ctx):
         name = self.getNodeValue(ctx.name)
-        self.setNodeValue(ctx, MethodExpression(name))
+        self.setNodeValue(ctx, TypeExpression(CategoryType(name)))
 
 
-    def exitClosureExpression(self, ctx):
+    def exitTypeExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
 
