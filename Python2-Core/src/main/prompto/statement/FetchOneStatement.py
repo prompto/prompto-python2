@@ -1,15 +1,11 @@
 from prompto.expression.FetchOneExpression import FetchOneExpression
-from prompto.parser.Dialect import Dialect
-from prompto.runtime.Variable import Variable
-from prompto.type.VoidType import VoidType
 
 
 class FetchOneStatement(FetchOneExpression):
 
-    def __init__(self, typ, predicate, name, stmts):
+    def __init__(self, typ, predicate, thenWith):
         super(FetchOneStatement, self).__init__(typ, predicate)
-        self.name = name
-        self.stmts = stmts
+        self.thenWith = thenWith
 
 
     def canReturn(self):
@@ -22,33 +18,15 @@ class FetchOneStatement(FetchOneExpression):
 
     def check(self, context):
         super(FetchOneStatement, self).check(context)
-        context = context.newChildContext()
-        context.registerValue(Variable(self.name, self.typ))
-        self.stmts.check(context, None)
-        return VoidType.instance
+        return self.thenWith.check(context, self.typ)
 
 
     def interpret(self, context):
         record = super(FetchOneStatement, self).interpret(context)
-        context = context.newChildContext()
-        context.registerValue(Variable(self.name, self.typ))
-        context.setValue(self.name, record)
-        self.stmts.interpret(context)
-        return None
+        return self.thenWith.interpret(context, record)
 
 
     def toDialect(self, writer):
         super(FetchOneStatement, self).toDialect(writer)
-        writer.append(" then with ").append(self.name)
-        if writer.dialect is Dialect.O:
-            writer.append(" {")
-        else:
-            writer.append(":")
-        writer = writer.newChildWriter()
-        writer.context.registerValue(Variable(self.name, self.typ))
-        writer.newLine().indent()
-        self.stmts.toDialect(writer)
-        writer.dedent()
-        if writer.dialect is Dialect.O:
-            writer.append("}")
+        self.thenWith.toDialect(writer, self.typ)
 

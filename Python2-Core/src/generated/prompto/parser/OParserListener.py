@@ -1147,6 +1147,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#then.
+    def enterThen(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#then.
+    def exitThen(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#read_statement.
     def enterRead_statement(self, ctx):
         pass

@@ -1,16 +1,12 @@
 from prompto.expression.ReadAllExpression import ReadAllExpression
-from prompto.parser.Dialect import Dialect
-from prompto.runtime.Variable import Variable
 from prompto.type.TextType import TextType
-from prompto.type.VoidType import VoidType
 
 
 class ReadStatement(ReadAllExpression):
 
-    def __init__(self, source, name, stmts):
+    def __init__(self, source, thenWith):
         super(ReadStatement, self).__init__(source)
-        self.name = name
-        self.stmts = stmts
+        self.thenWith = thenWith
 
 
     def canReturn(self):
@@ -23,33 +19,15 @@ class ReadStatement(ReadAllExpression):
 
     def check(self, context):
         super(ReadStatement, self).check(context)
-        context = context.newChildContext()
-        context.registerValue(Variable(self.name, TextType.instance))
-        self.stmts.check(context, None)
-        return VoidType.instance
+        self.thenWith.check(context, TextType.instance)
 
 
     def interpret(self, context):
         record = super(ReadStatement, self).interpret(context)
-        context = context.newChildContext()
-        context.registerValue(Variable(self.name, TextType.instance))
-        context.setValue(self.name, record)
-        self.stmts.interpret(context)
-        return None
+        self.thenWith.interpret(context, record)
 
 
     def toDialect(self, writer):
         super(ReadStatement, self).toDialect(writer)
-        writer.append(" then with ").append(self.name)
-        if writer.dialect is Dialect.O:
-            writer.append(" {")
-        else:
-            writer.append(":")
-        writer = writer.newChildWriter()
-        writer.context.registerValue(Variable(self.name, TextType.instance))
-        writer.newLine().indent()
-        self.stmts.toDialect(writer)
-        writer.dedent()
-        if writer.dialect is Dialect.O:
-            writer.append("}")
+        self.thenWith.toDialect(writer, TextType.instance)
 

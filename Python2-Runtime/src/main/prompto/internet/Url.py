@@ -45,7 +45,7 @@ class Url(IResource):
         return str(self.reader.readLine())
 
 
-    def writeFully(self, data):
+    def writeFully(self, data, callback = None):
         pass
 
 

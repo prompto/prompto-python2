@@ -4,6 +4,7 @@ from prompto.expression.ExplicitPredicateExpression import ExplicitPredicateExpr
 from prompto.expression.PredicateExpression import PredicateExpression
 from prompto.expression.ReadBlobExpression import ReadBlobExpression
 from prompto.expression.SuperExpression import SuperExpression
+from prompto.grammar.ThenWith import ThenWith
 from prompto.literal.DocEntry import DocEntry
 from prompto.literal.DocIdentifierKey import DocIdentifierKey
 from prompto.literal.DocTextKey import DocTextKey
@@ -241,9 +242,9 @@ from prompto.type.PeriodType import PeriodType
 from prompto.type.SetType import SetType
 from prompto.type.TextType import TextType
 from prompto.type.TimeType import TimeType
+from prompto.type.UUIDType import UUIDType
 
 # need forward declaration
-from prompto.type.UUIDType import UUIDType
 from prompto.type.VersionType import VersionType
 
 
@@ -2280,9 +2281,14 @@ class EPromptoBuilder(EParserListener):
         start = self.getNodeValue(ctx.xstart)
         stop = self.getNodeValue(ctx.xstop)
         orderBy = self.getNodeValue(ctx.orderby)
+        thenWith = ThenWith.OrEmpty(self.getNodeValue(ctx.then()))
+        self.setNodeValue(ctx, FetchManyStatement(category, predicate, start, stop, orderBy, thenWith))
+
+
+    def exitThen(self, ctx):
         name = self.getNodeValue(ctx.name)
         stmts = self.getNodeValue(ctx.stmts)
-        self.setNodeValue(ctx, FetchManyStatement(category, predicate, start, stop, orderBy, name, stmts))
+        self.setNodeValue(ctx, ThenWith(name, stmts))
 
 
     def exitFetchOne(self, ctx):
@@ -2294,9 +2300,8 @@ class EPromptoBuilder(EParserListener):
     def exitFetchOneAsync(self, ctx):
         category = self.getNodeValue(ctx.typ)
         predicate = self.getNodeValue(ctx.predicate)
-        name = self.getNodeValue(ctx.name)
-        stmts = self.getNodeValue(ctx.stmts)
-        self.setNodeValue(ctx, FetchOneStatement(category, predicate, name, stmts))
+        thenWith = ThenWith.OrEmpty(self.getNodeValue(ctx.then()))
+        self.setNodeValue(ctx, FetchOneStatement(category, predicate, thenWith))
 
 
     def exitFilteredListExpression(self, ctx):
@@ -2423,9 +2428,8 @@ class EPromptoBuilder(EParserListener):
 
     def exitRead_statement(self, ctx):
         source = self.getNodeValue(ctx.source)
-        name = self.getNodeValue(ctx.name)
-        stmts = self.getNodeValue(ctx.stmts)
-        self.setNodeValue(ctx, ReadStatement(source, name, stmts))
+        thenWith = ThenWith.OrEmpty(self.getNodeValue(ctx.then()))
+        self.setNodeValue(ctx, ReadStatement(source, thenWith))
 
 
     def exitReadAllExpression(self, ctx):
@@ -2450,7 +2454,8 @@ class EPromptoBuilder(EParserListener):
     def exitWrite_statement(self, ctx):
         what = self.getNodeValue(ctx.what)
         target = self.getNodeValue(ctx.target)
-        self.setNodeValue(ctx, WriteStatement(what, target))
+        thenWith = self.getNodeValue(ctx.then())
+        self.setNodeValue(ctx, WriteStatement(what, target, thenWith))
 
 
     def exitWith_singleton_statement(self, ctx):
