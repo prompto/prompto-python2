@@ -111,9 +111,8 @@ class BaseMethodDeclaration(BaseDeclaration, IMethodDeclaration):
                 return Specificity.EXACT
             if requiredType.isAssignableFrom(context, actualType):
                 return Specificity.INHERITED
-            actualType = argument.resolve(context, self, checkInstance).check(context)
-            if requiredType.isAssignableFrom(context, actualType):
-                return Specificity.RESOLVED
+#            elif allowDerived and actualType.isAssignableFrom(context, requiredType):
+#                return Specificity.DERIVED
         except PromptoError:
             pass
         return Specificity.INCOMPATIBLE
