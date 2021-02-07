@@ -66,7 +66,7 @@ class ExtendedParameter(CategoryParameter):
         for attribute in self.attributes:
             from prompto.declaration.AttributeDeclaration import AttributeDeclaration
             actual = context.getRegisteredDeclaration(AttributeDeclaration, attribute)
-            if actual is None:
+            if actual is None and actual != "text":
                 raise SyntaxError("Unknown attribute: \"" + attribute + "\"")
 
 
