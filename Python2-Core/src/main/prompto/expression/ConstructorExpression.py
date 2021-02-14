@@ -10,7 +10,6 @@ from prompto.error.NotMutableError import NotMutableError
 class ConstructorExpression(IExpression):
 
     def __init__(self, itype, copyFrom, arguments):
-        self.mutable = False
         self.itype = itype
         self.copyFrom = copyFrom
         self.arguments = arguments
@@ -30,7 +29,7 @@ class ConstructorExpression(IExpression):
 
     def __str__(self):
         with StringIO() as sb:
-            if self.mutable:
+            if self.itype.mutable:
                 sb.write("mutable ")
             sb.write(self.itype.typeName)
             sb.write(' ')
@@ -113,7 +112,7 @@ class ConstructorExpression(IExpression):
                     raise SyntaxError("\"" + argument.getName() +
                         "\" is not an attribute of " + self.itype.typeName)
                 argument.check(context)
-        return cd.getType(context).asMutable(context, self.mutable)
+        return cd.getType(context).asMutable(context, self.itype.mutable)
 
 
     def interpret(self, context):
