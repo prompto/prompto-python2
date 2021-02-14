@@ -385,15 +385,15 @@ def serializedATN():
         buf.write(u"\u020a\u020c\2\20\3\2\"#\3\2),\5\2--//\63\63\4\2\3\3")
         buf.write(u"\7\t\5\2ss\u0093\u0093\u00ad\u00ad\7\2[[~~\u008e\u008e")
         buf.write(u"\u0096\u0096\u00ad\u00ad\5\2[[\u008e\u008e\u00ad\u00ad")
-        buf.write(u"\4\2\u008e\u008e\u00ad\u00ad\4\2\u0092\u0092\u009c\u009c")
-        buf.write(u"\4\2RRbb\t\2\13\20\67\679ACJLwy\u009a\u009c\u00a6\4\2")
-        buf.write(u"\'\'}}\5\2\32\33))++\3\2\22\22\2\u0c4f\2\u020e\3\2\2")
-        buf.write(u"\2\4\u0223\3\2\2\2\6\u022f\3\2\2\2\b\u0235\3\2\2\2\n")
-        buf.write(u"\u023b\3\2\2\2\f\u0251\3\2\2\2\16\u0261\3\2\2\2\20\u0274")
-        buf.write(u"\3\2\2\2\22\u0292\3\2\2\2\24\u02af\3\2\2\2\26\u02b1\3")
-        buf.write(u"\2\2\2\30\u02c1\3\2\2\2\32\u02cb\3\2\2\2\34\u02d8\3\2")
-        buf.write(u"\2\2\36\u02e2\3\2\2\2 \u02ef\3\2\2\2\"\u030e\3\2\2\2")
-        buf.write(u"$\u032d\3\2\2\2&\u0336\3\2\2\2(\u034c\3\2\2\2*\u034e")
+        buf.write(u"\5\2\u008e\u008e\u0096\u0096\u00ad\u00ad\4\2\u0092\u0092")
+        buf.write(u"\u009c\u009c\4\2RRbb\t\2\13\20\67\679ACJLwy\u009a\u009c")
+        buf.write(u"\u00a6\4\2\'\'}}\5\2\32\33))++\3\2\22\22\2\u0c4f\2\u020e")
+        buf.write(u"\3\2\2\2\4\u0223\3\2\2\2\6\u022f\3\2\2\2\b\u0235\3\2")
+        buf.write(u"\2\2\n\u023b\3\2\2\2\f\u0251\3\2\2\2\16\u0261\3\2\2\2")
+        buf.write(u"\20\u0274\3\2\2\2\22\u0292\3\2\2\2\24\u02af\3\2\2\2\26")
+        buf.write(u"\u02b1\3\2\2\2\30\u02c1\3\2\2\2\32\u02cb\3\2\2\2\34\u02d8")
+        buf.write(u"\3\2\2\2\36\u02e2\3\2\2\2 \u02ef\3\2\2\2\"\u030e\3\2")
+        buf.write(u"\2\2$\u032d\3\2\2\2&\u0336\3\2\2\2(\u034c\3\2\2\2*\u034e")
         buf.write(u"\3\2\2\2,\u035e\3\2\2\2.\u0376\3\2\2\2\60\u038b\3\2\2")
         buf.write(u"\2\62\u03a0\3\2\2\2\64\u03a2\3\2\2\2\66\u03a7\3\2\2\2")
         buf.write(u"8\u03c5\3\2\2\2:\u03c7\3\2\2\2<\u03d2\3\2\2\2>\u03f0")
@@ -15339,6 +15339,9 @@ class EParser ( AbstractParser ):
         def VARIABLE_IDENTIFIER(self):
             return self.getToken(EParser.VARIABLE_IDENTIFIER, 0)
 
+        def STORABLE(self):
+            return self.getToken(EParser.STORABLE, 0)
+
         def RESOURCE(self):
             return self.getToken(EParser.RESOURCE, 0)
 
@@ -15365,7 +15368,7 @@ class EParser ( AbstractParser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 1899
             _la = self._input.LA(1)
-            if not(_la==EParser.RESOURCE or _la==EParser.VARIABLE_IDENTIFIER):
+            if not(((((_la - 140)) & ~0x3f) == 0 and ((1 << (_la - 140)) & ((1 << (EParser.RESOURCE - 140)) | (1 << (EParser.STORABLE - 140)) | (1 << (EParser.VARIABLE_IDENTIFIER - 140)))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
