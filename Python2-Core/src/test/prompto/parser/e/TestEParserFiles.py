@@ -20,7 +20,7 @@ class TestParserFiles ( BaseEParserTest ):
     def testAttribute(self):
         stmts = self.parseResource("methods/attribute.pec")
         self.assertIsNotNone(stmts)
-        self.assertEquals(6,len(stmts))
+        self.assertEquals(7,len(stmts))
 
     def testEnumeratedCategory(self):
         stmts = self.parseResource("enums/categoryEnum.pec")
