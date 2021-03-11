@@ -40,6 +40,7 @@ class IntegerValue(BaseValue, INumber, IMultiplyable):
         else:
             raise SyntaxError("Illegal: Integer + " + type(value).__name__)
 
+
     def Subtract(self, context, value):
         if isinstance(value, IntegerValue):
             return IntegerValue(self.IntegerValue() - value.IntegerValue())
@@ -47,6 +48,7 @@ class IntegerValue(BaseValue, INumber, IMultiplyable):
             return DecimalValue(self.DecimalValue() - value.DecimalValue())
         else:
             raise SyntaxError("Illegal: Integer - " + type(value).__name__)
+
 
     def Multiply(self, context, value):
         if isinstance(value, IntegerValue):
@@ -58,6 +60,7 @@ class IntegerValue(BaseValue, INumber, IMultiplyable):
         else:
             raise SyntaxError("Illegal: Integer * " + type(value).__name__)
 
+
     def Divide(self, context, value):
         from prompto.error.DivideByZeroError import DivideByZeroError
         if isinstance(value, INumber):
@@ -67,6 +70,7 @@ class IntegerValue(BaseValue, INumber, IMultiplyable):
                 return DecimalValue(self.DecimalValue() / value.DecimalValue())
         else:
             raise SyntaxError("Illegal: Integer / " + type(value).__name__)
+
 
     def IntDivide(self, context, value):
         from prompto.error.DivideByZeroError import DivideByZeroError
@@ -78,6 +82,7 @@ class IntegerValue(BaseValue, INumber, IMultiplyable):
         else:
             raise SyntaxError("Illegal: Integer \\ " + type(value).__name__)
 
+
     def Modulo(self, context, value):
         from prompto.error.DivideByZeroError import DivideByZeroError
         if isinstance(value, IntegerValue):
@@ -88,6 +93,7 @@ class IntegerValue(BaseValue, INumber, IMultiplyable):
         else:
             raise SyntaxError("Illegal: Integer % " + type(value).__name__)
 
+
     def CompareTo(self, context, value):
         if isinstance(value, IntegerValue):
             return cmp(self.value, value.IntegerValue())
@@ -96,8 +102,10 @@ class IntegerValue(BaseValue, INumber, IMultiplyable):
         else:
             raise SyntaxError("Illegal comparison: Integer and " + type(value).__name__)
 
+
     def ConvertTo(self, itype):
         return self.value
+
 
     def __str__(self):
         return str(self.value)
@@ -108,8 +116,14 @@ class IntegerValue(BaseValue, INumber, IMultiplyable):
     def __eq__(self, obj):
         return self.value==obj.value
 
+
     def __hash__(self):
         return hash(self.value)
 
+
     def toJson(self, context, generator, instanceId, fieldName, withType, binaries):
         generator.writeLong(self.value)
+
+
+    def toJsonNode(self):
+        return self.value

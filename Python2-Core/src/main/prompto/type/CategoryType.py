@@ -202,6 +202,13 @@ class CategoryType(BaseType):
     def checkMember(self, context, name):
         if "category" == name:
             return CategoryType("Category")
+        elif "json" == name:
+            return TextType.instance
+        else:
+            return self.checkAttribute(context, name)
+
+
+    def checkAttribute(self, context, name):
         decl = context.getRegisteredDeclaration(IDeclaration, self.typeName)
         if decl is None:
             raise SyntaxError("Unknown category:" + self.typeName)

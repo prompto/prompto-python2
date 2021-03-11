@@ -29,4 +29,8 @@ class UUIDValue ( BaseValue) :
 
     def toDocumentValue(self, context):
         from prompto.value.TextValue import TextValue
-        return TextValue(str(self.value))
+        return TextValue(str(self))
+
+
+    def toJsonNode(self):
+        return str(self.value)

@@ -23,6 +23,7 @@ class DateValue (BaseValue):
             value = date(years, months, days)
         self.value = value
 
+
     def getValue(self):
         return self.value
 
@@ -69,7 +70,8 @@ class DateValue (BaseValue):
             return IntegerValue(day)
         else:
             return super(DateValue, self).getMemberValue(context, name, autoCreate)
- 
+
+
     def ConvertTo(self, itype):
         return self.value
 
@@ -110,11 +112,13 @@ class DateValue (BaseValue):
         else:
             return self.value == obj
 
+
     def __cmp__(self, other):
         if isinstance(other, DateValue):
             return cmp(self.value,other.value)
         else:
             return cmp(self.value,other)
+
 
     def __str__(self):
         return self.value.isoformat()
@@ -127,3 +131,7 @@ class DateValue (BaseValue):
     def toDocumentValue(self, context):
         from prompto.value.TextValue import TextValue
         return TextValue(str(self))
+
+
+    def toJsonNode(self):
+        return str(self)

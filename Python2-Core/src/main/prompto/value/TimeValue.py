@@ -21,6 +21,7 @@ class TimeValue(BaseValue):
             millis = 0
         return TimeValue(time(hours, minutes, seconds, millis * 1000))
 
+
     def __init__(self, value=None, hours=None, minutes=None, seconds=None, millis=0):
         from prompto.type.TimeType import TimeType
         super(TimeValue, self).__init__(TimeType.instance)
@@ -28,14 +29,17 @@ class TimeValue(BaseValue):
             value = time(hours, minutes, seconds, millis*1000)
         self.value = value
 
+
     def getValue(self):
         return self.value
+
 
     def Add(self, context, value):
         if isinstance(value, PeriodValue):
             return self.plus(value)
         else:
             raise SyntaxError("Illegal: Time + " + type(value).__name__)
+
 
     def Subtract(self, context, value):
         if isinstance(value, TimeValue):
@@ -78,6 +82,7 @@ class TimeValue(BaseValue):
         td = timedelta(hours=period.hours,minutes=period.minutes,seconds=period.seconds,milliseconds=period.millis)
         value = dt - td
         return TimeValue(value.time())
+
 
     def plus(self, period):
         dt = datetime(2000,1,1,hour=self.value.hour, minute=self.value.minute, second=self.value.second, microsecond=self.value.microsecond)
@@ -126,3 +131,7 @@ class TimeValue(BaseValue):
     def toDocumentValue(self, context):
         from prompto.value.TextValue import TextValue
         return TextValue(str(self))
+
+
+    def toJsonNode(self):
+        return str(self)

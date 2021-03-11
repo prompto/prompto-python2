@@ -44,6 +44,7 @@ class BooleanValue(BaseValue):
         else:
             return False
 
+
     def __cmp__(self, obj):
         return cmp(self.value, obj.value)
 
@@ -51,6 +52,9 @@ class BooleanValue(BaseValue):
     def __hash__(self):
         return hash(self.value)
 
+
+    def toJsonNode(self):
+        return self.value
 
 BooleanValue.TRUE = BooleanValue(True)
 BooleanValue.FALSE = BooleanValue(False)
