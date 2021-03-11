@@ -6,7 +6,6 @@ from prompto.store.AttributeInfo import AttributeInfo
 from prompto.store.MatchOp import MatchOp
 from prompto.store.TypeFamily import TypeFamily
 from prompto.type.AnyType import AnyType
-from prompto.type.BooleanType import BooleanType
 from prompto.store.DataStore import DataStore
 from prompto.type.CategoryType import CategoryType
 from prompto.value.NullValue import NullValue

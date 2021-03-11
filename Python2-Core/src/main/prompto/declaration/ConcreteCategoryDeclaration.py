@@ -353,6 +353,7 @@ class ConcreteCategoryDeclaration ( CategoryDeclaration ):
                 writer.newLine()
         writer.dedent()
 
+
     def getOperatorMethod(self, context, operator, type):
         methodName = "operator_" + operator.name
         methods = self.getMemberMethodsMap(context, methodName)
