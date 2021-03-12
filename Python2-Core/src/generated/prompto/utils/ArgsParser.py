@@ -1,4 +1,4 @@
-# Generated from ArgsParser.g4 by ANTLR 4.9.1
+# Generated from ArgsParser.g4 by ANTLR 4.9.2
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
@@ -53,7 +53,7 @@ class ArgsParser ( Parser ):
 
     def __init__(self, input, output=sys.stdout):
         super(ArgsParser, self).__init__(input, output=output)
-        self.checkVersion("4.9.1")
+        self.checkVersion("4.9.2")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 

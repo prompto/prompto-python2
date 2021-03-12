@@ -1,4 +1,4 @@
-# Generated from OLexer.g4 by ANTLR 4.9.1
+# Generated from OLexer.g4 by ANTLR 4.9.2
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
@@ -1156,7 +1156,7 @@ class OLexer(Lexer):
 
     def __init__(self, input=None, output=sys.stdout):
         super(OLexer, self).__init__(input, output=output)
-        self.checkVersion("4.9.1")
+        self.checkVersion("4.9.2")
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
