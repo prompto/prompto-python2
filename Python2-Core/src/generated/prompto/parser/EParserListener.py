@@ -2263,12 +2263,12 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#JavaScriptCategoryBinding.
-    def enterJavaScriptCategoryBinding(self, ctx):
+    # Enter a parse tree produced by EParser#JavascriptCategoryBinding.
+    def enterJavascriptCategoryBinding(self, ctx):
         pass
 
-    # Exit a parse tree produced by EParser#JavaScriptCategoryBinding.
-    def exitJavaScriptCategoryBinding(self, ctx):
+    # Exit a parse tree produced by EParser#JavascriptCategoryBinding.
+    def exitJavascriptCategoryBinding(self, ctx):
         pass
 
 
@@ -2389,12 +2389,12 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#JavaScriptNativeStatement.
-    def enterJavaScriptNativeStatement(self, ctx):
+    # Enter a parse tree produced by EParser#JavascriptNativeStatement.
+    def enterJavascriptNativeStatement(self, ctx):
         pass
 
-    # Exit a parse tree produced by EParser#JavaScriptNativeStatement.
-    def exitJavaScriptNativeStatement(self, ctx):
+    # Exit a parse tree produced by EParser#JavascriptNativeStatement.
+    def exitJavascriptNativeStatement(self, ctx):
         pass
 
 
@@ -3181,30 +3181,30 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#JavaScriptMethodExpression.
-    def enterJavaScriptMethodExpression(self, ctx):
+    # Enter a parse tree produced by EParser#JavascriptMethodExpression.
+    def enterJavascriptMethodExpression(self, ctx):
         pass
 
-    # Exit a parse tree produced by EParser#JavaScriptMethodExpression.
-    def exitJavaScriptMethodExpression(self, ctx):
-        pass
-
-
-    # Enter a parse tree produced by EParser#JavaScriptMemberExpression.
-    def enterJavaScriptMemberExpression(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#JavaScriptMemberExpression.
-    def exitJavaScriptMemberExpression(self, ctx):
+    # Exit a parse tree produced by EParser#JavascriptMethodExpression.
+    def exitJavascriptMethodExpression(self, ctx):
         pass
 
 
-    # Enter a parse tree produced by EParser#JavaScriptItemExpression.
-    def enterJavaScriptItemExpression(self, ctx):
+    # Enter a parse tree produced by EParser#JavascriptMemberExpression.
+    def enterJavascriptMemberExpression(self, ctx):
         pass
 
-    # Exit a parse tree produced by EParser#JavaScriptItemExpression.
-    def exitJavaScriptItemExpression(self, ctx):
+    # Exit a parse tree produced by EParser#JavascriptMemberExpression.
+    def exitJavascriptMemberExpression(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#JavascriptItemExpression.
+    def enterJavascriptItemExpression(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#JavascriptItemExpression.
+    def exitJavascriptItemExpression(self, ctx):
         pass
 
 

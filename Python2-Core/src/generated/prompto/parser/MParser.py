@@ -15581,10 +15581,10 @@ class MParser ( AbstractParser ):
                 listener.exitCSharpCategoryBinding(self)
 
 
-    class JavaScriptCategoryBindingContext(Native_category_bindingContext):
+    class JavascriptCategoryBindingContext(Native_category_bindingContext):
 
         def __init__(self, parser, ctx): # actually a MParser.Native_category_bindingContext)
-            super(MParser.JavaScriptCategoryBindingContext, self).__init__(parser)
+            super(MParser.JavascriptCategoryBindingContext, self).__init__(parser)
             self.binding = None # Javascript_category_bindingContext
             self.copyFrom(ctx)
 
@@ -15595,12 +15595,12 @@ class MParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if hasattr(listener, "enterJavaScriptCategoryBinding"):
-                listener.enterJavaScriptCategoryBinding(self)
+            if hasattr(listener, "enterJavascriptCategoryBinding"):
+                listener.enterJavascriptCategoryBinding(self)
 
         def exitRule(self, listener):
-            if hasattr(listener, "exitJavaScriptCategoryBinding"):
-                listener.exitJavaScriptCategoryBinding(self)
+            if hasattr(listener, "exitJavascriptCategoryBinding"):
+                listener.exitJavascriptCategoryBinding(self)
 
 
 
@@ -15645,7 +15645,7 @@ class MParser ( AbstractParser ):
                 localctx.binding = self.python_category_binding()
                 pass
             elif token in [MParser.JAVASCRIPT]:
-                localctx = MParser.JavaScriptCategoryBindingContext(self, localctx)
+                localctx = MParser.JavascriptCategoryBindingContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 1918
                 self.match(MParser.JAVASCRIPT)
@@ -16298,10 +16298,10 @@ class MParser ( AbstractParser ):
                 listener.exitJavaNativeStatement(self)
 
 
-    class JavaScriptNativeStatementContext(Native_statementContext):
+    class JavascriptNativeStatementContext(Native_statementContext):
 
         def __init__(self, parser, ctx): # actually a MParser.Native_statementContext)
-            super(MParser.JavaScriptNativeStatementContext, self).__init__(parser)
+            super(MParser.JavascriptNativeStatementContext, self).__init__(parser)
             self.copyFrom(ctx)
 
         def JAVASCRIPT(self):
@@ -16311,12 +16311,12 @@ class MParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if hasattr(listener, "enterJavaScriptNativeStatement"):
-                listener.enterJavaScriptNativeStatement(self)
+            if hasattr(listener, "enterJavascriptNativeStatement"):
+                listener.enterJavascriptNativeStatement(self)
 
         def exitRule(self, listener):
-            if hasattr(listener, "exitJavaScriptNativeStatement"):
-                listener.exitJavaScriptNativeStatement(self)
+            if hasattr(listener, "exitJavascriptNativeStatement"):
+                listener.exitJavascriptNativeStatement(self)
 
 
     class Python2NativeStatementContext(Native_statementContext):
@@ -16403,7 +16403,7 @@ class MParser ( AbstractParser ):
                 self.python_native_statement()
                 pass
             elif token in [MParser.JAVASCRIPT]:
-                localctx = MParser.JavaScriptNativeStatementContext(self, localctx)
+                localctx = MParser.JavascriptNativeStatementContext(self, localctx)
                 self.enterOuterAlt(localctx, 5)
                 self.state = 2005
                 self.match(MParser.JAVASCRIPT)
@@ -20962,10 +20962,10 @@ class MParser ( AbstractParser ):
 
 
 
-    class JavaScriptMemberExpressionContext(Javascript_selector_expressionContext):
+    class JavascriptMemberExpressionContext(Javascript_selector_expressionContext):
 
         def __init__(self, parser, ctx): # actually a MParser.Javascript_selector_expressionContext)
-            super(MParser.JavaScriptMemberExpressionContext, self).__init__(parser)
+            super(MParser.JavascriptMemberExpressionContext, self).__init__(parser)
             self.name = None # Javascript_identifierContext
             self.copyFrom(ctx)
 
@@ -20976,18 +20976,18 @@ class MParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if hasattr(listener, "enterJavaScriptMemberExpression"):
-                listener.enterJavaScriptMemberExpression(self)
+            if hasattr(listener, "enterJavascriptMemberExpression"):
+                listener.enterJavascriptMemberExpression(self)
 
         def exitRule(self, listener):
-            if hasattr(listener, "exitJavaScriptMemberExpression"):
-                listener.exitJavaScriptMemberExpression(self)
+            if hasattr(listener, "exitJavascriptMemberExpression"):
+                listener.exitJavascriptMemberExpression(self)
 
 
-    class JavaScriptItemExpressionContext(Javascript_selector_expressionContext):
+    class JavascriptItemExpressionContext(Javascript_selector_expressionContext):
 
         def __init__(self, parser, ctx): # actually a MParser.Javascript_selector_expressionContext)
-            super(MParser.JavaScriptItemExpressionContext, self).__init__(parser)
+            super(MParser.JavascriptItemExpressionContext, self).__init__(parser)
             self.exp = None # Javascript_item_expressionContext
             self.copyFrom(ctx)
 
@@ -20996,18 +20996,18 @@ class MParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if hasattr(listener, "enterJavaScriptItemExpression"):
-                listener.enterJavaScriptItemExpression(self)
+            if hasattr(listener, "enterJavascriptItemExpression"):
+                listener.enterJavascriptItemExpression(self)
 
         def exitRule(self, listener):
-            if hasattr(listener, "exitJavaScriptItemExpression"):
-                listener.exitJavaScriptItemExpression(self)
+            if hasattr(listener, "exitJavascriptItemExpression"):
+                listener.exitJavascriptItemExpression(self)
 
 
-    class JavaScriptMethodExpressionContext(Javascript_selector_expressionContext):
+    class JavascriptMethodExpressionContext(Javascript_selector_expressionContext):
 
         def __init__(self, parser, ctx): # actually a MParser.Javascript_selector_expressionContext)
-            super(MParser.JavaScriptMethodExpressionContext, self).__init__(parser)
+            super(MParser.JavascriptMethodExpressionContext, self).__init__(parser)
             self.method = None # Javascript_method_expressionContext
             self.copyFrom(ctx)
 
@@ -21018,12 +21018,12 @@ class MParser ( AbstractParser ):
 
 
         def enterRule(self, listener):
-            if hasattr(listener, "enterJavaScriptMethodExpression"):
-                listener.enterJavaScriptMethodExpression(self)
+            if hasattr(listener, "enterJavascriptMethodExpression"):
+                listener.enterJavascriptMethodExpression(self)
 
         def exitRule(self, listener):
-            if hasattr(listener, "exitJavaScriptMethodExpression"):
-                listener.exitJavaScriptMethodExpression(self)
+            if hasattr(listener, "exitJavascriptMethodExpression"):
+                listener.exitJavascriptMethodExpression(self)
 
 
 
@@ -21036,7 +21036,7 @@ class MParser ( AbstractParser ):
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,208,self._ctx)
             if la_ == 1:
-                localctx = MParser.JavaScriptMethodExpressionContext(self, localctx)
+                localctx = MParser.JavascriptMethodExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 2365
                 self.match(MParser.DOT)
@@ -21045,7 +21045,7 @@ class MParser ( AbstractParser ):
                 pass
 
             elif la_ == 2:
-                localctx = MParser.JavaScriptMemberExpressionContext(self, localctx)
+                localctx = MParser.JavascriptMemberExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 2367
                 self.match(MParser.DOT)
@@ -21054,7 +21054,7 @@ class MParser ( AbstractParser ):
                 pass
 
             elif la_ == 3:
-                localctx = MParser.JavaScriptItemExpressionContext(self, localctx)
+                localctx = MParser.JavascriptItemExpressionContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 2369
                 localctx.exp = self.javascript_item_expression()
