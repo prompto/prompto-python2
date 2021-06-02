@@ -5,6 +5,7 @@ from prompto.expression.PredicateExpression import PredicateExpression
 from prompto.expression.ReadBlobExpression import ReadBlobExpression
 from prompto.expression.SuperExpression import SuperExpression
 from prompto.grammar.ThenWith import ThenWith
+from prompto.javascript.JavaScriptItemExpression import JavaScriptItemExpression
 from prompto.jsx.JsxFragment import JsxFragment
 from prompto.literal.DocEntry import DocEntry
 from prompto.literal.DocIdentifierKey import DocIdentifierKey
@@ -1486,6 +1487,15 @@ class MPromptoBuilder(MParserListener):
 
     def exitJavascript_this_expression(self, ctx):
         self.setNodeValue(ctx, JavaScriptThisExpression())
+
+
+    def exitJavascript_item_expression(self, ctx):
+        exp = self.getNodeValue(ctx.exp)
+        self.setNodeValue(ctx, JavaScriptItemExpression(exp))
+
+
+    def exitJavaScriptItemExpression(self, ctx):
+        self.setNodeValue(ctx, self.getNodeValue(ctx.exp))
 
 
     def exitJavascript_method_expression(self, ctx):
