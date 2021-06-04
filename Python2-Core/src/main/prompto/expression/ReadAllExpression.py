@@ -15,10 +15,8 @@ class ReadAllExpression (IExpression) :
         self.resource = resource
 
 
-
     def __str__(self):
         return "read all from " + str(self.resource)
-
 
 
     def check(self, context):
@@ -27,7 +25,6 @@ class ReadAllExpression (IExpression) :
         if not isinstance(sourceType, ResourceType):
             raise SyntaxError("Not a readable resource!")
         return TextType.instance
-
 
 
     def interpret(self, context):
@@ -43,8 +40,6 @@ class ReadAllExpression (IExpression) :
             return o.readFully()
         finally:
             o.close()
-
-
 
 
     def toDialect(self, writer):

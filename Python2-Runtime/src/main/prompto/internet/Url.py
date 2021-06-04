@@ -42,7 +42,8 @@ class Url(IResource):
     def readLine(self):
         if self.reader is None:
             self.reader = urllib2.urlopen(self.path)
-        return str(self.reader.readLine())
+        line = self.reader.readLine()
+        return None if line is None else str(line)
 
 
     def writeFully(self, data, callback = None):
