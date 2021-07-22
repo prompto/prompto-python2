@@ -1,11 +1,11 @@
 from prompto.declaration.ConcreteMethodDeclaration import *
+from prompto.value.NullValue import NullValue
 
 
 class NativeMethodDeclaration(ConcreteMethodDeclaration):
 
     def __init__(self, name, arguments, returnType, statements):
         super(NativeMethodDeclaration, self).__init__(name, arguments, returnType, statements)
-
 
     def interpret(self, context):
         context.enterMethod(self)
@@ -15,8 +15,9 @@ class NativeMethodDeclaration(ConcreteMethodDeclaration):
         finally:
             context.leaveMethod(self)
 
-
     def castToReturnType(self, context, value):
+        if value is None:
+            return NullValue.instance
         # can only cast to specified type, and if required
         if self.returnType is not None and value is not None and not self.returnType.isAssignableFrom(context, value.itype):
             # only cast if implemented, on a per type basis

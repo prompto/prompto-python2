@@ -210,7 +210,7 @@ from prompto.statement.IfStatement import IfElement, IfElementList, IfStatement
 from prompto.statement.RaiseStatement import RaiseStatement
 from prompto.statement.ReturnStatement import ReturnStatement
 from prompto.statement.StatementList import StatementList
-from prompto.statement.StoreStatement import StoreStatement
+from prompto.statement.DeleteAndStoreStatement import DeleteAndStoreStatement
 from prompto.statement.SwitchCase import SwitchCaseList
 from prompto.statement.SwitchErrorStatement import SwitchErrorStatement
 from prompto.statement.SwitchStatement import SwitchStatement
@@ -2355,8 +2355,9 @@ class MPromptoBuilder(MParserListener):
     def exitStore_statement(self, ctx):
         to_del = self.getNodeValue(ctx.to_del)
         to_add = self.getNodeValue(ctx.to_add)
+        with_meta = self.getNodeValue(ctx.with_meta)
         stmts = self.getNodeValue(ctx.stmts)
-        stmt = StoreStatement(to_del, to_add, stmts)
+        stmt = DeleteAndStoreStatement(to_del, to_add, with_meta, stmts)
         self.setNodeValue(ctx, stmt)
 
 
