@@ -14,7 +14,7 @@ class IStore(object):
     def getDbIdType(self):
         raise Exception("getDbIdType must be implemented by Store instance!")
 
-    def newStorable(self, categories, dbIdFactory):
+    def newStorableDocument(self, categories, dbIdFactory):
         raise Exception("newStorable must be implemented by Store instance!")
 
     def newAuditMetadata(self):
