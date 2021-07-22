@@ -2731,6 +2731,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#metadata.
+    def enterMetadata(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#metadata.
+    def exitMetadata(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#ArrowExpressionBody.
     def enterArrowExpressionBody(self, ctx):
         pass

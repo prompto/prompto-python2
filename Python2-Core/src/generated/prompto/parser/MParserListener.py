@@ -2713,6 +2713,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#metadata.
+    def enterMetadata(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#metadata.
+    def exitMetadata(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#ArrowExpressionBody.
     def enterArrowExpressionBody(self, ctx):
         pass

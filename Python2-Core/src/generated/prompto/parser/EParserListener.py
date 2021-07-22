@@ -2866,6 +2866,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#metadata.
+    def enterMetadata(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#metadata.
+    def exitMetadata(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#ArrowExpressionBody.
     def enterArrowExpressionBody(self, ctx):
         pass
