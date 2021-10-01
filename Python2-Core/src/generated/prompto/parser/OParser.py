@@ -14,7 +14,7 @@ else:
 def serializedATN():
     with StringIO() as buf:
         buf.write(u"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3")
-        buf.write(u"\u00b7\u0b3f\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6")
+        buf.write(u"\u00b7\u0b43\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6")
         buf.write(u"\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4")
         buf.write(u"\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t")
         buf.write(u"\22\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27")
@@ -342,45 +342,46 @@ def serializedATN():
         buf.write(u"\u0b0a\n\u00ff\3\u0100\6\u0100\u0b0d\n\u0100\r\u0100")
         buf.write(u"\16\u0100\u0b0e\3\u0101\3\u0101\5\u0101\u0b13\n\u0101")
         buf.write(u"\3\u0102\3\u0102\6\u0102\u0b17\n\u0102\r\u0102\16\u0102")
-        buf.write(u"\u0b18\3\u0102\3\u0102\3\u0103\3\u0103\3\u0103\3\u0103")
-        buf.write(u"\3\u0103\3\u0104\3\u0104\3\u0104\3\u0104\5\u0104\u0b26")
-        buf.write(u"\n\u0104\3\u0104\3\u0104\6\u0104\u0b2a\n\u0104\r\u0104")
-        buf.write(u"\16\u0104\u0b2b\7\u0104\u0b2e\n\u0104\f\u0104\16\u0104")
-        buf.write(u"\u0b31\13\u0104\3\u0105\3\u0105\3\u0105\3\u0105\3\u0105")
-        buf.write(u"\5\u0105\u0b38\n\u0105\3\u0106\6\u0106\u0b3b\n\u0106")
-        buf.write(u"\r\u0106\16\u0106\u0b3c\3\u0106\3\u0b3c\32\24(N`jl\u0088")
-        buf.write(u"\u00be\u00f0\u0144\u017a\u0186\u0194\u01a0\u01a2\u01a6")
-        buf.write(u"\u01ae\u01ba\u01c0\u01c2\u01ca\u01d6\u01dc\u0206\u0107")
-        buf.write(u"\2\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62")
-        buf.write(u"\64\668:<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080\u0082")
-        buf.write(u"\u0084\u0086\u0088\u008a\u008c\u008e\u0090\u0092\u0094")
-        buf.write(u"\u0096\u0098\u009a\u009c\u009e\u00a0\u00a2\u00a4\u00a6")
-        buf.write(u"\u00a8\u00aa\u00ac\u00ae\u00b0\u00b2\u00b4\u00b6\u00b8")
-        buf.write(u"\u00ba\u00bc\u00be\u00c0\u00c2\u00c4\u00c6\u00c8\u00ca")
-        buf.write(u"\u00cc\u00ce\u00d0\u00d2\u00d4\u00d6\u00d8\u00da\u00dc")
-        buf.write(u"\u00de\u00e0\u00e2\u00e4\u00e6\u00e8\u00ea\u00ec\u00ee")
-        buf.write(u"\u00f0\u00f2\u00f4\u00f6\u00f8\u00fa\u00fc\u00fe\u0100")
-        buf.write(u"\u0102\u0104\u0106\u0108\u010a\u010c\u010e\u0110\u0112")
-        buf.write(u"\u0114\u0116\u0118\u011a\u011c\u011e\u0120\u0122\u0124")
-        buf.write(u"\u0126\u0128\u012a\u012c\u012e\u0130\u0132\u0134\u0136")
-        buf.write(u"\u0138\u013a\u013c\u013e\u0140\u0142\u0144\u0146\u0148")
-        buf.write(u"\u014a\u014c\u014e\u0150\u0152\u0154\u0156\u0158\u015a")
-        buf.write(u"\u015c\u015e\u0160\u0162\u0164\u0166\u0168\u016a\u016c")
-        buf.write(u"\u016e\u0170\u0172\u0174\u0176\u0178\u017a\u017c\u017e")
-        buf.write(u"\u0180\u0182\u0184\u0186\u0188\u018a\u018c\u018e\u0190")
-        buf.write(u"\u0192\u0194\u0196\u0198\u019a\u019c\u019e\u01a0\u01a2")
-        buf.write(u"\u01a4\u01a6\u01a8\u01aa\u01ac\u01ae\u01b0\u01b2\u01b4")
-        buf.write(u"\u01b6\u01b8\u01ba\u01bc\u01be\u01c0\u01c2\u01c4\u01c6")
-        buf.write(u"\u01c8\u01ca\u01cc\u01ce\u01d0\u01d2\u01d4\u01d6\u01d8")
-        buf.write(u"\u01da\u01dc\u01de\u01e0\u01e2\u01e4\u01e6\u01e8\u01ea")
-        buf.write(u"\u01ec\u01ee\u01f0\u01f2\u01f4\u01f6\u01f8\u01fa\u01fc")
-        buf.write(u"\u01fe\u0200\u0202\u0204\u0206\u0208\u020a\2\20\3\2\36")
-        buf.write(u"\37\3\2%(\3\2,.\3\2\4\5\5\2oo\u008f\u008f\u00a9\u00a9")
-        buf.write(u"\7\2WWzz\u008a\u008a\u0092\u0092\u00a9\u00a9\5\2WW\u008a")
+        buf.write(u"\u0b18\3\u0102\3\u0102\3\u0103\3\u0103\3\u0103\6\u0103")
+        buf.write(u"\u0b20\n\u0103\r\u0103\16\u0103\u0b21\3\u0103\3\u0103")
+        buf.write(u"\3\u0104\3\u0104\3\u0104\3\u0104\5\u0104\u0b2a\n\u0104")
+        buf.write(u"\3\u0104\3\u0104\6\u0104\u0b2e\n\u0104\r\u0104\16\u0104")
+        buf.write(u"\u0b2f\7\u0104\u0b32\n\u0104\f\u0104\16\u0104\u0b35\13")
+        buf.write(u"\u0104\3\u0105\3\u0105\3\u0105\3\u0105\3\u0105\5\u0105")
+        buf.write(u"\u0b3c\n\u0105\3\u0106\6\u0106\u0b3f\n\u0106\r\u0106")
+        buf.write(u"\16\u0106\u0b40\3\u0106\2\32\24(N`jl\u0088\u00be\u00f0")
+        buf.write(u"\u0144\u017a\u0186\u0194\u01a0\u01a2\u01a6\u01ae\u01ba")
+        buf.write(u"\u01c0\u01c2\u01ca\u01d6\u01dc\u0206\u0107\2\4\6\b\n")
+        buf.write(u"\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:")
+        buf.write(u"<>@BDFHJLNPRTVXZ\\^`bdfhjlnprtvxz|~\u0080\u0082\u0084")
+        buf.write(u"\u0086\u0088\u008a\u008c\u008e\u0090\u0092\u0094\u0096")
+        buf.write(u"\u0098\u009a\u009c\u009e\u00a0\u00a2\u00a4\u00a6\u00a8")
+        buf.write(u"\u00aa\u00ac\u00ae\u00b0\u00b2\u00b4\u00b6\u00b8\u00ba")
+        buf.write(u"\u00bc\u00be\u00c0\u00c2\u00c4\u00c6\u00c8\u00ca\u00cc")
+        buf.write(u"\u00ce\u00d0\u00d2\u00d4\u00d6\u00d8\u00da\u00dc\u00de")
+        buf.write(u"\u00e0\u00e2\u00e4\u00e6\u00e8\u00ea\u00ec\u00ee\u00f0")
+        buf.write(u"\u00f2\u00f4\u00f6\u00f8\u00fa\u00fc\u00fe\u0100\u0102")
+        buf.write(u"\u0104\u0106\u0108\u010a\u010c\u010e\u0110\u0112\u0114")
+        buf.write(u"\u0116\u0118\u011a\u011c\u011e\u0120\u0122\u0124\u0126")
+        buf.write(u"\u0128\u012a\u012c\u012e\u0130\u0132\u0134\u0136\u0138")
+        buf.write(u"\u013a\u013c\u013e\u0140\u0142\u0144\u0146\u0148\u014a")
+        buf.write(u"\u014c\u014e\u0150\u0152\u0154\u0156\u0158\u015a\u015c")
+        buf.write(u"\u015e\u0160\u0162\u0164\u0166\u0168\u016a\u016c\u016e")
+        buf.write(u"\u0170\u0172\u0174\u0176\u0178\u017a\u017c\u017e\u0180")
+        buf.write(u"\u0182\u0184\u0186\u0188\u018a\u018c\u018e\u0190\u0192")
+        buf.write(u"\u0194\u0196\u0198\u019a\u019c\u019e\u01a0\u01a2\u01a4")
+        buf.write(u"\u01a6\u01a8\u01aa\u01ac\u01ae\u01b0\u01b2\u01b4\u01b6")
+        buf.write(u"\u01b8\u01ba\u01bc\u01be\u01c0\u01c2\u01c4\u01c6\u01c8")
+        buf.write(u"\u01ca\u01cc\u01ce\u01d0\u01d2\u01d4\u01d6\u01d8\u01da")
+        buf.write(u"\u01dc\u01de\u01e0\u01e2\u01e4\u01e6\u01e8\u01ea\u01ec")
+        buf.write(u"\u01ee\u01f0\u01f2\u01f4\u01f6\u01f8\u01fa\u01fc\u01fe")
+        buf.write(u"\u0200\u0202\u0204\u0206\u0208\u020a\2\20\3\2\36\37\3")
+        buf.write(u"\2%(\3\2,.\3\2\4\5\5\2oo\u008f\u008f\u00a9\u00a9\7\2")
+        buf.write(u"WWzz\u008a\u008a\u0092\u0092\u00a9\u00a9\5\2WW\u008a")
         buf.write(u"\u008a\u00a9\u00a9\5\2\u008a\u008a\u0092\u0092\u00a9")
         buf.write(u"\u00a9\4\2\u008e\u008e\u0098\u0098\4\2NN^^\t\2\7\f\63")
         buf.write(u"\63\65=?FHsu\u0096\u0098\u00a2\4\2##yy\5\2\26\27%%\'")
-        buf.write(u"\'\4\2\16\16\27\27\2\u0bf2\2\u020c\3\2\2\2\4\u021d\3")
+        buf.write(u"\'\4\2\16\16\26\27\2\u0bf7\2\u020c\3\2\2\2\4\u021d\3")
         buf.write(u"\2\2\2\6\u0226\3\2\2\2\b\u022c\3\2\2\2\n\u0232\3\2\2")
         buf.write(u"\2\f\u0247\3\2\2\2\16\u024f\3\2\2\2\20\u0258\3\2\2\2")
         buf.write(u"\22\u0268\3\2\2\2\24\u0272\3\2\2\2\26\u0283\3\2\2\2\30")
@@ -472,8 +473,8 @@ def serializedATN():
         buf.write(u"\3\2\2\2\u01f6\u0aef\3\2\2\2\u01f8\u0afb\3\2\2\2\u01fa")
         buf.write(u"\u0afe\3\2\2\2\u01fc\u0b09\3\2\2\2\u01fe\u0b0c\3\2\2")
         buf.write(u"\2\u0200\u0b12\3\2\2\2\u0202\u0b14\3\2\2\2\u0204\u0b1c")
-        buf.write(u"\3\2\2\2\u0206\u0b25\3\2\2\2\u0208\u0b37\3\2\2\2\u020a")
-        buf.write(u"\u0b3a\3\2\2\2\u020c\u020d\7d\2\2\u020d\u020e\7W\2\2")
+        buf.write(u"\3\2\2\2\u0206\u0b29\3\2\2\2\u0208\u0b3b\3\2\2\2\u020a")
+        buf.write(u"\u0b3e\3\2\2\2\u020c\u020d\7d\2\2\u020d\u020e\7W\2\2")
         buf.write(u"\u020e\u0213\5\u00e0q\2\u020f\u0210\7\22\2\2\u0210\u0211")
         buf.write(u"\5\u0106\u0084\2\u0211\u0212\7\23\2\2\u0212\u0214\3\2")
         buf.write(u"\2\2\u0213\u020f\3\2\2\2\u0213\u0214\3\2\2\2\u0214\u0217")
@@ -1557,22 +1558,24 @@ def serializedATN():
         buf.write(u"\2\u0b15\u0b17\5\u0204\u0103\2\u0b16\u0b15\3\2\2\2\u0b17")
         buf.write(u"\u0b18\3\2\2\2\u0b18\u0b16\3\2\2\2\u0b18\u0b19\3\2\2")
         buf.write(u"\2\u0b19\u0b1a\3\2\2\2\u0b1a\u0b1b\7\27\2\2\u0b1b\u0203")
-        buf.write(u"\3\2\2\2\u0b1c\u0b1d\5\u0206\u0104\2\u0b1d\u0b1e\7\r")
-        buf.write(u"\2\2\u0b1e\u0b1f\5\u0208\u0105\2\u0b1f\u0b20\7\16\2\2")
-        buf.write(u"\u0b20\u0205\3\2\2\2\u0b21\u0b22\b\u0104\1\2\u0b22\u0b26")
-        buf.write(u"\5\u00d2j\2\u0b23\u0b24\7\37\2\2\u0b24\u0b26\5\u00d6")
-        buf.write(u"l\2\u0b25\u0b21\3\2\2\2\u0b25\u0b23\3\2\2\2\u0b26\u0b2f")
-        buf.write(u"\3\2\2\2\u0b27\u0b29\f\3\2\2\u0b28\u0b2a\5\u00d4k\2\u0b29")
-        buf.write(u"\u0b28\3\2\2\2\u0b2a\u0b2b\3\2\2\2\u0b2b\u0b29\3\2\2")
-        buf.write(u"\2\u0b2b\u0b2c\3\2\2\2\u0b2c\u0b2e\3\2\2\2\u0b2d\u0b27")
-        buf.write(u"\3\2\2\2\u0b2e\u0b31\3\2\2\2\u0b2f\u0b2d\3\2\2\2\u0b2f")
-        buf.write(u"\u0b30\3\2\2\2\u0b30\u0207\3\2\2\2\u0b31\u0b2f\3\2\2")
-        buf.write(u"\2\u0b32\u0b33\7\26\2\2\u0b33\u0b34\5`\61\2\u0b34\u0b35")
-        buf.write(u"\7\27\2\2\u0b35\u0b38\3\2\2\2\u0b36\u0b38\5\u020a\u0106")
-        buf.write(u"\2\u0b37\u0b32\3\2\2\2\u0b37\u0b36\3\2\2\2\u0b38\u0209")
-        buf.write(u"\3\2\2\2\u0b39\u0b3b\n\17\2\2\u0b3a\u0b39\3\2\2\2\u0b3b")
-        buf.write(u"\u0b3c\3\2\2\2\u0b3c\u0b3d\3\2\2\2\u0b3c\u0b3a\3\2\2")
-        buf.write(u"\2\u0b3d\u020b\3\2\2\2\u0116\u0213\u0217\u0232\u0239")
+        buf.write(u"\3\2\2\2\u0b1c\u0b1d\5\u0206\u0104\2\u0b1d\u0b1f\7\r")
+        buf.write(u"\2\2\u0b1e\u0b20\5\u0208\u0105\2\u0b1f\u0b1e\3\2\2\2")
+        buf.write(u"\u0b20\u0b21\3\2\2\2\u0b21\u0b1f\3\2\2\2\u0b21\u0b22")
+        buf.write(u"\3\2\2\2\u0b22\u0b23\3\2\2\2\u0b23\u0b24\7\16\2\2\u0b24")
+        buf.write(u"\u0205\3\2\2\2\u0b25\u0b26\b\u0104\1\2\u0b26\u0b2a\5")
+        buf.write(u"\u00d2j\2\u0b27\u0b28\7\37\2\2\u0b28\u0b2a\5\u00d6l\2")
+        buf.write(u"\u0b29\u0b25\3\2\2\2\u0b29\u0b27\3\2\2\2\u0b2a\u0b33")
+        buf.write(u"\3\2\2\2\u0b2b\u0b2d\f\3\2\2\u0b2c\u0b2e\5\u00d4k\2\u0b2d")
+        buf.write(u"\u0b2c\3\2\2\2\u0b2e\u0b2f\3\2\2\2\u0b2f\u0b2d\3\2\2")
+        buf.write(u"\2\u0b2f\u0b30\3\2\2\2\u0b30\u0b32\3\2\2\2\u0b31\u0b2b")
+        buf.write(u"\3\2\2\2\u0b32\u0b35\3\2\2\2\u0b33\u0b31\3\2\2\2\u0b33")
+        buf.write(u"\u0b34\3\2\2\2\u0b34\u0207\3\2\2\2\u0b35\u0b33\3\2\2")
+        buf.write(u"\2\u0b36\u0b37\7\26\2\2\u0b37\u0b38\5`\61\2\u0b38\u0b39")
+        buf.write(u"\7\27\2\2\u0b39\u0b3c\3\2\2\2\u0b3a\u0b3c\5\u020a\u0106")
+        buf.write(u"\2\u0b3b\u0b36\3\2\2\2\u0b3b\u0b3a\3\2\2\2\u0b3c\u0209")
+        buf.write(u"\3\2\2\2\u0b3d\u0b3f\n\17\2\2\u0b3e\u0b3d\3\2\2\2\u0b3f")
+        buf.write(u"\u0b40\3\2\2\2\u0b40\u0b3e\3\2\2\2\u0b40\u0b41\3\2\2")
+        buf.write(u"\2\u0b41\u020b\3\2\2\2\u0117\u0213\u0217\u0232\u0239")
         buf.write(u"\u0241\u0243\u024b\u0258\u0260\u0264\u026e\u027a\u0280")
         buf.write(u"\u0283\u0286\u028f\u0297\u029c\u02a2\u02aa\u02af\u02b5")
         buf.write(u"\u02ba\u02c3\u02c8\u02cd\u02d6\u02db\u02ef\u02f4\u02f7")
@@ -1602,8 +1605,8 @@ def serializedATN():
         buf.write(u"\u0a13\u0a1f\u0a32\u0a3c\u0a44\u0a4b\u0a54\u0a5d\u0a65")
         buf.write(u"\u0a6f\u0a74\u0a80\u0a8e\u0a95\u0a9d\u0aa4\u0aa8\u0aad")
         buf.write(u"\u0ab1\u0ab6\u0abe\u0aca\u0ad6\u0ae5\u0aec\u0af2\u0afb")
-        buf.write(u"\u0b00\u0b06\u0b09\u0b0e\u0b12\u0b18\u0b25\u0b2b\u0b2f")
-        buf.write(u"\u0b37\u0b3c")
+        buf.write(u"\u0b00\u0b06\u0b09\u0b0e\u0b12\u0b18\u0b21\u0b29\u0b2f")
+        buf.write(u"\u0b33\u0b3b\u0b40")
         return buf.getvalue()
 
 
@@ -26583,7 +26586,7 @@ class OParser ( AbstractParser ):
             super(OParser.Css_fieldContext, self).__init__(parent, invokingState)
             self.parser = parser
             self.name = None # Css_identifierContext
-            self.value = None # Css_valueContext
+            self.values = None # Css_valueContext
 
         def COLON(self):
             return self.getToken(OParser.COLON, 0)
@@ -26595,8 +26598,11 @@ class OParser ( AbstractParser ):
             return self.getTypedRuleContext(OParser.Css_identifierContext,0)
 
 
-        def css_value(self):
-            return self.getTypedRuleContext(OParser.Css_valueContext,0)
+        def css_value(self, i=None):
+            if i is None:
+                return self.getTypedRuleContexts(OParser.Css_valueContext)
+            else:
+                return self.getTypedRuleContext(OParser.Css_valueContext,i)
 
 
         def getRuleIndex(self):
@@ -26617,15 +26623,26 @@ class OParser ( AbstractParser ):
 
         localctx = OParser.Css_fieldContext(self, self._ctx, self.state)
         self.enterRule(localctx, 514, self.RULE_css_field)
+        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 2842
             localctx.name = self.css_identifier(0)
             self.state = 2843
             self.match(OParser.COLON)
-            self.state = 2844
-            localctx.value = self.css_value()
-            self.state = 2845
+            self.state = 2845 
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            while True:
+                self.state = 2844
+                localctx.values = self.css_value()
+                self.state = 2847 
+                self._errHandler.sync(self)
+                _la = self._input.LA(1)
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.SPACE) | (1 << OParser.WS) | (1 << OParser.LF) | (1 << OParser.COMMENT) | (1 << OParser.JAVA) | (1 << OParser.CSHARP) | (1 << OParser.PYTHON2) | (1 << OParser.PYTHON3) | (1 << OParser.JAVASCRIPT) | (1 << OParser.SWIFT) | (1 << OParser.COLON) | (1 << OParser.COMMA) | (1 << OParser.RANGE) | (1 << OParser.DOT) | (1 << OParser.LPAR) | (1 << OParser.RPAR) | (1 << OParser.LBRAK) | (1 << OParser.RBRAK) | (1 << OParser.LCURL) | (1 << OParser.QMARK) | (1 << OParser.XMARK) | (1 << OParser.AMP) | (1 << OParser.AMP2) | (1 << OParser.PIPE) | (1 << OParser.PIPE2) | (1 << OParser.PLUS) | (1 << OParser.MINUS) | (1 << OParser.STAR) | (1 << OParser.SLASH) | (1 << OParser.BSLASH) | (1 << OParser.PERCENT) | (1 << OParser.SHARP) | (1 << OParser.GT) | (1 << OParser.GTE) | (1 << OParser.LT) | (1 << OParser.LTE) | (1 << OParser.LTGT) | (1 << OParser.LTCOLONGT) | (1 << OParser.EQ) | (1 << OParser.XEQ) | (1 << OParser.EQ2) | (1 << OParser.TEQ) | (1 << OParser.TILDE) | (1 << OParser.LARROW) | (1 << OParser.RARROW) | (1 << OParser.EGT) | (1 << OParser.BOOLEAN) | (1 << OParser.CSS) | (1 << OParser.CHARACTER) | (1 << OParser.TEXT) | (1 << OParser.INTEGER) | (1 << OParser.DECIMAL) | (1 << OParser.DATE) | (1 << OParser.TIME) | (1 << OParser.DATETIME) | (1 << OParser.PERIOD) | (1 << OParser.VERSION) | (1 << OParser.METHOD_COLON) | (1 << OParser.CODE) | (1 << OParser.DOCUMENT) | (1 << OParser.BLOB))) != 0) or ((((_la - 64)) & ~0x3f) == 0 and ((1 << (_la - 64)) & ((1 << (OParser.IMAGE - 64)) | (1 << (OParser.UUID - 64)) | (1 << (OParser.ITERATOR - 64)) | (1 << (OParser.CURSOR - 64)) | (1 << (OParser.HTML - 64)) | (1 << (OParser.TYPE - 64)) | (1 << (OParser.ABSTRACT - 64)) | (1 << (OParser.ALL - 64)) | (1 << (OParser.ALWAYS - 64)) | (1 << (OParser.AND - 64)) | (1 << (OParser.ANY - 64)) | (1 << (OParser.AS - 64)) | (1 << (OParser.ASC - 64)) | (1 << (OParser.ATTR - 64)) | (1 << (OParser.ATTRIBUTE - 64)) | (1 << (OParser.ATTRIBUTES - 64)) | (1 << (OParser.BINDINGS - 64)) | (1 << (OParser.BREAK - 64)) | (1 << (OParser.BY - 64)) | (1 << (OParser.CASE - 64)) | (1 << (OParser.CATCH - 64)) | (1 << (OParser.CATEGORY - 64)) | (1 << (OParser.CLASS - 64)) | (1 << (OParser.CONTAINS - 64)) | (1 << (OParser.DEF - 64)) | (1 << (OParser.DEFAULT - 64)) | (1 << (OParser.DEFINE - 64)) | (1 << (OParser.DELETE - 64)) | (1 << (OParser.DESC - 64)) | (1 << (OParser.DO - 64)) | (1 << (OParser.DOING - 64)) | (1 << (OParser.EACH - 64)) | (1 << (OParser.ELSE - 64)) | (1 << (OParser.ENUM - 64)) | (1 << (OParser.ENUMERATED - 64)) | (1 << (OParser.EXCEPT - 64)) | (1 << (OParser.EXECUTE - 64)) | (1 << (OParser.EXPECTING - 64)) | (1 << (OParser.EXTENDS - 64)) | (1 << (OParser.FETCH - 64)) | (1 << (OParser.FILTERED - 64)) | (1 << (OParser.FINALLY - 64)) | (1 << (OParser.FLUSH - 64)) | (1 << (OParser.FOR - 64)) | (1 << (OParser.FROM - 64)) | (1 << (OParser.GETTER - 64)) | (1 << (OParser.HAS - 64)) | (1 << (OParser.IF - 64)) | (1 << (OParser.IN - 64)) | (1 << (OParser.INDEX - 64)) | (1 << (OParser.INVOKE_COLON - 64)) | (1 << (OParser.IS - 64)) | (1 << (OParser.MATCHING - 64)) | (1 << (OParser.METHOD - 64)) | (1 << (OParser.METHODS - 64)) | (1 << (OParser.MODULO - 64)) | (1 << (OParser.MUTABLE - 64)) | (1 << (OParser.NATIVE - 64)) | (1 << (OParser.NONE - 64)) | (1 << (OParser.NOT - 64)) | (1 << (OParser.NOTHING - 64)) | (1 << (OParser.NULL - 64)) | (1 << (OParser.ON - 64)) | (1 << (OParser.ONE - 64)))) != 0) or ((((_la - 128)) & ~0x3f) == 0 and ((1 << (_la - 128)) & ((1 << (OParser.OPERATOR - 128)) | (1 << (OParser.OR - 128)) | (1 << (OParser.ORDER - 128)) | (1 << (OParser.OTHERWISE - 128)) | (1 << (OParser.PASS - 128)) | (1 << (OParser.RAISE - 128)) | (1 << (OParser.READ - 128)) | (1 << (OParser.RECEIVING - 128)) | (1 << (OParser.RESOURCE - 128)) | (1 << (OParser.RETURN - 128)) | (1 << (OParser.RETURNING - 128)) | (1 << (OParser.ROWS - 128)) | (1 << (OParser.SELF - 128)) | (1 << (OParser.SETTER - 128)) | (1 << (OParser.SINGLETON - 128)) | (1 << (OParser.SORTED - 128)) | (1 << (OParser.STORABLE - 128)) | (1 << (OParser.STORE - 128)) | (1 << (OParser.SUPER - 128)) | (1 << (OParser.SWITCH - 128)) | (1 << (OParser.TEST - 128)) | (1 << (OParser.THEN - 128)) | (1 << (OParser.THIS - 128)) | (1 << (OParser.THROW - 128)) | (1 << (OParser.TO - 128)) | (1 << (OParser.TRY - 128)) | (1 << (OParser.VERIFYING - 128)) | (1 << (OParser.WIDGET - 128)) | (1 << (OParser.WITH - 128)) | (1 << (OParser.WHEN - 128)) | (1 << (OParser.WHERE - 128)) | (1 << (OParser.WHILE - 128)) | (1 << (OParser.WRITE - 128)) | (1 << (OParser.BOOLEAN_LITERAL - 128)) | (1 << (OParser.CHAR_LITERAL - 128)) | (1 << (OParser.MIN_INTEGER - 128)) | (1 << (OParser.MAX_INTEGER - 128)) | (1 << (OParser.SYMBOL_IDENTIFIER - 128)) | (1 << (OParser.TYPE_IDENTIFIER - 128)) | (1 << (OParser.VARIABLE_IDENTIFIER - 128)) | (1 << (OParser.NATIVE_IDENTIFIER - 128)) | (1 << (OParser.DOLLAR_IDENTIFIER - 128)) | (1 << (OParser.ARONDBASE_IDENTIFIER - 128)) | (1 << (OParser.TEXT_LITERAL - 128)) | (1 << (OParser.UUID_LITERAL - 128)) | (1 << (OParser.VERSION_LITERAL - 128)) | (1 << (OParser.INTEGER_LITERAL - 128)) | (1 << (OParser.HEXA_LITERAL - 128)) | (1 << (OParser.DECIMAL_LITERAL - 128)) | (1 << (OParser.DATETIME_LITERAL - 128)) | (1 << (OParser.TIME_LITERAL - 128)) | (1 << (OParser.DATE_LITERAL - 128)) | (1 << (OParser.PERIOD_LITERAL - 128)) | (1 << (OParser.JSX_TEXT - 128)))) != 0)):
+                    break
+
+            self.state = 2849
             self.match(OParser.SEMI)
         except RecognitionException as re:
             localctx.exception = re
@@ -26686,26 +26703,26 @@ class OParser ( AbstractParser ):
         self.enterRecursionRule(localctx, 516, self.RULE_css_identifier, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2851
+            self.state = 2855
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [OParser.JAVA, OParser.CSHARP, OParser.PYTHON2, OParser.PYTHON3, OParser.JAVASCRIPT, OParser.SWIFT, OParser.BOOLEAN, OParser.CHARACTER, OParser.TEXT, OParser.INTEGER, OParser.DECIMAL, OParser.DATE, OParser.TIME, OParser.DATETIME, OParser.PERIOD, OParser.VERSION, OParser.CODE, OParser.DOCUMENT, OParser.BLOB, OParser.IMAGE, OParser.UUID, OParser.ITERATOR, OParser.CURSOR, OParser.HTML, OParser.ABSTRACT, OParser.ALL, OParser.ALWAYS, OParser.AND, OParser.ANY, OParser.AS, OParser.ASC, OParser.ATTR, OParser.ATTRIBUTE, OParser.ATTRIBUTES, OParser.BINDINGS, OParser.BREAK, OParser.BY, OParser.CASE, OParser.CATCH, OParser.CATEGORY, OParser.CLASS, OParser.CONTAINS, OParser.DEF, OParser.DEFAULT, OParser.DEFINE, OParser.DELETE, OParser.DESC, OParser.DO, OParser.DOING, OParser.EACH, OParser.ELSE, OParser.ENUM, OParser.ENUMERATED, OParser.EXCEPT, OParser.EXECUTE, OParser.EXPECTING, OParser.EXTENDS, OParser.FETCH, OParser.FILTERED, OParser.FINALLY, OParser.FLUSH, OParser.FOR, OParser.FROM, OParser.GETTER, OParser.HAS, OParser.IF, OParser.IN, OParser.INDEX, OParser.IS, OParser.MATCHING, OParser.METHOD, OParser.METHODS, OParser.MODULO, OParser.MUTABLE, OParser.NATIVE, OParser.NONE, OParser.NOT, OParser.NOTHING, OParser.NULL, OParser.ON, OParser.ONE, OParser.OPERATOR, OParser.OR, OParser.ORDER, OParser.OTHERWISE, OParser.PASS, OParser.RAISE, OParser.READ, OParser.RECEIVING, OParser.RESOURCE, OParser.RETURN, OParser.RETURNING, OParser.ROWS, OParser.SELF, OParser.SETTER, OParser.SINGLETON, OParser.SORTED, OParser.STORABLE, OParser.STORE, OParser.SUPER, OParser.SWITCH, OParser.TEST, OParser.THIS, OParser.THROW, OParser.TO, OParser.TRY, OParser.VERIFYING, OParser.WIDGET, OParser.WITH, OParser.WHEN, OParser.WHERE, OParser.WHILE, OParser.WRITE, OParser.SYMBOL_IDENTIFIER, OParser.TYPE_IDENTIFIER, OParser.VARIABLE_IDENTIFIER]:
-                self.state = 2848
+                self.state = 2852
                 self.identifier_or_keyword()
                 pass
             elif token in [OParser.MINUS]:
-                self.state = 2849
+                self.state = 2853
                 self.match(OParser.MINUS)
-                self.state = 2850
+                self.state = 2854
                 self.nospace_identifier_or_keyword()
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 2861
+            self.state = 2865
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,273,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,274,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
@@ -26713,27 +26730,27 @@ class OParser ( AbstractParser ):
                     _prevctx = localctx
                     localctx = OParser.Css_identifierContext(self, _parentctx, _parentState)
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_css_identifier)
-                    self.state = 2853
+                    self.state = 2857
                     if not self.precpred(self._ctx, 1):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 1)")
-                    self.state = 2855 
+                    self.state = 2859 
                     self._errHandler.sync(self)
                     _alt = 1
                     while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                         if _alt == 1:
-                            self.state = 2854
+                            self.state = 2858
                             self.nospace_hyphen_identifier_or_keyword()
 
                         else:
                             raise NoViableAltException(self)
-                        self.state = 2857 
+                        self.state = 2861 
                         self._errHandler.sync(self)
-                        _alt = self._interp.adaptivePredict(self._input,272,self._ctx)
+                        _alt = self._interp.adaptivePredict(self._input,273,self._ctx)
              
-                self.state = 2863
+                self.state = 2867
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,273,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,274,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -26810,27 +26827,27 @@ class OParser ( AbstractParser ):
         localctx = OParser.Css_valueContext(self, self._ctx, self.state)
         self.enterRule(localctx, 518, self.RULE_css_value)
         try:
-            self.state = 2869
+            self.state = 2873
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,274,self._ctx)
-            if la_ == 1:
+            token = self._input.LA(1)
+            if token in [OParser.LCURL]:
                 localctx = OParser.CssValueContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 2864
+                self.state = 2868
                 self.match(OParser.LCURL)
-                self.state = 2865
+                self.state = 2869
                 localctx.exp = self.expression(0)
-                self.state = 2866
+                self.state = 2870
                 self.match(OParser.RCURL)
                 pass
-
-            elif la_ == 2:
+            elif token in [OParser.SPACE, OParser.WS, OParser.LF, OParser.COMMENT, OParser.JAVA, OParser.CSHARP, OParser.PYTHON2, OParser.PYTHON3, OParser.JAVASCRIPT, OParser.SWIFT, OParser.COLON, OParser.COMMA, OParser.RANGE, OParser.DOT, OParser.LPAR, OParser.RPAR, OParser.LBRAK, OParser.RBRAK, OParser.QMARK, OParser.XMARK, OParser.AMP, OParser.AMP2, OParser.PIPE, OParser.PIPE2, OParser.PLUS, OParser.MINUS, OParser.STAR, OParser.SLASH, OParser.BSLASH, OParser.PERCENT, OParser.SHARP, OParser.GT, OParser.GTE, OParser.LT, OParser.LTE, OParser.LTGT, OParser.LTCOLONGT, OParser.EQ, OParser.XEQ, OParser.EQ2, OParser.TEQ, OParser.TILDE, OParser.LARROW, OParser.RARROW, OParser.EGT, OParser.BOOLEAN, OParser.CSS, OParser.CHARACTER, OParser.TEXT, OParser.INTEGER, OParser.DECIMAL, OParser.DATE, OParser.TIME, OParser.DATETIME, OParser.PERIOD, OParser.VERSION, OParser.METHOD_COLON, OParser.CODE, OParser.DOCUMENT, OParser.BLOB, OParser.IMAGE, OParser.UUID, OParser.ITERATOR, OParser.CURSOR, OParser.HTML, OParser.TYPE, OParser.ABSTRACT, OParser.ALL, OParser.ALWAYS, OParser.AND, OParser.ANY, OParser.AS, OParser.ASC, OParser.ATTR, OParser.ATTRIBUTE, OParser.ATTRIBUTES, OParser.BINDINGS, OParser.BREAK, OParser.BY, OParser.CASE, OParser.CATCH, OParser.CATEGORY, OParser.CLASS, OParser.CONTAINS, OParser.DEF, OParser.DEFAULT, OParser.DEFINE, OParser.DELETE, OParser.DESC, OParser.DO, OParser.DOING, OParser.EACH, OParser.ELSE, OParser.ENUM, OParser.ENUMERATED, OParser.EXCEPT, OParser.EXECUTE, OParser.EXPECTING, OParser.EXTENDS, OParser.FETCH, OParser.FILTERED, OParser.FINALLY, OParser.FLUSH, OParser.FOR, OParser.FROM, OParser.GETTER, OParser.HAS, OParser.IF, OParser.IN, OParser.INDEX, OParser.INVOKE_COLON, OParser.IS, OParser.MATCHING, OParser.METHOD, OParser.METHODS, OParser.MODULO, OParser.MUTABLE, OParser.NATIVE, OParser.NONE, OParser.NOT, OParser.NOTHING, OParser.NULL, OParser.ON, OParser.ONE, OParser.OPERATOR, OParser.OR, OParser.ORDER, OParser.OTHERWISE, OParser.PASS, OParser.RAISE, OParser.READ, OParser.RECEIVING, OParser.RESOURCE, OParser.RETURN, OParser.RETURNING, OParser.ROWS, OParser.SELF, OParser.SETTER, OParser.SINGLETON, OParser.SORTED, OParser.STORABLE, OParser.STORE, OParser.SUPER, OParser.SWITCH, OParser.TEST, OParser.THEN, OParser.THIS, OParser.THROW, OParser.TO, OParser.TRY, OParser.VERIFYING, OParser.WIDGET, OParser.WITH, OParser.WHEN, OParser.WHERE, OParser.WHILE, OParser.WRITE, OParser.BOOLEAN_LITERAL, OParser.CHAR_LITERAL, OParser.MIN_INTEGER, OParser.MAX_INTEGER, OParser.SYMBOL_IDENTIFIER, OParser.TYPE_IDENTIFIER, OParser.VARIABLE_IDENTIFIER, OParser.NATIVE_IDENTIFIER, OParser.DOLLAR_IDENTIFIER, OParser.ARONDBASE_IDENTIFIER, OParser.TEXT_LITERAL, OParser.UUID_LITERAL, OParser.VERSION_LITERAL, OParser.INTEGER_LITERAL, OParser.HEXA_LITERAL, OParser.DECIMAL_LITERAL, OParser.DATETIME_LITERAL, OParser.TIME_LITERAL, OParser.DATE_LITERAL, OParser.PERIOD_LITERAL, OParser.JSX_TEXT]:
                 localctx = OParser.CssTextContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 2868
+                self.state = 2872
                 localctx.text = self.css_text()
                 pass
-
+            else:
+                raise NoViableAltException(self)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -26852,6 +26869,12 @@ class OParser ( AbstractParser ):
                 return self.getTokens(OParser.SEMI)
             else:
                 return self.getToken(OParser.SEMI, i)
+
+        def LCURL(self, i=None):
+            if i is None:
+                return self.getTokens(OParser.LCURL)
+            else:
+                return self.getToken(OParser.LCURL, i)
 
         def RCURL(self, i=None):
             if i is None:
@@ -26880,14 +26903,14 @@ class OParser ( AbstractParser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 2872 
+            self.state = 2876 
             self._errHandler.sync(self)
-            _alt = 1+1
-            while _alt!=1 and _alt!=ATN.INVALID_ALT_NUMBER:
-                if _alt == 1+1:
-                    self.state = 2871
+            _alt = 1
+            while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
+                if _alt == 1:
+                    self.state = 2875
                     _la = self._input.LA(1)
-                    if _la <= 0 or _la==OParser.SEMI or _la==OParser.RCURL:
+                    if _la <= 0 or (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << OParser.SEMI) | (1 << OParser.LCURL) | (1 << OParser.RCURL))) != 0):
                         self._errHandler.recoverInline(self)
                     else:
                         self._errHandler.reportMatch(self)
@@ -26895,9 +26918,9 @@ class OParser ( AbstractParser ):
 
                 else:
                     raise NoViableAltException(self)
-                self.state = 2874 
+                self.state = 2878 
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,275,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,276,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
