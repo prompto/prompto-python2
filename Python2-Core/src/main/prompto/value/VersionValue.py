@@ -1,7 +1,10 @@
 from io import StringIO
 
 from prompto.value.BaseValue import BaseValue
+from prompto.value.IntegerValue import IntegerValue
+from prompto.value.TextValue import TextValue
 from prompto.error.SyntaxError import SyntaxError
+
 
 class VersionValue (BaseValue):
 
@@ -117,6 +120,20 @@ class VersionValue (BaseValue):
 
     def __hash__(self):
         return hash(self.asInt())
+
+
+    def getMemberValue(self, context, name, autoCreate=False):
+        if "major" == name:
+            return IntegerValue(self.major)
+        elif "minor" == name:
+            return IntegerValue(self.minor)
+        elif "fix" == name:
+            return IntegerValue(self.fix)
+        elif "qualifier" == name:
+            return TextValue(self.qualifierString())
+        else:
+            return super(VersionValue, self).getMemberValue(context, name, autoCreate)
+
 
 VersionValue.LATEST = VersionValue.ParseInt(0xFFFFFFFF)
 VersionValue.DEVELOPMENT = VersionValue.ParseInt(0xFEFEFEFE)
