@@ -1597,6 +1597,15 @@ class OParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by OParser#TypeType.
+    def enterTypeType(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#TypeType.
+    def exitTypeType(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by OParser#PrimaryType.
     def enterPrimaryType(self, ctx):
         pass

@@ -1588,6 +1588,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#TypeType.
+    def enterTypeType(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#TypeType.
+    def exitTypeType(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#PrimaryType.
     def enterPrimaryType(self, ctx):
         pass

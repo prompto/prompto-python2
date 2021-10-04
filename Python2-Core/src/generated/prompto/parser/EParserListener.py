@@ -1732,6 +1732,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#TypeType.
+    def enterTypeType(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#TypeType.
+    def exitTypeType(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#PrimaryType.
     def enterPrimaryType(self, ctx):
         pass
