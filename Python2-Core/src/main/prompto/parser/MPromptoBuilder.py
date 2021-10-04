@@ -239,6 +239,7 @@ from prompto.type.PeriodType import PeriodType
 from prompto.type.SetType import SetType
 from prompto.type.TextType import TextType
 from prompto.type.TimeType import TimeType
+from prompto.type.TypeType import TypeType
 from prompto.type.UUIDType import UUIDType
 from prompto.type.VersionType import VersionType
 
@@ -2525,6 +2526,11 @@ class MPromptoBuilder(MParserListener):
     def exitTypeLiteral(self, ctx):
         typ = self.getNodeValue(ctx.type_literal())
         self.setNodeValue(ctx, typ)
+
+
+    def exitTypeType(self, ctx):
+        typ = self.getNodeValue(ctx.t)
+        self.setNodeValue(ctx, TypeType(typ))
 
 
     def exitTyped_argument(self, ctx):
