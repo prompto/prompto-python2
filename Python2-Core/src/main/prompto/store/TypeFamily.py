@@ -25,6 +25,7 @@ class TypeFamily(object):
     # non storable
     VOID = None
     NULL = None
+    DBID = None
     ANY = None
     METHOD = None
     CURSOR = None
@@ -71,6 +72,7 @@ TypeFamily.ENUMERATED = TypeFamily("ENUMERATED")
 # non storable
 TypeFamily.VOID = TypeFamily("VOID")
 TypeFamily.NULL = TypeFamily("NULL")
+TypeFamily.DBID = TypeFamily("DBID")
 TypeFamily.ANY = TypeFamily("ANY")
 TypeFamily.METHOD = TypeFamily("METHOD")
 TypeFamily.CURSOR = TypeFamily("CURSOR")

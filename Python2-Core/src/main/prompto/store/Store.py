@@ -6,6 +6,20 @@ class IStored(object):
     pass
 
 
+class IAuditRecord(object):
+    pass
+
+
+class IAuditMetadata(object):
+    pass
+
+
+class AuditOperation(object):
+    INSERT = "INSERT"
+    UPDATE = "UPDATE"
+    DELETE = "DELETE"
+
+
 class IStore(object):
 
     def isDbIdType(self, typ):
@@ -15,7 +29,7 @@ class IStore(object):
         raise Exception("getDbIdType must be implemented by Store instance!")
 
     def newStorableDocument(self, categories, dbIdFactory):
-        raise Exception("newStorable must be implemented by Store instance!")
+        raise Exception("newStorableDocument must be implemented by Store instance!")
 
     def deleteAndStore (self, dbIdsToDel, docsToStore, withMeta):
         raise Exception("deleteAndStore must be implemented by Store instance!")
@@ -54,8 +68,19 @@ class IStore(object):
         raise Exception("fetchAuditMetadata must be implemented by Store instance!")
 
     def fetchAuditMetadataAsDocument (self, dbId):
-        return self.fetchAuditMetadata(dbId)
+        raise Exception("fetchAuditMetadataAsDocument must be implemented by Store instance!")
 
+    def fetchLatestAuditRecord (self, dbId):
+        raise Exception("fetchLatestAuditRecord must be implemented by Store instance!")
+
+    def fetchLatestAuditRecordAsDocument(self, dbId):
+        raise Exception("fetchLatestAuditRecord must be implemented by Store instance!")
+
+    def fetchAuditRecordsMatching(self, auditPredicates, instancePredicates):
+        raise Exception("fetchAuditRecordsMatching must be implemented by Store instance!")
+
+    def fetchAuditRecordsMatchingAsDocuments(self, auditPredicates, instancePredicates):
+        raise Exception("fetchAuditRecordsMatchingAsDocuments must be implemented by Store instance!")
 
 class IQueryBuilder(object):
 
