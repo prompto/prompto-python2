@@ -815,7 +815,7 @@ class MPromptoBuilder(MParserListener):
     def exitCSharpArgumentListItem(self, ctx):
         item = self.getNodeValue(ctx.item)
         items = self.getNodeValue(ctx.items)
-        items.add(item)
+        items.append(item)
         self.setNodeValue(ctx, items)
 
 
@@ -1542,7 +1542,7 @@ class MPromptoBuilder(MParserListener):
     def exitJavascriptArgumentListItem(self, ctx):
         exp = self.getNodeValue(ctx.item)
         xlist = self.getNodeValue(ctx.items)
-        xlist.add(exp)
+        xlist.append(exp)
         self.setNodeValue(ctx, xlist)
 
 
