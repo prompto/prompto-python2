@@ -1912,6 +1912,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#DbIdType.
+    def enterDbIdType(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#DbIdType.
+    def exitDbIdType(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#HtmlType.
     def enterHtmlType(self, ctx):
         pass

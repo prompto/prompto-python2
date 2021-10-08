@@ -1768,6 +1768,15 @@ class MParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by MParser#DbIdType.
+    def enterDbIdType(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#DbIdType.
+    def exitDbIdType(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by MParser#HtmlType.
     def enterHtmlType(self, ctx):
         pass
