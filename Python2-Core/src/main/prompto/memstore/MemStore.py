@@ -214,3 +214,9 @@ class MemStore(IStore):
     def fetchAuditRecordsMatchingStream(self, auditPredicates, instancePredicates):
         audits = filter(lambda a: a.matches(auditPredicates, instancePredicates), self.auditRecords.values())
         return sorted(audits, key=lambda a: a.utcTimestamp, reverse=True)
+
+    def deleteAuditRecord(self, dbId):
+        return self.auditRecords.pop(dbId, None) is not None
+
+    def deleteAuditMetadata(self, dbId):
+        return self.auditMetadatas.pop(dbId, None) is not None
