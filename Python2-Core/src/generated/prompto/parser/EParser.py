@@ -1,4 +1,4 @@
-# Generated from EParser.g4 by ANTLR 4.9.2
+# Generated from EParser.g4 by ANTLR 4.9.3
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
@@ -2300,7 +2300,7 @@ class EParser ( AbstractParser ):
 
     def __init__(self, input, output=sys.stdout):
         super(EParser, self).__init__(input, output=output)
-        self.checkVersion("4.9.2")
+        self.checkVersion("4.9.3")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
