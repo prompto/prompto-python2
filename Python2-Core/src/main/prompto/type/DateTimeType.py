@@ -16,7 +16,7 @@ class DateTimeType(NativeType):
             from prompto.value.DateTimeValue import DateTimeValue
             return DateTimeValue(value)
         else:
-            return value  # TODO for now
+            return super(DateTimeType, self).convertPythonValueToPromptoValue(context, value, returnType)  # TODO for now
 
 
     def checkAdd(self, context, other, tryReverse):

@@ -14,11 +14,12 @@ from prompto.value.CursorValue import CursorValue
 
 class FetchManyExpression(Section, IExpression):
 
-    def __init__(self, typ, predicate, first, last, orderBy):
+    def __init__(self, typ, predicate, first, last, include, orderBy):
         self.typ = typ
         self.first = first
         self.last = last
         self.predicate = predicate
+        self.include = include
         self.orderBy = orderBy
 
 
@@ -38,6 +39,16 @@ class FetchManyExpression(Section, IExpression):
         if self.predicate is not None:
             writer.append("where ")
             self.predicate.toDialect(writer)
+        if self.include is not None:
+            writer.append(" include ")
+            if len(self.include) == 1:
+                writer.append(self.include[0])
+            else:
+                for i in range(0, len(self.include) - 1):
+                    writer.append(self.include[i]).append(", ")
+                writer.trimLast(len(", "))
+                writer.append(" and ")
+                writer.append(self.include[-1])
         if self.orderBy is not None:
             self.orderBy.toDialect(writer)
 
@@ -61,6 +72,12 @@ class FetchManyExpression(Section, IExpression):
         if self.predicate is not None:
             writer.append(" where ( ")
             self.predicate.toDialect(writer)
+            writer.append(") ")
+        if self.include is not None:
+            writer.append("include (")
+            for name in self.include:
+                writer.append(name).append(", ")
+            writer.trimLast(len(", "))
             writer.append(") ")
         if self.orderBy is not None:
             self.orderBy.toDialect(writer)
@@ -88,6 +105,11 @@ class FetchManyExpression(Section, IExpression):
             writer.append("where ")
             self.predicate.toDialect(writer)
             writer.append(" ")
+        if self.include is not None:
+            writer.append(" include ")
+            for name in self.include:
+                writer.append(name).append(", ")
+            writer.trimLast(len(", "))
         if self.orderBy is not None:
             self.orderBy.toDialect(writer)
 
@@ -99,11 +121,14 @@ class FetchManyExpression(Section, IExpression):
             decl = context.getRegisteredDeclaration (CategoryDeclaration, typ.typeName)
             if decl is None:
                 raise SyntaxError ("Unknown category: " + typ.typeName)
-        self.checkFilter(context)
+        self.checkPredicate(context)
+        self.checkInclude(context)
         self.checkOrderBy(context)
         self.checkLimits(context)
         return CursorType (typ)
 
+    def checkInclude (self, context):
+        pass # TODO
 
     def checkOrderBy (self, context):
         pass # TODO
@@ -113,7 +138,7 @@ class FetchManyExpression(Section, IExpression):
         pass # TODO
 
 
-    def checkFilter (self, context):
+    def checkPredicate (self, context):
         if self.predicate is None:
             return
         self.predicate.checkQuery (context)
@@ -138,6 +163,8 @@ class FetchManyExpression(Section, IExpression):
             self.predicate.interpretQuery(context, builder)
         if self.typ is not None and self.predicate is not None:
             builder.And()
+        if self.include is not None:
+            builder.project(self.include)
         if self.orderBy is not None:
             self.orderBy.interpretQuery(context, builder)
         return builder.build()

@@ -17,7 +17,7 @@ class BooleanType(NativeType):
             from prompto.value.BooleanValue import BooleanValue
             return BooleanValue.ValueOf(value)
         else:
-            return value  # TODO for now
+            return super(BooleanType, self).convertPythonValueToPromptoValue(context, value, returnType)  # TODO for now
 
 
 BooleanType.instance = BooleanType()

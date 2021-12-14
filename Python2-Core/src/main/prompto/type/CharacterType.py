@@ -64,7 +64,7 @@ class CharacterType(NativeType):
             from prompto.value.CharacterValue import CharacterValue
             return CharacterValue(value)
         else:
-            return value  # TODO for now
+            return super(CharacterType, self).convertPythonValueToPromptoValue(context, value, returnType)  # TODO for now
 
     def nativeCast(self, context, value):
         from prompto.type.TextType import TextType

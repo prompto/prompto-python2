@@ -4,8 +4,8 @@ from prompto.type.CursorType import CursorType
 
 class FetchManyStatement(FetchManyExpression):
 
-    def __init__(self, typ, predicate, first, last, orderBy, thenWith):
-        super(FetchManyStatement, self).__init__(typ,predicate, first, last, orderBy)
+    def __init__(self, typ, predicate, first, last, include, orderBy, thenWith):
+        super(FetchManyStatement, self).__init__(typ,predicate, first, last, include, orderBy)
         self.thenWith = thenWith
 
 

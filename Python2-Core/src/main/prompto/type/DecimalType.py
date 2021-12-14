@@ -79,7 +79,7 @@ class DecimalType(NativeType):
         if isinstance(value, Number):
             return DecimalValue(float(value))
         else:
-            return value  # TODO for now
+            return super(DecimalType, self).convertPythonValueToPromptoValue(context, value, returnType)  # TODO for now
 
 DecimalType.instance = DecimalType()
 

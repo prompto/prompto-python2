@@ -110,7 +110,7 @@ class IntegerType(NativeType):
             from prompto.value.IntegerValue import IntegerValue
             return IntegerValue(long(value))
         else:
-            return value  # TODO for now
+            return super(IntegerType, self).convertPythonValueToPromptoValue(context, value, returnType)  # TODO for now
 
 
     def getMemberMethods(self, context, name):
