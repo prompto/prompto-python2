@@ -1311,7 +1311,7 @@ def serializedATN():
         buf.write(u"\u0918\3\2\2\2\u091a\u091b\3\2\2\2\u091b\u091e\3\2\2")
         buf.write(u"\2\u091c\u091a\3\2\2\2\u091d\u091f\t\r\2\2\u091e\u091d")
         buf.write(u"\3\2\2\2\u091e\u091f\3\2\2\2\u091f\u015d\3\2\2\2\u0920")
-        buf.write(u"\u0925\5\u00e0q\2\u0921\u0922\7\26\2\2\u0922\u0924\5")
+        buf.write(u"\u0925\5\u00e0q\2\u0921\u0922\7\24\2\2\u0922\u0924\5")
         buf.write(u"\u00e0q\2\u0923\u0921\3\2\2\2\u0924\u0927\3\2\2\2\u0925")
         buf.write(u"\u0923\3\2\2\2\u0925\u0926\3\2\2\2\u0926\u015f\3\2\2")
         buf.write(u"\2\u0927\u0925\3\2\2\2\u0928\u092f\7#\2\2\u0929\u092f")
@@ -19789,11 +19789,11 @@ class MParser ( AbstractParser ):
                 return self.getTypedRuleContext(MParser.Variable_identifierContext,i)
 
 
-        def DOT(self, i=None):
+        def COMMA(self, i=None):
             if i is None:
-                return self.getTokens(MParser.DOT)
+                return self.getTokens(MParser.COMMA)
             else:
-                return self.getToken(MParser.DOT, i)
+                return self.getToken(MParser.COMMA, i)
 
         def getRuleIndex(self):
             return MParser.RULE_include_list
@@ -19823,7 +19823,7 @@ class MParser ( AbstractParser ):
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     self.state = 2335
-                    self.match(MParser.DOT)
+                    self.match(MParser.COMMA)
                     self.state = 2336
                     self.variable_identifier() 
                 self.state = 2341
