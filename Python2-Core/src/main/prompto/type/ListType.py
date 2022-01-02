@@ -92,6 +92,10 @@ class ListType(ContainerType):
             return [RemoveItemMethodDeclaration.getInstance()]
         elif name == "removeValue":
             return [RemoveValueMethodDeclaration.getInstance()]
+        elif name == "addValue":
+            return [AddValueMethodDeclaration.getInstance()]
+        elif name == "insertValue":
+            return [InsertValueMethodDeclaration.getInstance()]
         else:
             return super(ListType, self).getMemberMethods(context, name)
 
@@ -205,10 +209,64 @@ class RemoveValueMethodDeclaration(BuiltInMethodDeclaration):
         value = context.getValue("value")
         list.removeValue(value)
 
+    def check(self, context, isStart):
+        return VoidType.instance
+
+class AddValueMethodDeclaration(BuiltInMethodDeclaration):
+
+    instance = None
+
+    @classmethod
+    def getInstance(cls):
+        if cls.instance is None:
+            cls.instance = AddValueMethodDeclaration()
+        return cls.instance
+
+    def __init__(self):
+        from prompto.param.CategoryParameter import CategoryParameter
+        VALUE_ARGUMENT = CategoryParameter(AnyType.instance, "value")
+        super(AddValueMethodDeclaration, self).__init__("addValue", VALUE_ARGUMENT)
+
+    def interpret(self, context):
+        list = self.getValue(context)
+        if not list.mutable:
+            raise NotMutableError()
+        value = context.getValue("value")
+        list.addValue(value)
 
     def check(self, context, isStart):
         return VoidType.instance
 
+class InsertValueMethodDeclaration(BuiltInMethodDeclaration):
+
+    instance = None
+
+    @classmethod
+    def getInstance(cls):
+        if cls.instance is None:
+            cls.instance = InsertValueMethodDeclaration()
+        return cls.instance
+
+
+    def __init__(self):
+        from prompto.type.IntegerType import IntegerType
+        from prompto.param.CategoryParameter import CategoryParameter
+        VALUE_ARGUMENT = CategoryParameter(AnyType.instance, "value")
+        AT_INDEX_ARGUMENT = CategoryParameter(IntegerType.instance, "atIndex")
+        super(InsertValueMethodDeclaration, self).__init__("addValue", VALUE_ARGUMENT, AT_INDEX_ARGUMENT)
+
+
+    def interpret(self, context):
+        list = self.getValue(context)
+        if not list.mutable:
+            raise NotMutableError()
+        value = context.getValue("value")
+        atIndex = context.getValue("atIndex")
+        list.insertValue(value, atIndex)
+
+
+    def check(self, context, isStart):
+        return VoidType.instance
 
 class ToSetMethodDeclaration(BuiltInMethodDeclaration):
 
