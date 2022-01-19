@@ -175,5 +175,5 @@ class FetchManyExpression(Section, IExpression):
             return None
         value = exp.interpret(context).getStorableData()
         if not isinstance(value, (int, long)):
-            raise InvalidValueError("Expecting an Integer, got:" + value.type.typeName)
+            raise InvalidValueError("Expecting an Integer, found:" + value.type.typeName)
         return value

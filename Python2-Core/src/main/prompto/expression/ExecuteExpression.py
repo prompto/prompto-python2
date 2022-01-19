@@ -39,7 +39,7 @@ class ExecuteExpression ( Section, IExpression, ISection ):
             if isinstance(value, CodeValue):
                 return value.check(context)
             else:
-                raise SyntaxError("Expected code, got:" + str(value))
+                raise SyntaxError("Expected code, found:" + str(value))
         except PromptoError, e:
             raise SyntaxError(e.getMessage())
 
@@ -48,4 +48,4 @@ class ExecuteExpression ( Section, IExpression, ISection ):
         if isinstance(value, CodeValue):
             return value.interpret(context)
         else:
-            raise SyntaxError("Expected code, got:" + value.toString())
+            raise SyntaxError("Expected code, found:" + value.toString())
