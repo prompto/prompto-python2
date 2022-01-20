@@ -16,16 +16,6 @@ jobs:
           command: |
             git submodule update --init --recursive
       - python/install-packages:
-          args: antlr4-python2-runtime==4.9.3
-          pkg-manager: pip
-      - python/install-packages:
-          args: nose==1.3.7
-          pkg-manager: pip
-      - python/install-packages:
-          args: pyyaml
-          pkg-manager: pip
-      - python/install-packages:
-          args: psutil
           pkg-manager: pip
       - run:
           name: Run tests
