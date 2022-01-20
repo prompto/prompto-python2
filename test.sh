@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+ls -all
 echo "PYTHONPATH" $PYTHONPATH
 export PYTHONPATH=$PYTHONPATH:$CIRCLE_WORKING_DIRECTORY/Python2-Core/src/generated
 export PYTHONPATH=$PYTHONPATH:$CIRCLE_WORKING_DIRECTORY/Python2-Core/src/main
