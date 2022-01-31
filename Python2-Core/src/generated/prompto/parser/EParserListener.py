@@ -211,12 +211,21 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#abstract_method_declaration.
-    def enterAbstract_method_declaration(self, ctx):
+    # Enter a parse tree produced by EParser#abstract_global_method_declaration.
+    def enterAbstract_global_method_declaration(self, ctx):
         pass
 
-    # Exit a parse tree produced by EParser#abstract_method_declaration.
-    def exitAbstract_method_declaration(self, ctx):
+    # Exit a parse tree produced by EParser#abstract_global_method_declaration.
+    def exitAbstract_global_method_declaration(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#abstract_member_method_declaration.
+    def enterAbstract_member_method_declaration(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#abstract_member_method_declaration.
+    def exitAbstract_member_method_declaration(self, ctx):
         pass
 
 
