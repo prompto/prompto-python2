@@ -4,7 +4,7 @@ from prompto.declaration.AbstractMethodDeclaration import AbstractMethodDeclarat
 class ClosureDeclaration(AbstractMethodDeclaration):
 
     def __init__(self, closure):
-        super(ClosureDeclaration, self).__init__(closure.itype.method.getName(), closure.itype.method.getArguments(), closure.itype.method.getReturnType())
+        super(ClosureDeclaration, self).__init__(closure.itype.method.getName(), closure.itype.method.parameters, closure.itype.method.returnType)
         self.closure = closure
 
     def interpret(self, context):

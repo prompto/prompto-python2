@@ -1,11 +1,6 @@
 from prompto.error.NullReferenceError import NullReferenceError
 from prompto.error.SyntaxError import SyntaxError
-from prompto.expression.InstanceExpression import InstanceExpression
 from prompto.expression.MemberSelector import MemberSelector
-from prompto.expression.UnresolvedIdentifier import UnresolvedIdentifier
-from prompto.grammar.INamedInstance import INamedInstance
-from prompto.runtime.Context import Context, InstanceContext
-from prompto.type.MethodType import MethodType
 from prompto.value.NullValue import NullValue
 from prompto.value.TypeValue import TypeValue
 
@@ -28,52 +23,6 @@ class MethodSelector(MemberSelector):
             writer.append(self.name)
         else:
             super(MethodSelector, self).parentAndMemberToDialect(writer)
-
-
-    def getCandidates(self, context, checkInstance):
-        method = self.getMethodInstance(context)
-        if method is not None:
-            return {method}
-        elif self.parent is None:
-            return self.getGlobalCandidates(context)
-        else:
-            return self.getMemberCandidates(context, checkInstance)
-
-
-    def getMethodInstance(self, context):
-        named = context.getRegistered(self.name)
-        if isinstance(named, INamedInstance):
-            typ = named.getType(context)
-            if typ is not None:
-                typ = typ.resolve(context)
-                if isinstance(typ, MethodType):
-                    return typ.method
-        return None
-
-
-    def getGlobalCandidates(self, context):
-        from prompto.runtime.Context import MethodDeclarationMap
-        methods = set()
-        # if called from a member method, could be a member method called without this/self
-        parentContext = context.getParentContext()
-        if isinstance(parentContext, InstanceContext):
-            from prompto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration
-            typ = parentContext.instanceType
-            cd = context.getRegisteredDeclaration(ConcreteCategoryDeclaration, typ.typeName)
-            if cd is not None:
-                members = cd.getMemberMethodsMap(context, self.name)
-                if members is not None:
-                    methods.update(members.values())
-        globals = context.getRegisteredDeclaration(MethodDeclarationMap, self.name)
-        if globals is not None:
-            methods.update(globals.values())
-        return methods
-
-
-    def getMemberCandidates(self, context, checkInstance):
-        parentType = self.checkParentType(context, checkInstance)
-        methods = parentType.getMemberMethods(context, self.name)
-        return set(methods)
 
 
     def checkParentType(self, context, checkInstance):

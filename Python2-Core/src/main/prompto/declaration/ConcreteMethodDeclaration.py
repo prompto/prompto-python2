@@ -20,17 +20,20 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
             if isinstance(statement, DeclarationStatement):
                 statement.declaration.closureOf = self
 
-
     def getStatements(self):
         return self.statements
 
-
-    def check(self, context, isStart):
+    def checkStart(self, context):
         if self.canBeChecked(context):
-            return self.fullCheck(context, isStart)
+            return self.fullCheck(context, True)
         else:
             return VoidType.instance
 
+    def check(self, context):
+        if self.canBeChecked(context):
+            return self.fullCheck(context, False)
+        else:
+            return VoidType.instance
 
     def canBeChecked(self, context):
         if context.isGlobalContext():
@@ -52,7 +55,7 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
     def fullCheck(self, context, isStart):
         if isStart:
             context = context.newLocalContext()
-            self.registerArguments(context)
+            self.registerParameters(context)
         if self.parameters is not None:
             self.parameters.check(context)
         return self.checkStatements(context, self.returnType)
@@ -62,7 +65,7 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
         if self.parameters is not None:
             self.parameters.check(context)
         context = context.newChildContext()
-        self.registerArguments(context)
+        self.registerParameters(context)
         return self.checkStatements(context, self.returnType)
 
 
@@ -100,7 +103,7 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
     def toDialect(self, writer):
         if writer.isGlobalContext():
             writer = writer.newLocalWriter()
-        self.registerArguments(writer.context)
+        self.registerParameters(writer.context)
         super(ConcreteMethodDeclaration, self).toDialect(writer)
 
 

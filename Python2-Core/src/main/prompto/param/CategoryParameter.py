@@ -56,13 +56,33 @@ class CategoryParameter(BaseParameter, ITypedParameter):
             value = self.defaultExpression.interpret(context)
             context.setValue(self.name, value)
 
-
     def check(self, context):
         self.resolve(context)
         self.resolved.checkExists(context)
 
-
     def checkValue(self, context, expression):
+        from prompto.value.ContextualExpression import ContextualExpression
+        from prompto.expression.ArrowExpression import ArrowExpression
+        isArrow = isinstance(expression, ContextualExpression) and isinstance(expression.expression, ArrowExpression)
+        if isArrow:
+            return self.checkArrowValue(context, expression)
+        else:
+            return self.checkSimpleValue(context, expression)
+
+    def checkArrowValue(self, context, expression):
+        decl = self.getAbstractMethodDeclaration(context)
+        from prompto.value.ArrowValue import ArrowValue
+        return ArrowValue(decl, expression.calling, expression.expression) # TODO check
+
+    def getAbstractMethodDeclaration(self, context):
+        from prompto.runtime.Context import MethodDeclarationMap
+        methods = context.getRegisteredDeclaration(MethodDeclarationMap, self.itype.typeName)
+        if methods is not None:
+            return next((m for m in methods.values() if m.isAbstract()), None)
+        else:
+            return None
+
+    def checkSimpleValue(self, context, expression):
         self.resolve(context)
         if isinstance(self.resolved, MethodType):
             return expression.interpretReference(context)

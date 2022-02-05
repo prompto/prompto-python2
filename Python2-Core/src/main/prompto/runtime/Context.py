@@ -284,10 +284,12 @@ class Context(IContext):
         else:
             return self.globals.getNativeBinding(klass)
 
+    def getInstance(self, name, includeParent):
+        named = None if (self.parent is None or not includeParent) else self.parent.getInstance(name, True)
+        return named if named is not None else self.instances.get(name, None)
 
     def hasValue(self, name):
         return self.contextForValue(name) is not None
-
 
     def getValue(self, name):
         context = self.contextForValue(name)
