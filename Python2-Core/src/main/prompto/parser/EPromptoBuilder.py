@@ -2577,15 +2577,19 @@ class EPromptoBuilder(EParserListener):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, MatchingExpressionConstraint(exp))
 
-
     def exitMatchingPattern(self, ctx):
         self.setNodeValue(ctx, MatchingPatternConstraint(TextLiteral(ctx.text.text)))
 
-
     def exitInvocation_expression(self, ctx):
-        name = self.getNodeValue(ctx.name)
-        select = MethodSelector(name)
-        self.setNodeValue(ctx, MethodCall(select))
+        select = None
+        exp = self.getNodeValue(ctx.exp)
+        if isinstance(exp, UnresolvedIdentifier):
+            select = MethodSelector(exp.getName())
+        elif isinstance(exp, MemberSelector):
+            select = MethodSelector(exp.getName())
+            select.setParent(exp.getParent())
+        if select is not None:
+            self.setNodeValue(ctx, MethodCall(select))
 
     def exitInclude_list(self, ctx):
         include = [ self.getNodeValue(c) for c in ctx.variable_identifier()]
@@ -2594,7 +2598,6 @@ class EPromptoBuilder(EParserListener):
     def exitInvocationExpression(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, exp)
-
 
     def exitInvokeStatement(self, ctx):
         exp = self.getNodeValue(ctx.exp)

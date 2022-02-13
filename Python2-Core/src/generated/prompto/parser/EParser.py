@@ -884,9 +884,9 @@ def serializedATN():
         buf.write(u"\3\2\2\2\u0563\u0561\3\2\2\2\u0563\u0564\3\2\2\2\u0564")
         buf.write(u"c\3\2\2\2\u0565\u0563\3\2\2\2\u0566\u0567\6\63\30\3\u0567")
         buf.write(u"\u0568\7\25\2\2\u0568\u0569\5\u00e4s\2\u0569e\3\2\2\2")
-        buf.write(u"\u056a\u056b\7z\2\2\u056b\u056c\5\u00e8u\2\u056c\u056d")
-        buf.write(u"\5h\65\2\u056dg\3\2\2\2\u056e\u056f\6\65\31\3\u056fi")
-        buf.write(u"\3\2\2\2\u0570\u0576\5\u0132\u009a\2\u0571\u0576\5\u0134")
+        buf.write(u"\u056a\u056b\7z\2\2\u056b\u056c\5b\62\2\u056c\u056d\5")
+        buf.write(u"h\65\2\u056dg\3\2\2\2\u056e\u056f\6\65\31\3\u056fi\3")
+        buf.write(u"\2\2\2\u0570\u0576\5\u0132\u009a\2\u0571\u0576\5\u0134")
         buf.write(u"\u009b\2\u0572\u0576\5\u00e4s\2\u0573\u0576\5\u012e\u0098")
         buf.write(u"\2\u0574\u0576\5\u0130\u0099\2\u0575\u0570\3\2\2\2\u0575")
         buf.write(u"\u0571\3\2\2\2\u0575\u0572\3\2\2\2\u0575\u0573\3\2\2")
@@ -9794,7 +9794,7 @@ class EParser ( AbstractParser ):
         def __init__(self, parser, parent=None, invokingState=-1):
             super(EParser.Invocation_expressionContext, self).__init__(parent, invokingState)
             self.parser = parser
-            self.name = None # Variable_identifierContext
+            self.exp = None # Unresolved_expressionContext
 
         def INVOKE_COLON(self):
             return self.getToken(EParser.INVOKE_COLON, 0)
@@ -9803,8 +9803,8 @@ class EParser ( AbstractParser ):
             return self.getTypedRuleContext(EParser.Invocation_trailerContext,0)
 
 
-        def variable_identifier(self):
-            return self.getTypedRuleContext(EParser.Variable_identifierContext,0)
+        def unresolved_expression(self):
+            return self.getTypedRuleContext(EParser.Unresolved_expressionContext,0)
 
 
         def getRuleIndex(self):
@@ -9830,7 +9830,7 @@ class EParser ( AbstractParser ):
             self.state = 1384
             self.match(EParser.INVOKE_COLON)
             self.state = 1385
-            localctx.name = self.variable_identifier()
+            localctx.exp = self.unresolved_expression(0)
             self.state = 1386
             self.invocation_trailer()
         except RecognitionException as re:
