@@ -48,6 +48,8 @@ class CastExpression (IExpression):
     def check(self, context):
         actual = self.expression.check(context).anyfy()
         target = getTargetType(context, self.itype, self.mutable)
+        if actual == target:
+            return target
         # check any
         if actual == AnyType.instance:
             return target
@@ -65,12 +67,15 @@ class CastExpression (IExpression):
         value = self.expression.interpret(context)
         if value is not None:
             target = getTargetType(context, self.itype, self.mutable)
-            if isinstance(value, IntegerValue) and target == DecimalType.instance:
-                value = DecimalValue(value.DecimalValue())
-            elif isinstance(value, DecimalValue) and target == IntegerType.instance:
-                return IntegerValue(value.IntegerValue())
-            elif target.isMoreSpecificThan(context, value.itype):
-                value.itype = self.itype
+            if target != value.itype:
+                if isinstance(value, IntegerValue) and target == DecimalType.instance:
+                    value = DecimalValue(value.DecimalValue())
+                elif isinstance(value, DecimalValue) and target == IntegerType.instance:
+                    return IntegerValue(value.IntegerValue())
+                elif target.isMoreSpecificThan(context, value.itype):
+                    value.itype = self.itype
+                else:
+                    raise SyntaxError("Cannot cast " + str(value.itype) + " to " + str(self.itype))
         return value
 
 
