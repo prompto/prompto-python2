@@ -18,7 +18,7 @@ class IntegerValue(BaseValue, INumber, IMultiplyable):
     def getStorableData(self):
         return self.value
 
-    def convertoPython(self):
+    def convertToPython(self):
         return self.value
 
     def IntegerValue(self):
