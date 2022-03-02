@@ -3,7 +3,6 @@ from prompto.expression.IExpression import IExpression
 from prompto.error.SyntaxError import SyntaxError
 from prompto.runtime.Context import MethodDeclarationMap
 from prompto.type.AnyType import AnyType
-from prompto.type.CategoryType import CategoryType
 from prompto.type.DecimalType import DecimalType
 from prompto.type.IntegerType import IntegerType
 from prompto.type.IterableType import IterableType
