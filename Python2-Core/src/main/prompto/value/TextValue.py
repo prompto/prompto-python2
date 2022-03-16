@@ -13,30 +13,23 @@ class TextValue(BaseValue, ISliceable, IMultiplyable):
         super(TextValue, self).__init__(TextType.instance)
         self.value = value
 
-
     def convertToPython(self):
         return self.value
-
 
     def getStorableData(self):
         return self.value
 
-
     def getValue(self):
         return self.value
-
 
     def size(self):
         return len(self.value)
 
-
     def isEmpty(self):
         return len(self.value) == 0
 
-
     def Add(self, context, value):
         return TextValue(self.value + str(value))
-
 
     def Multiply(self, context, value):
         if isinstance(value, IntegerValue):
@@ -51,13 +44,11 @@ class TextValue(BaseValue, ISliceable, IMultiplyable):
         else:
             super(TextValue, self).Multiply(context, value)
 
-
     def CompareTo(self, context, value):
         if isinstance(value, TextValue):
             return cmp(self.value, value.value)
         else:
             super(TextValue, self).CompareTo(context, value)
-
 
     def hasItem(self, context, value):
         from prompto.value.CharacterValue import CharacterValue
@@ -68,13 +59,11 @@ class TextValue(BaseValue, ISliceable, IMultiplyable):
         else:
             raise SyntaxError("Illegal contain: Text + " + type(value).__name__)
 
-
     def getMemberValue(self, context, name, autoCreate=False):
         if "count" == name:
             return IntegerValue(len(self.value))
         else:
             return super(TextValue, self).getMemberValue(context, name, autoCreate)
-
 
     def getItem(self, context, index):
         from prompto.value.CharacterValue import CharacterValue
@@ -86,7 +75,6 @@ class TextValue(BaseValue, ISliceable, IMultiplyable):
         except IndexError:
             raise IndexOutOfRangeError()
 
-
     def getIterator(self, context):
         from prompto.value.CharacterValue import CharacterValue
         for c in self.value:
@@ -95,19 +83,16 @@ class TextValue(BaseValue, ISliceable, IMultiplyable):
     def ConvertTo(self, itype):
         return self.value
 
-
     def slice(self, fi, li):
         first = self.checkFirst(fi)
         last = self.checkLast(li)
         return TextValue(self.value[first - 1:last])
-
 
     def checkFirst(self, fi):
         value = 1 if fi is None else fi.IntegerValue()
         if value < 1 or value > len(self.value):
             raise IndexOutOfRangeError()
         return value
-
 
     def checkLast(self, li):
         value = len(self.value) if li is None else li.IntegerValue()
@@ -116,7 +101,6 @@ class TextValue(BaseValue, ISliceable, IMultiplyable):
         if value < 1 or value > len(self.value):
             raise IndexOutOfRangeError()
         return value
-
 
     def Roughly(self, context, value):
         from prompto.value.CharacterValue import CharacterValue
@@ -127,7 +111,6 @@ class TextValue(BaseValue, ISliceable, IMultiplyable):
         else:
             return False
 
-
     def Contains(self, context, value):
         from prompto.value.CharacterValue import CharacterValue
         if isinstance(value, (TextValue, CharacterValue)):
@@ -135,10 +118,8 @@ class TextValue(BaseValue, ISliceable, IMultiplyable):
         else:
             return False
 
-
     def __str__(self):
         return self.value
-
 
     def __eq__(self, obj):
         if isinstance(obj, TextValue):
@@ -154,7 +135,6 @@ class TextValue(BaseValue, ISliceable, IMultiplyable):
 
     def toJson(self, context, generator, instanceId, fieldName, withType, binaries):
         generator.writeString(self.value)
-
 
     def toJsonNode(self):
         return self.value
