@@ -15,6 +15,7 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
             statements = StatementList()
         self.statements = statements
         self.declarationOf = None
+        self.beingChecked = False
         from prompto.statement.DeclarationStatement import DeclarationStatement
         for statement in statements:
             if isinstance(statement, DeclarationStatement):
@@ -23,15 +24,9 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
     def getStatements(self):
         return self.statements
 
-    def checkStart(self, context):
+    def check(self, context, isStart = False):
         if self.canBeChecked(context):
-            return self.fullCheck(context, True)
-        else:
-            return VoidType.instance
-
-    def check(self, context):
-        if self.canBeChecked(context):
-            return self.fullCheck(context, False)
+            return self.recursiveCheck(context, isStart)
         else:
             return VoidType.instance
 
@@ -51,6 +46,19 @@ class ConcreteMethodDeclaration ( BaseMethodDeclaration ):
                 return True
         return False
 
+
+    def recursiveCheck(self, context, isStart):
+        if self.beingChecked:
+            if self.returnType is None:
+                raise SyntaxError("Cannot check recursive method " + self.name + " without a return type!")
+            else:
+                return self.returnType
+        else:
+            self.beingChecked = True
+            try:
+                return self.fullCheck(context, isStart)
+            finally:
+                self.beingChecked = False
 
     def fullCheck(self, context, isStart):
         if isStart:
