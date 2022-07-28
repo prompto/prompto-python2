@@ -63,10 +63,12 @@ class TextType(NativeType):
         from prompto.type.BooleanType import BooleanType
         return BooleanType.instance
 
-
     def checkSlice(self, context):
         return self
 
+    def checkIterator(self, context):
+        from prompto.type.CharacterType import CharacterType
+        return CharacterType.instance
 
     def convertPythonValueToPromptoValue(self, context, value, returnType):
         from prompto.value.TextValue import TextValue
