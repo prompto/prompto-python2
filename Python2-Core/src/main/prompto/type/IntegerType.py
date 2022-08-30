@@ -140,8 +140,7 @@ class FormatMethodDeclaration(BuiltInMethodDeclaration):
 
 
     def check(self, context):
-        from prompto.type.ListType import ListType
-        return ListType(TextType.instance)
+        return TextType.instance
 
 
 def translateFormat(f):

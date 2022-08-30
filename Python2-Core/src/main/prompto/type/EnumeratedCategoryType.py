@@ -32,7 +32,7 @@ class EnumeratedCategoryType ( CategoryType ):
 
     def checkStaticMember(self, context, name):
         if "symbols" == name:
-            return ListType(self)
+            return ListType(self, False)
         else:
             return super(EnumeratedCategoryType, self).checkMember(context, name)
 

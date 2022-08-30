@@ -55,7 +55,7 @@ class ToListMethodDeclaration(BuiltInMethodDeclaration):
 
     def check(self, context):
         from prompto.type.ListType import ListType
-        return ListType(self.itemType)
+        return ListType(self.itemType, False)
 
 
 class ToSetMethodDeclaration(BuiltInMethodDeclaration):

@@ -704,7 +704,7 @@ class EPromptoBuilder(EParserListener):
 
     def exitListType(self, ctx):
         typ = self.getNodeValue(ctx.l)
-        self.setNodeValue(ctx, ListType(typ))
+        self.setNodeValue(ctx, ListType(typ, False))
 
 
     def exitDictType(self, ctx):

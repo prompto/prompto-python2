@@ -10,15 +10,17 @@ from prompto.type.VoidType import VoidType
 
 class ListType(ContainerType):
 
-    def __init__(self, itemType):
+    def __init__(self, itemType, mutable):
         super(ListType, self).__init__(TypeFamily.LIST, itemType)
         self.typeName = itemType.typeName + "[]"
+        self.mutable = mutable
 
+    def isMutable(self, context):
+        return self.mutable
 
     def isAssignableFrom(self, context, other):
         return super(ListType, self).isAssignableFrom(context, other) or \
                (isinstance(other, ListType) and self.itemType.isAssignableFrom(context, other.itemType))
-
 
     def __eq__(self, obj):
         if id(obj) == id(self):
@@ -110,7 +112,14 @@ class ListType(ContainerType):
 
 
     def withItemType(self, itemType):
-        return ListType(itemType)
+        return ListType(itemType, self.mutable)
+
+
+    def asMutable(self, context, mutable):
+        if mutable == self.mutable:
+            return self
+        else:
+            return ListType(self.itemType, mutable)
 
 
 
@@ -200,7 +209,6 @@ class RemoveValueMethodDeclaration(BuiltInMethodDeclaration):
         from prompto.param.CategoryParameter import CategoryParameter
         VALUE_ARGUMENT = CategoryParameter(AnyType.instance, "value")
         super(RemoveValueMethodDeclaration, self).__init__("removeValue", VALUE_ARGUMENT)
-
 
     def interpret(self, context):
         list = self.getValue(context)
