@@ -9871,9 +9871,9 @@ class EParser ( AbstractParser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 1388
-            if not self.willBe(EParser.LF):
+            if not self.willBeIn(EParser.LF, EParser.DEDENT):
                 from antlr4.error.Errors import FailedPredicateException
-                raise FailedPredicateException(self, "$parser.willBe(EParser.LF)")
+                raise FailedPredicateException(self, "$parser.willBeIn(EParser.LF, EParser.DEDENT)")
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -28476,7 +28476,7 @@ class EParser ( AbstractParser ):
 
     def invocation_trailer_sempred(self, localctx, predIndex):
             if predIndex == 23:
-                return self.willBe(EParser.LF)
+                return self.willBeIn(EParser.LF, EParser.DEDENT)
          
 
     def instance_expression_sempred(self, localctx, predIndex):

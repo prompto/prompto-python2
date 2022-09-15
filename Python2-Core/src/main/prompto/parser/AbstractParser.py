@@ -21,6 +21,9 @@ class AbstractParser(Parser):
     def willBe(self, type):
         return self._input.LA(1)==type
 
+    def willBeIn(self, *types):
+        return self._input.LA(1) in types
+
     def willNotBe(self, type):
         return self._input.LA(1)!=type
 
