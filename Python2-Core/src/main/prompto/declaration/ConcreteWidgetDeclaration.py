@@ -9,14 +9,13 @@ class ConcreteWidgetDeclaration ( ConcreteCategoryDeclaration ):
         if derivedFrom is not None:
             self.setDerivedFrom(IdentifierList(derivedFrom))
         self.setMethods(methods)
-
+        self.properties = None
 
     def categoryTypeToEDialect(self, writer):
         if self.derivedFrom is None:
             writer.append("widget")
         else:
             self.derivedFrom.toDialect(writer, True)
-
 
     def categoryTypeToODialect(self, writer):
         writer.append("widget")
@@ -28,3 +27,6 @@ class ConcreteWidgetDeclaration ( ConcreteCategoryDeclaration ):
 
     def isAWidget(self, context):
         return True
+
+    def asWidget(self, context):
+        return self

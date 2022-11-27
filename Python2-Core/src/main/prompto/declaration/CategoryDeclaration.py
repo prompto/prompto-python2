@@ -1,7 +1,5 @@
 from prompto.declaration.BaseDeclaration import BaseDeclaration
 from prompto.error.SyntaxError import SyntaxError
-from prompto.utils.TypeUtils import fieldToValue
-from prompto.value.NullValue import NullValue
 
 
 class CategoryDeclaration(BaseDeclaration):
@@ -10,7 +8,7 @@ class CategoryDeclaration(BaseDeclaration):
         super(CategoryDeclaration, self).__init__(name)
         self.attributes = attributes
         self.storable = False
-
+        self.widget = None
 
     def setAttributes(self, attributes):
         self.attributes = attributes
@@ -28,6 +26,12 @@ class CategoryDeclaration(BaseDeclaration):
     def isAWidget(self, context):
         return False
 
+
+    def asWidget(self, context):
+        if self.widget is None:
+            from prompto.declaration.WrappingWidgetDeclaration import WrappingWidgetDeclaration
+            self.widget = WrappingWidgetDeclaration(self)
+        return self.widget
 
     def check(self, context):
         from prompto.declaration.AttributeDeclaration import AttributeDeclaration
@@ -106,6 +110,22 @@ class CategoryDeclaration(BaseDeclaration):
         writer = writer.newInstanceWriter(self.getType(writer.context))
         super(CategoryDeclaration, self).toDialect(writer)
 
+
+    def findAnnotation(self, context, predicate):
+        result = None
+        derivedFrom = self.getDerivedFrom()
+        if derivedFrom is not None:
+            for name in derivedFrom:
+                decl = context.getRegisteredDeclaration(CategoryDeclaration, name)
+                if decl is not None:
+                    found = decl.findAnnotation(context, predicate)
+                    if found is not None:
+                        result = found
+        if self.annotations is not None:
+            for ann in self.annotations:
+                if predicate(ann):
+                    result = ann
+        return result
 
     def processAnnotations(self, context, processDerivedFrom):
         if processDerivedFrom:

@@ -69,6 +69,7 @@ TypeFamily.CATEGORY = TypeFamily("CATEGORY")
 TypeFamily.RESOURCE = TypeFamily("RESOURCE")
 TypeFamily.DICTIONARY = TypeFamily("DICTIONARY")
 TypeFamily.ENUMERATED = TypeFamily("ENUMERATED")
+
 # non storable
 TypeFamily.VOID = TypeFamily("VOID")
 TypeFamily.NULL = TypeFamily("NULL")
@@ -83,5 +84,7 @@ TypeFamily.CODE = TypeFamily("CODE")
 TypeFamily.JSX = TypeFamily("JSX")
 TypeFamily.CSS = TypeFamily("CSS")
 TypeFamily.HTML = TypeFamily("HTML")
+TypeFamily.PROPERTIES = TypeFamily("PROPERTIES")
+
 # volatile
 TypeFamily.MISSING = TypeFamily("MISSING")

@@ -1,6 +1,7 @@
 from prompto.error.NullReferenceError import NullReferenceError
 from prompto.error.SyntaxError import SyntaxError
 from prompto.expression.MemberSelector import MemberSelector
+from prompto.parser.Dialect import Dialect
 from prompto.value.NullValue import NullValue
 from prompto.value.TypeValue import TypeValue
 
@@ -18,19 +19,19 @@ class MethodSelector(MemberSelector):
             return str(self.parent) + '.' + self.name
 
 
-    def toDialect(self, writer):
+    def toDialect(self, writer, asRef = True):
+        if asRef and writer.dialect is Dialect.E:
+            writer.append("Method: ")
         if self.parent is None:
             writer.append(self.name)
         else:
             super(MethodSelector, self).parentAndMemberToDialect(writer)
-
 
     def checkParentType(self, context, checkInstance):
         if checkInstance:
             return self.interpretParentInstance(context)
         else:
             return self.checkParent(context)
-
 
     def interpretParentInstance(self, context):
         value = self.parent.interpret(context)
@@ -41,7 +42,6 @@ class MethodSelector(MemberSelector):
             return value.itype.getSuperType(context)
         else:
             return value.itype
-
 
     def getCategoryCandidates(self, context):
         from prompto.declaration.ConcreteCategoryDeclaration import ConcreteCategoryDeclaration

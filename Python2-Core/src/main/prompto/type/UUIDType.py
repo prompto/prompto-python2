@@ -20,7 +20,7 @@ class UUIDType(NativeType):
         if isinstance(value, UUID):
             return UUIDValue(value)
         else:
-            return super(self, UUIDType).convertPythonValueToPromptoValue(context, value, returnType)
+            return super(UUIDType, self).convertPythonValueToPromptoValue(context, value, returnType)
 
 
 
