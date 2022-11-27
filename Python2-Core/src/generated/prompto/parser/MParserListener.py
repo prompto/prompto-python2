@@ -1039,12 +1039,21 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#MethodSelector.
-    def enterMethodSelector(self, ctx):
+    # Enter a parse tree produced by MParser#MethodRefSelector.
+    def enterMethodRefSelector(self, ctx):
         pass
 
-    # Exit a parse tree produced by MParser#MethodSelector.
-    def exitMethodSelector(self, ctx):
+    # Exit a parse tree produced by MParser#MethodRefSelector.
+    def exitMethodRefSelector(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#MethodCallSelector.
+    def enterMethodCallSelector(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#MethodCallSelector.
+    def exitMethodCallSelector(self, ctx):
         pass
 
 
@@ -1876,15 +1885,6 @@ class MParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by MParser#method_identifier.
-    def enterMethod_identifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by MParser#method_identifier.
-    def exitMethod_identifier(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by MParser#identifier_or_keyword.
     def enterIdentifier_or_keyword(self, ctx):
         pass
@@ -1945,6 +1945,15 @@ class MParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by MParser#member_identifier.
     def exitMember_identifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by MParser#method_identifier.
+    def enterMethod_identifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by MParser#method_identifier.
+    def exitMethod_identifier(self, ctx):
         pass
 
 

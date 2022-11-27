@@ -1192,12 +1192,21 @@ class OParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by OParser#MethodSelector.
-    def enterMethodSelector(self, ctx):
+    # Enter a parse tree produced by OParser#MethodRefSelector.
+    def enterMethodRefSelector(self, ctx):
         pass
 
-    # Exit a parse tree produced by OParser#MethodSelector.
-    def exitMethodSelector(self, ctx):
+    # Exit a parse tree produced by OParser#MethodRefSelector.
+    def exitMethodRefSelector(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#MethodCallSelector.
+    def enterMethodCallSelector(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#MethodCallSelector.
+    def exitMethodCallSelector(self, ctx):
         pass
 
 
@@ -1885,15 +1894,6 @@ class OParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by OParser#method_identifier.
-    def enterMethod_identifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by OParser#method_identifier.
-    def exitMethod_identifier(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by OParser#identifier_or_keyword.
     def enterIdentifier_or_keyword(self, ctx):
         pass
@@ -1954,6 +1954,15 @@ class OParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by OParser#member_identifier.
     def exitMember_identifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by OParser#method_identifier.
+    def enterMethod_identifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by OParser#method_identifier.
+    def exitMethod_identifier(self, ctx):
         pass
 
 

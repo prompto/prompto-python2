@@ -1174,6 +1174,15 @@ class EParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by EParser#MethodSelector.
+    def enterMethodSelector(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#MethodSelector.
+    def exitMethodSelector(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by EParser#SliceSelector.
     def enterSliceSelector(self, ctx):
         pass
@@ -2029,15 +2038,6 @@ class EParserListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by EParser#method_identifier.
-    def enterMethod_identifier(self, ctx):
-        pass
-
-    # Exit a parse tree produced by EParser#method_identifier.
-    def exitMethod_identifier(self, ctx):
-        pass
-
-
     # Enter a parse tree produced by EParser#identifier_or_keyword.
     def enterIdentifier_or_keyword(self, ctx):
         pass
@@ -2098,6 +2098,15 @@ class EParserListener(ParseTreeListener):
 
     # Exit a parse tree produced by EParser#member_identifier.
     def exitMember_identifier(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by EParser#method_identifier.
+    def enterMethod_identifier(self, ctx):
+        pass
+
+    # Exit a parse tree produced by EParser#method_identifier.
+    def exitMethod_identifier(self, ctx):
         pass
 
 
