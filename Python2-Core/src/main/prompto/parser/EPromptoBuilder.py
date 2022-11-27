@@ -867,6 +867,11 @@ class EPromptoBuilder(EParserListener):
         self.setNodeValue(ctx, EqualsExpression(left, op, right))
 
 
+    def exitMethodSelector(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        self.setNodeValue(ctx, UnresolvedSelector(name))
+
+
     def exitItemSelector(self, ctx):
         exp = self.getNodeValue(ctx.exp)
         self.setNodeValue(ctx, ItemSelector(exp))
@@ -1132,8 +1137,7 @@ class EPromptoBuilder(EParserListener):
 
 
     def exitMethod_identifier(self, ctx):
-        stmt = self.getNodeValue(ctx.getChild(0))
-        self.setNodeValue(ctx, stmt)
+        self.setNodeValue(ctx, ctx.getText())
 
 
     def exitConstructorFrom(self, ctx):

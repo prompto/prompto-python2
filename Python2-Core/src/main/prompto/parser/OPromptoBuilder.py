@@ -1,6 +1,7 @@
 from antlr4 import Token
 
 from prompto.expression.ExplicitPredicateExpression import ExplicitPredicateExpression
+from prompto.expression.MethodSelector import MethodSelector
 from prompto.expression.PredicateExpression import PredicateExpression
 from prompto.expression.ReadBlobExpression import ReadBlobExpression
 from prompto.expression.SuperExpression import SuperExpression
@@ -854,8 +855,7 @@ class OPromptoBuilder(OParserListener):
 
 
     def exitMethod_identifier(self, ctx):
-        stmt = self.getNodeValue(ctx.getChild(0))
-        self.setNodeValue(ctx, stmt)
+        self.setNodeValue(ctx, ctx.getText())
 
 
     def exitArgument_assignment(self, ctx):
@@ -1130,7 +1130,11 @@ class OPromptoBuilder(OParserListener):
         self.setNodeValue(ctx, exp)
 
 
-    def exitMethodSelector(self, ctx):
+    def exitMethodRefSelector(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        self.setNodeValue(ctx, MethodSelector(name))
+
+    def exitMethodCallSelector(self, ctx):
         call = self.getNodeValue(ctx.method)
         if isinstance(call.caller, UnresolvedIdentifier):
             name = call.caller.name

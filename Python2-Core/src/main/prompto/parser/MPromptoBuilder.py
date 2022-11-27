@@ -1,6 +1,7 @@
 from antlr4 import Token, TerminalNode
 
 from prompto.expression.ExplicitPredicateExpression import ExplicitPredicateExpression
+from prompto.expression.MethodSelector import MethodSelector
 from prompto.expression.PredicateExpression import PredicateExpression
 from prompto.expression.ReadBlobExpression import ReadBlobExpression
 from prompto.expression.SuperExpression import SuperExpression
@@ -1170,15 +1171,15 @@ class MPromptoBuilder(MParserListener):
 
     def exitFetchOne(self, ctx):
         category = self.getNodeValue(ctx.typ)
-        predicate = self.getNodeValue(ctx.predicate)
         include = self.getNodeValue(ctx.include)
+        predicate = self.getNodeValue(ctx.predicate)
         self.setNodeValue(ctx, FetchOneExpression(category, predicate, include))
 
 
     def exitFetchOneAsync(self, ctx):
         category = self.getNodeValue(ctx.typ)
-        predicate = self.getNodeValue(ctx.predicate)
         include = self.getNodeValue(ctx.include)
+        predicate = self.getNodeValue(ctx.predicate)
         thenWith = ThenWith.OrEmpty(self.getNodeValue(ctx.then()))
         self.setNodeValue(ctx, FetchOneStatement(category, predicate, include, thenWith))
 
@@ -1761,8 +1762,7 @@ class MPromptoBuilder(MParserListener):
 
 
     def exitMethod_identifier(self, ctx):
-        stmt = self.getNodeValue(ctx.getChild(0))
-        self.setNodeValue(ctx, stmt)
+        self.setNodeValue(ctx, ctx.getText())
 
 
     def exitMethod_expression(self, ctx):
@@ -1780,7 +1780,11 @@ class MPromptoBuilder(MParserListener):
         self.setNodeValue(ctx, exp)
 
 
-    def exitMethodSelector(self, ctx):
+    def exitMethodRefSelector(self, ctx):
+        name = self.getNodeValue(ctx.name)
+        self.setNodeValue(ctx, MethodSelector(name))
+
+    def exitMethodCallSelector(self, ctx):
         call = self.getNodeValue(ctx.method)
         if isinstance(call.caller, UnresolvedIdentifier):
             name = call.caller.name

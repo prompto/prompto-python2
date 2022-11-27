@@ -24,6 +24,13 @@ class AbstractParser(Parser):
     def willBeIn(self, *types):
         return self._input.LA(1) in types
 
+    def afterWillBeIn(self, skipType, *types):
+        idx = 1
+        next = self._input.LA(idx)
+        while next == skipType:
+            next = self._input.LA(idx)
+        return next in types
+
     def willNotBe(self, type):
         return self._input.LA(1)!=type
 
